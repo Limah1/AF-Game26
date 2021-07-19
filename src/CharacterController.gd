@@ -169,8 +169,8 @@ func Load_Plataform():
 			plataform.idle = load(str(walkpath, "/boy-", str(variation) ,"-1.png"))
 			print(str(walkpath, "/boy-", str(variation) ,"-1.png"))
 			
-			plataform.seated = load(str(path, "/boy-", variation, "-sentado/boy-", variation, "-sentado.png"))
-			plataform.seated_dirty = load(str(path, "/boy-", variation, "-sentado/boy-", variation, "-sujo-sentado.png"))
+			plataform.seated = load(str(path, "boy-", variation, "-sentado/boy-", variation, "-sentado.png"))
+			plataform.seated_dirty = load(str(path, "boy-", variation, "-sentado/boy-", variation, "-sujo-sentado.png"))
 			
 			plataform.walk.w1 = load(str(walkpath, "/boy-", str(variation) ,"-2.png"))
 			plataform.walk.w2 = load(str(walkpath, "/boy-", str(variation) ,"-3.png"))
@@ -198,8 +198,8 @@ func Load_Plataform():
 			
 			walkpath = str(walkpath, "-sujo")
 			
-			plataform.seated = load(str(path, "/boy-", variation, "-sentado/boy-", variation, "-sentado-oculos.png"))
-			plataform.seated_dirty = load(str(path, "/boy-", variation, "-sentado/boy-", variation, "-sujo-sentado-oculos.png"))
+			plataform.seated = load(str(path, "boy-", variation, "-sentado/boy-", variation, "-sentado-oculos.png"))
+			plataform.seated_dirty = load(str(path, "boy-", variation, "-sentado/boy-", variation, "-sujo-sentado-oculos.png"))
 			
 			
 			plataform.idle_dirty =  load(str(walkpath, "-oculos/boy-", str(variation) ,"-1.png"))
@@ -232,7 +232,7 @@ func Load_Plataform():
 		if (glass == false):
 			var walkpath = str(path, "Walk/girl-", str(variation))
 			
-			plataform.seated = load(str(path, "/girl-", variation, "-sentada/girl-", variation, "-sentada.png"))
+			plataform.seated = load(str(path, "girl-", variation, "-sentada/girl-", variation, "-sentada.png"))
 			print(str(path, "girl-", variation, "-sentada/girl-", variation, "-sentada.png"))
 			plataform.seated_dirty = load(str(path, "girl-", variation, "-sentada/girl-", variation, "-sujo-sentado.png"))
 			

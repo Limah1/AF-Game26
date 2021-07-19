@@ -32,16 +32,20 @@ func _process(delta: float) -> void:
 
 func _on_bath_pressed() -> void:
 	yield(AnimationController.go_to_bath(), "completed") 
-	
 	var minigame_banho = load("res://src/UI/Minigame_bath/MiniGame_Banho.tscn").instance()
 	minigame_banho.start(self)
 	add_child(minigame_banho)
 	get_tree().current_scene.toggle_NM()
+	NecessityBars.onbath = true	
 
 
 func finish_bath():
+	NecessityBars.bathing = true
 	get_tree().current_scene.toggle_NM()
 	yield(AnimationController.return_from_bath(), "completed") 
+	NecessityBars.bathing = false
+	NecessityBars.onbath = false	
+	
 
 func _on_toilet_pressed() -> void:
 	if(NecessityBars.soaked):

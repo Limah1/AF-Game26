@@ -39,7 +39,7 @@ func _on_Eat_button_pressed() -> void:
 
 func _on_TutorialButton_pressed() -> void:
 	AnimationController.is_travelling = false
-	
+	return
 	AnimationController.status = "Match3"
 	NecessityBars.eating = true
 	get_tree().change_scene("res://src/Mini-games/Match-3/src/Levels/Tab_3x3.tscn")

@@ -6,6 +6,9 @@ func _on_Button0_pressed():
 	
 	if NecessityBars.soaked:
 		return
+		
+	if NecessityBars.onbath:
+		return true
 	
 	var button_room = 0
 	var current_room = get_room_number(AnimationController.current_room)
@@ -15,6 +18,8 @@ func _on_Button1_pressed():
 	if(check_if_can_press_button()):
 		return
 	
+	if NecessityBars.onbath:
+		return true
 	if NecessityBars.soaked:
 		return
 		
@@ -28,7 +33,8 @@ func _on_Button2_pressed():
 	
 	if NecessityBars.soaked:
 		return		
-	
+	if NecessityBars.onbath:
+		return true
 	var button_room = 2
 	var current_room = get_room_number(AnimationController.current_room)
 	AnimationController.travel(current_room, button_room)
@@ -39,7 +45,8 @@ func _on_Button3_pressed():
 	
 	if NecessityBars.soaked:
 		return	
-	
+	if NecessityBars.onbath:
+		return true
 	var button_room = 3
 	var current_room = get_room_number(AnimationController.current_room)
 	AnimationController.travel(current_room, button_room)
@@ -50,7 +57,8 @@ func _on_Button4_pressed():
 	
 	if NecessityBars.soaked:
 		return
-	
+	if NecessityBars.onbath:
+		return true
 	var button_room = 4
 	var current_room = get_room_number(AnimationController.current_room)
 	AnimationController.travel(current_room, button_room)
@@ -115,8 +123,6 @@ func check_if_can_press_button():
 	if AnimationController.is_playing():
 		return true
 	if CharacterController.is_playing():
-		return true
-	if NecessityBars.bathing:
 		return true
 	if NecessityBars.peeing:
 		return true

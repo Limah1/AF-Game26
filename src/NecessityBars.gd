@@ -23,6 +23,7 @@ var fun = false
 var sleeping = false
 var eating = false
 var bathing = false
+var onbath = false
 var soaked = false
 var peeing = false
 
@@ -76,14 +77,6 @@ func _process(delta: float) -> void:
 		
 		if (fome >= max_fome):
 			fome = max_fome
-	
-	if(bathing == true):
-		higiene += 85 * delta
-		
-		if (higiene >= max_higiene):
-			higiene = max_higiene
-			bath.finish_bath()
-			bathing = false
 	
 	if(peeing == true):
 		bexiga += 85 * delta

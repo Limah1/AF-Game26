@@ -10,6 +10,7 @@ func _on_TextureButton_pressed():
 
 func _on_playbutton_pressed():
 	$Pause2.visible = false
+	get_tree().paused = false 
 	$Pause2.get_node("NecessityManager").queue_free()
 
 func _on_playbutton2_pressed():
