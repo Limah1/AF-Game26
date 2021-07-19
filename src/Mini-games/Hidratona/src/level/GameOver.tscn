@@ -1,0 +1,184 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://src/Mini-games/Hidratona/src/level/GameOver.gd" type="Script" id=1]
+[ext_resource path="res://assets/Hidratona/LAYOUT/button-ir-de-novo.png" type="Texture" id=2]
+[ext_resource path="res://assets/Hidratona/LAYOUT/button-ir-de-novo-hover_1.png" type="Texture" id=3]
+[ext_resource path="res://assets/Hidratona/sprites/objects/background.png" type="Texture" id=4]
+[ext_resource path="res://assets/Hidratona/LAYOUT/button-ir-casa.png" type="Texture" id=5]
+[ext_resource path="res://assets/Hidratona/LAYOUT/button-ir-de-novo-hover.png" type="Texture" id=6]
+[ext_resource path="res://assets/All_Character_Sprites/Boy/hidratona-BOY/boy-win.png" type="Texture" id=7]
+[ext_resource path="res://assets/All_Character_Sprites/Boy/hidratona-BOY/correr-2.png" type="Texture" id=8]
+[ext_resource path="res://assets/All_Character_Sprites/Boy/hidratona-BOY/correr-4.png" type="Texture" id=9]
+[ext_resource path="res://assets/All_Character_Sprites/Boy/hidratona-BOY/correr-3.png" type="Texture" id=10]
+[ext_resource path="res://assets/All_Character_Sprites/Boy/hidratona-BOY/correr-5.png" type="Texture" id=11]
+[ext_resource path="res://assets/All_Character_Sprites/Boy/hidratona-BOY/correr-6.png" type="Texture" id=12]
+[ext_resource path="res://assets/Hidratona/LAYOUT/win-hidratona-obstaculos.png" type="Texture" id=13]
+
+[sub_resource type="Animation" id=1]
+resource_name = "run"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprites:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 189.458, 643.117 ), Vector2( 299.458, 643.117 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sprites/win:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("sprites/r2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("sprites/r3:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("sprites/r4:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("sprites/r5:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("sprites/r6:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+
+[node name="GameOver" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="background" type="Sprite" parent="."]
+position = Vector2( 706.598, 271.964 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 4 )
+
+[node name="sprites" type="Node2D" parent="."]
+position = Vector2( 299.458, 643.117 )
+
+[node name="win" type="Sprite" parent="sprites"]
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="r2" type="Sprite" parent="sprites"]
+visible = false
+scale = Vector2( 3, 3 )
+texture = ExtResource( 8 )
+
+[node name="r3" type="Sprite" parent="sprites"]
+visible = false
+scale = Vector2( 3, 3 )
+texture = ExtResource( 10 )
+
+[node name="r4" type="Sprite" parent="sprites"]
+visible = false
+scale = Vector2( 3, 3 )
+texture = ExtResource( 9 )
+
+[node name="r5" type="Sprite" parent="sprites"]
+visible = false
+scale = Vector2( 3, 3 )
+texture = ExtResource( 11 )
+
+[node name="r6" type="Sprite" parent="sprites"]
+visible = false
+scale = Vector2( 3, 3 )
+texture = ExtResource( 12 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "run"
+anims/run = SubResource( 1 )
+
+[node name="win-hidratona" type="Sprite" parent="."]
+position = Vector2( 1247.81, 535.817 )
+texture = ExtResource( 13 )
+
+[node name="GoHomeButton" type="TextureButton" parent="."]
+margin_left = 746.62
+margin_top = 699.799
+margin_right = 1185.62
+margin_bottom = 828.799
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TryAgainButton" type="TextureButton" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1213.8
+margin_top = 699.799
+margin_right = -144.204
+margin_bottom = -251.201
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="GoHomeButton" to="." method="_on_GoHomeButton_pressed"]
+[connection signal="pressed" from="TryAgainButton" to="." method="_on_TryAgainButton_pressed"]

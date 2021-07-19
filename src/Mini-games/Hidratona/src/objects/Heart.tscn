@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/Hidratona/sprites/objects/coracao.png" type="Texture" id=1]
+[ext_resource path="res://src/Mini-games/Hidratona/src/objects/Heart.gd" type="Script" id=2]
+
+[node name="Heart" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="heart1" type="Sprite" parent="."]
+visible = false
+position = Vector2( 752.07, 116.134 )
+texture = ExtResource( 1 )
+
+[node name="heart2" type="Sprite" parent="."]
+visible = false
+position = Vector2( 856.07, 116.134 )
+texture = ExtResource( 1 )
+
+[node name="heart3" type="Sprite" parent="."]
+visible = false
+position = Vector2( 959.07, 116.134 )
+texture = ExtResource( 1 )

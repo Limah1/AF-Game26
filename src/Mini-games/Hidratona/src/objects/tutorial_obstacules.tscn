@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/Mini-games/Hidratona/src/objects/tutorial_obstacules.gd" type="Script" id=1]
+[ext_resource path="res://src/Mini-games/Hidratona/src/objects/hole.tscn" type="PackedScene" id=2]
+
+
+
+[node name="obstacules" type="ParallaxBackground" groups=[
+"parallax",
+]]
+layer = 100
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ -1606.27 ],
+"_edit_vertical_guides_": [ 9785.2, 7029.81 ]
+}
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.5, 0.5 )
+motion_mirroring = Vector2( 10000, 0 )
+
+[node name="hole" parent="ParallaxLayer" instance=ExtResource( 2 )]
+position = Vector2( 1944, 986.745 )
+
+[node name="Position2D0" type="Position2D" parent="ParallaxLayer" groups=[
+"position",
+]]
+position = Vector2( 1938.38, 1002.13 )
+
+[node name="Position2D" type="Position2D" parent="ParallaxLayer" groups=[
+"position",
+]]
+position = Vector2( 2322.61, 691.007 )
+
+[node name="Position2D2" type="Position2D" parent="ParallaxLayer" groups=[
+"position",
+]]
+position = Vector2( 3946.13, 691.007 )
+
+[node name="Position2D3" type="Position2D" parent="ParallaxLayer" groups=[
+"position",
+]]
+position = Vector2( 5633.94, 691.007 )
+
+[node name="Position2D4" type="Position2D" parent="ParallaxLayer" groups=[
+"position",
+]]
+position = Vector2( 7713.93, 691.007 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+[connection signal="body_entered" from="ParallaxLayer/hole" to="." method="_on_hole_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

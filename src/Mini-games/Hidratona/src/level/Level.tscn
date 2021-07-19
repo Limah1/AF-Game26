@@ -1,0 +1,425 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://src/Mini-games/Hidratona/src/Actor/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Mini-games/Hidratona/src/level/ParallaxBackground.gd" type="Script" id=2]
+[ext_resource path="res://src/Mini-games/Hidratona/src/objects/TileMap.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/Hidratona/sprites/background.png" type="Texture" id=4]
+[ext_resource path="res://src/Mini-games/Hidratona/src/objects/HidratationBar.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/Mini-games/Hidratona/src/objects/Heart.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/Mini-games/Hidratona/src/level/Level.gd" type="Script" id=7]
+[ext_resource path="res://assets/Hidratona/sprites/objects/pausa.png" type="Texture" id=8]
+[ext_resource path="res://assets/Hidratona/sprites/objects/play-button (1).png" type="Texture" id=9]
+[ext_resource path="res://assets/Hidratona/sprites/objects/sol.png" type="Texture" id=10]
+[ext_resource path="res://assets/Plataforma/buttons/button-sair.png" type="Texture" id=11]
+[ext_resource path="res://assets/fonts/Raleway-Medium.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://assets/Hidratona/LAYOUT/feedback-box.png" type="Texture" id=13]
+[ext_resource path="res://src/Mini-games/Hidratona/src/level/CanvasLayer_temp.gd" type="Script" id=14]
+[ext_resource path="res://src/Mini-games/Hidratona/src/level/SnowStorm.tscn" type="PackedScene" id=15]
+[ext_resource path="res://src/Mini-games/Hidratona/src/level/Rain.tscn" type="PackedScene" id=18]
+
+[sub_resource type="DynamicFont" id=1]
+size = 70
+font_data = ExtResource( 12 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.0235294, 0.2, 0.737255, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.0235294, 0.2, 0.737255, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.235294, 0.454902, 1, 1 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 50
+font_data = ExtResource( 12 )
+
+[sub_resource type="Animation" id=6]
+length = 10.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3.8, 9.9 ),
+"transitions": PoolRealArray( 0.196146, 0.203063, 0.183011 ),
+"update": 0,
+"values": [ Vector2( 2060.66, 258.56 ), Vector2( 969.896, 66.7764 ), Vector2( -144.845, 357.448 ) ]
+}
+
+[node name="Level" type="Node2D"]
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_vertical_guides_": [ 1920.66, 3805.8, 7.51227 ]
+}
+
+[node name="Rain" parent="." instance=ExtResource( 18 )]
+
+[node name="Snow" parent="." instance=ExtResource( 15 )]
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 2060.66, 258.56 )
+texture = ExtResource( 10 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 502.141, 739.997 )
+
+[node name="TileMap2" parent="." instance=ExtResource( 3 )]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( -10.569, 26.7639 )
+tile_data = PoolIntArray( 1048575, 0, 0, 983040, 0, 0, 983041, 0, 0, 983042, 0, 0, 983043, 0, 0, 983044, 0, 0, 983045, 0, 0, 983046, 0, 0, 983047, 0, 0, 983048, 0, 0, 983049, 0, 0, 983050, 0, 0, 983051, 0, 0, 983052, 0, 0, 983053, 0, 0, 983054, 0, 0, 983055, 0, 0, 983056, 0, 0, 983057, 0, 0, 983058, 0, 0, 983059, 0, 0, 983060, 0, 0, 983061, 0, 0, 983062, 0, 0, 983063, 0, 0, 983064, 0, 0, 983065, 0, 0, 983066, 0, 0, 983067, 0, 0, 983068, 0, 0, 983069, 0, 0, 983070, 0, 0, 983071, 0, 0, 983072, 0, 0, 983073, 0, 0, 983074, 0, 0, 983075, 0, 0, 983076, 0, 0, 983077, 0, 0, 983078, 0, 0, 983079, 0, 0, 983080, 0, 0, 983081, 0, 0, 983082, 0, 0, 983083, 0, 0, 983084, 0, 0, 983085, 0, 0, 983086, 0, 0, 983087, 0, 0, 983088, 0, 0, 983089, 0, 0, 983090, 0, 0, 983091, 0, 0, 983092, 0, 0, 983093, 0, 0, 983094, 0, 0, 983095, 0, 0, 983096, 0, 0, 983097, 0, 0, 983098, 0, 0, 983099, 0, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 502.141, 743.772 )
+
+[node name="AnimatedSprite" parent="Player" index="2"]
+frame = 4
+
+[node name="HidratationBar" parent="." instance=ExtResource( 5 )]
+layer = 10
+
+[node name="floor" type="ParallaxBackground" parent="." groups=[
+"parallax",
+]]
+script = ExtResource( 2 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="floor"]
+motion_scale = Vector2( 0.5, 0.5 )
+motion_mirroring = Vector2( 3800, 0 )
+
+[node name="background" type="Sprite" parent="floor/ParallaxLayer"]
+position = Vector2( 1920.53, 540.391 )
+texture = ExtResource( 4 )
+
+[node name="Heart" parent="." instance=ExtResource( 6 )]
+position = Vector2( 162.346, 0 )
+z_index = 10
+
+[node name="pause" type="TextureButton" parent="."]
+margin_left = 1563.05
+margin_top = 75.5099
+margin_right = 1834.05
+margin_bottom = 142.51
+texture_normal = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+pause_mode = 2
+layer = 120
+script = ExtResource( 14 )
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.756863 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NaoTrouxeCapa" type="Sprite" parent="CanvasLayer"]
+pause_mode = 2
+visible = false
+position = Vector2( 924.007, 583.747 )
+texture = ExtResource( 13 )
+
+[node name="Label" type="Label" parent="CanvasLayer/NaoTrouxeCapa"]
+margin_left = -602.0
+margin_top = -415.0
+margin_right = 609.0
+margin_bottom = 218.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Está chovendo e você não trouxe a sua capa de chuva ! 
+
+Volte para casa e pegue-a"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="CanvasLayer/NaoTrouxeCapa"]
+margin_left = 46.9603
+margin_top = 171.2
+margin_right = 541.96
+margin_bottom = 362.2
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/NaoTrouxeCapa/Button"]
+margin_right = 495.0
+margin_bottom = 194.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Voltar pra casa"
+align = 1
+valign = 1
+
+[node name="Button2" type="Button" parent="CanvasLayer/NaoTrouxeCapa"]
+margin_left = -530.342
+margin_top = 171.2
+margin_right = -35.3418
+margin_bottom = 362.2
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/NaoTrouxeCapa/Button2"]
+margin_right = 495.0
+margin_bottom = 194.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Continuar"
+align = 1
+valign = 1
+
+[node name="NaoTrouxeCasaco" type="Sprite" parent="CanvasLayer"]
+pause_mode = 2
+visible = false
+position = Vector2( 924.007, 583.747 )
+texture = ExtResource( 13 )
+
+[node name="Label" type="Label" parent="CanvasLayer/NaoTrouxeCasaco"]
+margin_left = -602.0
+margin_top = -415.0
+margin_right = 609.0
+margin_bottom = 218.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Está nevando e você não trouxe a seu casaco ! 
+
+Volte para casa e pegue-o"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="CanvasLayer/NaoTrouxeCasaco"]
+margin_left = 29.1423
+margin_top = 178.327
+margin_right = 524.142
+margin_bottom = 369.327
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/NaoTrouxeCasaco/Button"]
+margin_right = 495.0
+margin_bottom = 194.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Voltar pra casa"
+align = 1
+valign = 1
+
+[node name="Button2" type="Button" parent="CanvasLayer/NaoTrouxeCasaco"]
+margin_left = -526.778
+margin_top = 178.327
+margin_right = -31.7784
+margin_bottom = 369.327
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/NaoTrouxeCasaco/Button2"]
+margin_right = 495.0
+margin_bottom = 194.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Continuar"
+align = 1
+valign = 1
+
+[node name="neve" type="Sprite" parent="CanvasLayer"]
+pause_mode = 2
+visible = false
+position = Vector2( 995.926, 583.747 )
+texture = ExtResource( 13 )
+
+[node name="Label" type="Label" parent="CanvasLayer/neve"]
+margin_left = -602.0
+margin_top = -415.0
+margin_right = 604.0
+margin_bottom = 119.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Opa, você se esqueceu de trazer o casaco e agora está sentindo dor ! 
+
+Volte pra casa e Avise seus pais"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="CanvasLayer/neve"]
+margin_left = -231.0
+margin_top = 132.0
+margin_right = 264.0
+margin_bottom = 323.0
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/neve/Button"]
+margin_right = 495.0
+margin_bottom = 194.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Voltar pra casa"
+align = 1
+valign = 1
+
+[node name="chuva" type="Sprite" parent="CanvasLayer"]
+pause_mode = 2
+visible = false
+position = Vector2( 995.926, 583.747 )
+texture = ExtResource( 13 )
+
+[node name="Label" type="Label" parent="CanvasLayer/chuva"]
+margin_left = -602.0
+margin_top = -373.047
+margin_right = 604.0
+margin_bottom = 160.953
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Opa, você se esqueceu de trazer o guarda chuva e agora está sentindo dor ! 
+
+Volte pra casa e Avise seus pais"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="CanvasLayer/chuva"]
+margin_left = -231.0
+margin_top = 176.949
+margin_right = 264.0
+margin_bottom = 367.949
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/chuva/Button"]
+margin_right = 495.0
+margin_bottom = 194.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Voltar pra casa"
+align = 1
+valign = 1
+
+[node name="Pause" type="Control" parent="CanvasLayer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Pause"]
+modulate = Color( 1, 1, 1, 0.662745 )
+margin_left = 4.23785
+margin_right = 1928.24
+margin_bottom = 1086.0
+mouse_filter = 2
+color = Color( 0.0666667, 0.0627451, 0.0627451, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="play-button" type="TextureButton" parent="CanvasLayer/Pause"]
+pause_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -359.941
+margin_top = -203.0
+margin_right = -29.9412
+margin_bottom = 203.0
+texture_normal = ExtResource( 9 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="play-button2" type="TextureButton" parent="CanvasLayer/Pause"]
+pause_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 97.8542
+margin_top = -126.719
+margin_right = 300.854
+margin_bottom = 123.281
+texture_normal = ExtResource( 11 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 10.0
+
+[node name="Timer3" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/sun = SubResource( 6 )
+
+[node name="Timer_speed" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
+[connection signal="button_up" from="pause" to="." method="_on_pause_button_up"]
+[connection signal="pressed" from="CanvasLayer/NaoTrouxeCapa/Button" to="CanvasLayer" method="_on_Button_pressed"]
+[connection signal="pressed" from="CanvasLayer/NaoTrouxeCapa/Button2" to="CanvasLayer" method="_on_Button2_pressed"]
+[connection signal="pressed" from="CanvasLayer/NaoTrouxeCasaco/Button" to="CanvasLayer" method="_on_Button_pressed"]
+[connection signal="pressed" from="CanvasLayer/NaoTrouxeCasaco/Button2" to="CanvasLayer" method="_on_Button2_pressed"]
+[connection signal="pressed" from="CanvasLayer/neve/Button" to="CanvasLayer" method="_on_Button_pressed"]
+[connection signal="pressed" from="CanvasLayer/chuva/Button" to="CanvasLayer" method="_on_Button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause/play-button" to="." method="_on_playbutton_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause/play-button2" to="." method="_on_playbutton2_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_Timer2_timeout"]
+[connection signal="timeout" from="Timer3" to="." method="_on_Timer3_timeout"]
+[connection signal="timeout" from="Timer_speed" to="floor" method="_on_Timer_speed_timeout"]
+
+[editable path="Player"]

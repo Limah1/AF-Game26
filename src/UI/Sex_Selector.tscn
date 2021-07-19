@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/Plataforma/Char_Select/button-menino.png" type="Texture" id=1]
+[ext_resource path="res://assets/Plataforma/Char_Select/button-menina.png" type="Texture" id=2]
+[ext_resource path="res://assets/Plataforma/Char_Select/tela-escolha-genero.png" type="Texture" id=3]
+[ext_resource path="res://src/UI/Sex_Selector.gd" type="Script" id=4]
+
+[node name="Sex_Selector" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tela-escolha-genero" type="Sprite" parent="."]
+position = Vector2( 960, 540 )
+texture = ExtResource( 3 )
+
+[node name="BoyButton" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -351.5
+margin_top = -114.5
+margin_right = 351.5
+margin_bottom = 114.5
+texture_normal = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GirlButton2" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -351.5
+margin_top = 189.5
+margin_right = 351.5
+margin_bottom = 418.5
+texture_normal = ExtResource( 2 )
+[connection signal="pressed" from="BoyButton" to="." method="_on_BoyButton_pressed"]
+[connection signal="pressed" from="GirlButton2" to="." method="_on_GirlButton2_pressed"]

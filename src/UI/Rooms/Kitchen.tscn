@@ -1,0 +1,237 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://assets/Plataforma/rooms/kitchen.png" type="Texture" id=1]
+[ext_resource path="res://src/UI/Rooms/Kitchen.gd" type="Script" id=2]
+[ext_resource path="res://assets/Plataforma/buttons/pop-up-match-3.png" type="Texture" id=3]
+[ext_resource path="res://assets/Plataforma/buttons/button-fechar.png" type="Texture" id=4]
+[ext_resource path="res://assets/Plataforma/buttons/button-tutorial.png" type="Texture" id=5]
+[ext_resource path="res://assets/Plataforma/buttons/button-tutorial-hover.png" type="Texture" id=6]
+[ext_resource path="res://assets/Plataforma/buttons/button-comecar.png" type="Texture" id=7]
+[ext_resource path="res://assets/Plataforma/buttons/button-comecar-hover.png" type="Texture" id=8]
+[ext_resource path="res://assets/Plataforma/objects/cozinha-geladeira-hover.png" type="Texture" id=9]
+[ext_resource path="res://assets/Plataforma/objects/cozinha-geladeira.png" type="Texture" id=10]
+[ext_resource path="res://assets/Plataforma/ambientes/janela_chuva.png" type="Texture" id=11]
+[ext_resource path="res://assets/Plataforma/ambientes/janela_noite.png" type="Texture" id=12]
+[ext_resource path="res://assets/Plataforma/ambientes/janela_sol.png" type="Texture" id=13]
+[ext_resource path="res://assets/Plataforma/ambientes/janela_neve.png" type="Texture" id=14]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="Animation" id=5]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "scale_in_out"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 2, -2, 1 ),
+"update": 0,
+"values": [ Vector2( 1.1, 1.1 ), Vector2( 1, 1 ), Vector2( 1.1, 1.1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "in"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 1.5 ),
+"transitions": PoolRealArray( 3, 0.16, 1 ),
+"update": 0,
+"values": [ Vector2( 895.357, -844 ), Vector2( 895.357, 264 ), Vector2( 895.357, 140 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "out"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1.5 ),
+"transitions": PoolRealArray( 1, 3, 3 ),
+"update": 0,
+"values": [ Vector2( 895.357, 140 ), Vector2( 895.357, 264 ), Vector2( 895.357, -844 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[node name="Kitchen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cozinha" type="Sprite" parent="."]
+position = Vector2( 960, 540 )
+z_index = -100
+texture = ExtResource( 1 )
+
+[node name="janela_chuva" type="Sprite" parent="."]
+position = Vector2( 1483.85, 362.01 )
+z_index = -99
+texture = ExtResource( 11 )
+
+[node name="janela_neve" type="Sprite" parent="."]
+visible = false
+position = Vector2( 1483.85, 362.01 )
+z_index = -99
+texture = ExtResource( 14 )
+
+[node name="janela_noite" type="Sprite" parent="."]
+visible = false
+position = Vector2( 1483.85, 362.01 )
+z_index = -99
+texture = ExtResource( 12 )
+
+[node name="janela_sol" type="Sprite" parent="."]
+visible = false
+position = Vector2( 1483.85, 362.01 )
+z_index = -99
+texture = ExtResource( 13 )
+
+[node name="Eat_button" type="Button" parent="."]
+margin_left = 756.0
+margin_top = 267.0
+margin_right = 1081.0
+margin_bottom = 879.0
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cozinha_geladeira" type="Sprite" parent="."]
+position = Vector2( 917.164, 566.095 )
+z_index = -30
+texture = ExtResource( 10 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="cozinha_geladeira"]
+autoplay = "idle"
+anims/idle = SubResource( 5 )
+anims/scale_in_out = SubResource( 6 )
+
+[node name="geladeira_aberta" type="Sprite" parent="."]
+visible = false
+position = Vector2( 1099.02, 563.327 )
+z_index = -25
+texture = ExtResource( 9 )
+
+[node name="Match3PopUp" type="Control" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -64.6428
+margin_top = -1384.0
+margin_right = 885.357
+margin_bottom = -583.999
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pop-up-match-3" type="Sprite" parent="Match3PopUp"]
+position = Vector2( 475, 400 )
+texture = ExtResource( 3 )
+
+[node name="TutorialButton" type="TextureButton" parent="Match3PopUp"]
+margin_left = 131.368
+margin_top = 440.629
+margin_right = 454.368
+margin_bottom = 553.629
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartButton" type="TextureButton" parent="Match3PopUp"]
+margin_left = 503.614
+margin_top = 440.629
+margin_right = 826.614
+margin_bottom = 553.629
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LeaveButton" type="TextureButton" parent="Match3PopUp"]
+margin_left = 845.6
+margin_top = 32.0315
+margin_right = 892.6
+margin_bottom = 80.0315
+texture_normal = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Match3PopUp"]
+anims/in = SubResource( 7 )
+anims/out = SubResource( 8 )
+[connection signal="pressed" from="Eat_button" to="." method="_on_Eat_button_pressed"]
+[connection signal="pressed" from="Match3PopUp/TutorialButton" to="." method="_on_TutorialButton_pressed"]
+[connection signal="pressed" from="Match3PopUp/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="Match3PopUp/LeaveButton" to="." method="_on_LeaveButton_pressed"]

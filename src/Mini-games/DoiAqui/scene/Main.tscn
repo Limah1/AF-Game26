@@ -1,0 +1,339 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://src/Mini-games/DoiAqui/actor/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/DoiAqui/objects/button.png" type="Texture" id=2]
+[ext_resource path="res://src/Mini-games/DoiAqui/scene/Main.gd" type="Script" id=3]
+[ext_resource path="res://src/Mini-games/DoiAqui/object/scalePain.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/fonts/Teste.tres" type="DynamicFont" id=5]
+[ext_resource path="res://src/Mini-games/DoiAqui/object/Background.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/Mini-games/DoiAqui/object/HealthBar.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/DoiAqui/fonts/raleway.tres" type="DynamicFont" id=8]
+[ext_resource path="res://assets/DoiAqui/sprites/tratamento/pain/1x/Ativo 21.png" type="Texture" id=9]
+[ext_resource path="res://assets/DoiAqui/sprites/como_posso.png" type="Texture" id=10]
+[ext_resource path="res://assets/DoiAqui/sprites/tratamento/pain/3.png" type="Texture" id=11]
+[ext_resource path="res://assets/DoiAqui/sprites/tratamento/about/armPain.png" type="Texture" id=12]
+[ext_resource path="res://assets/Match-3/pause.png" type="Texture" id=13]
+[ext_resource path="res://assets/Plataforma/buttons/button-sair.png" type="Texture" id=14]
+[ext_resource path="res://src/Mini-games/DoiAqui/scene/Pause.gd" type="Script" id=15]
+[ext_resource path="res://assets/Hidratona/sprites/objects/play-button (1).png" type="Texture" id=16]
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 844.015, 246.865, 543.195, 678.451, 394.991, 820.96 ],
+"_edit_vertical_guides_": [ 1408.91, 1779.32, 1383.15, 1001.69 ]
+}
+
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_left = 79.1959
+margin_top = 39.598
+margin_right = 207.196
+margin_bottom = 167.598
+texture_normal = ExtResource( 13 )
+texture_pressed = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" parent="." instance=ExtResource( 6 )]
+
+[node name="levelPain" type="Label" parent="."]
+margin_left = 89.7969
+margin_top = 594.905
+margin_right = 327.797
+margin_bottom = 776.905
+custom_fonts/font = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Buttons" type="Node2D" parent="."]
+pause_mode = 2
+position = Vector2( -296.227, -12.3736 )
+
+[node name="1" type="TextureButton" parent="Buttons" groups=[
+"button",
+]]
+pause_mode = 2
+margin_left = 1357.24
+margin_top = 161.794
+margin_right = 1523.24
+margin_bottom = 337.794
+rect_scale = Vector2( 1.5, 1.4 )
+texture_normal = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="2" type="TextureButton" parent="Buttons" groups=[
+"button",
+]]
+margin_left = 1664.85
+margin_top = 161.768
+margin_right = 1830.85
+margin_bottom = 337.768
+rect_scale = Vector2( 1.5, 1.4 )
+texture_normal = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="3" type="TextureButton" parent="Buttons" groups=[
+"button",
+]]
+margin_left = 1358.58
+margin_top = 445.126
+margin_right = 1524.58
+margin_bottom = 621.126
+rect_scale = Vector2( 1.5, 1.4 )
+texture_normal = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="4" type="TextureButton" parent="Buttons" groups=[
+"button",
+]]
+margin_left = 1663.38
+margin_top = 446.326
+margin_right = 1829.38
+margin_bottom = 622.326
+rect_scale = Vector2( 1.5, 1.4 )
+texture_normal = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="scalePain" parent="." instance=ExtResource( 4 )]
+position = Vector2( 149.069, 604.246 )
+
+[node name="start" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="messageInterGame" type="CanvasLayer" parent="."]
+layer = -100
+
+[node name="Sprite" type="Sprite" parent="messageInterGame"]
+position = Vector2( 1357.16, 841.959 )
+texture = ExtResource( 12 )
+
+[node name="message" type="Label" parent="messageInterGame"]
+modulate = Color( 0.956863, 0.0980392, 0.180392, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 38.4236
+margin_top = 162.958
+margin_right = 412.424
+margin_bottom = 220.958
+custom_fonts/font = ExtResource( 8 )
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="painLevel" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Sprite" type="Sprite" parent="painLevel"]
+position = Vector2( 1357.16, 841.959 )
+texture = ExtResource( 11 )
+
+[node name="askMessage" type="CanvasLayer" parent="."]
+
+[node name="Sprite" type="Sprite" parent="askMessage"]
+position = Vector2( 1357.16, 841.959 )
+texture = ExtResource( 9 )
+
+[node name="com" type="Label" parent="askMessage"]
+modulate = Color( 0.243137, 0.215686, 0.215686, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 156.0
+margin_top = 174.0
+margin_right = 255.0
+margin_bottom = 232.0
+custom_fonts/font = ExtResource( 8 )
+text = "com"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="message" type="Label" parent="askMessage"]
+modulate = Color( 0.878431, 0.682353, 0.054902, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 260.0
+margin_top = 174.0
+margin_right = 722.0
+margin_bottom = 232.0
+custom_fonts/font = ExtResource( 8 )
+text = "     ..."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="como_posso" type="Sprite" parent="askMessage"]
+position = Vector2( 1328.53, 800.101 )
+scale = Vector2( 1.0114, 1 )
+texture = ExtResource( 10 )
+
+[node name="InitialMessage" type="CanvasLayer" parent="."]
+pause_mode = 2
+layer = 2
+script = ExtResource( 15 )
+
+[node name="Pause2" type="Control" parent="InitialMessage"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.79883
+margin_top = 11.5716
+margin_right = 1.79883
+margin_bottom = 11.5717
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="InitialMessage/Pause2"]
+modulate = Color( 1, 1, 1, 0.662745 )
+margin_left = 4.23785
+margin_right = 1928.24
+margin_bottom = 1086.0
+mouse_filter = 2
+color = Color( 0.0666667, 0.0627451, 0.0627451, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="play-button" type="TextureButton" parent="InitialMessage/Pause2"]
+pause_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -359.941
+margin_top = -203.0
+margin_right = -29.9412
+margin_bottom = 203.0
+texture_normal = ExtResource( 16 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="play-button2" type="TextureButton" parent="InitialMessage/Pause2"]
+pause_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 97.8542
+margin_top = -126.719
+margin_right = 300.854
+margin_bottom = 123.281
+texture_normal = ExtResource( 14 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="InitialMessage"]
+pause_mode = 1
+modulate = Color( 1, 1, 1, 0.439216 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -958.74
+margin_top = -538.74
+margin_right = 961.26
+margin_bottom = 541.26
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="InitialMessage"]
+pause_mode = 1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -636.0
+margin_top = -362.5
+margin_right = 636.0
+margin_bottom = 362.5
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="InitialMessage"]
+modulate = Color( 0, 0, 0, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -554.622
+margin_top = -191.132
+margin_right = 581.378
+margin_bottom = 118.868
+custom_fonts/font = ExtResource( 5 )
+text = "Vamos começar? "
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="start" type="Button" parent="InitialMessage"]
+anchor_left = 0.5
+anchor_top = 0.669
+anchor_right = 0.5
+anchor_bottom = 0.669
+margin_left = -106.0
+margin_top = -59.52
+margin_right = 121.0
+margin_bottom = 59.48
+custom_fonts/font = ExtResource( 5 )
+text = "Começar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthDisplay" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1780.32, 991.41 )
+
+[node name="message" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="message2" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 594.641, 590.865 )
+[connection signal="pressed" from="TextureButton" to="InitialMessage" method="_on_TextureButton_pressed"]
+[connection signal="timeout" from="start" to="." method="_on_start_timeout"]
+[connection signal="pressed" from="InitialMessage/Pause2/play-button" to="InitialMessage" method="_on_playbutton_pressed"]
+[connection signal="pressed" from="InitialMessage/Pause2/play-button2" to="InitialMessage" method="_on_playbutton2_pressed"]
+[connection signal="pressed" from="InitialMessage/start" to="." method="_on_start_pressed"]
+[connection signal="timeout" from="message" to="." method="_on_message_timeout"]
+[connection signal="timeout" from="message2" to="." method="_on_message_timeout"]
+[connection signal="tree_entered" from="Player" to="." method="_on_Player_tree_entered"]

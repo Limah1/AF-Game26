@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/Mini-games/Hidratona/src/Main.gd" type="Script" id=1]
+[ext_resource path="res://assets/Hidratona/sprites/objects/agua.png" type="Texture" id=2]
+[ext_resource path="res://assets/Hidratona/sprites/objects/tela-inicial.png" type="Texture" id=3]
+[ext_resource path="res://assets/Hidratona/sprites/objects/botao-tutorial-hover.png" type="Texture" id=4]
+[ext_resource path="res://assets/Hidratona/sprites/objects/botao-tutorial-hover_1.png" type="Texture" id=5]
+[ext_resource path="res://src/Mini-games/Hidratona/src/ui/Start.tscn" type="PackedScene" id=6]
+
+[node name="Main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_edit_vertical_guides_": [ 956.362 ]
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="agua" type="Sprite" parent="TextureRect"]
+position = Vector2( 597.532, 401.682 )
+texture = ExtResource( 2 )
+
+[node name="Start" parent="." instance=ExtResource( 6 )]
+
+[node name="Tutorial" type="TextureButton" parent="."]
+margin_left = 560.0
+margin_top = 577.302
+margin_right = 928.0
+margin_bottom = 704.302
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="Tutorial" to="." method="_on_Tutorial_pressed"]

@@ -1,0 +1,73 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/fonts/Teste.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/Match-3/sprites/Delete-80_icon-icons.com_57340.png" type="Texture" id=2]
+
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends CanvasLayer
+
+func _on_TextureButton_pressed():
+	self.layer = -200
+"
+
+[node name="Info-box" type="Node2D"]
+script = SubResource( 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -128
+
+[node name="ColorRect" type="Node2D" parent="CanvasLayer"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 981.032, 527.557 )
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/ColorRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.757
+anchor_bottom = 0.5
+margin_left = -955.0
+margin_top = -322.0
+margin_right = 914.0
+margin_bottom = 303.0
+color = Color( 0.815686, 0.529412, 0.054902, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/ColorRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -931.265
+margin_top = -283.755
+margin_right = 903.735
+margin_bottom = 239.245
+custom_fonts/font = ExtResource( 1 )
+text = "A absorção do ferro, mineral que ajuda os glóbulos vermelhos a transportarem o 
+oxigênio para as células do corpo, alivia e combate os sintomas 
+de anemia
+
+Água: maior fonte de hidratação
+Feijão: ferro e proteína
+Suco de abacaxi e salsinha: rico em ferro e vitamina C
+Melancia: fonte de água, promove a hidratação do corpo, fonte de ferro, vitamina C e antioxidantes
+Hambúrguer: muita gordura, carboidrato e pouco valor nutricional"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer"]
+margin_left = 40.0
+margin_top = 23.0
+margin_right = 206.0
+margin_bottom = 202.0
+rect_scale = Vector2( 0.7, 0.7 )
+texture_normal = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="CanvasLayer/TextureButton" to="." method="_on_TextureButton_pressed"]

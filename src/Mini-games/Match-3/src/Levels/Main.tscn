@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/Match-3/LAYOUTS/page-landing-botao.png" type="Texture" id=1]
+[ext_resource path="res://assets/Match-3/LAYOUTS/tela-inicial-botao-tutorial-hover.png" type="Texture" id=2]
+[ext_resource path="res://src/Mini-games/Match-3/src/Levels/Main.gd" type="Script" id=3]
+[ext_resource path="res://assets/Match-3/LAYOUTS/page-landing-botao-cover.png" type="Texture" id=4]
+[ext_resource path="res://assets/Match-3/LAYOUTS/tela-inicial-box.png" type="Texture" id=5]
+[ext_resource path="res://assets/Match-3/LAYOUTS/tela-inicial-botao-tutorial.png" type="Texture" id=6]
+
+[node name="Main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="Sprite" parent="."]
+position = Vector2( 961.029, 542.795 )
+texture = ExtResource( 5 )
+
+[node name="start" type="TextureButton" parent="."]
+margin_left = 1174.94
+margin_top = 626.403
+margin_right = 1482.94
+margin_bottom = 733.403
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tutorial" type="TextureButton" parent="."]
+margin_left = 830.067
+margin_top = 623.144
+margin_right = 1138.07
+margin_bottom = 730.144
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="tutorial" to="." method="_on_tutorial_pressed"]

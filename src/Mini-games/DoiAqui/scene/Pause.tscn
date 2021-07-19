@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/Plataforma/buttons/button-sair.png" type="Texture" id=1]
+[ext_resource path="res://assets/Hidratona/sprites/objects/play-button (1).png" type="Texture" id=2]
+
+[node name="Pause2" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color( 1, 1, 1, 0.662745 )
+margin_left = 4.23785
+margin_right = 1928.24
+margin_bottom = 1086.0
+mouse_filter = 2
+color = Color( 0.0666667, 0.0627451, 0.0627451, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="play-button" type="TextureButton" parent="."]
+pause_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -359.941
+margin_top = -203.0
+margin_right = -29.9412
+margin_bottom = 203.0
+texture_normal = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="play-button2" type="TextureButton" parent="."]
+pause_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 97.8542
+margin_top = -126.719
+margin_right = 300.854
+margin_bottom = 123.281
+texture_normal = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/Mini-games/Match-3/src/GUI/HealthBar.gd" type="Script" id=1]
+[ext_resource path="res://assets/Match-3/sprites/Ativo.png" type="Texture" id=2]
+
+
+[node name="HealthDisplay" type="Node2D"]
+light_mask = 8
+scale = Vector2( 0.3, 0.3 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ -0.941132, 13.217 ],
+"_edit_vertical_guides_": [ 98.7961, 0.161194 ]
+}
+
+[node name="HealthBar" type="TextureProgress" parent="."]
+margin_left = 1.0
+margin_right = 199.0
+margin_bottom = 27.0
+rect_rotation = 270.0
+rect_scale = Vector2( 2, 2 )
+max_value = 30.0
+value = 1.0
+texture_under = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

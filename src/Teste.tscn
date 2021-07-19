@@ -1,0 +1,563 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://src/Teste.gd" type="Script" id=1]
+[ext_resource path="res://src/UI/RoomSlot.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/UI/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/UI/NecessityManager.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/Plataforma/pop-up-emergencia.png" type="Texture" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "fade_in_out"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "already_on_bed"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1430, 788.145 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("Player")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"values": [  ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Player/player_sprites/sleeping:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Player/player_sprites/idle:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2021.95, 724 ), Vector2( -122, 724 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("Player")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "Walk_to_Left"
+} ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -122, 724 ), Vector2( 2021.95, 724 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("Player")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "Walk_to_Right"
+} ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 622, 724 ), Vector2( 1559.23, 650 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("Player")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "set_bath_clothes"
+}, {
+"args": [  ],
+"method": "Walk_to_Right"
+}, {
+"args": [  ],
+"method": "Idle"
+} ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.001, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 622, 724 ), Vector2( 622, 724 ), Vector2( 1430, 788.145 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("Player")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.9, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "Walk_to_Right"
+}, {
+"args": [  ],
+"method": "Idle"
+}, {
+"args": [  ],
+"method": "sleep"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Player/player_sprites/idle:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Player/player_sprites/sleeping:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 622, 724 ), Vector2( -200, 724 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("Player")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "Walk_to_Left"
+} ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 3.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 622, 724 ), Vector2( 2128.45, 724 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("Player")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "Walk_to_Right"
+} ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 820.562, 506.034 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("Player")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "to_the_toilet"
+} ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -91.9999, 724 ), Vector2( 622, 724 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("Player")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "Idle"
+} ]
+}
+
+[sub_resource type="Animation" id=11]
+length = 3.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1980, 724 ), Vector2( 622, 724 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("Player")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 3.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "Idle"
+} ]
+}
+
+[sub_resource type="Animation" id=12]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1559.23, 650 ), Vector2( 622, 724 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("Player")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "Walk_to_Left"
+}, {
+"args": [  ],
+"method": "show_bubbles"
+}, {
+"args": [  ],
+"method": "Idle"
+} ]
+}
+
+[sub_resource type="Animation" id=13]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 622, 724 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("Player")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "Idle"
+} ]
+}
+
+[sub_resource type="Animation" id=14]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1430, 788.145 ), Vector2( 622, 724 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("Player")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.001, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "Walk_to_Left"
+}, {
+"args": [  ],
+"method": "wake_up"
+}, {
+"args": [  ],
+"method": "Idle"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Player:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ) ]
+}
+
+[node name="Teste" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Slots" type="Node2D" parent="."]
+
+[node name="Slot1" parent="Slots" instance=ExtResource( 2 )]
+position = Vector2( -8640, 540 )
+
+[node name="Slot2" parent="Slots" instance=ExtResource( 2 )]
+position = Vector2( -6720, 540 )
+
+[node name="Slot3" parent="Slots" instance=ExtResource( 2 )]
+position = Vector2( -4800, 540 )
+
+[node name="Slot4" parent="Slots" instance=ExtResource( 2 )]
+position = Vector2( -2880, 540 )
+
+[node name="Slot5" parent="Slots" instance=ExtResource( 2 )]
+position = Vector2( -960, 540 )
+
+[node name="Slot6" parent="Slots" instance=ExtResource( 2 )]
+
+[node name="Slot7" parent="Slots" instance=ExtResource( 2 )]
+position = Vector2( 2880, 540 )
+
+[node name="Slot8" parent="Slots" instance=ExtResource( 2 )]
+position = Vector2( 4800, 540 )
+
+[node name="Slot9" parent="Slots" instance=ExtResource( 2 )]
+position = Vector2( 6720, 540 )
+
+[node name="Slot10" parent="Slots" instance=ExtResource( 2 )]
+position = Vector2( 8640, 540 )
+
+[node name="Slot11" parent="Slots" instance=ExtResource( 2 )]
+position = Vector2( 10560, 540 )
+
+[node name="Player" type="Node2D" parent="."]
+
+[node name="pop-up-emergencia" type="Sprite" parent="Player"]
+visible = false
+position = Vector2( 960, 130.774 )
+texture = ExtResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/pop-up-emergencia"]
+anims/fade_in_out = SubResource( 1 )
+
+[node name="Player" parent="Player" instance=ExtResource( 3 )]
+position = Vector2( 1430, 788.145 )
+z_index = -5
+
+[node name="idle" parent="Player/Player/player_sprites" index="0"]
+visible = false
+
+[node name="sleeping" parent="Player/Player/player_sprites" index="6"]
+visible = true
+
+[node name="toilet" parent="Player/Player/player_sprites" index="7"]
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+autoplay = "start"
+anims/already_on_bed = SubResource( 2 )
+anims/go_all_left = SubResource( 3 )
+anims/go_all_right = SubResource( 4 )
+anims/go_to_bath = SubResource( 5 )
+anims/go_to_bed = SubResource( 6 )
+anims/go_to_left = SubResource( 7 )
+anims/go_to_right = SubResource( 8 )
+anims/go_to_toilet = SubResource( 9 )
+anims/reach_from_left = SubResource( 10 )
+anims/reach_from_right = SubResource( 11 )
+anims/return_from_bath = SubResource( 12 )
+anims/start = SubResource( 13 )
+anims/wake_up = SubResource( 14 )
+
+[node name="NecessityManager" parent="." instance=ExtResource( 4 )]
+layer = 127
+
+[editable path="Player/Player"]

@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/Match-3/circle.png" type="Texture" id=1]
+[ext_resource path="res://assets/Hidratona/sprites/nuvem-2.png" type="Texture" id=2]
+[ext_resource path="res://src/Mini-games/Hidratona/src/level/Rain.gd" type="Script" id=3]
+
+[node name="Snow" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Particles2D" type="CPUParticles2D" parent="."]
+position = Vector2( 1337.57, 103.196 )
+emitting = false
+amount = 400
+lifetime = 5.0
+speed_scale = 2.5
+texture = ExtResource( 1 )
+emission_shape = 2
+emission_rect_extents = Vector2( 1200, 1 )
+gravity = Vector2( -70, 100 )
+scale_amount = 0.4
+color = Color( 0.345098, 0.666667, 1, 1 )
+
+[node name="nuvens" type="Node2D" parent="."]
+visible = false
+
+[node name="nuvem-1" type="Sprite" parent="nuvens"]
+position = Vector2( 211.598, 103.578 )
+texture = ExtResource( 2 )
+
+[node name="nuvem-2" type="Sprite" parent="nuvens"]
+position = Vector2( 519.598, 103.578 )
+texture = ExtResource( 2 )
+
+[node name="nuvem-3" type="Sprite" parent="nuvens"]
+position = Vector2( 803.598, 103.578 )
+texture = ExtResource( 2 )
+
+[node name="nuvem-4" type="Sprite" parent="nuvens"]
+position = Vector2( 1075.6, 103.578 )
+texture = ExtResource( 2 )
+
+[node name="nuvem-5" type="Sprite" parent="nuvens"]
+position = Vector2( 1367.6, 103.578 )
+texture = ExtResource( 2 )
+
+[node name="nuvem-6" type="Sprite" parent="nuvens"]
+position = Vector2( 1623.6, 103.578 )
+texture = ExtResource( 2 )
+
+[node name="nuvem-7" type="Sprite" parent="nuvens"]
+position = Vector2( 1883.6, 103.578 )
+texture = ExtResource( 2 )

@@ -1,0 +1,211 @@
+extends KinematicBody2D
+
+const FLOOR_NORMAL: = Vector2.UP
+export var speed: = Vector2(0, 1400)
+export var gravity = 3000.0
+var time = 0
+var power = false
+var down = false
+var jump_pressed = null
+var time_down = 0
+var hole
+
+var jump = 0.0
+var is_jump_interrupted = false
+var not_in_floor = false
+var parallax 
+
+var velocity: = Vector2.ZERO
+
+func _ready():
+	set_sprites()
+	
+	connect("fall", self, "_fall")
+	parallax = get_parent().get_node("floor")
+	
+func _physics_process(delta):
+	hole = Resources.in_hole
+	animations(delta)
+	
+	input()
+
+	velocity = calculate_move_velocity(velocity, speed, is_jump_interrupted, not_in_floor)
+	velocity = move_and_slide(velocity, FLOOR_NORMAL)
+	
+
+func animations(delta):
+	$CollisionShape2D2.position.y = 0
+	$CollisionShape2D2.scale.y = 1
+	
+	if down and !Resources.in_hole:
+		$AnimationPlayer.play("squat")
+		time_down -= delta
+		
+		$CollisionShape2D2.position.y = 70
+		$CollisionShape2D2.scale.y = 0.3
+		if time_down <= 0:
+			down = false
+	elif velocity.y < 0 and !Resources.in_hole:
+		$AnimationPlayer.play("jump")
+	elif velocity.y > 0 and !Resources.in_hole:
+		$AnimationPlayer.play("down")
+	elif velocity.y == 0 and !Resources.in_hole:
+		$AnimationPlayer.play("run")
+	elif Resources.in_hole:
+		$AnimationPlayer.play("hole")
+	if Resources.in_hole:
+		time += 1 * delta
+		if time > 2:
+			#$AnimatedSprite.play("run")
+			time = 0
+			Resources.in_hole = false
+			if down:
+				time_down = 0
+
+func calculate_move_velocity(
+		linear_velocity: Vector2,
+		speed: Vector2,
+		is_jump_interrupted: bool,
+		not_in_floor: bool
+	) -> Vector2: 
+
+	var out: = linear_velocity
+	out.y += gravity * get_physics_process_delta_time()
+	
+	if jump == -1.0: 
+		out.y = speed.y * (-1.0)
+		jump_pressed = null
+	
+	if is_jump_interrupted:
+		out.y = 0.0
+		jump = 0
+		jump_pressed = null
+	
+	if not_in_floor:
+		out.y = speed.y
+		
+	return out
+
+func input():
+	if (Input.is_action_just_pressed("jump") or jump_pressed) and is_on_floor():
+		jump = -1.0
+		down = false
+	else:
+		jump = 0
+	
+	if (Input.is_action_just_released("jump") or jump_pressed == false) and velocity.y < 0.0:
+		is_jump_interrupted = true
+	else:
+		is_jump_interrupted = false
+	
+	if (Input.is_action_just_pressed("down") or down) and !is_on_floor():
+		not_in_floor = true
+		down = true
+	elif Input.is_action_just_pressed("down") and is_on_floor():
+		down = true
+		not_in_floor = false		
+	else:
+		not_in_floor = false
+		
+	if Input.is_action_just_pressed("down") and down:
+		time_down = 1.2
+		down = true
+	
+	if Input.is_action_just_pressed("power"):
+		dash()
+
+func dash():
+	if Resources.current_life < Resources.max_life * 0.6 or Resources.dash_timer > 0:
+		return
+	
+	parallax.paralax_dash()
+	
+	Resources.dash_timer = 2.0
+	Resources.current_life -= 1
+
+func _on_power_pressed():
+	dash()
+
+func _on_down_button_down():
+	var a = InputEventAction.new()
+	a.action = "down"
+	a.pressed = true
+	Input.parse_input_event(a)
+
+func _on_down_button_up() -> void:
+	var a = InputEventAction.new()
+	a.action = "down"
+	a.pressed = false
+	Input.parse_input_event(a)
+
+
+func countdown():
+	yield(get_tree(), "idle_frame") # returns a GDScriptFunctionState object to _ready()
+	yield(get_tree().create_timer(0.8), "timeout")
+
+func _on_jump_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.is_pressed() and is_on_floor():
+		jump = -1.0
+	else:
+		jump = 0
+
+
+func _on_jump_pressed():
+	jump_pressed = true
+	if is_on_floor():
+		jump = -1.0
+	else:
+		jump = 0
+
+
+func _on_jump_button_up():
+	jump_pressed = false
+	if velocity.y < 0.0:
+		is_jump_interrupted = true
+	else:
+		is_jump_interrupted = false
+	
+
+func set_sprites():
+	var sprites = CharacterController.all_sprites.hidratona
+	if(Resources.acessory != "Coat" and Resources.acessory != "Umbrella"):
+		$AllSprites/r1.texture = sprites.run.r1
+		$AllSprites/r2.texture = sprites.run.r2
+		$AllSprites/r3.texture = sprites.run.r3
+		$AllSprites/r4.texture = sprites.run.r4
+		$AllSprites/r5.texture = sprites.run.r5
+		$AllSprites/r6.texture = sprites.run.r6
+		$AllSprites/r7.texture = sprites.run.r7
+		
+		$AllSprites/j1.texture = sprites.jump.j1
+		$AllSprites/j2.texture = sprites.jump.j2
+		
+		$AllSprites/squat.texture = sprites.squat
+	
+	if(Resources.acessory == "Coat"):
+		$AllSprites/r1.texture = sprites.snow.run.r1
+		$AllSprites/r2.texture = sprites.snow.run.r2
+		$AllSprites/r3.texture = sprites.snow.run.r3
+		$AllSprites/r4.texture = sprites.snow.run.r4
+		$AllSprites/r5.texture = sprites.snow.run.r5
+		$AllSprites/r6.texture = sprites.snow.run.r6
+		$AllSprites/r7.texture = sprites.snow.run.r7
+		
+		$AllSprites/j1.texture = sprites.snow.jump.j1
+		$AllSprites/j2.texture = sprites.snow.jump.j2
+		
+		$AllSprites/squat.texture = sprites.snow.squat
+	
+	if(Resources.acessory == "Umbrella"):
+		$AllSprites/r1.texture = sprites.rain.run.r1
+		$AllSprites/r2.texture = sprites.rain.run.r2
+		$AllSprites/r3.texture = sprites.rain.run.r3
+		$AllSprites/r4.texture = sprites.rain.run.r4
+		$AllSprites/r5.texture = sprites.rain.run.r5
+		$AllSprites/r6.texture = sprites.rain.run.r6
+		$AllSprites/r7.texture = sprites.rain.run.r7
+		
+		$AllSprites/j1.texture = sprites.rain.jump.j1
+		$AllSprites/j2.texture = sprites.rain.jump.j2
+		
+		$AllSprites/squat.texture = sprites.rain.squat

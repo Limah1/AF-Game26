@@ -1,0 +1,543 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://src/Mini-games/Match-3/src/Tiles/Tile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Mini-games/Match-3/src/Levels/Tab_9x9.gd" type="Script" id=2]
+[ext_resource path="res://src/Mini-games/Match-3/src/GUI/Score.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/fonts/Teste.tres" type="DynamicFont" id=4]
+[ext_resource path="res://src/Mini-games/Match-3/src/GUI/Background.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/Match-3/sprites/Delete-80_icon-icons.com_57340.png" type="Texture" id=6]
+[ext_resource path="res://assets/Hidratona/sprites/objects/play-button (1).png" type="Texture" id=7]
+[ext_resource path="res://assets/Plataforma/buttons/button-sair.png" type="Texture" id=8]
+[ext_resource path="res://assets/Match-3/pause.png" type="Texture" id=9]
+[ext_resource path="res://src/Mini-games/Match-3/src/Levels/Temp_Tab_9x9.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/Match-3/sprites/Ativo2761.png" type="Texture" id=12]
+[ext_resource path="res://assets/Hidratona/sprites/back-button.png" type="Texture" id=15]
+[ext_resource path="res://assets/Match-3/sprites/personagens/girl-seria.png" type="Texture" id=16]
+[ext_resource path="res://assets/Match-3/sprites/blue_info_information_12461 (1).png" type="Texture" id=17]
+
+[sub_resource type="Animation" id=1]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/path = NodePath("info-box/ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("info-box/ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("LeaveButton:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 61.449, 44 ), Vector2( 61.449, 250 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "fade_out"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("info-box/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LeaveButton:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 61.449, 250 ), Vector2( 61.449, 44 ) ]
+}
+
+[node name="Tab_9x9" type="Node2D"]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_horizontal_guides_": [ -159.099, 1010.91, -231.369, 953.637, -155.536, -184.044, -171.572, 85.5376, 150.944 ],
+"_edit_vertical_guides_": [ 1410.1, 1462.62, 1831.27, 1357.15, 504.12, 568.337 ]
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 127
+
+[node name="Pause" type="Control" parent="CanvasLayer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Pause"]
+modulate = Color( 1, 1, 1, 0.662745 )
+margin_left = 4.23785
+margin_right = 1928.24
+margin_bottom = 1086.0
+mouse_filter = 2
+color = Color( 0.0666667, 0.0627451, 0.0627451, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="continue" type="TextureButton" parent="CanvasLayer/Pause"]
+pause_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -359.941
+margin_top = -203.0
+margin_right = -29.9412
+margin_bottom = 203.0
+texture_normal = ExtResource( 7 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="leave" type="TextureButton" parent="CanvasLayer/Pause"]
+pause_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 97.8542
+margin_top = -126.719
+margin_right = 300.854
+margin_bottom = 123.281
+texture_normal = ExtResource( 8 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fila1" type="Node2D" parent="."]
+position = Vector2( 439.13, 120 )
+
+[node name="Tile" parent="Fila1" instance=ExtResource( 1 )]
+position = Vector2( 95, 0 )
+
+[node name="Tile2" parent="Fila1" instance=ExtResource( 1 )]
+position = Vector2( 196, 0 )
+
+[node name="Tile3" parent="Fila1" instance=ExtResource( 1 )]
+position = Vector2( 293, 0 )
+
+[node name="Tile4" parent="Fila1" instance=ExtResource( 1 )]
+position = Vector2( 401, 0 )
+
+[node name="Tile5" parent="Fila1" instance=ExtResource( 1 )]
+position = Vector2( 505, 0 )
+
+[node name="Tile6" parent="Fila1" instance=ExtResource( 1 )]
+position = Vector2( 606, 0 )
+
+[node name="Tile7" parent="Fila1" instance=ExtResource( 1 )]
+position = Vector2( 712, 0 )
+
+[node name="Tile8" parent="Fila1" instance=ExtResource( 1 )]
+position = Vector2( 809, 0 )
+
+[node name="Tile9" parent="Fila1" instance=ExtResource( 1 )]
+position = Vector2( 917, 0 )
+
+[node name="Fila2" type="Node2D" parent="."]
+position = Vector2( 439.13, 221.082 )
+
+[node name="Tile" parent="Fila2" instance=ExtResource( 1 )]
+position = Vector2( 95, 0 )
+
+[node name="Tile2" parent="Fila2" instance=ExtResource( 1 )]
+position = Vector2( 196, 0 )
+
+[node name="Tile3" parent="Fila2" instance=ExtResource( 1 )]
+position = Vector2( 293, 0 )
+
+[node name="Tile4" parent="Fila2" instance=ExtResource( 1 )]
+position = Vector2( 401, 0 )
+
+[node name="Tile5" parent="Fila2" instance=ExtResource( 1 )]
+position = Vector2( 505, 0 )
+
+[node name="Tile6" parent="Fila2" instance=ExtResource( 1 )]
+position = Vector2( 606, 0 )
+
+[node name="Tile7" parent="Fila2" instance=ExtResource( 1 )]
+position = Vector2( 712, 0 )
+
+[node name="Tile8" parent="Fila2" instance=ExtResource( 1 )]
+position = Vector2( 809, 0 )
+
+[node name="Tile9" parent="Fila2" instance=ExtResource( 1 )]
+position = Vector2( 917, 0 )
+
+[node name="Fila3" type="Node2D" parent="."]
+position = Vector2( 439.13, 323.082 )
+
+[node name="Tile" parent="Fila3" instance=ExtResource( 1 )]
+position = Vector2( 95, 0 )
+
+[node name="Tile2" parent="Fila3" instance=ExtResource( 1 )]
+position = Vector2( 196, 0 )
+
+[node name="Tile3" parent="Fila3" instance=ExtResource( 1 )]
+position = Vector2( 293, 0 )
+
+[node name="Tile4" parent="Fila3" instance=ExtResource( 1 )]
+position = Vector2( 401, 0 )
+
+[node name="Tile5" parent="Fila3" instance=ExtResource( 1 )]
+position = Vector2( 505, 0 )
+
+[node name="Tile6" parent="Fila3" instance=ExtResource( 1 )]
+position = Vector2( 606, 0 )
+
+[node name="Tile7" parent="Fila3" instance=ExtResource( 1 )]
+position = Vector2( 712, 0 )
+
+[node name="Tile8" parent="Fila3" instance=ExtResource( 1 )]
+position = Vector2( 809, 0 )
+
+[node name="Tile9" parent="Fila3" instance=ExtResource( 1 )]
+position = Vector2( 917, 0 )
+
+[node name="Fila4" type="Node2D" parent="."]
+position = Vector2( 439.13, 427.082 )
+
+[node name="Tile" parent="Fila4" instance=ExtResource( 1 )]
+position = Vector2( 95, 0 )
+
+[node name="Tile2" parent="Fila4" instance=ExtResource( 1 )]
+position = Vector2( 196, 0 )
+
+[node name="Tile3" parent="Fila4" instance=ExtResource( 1 )]
+position = Vector2( 293, 0 )
+
+[node name="Tile4" parent="Fila4" instance=ExtResource( 1 )]
+position = Vector2( 401, 0 )
+
+[node name="Tile5" parent="Fila4" instance=ExtResource( 1 )]
+position = Vector2( 505, 0 )
+
+[node name="Tile6" parent="Fila4" instance=ExtResource( 1 )]
+position = Vector2( 606, 0 )
+
+[node name="Tile7" parent="Fila4" instance=ExtResource( 1 )]
+position = Vector2( 712, 0 )
+
+[node name="Tile8" parent="Fila4" instance=ExtResource( 1 )]
+position = Vector2( 809, 0 )
+
+[node name="Tile9" parent="Fila4" instance=ExtResource( 1 )]
+position = Vector2( 917, 0 )
+
+[node name="Fila5" type="Node2D" parent="."]
+position = Vector2( 439.13, 530.082 )
+
+[node name="Tile" parent="Fila5" instance=ExtResource( 1 )]
+position = Vector2( 95, 0 )
+
+[node name="Tile2" parent="Fila5" instance=ExtResource( 1 )]
+position = Vector2( 196, 0 )
+
+[node name="Tile3" parent="Fila5" instance=ExtResource( 1 )]
+position = Vector2( 293, 0 )
+
+[node name="Tile4" parent="Fila5" instance=ExtResource( 1 )]
+position = Vector2( 401, 0 )
+
+[node name="Tile5" parent="Fila5" instance=ExtResource( 1 )]
+position = Vector2( 505, 0 )
+
+[node name="Tile6" parent="Fila5" instance=ExtResource( 1 )]
+position = Vector2( 606, 0 )
+
+[node name="Tile7" parent="Fila5" instance=ExtResource( 1 )]
+position = Vector2( 712, 0 )
+
+[node name="Tile8" parent="Fila5" instance=ExtResource( 1 )]
+position = Vector2( 809, 0 )
+
+[node name="Tile9" parent="Fila5" instance=ExtResource( 1 )]
+position = Vector2( 917, 0 )
+
+[node name="Fila6" type="Node2D" parent="."]
+position = Vector2( 439.13, 634.082 )
+
+[node name="Tile" parent="Fila6" instance=ExtResource( 1 )]
+position = Vector2( 95, 0 )
+
+[node name="Tile2" parent="Fila6" instance=ExtResource( 1 )]
+position = Vector2( 196, 0 )
+
+[node name="Tile3" parent="Fila6" instance=ExtResource( 1 )]
+position = Vector2( 293, 0 )
+
+[node name="Tile4" parent="Fila6" instance=ExtResource( 1 )]
+position = Vector2( 401, 0 )
+
+[node name="Tile5" parent="Fila6" instance=ExtResource( 1 )]
+position = Vector2( 505, 0 )
+
+[node name="Tile6" parent="Fila6" instance=ExtResource( 1 )]
+position = Vector2( 606, 0 )
+
+[node name="Tile7" parent="Fila6" instance=ExtResource( 1 )]
+position = Vector2( 712, 0 )
+
+[node name="Tile8" parent="Fila6" instance=ExtResource( 1 )]
+position = Vector2( 809, 0 )
+
+[node name="Tile9" parent="Fila6" instance=ExtResource( 1 )]
+position = Vector2( 917, 0 )
+
+[node name="Fila7" type="Node2D" parent="."]
+position = Vector2( 439.13, 737.082 )
+
+[node name="Tile" parent="Fila7" instance=ExtResource( 1 )]
+position = Vector2( 95, 0 )
+
+[node name="Tile2" parent="Fila7" instance=ExtResource( 1 )]
+position = Vector2( 196, 0 )
+
+[node name="Tile3" parent="Fila7" instance=ExtResource( 1 )]
+position = Vector2( 293, 0 )
+
+[node name="Tile4" parent="Fila7" instance=ExtResource( 1 )]
+position = Vector2( 401, 0 )
+
+[node name="Tile5" parent="Fila7" instance=ExtResource( 1 )]
+position = Vector2( 505, 0 )
+
+[node name="Tile6" parent="Fila7" instance=ExtResource( 1 )]
+position = Vector2( 606, 0 )
+
+[node name="Tile7" parent="Fila7" instance=ExtResource( 1 )]
+position = Vector2( 712, 0 )
+
+[node name="Tile8" parent="Fila7" instance=ExtResource( 1 )]
+position = Vector2( 809, 0 )
+
+[node name="Tile9" parent="Fila7" instance=ExtResource( 1 )]
+position = Vector2( 917, 0 )
+
+[node name="Fila8" type="Node2D" parent="."]
+position = Vector2( 439.13, 841.082 )
+
+[node name="Tile" parent="Fila8" instance=ExtResource( 1 )]
+position = Vector2( 95, 0 )
+
+[node name="Tile2" parent="Fila8" instance=ExtResource( 1 )]
+position = Vector2( 196, 0 )
+
+[node name="Tile3" parent="Fila8" instance=ExtResource( 1 )]
+position = Vector2( 293, 0 )
+
+[node name="Tile4" parent="Fila8" instance=ExtResource( 1 )]
+position = Vector2( 401, 0 )
+
+[node name="Tile5" parent="Fila8" instance=ExtResource( 1 )]
+position = Vector2( 505, 0 )
+
+[node name="Tile6" parent="Fila8" instance=ExtResource( 1 )]
+position = Vector2( 606, 0 )
+
+[node name="Tile7" parent="Fila8" instance=ExtResource( 1 )]
+position = Vector2( 712, 0 )
+
+[node name="Tile8" parent="Fila8" instance=ExtResource( 1 )]
+position = Vector2( 809, 0 )
+
+[node name="Tile9" parent="Fila8" instance=ExtResource( 1 )]
+position = Vector2( 917, 0 )
+
+[node name="Fila9" type="Node2D" parent="."]
+position = Vector2( 439.13, 946.082 )
+
+[node name="Tile" parent="Fila9" instance=ExtResource( 1 )]
+position = Vector2( 95, 0 )
+
+[node name="Tile2" parent="Fila9" instance=ExtResource( 1 )]
+position = Vector2( 196, 0 )
+
+[node name="Tile3" parent="Fila9" instance=ExtResource( 1 )]
+position = Vector2( 293, 0 )
+
+[node name="Tile4" parent="Fila9" instance=ExtResource( 1 )]
+position = Vector2( 401, 0 )
+
+[node name="Tile5" parent="Fila9" instance=ExtResource( 1 )]
+position = Vector2( 505, 0 )
+
+[node name="Tile6" parent="Fila9" instance=ExtResource( 1 )]
+position = Vector2( 606, 0 )
+
+[node name="Tile7" parent="Fila9" instance=ExtResource( 1 )]
+position = Vector2( 712, 0 )
+
+[node name="Tile8" parent="Fila9" instance=ExtResource( 1 )]
+position = Vector2( 809, 0 )
+
+[node name="Tile9" parent="Fila9" instance=ExtResource( 1 )]
+position = Vector2( 917, 0 )
+
+[node name="Score" parent="." instance=ExtResource( 3 )]
+
+[node name="Temp_Tab_9x9" parent="." instance=ExtResource( 11 )]
+position = Vector2( -2346.91, 10.4436 )
+
+[node name="Background" parent="." instance=ExtResource( 5 )]
+layer = -10
+
+[node name="platfrom" type="Sprite" parent="Background"]
+position = Vector2( 945.612, 538.422 )
+scale = Vector2( 0.615656, 0.623162 )
+texture = ExtResource( 12 )
+
+[node name="LeaveButton" type="TextureButton" parent="."]
+visible = false
+margin_left = 61.449
+margin_top = 44.0
+margin_right = 126.449
+margin_bottom = 161.0
+texture_normal = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="character" type="Sprite" parent="."]
+position = Vector2( 203.351, 628.77 )
+scale = Vector2( 2.5, 2.5 )
+texture = ExtResource( 16 )
+
+[node name="TextureButton2" type="TextureButton" parent="."]
+visible = false
+margin_left = 1745.91
+margin_top = 23.0486
+margin_right = 1821.91
+margin_bottom = 95.0486
+rect_scale = Vector2( 1.7, 1.7 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource( 17 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="infoBoxAnimation" type="AnimationPlayer" parent="."]
+anims/fade_in = SubResource( 1 )
+anims/fade_out = SubResource( 2 )
+
+[node name="info-box" type="CanvasLayer" parent="."]
+layer = -128
+
+[node name="ColorRect" type="ColorRect" parent="info-box"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+color = Color( 0.0431373, 0.0392157, 0.0392157, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="info-box/ColorRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.757
+anchor_bottom = 0.5
+margin_left = -938.0
+margin_top = -322.0
+margin_right = 931.0
+margin_bottom = 303.0
+color = Color( 0.815686, 0.529412, 0.054902, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="info-box/ColorRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -921.265
+margin_top = -283.755
+margin_right = 913.735
+margin_bottom = 239.245
+custom_fonts/font = ExtResource( 4 )
+text = "A absorção do ferro, mineral que ajuda os glóbulos vermelhos a transportarem o 
+oxigênio para as células do corpo, alivia e combate os sintomas 
+de anemia
+
+"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="back" type="TextureButton" parent="info-box"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 54.1707
+margin_top = 65.4886
+margin_right = -1737.83
+margin_bottom = -886.511
+rect_scale = Vector2( 0.7, 0.7 )
+texture_normal = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseButton" type="TextureButton" parent="."]
+margin_left = 1775.24
+margin_top = 33.4757
+margin_right = 1903.24
+margin_bottom = 161.476
+rect_scale = Vector2( 0.8, 0.8 )
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="CanvasLayer/Pause/continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause/leave" to="." method="_on_leave_pressed"]
+[connection signal="pressed" from="LeaveButton" to="." method="_on_LeaveButton_pressed"]
+[connection signal="pressed" from="TextureButton2" to="." method="_on_TextureButton2_pressed"]
+[connection signal="pressed" from="info-box/back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="PauseButton" to="." method="_on_PauseButton_pressed"]

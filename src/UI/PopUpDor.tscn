@@ -1,0 +1,428 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://assets/fonts/Raleway-Medium.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://src/UI/PopUpDor.gd" type="Script" id=2]
+[ext_resource path="res://assets/DoiAqui/sprites/actor/girl/girl-febre.png" type="Texture" id=3]
+[ext_resource path="res://assets/DoiAqui/sprites/Ativo 11.png" type="Texture" id=4]
+[ext_resource path="res://assets/DoiAqui/sprites/actor/girl/girl-ferimento.png" type="Texture" id=5]
+[ext_resource path="res://assets/DoiAqui/sprites/actor/boy/boy-febre.png" type="Texture" id=6]
+[ext_resource path="res://assets/DoiAqui/objects/machucado.png" type="Texture" id=7]
+[ext_resource path="res://assets/DoiAqui/sprites/actor/boy/boy-ferimento.png" type="Texture" id=8]
+[ext_resource path="res://assets/DoiAqui/sprites/actor/boy/boy-dores.png" type="Texture" id=9]
+[ext_resource path="res://assets/DoiAqui/sprites/actor/girl/girl-dores.png" type="Texture" id=10]
+
+[sub_resource type="Animation" id=1]
+resource_name = "piscando"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "piscando"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="DynamicFont" id=3]
+size = 60
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 50
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.0235294, 0.168627, 0.890196, 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.0235294, 0.168627, 0.890196, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.0509804, 0.203922, 1, 1 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 45
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=11]
+resource_name = "piscando"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="PopUpDor" type="CanvasLayer"]
+pause_mode = 2
+layer = 128
+script = ExtResource( 2 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.470588 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DorNosBracos" type="Control" parent="Control"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -538.5
+margin_top = -336.0
+margin_right = 538.5
+margin_bottom = 336.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Control/DorNosBracos"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.94902, 0.94902, 0.94902, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="girl-ferimento" type="Sprite" parent="Control/DorNosBracos"]
+visible = false
+position = Vector2( 529.413, 308.509 )
+scale = Vector2( 1.3, 1.3 )
+texture = ExtResource( 5 )
+
+[node name="boy-ferimento" type="Sprite" parent="Control/DorNosBracos"]
+position = Vector2( 529.413, 308.509 )
+scale = Vector2( 1.3, 1.3 )
+texture = ExtResource( 8 )
+
+[node name="vermelho_piscando" type="Sprite" parent="Control/DorNosBracos"]
+modulate = Color( 1, 1, 1, 0.211403 )
+position = Vector2( 482.307, 354.933 )
+scale = Vector2( 0.793009, 0.793009 )
+texture = ExtResource( 7 )
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Control/DorNosBracos/vermelho_piscando"]
+anims/piscando = SubResource( 1 )
+
+[node name="vermelho_piscando2" type="Sprite" parent="Control/DorNosBracos"]
+modulate = Color( 1, 1, 1, 0.265793 )
+position = Vector2( 573.178, 354.933 )
+scale = Vector2( 0.793009, 0.793009 )
+texture = ExtResource( 7 )
+
+[node name="AnimationPlayer3" type="AnimationPlayer" parent="Control/DorNosBracos/vermelho_piscando2"]
+anims/piscando = SubResource( 2 )
+
+[node name="Label" type="Label" parent="Control/DorNosBracos"]
+margin_right = 1075.0
+margin_bottom = 151.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Você está sentindo dor nas mãos!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Control/DorNosBracos"]
+visible = false
+margin_left = 88.0
+margin_top = 177.0
+margin_right = 979.0
+margin_bottom = 521.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Você começou a sentir dor nos braços, fale com mamãe !"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="go_to_mother" type="Button" parent="Control/DorNosBracos"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -445.445
+margin_top = -160.0
+margin_right = -48.4445
+margin_bottom = -29.0
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+text = "Falar com adulto"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ok" type="Button" parent="Control/DorNosBracos"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 58.5239
+margin_top = -160.0
+margin_right = 455.524
+margin_bottom = -29.0
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+text = "Deixar pra depois"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Febre" type="Control" parent="Control"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -538.5
+margin_top = -336.0
+margin_right = 538.5
+margin_bottom = 336.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Control/Febre"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.94902, 0.94902, 0.94902, 1 )
+
+[node name="Label" type="Label" parent="Control/Febre"]
+margin_right = 1075.0
+margin_bottom = 151.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Você está sentindo febre !"
+align = 1
+valign = 1
+
+[node name="girl-febre" type="Sprite" parent="Control/Febre"]
+visible = false
+position = Vector2( 529.413, 308.509 )
+scale = Vector2( 1.3, 1.3 )
+texture = ExtResource( 3 )
+
+[node name="boy-febre" type="Sprite" parent="Control/Febre"]
+position = Vector2( 529.413, 308.509 )
+scale = Vector2( 1.3, 1.3 )
+texture = ExtResource( 6 )
+
+[node name="ok" type="Button" parent="Control/Febre"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 76.1628
+margin_top = -160.0
+margin_right = 473.163
+margin_bottom = -29.0
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+text = "Deixar pra depois"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="go_to_mother2" type="Button" parent="Control/Febre"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -460.258
+margin_top = -161.782
+margin_right = -63.2578
+margin_bottom = -30.7818
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+text = "Falar com adulto"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DorDeCabeca" type="Control" parent="Control"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -538.5
+margin_top = -336.0
+margin_right = 538.5
+margin_bottom = 336.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Control/DorDeCabeca"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.94902, 0.94902, 0.94902, 1 )
+
+[node name="Label" type="Label" parent="Control/DorDeCabeca"]
+margin_right = 1075.0
+margin_bottom = 151.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Você está sentindo dor de cabeça !"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="girl-dores" type="Sprite" parent="Control/DorDeCabeca"]
+visible = false
+position = Vector2( 529.413, 308.509 )
+scale = Vector2( 1.3, 1.3 )
+texture = ExtResource( 10 )
+
+[node name="boy-dores" type="Sprite" parent="Control/DorDeCabeca"]
+position = Vector2( 529.413, 308.509 )
+scale = Vector2( 1.3, 1.3 )
+texture = ExtResource( 9 )
+
+[node name="vermelho_piscando" type="Sprite" parent="Control/DorDeCabeca"]
+modulate = Color( 1, 1, 1, 0.419082 )
+position = Vector2( 538.244, 191.064 )
+scale = Vector2( 1.18451, 1.18451 )
+texture = ExtResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/DorDeCabeca/vermelho_piscando"]
+autoplay = "piscando"
+anims/piscando = SubResource( 11 )
+
+[node name="go_to_mother" type="Button" parent="Control/DorDeCabeca"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -478.203
+margin_top = -160.0
+margin_right = -81.2026
+margin_bottom = -29.0
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+text = "Falar com adulto"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ok" type="Button" parent="Control/DorDeCabeca"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 73.6431
+margin_top = -160.0
+margin_right = 470.643
+margin_bottom = -29.0
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+text = "Deixar pra depois"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Control/DorNosBracos/go_to_mother" to="." method="_on_go_to_mother_pressed"]
+[connection signal="pressed" from="Control/DorNosBracos/ok" to="." method="_on_ok_pressed"]
+[connection signal="pressed" from="Control/Febre/ok" to="." method="_on_ok_pressed"]
+[connection signal="pressed" from="Control/Febre/go_to_mother2" to="." method="_on_go_to_mother_pressed"]
+[connection signal="pressed" from="Control/DorDeCabeca/go_to_mother" to="." method="_on_go_to_mother_pressed"]
+[connection signal="pressed" from="Control/DorDeCabeca/ok" to="." method="_on_ok_pressed"]

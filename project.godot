@@ -1,0 +1,103 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "Board",
+"language": "GDScript",
+"path": "res://src/Mini-games/Match-3/src/Levels/Teste.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Fruit",
+"language": "GDScript",
+"path": "res://src/Mini-games/Match-3/src/Tiles/Fruits/Fruit.gd"
+}, {
+"base": "Control",
+"class": "Room",
+"language": "GDScript",
+"path": "res://src/UI/Room.gd"
+}, {
+"base": "Node2D",
+"class": "Temp_Tab",
+"language": "GDScript",
+"path": "res://src/Mini-games/Match-3/src/Levels/TemporaryTab.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Tile",
+"language": "GDScript",
+"path": "res://src/Mini-games/Match-3/Tile.gd"
+} ]
+_global_script_class_icons={
+"Board": "",
+"Fruit": "",
+"Room": "",
+"Temp_Tab": "",
+"Tile": ""
+}
+
+[application]
+
+config/name="Sickle Cell Anemia"
+run/main_scene="res://src/Landing_Page_Temp.tscn"
+config/icon="res://af-logo-icon.png"
+
+[autoload]
+
+Resources="*res://src/Mini-games/Hidratona/src/resources.gd"
+S_Conntroller="*res://src/Mini-games/Match-3/src/ScoreConntroller.gd"
+M_Controller="*res://src/Mini-games/Match-3/src/MouseController.gd"
+C_Controller="*res://src/Mini-games/Match-3/src/CombinationController.gd"
+NecessityBars="*res://src/NecessityBars.gd"
+CharacterController="*res://src/CharacterController.gd"
+AnimationController="*res://src/AnimationController.gd"
+SaveController="*res://src/SaveController.gd"
+GlobalResource="*res://src/Mini-games/DoiAqui/resource.gd"
+
+[display]
+
+window/size/width=1920
+window/size/height=1080
+window/size/test_width=1280
+window/size/test_height=720
+window/stretch/mode="2d"
+
+[input]
+
+jump={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"unicode":0,"echo":false,"script":null)
+ ]
+}
+down={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"unicode":0,"echo":false,"script":null)
+ ]
+}
+power={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":81,"unicode":0,"echo":false,"script":null)
+ ]
+}
+left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777231,"unicode":0,"echo":false,"script":null)
+ ]
+}
+right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[rendering]
+
+quality/driver/fallback_to_gles2=true
+vram_compression/import_etc=true
+environment/default_environment="res://default_env.tres"

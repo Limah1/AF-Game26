@@ -1,0 +1,848 @@
+[gd_scene load_steps=29 format=2]
+
+[ext_resource path="res://src/Mini-games/Hidratona/src/Actor/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Mini-games/Hidratona/src/level/tutorial_floor.gd" type="Script" id=2]
+[ext_resource path="res://src/Mini-games/Hidratona/src/objects/TileMap.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/Hidratona/sprites/background.png" type="Texture" id=4]
+[ext_resource path="res://src/Mini-games/Hidratona/src/objects/HidratationBar.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/Mini-games/Hidratona/src/objects/Heart.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/Mini-games/Hidratona/src/level/Tutorial.gd" type="Script" id=7]
+[ext_resource path="res://assets/Hidratona/sprites/objects/pausa.png" type="Texture" id=8]
+[ext_resource path="res://assets/Hidratona/sprites/objects/play-button (1).png" type="Texture" id=9]
+[ext_resource path="res://assets/Hidratona/sprites/objects/sol.png" type="Texture" id=10]
+[ext_resource path="res://assets/Hidratona/LAYOUT/feedback-box.png" type="Texture" id=11]
+[ext_resource path="res://assets/fonts/Raleway-Medium.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://src/Mini-games/Hidratona/src/ui/TutorialController.gd" type="Script" id=13]
+[ext_resource path="res://assets/Hidratona/sprites/right-arrow.png" type="Texture" id=14]
+[ext_resource path="res://src/Mini-games/Hidratona/src/ui/Start.tscn" type="PackedScene" id=15]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="DynamicFont" id=6]
+size = 65
+font_data = ExtResource( 12 )
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="StyleBoxEmpty" id=9]
+
+[sub_resource type="StyleBoxEmpty" id=10]
+
+[sub_resource type="StyleBoxEmpty" id=11]
+
+[sub_resource type="DynamicFont" id=12]
+size = 50
+font_data = ExtResource( 12 )
+
+[sub_resource type="Animation" id=13]
+length = 10.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3.8, 9.9 ),
+"transitions": PoolRealArray( 0.196146, 0.203063, 0.183011 ),
+"update": 0,
+"values": [ Vector2( 2060.66, 258.56 ), Vector2( 969.896, 66.7764 ), Vector2( -144.845, 357.448 ) ]
+}
+
+[node name="Tutorial" type="Node2D"]
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_vertical_guides_": [ 1920.66, 3805.8, 7.51227 ]
+}
+
+[node name="TutorialController" type="CanvasLayer" parent="."]
+pause_mode = 2
+layer = 128
+script = ExtResource( 13 )
+
+[node name="stop_input" type="Button" parent="TutorialController"]
+margin_left = 80.0
+margin_top = 732.0
+margin_right = 244.0
+margin_bottom = 900.0
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="stop_input2" type="Button" parent="TutorialController"]
+margin_left = 272.0
+margin_top = 732.0
+margin_right = 436.0
+margin_bottom = 900.0
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="stop_input3" type="Button" parent="TutorialController"]
+margin_left = 1600.0
+margin_top = 744.0
+margin_right = 1764.0
+margin_bottom = 912.0
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="TutorialController"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="feedback" type="Node2D" parent="TutorialController"]
+
+[node name="feedback_box" type="Sprite" parent="TutorialController/feedback"]
+position = Vector2( 960, 540 )
+texture = ExtResource( 11 )
+
+[node name="Label" type="Label" parent="TutorialController/feedback/feedback_box"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -607.5
+margin_top = -418.5
+margin_right = -607.5
+margin_bottom = -418.5
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Bem vindo ao Hidratona !"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="feedback_box2" type="Sprite" parent="TutorialController/feedback"]
+visible = false
+position = Vector2( 960, 540 )
+texture = ExtResource( 11 )
+
+[node name="Label" type="Label" parent="TutorialController/feedback/feedback_box2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -566.0
+margin_top = -418.0
+margin_right = -645.0
+margin_bottom = -418.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Neste jogo você precisará correr o máximo possível e beber bastante àgua para não ficar desidratado!"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="feedback_box3" type="Sprite" parent="TutorialController/feedback"]
+visible = false
+position = Vector2( 960, 540 )
+texture = ExtResource( 11 )
+
+[node name="Label" type="Label" parent="TutorialController/feedback/feedback_box3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -566.0
+margin_top = -418.0
+margin_right = -645.0
+margin_bottom = -418.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "No percurso, você também poderá pegar frutas, elas te ajudarão a chegar mais longe nesta corrida."
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="feedback_box4" type="Sprite" parent="TutorialController/feedback"]
+visible = false
+position = Vector2( 960, 540 )
+texture = ExtResource( 11 )
+
+[node name="Label" type="Label" parent="TutorialController/feedback/feedback_box4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -566.0
+margin_top = -418.0
+margin_right = -645.0
+margin_bottom = -418.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Você precisará desviar de alguns obstáculos.
+
+Se não, você pode se machucar, fazendo a corrida parar."
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="feedback_box5" type="Sprite" parent="TutorialController/feedback"]
+visible = false
+position = Vector2( 960, 540 )
+texture = ExtResource( 11 )
+
+[node name="Label" type="Label" parent="TutorialController/feedback/feedback_box5"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -566.0
+margin_top = -418.0
+margin_right = -645.0
+margin_bottom = -418.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Vamos Jogar ?"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="jump" type="Button" parent="TutorialController/feedback"]
+visible = false
+margin_left = 66.6504
+margin_top = 714.049
+margin_right = 253.65
+margin_bottom = 912.049
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/disabled = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="TutorialController/feedback/jump"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -2803.88
+margin_top = -1669.76
+margin_right = -187.881
+margin_bottom = 1758.24
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect3" type="ColorRect" parent="TutorialController/feedback/jump"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 189.015
+margin_top = -1657.05
+margin_right = 2805.02
+margin_bottom = 1770.95
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect4" type="ColorRect" parent="TutorialController/feedback/jump"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.0
+margin_top = -3620.0
+margin_right = 2.00002
+margin_bottom = -198.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect5" type="ColorRect" parent="TutorialController/feedback/jump"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.0
+margin_top = 197.686
+margin_right = 2.00002
+margin_bottom = 3619.69
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="feedback_box6" type="Sprite" parent="TutorialController/feedback/jump"]
+position = Vector2( 407.898, -395.798 )
+scale = Vector2( 0.68073, 0.68073 )
+texture = ExtResource( 11 )
+
+[node name="right-arrow" type="Sprite" parent="TutorialController/feedback/jump/feedback_box6"]
+position = Vector2( -455.942, 500.493 )
+rotation = 1.54626
+scale = Vector2( 0.494873, 0.494873 )
+texture = ExtResource( 14 )
+
+[node name="Label" type="Label" parent="TutorialController/feedback/jump/feedback_box6"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -607.5
+margin_top = -418.5
+margin_right = -607.5
+margin_bottom = -418.5
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Aperte e segure aqui pra pular.
+
+(A altura do pulo dependerá de quanto tempo você pressionar o botão)"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="down" type="Button" parent="TutorialController/feedback"]
+visible = false
+margin_left = 242.521
+margin_top = 714.049
+margin_right = 429.521
+margin_bottom = 912.049
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/disabled = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="TutorialController/feedback/down"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -2803.88
+margin_top = -1669.76
+margin_right = -187.881
+margin_bottom = 1758.24
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect3" type="ColorRect" parent="TutorialController/feedback/down"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 189.015
+margin_top = -1657.05
+margin_right = 2805.02
+margin_bottom = 1770.95
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect4" type="ColorRect" parent="TutorialController/feedback/down"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.0
+margin_top = -3620.0
+margin_right = 2.00002
+margin_bottom = -198.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect5" type="ColorRect" parent="TutorialController/feedback/down"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.0
+margin_top = 197.686
+margin_right = 2.00002
+margin_bottom = 3619.69
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="feedback_box6" type="Sprite" parent="TutorialController/feedback/down"]
+position = Vector2( 407.898, -395.798 )
+scale = Vector2( 0.68073, 0.68073 )
+texture = ExtResource( 11 )
+
+[node name="right-arrow" type="Sprite" parent="TutorialController/feedback/down/feedback_box6"]
+position = Vector2( -455.942, 500.493 )
+rotation = 1.54626
+scale = Vector2( 0.494873, 0.494873 )
+texture = ExtResource( 14 )
+
+[node name="Label" type="Label" parent="TutorialController/feedback/down/feedback_box6"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -607.5
+margin_top = -418.5
+margin_right = -607.5
+margin_bottom = -418.5
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Aperte aqui para se abaixar.
+
+(Se você estiver pulando, você  cancelará o pulo, se jogando imediatametne no chão)"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="feedback_box6" type="Node2D" parent="TutorialController/feedback"]
+visible = false
+position = Vector2( 0, -548 )
+
+[node name="right-arrow" type="Sprite" parent="TutorialController/feedback/feedback_box6"]
+position = Vector2( 948.175, 1046.95 )
+rotation = 1.5708
+scale = Vector2( 0.336875, 0.336875 )
+texture = ExtResource( 14 )
+
+[node name="feedback_box7" type="Sprite" parent="TutorialController/feedback/feedback_box6"]
+position = Vector2( 950.549, 794.25 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 11 )
+
+[node name="Label" type="Label" parent="TutorialController/feedback/feedback_box6"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 645.0
+margin_top = 589.0
+margin_right = 1250.0
+margin_bottom = 1001.0
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Colete àgua para continuar correndo."
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="feedback_box7" type="Node2D" parent="TutorialController/feedback"]
+visible = false
+position = Vector2( 0, -548 )
+
+[node name="right-arrow" type="Sprite" parent="TutorialController/feedback/feedback_box7"]
+position = Vector2( 948.175, 1046.95 )
+rotation = 1.5708
+scale = Vector2( 0.336875, 0.336875 )
+texture = ExtResource( 14 )
+
+[node name="feedback_box7" type="Sprite" parent="TutorialController/feedback/feedback_box7"]
+position = Vector2( 950.549, 794.25 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 11 )
+
+[node name="Label" type="Label" parent="TutorialController/feedback/feedback_box7"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 645.0
+margin_top = 589.0
+margin_right = 1250.0
+margin_bottom = 1001.0
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Colete laranjas para ganhar bônus de distância percorrida por 15 segundos."
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="feedback_box8" type="Node2D" parent="TutorialController/feedback"]
+visible = false
+position = Vector2( 0, -548 )
+
+[node name="right-arrow" type="Sprite" parent="TutorialController/feedback/feedback_box8"]
+position = Vector2( 948.175, 1046.95 )
+rotation = 1.5708
+scale = Vector2( 0.336875, 0.336875 )
+texture = ExtResource( 14 )
+
+[node name="feedback_box7" type="Sprite" parent="TutorialController/feedback/feedback_box8"]
+position = Vector2( 950.549, 794.25 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 11 )
+
+[node name="Label" type="Label" parent="TutorialController/feedback/feedback_box8"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 645.0
+margin_top = 589.0
+margin_right = 1250.0
+margin_bottom = 1001.0
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Coletando melancias você ganhará, por 15 segundos, o dobro de hidrataçaõ quando coletar àgua."
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="feedback_box9" type="Node2D" parent="TutorialController/feedback"]
+visible = false
+position = Vector2( 0, -548 )
+
+[node name="right-arrow" type="Sprite" parent="TutorialController/feedback/feedback_box9"]
+position = Vector2( 948.175, 1046.95 )
+rotation = 1.5708
+scale = Vector2( 0.336875, 0.336875 )
+texture = ExtResource( 14 )
+
+[node name="feedback_box7" type="Sprite" parent="TutorialController/feedback/feedback_box9"]
+position = Vector2( 950.549, 794.25 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 11 )
+
+[node name="Label" type="Label" parent="TutorialController/feedback/feedback_box9"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 645.0
+margin_top = 589.0
+margin_right = 1250.0
+margin_bottom = 1001.0
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Colete morangos para ganhar 20 pontos de distância."
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="feedback_box10" type="Node2D" parent="TutorialController/feedback"]
+visible = false
+position = Vector2( 216, -496 )
+
+[node name="right-arrow" type="Sprite" parent="TutorialController/feedback/feedback_box10"]
+position = Vector2( 1320.17, 810.95 )
+scale = Vector2( 0.336875, 0.336875 )
+texture = ExtResource( 14 )
+
+[node name="feedback_box7" type="Sprite" parent="TutorialController/feedback/feedback_box10"]
+position = Vector2( 950.549, 794.25 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 11 )
+
+[node name="Label" type="Label" parent="TutorialController/feedback/feedback_box10"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 665.0
+margin_top = 589.0
+margin_right = 1242.0
+margin_bottom = 1001.0
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Observe que quando você coleta alguma fruta, o tempo de duração é mostado aqui."
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="feedback_box11" type="Node2D" parent="TutorialController/feedback"]
+visible = false
+position = Vector2( 4, 8 )
+
+[node name="right-arrow" type="Sprite" parent="TutorialController/feedback/feedback_box11"]
+position = Vector2( 952.175, 526.95 )
+rotation = -1.5708
+scale = Vector2( 0.336875, 0.336875 )
+texture = ExtResource( 14 )
+
+[node name="feedback_box7" type="Sprite" parent="TutorialController/feedback/feedback_box11"]
+position = Vector2( 956.549, 794.25 )
+scale = Vector2( 0.746914, 0.5 )
+texture = ExtResource( 11 )
+
+[node name="Label" type="Label" parent="TutorialController/feedback/feedback_box11"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 561.0
+margin_top = 589.0
+margin_right = 1346.0
+margin_bottom = 1001.0
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Quando o Sol aparece, tenha cuidado!
+
+Sua hidratação diminuirá mais rápido."
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="dash" type="Button" parent="TutorialController/feedback"]
+visible = false
+margin_left = 1586.52
+margin_top = 730.049
+margin_right = 1773.52
+margin_bottom = 928.049
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/disabled = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="TutorialController/feedback/dash"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -2803.88
+margin_top = -1669.76
+margin_right = -187.881
+margin_bottom = 1758.24
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect3" type="ColorRect" parent="TutorialController/feedback/dash"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 189.015
+margin_top = -1657.05
+margin_right = 2805.02
+margin_bottom = 1770.95
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect4" type="ColorRect" parent="TutorialController/feedback/dash"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.0
+margin_top = -3620.0
+margin_right = 2.00002
+margin_bottom = -198.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect5" type="ColorRect" parent="TutorialController/feedback/dash"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.0
+margin_top = 197.686
+margin_right = 2.00002
+margin_bottom = 3619.69
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="feedback_box6" type="Sprite" parent="TutorialController/feedback/dash"]
+position = Vector2( -608.102, -79.798 )
+scale = Vector2( 0.68073, 0.68073 )
+texture = ExtResource( 11 )
+
+[node name="right-arrow" type="Sprite" parent="TutorialController/feedback/dash/feedback_box6"]
+position = Vector2( 689.887, 253.7 )
+scale = Vector2( 0.494873, 0.494873 )
+texture = ExtResource( 14 )
+
+[node name="Label" type="Label" parent="TutorialController/feedback/dash/feedback_box6"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -607.5
+margin_top = -418.5
+margin_right = -607.5
+margin_bottom = -418.5
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Se você estiver com pressa, ou quiser desviar de alguma coisa, aperte este botão pata correr mais rápido.
+
+Mas cuidado ! Usar este recurso consumirá  mais de sua hidratação"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="feedback_box12" type="Sprite" parent="TutorialController/feedback"]
+visible = false
+position = Vector2( 960, 540 )
+texture = ExtResource( 11 )
+
+[node name="Start" parent="TutorialController/feedback/feedback_box12" instance=ExtResource( 15 )]
+margin_left = -188.847
+margin_top = 249.302
+margin_right = 179.153
+margin_bottom = 376.302
+
+[node name="Label" type="Label" parent="TutorialController/feedback/feedback_box12"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -566.0
+margin_top = -418.0
+margin_right = -645.0
+margin_bottom = -418.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Parabéns ! Agora você já sabe jogar !
+
+Clique  em \"Começar\" para iniciar uma nova partida!"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 2060.66, 258.56 )
+texture = ExtResource( 10 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 502.141, 739.997 )
+
+[node name="TileMap2" parent="." instance=ExtResource( 3 )]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( -10.569, 26.7639 )
+tile_data = PoolIntArray( 1048575, 0, 0, 983040, 0, 0, 983041, 0, 0, 983042, 0, 0, 983043, 0, 0, 983044, 0, 0, 983045, 0, 0, 983046, 0, 0, 983047, 0, 0, 983048, 0, 0, 983049, 0, 0, 983050, 0, 0, 983051, 0, 0, 983052, 0, 0, 983053, 0, 0, 983054, 0, 0, 983055, 0, 0, 983056, 0, 0, 983057, 0, 0, 983058, 0, 0, 983059, 0, 0, 983060, 0, 0, 983061, 0, 0, 983062, 0, 0, 983063, 0, 0, 983064, 0, 0, 983065, 0, 0, 983066, 0, 0, 983067, 0, 0, 983068, 0, 0, 983069, 0, 0, 983070, 0, 0, 983071, 0, 0, 983072, 0, 0, 983073, 0, 0, 983074, 0, 0, 983075, 0, 0, 983076, 0, 0, 983077, 0, 0, 983078, 0, 0, 983079, 0, 0, 983080, 0, 0, 983081, 0, 0, 983082, 0, 0, 983083, 0, 0, 983084, 0, 0, 983085, 0, 0, 983086, 0, 0, 983087, 0, 0, 983088, 0, 0, 983089, 0, 0, 983090, 0, 0, 983091, 0, 0, 983092, 0, 0, 983093, 0, 0, 983094, 0, 0, 983095, 0, 0, 983096, 0, 0, 983097, 0, 0, 983098, 0, 0, 983099, 0, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 502.141, 743.772 )
+
+[node name="AnimatedSprite" parent="Player" index="2"]
+frame = 3
+
+[node name="HidratationBar" parent="." instance=ExtResource( 5 )]
+
+[node name="floor" type="ParallaxBackground" parent="." groups=[
+"parallax",
+]]
+script = ExtResource( 2 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="floor"]
+motion_scale = Vector2( 0.5, 0.5 )
+motion_mirroring = Vector2( 3800, 0 )
+
+[node name="background" type="Sprite" parent="floor/ParallaxLayer"]
+position = Vector2( 1920.53, 540.391 )
+texture = ExtResource( 4 )
+
+[node name="Heart" parent="." instance=ExtResource( 6 )]
+position = Vector2( 162.346, 0 )
+
+[node name="pause" type="TextureButton" parent="."]
+margin_left = 1563.05
+margin_top = 75.5099
+margin_right = 1834.05
+margin_bottom = 142.51
+texture_normal = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+pause_mode = 2
+layer = 128
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
+modulate = Color( 1, 1, 1, 0.662745 )
+margin_right = 1924.0
+margin_bottom = 1086.0
+mouse_filter = 2
+color = Color( 0.0666667, 0.0627451, 0.0627451, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="play_button" type="TextureButton" parent="CanvasLayer"]
+pause_mode = 2
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -165.0
+margin_top = -203.0
+margin_right = 165.0
+margin_bottom = 203.0
+texture_normal = ExtResource( 9 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 22.0
+one_shot = true
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 10.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/sun = SubResource( 13 )
+[connection signal="button_down" from="TutorialController/feedback/jump" to="TutorialController" method="_on_jump_button_down"]
+[connection signal="button_up" from="TutorialController/feedback/jump" to="TutorialController" method="_on_jump_button_up"]
+[connection signal="pressed" from="TutorialController/feedback/jump" to="TutorialController" method="_on_jump_pressed"]
+[connection signal="button_down" from="TutorialController/feedback/down" to="TutorialController" method="_on_down_button_down"]
+[connection signal="button_down" from="TutorialController/feedback/dash" to="TutorialController" method="_on_dash_button_down"]
+[connection signal="pressed" from="TutorialController/feedback/feedback_box12/Start" to="TutorialController" method="_on_Start_pressed"]
+[connection signal="button_up" from="pause" to="." method="_on_pause_button_up"]
+[connection signal="button_up" from="CanvasLayer/play_button" to="." method="_on_playbutton_button_up"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_Timer2_timeout"]
+
+[editable path="Player"]

@@ -1,0 +1,177 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://src/Mini-games/Match-3/src/Levels/Select_Stage.gd" type="Script" id=3]
+[ext_resource path="res://assets/Match-3/LAYOUTS/tela-inicial-box.png" type="Texture" id=5]
+[ext_resource path="res://assets/fonts/Raleway-Medium.ttf" type="DynamicFontData" id=7]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.737255, 0.443137, 0.14902, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.941176, 0.678431, 0.203922, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="DynamicFont" id=4]
+size = 80
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 50
+font_data = ExtResource( 7 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.737255, 0.443137, 0.14902, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.737255, 0.443137, 0.14902, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="Select_Stage" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="Sprite" parent="."]
+position = Vector2( 961.029, 542.795 )
+texture = ExtResource( 5 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 178.0
+margin_top = 308.0
+margin_right = 1669.0
+margin_bottom = 798.0
+color = Color( 0.956863, 0.945098, 0.929412, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="3X3" type="Button" parent="."]
+margin_left = 101.491
+margin_top = 458.0
+margin_right = 551.491
+margin_bottom = 622.0
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 1 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "3 X 3"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="3X3"]
+margin_top = 180.627
+margin_right = 435.0
+margin_bottom = 239.627
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.00784314, 0.45098, 0.407843, 1 )
+text = "Tutorial"
+align = 1
+valign = 1
+
+[node name="6X6" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -225.0
+margin_top = -82.0
+margin_right = 225.0
+margin_bottom = 82.0
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "6 X 6"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="6X6"]
+margin_top = 180.627
+margin_right = 435.0
+margin_bottom = 239.627
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.00784314, 0.45098, 0.407843, 1 )
+text = "Médio"
+align = 1
+valign = 1
+
+[node name="9X9" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 427.0
+margin_top = -82.0
+margin_right = 877.0
+margin_bottom = 82.0
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "9 X 9"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="9X9"]
+margin_top = 181.0
+margin_right = 435.0
+margin_bottom = 240.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.00784314, 0.45098, 0.407843, 1 )
+text = "Dificil"
+align = 1
+valign = 1
+[connection signal="pressed" from="3X3" to="." method="_on_3X3_pressed"]
+[connection signal="pressed" from="6X6" to="." method="_on_6X6_pressed"]
+[connection signal="pressed" from="9X9" to="." method="_on_9X9_pressed"]

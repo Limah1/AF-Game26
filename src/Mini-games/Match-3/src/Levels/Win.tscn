@@ -1,0 +1,411 @@
+[gd_scene load_steps=31 format=2]
+
+[ext_resource path="res://assets/fonts/Teste.tres" type="DynamicFont" id=1]
+[ext_resource path="res://src/Mini-games/Match-3/src/GUI/Background.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/Mini-games/Match-3/src/Levels/Win.gd" type="Script" id=3]
+[ext_resource path="res://src/Mini-games/Match-3/src/GUI/HealthBar.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/Match-3/sprites/estrela.png" type="Texture" id=5]
+[ext_resource path="res://assets/Match-3/sprites/bau.png" type="Texture" id=6]
+[ext_resource path="res://assets/Match-3/sprites/agua.png" type="Texture" id=7]
+[ext_resource path="res://assets/Match-3/LAYOUTS/feedback-box.png" type="Texture" id=8]
+[ext_resource path="res://assets/Match-3/sprites/suco-abacaxi.png" type="Texture" id=9]
+[ext_resource path="res://assets/Match-3/sprites/melancia.png" type="Texture" id=10]
+[ext_resource path="res://assets/Match-3/sprites/arroz-e-feijao.png" type="Texture" id=11]
+[ext_resource path="res://assets/Match-3/sprites/checked-task-icon.png" type="Texture" id=12]
+[ext_resource path="res://assets/Match-3/sprites/personagens/girl-win.png" type="Texture" id=13]
+[ext_resource path="res://assets/Match-3/sprites/line.png" type="Texture" id=14]
+[ext_resource path="res://assets/Match-3/buttons/button-ir-de-novo-hover_1.png" type="Texture" id=15]
+[ext_resource path="res://assets/Match-3/LAYOUTS/moeda.png" type="Texture" id=16]
+[ext_resource path="res://assets/fonts/Raleway-Medium.ttf" type="DynamicFontData" id=17]
+[ext_resource path="res://assets/Match-3/LAYOUTS/square (1).png" type="Texture" id=18]
+[ext_resource path="res://src/Mini-games/Match-3/src/GUI/Fruit_UI.tscn" type="PackedScene" id=19]
+[ext_resource path="res://assets/Match-3/buttons/button-ir-de-novo.png" type="Texture" id=20]
+[ext_resource path="res://assets/Match-3/buttons/button-ir-de-novo-hover.png" type="Texture" id=21]
+[ext_resource path="res://assets/Match-3/buttons/button-ir-casa.png" type="Texture" id=22]
+
+[sub_resource type="ParticlesMaterial" id=1]
+flag_rotate_y = true
+flag_disable_z = true
+direction = Vector3( 0, 1, 0 )
+spread = 90.0
+gravity = Vector3( 0, 98, 0 )
+initial_velocity = 90.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color = Color( 1, 0, 0, 1 )
+
+[sub_resource type="ParticlesMaterial" id=2]
+flag_disable_z = true
+direction = Vector3( 0, 1, 0 )
+spread = 90.0
+gravity = Vector3( 0, 98, 0 )
+initial_velocity = 90.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color = Color( 0.0941176, 1, 0.0156863, 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+flag_disable_z = true
+direction = Vector3( 0, 1, 0 )
+spread = 90.0
+gravity = Vector3( 0, 98, 0 )
+initial_velocity = 90.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color = Color( 0, 0.133333, 1, 1 )
+
+[sub_resource type="ParticlesMaterial" id=4]
+flag_disable_z = true
+direction = Vector3( 0, 1, 0 )
+gravity = Vector3( 0, 98, 0 )
+initial_velocity = 90.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color = Color( 0.741176, 0, 0.745098, 1 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+flag_disable_z = true
+direction = Vector3( 0, 1, 0 )
+spread = 90.0
+gravity = Vector3( 0, 98, 0 )
+initial_velocity = 90.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+
+[sub_resource type="ParticlesMaterial" id=6]
+flag_disable_z = true
+direction = Vector3( 0, 1, 0 )
+spread = 90.0
+gravity = Vector3( 0, 98, 0 )
+initial_velocity = 90.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 70
+font_data = ExtResource( 17 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 40
+font_data = ExtResource( 17 )
+
+[node name="Win" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 603.438, 143.27, 388.812, 175.224, 356.858 ],
+"_edit_use_anchors_": false,
+"_edit_vertical_guides_": [ 1155.05, 1005.37, 1266.05, 773.287, 958.284, 1308.1 ]
+}
+
+[node name="p2d_red" type="Particles2D" parent="."]
+position = Vector2( 288.651, -35.6359 )
+z_index = 10
+amount = 10
+lifetime = 4.0
+speed_scale = 3.0
+process_material = SubResource( 1 )
+texture = ExtResource( 18 )
+
+[node name="p2d_green" type="Particles2D" parent="."]
+position = Vector2( 288.651, -35.6359 )
+z_index = 10
+amount = 10
+lifetime = 4.0
+speed_scale = 3.0
+process_material = SubResource( 2 )
+texture = ExtResource( 18 )
+
+[node name="p2d_blue" type="Particles2D" parent="."]
+position = Vector2( 288.651, -35.6359 )
+z_index = 10
+amount = 10
+lifetime = 4.0
+speed_scale = 3.0
+process_material = SubResource( 3 )
+texture = ExtResource( 18 )
+
+[node name="p2d_violet" type="Particles2D" parent="."]
+position = Vector2( 288.651, -35.6359 )
+z_index = 10
+amount = 10
+lifetime = 4.0
+speed_scale = 3.0
+process_material = SubResource( 4 )
+texture = ExtResource( 18 )
+
+[node name="p2d_white" type="Particles2D" parent="."]
+position = Vector2( 288.651, -35.6359 )
+z_index = 10
+amount = 10
+lifetime = 4.0
+speed_scale = 3.0
+process_material = SubResource( 5 )
+texture = ExtResource( 18 )
+
+[node name="p2d_white2" type="Particles2D" parent="."]
+position = Vector2( 288.651, -35.6359 )
+z_index = 10
+amount = 10
+lifetime = 4.0
+speed_scale = 3.0
+process_material = SubResource( 6 )
+texture = ExtResource( 18 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="Tutorial" type="ColorRect" parent="CanvasLayer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.470588 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="feedback-box" type="Sprite" parent="CanvasLayer/Tutorial"]
+position = Vector2( 960, 540 )
+scale = Vector2( 0.742808, 0.742808 )
+texture = ExtResource( 8 )
+
+[node name="Label" type="Label" parent="CanvasLayer/Tutorial/feedback-box"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -607.5
+margin_top = -418.5
+margin_right = -607.5
+margin_bottom = -418.5
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Parabéns!!
+Agora você já sabe como jogar o Match-3."
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" parent="." instance=ExtResource( 2 )]
+
+[node name="back-feedback" type="Sprite" parent="."]
+position = Vector2( 1158.96, 538.012 )
+scale = Vector2( 1.0388, 0.996751 )
+texture = ExtResource( 8 )
+
+[node name="HealthDisplay" parent="." instance=ExtResource( 4 )]
+position = Vector2( 638, 920 )
+scale = Vector2( 1, 1.1 )
+
+[node name="Label" type="Label" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -233.5
+margin_top = -33.0
+margin_right = 337.5
+margin_bottom = 81.0
+custom_fonts/font = ExtResource( 1 )
+text = "Aê!! ganhou, mizeravi!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="estrela" type="Sprite" parent="."]
+position = Vector2( 865.021, 266.566 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 5 )
+
+[node name="estrela2" type="Sprite" parent="."]
+visible = false
+position = Vector2( 1135.85, 266.906 )
+scale = Vector2( 0.949798, 0.954192 )
+texture = ExtResource( 5 )
+
+[node name="estrela3" type="Sprite" parent="."]
+visible = false
+position = Vector2( 1402.44, 263.613 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 5 )
+
+[node name="agua" type="Sprite" parent="."]
+visible = false
+position = Vector2( 856.621, 821.284 )
+texture = ExtResource( 7 )
+
+[node name="bau" type="Sprite" parent="."]
+visible = false
+position = Vector2( 1378.62, 635.213 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 6 )
+
+[node name="Fruit_UI" parent="." instance=ExtResource( 19 )]
+margin_left = 764.952
+margin_top = 488.902
+margin_right = 894.952
+margin_bottom = 618.903
+
+[node name="Fruit_UI2" parent="." instance=ExtResource( 19 )]
+margin_left = 764.952
+margin_top = 642.137
+margin_right = 894.952
+margin_bottom = 772.137
+
+[node name="Fruit_UI3" parent="." instance=ExtResource( 19 )]
+margin_left = 764.952
+margin_top = 788.244
+margin_right = 894.952
+margin_bottom = 918.244
+
+[node name="melancia" type="Sprite" parent="."]
+visible = false
+position = Vector2( 830.212, 879.171 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 10 )
+
+[node name="checked" type="Sprite" parent="melancia"]
+visible = false
+position = Vector2( -22.4495, -47.1436 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 12 )
+
+[node name="suco-abacaxi" type="Sprite" parent="."]
+visible = false
+position = Vector2( 830.212, 783.564 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 9 )
+
+[node name="checked" type="Sprite" parent="suco-abacaxi"]
+visible = false
+position = Vector2( -22.449, -41.531 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 12 )
+
+[node name="arroz-feijao" type="Sprite" parent="."]
+visible = false
+position = Vector2( 830.212, 680 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 11 )
+
+[node name="checked" type="Sprite" parent="arroz-feijao"]
+visible = false
+position = Vector2( -45.3059, -28.3163 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 12 )
+
+[node name="text" type="Label" parent="."]
+visible = false
+margin_left = 1377.89
+margin_top = 466.601
+margin_right = 1643.89
+margin_bottom = 514.601
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+text = "Recompensa: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="score1" type="Label" parent="."]
+visible = false
+margin_left = 905.0
+margin_top = 655.0
+margin_right = 1050.0
+margin_bottom = 703.0
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+text = "00 / 00"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="score2" type="Label" parent="."]
+visible = false
+margin_left = 905.0
+margin_top = 757.054
+margin_right = 1050.0
+margin_bottom = 805.054
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+text = "00 / 00"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="score3" type="Label" parent="."]
+visible = false
+margin_left = 905.0
+margin_top = 855.328
+margin_right = 1050.0
+margin_bottom = 903.328
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+text = "00 / 00"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="character" type="Sprite" parent="."]
+position = Vector2( 271.351, 566.77 )
+scale = Vector2( 2.5, 2.5 )
+texture = ExtResource( 13 )
+
+[node name="line" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.305882 )
+position = Vector2( 1159.6, 362.696 )
+scale = Vector2( 0.883852, 0.308517 )
+texture = ExtResource( 14 )
+
+[node name="text_coin" type="Label" parent="."]
+margin_left = 1580.33
+margin_top = 723.49
+margin_right = 1694.33
+margin_bottom = 771.49
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="moeda" type="Sprite" parent="."]
+visible = false
+position = Vector2( 1628.86, 636.693 )
+scale = Vector2( 1.7191, 1.75556 )
+texture = ExtResource( 16 )
+
+[node name="VoltarParaCasa" type="TextureButton" parent="."]
+margin_left = 1277.56
+margin_top = 554.366
+margin_right = 1716.56
+margin_bottom = 683.366
+texture_normal = ExtResource( 22 )
+texture_pressed = ExtResource( 21 )
+texture_hover = ExtResource( 21 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="IrDeNovo" type="TextureButton" parent="."]
+margin_left = 1280.08
+margin_top = 745.874
+margin_right = 1696.08
+margin_bottom = 874.874
+texture_normal = ExtResource( 20 )
+texture_pressed = ExtResource( 15 )
+texture_hover = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="VoltarParaCasa" to="." method="_on_VoltarParaCasa_pressed"]
+[connection signal="pressed" from="IrDeNovo" to="." method="_on_IrDeNovo_pressed"]

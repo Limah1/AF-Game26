@@ -1,0 +1,367 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://src/Mini-games/Match-3/src/Tiles/Tile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Mini-games/Match-3/src/Levels/Tab_6x6.gd" type="Script" id=2]
+[ext_resource path="res://src/Mini-games/Match-3/src/GUI/Score.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/Match-3/sprites/grade-6x6.png" type="Texture" id=4]
+[ext_resource path="res://src/Mini-games/Match-3/src/GUI/Background.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/fonts/Teste.tres" type="DynamicFont" id=6]
+[ext_resource path="res://assets/Match-3/sprites/Delete-80_icon-icons.com_57340.png" type="Texture" id=7]
+[ext_resource path="res://src/Mini-games/Match-3/src/Levels/Temp_Tab_6x6.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/Hidratona/sprites/back-button.png" type="Texture" id=15]
+[ext_resource path="res://assets/Match-3/sprites/personagens/girl-seria.png" type="Texture" id=16]
+[ext_resource path="res://assets/Match-3/sprites/blue_info_information_12461 (1).png" type="Texture" id=17]
+
+
+[sub_resource type="Animation" id=1]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/path = NodePath("LeaveButton:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 61.449, 44 ), Vector2( 61.449, 250 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "fade_out"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("LeaveButton:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.69 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 61.449, 250 ), Vector2( 61.449, 44 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/path = NodePath("info-box/ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("info-box/ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("LeaveButton:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 61.449, 44 ), Vector2( 61.449, 250 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "fade_out"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("info-box/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LeaveButton:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 61.449, 250 ), Vector2( 61.449, 44 ) ]
+}
+
+[node name="Tab_6x6" type="Node2D"]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_horizontal_guides_": [ -159.099, 1010.91, -231.369, 953.637, -155.536, -184.044, -171.572, 85.5376, 150.944 ],
+"_edit_vertical_guides_": [ 1410.1, 1462.62, 1831.27, 1357.15, 504.12, 568.337 ]
+}
+
+[node name="Fila1" type="Node2D" parent="."]
+position = Vector2( 436.018, 180.634 )
+scale = Vector2( 1.48, 1.52 )
+
+[node name="Tile" parent="Fila1" instance=ExtResource( 1 )]
+position = Vector2( 95, 0 )
+
+[node name="Tile2" parent="Fila1" instance=ExtResource( 1 )]
+position = Vector2( 196, 0 )
+
+[node name="Tile3" parent="Fila1" instance=ExtResource( 1 )]
+position = Vector2( 293, 0 )
+
+[node name="Tile4" parent="Fila1" instance=ExtResource( 1 )]
+position = Vector2( 401, 0 )
+
+[node name="Tile5" parent="Fila1" instance=ExtResource( 1 )]
+position = Vector2( 505, 0 )
+
+[node name="Tile6" parent="Fila1" instance=ExtResource( 1 )]
+position = Vector2( 606, 0 )
+
+[node name="Fila2" type="Node2D" parent="."]
+position = Vector2( 436.018, 328.634 )
+scale = Vector2( 1.48, 1.52 )
+
+[node name="Tile" parent="Fila2" instance=ExtResource( 1 )]
+position = Vector2( 95, 0 )
+
+[node name="Tile2" parent="Fila2" instance=ExtResource( 1 )]
+position = Vector2( 196, 0 )
+
+[node name="Tile3" parent="Fila2" instance=ExtResource( 1 )]
+position = Vector2( 293, 0 )
+
+[node name="Tile4" parent="Fila2" instance=ExtResource( 1 )]
+position = Vector2( 401, 0 )
+
+[node name="Tile5" parent="Fila2" instance=ExtResource( 1 )]
+position = Vector2( 505, 0 )
+
+[node name="Tile6" parent="Fila2" instance=ExtResource( 1 )]
+position = Vector2( 606, 0 )
+
+[node name="Fila3" type="Node2D" parent="."]
+position = Vector2( 436.018, 472.634 )
+scale = Vector2( 1.48, 1.56 )
+
+[node name="Tile" parent="Fila3" instance=ExtResource( 1 )]
+position = Vector2( 95, 0 )
+
+[node name="Tile2" parent="Fila3" instance=ExtResource( 1 )]
+position = Vector2( 196, 0 )
+
+[node name="Tile3" parent="Fila3" instance=ExtResource( 1 )]
+position = Vector2( 293, 0 )
+
+[node name="Tile4" parent="Fila3" instance=ExtResource( 1 )]
+position = Vector2( 401, 0 )
+
+[node name="Tile5" parent="Fila3" instance=ExtResource( 1 )]
+position = Vector2( 505, 0 )
+
+[node name="Tile6" parent="Fila3" instance=ExtResource( 1 )]
+position = Vector2( 606, 0 )
+
+[node name="Fila4" type="Node2D" parent="."]
+position = Vector2( 436.018, 620.634 )
+scale = Vector2( 1.48, 1.48 )
+
+[node name="Tile" parent="Fila4" instance=ExtResource( 1 )]
+position = Vector2( 95, 0 )
+
+[node name="Tile2" parent="Fila4" instance=ExtResource( 1 )]
+position = Vector2( 196, 0 )
+
+[node name="Tile3" parent="Fila4" instance=ExtResource( 1 )]
+position = Vector2( 293, 0 )
+
+[node name="Tile4" parent="Fila4" instance=ExtResource( 1 )]
+position = Vector2( 401, 0 )
+
+[node name="Tile5" parent="Fila4" instance=ExtResource( 1 )]
+position = Vector2( 505, 0 )
+
+[node name="Tile6" parent="Fila4" instance=ExtResource( 1 )]
+position = Vector2( 606, 0 )
+
+[node name="Fila5" type="Node2D" parent="."]
+position = Vector2( 436.018, 766.634 )
+scale = Vector2( 1.48, 1.56 )
+
+[node name="Tile" parent="Fila5" instance=ExtResource( 1 )]
+position = Vector2( 95, 0 )
+
+[node name="Tile2" parent="Fila5" instance=ExtResource( 1 )]
+position = Vector2( 196, 0 )
+
+[node name="Tile3" parent="Fila5" instance=ExtResource( 1 )]
+position = Vector2( 293, 0 )
+
+[node name="Tile4" parent="Fila5" instance=ExtResource( 1 )]
+position = Vector2( 401, 0 )
+
+[node name="Tile5" parent="Fila5" instance=ExtResource( 1 )]
+position = Vector2( 505, 0 )
+
+[node name="Tile6" parent="Fila5" instance=ExtResource( 1 )]
+position = Vector2( 606, 0 )
+
+[node name="Fila6" type="Node2D" parent="."]
+position = Vector2( 436.018, 912.634 )
+scale = Vector2( 1.48, 1.52 )
+
+[node name="Tile" parent="Fila6" instance=ExtResource( 1 )]
+position = Vector2( 95, 0 )
+
+[node name="Tile2" parent="Fila6" instance=ExtResource( 1 )]
+position = Vector2( 196, 0 )
+
+[node name="Tile3" parent="Fila6" instance=ExtResource( 1 )]
+position = Vector2( 293, 0 )
+
+[node name="Tile4" parent="Fila6" instance=ExtResource( 1 )]
+position = Vector2( 401, 0 )
+
+[node name="Tile5" parent="Fila6" instance=ExtResource( 1 )]
+position = Vector2( 505, 0 )
+
+[node name="Tile6" parent="Fila6" instance=ExtResource( 1 )]
+position = Vector2( 606, 0 )
+
+[node name="Score" parent="." instance=ExtResource( 3 )]
+
+[node name="Temp_Tab_6x6" parent="." instance=ExtResource( 11 )]
+position = Vector2( -1900, 0 )
+
+[node name="Background" parent="." instance=ExtResource( 5 )]
+layer = -10
+
+[node name="grade-6x6" type="Sprite" parent="Background"]
+position = Vector2( 950.474, 541.853 )
+texture = ExtResource( 4 )
+
+[node name="LeaveButton" type="TextureButton" parent="."]
+margin_left = 61.449
+margin_top = 44.0
+margin_right = 251.449
+margin_bottom = 161.0
+texture_normal = ExtResource( 15 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="character" type="Sprite" parent="."]
+position = Vector2( 203.351, 628.77 )
+scale = Vector2( 2.5, 2.5 )
+texture = ExtResource( 16 )
+
+[node name="InfoButton" type="TextureButton" parent="."]
+margin_left = 1745.91
+margin_top = 23.0486
+margin_right = 1821.91
+margin_bottom = 95.0486
+rect_scale = Vector2( 1.7, 1.7 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource( 17 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/fade_in = SubResource( 1 )
+anims/fade_out = SubResource( 2 )
+
+[node name="info-box" type="CanvasLayer" parent="."]
+layer = -128
+
+[node name="ColorRect" type="ColorRect" parent="info-box"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+color = Color( 0.0431373, 0.0392157, 0.0392157, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="info-box/ColorRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.757
+anchor_bottom = 0.5
+margin_left = -938.0
+margin_top = -322.0
+margin_right = 931.0
+margin_bottom = 303.0
+color = Color( 0.815686, 0.529412, 0.054902, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="info-box/ColorRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -921.265
+margin_top = -283.755
+margin_right = 913.735
+margin_bottom = 239.245
+custom_fonts/font = ExtResource( 6 )
+text = "A absorção do ferro, mineral que ajuda os glóbulos vermelhos a transportarem o 
+oxigênio para as células do corpo, alivia e combate os sintomas 
+de anemia
+"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="back" type="TextureButton" parent="info-box"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 54.1707
+margin_top = 65.4886
+margin_right = -1737.83
+margin_bottom = -886.511
+rect_scale = Vector2( 0.7, 0.7 )
+texture_normal = ExtResource( 7 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="infoBoxAnimation" type="AnimationPlayer" parent="."]
+anims/fade_in = SubResource( 3 )
+anims/fade_out = SubResource( 4 )
+[connection signal="pressed" from="LeaveButton" to="." method="_on_LeaveButton_pressed"]
+[connection signal="pressed" from="InfoButton" to="." method="_on_InfoButton_pressed"]
+[connection signal="pressed" from="info-box/back" to="." method="_on_back_pressed"]

@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/DoiAqui/sprites/win/button-ir-de-novo.png" type="Texture" id=1]
+[ext_resource path="res://src/Mini-games/DoiAqui/object/Background.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/DoiAqui/sprites/win/button-ir-de-novo-hover.png" type="Texture" id=3]
+[ext_resource path="res://assets/DoiAqui/sprites/win/box-win.png" type="Texture" id=4]
+[ext_resource path="res://assets/DoiAqui/sprites/win/button-ir-de-novo-hover_1.png" type="Texture" id=5]
+[ext_resource path="res://src/Mini-games/DoiAqui/scene/GameOver.gd" type="Script" id=6]
+[ext_resource path="res://assets/DoiAqui/sprites/win/button-ir-casa.png" type="Texture" id=7]
+
+[node name="GameOver" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -2.37842
+margin_bottom = -2.37842
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" parent="." instance=ExtResource( 2 )]
+
+[node name="box-win" type="Sprite" parent="."]
+position = Vector2( 1175.87, 564.619 )
+texture = ExtResource( 4 )
+
+[node name="home" type="TextureButton" parent="."]
+margin_left = 727.0
+margin_top = 728.0
+margin_right = 1166.0
+margin_bottom = 857.0
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="play" type="TextureButton" parent="."]
+margin_left = 1192.81
+margin_top = 726.919
+margin_right = 1617.81
+margin_bottom = 857.919
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 266, 558 )
+scale = Vector2( 3, 3 )
+[connection signal="pressed" from="home" to="." method="_on_home_pressed"]
+[connection signal="pressed" from="play" to="." method="_on_play_pressed"]

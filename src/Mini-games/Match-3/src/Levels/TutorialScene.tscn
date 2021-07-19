@@ -1,0 +1,491 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://src/Mini-games/Match-3/src/GUI/Background.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Mini-games/Match-3/src/Levels/tutorial1.gd" type="Script" id=2]
+[ext_resource path="res://src/Mini-games/Match-3/src/Levels/TutorialScene.gd" type="Script" id=3]
+[ext_resource path="res://assets/Match-3/LAYOUTS/tutorial-3_1.png" type="Texture" id=4]
+[ext_resource path="res://assets/Match-3/LAYOUTS/tutorial-2_1.png" type="Texture" id=5]
+[ext_resource path="res://assets/Match-3/LAYOUTS/tutorial-1_1.png" type="Texture" id=6]
+[ext_resource path="res://assets/Match-3/sprites/melancia.png" type="Texture" id=7]
+[ext_resource path="res://assets/Match-3/sprites/tutorial-dedo.png" type="Texture" id=8]
+[ext_resource path="res://assets/Match-3/sprites/hamburguer.png" type="Texture" id=9]
+[ext_resource path="res://assets/Match-3/sprites/estrela.png" type="Texture" id=10]
+[ext_resource path="res://assets/Match-3/LAYOUTS/page-landing-botao-cover.png" type="Texture" id=12]
+[ext_resource path="res://assets/Match-3/LAYOUTS/page-lanfing-box.png" type="Texture" id=13]
+
+
+[sub_resource type="Animation" id=1]
+resource_name = "match"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("2/melancia:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1.5, 2.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1349.48, 390.827 ), Vector2( 1349.48, 390.827 ), Vector2( 1349.48, 471.184 ), Vector2( 1349.48, 471.184 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("2/hamburguer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1.5, 2.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1349.71, 471.184 ), Vector2( 1349.71, 471.184 ), Vector2( 1349.71, 390.827 ), Vector2( 1349.71, 390.827 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("2/hamburguer2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 1.5, 2.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1365.62, 667.681 ), Vector2( 1365.62, 667.681 ), Vector2( 1359.26, 589.281 ), Vector2( 1359.26, 589.281 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("2/melancia7:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5, 1.5, 2.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1359.26, 589.281 ), Vector2( 1359.26, 589.281 ), Vector2( 1359.26, 669.281 ), Vector2( 1359.26, 669.281 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("2/melancia10:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5, 1.5, 2.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1623.26, 735.281 ), Vector2( 1623.26, 735.281 ), Vector2( 1539.26, 735.281 ), Vector2( 1539.26, 735.281 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("2/hamburguer3:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.5, 1.5, 2.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1539.26, 729.281 ), Vector2( 1539.26, 729.281 ), Vector2( 1623.26, 729.281 ), Vector2( 1623.26, 729.281 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("2/melancia:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 1.8, 2.7, 2.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("2/melancia2:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 1.8, 2.7, 2.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("2/melancia3:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 1.8, 2.7, 2.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("2/melancia4:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 1.8, 2.7, 2.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("2/melancia5:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 1.8, 2.7, 2.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("2/melancia6:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 1.8, 2.7, 2.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("2/melancia7:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 1.8, 2.7, 2.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("2/melancia8:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 1.8, 2.7, 2.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("2/melancia9:modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 1.8, 2.7, 2.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("2/melancia10:modulate")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 1.8, 2.7, 2.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("2/melancia11:modulate")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 1.8, 2.7, 2.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("2/melancia12:modulate")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 1.8, 2.7, 2.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("4/tutorial-dedo:position")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1622.84, 282.535 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "slide"
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("1/tutorial-dedo:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1612.56, 290.37 ), Vector2( 1400, 290.37 ), Vector2( 1400, 290.37 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("1/tutorial-dedo:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "slide (copy)"
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("1/tutorial-dedo:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1612.56, 290.37 ), Vector2( 1400, 290.37 ), Vector2( 1400, 290.37 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("1/tutorial-dedo:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("4/tutorial-dedo:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1622.84, 282.535 ), Vector2( 1400, 282.535 ), Vector2( 1400, 282.535 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("4/tutorial-dedo:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="TutorialScene" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="1" type="Node2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="Tween" type="Tween" parent="1"]
+
+[node name="tutorial-1_1" type="Sprite" parent="1"]
+position = Vector2( 959.31, 568.523 )
+texture = ExtResource( 6 )
+
+[node name="tutorial-dedo" type="Sprite" parent="1"]
+position = Vector2( 1612.56, 290.37 )
+texture = ExtResource( 8 )
+
+[node name="2" type="Node2D" parent="."]
+visible = false
+script = ExtResource( 2 )
+
+[node name="Tween" type="Tween" parent="2"]
+
+[node name="tutorial-2_1" type="Sprite" parent="2"]
+position = Vector2( 962.793, 566.839 )
+texture = ExtResource( 5 )
+
+[node name="melancia" type="Sprite" parent="2"]
+position = Vector2( 1349.48, 390.827 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="melancia2" type="Sprite" parent="2"]
+position = Vector2( 1438.27, 472.969 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="melancia3" type="Sprite" parent="2"]
+position = Vector2( 1263.71, 477.541 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="hamburguer" type="Sprite" parent="2"]
+position = Vector2( 1349.71, 471.184 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 9 )
+
+[node name="hamburguer2" type="Sprite" parent="2"]
+position = Vector2( 1365.62, 667.681 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 9 )
+
+[node name="melancia4" type="Sprite" parent="2"]
+position = Vector2( 1133.26, 671.281 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="melancia5" type="Sprite" parent="2"]
+position = Vector2( 1207.26, 671.281 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="melancia6" type="Sprite" parent="2"]
+position = Vector2( 1283.26, 671.281 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="melancia7" type="Sprite" parent="2"]
+position = Vector2( 1359.26, 589.281 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="melancia8" type="Sprite" parent="2"]
+position = Vector2( 1539.26, 593.281 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="melancia9" type="Sprite" parent="2"]
+position = Vector2( 1537.26, 653.281 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="melancia10" type="Sprite" parent="2"]
+position = Vector2( 1623.26, 735.281 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="melancia11" type="Sprite" parent="2"]
+position = Vector2( 1541.26, 799.281 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="melancia12" type="Sprite" parent="2"]
+position = Vector2( 1547.26, 873.281 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="hamburguer3" type="Sprite" parent="2"]
+position = Vector2( 1539.26, 729.281 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 9 )
+
+[node name="3" type="Node2D" parent="."]
+visible = false
+script = ExtResource( 2 )
+
+[node name="Tween" type="Tween" parent="3"]
+
+[node name="tutorial-3_1" type="Sprite" parent="3"]
+position = Vector2( 957.136, 566.182 )
+texture = ExtResource( 4 )
+
+[node name="estrela" type="Sprite" parent="3"]
+position = Vector2( 1231.44, 422.187 )
+scale = Vector2( 0.220079, 0.236269 )
+texture = ExtResource( 10 )
+
+[node name="estrela3" type="Sprite" parent="3"]
+position = Vector2( 1413.56, 423.014 )
+scale = Vector2( 0.22008, 0.216659 )
+texture = ExtResource( 10 )
+
+[node name="estrela2" type="Sprite" parent="3"]
+position = Vector2( 1322.73, 421.897 )
+scale = Vector2( 0.318804, 0.31961 )
+texture = ExtResource( 10 )
+
+[node name="4" type="Node2D" parent="."]
+visible = false
+
+[node name="page-lanfing-box" type="Sprite" parent="4"]
+position = Vector2( 957.899, 565.434 )
+texture = ExtResource( 13 )
+
+[node name="start" type="TextureButton" parent="4"]
+margin_left = 1268.38
+margin_top = 841.846
+margin_right = 1576.38
+margin_bottom = 948.846
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 12 )
+texture_hover = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tutorial-dedo" type="Sprite" parent="4"]
+position = Vector2( 1622.84, 282.535 )
+texture = ExtResource( 8 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "slide"
+anims/match = SubResource( 1 )
+anims/slide = SubResource( 2 )
+"anims/slide (copy)" = SubResource( 3 )
+
+[node name="Background" parent="." instance=ExtResource( 1 )]
+[connection signal="visibility_changed" from="1" to="." method="_on_1_visibility_changed"]
+[connection signal="visibility_changed" from="2" to="." method="_on_2_visibility_changed"]
+[connection signal="visibility_changed" from="4" to="." method="_on_4_visibility_changed"]
+[connection signal="pressed" from="4/start" to="." method="_on_start_pressed"]

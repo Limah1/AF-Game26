@@ -1,0 +1,645 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://src/Mini-games/Match-3/src/Tiles/Tile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Mini-games/Match-3/src/Levels/Teste.gd" type="Script" id=2]
+[ext_resource path="res://assets/fonts/Roboto-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://src/Mini-games/Match-3/src/Score.gd" type="Script" id=4]
+[ext_resource path="res://src/Mini-games/Match-3/src/GUI/Background.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/Match-3/sprites/infos-plataform.png" type="Texture" id=6]
+[ext_resource path="res://assets/Match-3/sprites/suco-abacaxi.png" type="Texture" id=7]
+[ext_resource path="res://assets/Match-3/sprites/melancia.png" type="Texture" id=8]
+[ext_resource path="res://assets/Match-3/sprites/arroz-e-feijao.png" type="Texture" id=9]
+[ext_resource path="res://assets/Match-3/sprites/hamburguer-blocked.png" type="Texture" id=10]
+[ext_resource path="res://src/Mini-games/Match-3/src/Levels/TemporaryTab.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/Match-3/sprites/Ativo2761.png" type="Texture" id=12]
+[ext_resource path="res://src/Mini-games/Match-3/src/GUI/HealthBar.tscn" type="PackedScene" id=13]
+[ext_resource path="res://assets/fonts/Teste.tres" type="DynamicFont" id=14]
+[ext_resource path="res://assets/Hidratona/sprites/back-button.png" type="Texture" id=15]
+[ext_resource path="res://assets/Match-3/sprites/personagens/girl-seria.png" type="Texture" id=16]
+[ext_resource path="res://assets/Match-3/sprites/blue_info_information_12461 (1).png" type="Texture" id=17]
+[ext_resource path="res://assets/Match-3/sprites/Delete-80_icon-icons.com_57340.png" type="Texture" id=18]
+[ext_resource path="res://assets/Match-3/sprites/checked-task-icon.png" type="Texture" id=19]
+
+[sub_resource type="DynamicFont" id=1]
+size = 100
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/path = NodePath("info-box/ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("info-box/ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("LeaveButton:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 61.449, 44 ), Vector2( 61.449, 250 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "fade_out"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("info-box/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LeaveButton:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 61.449, 250 ), Vector2( 61.449, 44 ) ]
+}
+
+[node name="Teste" type="Node2D"]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_horizontal_guides_": [ -159.099, 1010.91, -231.369, 953.637, -155.536, -184.044, -171.572, 85.5376, 150.944 ],
+"_edit_vertical_guides_": [ 1410.1, 1462.62, 1831.27, 1357.15, 504.12, 568.337 ]
+}
+
+[node name="Fila1" type="Node2D" parent="."]
+position = Vector2( 439.13, 122.082 )
+
+[node name="Tile" parent="Fila1" instance=ExtResource( 1 )]
+position = Vector2( 95, 0 )
+
+[node name="Tile2" parent="Fila1" instance=ExtResource( 1 )]
+position = Vector2( 196, 0 )
+
+[node name="Tile3" parent="Fila1" instance=ExtResource( 1 )]
+position = Vector2( 293, 0 )
+
+[node name="Tile4" parent="Fila1" instance=ExtResource( 1 )]
+position = Vector2( 401, 0 )
+
+[node name="Tile5" parent="Fila1" instance=ExtResource( 1 )]
+position = Vector2( 505, 0 )
+
+[node name="Tile6" parent="Fila1" instance=ExtResource( 1 )]
+position = Vector2( 606, 0 )
+
+[node name="Tile7" parent="Fila1" instance=ExtResource( 1 )]
+position = Vector2( 712, 0 )
+
+[node name="Tile8" parent="Fila1" instance=ExtResource( 1 )]
+position = Vector2( 809, 0 )
+
+[node name="Tile9" parent="Fila1" instance=ExtResource( 1 )]
+position = Vector2( 917, 0 )
+
+[node name="Fila2" type="Node2D" parent="."]
+position = Vector2( 439.13, 221.082 )
+
+[node name="Tile" parent="Fila2" instance=ExtResource( 1 )]
+position = Vector2( 95, 0 )
+
+[node name="Tile2" parent="Fila2" instance=ExtResource( 1 )]
+position = Vector2( 196, 0 )
+
+[node name="Tile3" parent="Fila2" instance=ExtResource( 1 )]
+position = Vector2( 293, 0 )
+
+[node name="Tile4" parent="Fila2" instance=ExtResource( 1 )]
+position = Vector2( 401, 0 )
+
+[node name="Tile5" parent="Fila2" instance=ExtResource( 1 )]
+position = Vector2( 505, 0 )
+
+[node name="Tile6" parent="Fila2" instance=ExtResource( 1 )]
+position = Vector2( 606, 0 )
+
+[node name="Tile7" parent="Fila2" instance=ExtResource( 1 )]
+position = Vector2( 712, 0 )
+
+[node name="Tile8" parent="Fila2" instance=ExtResource( 1 )]
+position = Vector2( 809, 0 )
+
+[node name="Tile9" parent="Fila2" instance=ExtResource( 1 )]
+position = Vector2( 917, 0 )
+
+[node name="Fila3" type="Node2D" parent="."]
+position = Vector2( 439.13, 323.082 )
+
+[node name="Tile" parent="Fila3" instance=ExtResource( 1 )]
+position = Vector2( 95, 0 )
+
+[node name="Tile2" parent="Fila3" instance=ExtResource( 1 )]
+position = Vector2( 196, 0 )
+
+[node name="Tile3" parent="Fila3" instance=ExtResource( 1 )]
+position = Vector2( 293, 0 )
+
+[node name="Tile4" parent="Fila3" instance=ExtResource( 1 )]
+position = Vector2( 401, 0 )
+
+[node name="Tile5" parent="Fila3" instance=ExtResource( 1 )]
+position = Vector2( 505, 0 )
+
+[node name="Tile6" parent="Fila3" instance=ExtResource( 1 )]
+position = Vector2( 606, 0 )
+
+[node name="Tile7" parent="Fila3" instance=ExtResource( 1 )]
+position = Vector2( 712, 0 )
+
+[node name="Tile8" parent="Fila3" instance=ExtResource( 1 )]
+position = Vector2( 809, 0 )
+
+[node name="Tile9" parent="Fila3" instance=ExtResource( 1 )]
+position = Vector2( 917, 0 )
+
+[node name="Fila4" type="Node2D" parent="."]
+position = Vector2( 439.13, 427.082 )
+
+[node name="Tile" parent="Fila4" instance=ExtResource( 1 )]
+position = Vector2( 95, 0 )
+
+[node name="Tile2" parent="Fila4" instance=ExtResource( 1 )]
+position = Vector2( 196, 0 )
+
+[node name="Tile3" parent="Fila4" instance=ExtResource( 1 )]
+position = Vector2( 293, 0 )
+
+[node name="Tile4" parent="Fila4" instance=ExtResource( 1 )]
+position = Vector2( 401, 0 )
+
+[node name="Tile5" parent="Fila4" instance=ExtResource( 1 )]
+position = Vector2( 505, 0 )
+
+[node name="Tile6" parent="Fila4" instance=ExtResource( 1 )]
+position = Vector2( 606, 0 )
+
+[node name="Tile7" parent="Fila4" instance=ExtResource( 1 )]
+position = Vector2( 712, 0 )
+
+[node name="Tile8" parent="Fila4" instance=ExtResource( 1 )]
+position = Vector2( 809, 0 )
+
+[node name="Tile9" parent="Fila4" instance=ExtResource( 1 )]
+position = Vector2( 917, 0 )
+
+[node name="Fila5" type="Node2D" parent="."]
+position = Vector2( 439.13, 530.082 )
+
+[node name="Tile" parent="Fila5" instance=ExtResource( 1 )]
+position = Vector2( 95, 0 )
+
+[node name="Tile2" parent="Fila5" instance=ExtResource( 1 )]
+position = Vector2( 196, 0 )
+
+[node name="Tile3" parent="Fila5" instance=ExtResource( 1 )]
+position = Vector2( 293, 0 )
+
+[node name="Tile4" parent="Fila5" instance=ExtResource( 1 )]
+position = Vector2( 401, 0 )
+
+[node name="Tile5" parent="Fila5" instance=ExtResource( 1 )]
+position = Vector2( 505, 0 )
+
+[node name="Tile6" parent="Fila5" instance=ExtResource( 1 )]
+position = Vector2( 606, 0 )
+
+[node name="Tile7" parent="Fila5" instance=ExtResource( 1 )]
+position = Vector2( 712, 0 )
+
+[node name="Tile8" parent="Fila5" instance=ExtResource( 1 )]
+position = Vector2( 809, 0 )
+
+[node name="Tile9" parent="Fila5" instance=ExtResource( 1 )]
+position = Vector2( 917, 0 )
+
+[node name="Fila6" type="Node2D" parent="."]
+position = Vector2( 439.13, 634.082 )
+
+[node name="Tile" parent="Fila6" instance=ExtResource( 1 )]
+position = Vector2( 95, 0 )
+
+[node name="Tile2" parent="Fila6" instance=ExtResource( 1 )]
+position = Vector2( 196, 0 )
+
+[node name="Tile3" parent="Fila6" instance=ExtResource( 1 )]
+position = Vector2( 293, 0 )
+
+[node name="Tile4" parent="Fila6" instance=ExtResource( 1 )]
+position = Vector2( 401, 0 )
+
+[node name="Tile5" parent="Fila6" instance=ExtResource( 1 )]
+position = Vector2( 505, 0 )
+
+[node name="Tile6" parent="Fila6" instance=ExtResource( 1 )]
+position = Vector2( 606, 0 )
+
+[node name="Tile7" parent="Fila6" instance=ExtResource( 1 )]
+position = Vector2( 712, 0 )
+
+[node name="Tile8" parent="Fila6" instance=ExtResource( 1 )]
+position = Vector2( 809, 0 )
+
+[node name="Tile9" parent="Fila6" instance=ExtResource( 1 )]
+position = Vector2( 917, 0 )
+
+[node name="Fila7" type="Node2D" parent="."]
+position = Vector2( 439.13, 737.082 )
+
+[node name="Tile" parent="Fila7" instance=ExtResource( 1 )]
+position = Vector2( 95, 0 )
+
+[node name="Tile2" parent="Fila7" instance=ExtResource( 1 )]
+position = Vector2( 196, 0 )
+
+[node name="Tile3" parent="Fila7" instance=ExtResource( 1 )]
+position = Vector2( 293, 0 )
+
+[node name="Tile4" parent="Fila7" instance=ExtResource( 1 )]
+position = Vector2( 401, 0 )
+
+[node name="Tile5" parent="Fila7" instance=ExtResource( 1 )]
+position = Vector2( 505, 0 )
+
+[node name="Tile6" parent="Fila7" instance=ExtResource( 1 )]
+position = Vector2( 606, 0 )
+
+[node name="Tile7" parent="Fila7" instance=ExtResource( 1 )]
+position = Vector2( 712, 0 )
+
+[node name="Tile8" parent="Fila7" instance=ExtResource( 1 )]
+position = Vector2( 809, 0 )
+
+[node name="Tile9" parent="Fila7" instance=ExtResource( 1 )]
+position = Vector2( 917, 0 )
+
+[node name="Fila8" type="Node2D" parent="."]
+position = Vector2( 439.13, 841.082 )
+
+[node name="Tile" parent="Fila8" instance=ExtResource( 1 )]
+position = Vector2( 95, 0 )
+
+[node name="Tile2" parent="Fila8" instance=ExtResource( 1 )]
+position = Vector2( 196, 0 )
+
+[node name="Tile3" parent="Fila8" instance=ExtResource( 1 )]
+position = Vector2( 293, 0 )
+
+[node name="Tile4" parent="Fila8" instance=ExtResource( 1 )]
+position = Vector2( 401, 0 )
+
+[node name="Tile5" parent="Fila8" instance=ExtResource( 1 )]
+position = Vector2( 505, 0 )
+
+[node name="Tile6" parent="Fila8" instance=ExtResource( 1 )]
+position = Vector2( 606, 0 )
+
+[node name="Tile7" parent="Fila8" instance=ExtResource( 1 )]
+position = Vector2( 712, 0 )
+
+[node name="Tile8" parent="Fila8" instance=ExtResource( 1 )]
+position = Vector2( 809, 0 )
+
+[node name="Tile9" parent="Fila8" instance=ExtResource( 1 )]
+position = Vector2( 917, 0 )
+
+[node name="Fila9" type="Node2D" parent="."]
+position = Vector2( 439.13, 946.082 )
+
+[node name="Tile" parent="Fila9" instance=ExtResource( 1 )]
+position = Vector2( 95, 0 )
+
+[node name="Tile2" parent="Fila9" instance=ExtResource( 1 )]
+position = Vector2( 196, 0 )
+
+[node name="Tile3" parent="Fila9" instance=ExtResource( 1 )]
+position = Vector2( 293, 0 )
+
+[node name="Tile4" parent="Fila9" instance=ExtResource( 1 )]
+position = Vector2( 401, 0 )
+
+[node name="Tile5" parent="Fila9" instance=ExtResource( 1 )]
+position = Vector2( 505, 0 )
+
+[node name="Tile6" parent="Fila9" instance=ExtResource( 1 )]
+position = Vector2( 606, 0 )
+
+[node name="Tile7" parent="Fila9" instance=ExtResource( 1 )]
+position = Vector2( 712, 0 )
+
+[node name="Tile8" parent="Fila9" instance=ExtResource( 1 )]
+position = Vector2( 809, 0 )
+
+[node name="Tile9" parent="Fila9" instance=ExtResource( 1 )]
+position = Vector2( 917, 0 )
+
+[node name="Score" type="Control" parent="."]
+margin_left = 1520.0
+margin_top = 95.0
+margin_right = 1805.0
+margin_bottom = 1015.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="TextureRect" parent="Score"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -58.0
+margin_top = -32.0
+margin_right = 28.0
+margin_bottom = -3.0
+texture = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Chances" type="Label" parent="Score"]
+margin_left = -18.0
+margin_top = 8.0
+margin_right = 264.0
+margin_bottom = 90.0
+custom_fonts/font = ExtResource( 14 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Chances:"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Chances_quant" type="Label" parent="Score"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -56.0
+margin_top = 110.309
+margin_right = 56.0
+margin_bottom = 228.309
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "15"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Metas" type="Label" parent="Score"]
+margin_left = -26.0
+margin_top = 287.671
+margin_right = 256.0
+margin_bottom = 369.671
+custom_fonts/font = ExtResource( 14 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Metas:"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="ProgressBar" type="ProgressBar" parent="Score"]
+visible = false
+margin_left = 12.0
+margin_top = 881.113
+margin_right = 472.0
+margin_bottom = 931.113
+rect_rotation = -89.9694
+max_value = 30.0
+step = 1.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pontuacao1" type="Label" parent="Score"]
+margin_left = 89.716
+margin_top = 587.995
+margin_right = 152.716
+margin_bottom = 623.995
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0/10"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pontuacao2" type="Label" parent="Score"]
+margin_left = 89.716
+margin_top = 712.446
+margin_right = 152.716
+margin_bottom = 748.446
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0/10"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pontuacao3" type="Label" parent="Score"]
+margin_left = 89.716
+margin_top = 834.068
+margin_right = 152.716
+margin_bottom = 870.068
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0/10"
+align = 1
+valign = 1
+
+[node name="hamburguer-blocked" type="Sprite" parent="Score"]
+position = Vector2( 236.212, 477.171 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 10 )
+
+[node name="melancia" type="Sprite" parent="Score"]
+position = Vector2( 236.212, 849.171 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 8 )
+
+[node name="checked" type="Sprite" parent="Score/melancia"]
+visible = false
+position = Vector2( -22.4495, -47.1436 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 19 )
+
+[node name="suco-abacaxi" type="Sprite" parent="Score"]
+position = Vector2( 236.212, 729.171 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="checked" type="Sprite" parent="Score/suco-abacaxi"]
+visible = false
+position = Vector2( -22.449, -41.531 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 19 )
+
+[node name="arroz-feijao" type="Sprite" parent="Score"]
+position = Vector2( 236.212, 609.171 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 9 )
+
+[node name="checked" type="Sprite" parent="Score/arroz-feijao"]
+visible = false
+position = Vector2( -45.3059, -28.3163 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 19 )
+
+[node name="HealthDisplay" parent="Score" instance=ExtResource( 13 )]
+position = Vector2( 8.0166, 882.796 )
+scale = Vector2( 1, 1.18 )
+
+[node name="Background" parent="." instance=ExtResource( 5 )]
+layer = -10
+
+[node name="platfrom" type="Sprite" parent="Background"]
+position = Vector2( 945.612, 538.422 )
+scale = Vector2( 0.615656, 0.623162 )
+texture = ExtResource( 12 )
+
+[node name="TemporaryTab" parent="." instance=ExtResource( 11 )]
+position = Vector2( -2282.04, -6.823 )
+
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_left = 61.449
+margin_top = 44.0
+margin_right = 126.449
+margin_bottom = 161.0
+texture_normal = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="character" type="Sprite" parent="."]
+position = Vector2( 203.351, 628.77 )
+scale = Vector2( 2.5, 2.5 )
+texture = ExtResource( 16 )
+
+[node name="TextureButton2" type="TextureButton" parent="."]
+margin_left = 1745.91
+margin_top = 23.0486
+margin_right = 1821.91
+margin_bottom = 95.0486
+rect_scale = Vector2( 1.7, 1.7 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource( 17 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="infoBoxAnimation" type="AnimationPlayer" parent="."]
+anims/fade_in = SubResource( 3 )
+anims/fade_out = SubResource( 4 )
+
+[node name="info-box" type="CanvasLayer" parent="."]
+layer = -128
+
+[node name="ColorRect" type="ColorRect" parent="info-box"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+color = Color( 0.0431373, 0.0392157, 0.0392157, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="info-box/ColorRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.757
+anchor_bottom = 0.5
+margin_left = -938.0
+margin_top = -322.0
+margin_right = 931.0
+margin_bottom = 303.0
+color = Color( 0.815686, 0.529412, 0.054902, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="info-box/ColorRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -921.265
+margin_top = -283.755
+margin_right = 913.735
+margin_bottom = 239.245
+custom_fonts/font = ExtResource( 14 )
+text = "A absorção do ferro, mineral que ajuda os glóbulos vermelhos a transportarem o 
+oxigênio para as células do corpo, alivia e combate os sintomas 
+de anemia
+
+Água: maior fonte de hidratação
+Feijão: ferro e proteína
+Suco de abacaxi e salsinha: rico em ferro e vitamina C
+Melancia: fonte de água, promove a hidratação do corpo, fonte de ferro, vitamina C e antioxidantes
+Hambúrguer: muita gordura, carboidrato e pouco valor nutricional"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="info-box"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 54.1707
+margin_top = 65.4886
+margin_right = -1737.83
+margin_bottom = -886.511
+rect_scale = Vector2( 0.7, 0.7 )
+texture_normal = ExtResource( 18 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="button_up" from="TextureButton2" to="." method="_on_TextureButton2_button_up"]
+[connection signal="pressed" from="info-box/TextureButton" to="." method="_on_TextureButton_pressed"]
