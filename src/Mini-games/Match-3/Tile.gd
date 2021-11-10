@@ -70,7 +70,7 @@ func _physics_process(delta: float) -> void:
 
 func check_bellow():
 	var tile = check_on_direction_tile("Bottom")
-	if tile != null && tile.fruit == null:
+	if tile != null && !is_instance_valid(tile.fruit):
 		var fruit = remove_fruit()
 		tile.add_fruit(fruit)
 
