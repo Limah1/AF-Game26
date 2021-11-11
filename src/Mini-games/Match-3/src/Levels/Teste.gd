@@ -122,7 +122,7 @@ func _physics_process(delta: float) -> void:
 	instance_timer -= delta
 	if(instance_timer <= 0):
 		for tile in AllTiles[0]:
-			if tile.fruit == null:
+			if !is_instance_valid(tile.fruit):
 				instance_timer = 0.5
 				rng.randomize()
 				var random_number = rng.randi_range(0,4)

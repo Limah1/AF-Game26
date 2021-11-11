@@ -23,6 +23,8 @@ func _on_Tile_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> 
 
 func add_fruit(new_fruit):
 	fruit = new_fruit
+	if(!is_instance_valid(fruit)):
+		return
 	fruit.reparenting(self)
 
 func remove_fruit():
@@ -69,10 +71,10 @@ func _physics_process(delta: float) -> void:
 	check_bellow()
 
 func check_bellow():
-	var tile = check_on_direction_tile("Bottom")
-	if tile != null && !is_instance_valid(tile.fruit):
-		var fruit = remove_fruit()
-		tile.add_fruit(fruit)
+	var tile: Tile = check_on_direction_tile("Bottom")
+	if tile != null && is_instance_valid(tile) && !is_instance_valid(tile.fruit):
+		var _fruit = remove_fruit()
+		tile.add_fruit(_fruit)
 
 func move_to(direction):
 	var tile = check_on_direction_tile(direction)

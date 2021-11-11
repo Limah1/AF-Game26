@@ -120,7 +120,7 @@ func return_from_toilet():
 	anim_player.play("start")
 
 func is_playing():
-	if(!anim_player):
+	if(!anim_player || !is_instance_valid(anim_player)):
 		return false
 	
 	return anim_player.is_playing()

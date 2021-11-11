@@ -484,10 +484,10 @@ func Load_Hidratona():
 	return hidratona
 
 func is_playing():
-	if(player_ref):
-		return player_ref.is_playing()
+	if(!player_ref || !is_instance_valid(player_ref)):
+		return false
 	
-	return false
+	return player_ref.is_playing()
 
 func save():
 	var save_dict = {

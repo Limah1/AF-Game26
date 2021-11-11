@@ -641,5 +641,6 @@ expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="button_up" from="TextureButton2" to="." method="_on_TextureButton2_button_up"]
 [connection signal="pressed" from="info-box/TextureButton" to="." method="_on_TextureButton_pressed"]
