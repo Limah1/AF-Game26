@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/Mini-games/DoiAqui/scene/Control.gd" type="Script" id=1]
 [ext_resource path="res://assets/DoiAqui/objects/botao-comecar.png" type="Texture" id=2]
@@ -6,7 +6,7 @@
 [ext_resource path="res://assets/DoiAqui/objects/botao-tutorial-hover.png" type="Texture" id=4]
 [ext_resource path="res://assets/DoiAqui/objects/botao-comecar-hover.png" type="Texture" id=5]
 [ext_resource path="res://assets/DoiAqui/objects/botao-tutorial-hover_1.png" type="Texture" id=6]
-
+[ext_resource path="res://src/UI/sound/sound_button.tscn" type="PackedScene" id=7]
 
 [node name="Menu" type="Control"]
 anchor_right = 1.0
@@ -57,4 +57,8 @@ expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="button_sound" parent="." instance=ExtResource( 7 )]
+
+[connection signal="pressed" from="learnButton" to="." method="_on_learnButton_pressed"]
 [connection signal="pressed" from="startButton" to="." method="_on_startButton_pressed"]

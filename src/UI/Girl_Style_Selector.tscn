@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/Plataforma/Char_Select/tela-escolha-personagem.png" type="Texture" id=1]
 [ext_resource path="res://assets/Plataforma/Char_Select/button-confirmar.png" type="Texture" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://assets/Plataforma/Char_Select/girl-estilo-1-hover.png" type="Texture" id=9]
 [ext_resource path="res://assets/Plataforma/Char_Select/girl-estilo-1-oculos-hover.png" type="Texture" id=10]
 [ext_resource path="res://src/UI/Girl_Style_Selector.gd" type="Script" id=11]
+[ext_resource path="res://src/UI/sound/sound_button.tscn" type="PackedScene" id=12]
+[ext_resource path="res://src/UI/sound/selector_gender.tscn" type="PackedScene" id=13]
 
 [node name="Girl_Style_Selector" type="Control"]
 anchor_right = 1.0
@@ -34,6 +36,9 @@ margin_top = -231.0
 margin_right = 249.0
 margin_bottom = -84.0
 texture_normal = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="girl_1" type="TextureButton" parent="."]
 margin_left = 292.0
@@ -42,6 +47,9 @@ margin_right = 536.0
 margin_bottom = 721.0
 texture_normal = ExtResource( 8 )
 texture_disabled = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="girl_1_glass" type="TextureButton" parent="."]
 margin_left = 640.0
@@ -50,6 +58,9 @@ margin_right = 884.0
 margin_bottom = 721.0
 texture_normal = ExtResource( 4 )
 texture_disabled = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="girl_2" type="TextureButton" parent="."]
 margin_left = 1016.0
@@ -72,6 +83,11 @@ texture_disabled = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="button_sound" parent="." instance=ExtResource( 12 )]
+
+[node name="sound_gender" parent="." instance=ExtResource( 13 )]
+
 [connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]
 [connection signal="pressed" from="girl_1" to="." method="_on_girl_1_pressed"]
 [connection signal="pressed" from="girl_1_glass" to="." method="_on_girl_1_glass_pressed"]

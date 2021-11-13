@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/Plataforma/Char_Select/button-menino.png" type="Texture" id=1]
 [ext_resource path="res://assets/Plataforma/Char_Select/button-menina.png" type="Texture" id=2]
 [ext_resource path="res://assets/Plataforma/Char_Select/tela-escolha-genero.png" type="Texture" id=3]
 [ext_resource path="res://src/UI/Sex_Selector.gd" type="Script" id=4]
+[ext_resource path="res://src/UI/sound/sound_button.tscn" type="PackedScene" id=5]
 
 [node name="Sex_Selector" type="Control"]
 anchor_right = 1.0
@@ -41,5 +42,8 @@ margin_top = 189.5
 margin_right = 351.5
 margin_bottom = 418.5
 texture_normal = ExtResource( 2 )
+
+[node name="button_sound" parent="." instance=ExtResource( 5 )]
+
 [connection signal="pressed" from="BoyButton" to="." method="_on_BoyButton_pressed"]
 [connection signal="pressed" from="GirlButton2" to="." method="_on_GirlButton2_pressed"]

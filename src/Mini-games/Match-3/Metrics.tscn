@@ -2,7 +2,6 @@
 
 [ext_resource path="res://assets/Match-3/LAYOUTS/ex/match-3-tela-vitoria.png" type="Texture" id=1]
 
-
 [node name="Node2D" type="Node2D"]
 __meta__ = {
 "_edit_horizontal_guides_": [ 1004.52, 143.27, 390.494, 1374.34, 438.321, 498.902, 971.078, 175.224, 358.54 ],

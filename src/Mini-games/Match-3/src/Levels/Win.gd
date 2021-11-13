@@ -135,3 +135,7 @@ func _on_IrDeNovo_pressed() -> void:
 	M_Controller.reset_all()
 	C_Controller.reset_score()
 	get_tree().change_scene("res://src/Mini-games/Match-3/src/Levels/Tab_9x9.tscn")
+
+
+func _on_Button_button_up():
+	$aplausos.play()

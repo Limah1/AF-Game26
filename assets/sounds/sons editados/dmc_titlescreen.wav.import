@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/dmc_titlescreen.wav-4c736ea874452992c5e9863a49d87960.sample"
+
+[deps]
+
+source_file="res://assets/sounds/sons editados/dmc_titlescreen.wav"
+dest_files=[ "res://.import/dmc_titlescreen.wav-4c736ea874452992c5e9863a49d87960.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

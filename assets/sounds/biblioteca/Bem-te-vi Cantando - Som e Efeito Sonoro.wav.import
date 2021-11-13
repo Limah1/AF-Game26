@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Bem-te-vi Cantando - Som e Efeito Sonoro.wav-fd6bc804f9e716b207a155868f9afb92.sample"
+
+[deps]
+
+source_file="res://assets/sounds/biblioteca/Bem-te-vi Cantando - Som e Efeito Sonoro.wav"
+dest_files=[ "res://.import/Bem-te-vi Cantando - Som e Efeito Sonoro.wav-fd6bc804f9e716b207a155868f9afb92.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -11,6 +11,7 @@ func _ready() -> void:
 
 
 func _on_boy_1_pressed() -> void:
+	$gendersound.play()
 	CharacterController.glass = false
 	CharacterController.variation = 1
 	
@@ -21,6 +22,7 @@ func _on_boy_1_pressed() -> void:
 
 
 func _on_boy_1_glass_pressed() -> void:
+	$gendersound.play()
 	CharacterController.glass = true
 	CharacterController.variation = 1
 	
@@ -31,6 +33,7 @@ func _on_boy_1_glass_pressed() -> void:
 
 
 func _on_boy_2_pressed() -> void:
+	$gendersound.play()
 	CharacterController.glass = false
 	CharacterController.variation = 2
 	
@@ -41,6 +44,7 @@ func _on_boy_2_pressed() -> void:
 
 
 func _on_boy_2_glass_pressed() -> void:
+	$gendersound.play()
 	CharacterController.glass = true
 	CharacterController.variation = 2
 	
@@ -52,6 +56,8 @@ func _on_boy_2_glass_pressed() -> void:
 
 func _on_ConfirmButton_pressed() -> void:
 	#SaveController.save_game()
+	$button_sound.play()
+	yield($button_sound,"finished")
 	NecessityBars.started = true
 	CharacterController.start()
 	get_tree().change_scene("res://src/MainScreen.tscn")
