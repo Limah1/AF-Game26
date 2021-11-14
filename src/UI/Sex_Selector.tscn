@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/Plataforma/Char_Select/button-menino.png" type="Texture" id=1]
 [ext_resource path="res://assets/Plataforma/Char_Select/button-menina.png" type="Texture" id=2]
 [ext_resource path="res://assets/Plataforma/Char_Select/tela-escolha-genero.png" type="Texture" id=3]
 [ext_resource path="res://src/UI/Sex_Selector.gd" type="Script" id=4]
 [ext_resource path="res://src/UI/sound/sound_button.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/All_Character_Sprites/Boy/Walk/boy-1/boy-1-1.png" type="Texture" id=6]
+[ext_resource path="res://assets/All_Character_Sprites/Girl/Walk/girl-1/girl-1-1.png" type="Texture" id=7]
 
 [node name="Sex_Selector" type="Control"]
 anchor_right = 1.0
@@ -23,10 +25,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -351.5
-margin_top = -114.5
-margin_right = 351.5
-margin_bottom = 114.5
+margin_left = -893.166
+margin_top = -182.208
+margin_right = -190.166
+margin_bottom = 46.7919
 texture_normal = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -37,13 +39,24 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -351.5
-margin_top = 189.5
-margin_right = 351.5
-margin_bottom = 418.5
+margin_left = 93.9487
+margin_top = -173.986
+margin_right = 796.949
+margin_bottom = 55.014
 texture_normal = ExtResource( 2 )
 
 [node name="button_sound" parent="." instance=ExtResource( 5 )]
+autoplay = false
+
+[node name="girl" type="Sprite" parent="."]
+position = Vector2( 1388.02, 832.167 )
+scale = Vector2( 1.6853, 1.6853 )
+texture = ExtResource( 7 )
+
+[node name="boy" type="Sprite" parent="."]
+position = Vector2( 388.431, 830.037 )
+scale = Vector2( 1.69874, 1.69874 )
+texture = ExtResource( 6 )
 
 [connection signal="pressed" from="BoyButton" to="." method="_on_BoyButton_pressed"]
 [connection signal="pressed" from="GirlButton2" to="." method="_on_GirlButton2_pressed"]
