@@ -30,11 +30,12 @@ func _ready():
 	parallax = get_parent().get_node("floor")
 	
 func _physics_process(delta):
-	print(Resources.in_hole)
 	
 	time_down -= delta
 	time += delta
 	
+	if Resources.in_hole:
+		return
 	
 	input()
 	animations(delta)
@@ -85,6 +86,8 @@ func calculate_move_velocity(
 	
 	if jump == -1.0: 
 		out.y = speed.y * (-1.0)
+	
+	if velocity.y != 0:
 		jump_pressed = false
 	
 #	if is_jump_interrupted:
@@ -101,7 +104,7 @@ func input():
 	if Resources.in_hole:
 		return
 		
-	if (Input.is_action_just_pressed("jump") or jump_pressed) and is_on_floor():
+	if jump_pressed and is_on_floor():
 		jump = -1.0
 		time_down = 0
 		down = false
@@ -116,25 +119,22 @@ func input():
 #		is_jump_interrupted = true
 #	else:
 #		is_jump_interrupted = false
+	if Input.is_action_just_pressed("down"):
+		time_down = 1.2
+		down = true
 
 	if (Input.is_action_just_pressed("down") or down ) and !is_on_floor():
 		not_in_floor = true
 		down = true
-	elif (Input.is_action_just_pressed("down")) and is_on_floor() and time_down <= 0:
-		down = true
-		not_in_floor = false
 	else:
 		not_in_floor = false
 
-	if Input.is_action_just_pressed("down"):
-		time_down = 1.2
-		down = true
 
 	if Input.is_action_just_pressed("power"):
 		dash()
 
 func dash():
-	if Resources.current_life < Resources.max_life * 0.6 or Resources.dash_timer > 0:
+	if Resources.dash_timer > 0:
 		return
 	
 	parallax.paralax_dash()
@@ -235,7 +235,10 @@ func _input(event):
 		print("inhole")
 		return;
 	
-	print("not_inhole")
+#	print(event.as_text())
+	
+	if event is InputEventKey and event.is_pressed() and char(event.scancode) == "W" and is_on_floor():
+		jump_pressed = true
 	
 	
 	if event is InputEventScreenDrag:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://src/MainScreen.gd" type="Script" id=1]
 [ext_resource path="res://src/UI/RoomSlot.tscn" type="PackedScene" id=2]
@@ -6,6 +6,10 @@
 [ext_resource path="res://src/UI/NecessityManager.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/Plataforma/pop-up-emergencia.png" type="Texture" id=5]
 [ext_resource path="res://src/Slots.gd" type="Script" id=6]
+[ext_resource path="res://assets/Hidratona/sprites/objects/play-button (1).png" type="Texture" id=7]
+[ext_resource path="res://assets/Plataforma/buttons/button-sair.png" type="Texture" id=8]
+[ext_resource path="res://assets/Match-3/pause.png" type="Texture" id=9]
+[ext_resource path="res://src/UI/Pause.gd" type="Script" id=10]
 
 [sub_resource type="Animation" id=1]
 resource_name = "fade_in_out"
@@ -537,5 +541,76 @@ anims/wake_up = SubResource( 14 )
 
 [node name="NecessityManager" parent="." instance=ExtResource( 4 )]
 layer = 127
+
+[node name="Pause" type="CanvasLayer" parent="."]
+pause_mode = 2
+layer = 128
+script = ExtResource( 10 )
+
+[node name="Pause" type="Control" parent="Pause"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Pause/Pause"]
+modulate = Color( 1, 1, 1, 0.662745 )
+margin_left = 4.23785
+margin_right = 1928.24
+margin_bottom = 1086.0
+mouse_filter = 2
+color = Color( 0.0666667, 0.0627451, 0.0627451, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="play-button" type="TextureButton" parent="Pause/Pause"]
+pause_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -359.941
+margin_top = -203.0
+margin_right = -29.9412
+margin_bottom = 203.0
+texture_normal = ExtResource( 7 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="play-button2" type="TextureButton" parent="Pause/Pause"]
+pause_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 97.8542
+margin_top = -126.719
+margin_right = 300.854
+margin_bottom = 123.281
+texture_normal = ExtResource( 8 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="Pause"]
+margin_left = 1703.26
+margin_top = 64.0724
+margin_right = 1831.26
+margin_bottom = 192.072
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Pause/Pause/play-button" to="Pause" method="_on_playbutton_pressed"]
+[connection signal="pressed" from="Pause/Pause/play-button2" to="Pause" method="_on_playbutton2_pressed"]
+[connection signal="pressed" from="Pause/TextureButton" to="Pause" method="_on_TextureButton_pressed"]
 
 [editable path="Player/Player"]

@@ -17,7 +17,7 @@ var power_strawberry = false
 
 var dash_timer = 0
 
-var parallax_speed = 1500
+var parallax_speed = 1200
 var parallax_speed_aux = parallax_speed
 
 var weather = "Sunny" # Cloudy / Sunny / Rainy / Snowy

@@ -3,8 +3,6 @@
 [ext_resource path="res://src/Mini-games/Hidratona/src/objects/tutorial_obstacules.gd" type="Script" id=1]
 [ext_resource path="res://src/Mini-games/Hidratona/src/objects/hole.tscn" type="PackedScene" id=2]
 
-
-
 [node name="obstacules" type="ParallaxBackground" groups=[
 "parallax",
 ]]
@@ -48,6 +46,7 @@ position = Vector2( 5633.94, 691.007 )
 position = Vector2( 7713.93, 691.007 )
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 1.2
+
 [connection signal="body_entered" from="ParallaxLayer/hole" to="." method="_on_hole_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

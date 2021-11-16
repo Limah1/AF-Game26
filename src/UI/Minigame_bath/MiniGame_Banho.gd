@@ -129,3 +129,15 @@ func _process(delta):
 			water_circles.modulate.a = water_circles.modulate.a - 0.2
 	
 
+
+
+func _on_TurnOn_pressed():
+	if(chuveiro.emitting == true):
+		return
+	chuveiro.emitting = true
+
+
+func _on_TurnOff_pressed():
+	if(chuveiro.emitting == false):
+		return
+	chuveiro.emitting = false

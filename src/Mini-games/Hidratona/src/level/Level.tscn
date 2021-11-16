@@ -74,9 +74,6 @@ tile_data = PoolIntArray( 1048575, 0, 0, 983040, 0, 0, 983041, 0, 0, 983042, 0, 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 502.141, 743.772 )
 
-[node name="AnimatedSprite" parent="Player" index="2"]
-frame = 0
-
 [node name="HidratationBar" parent="." instance=ExtResource( 5 )]
 layer = 10
 
