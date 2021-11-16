@@ -135,7 +135,8 @@ func random_pain(delta):
 			number <= 30 and
 			NecessityBars.some_problem == "" and
 			AnimationController.status != "DoiAqui" and 
-			AnimationController.status != ""
+			AnimationController.status != "" and 
+			AnimationController.status != "Banheiro"
 		):
 			rng.randomize()
 			number = rng.randi_range(0, 2)

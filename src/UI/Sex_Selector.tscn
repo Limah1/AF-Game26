@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/Plataforma/Char_Select/button-menino.png" type="Texture" id=1]
 [ext_resource path="res://assets/Plataforma/Char_Select/button-menina.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://src/UI/sound/sound_button.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/All_Character_Sprites/Boy/Walk/boy-1/boy-1-1.png" type="Texture" id=6]
 [ext_resource path="res://assets/All_Character_Sprites/Girl/Walk/girl-1/girl-1-1.png" type="Texture" id=7]
+[ext_resource path="res://assets/Hidratona/sprites/back-button.png" type="Texture" id=8]
 
 [node name="Sex_Selector" type="Control"]
 anchor_right = 1.0
@@ -58,5 +59,18 @@ position = Vector2( 388.431, 830.037 )
 scale = Vector2( 1.69874, 1.69874 )
 texture = ExtResource( 6 )
 
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_left = 73.0
+margin_top = 45.0
+margin_right = 196.0
+margin_bottom = 259.0
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 8 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="pressed" from="BoyButton" to="." method="_on_BoyButton_pressed"]
 [connection signal="pressed" from="GirlButton2" to="." method="_on_GirlButton2_pressed"]
+[connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]

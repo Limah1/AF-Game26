@@ -56,3 +56,9 @@ func _on_TextureButton_pressed() -> void:
 	NecessityBars.started = true
 	CharacterController.start()
 	get_tree().change_scene("res://src/MainScreen.tscn")
+
+func _on_TextureButton2_pressed():
+	$button_sound.play()
+	yield($button_sound,"finished")
+	get_tree().change_scene("res://src/UI/Sex_Selector.tscn")
+

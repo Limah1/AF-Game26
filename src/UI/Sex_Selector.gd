@@ -16,3 +16,9 @@ func _on_GirlButton2_pressed() -> void:
 	CharacterController.boyorgirl = "Girl"
 	GlobalResource.set_gender("Girl")
 	get_tree().change_scene("res://src/UI/Girl_Style_Selector.tscn")
+
+
+func _on_TextureButton_pressed():
+	$button_sound.play()
+	yield($button_sound,"finished")
+	get_tree().change_scene("res://src/Landing_Page_Temp.tscn")

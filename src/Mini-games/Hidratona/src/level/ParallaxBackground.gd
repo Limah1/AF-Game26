@@ -19,7 +19,7 @@ func _process(delta):
 		dash_timer -= delta
 		
 		if dash_timer <= 0:
-			Resources.parallax_speed = 1500
+			Resources.parallax_speed = 1200
 	
 	parallax_offset -= delta * Resources.parallax_speed
 	set_scroll_offset(Vector2(parallax_offset, 0))

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/Plataforma/Char_Select/tela-escolha-personagem.png" type="Texture" id=1]
 [ext_resource path="res://assets/Plataforma/Char_Select/button-confirmar.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://src/UI/Boy_Style_Selector.gd" type="Script" id=11]
 [ext_resource path="res://src/UI/sound/sound_button.tscn" type="PackedScene" id=12]
 [ext_resource path="res://src/UI/sound/selector_gender.tscn" type="PackedScene" id=13]
+[ext_resource path="res://assets/Hidratona/sprites/back-button.png" type="Texture" id=14]
 
 [node name="Girl_Style_Selector" type="Control"]
 anchor_right = 1.0
@@ -84,8 +85,21 @@ autoplay = false
 
 [node name="gendersound" parent="." instance=ExtResource( 13 )]
 
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_left = 73.0
+margin_top = 45.0
+margin_right = 196.0
+margin_bottom = 259.0
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 14 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="pressed" from="ConfirmButton" to="." method="_on_ConfirmButton_pressed"]
 [connection signal="pressed" from="boy_1" to="." method="_on_boy_1_pressed"]
 [connection signal="pressed" from="boy_1_glass" to="." method="_on_boy_1_glass_pressed"]
 [connection signal="pressed" from="boy_2" to="." method="_on_boy_2_pressed"]
 [connection signal="pressed" from="boy_2_glass" to="." method="_on_boy_2_glass_pressed"]
+[connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]
