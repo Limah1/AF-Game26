@@ -78,7 +78,7 @@ func _process(delta: float) -> void:
 		
 
 func Set_Disabled_Button():
-	if(AnimationController.status == "Hidratona" or AnimationController.status == "Match3" or AnimationController.current_room == null):
+	if(AnimationController.status == "Hidratona" or AnimationController.status == "Match3" or AnimationController.status == "DoiAqui" or AnimationController.current_room == null):
 		$"Button-0".disabled = true
 		$"Button-1".disabled = true
 		$"Button-2".disabled = true

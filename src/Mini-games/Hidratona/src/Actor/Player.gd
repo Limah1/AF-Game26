@@ -30,11 +30,12 @@ func _ready():
 	parallax = get_parent().get_node("floor")
 	
 func _physics_process(delta):
-	print(Resources.in_hole)
 	
 	time_down -= delta
 	time += delta
 	
+	if Resources.in_hole:
+		return
 	
 	input()
 	animations(delta)
