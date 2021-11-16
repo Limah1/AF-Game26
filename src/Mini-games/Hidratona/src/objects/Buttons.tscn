@@ -10,10 +10,6 @@
 [ext_resource path="res://src/Mini-games/Hidratona/src/objects/watermelon_cooldown_bar.gd" type="Script" id=8]
 [ext_resource path="res://src/Mini-games/Hidratona/src/objects/power.gd" type="Script" id=9]
 
-
-
-
-
 [node name="CanvasLayer" type="CanvasLayer"]
 layer = 100
 __meta__ = {
@@ -111,4 +107,5 @@ __meta__ = {
 [node name="laranja" type="Sprite" parent="orange_cooldown_bar"]
 position = Vector2( 128, 128 )
 texture = ExtResource( 6 )
+
 [connection signal="button_down" from="jump" to="." method="_on_jump_button_down"]

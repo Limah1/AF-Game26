@@ -9,7 +9,7 @@ func _process(delta: float) -> void:
 		Resources.dash_timer -= delta
 		$cooldown_bar.value = Resources.dash_timer
 	
-	if (Resources.current_life > Resources.max_life * 0.6) and (Resources.dash_timer <= 0.0):
+	if (Resources.dash_timer <= 0.0):
 		texture_normal = full_super_button
 		$cooldown_bar.visible = false
 	else:
