@@ -13,7 +13,6 @@
 [ext_resource path="res://assets/Match-3/LAYOUTS/page-landing-botao-cover.png" type="Texture" id=12]
 [ext_resource path="res://assets/Match-3/LAYOUTS/page-lanfing-box.png" type="Texture" id=13]
 
-
 [sub_resource type="Animation" id=1]
 resource_name = "match"
 length = 3.0
@@ -485,6 +484,7 @@ anims/slide = SubResource( 2 )
 "anims/slide (copy)" = SubResource( 3 )
 
 [node name="Background" parent="." instance=ExtResource( 1 )]
+
 [connection signal="visibility_changed" from="1" to="." method="_on_1_visibility_changed"]
 [connection signal="visibility_changed" from="2" to="." method="_on_2_visibility_changed"]
 [connection signal="visibility_changed" from="4" to="." method="_on_4_visibility_changed"]

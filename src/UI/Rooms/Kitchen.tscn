@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://assets/Plataforma/rooms/kitchen.png" type="Texture" id=1]
 [ext_resource path="res://src/UI/Rooms/Kitchen.gd" type="Script" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://assets/Plataforma/ambientes/janela_noite.png" type="Texture" id=12]
 [ext_resource path="res://assets/Plataforma/ambientes/janela_sol.png" type="Texture" id=13]
 [ext_resource path="res://assets/Plataforma/ambientes/janela_neve.png" type="Texture" id=14]
+[ext_resource path="res://assets/sounds/sons editados/open_refrigerator.wav" type="AudioStream" id=15]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -231,6 +232,11 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Match3PopUp"]
 anims/in = SubResource( 7 )
 anims/out = SubResource( 8 )
+
+[node name="audio_open_refri" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 917.164, 566.095 )
+stream = ExtResource( 15 )
+
 [connection signal="pressed" from="Eat_button" to="." method="_on_Eat_button_pressed"]
 [connection signal="pressed" from="Match3PopUp/TutorialButton" to="." method="_on_TutorialButton_pressed"]
 [connection signal="pressed" from="Match3PopUp/StartButton" to="." method="_on_StartButton_pressed"]

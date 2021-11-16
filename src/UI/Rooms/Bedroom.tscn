@@ -1,9 +1,11 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://assets/Nova pasta/bedroom.png" type="Texture" id=1]
 [ext_resource path="res://src/UI/Rooms/Bedroom.gd" type="Script" id=2]
 [ext_resource path="res://assets/Plataforma/objects/quarto-abajur-desligado.png" type="Texture" id=3]
 [ext_resource path="res://assets/Plataforma/objects/quarto-abajur-ligado.png" type="Texture" id=4]
+[ext_resource path="res://assets/sounds/sons editados/zipper2.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/sounds/sons editados/abajur_click.wav" type="AudioStream" id=6]
 [ext_resource path="res://src/UI/PersonalizationScreen.gd" type="Script" id=7]
 [ext_resource path="res://assets/Plataforma/buttons/button-fechar.png" type="Texture" id=8]
 [ext_resource path="res://assets/Plataforma/Char_Select/boy-estilo-2.png" type="Texture" id=9]
@@ -523,6 +525,14 @@ texture_pressed = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="zip" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+bus = "zip"
+
+[node name="abajur" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+
 [connection signal="pressed" from="PersonalizationButton" to="." method="_on_PersonalizationButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/SleepButton2" to="." method="_on_SleepButton_pressed"]
 [connection signal="pressed" from="pick_coat" to="." method="_on_pick_coat_pressed"]

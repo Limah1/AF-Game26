@@ -88,6 +88,8 @@ func calculate_move_velocity(
 
 func input():
 	if (Input.is_action_just_pressed("jump") or jump_pressed) and is_on_floor():
+	
+	
 		jump = -1.0
 		down = false
 	else:
@@ -151,6 +153,7 @@ func _on_jump_gui_input(event: InputEvent) -> void:
 
 
 func _on_jump_pressed():
+	$jump.play()
 	jump_pressed = true
 	if is_on_floor():
 		jump = -1.0

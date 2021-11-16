@@ -162,5 +162,6 @@ visible = false
 position = Vector2( 1542.64, 517.666 )
 scale = Vector2( 0.32262, 0.37196 )
 texture = ExtResource( 3 )
+
 [connection signal="pressed" from="bath" to="." method="_on_bath_pressed"]
 [connection signal="pressed" from="toilet" to="." method="_on_toilet_pressed"]

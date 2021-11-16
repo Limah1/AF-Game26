@@ -32,6 +32,7 @@ func _process(delta: float) -> void:
 
 
 func _on_Eat_button_pressed() -> void:
+	$audio_open_refri.play()
 	$cozinha_geladeira.visible = false
 	$geladeira_aberta.visible = true
 	$Match3PopUp/AnimationPlayer.play("in")

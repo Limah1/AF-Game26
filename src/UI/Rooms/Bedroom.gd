@@ -8,7 +8,6 @@ onready var coat = $"bedroom/Ativo 15/Ativo 19/coat"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	room_id = 3
-	
 	if(Resources.acessory_not_founded == "Umbrella"):
 		umbrella.get_node("AnimationPlayer").play("idle")
 	if(Resources.acessory_not_founded == "Coat"):
@@ -47,18 +46,21 @@ func _process(delta: float) -> void:
 		$janela_noite.visible = false
 
 func _on_pick_umbrella_pressed() -> void:
+	$zip.play()
 	umbrella.visible = !umbrella.visible
 	coat.visible = true
 	
 	Resources.equip_acessory("Umbrella")
 
 func _on_pick_coat_pressed() -> void:
+	$zip.play()
 	umbrella.visible = true
 	coat.visible = !coat.visible
 	
 	Resources.equip_acessory("Coat")
 
 func _on_SleepButton_pressed() -> void:
+	$abajur.play()
 	if(NecessityBars.sleeping):
 		wake_up()
 	else:
