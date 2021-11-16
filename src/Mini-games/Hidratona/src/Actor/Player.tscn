@@ -24,11 +24,6 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 6 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 9 ) ],
-"loop": true,
-"name": "run",
-"speed": 10.0
-}, {
 "frames": [ ExtResource( 1 ) ],
 "loop": true,
 "name": "squat",
@@ -38,6 +33,11 @@ animations = [ {
 "loop": false,
 "name": "jump",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "run",
+"speed": 10.0
 }, {
 "frames": [  ],
 "loop": true,
@@ -760,7 +760,6 @@ visible = false
 position = Vector2( 0, 42.3785 )
 frames = SubResource( 1 )
 animation = "run"
-frame = 4
 playing = true
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
@@ -769,6 +768,7 @@ shape = SubResource( 2 )
 [node name="CanvasLayer" parent="." instance=ExtResource( 3 )]
 
 [node name="jump" parent="CanvasLayer" index="0"]
+visible = false
 margin_left = 80.6733
 margin_top = 735.557
 margin_right = 230.673
@@ -776,6 +776,7 @@ margin_bottom = 885.557
 action_mode = 0
 
 [node name="down" parent="CanvasLayer" index="1"]
+visible = false
 margin_left = 258.545
 margin_top = 732.997
 margin_right = 408.545

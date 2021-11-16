@@ -75,7 +75,7 @@ tile_data = PoolIntArray( 1048575, 0, 0, 983040, 0, 0, 983041, 0, 0, 983042, 0, 
 position = Vector2( 502.141, 743.772 )
 
 [node name="AnimatedSprite" parent="Player" index="2"]
-frame = 4
+frame = 0
 
 [node name="HidratationBar" parent="." instance=ExtResource( 5 )]
 layer = 10
@@ -408,6 +408,7 @@ anims/sun = SubResource( 6 )
 [node name="Timer_speed" type="Timer" parent="."]
 wait_time = 30.0
 autostart = true
+
 [connection signal="button_up" from="pause" to="." method="_on_pause_button_up"]
 [connection signal="pressed" from="CanvasLayer/NaoTrouxeCapa/Button" to="CanvasLayer" method="_on_Button_pressed"]
 [connection signal="pressed" from="CanvasLayer/NaoTrouxeCapa/Button2" to="CanvasLayer" method="_on_Button2_pressed"]
@@ -423,3 +424,4 @@ autostart = true
 [connection signal="timeout" from="Timer_speed" to="floor" method="_on_Timer_speed_timeout"]
 
 [editable path="Player"]
+[editable path="Player/CanvasLayer"]

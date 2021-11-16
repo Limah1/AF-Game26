@@ -1,5 +1,8 @@
 extends KinematicBody2D
 
+var swipe_start = null
+var minimum_drag = 100
+
 const FLOOR_NORMAL: = Vector2.UP
 export var speed: = Vector2(0, 1400)
 export var gravity = 3000.0
@@ -8,7 +11,10 @@ var power = false
 var down = false
 var jump_pressed = null
 var time_down = 0
-var hole
+
+var cd = 0.5
+var timer = 0
+var pressing = false
 
 var jump = 0.0
 var is_jump_interrupted = false
@@ -24,11 +30,15 @@ func _ready():
 	parallax = get_parent().get_node("floor")
 	
 func _physics_process(delta):
-	hole = Resources.in_hole
-	animations(delta)
+	print(Resources.in_hole)
+	
+	time_down -= delta
+	time += delta
+	
 	
 	input()
-
+	animations(delta)
+	
 	velocity = calculate_move_velocity(velocity, speed, is_jump_interrupted, not_in_floor)
 	velocity = move_and_slide(velocity, FLOOR_NORMAL)
 	
@@ -37,12 +47,23 @@ func animations(delta):
 	$CollisionShape2D2.position.y = 0
 	$CollisionShape2D2.scale.y = 1
 	
+	if Resources.in_hole:
+		$AnimationPlayer.play("hole")
+		if time > 2:
+			#$AnimatedSprite.play("run")
+			time = 0
+			Resources.in_hole = false
+			if down:
+				time_down = 0
+		
+		return
+	
 	if down and !Resources.in_hole:
 		$AnimationPlayer.play("squat")
-		time_down -= delta
 		
 		$CollisionShape2D2.position.y = 70
 		$CollisionShape2D2.scale.y = 0.3
+		
 		if time_down <= 0:
 			down = false
 	elif velocity.y < 0 and !Resources.in_hole:
@@ -51,16 +72,6 @@ func animations(delta):
 		$AnimationPlayer.play("down")
 	elif velocity.y == 0 and !Resources.in_hole:
 		$AnimationPlayer.play("run")
-	elif Resources.in_hole:
-		$AnimationPlayer.play("hole")
-	if Resources.in_hole:
-		time += 1 * delta
-		if time > 2:
-			#$AnimatedSprite.play("run")
-			time = 0
-			Resources.in_hole = false
-			if down:
-				time_down = 0
 
 func calculate_move_velocity(
 		linear_velocity: Vector2,
@@ -74,12 +85,12 @@ func calculate_move_velocity(
 	
 	if jump == -1.0: 
 		out.y = speed.y * (-1.0)
-		jump_pressed = null
+		jump_pressed = false
 	
-	if is_jump_interrupted:
-		out.y = 0.0
-		jump = 0
-		jump_pressed = null
+#	if is_jump_interrupted:
+#		out.y = 0.0
+#		jump = 0
+#		jump_pressed = false
 	
 	if not_in_floor:
 		out.y = speed.y
@@ -87,32 +98,38 @@ func calculate_move_velocity(
 	return out
 
 func input():
+	if Resources.in_hole:
+		return
+		
 	if (Input.is_action_just_pressed("jump") or jump_pressed) and is_on_floor():
-	
-	
 		jump = -1.0
+		time_down = 0
 		down = false
 	else:
 		jump = 0
-	
-	if (Input.is_action_just_released("jump") or jump_pressed == false) and velocity.y < 0.0:
-		is_jump_interrupted = true
-	else:
-		is_jump_interrupted = false
-	
-	if (Input.is_action_just_pressed("down") or down) and !is_on_floor():
+		
+#	if (Input.is_action_just_pressed("jump") or jump_pressed) and down == true and is_on_floor():
+#		down = false
+#		jump = -1.0
+
+#	if (Input.is_action_just_released("jump") or jump_pressed == false) and velocity.y < 0.0:
+#		is_jump_interrupted = true
+#	else:
+#		is_jump_interrupted = false
+
+	if (Input.is_action_just_pressed("down") or down ) and !is_on_floor():
 		not_in_floor = true
 		down = true
-	elif Input.is_action_just_pressed("down") and is_on_floor():
+	elif (Input.is_action_just_pressed("down")) and is_on_floor() and time_down <= 0:
 		down = true
-		not_in_floor = false		
+		not_in_floor = false
 	else:
 		not_in_floor = false
-		
-	if Input.is_action_just_pressed("down") and down:
+
+	if Input.is_action_just_pressed("down"):
 		time_down = 1.2
 		down = true
-	
+
 	if Input.is_action_just_pressed("power"):
 		dash()
 
@@ -212,3 +229,55 @@ func set_sprites():
 		$AllSprites/j2.texture = sprites.rain.jump.j2
 		
 		$AllSprites/squat.texture = sprites.rain.squat
+
+func _input(event):
+	if Resources.in_hole:
+		print("inhole")
+		return;
+	
+	print("not_inhole")
+	
+	
+	if event is InputEventScreenDrag:
+		#get_relative_direction(event.relative)
+		print("Funcionando")
+		var aux = event.relative.y
+		if aux > 3 and time_down <= 0:
+			time_down = 1.2
+			down = true
+		elif aux < 3 and is_on_floor():
+			jump_pressed = true
+
+#func _on_Area2D_input_event(viewport, event, shape_idx):
+#	if Resources.in_hole:
+#		print("inhole")
+#		return;
+#
+#	print("not_inhole")
+#
+#
+#	if event is InputEventScreenDrag:
+#		#get_relative_direction(event.relative)
+#		print("Funcionando")
+#		var aux = event.relative.y
+#		if(aux > 3):
+#			time_down = 1.2
+#			down = true
+#		elif aux < 3 and is_on_floor():
+#			jump_pressed = true
+
+
+func get_relative_direction(relative):
+	var aux = relative.y
+	if(aux > 3):
+		var a = InputEventAction.new()
+		a.action = "down"
+		a.pressed = true
+		Input.parse_input_event(a)
+	elif(aux < 3):
+		jump_pressed = true
+#		var a = InputEventAction.new()
+#		a.action = "jump"
+#		a.pressed = true
+#		Input.parse_input_event(a)
+
