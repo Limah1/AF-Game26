@@ -43,11 +43,14 @@ func _process(delta: float) -> void:
 			$Snow.emitting = true
 
 func _on_Button0_pressed() -> void:
+	$opengate.play()
 	$"quintal-portao-aberto".visible = true
 	$"quintal-portao-fechado".visible = false
 	$Hidratona_PopUp/AnimationPlayer.play("in")
 
 func _on_TutorialButton_pressed() -> void:
+	$button_sound.play()
+	yield($button_sound,"finished")
 	AnimationController.is_travelling = false
 	
 	AnimationController.status = "Hidratona"
@@ -59,6 +62,8 @@ func _on_StartButton_pressed() -> void:
 	
 	AnimationController.status = "Hidratona"
 	NecessityBars.fun = true
+	$button_sound.play()
+	yield($button_sound,"finished")
 	get_tree().change_scene("res://src/Mini-games/Hidratona/src/level/Level.tscn")
 
 func _on_LeaveButton_pressed() -> void:

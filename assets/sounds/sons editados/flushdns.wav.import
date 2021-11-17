@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/flushdns.wav-c78145652dba806f30b22a8ea1ca5a8d.sample"
+
+[deps]
+
+source_file="res://assets/sounds/sons editados/flushdns.wav"
+dest_files=[ "res://.import/flushdns.wav-c78145652dba806f30b22a8ea1ca5a8d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

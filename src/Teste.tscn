@@ -532,9 +532,6 @@ anims/fade_in_out = SubResource( 1 )
 position = Vector2( 1430, 788.145 )
 z_index = -5
 
-[node name="idle" parent="Player/Player/player_sprites" index="0"]
-visible = false
-
 [node name="sleeping" parent="Player/Player/player_sprites" index="6"]
 visible = true
 

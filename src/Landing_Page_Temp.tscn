@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/fonts/Roboto-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/Landing_Page_Temp.gd" type="Script" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://assets/Plataforma/landing_page/button-continuar-hover.png" type="Texture" id=10]
 [ext_resource path="res://assets/Plataforma/landing_page/aaa.png" type="Texture" id=11]
 [ext_resource path="res://assets/sounds/sons editados/button_pressed_sound.wav" type="AudioStream" id=12]
+[ext_resource path="res://assets/sounds/sons editados/title_audio.wav" type="AudioStream" id=13]
 
 [sub_resource type="DynamicFont" id=1]
 size = 300
@@ -102,6 +103,9 @@ __meta__ = {
 [node name="button_pressed" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 12 )
 volume_db = 0.203
+
+[node name="title_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 13 )
 
 [connection signal="pressed" from="Continue" to="." method="_on_Continue_pressed"]
 [connection signal="pressed" from="Restart" to="." method="_on_Restart_pressed"]

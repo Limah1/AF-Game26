@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://src/Mini-games/Hidratona/src/level/GameOver.gd" type="Script" id=1]
 [ext_resource path="res://assets/Hidratona/LAYOUT/button-ir-de-novo.png" type="Texture" id=2]
@@ -13,6 +13,8 @@
 [ext_resource path="res://assets/All_Character_Sprites/Boy/hidratona-BOY/correr-5.png" type="Texture" id=11]
 [ext_resource path="res://assets/All_Character_Sprites/Boy/hidratona-BOY/correr-6.png" type="Texture" id=12]
 [ext_resource path="res://assets/Hidratona/LAYOUT/win-hidratona-obstaculos.png" type="Texture" id=13]
+[ext_resource path="res://src/UI/sound/sound_button.tscn" type="PackedScene" id=14]
+[ext_resource path="res://assets/sounds/sons editados/applause.wav" type="AudioStream" id=15]
 
 [sub_resource type="Animation" id=1]
 resource_name = "run"
@@ -180,5 +182,12 @@ texture_hover = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="button_sound" parent="." instance=ExtResource( 14 )]
+autoplay = false
+
+[node name="applaude" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+
 [connection signal="pressed" from="GoHomeButton" to="." method="_on_GoHomeButton_pressed"]
 [connection signal="pressed" from="TryAgainButton" to="." method="_on_TryAgainButton_pressed"]

@@ -4,7 +4,7 @@ extends Control
 func _ready() -> void:
 	if !SaveController.file_exist():
 		$Continue.disabled = true
-
+	$title_sound.play()
 func _on_Continue_pressed() -> void:
 	$button_pressed.play()
 	yield($button_pressed,"finished")

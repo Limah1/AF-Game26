@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Metal Door Open Sound Effect.wav-6da4698b08e3b872930769914d33edb9.sample"
+
+[deps]
+
+source_file="res://assets/sounds/sons editados/Metal Door Open Sound Effect.wav"
+dest_files=[ "res://.import/Metal Door Open Sound Effect.wav-6da4698b08e3b872930769914d33edb9.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

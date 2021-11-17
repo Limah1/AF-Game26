@@ -105,6 +105,7 @@ func input():
 		return
 		
 	if jump_pressed and is_on_floor():
+		$jump.play()
 		jump = -1.0
 		time_down = 0
 		down = false
@@ -239,7 +240,6 @@ func _input(event):
 	
 	if event is InputEventKey and event.is_pressed() and char(event.scancode) == "W" and is_on_floor():
 		jump_pressed = true
-	
 	
 	if event is InputEventScreenDrag:
 		#get_relative_direction(event.relative)

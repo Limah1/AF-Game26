@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/Plataforma/ambientes/quintal_sol.png" type="Texture" id=1]
 [ext_resource path="res://src/UI/Rooms/Yard.gd" type="Script" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://assets/Plataforma/buttons/button-fechar.png" type="Texture" id=9]
 [ext_resource path="res://assets/Plataforma/objects/quintal-portao-aberto.png" type="Texture" id=10]
 [ext_resource path="res://assets/Match-3/circle.png" type="Texture" id=11]
+[ext_resource path="res://assets/sounds/sons editados/Metal Door Open Sound Effect.wav" type="AudioStream" id=12]
+[ext_resource path="res://src/UI/sound/sound_button.tscn" type="PackedScene" id=13]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -228,6 +230,13 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Hidratona_PopUp"]
 anims/in = SubResource( 7 )
 anims/out = SubResource( 8 )
+
+[node name="opengate" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 12 )
+
+[node name="button_sound" parent="." instance=ExtResource( 13 )]
+autoplay = false
+
 [connection signal="pressed" from="Button0" to="." method="_on_Button0_pressed"]
 [connection signal="pressed" from="Hidratona_PopUp/TutorialButton" to="." method="_on_TutorialButton_pressed"]
 [connection signal="pressed" from="Hidratona_PopUp/StartButton" to="." method="_on_StartButton_pressed"]

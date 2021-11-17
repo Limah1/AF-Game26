@@ -2,7 +2,7 @@ extends Control
 
 func _ready():
 	var sprites = CharacterController.all_sprites.hidratona
-	
+	$applaude.play()
 	$sprites/r2.texture = sprites.run.r2
 	$sprites/r3.texture = sprites.run.r3
 	$sprites/r4.texture = sprites.run.r4
@@ -31,10 +31,14 @@ func _ready():
 
 
 func _on_TryAgainButton_pressed():
+	$button_sound.play()
+	yield($button_sound,"finished")
 	Resources.reset_resources()
 	get_tree().change_scene("res://src/Mini-games/Hidratona/src/level/Level.tscn")
 
 func _on_GoHomeButton_pressed() -> void:
+	$button_sound.play()
+	yield($button_sound,"finished")
 	Resources.reset_resources()
 	get_tree().paused = false
 	get_tree().change_scene("res://src/MainScreen.tscn")

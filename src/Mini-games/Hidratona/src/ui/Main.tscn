@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/Mini-games/Hidratona/src/Main.gd" type="Script" id=1]
 [ext_resource path="res://assets/Hidratona/sprites/objects/agua.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/Hidratona/sprites/objects/botao-tutorial-hover.png" type="Texture" id=4]
 [ext_resource path="res://assets/Hidratona/sprites/objects/botao-tutorial-hover_1.png" type="Texture" id=5]
 [ext_resource path="res://src/Mini-games/Hidratona/src/ui/Start.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/UI/sound/sound_button.tscn" type="PackedScene" id=7]
 
 [node name="Main" type="Control"]
 anchor_right = 1.0
@@ -38,5 +39,9 @@ texture_pressed = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="button_sound" parent="." instance=ExtResource( 7 )]
+autoplay = false
+
 [connection signal="pressed" from="Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="Tutorial" to="." method="_on_Tutorial_pressed"]
