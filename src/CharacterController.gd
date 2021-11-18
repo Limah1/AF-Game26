@@ -1,6 +1,7 @@
 extends Node
 
 var boyorgirl = "Boy" # Boy or Girl
+var etnia = "branco"#negro, pardo ou branco
 var glass = false# True or False
 var variation = 1 # 1 or 2
 
@@ -163,7 +164,9 @@ func Load_Plataform():
 	
 	if(boyorgirl == "Boy"):
 		path = str(path, "Boy/")
+		path = str(path, etnia, "/")
 		if (glass == false):
+			
 			var walkpath = str(path, "Walk/boy-", str(variation))
 			
 			plataform.idle = load(str(walkpath, "/boy-", str(variation) ,"-1.png"))
@@ -228,13 +231,14 @@ func Load_Plataform():
 		plataform.sleeping = load(str(path, "boy-dormindo/boy-", str(variation) ,"-dormindo.png"))
 	elif(boyorgirl == "Girl"):
 		path = str(path, "Girl/")
+		path = str(path, etnia, "/")
 		
 		if (glass == false):
 			var walkpath = str(path, "Walk/girl-", str(variation))
 			
 			plataform.seated = load(str(path, "girl-", variation, "-sentada/girl-", variation, "-sentada.png"))
-			print(str(path, "girl-", variation, "-sentada/girl-", variation, "-sentada.png"))
-			plataform.seated_dirty = load(str(path, "girl-", variation, "-sentada/girl-", variation, "-sujo-sentado.png"))
+			plataform.seated_dirty = load(str(path, "girl-", variation, "-sentada/girl-", variation, "-suja-sentada.png"))
+			print(str(path, "girl-", variation, "-sentada/girl-", variation, "-suja-sentada.png"))
 			
 			
 			plataform.idle = load(str(walkpath, "/girl-", str(variation) ,"-1.png"))
@@ -382,7 +386,7 @@ func Load_Hidratona():
 	var path = "res://assets/All_Character_Sprites/"
 	
 	if(boyorgirl == "Boy"):
-		path = str(path, "Boy/hidratona-BOY/")
+		path = str(path, "Boy/", etnia,"/hidratona-BOY/")
 
 		hidratona.run.r1 = load(str(path, "correr-1.png"))
 		hidratona.run.r2 = load(str(path, "correr-2.png"))
@@ -432,7 +436,7 @@ func Load_Hidratona():
 		hidratona.snow.win = load(str(path, "snow/rs_win.png"))
 		
 	elif(boyorgirl == "Girl"):
-		path = str(path, "Girl/hidratona-GIRL/")
+		path = str(path, "Girl/", etnia,"/hidratona-GIRL/")
 		
 		hidratona.run.r1 = load(str(path, "correr-1-girl.png"))
 		hidratona.run.r2 = load(str(path, "correr-2-girl.png"))

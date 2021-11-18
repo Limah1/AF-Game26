@@ -1,0 +1,92 @@
+#####################################################
+Boy:
+
+	/branco:
+		/boy-banho - tudo
+		
+
+		/hidratona-BOY
+			/snow - tudo
+		
+
+		/match-3-BOY - tudo (Na pasta que tu mandou ta com a cor do pardo)
+	
+
+		/Walk
+			/boy-1 		- Tudo
+			/boy-1-oculos 	- Tudo
+			/boy-1-sujo 	- Tudo
+			/boy-1 		- boy-1-1 (ta com a cor do pardo)
+			/boy-2 		- Tudo
+			/boy-2-oculos 	- Tudo
+			/boy-2-sujo 	- Tudo
+			/boy-2 		- boy-2-1 (ta com a cor do pardo acho)
+
+	----------------------------------------------------------------------
+
+	/pardo
+		/boy-banho - tudo
+		
+
+		/hidratona-BOY
+			/snow - tudo
+		
+
+		/match-3-BOY - boy-win
+	
+
+		/Walk
+			/boy-1 		- Tudo
+			/boy-1-oculos 	- Tudo
+			/boy-1-sujo 	- Tudo
+
+			/boy-2 		- Tudo
+			/boy-2-oculos 	- Tudo
+			/boy-2-sujo 	- Tudo
+			
+#####################################################
+#####################################################
+Girl:
+
+	/branco:
+		/girl-banho - tudo
+		
+
+		/hidratona-GIRL - girl-win (ta com a cor do negro)
+		
+
+		/match-3-GIRL- tudo (Na pasta que tu mandou ta com a cor do negro acho)
+	
+
+		/Walk
+			/girl-1 	- Tudo
+			/girl-1-oculos 	- Tudo
+			/girl-1-suja 	- Tudo
+			/girl-1 	- girl-1-1 (ta com a cor do pardo)
+			/girl-2 	- Tudo
+			/girl-2-oculos 	- Tudo
+			/girl-2-suja 	- Tudo
+			/girl-2 	- girl-2-1 (ta com a cor do pardo)
+
+	----------------------------------------------------------------------
+
+	/pardo
+		/girl-banho - tudo
+		
+
+		/hidratona-GIRL - girl-win (ta com a cor do negro)
+		
+
+		/match-3-BOY - boy-win
+	
+
+		/Walk
+			/girl-1 	- Tudo
+			/girl-1-oculos 	- Tudo
+			/girl-1-suja 	- Tudo
+
+			/girl-2 	- Tudo
+			/girl-2-oculos 	- Tudo
+			/girl-2-suja 	- Tudo
+
+#####################################################
