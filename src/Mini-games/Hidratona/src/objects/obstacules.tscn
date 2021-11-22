@@ -77,6 +77,7 @@ shape = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
+
 [connection signal="tree_exiting" from="." to="." method="_on_obstacules_tree_exiting"]
 [connection signal="body_entered" from="ParallaxLayer/hole" to="." method="_on_hole_body_entered"]
 [connection signal="screen_exited" from="ParallaxLayer/Area2D/VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

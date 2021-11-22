@@ -5,6 +5,7 @@ func start(gpos):
 	global_position = gpos
 
 func _on_Watermelon_body_entered(body):
+	$crunch.play()
 	Resources.power_watermelon = true 
 	Resources.watermelon_timer = 15 
 	if Resources.current_life < 50:

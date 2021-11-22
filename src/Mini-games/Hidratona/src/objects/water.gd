@@ -6,6 +6,8 @@ func start(gpos):
 
 
 func _on_water_body_entered(body):
+	$crunch.play()
+	yield($crunch,"finished")
 	if Resources.current_life <= (Resources.max_life - 10):
 		Resources.current_life += 10
 	if Resources.current_life > 40 and Resources.current_life < Resources.max_life:

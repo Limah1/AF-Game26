@@ -188,6 +188,7 @@ autoplay = false
 
 [node name="applaude" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 15 )
+bus = "applause"
 
 [connection signal="pressed" from="GoHomeButton" to="." method="_on_GoHomeButton_pressed"]
 [connection signal="pressed" from="TryAgainButton" to="." method="_on_TryAgainButton_pressed"]

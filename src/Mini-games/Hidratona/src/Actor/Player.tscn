@@ -18,7 +18,7 @@
 radius = 43.4673
 height = 206.021
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=2]
 resource_name = "down"
 length = 0.6
 loop = true
@@ -131,8 +131,7 @@ tracks/8/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "hole"
+[sub_resource type="Animation" id=3]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -268,8 +267,7 @@ tracks/10/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "jump"
+[sub_resource type="Animation" id=4]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -381,8 +379,7 @@ tracks/8/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "run"
+[sub_resource type="Animation" id=5]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -743,10 +740,10 @@ margin_right = 1754.6
 margin_bottom = 906.357
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/down = SubResource( 5 )
-anims/hole = SubResource( 2 )
-anims/jump = SubResource( 3 )
-anims/run = SubResource( 4 )
+anims/down = SubResource( 2 )
+anims/hole = SubResource( 3 )
+anims/jump = SubResource( 4 )
+anims/run = SubResource( 5 )
 anims/squat = SubResource( 6 )
 
 [node name="jump" type="AudioStreamPlayer2D" parent="."]
