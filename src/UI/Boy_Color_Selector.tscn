@@ -1,0 +1,139 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://assets/Plataforma/Char_Select/tela-escolha-personagem.png" type="Texture" id=1]
+[ext_resource path="res://assets/Plataforma/Char_Select/button-confirmar.png" type="Texture" id=2]
+[ext_resource path="res://src/UI/Boy_Color_Selector.gd" type="Script" id=3]
+[ext_resource path="res://assets/Plataforma/Char_Select/color-selectors/b-boy-estilo-1.png" type="Texture" id=4]
+[ext_resource path="res://assets/Plataforma/Char_Select/color-selectors/n-boy-estilo-1-hover.png" type="Texture" id=5]
+[ext_resource path="res://assets/Plataforma/Char_Select/color-selectors/b-boy-estilo-1-hover.png" type="Texture" id=6]
+[ext_resource path="res://assets/Plataforma/Char_Select/color-selectors/p-boy-estilo-1.png" type="Texture" id=7]
+[ext_resource path="res://assets/Plataforma/Char_Select/color-selectors/p-boy-estilo-1-hover.png" type="Texture" id=8]
+[ext_resource path="res://assets/Plataforma/Char_Select/color-selectors/n-boy-estilo-1.png" type="Texture" id=9]
+[ext_resource path="res://src/UI/sound/sound_button.tscn" type="PackedScene" id=12]
+[ext_resource path="res://src/UI/sound/selector_gender.tscn" type="PackedScene" id=13]
+[ext_resource path="res://assets/Hidratona/sprites/back-button.png" type="Texture" id=14]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.94902, 0.94902, 0.94902, 1 )
+
+[sub_resource type="DynamicFontData" id=2]
+font_path = "res://assets/fonts/Roboto-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=3]
+size = 100
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 2 )
+
+[sub_resource type="DynamicFontData" id=4]
+font_path = "res://assets/fonts/Roboto-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=5]
+size = 80
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 4 )
+
+[node name="Boy_Color_Selector" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tela-escolha-personagem" type="Sprite" parent="."]
+position = Vector2( 960, 540 )
+texture = ExtResource( 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 3.0
+margin_top = 2.48016
+margin_right = 1918.0
+margin_bottom = 281.48
+custom_styles/normal = SubResource( 1 )
+custom_fonts/normal_font = SubResource( 3 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_colors/selection_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_selected = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ConfirmButton" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -249.0
+margin_top = -231.0
+margin_right = 249.0
+margin_bottom = -84.0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="branco" type="TextureButton" parent="."]
+margin_left = 488.548
+margin_top = 350.52
+margin_right = 732.548
+margin_bottom = 723.52
+texture_normal = ExtResource( 4 )
+texture_disabled = ExtResource( 6 )
+
+[node name="pardo" type="TextureButton" parent="."]
+margin_left = 836.548
+margin_top = 350.52
+margin_right = 1081.55
+margin_bottom = 723.52
+texture_normal = ExtResource( 7 )
+texture_disabled = ExtResource( 8 )
+
+[node name="negro" type="TextureButton" parent="."]
+margin_left = 1212.55
+margin_top = 350.52
+margin_right = 1457.55
+margin_bottom = 723.52
+texture_normal = ExtResource( 9 )
+texture_disabled = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button_sound" parent="." instance=ExtResource( 12 )]
+autoplay = false
+
+[node name="gendersound" parent="." instance=ExtResource( 13 )]
+
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_left = 73.0
+margin_top = 45.0
+margin_right = 196.0
+margin_bottom = 259.0
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 14 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_right = 1920.0
+margin_bottom = 301.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "Escolha a Cor de Seu Personagem"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="ConfirmButton" to="." method="_on_ConfirmButton_pressed"]
+[connection signal="pressed" from="branco" to="." method="_on_branco_pressed"]
+[connection signal="pressed" from="pardo" to="." method="_on_pardo_pressed"]
+[connection signal="pressed" from="negro" to="." method="_on_negro_pressed"]
+[connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]

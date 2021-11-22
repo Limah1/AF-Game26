@@ -1,7 +1,7 @@
 extends Node
 
 var boyorgirl = "Boy" # Boy or Girl
-var etnia = "branco"#negro, pardo ou branco
+var etnia = "negro"#negro, pardo ou branco
 var glass = false# True or False
 var variation = 1 # 1 or 2
 
