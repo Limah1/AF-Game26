@@ -5,7 +5,7 @@ func start(gpos):
 
 
 func _on_Trash_body_entered(body):
-	#$mosquitosound.play()
-	#yield($mosquitosound,"finished")
+	$mosquitosound.play()
+	yield($mosquitosound,"finished")
 	Resources.heart -= 1
 	queue_free()

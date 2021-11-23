@@ -40,10 +40,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 93.9487
-margin_top = -173.986
-margin_right = 796.949
-margin_bottom = 55.014
+margin_left = 165.867
+margin_top = -182.208
+margin_right = 868.868
+margin_bottom = 46.7921
 texture_normal = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -53,7 +53,7 @@ __meta__ = {
 autoplay = false
 
 [node name="girl" type="Sprite" parent="."]
-position = Vector2( 1388.02, 832.167 )
+position = Vector2( 1459.94, 823.945 )
 scale = Vector2( 1.6853, 1.6853 )
 texture = ExtResource( 7 )
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://src/Mini-games/Hidratona/src/Actor/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Mini-games/Hidratona/src/level/ParallaxBackground.gd" type="Script" id=2]
@@ -15,10 +15,12 @@
 [ext_resource path="res://assets/Hidratona/LAYOUT/feedback-box.png" type="Texture" id=13]
 [ext_resource path="res://src/Mini-games/Hidratona/src/level/CanvasLayer_temp.gd" type="Script" id=14]
 [ext_resource path="res://src/Mini-games/Hidratona/src/level/SnowStorm.tscn" type="PackedScene" id=15]
+[ext_resource path="res://assets/Nova pasta/Ativo 17.png" type="Texture" id=16]
+[ext_resource path="res://assets/Nova pasta/Ativo 16.png" type="Texture" id=17]
 [ext_resource path="res://src/Mini-games/Hidratona/src/level/Rain.tscn" type="PackedScene" id=18]
 
 [sub_resource type="DynamicFont" id=1]
-size = 70
+size = 65
 font_data = ExtResource( 12 )
 
 [sub_resource type="StyleBoxFlat" id=2]
@@ -126,15 +128,14 @@ position = Vector2( 924.007, 583.747 )
 texture = ExtResource( 13 )
 
 [node name="Label" type="Label" parent="CanvasLayer/NaoTrouxeCapa"]
-margin_left = -602.0
-margin_top = -415.0
-margin_right = 609.0
-margin_bottom = 218.0
+margin_left = -543.168
+margin_top = -340.616
+margin_right = 320.832
+margin_bottom = 102.384
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Está chovendo e você não trouxe a sua capa de chuva ! 
-
-Volte para casa e pegue-a"
+Volte para casa e pegue-a!"
 align = 1
 valign = 1
 autowrap = true
@@ -184,17 +185,25 @@ text = "Continuar"
 align = 1
 valign = 1
 
+[node name="Ativo 17" type="Sprite" parent="CanvasLayer/NaoTrouxeCapa"]
+position = Vector2( 462.488, -177.736 )
+texture = ExtResource( 16 )
+
 [node name="NaoTrouxeCasaco" type="Sprite" parent="CanvasLayer"]
 pause_mode = 2
 visible = false
 position = Vector2( 924.007, 583.747 )
 texture = ExtResource( 13 )
 
+[node name="Ativo 16" type="Sprite" parent="CanvasLayer/NaoTrouxeCasaco"]
+position = Vector2( 476.093, -98.232 )
+texture = ExtResource( 17 )
+
 [node name="Label" type="Label" parent="CanvasLayer/NaoTrouxeCasaco"]
-margin_left = -602.0
-margin_top = -415.0
-margin_right = 609.0
-margin_bottom = 218.0
+margin_left = -598.0
+margin_top = -404.0
+margin_right = 355.0
+margin_bottom = 138.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Está nevando e você não trouxe a seu casaco ! 
