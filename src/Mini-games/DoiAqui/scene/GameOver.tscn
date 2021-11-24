@@ -50,5 +50,6 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 266, 558 )
 scale = Vector2( 3, 3 )
+
 [connection signal="pressed" from="home" to="." method="_on_home_pressed"]
 [connection signal="pressed" from="play" to="." method="_on_play_pressed"]

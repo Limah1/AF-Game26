@@ -144,6 +144,7 @@ func dash():
 	Resources.current_life -= 1
 
 func _on_power_pressed():
+	$sprint.play()
 	dash()
 
 func _on_down_button_down():

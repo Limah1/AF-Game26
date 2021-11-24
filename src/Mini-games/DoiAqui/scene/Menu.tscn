@@ -59,6 +59,7 @@ __meta__ = {
 }
 
 [node name="button_sound" parent="." instance=ExtResource( 7 )]
+autoplay = false
 
 [connection signal="pressed" from="learnButton" to="." method="_on_learnButton_pressed"]
 [connection signal="pressed" from="startButton" to="." method="_on_startButton_pressed"]

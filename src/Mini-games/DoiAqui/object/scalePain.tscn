@@ -5,7 +5,6 @@
 [ext_resource path="res://assets/DoiAqui/objects/seta.png" type="Texture" id=3]
 [ext_resource path="res://assets/DoiAqui/objects/escala-dor-2.png" type="Texture" id=4]
 
-
 [sub_resource type="Animation" id=1]
 resource_name = "intensa"
 length = 5.0
@@ -64,7 +63,7 @@ anims/leve = SubResource( 2 )
 anims/moderada = SubResource( 3 )
 
 [node name="seta" type="Sprite" parent="."]
-position = Vector2( 20.255, 38.697 )
+position = Vector2( 21.5657, 43.0047 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 3 )
 

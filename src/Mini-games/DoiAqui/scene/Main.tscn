@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://src/Mini-games/DoiAqui/actor/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/DoiAqui/objects/button.png" type="Texture" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://assets/Plataforma/buttons/button-sair.png" type="Texture" id=14]
 [ext_resource path="res://src/Mini-games/DoiAqui/scene/Pause.gd" type="Script" id=15]
 [ext_resource path="res://assets/Hidratona/sprites/objects/play-button (1).png" type="Texture" id=16]
+[ext_resource path="res://assets/sounds/sons editados/button_pressed_sound.wav" type="AudioStream" id=17]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 3 )
@@ -329,6 +330,10 @@ one_shot = true
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 594.641, 590.865 )
+
+[node name="button" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 17 )
+
 [connection signal="pressed" from="TextureButton" to="InitialMessage" method="_on_TextureButton_pressed"]
 [connection signal="timeout" from="start" to="." method="_on_start_timeout"]
 [connection signal="pressed" from="InitialMessage/Pause2/play-button" to="InitialMessage" method="_on_playbutton_pressed"]

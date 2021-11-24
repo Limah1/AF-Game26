@@ -3,6 +3,8 @@ extends Node
 var chances = 15
 var goals = [8,8,8] #posicao 0 para metas do RiceAndBean, posicao 1 para watermelon e 3 para juice 
 
+var sound = AudioStreamPlayer2D.new()
+
 var last_fruit_is_harmful = false
 
 var checked = true
@@ -70,6 +72,5 @@ func DestroyTiles():
 		
 	for tile in tilestodestroy:
 		tile.score(1)
-	
 	checked = true
 	ResetTiles()
