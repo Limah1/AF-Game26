@@ -3,7 +3,7 @@ extends Board
 #onready var animationInfo: AnimationPlayer = $infoBoxAnimation
 
 func _ready() -> void:
-
+	S_Conntroller.sound  = $fruits_ex
 	S_Conntroller.goals = [20,20,20]
 	S_Conntroller.chances = 35
 	

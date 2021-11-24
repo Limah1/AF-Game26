@@ -6,6 +6,8 @@ func start(gpos):
 
 func _on_Trash_body_entered(body):
 	$mosquitosound.play()
-	yield($mosquitosound,"finished")
+	$Sprite.visible = false
+	$CollisionShape2D.disabled = true
 	Resources.heart -= 1
+	yield($mosquitosound,"finished")
 	queue_free()

@@ -6,9 +6,12 @@ func start(gpos):
 
 func _on_Watermelon_body_entered(body):
 	$crunch.play()
-	yield($crunch,"finished")
+	$icon.visible = false
+	$CollisionShape2D.disabled = true
 	Resources.power_watermelon = true 
 	Resources.watermelon_timer = 15 
 	if Resources.current_life < 50:
 		Resources.current_life += 1
+	yield($crunch,"finished")
+	
 	queue_free()

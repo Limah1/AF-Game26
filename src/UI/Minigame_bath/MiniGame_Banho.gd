@@ -135,9 +135,11 @@ func _on_TurnOn_pressed():
 	if(chuveiro.emitting == true):
 		return
 	chuveiro.emitting = true
+	$shower_sound.play()
 
 
 func _on_TurnOff_pressed():
 	if(chuveiro.emitting == false):
 		return
 	chuveiro.emitting = false
+	$shower_sound.stop()

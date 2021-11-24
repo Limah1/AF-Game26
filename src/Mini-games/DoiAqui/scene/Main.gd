@@ -149,6 +149,7 @@ func _on_Button_pressed(name):
 			if(life > max_life):
 				life = max_life
 			$messageInterGame/message.text = "Você acertou!"
+			$win.play()
 			$messageInterGame/message.modulate = "#0BCE4C"			
 			$HealthDisplay.update_healthBar(life)
 		else:
@@ -242,6 +243,7 @@ func _on_message_timeout():
 	messageEnd = true
 
 func _on_start_pressed():
+	$button.play()
 	$InitialMessage/ColorRect.queue_free()
 	$InitialMessage/ColorRect2.queue_free()
 	$InitialMessage/Label.queue_free()

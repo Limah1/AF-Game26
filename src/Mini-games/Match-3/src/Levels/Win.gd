@@ -16,6 +16,7 @@ var timer = 2
 var hide = false
 
 func _ready():
+	$applause.play()
 	$character.texture = CharacterController.all_sprites.match3.win
 	
 	$HealthDisplay/HealthBar.max_value = S_Conntroller.goals[0] + S_Conntroller.goals[1] + S_Conntroller.goals[2]

@@ -11,5 +11,3 @@ func _ready() -> void:
 		$playInHole.texture = CharacterController.all_sprites.hidratona.rain.fall
 
 
-func _on_playInHole_frame_changed():
-	$fallingsound.play()

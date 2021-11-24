@@ -1,7 +1,7 @@
 extends Node2D
 
 func start(emit):
-	$rain.play()
-	$rain.loop = true
+	$rain_sound.play()
 	$Particles2D.emitting = emit
 	$nuvens.visible = emit
+

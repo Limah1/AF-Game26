@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://assets/fonts/Teste.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/Mini-games/Match-3/src/GUI/Background.tscn" type="PackedScene" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://assets/Match-3/buttons/button-ir-de-novo.png" type="Texture" id=20]
 [ext_resource path="res://assets/Match-3/buttons/button-ir-de-novo-hover.png" type="Texture" id=21]
 [ext_resource path="res://assets/Match-3/buttons/button-ir-casa.png" type="Texture" id=22]
+[ext_resource path="res://assets/sounds/sons editados/applause.wav" type="AudioStream" id=23]
 
 [sub_resource type="ParticlesMaterial" id=1]
 flag_rotate_y = true
@@ -407,5 +408,9 @@ texture_hover = ExtResource( 15 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="applause" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 23 )
+
 [connection signal="pressed" from="VoltarParaCasa" to="." method="_on_VoltarParaCasa_pressed"]
 [connection signal="pressed" from="IrDeNovo" to="." method="_on_IrDeNovo_pressed"]

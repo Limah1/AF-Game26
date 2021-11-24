@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/Mini-games/Hidratona/src/objects/obstacules.gd" type="Script" id=1]
 [ext_resource path="res://src/Mini-games/Hidratona/src/objects/hole.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/sounds/sons editados/falling.mp3" type="AudioStream" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -77,6 +78,9 @@ shape = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
+
+[node name="falling" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
 
 [connection signal="tree_exiting" from="." to="." method="_on_obstacules_tree_exiting"]
 [connection signal="body_entered" from="ParallaxLayer/hole" to="." method="_on_hole_body_entered"]

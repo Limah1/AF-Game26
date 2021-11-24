@@ -67,6 +67,8 @@ func _on_Area2D_body_entered(body):
 		for p in paralax:
 			p.set_process(false)
 		$Timer.start()
+		if !$falling.playing:
+			$falling.play()
 
 func _on_Timer_timeout():
 	$ParallaxLayer/hole/playInHole.visible = false
