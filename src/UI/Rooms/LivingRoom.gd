@@ -19,6 +19,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Resources.weather == "Sunny":
 		$news.texture = news_sol
+		
 	elif Resources.weather == "Rainy":
 		$news.texture = news_chuva
 	elif Resources.weather == "Snowy":

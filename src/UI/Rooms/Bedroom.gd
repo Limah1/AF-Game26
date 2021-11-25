@@ -65,6 +65,7 @@ func _on_SleepButton_pressed() -> void:
 		wake_up()
 	else:
 		sleep()
+		Resources.weather = "sleep"
 
 func sleep():
 	$"quarto-abajur-ligado".visible = false
@@ -74,6 +75,8 @@ func sleep():
 	yield(AnimationController.go_to_bed(), "completed")
 	NecessityBars.sleeping = true
 	AnimationController.status = "Sleeping"
+	$lullaby.play()
+	
 
 func wake_up():
 	Resources.weather_randomize()
@@ -88,6 +91,7 @@ func wake_up():
 	$"quarto-abajur-desligado".visible = false
 	$CanvasLayer/ColorRect.visible = false 
 	$CanvasLayer/SleepButton2.visible = false 
+	$lullaby.stop()
 	yield(AnimationController.wake_up_from_bed(), "completed")
 
 func _on_PersonalizationButton_pressed() -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://assets/Nova pasta/bedroom.png" type="Texture" id=1]
 [ext_resource path="res://src/UI/Rooms/Bedroom.gd" type="Script" id=2]
@@ -35,6 +35,7 @@
 [ext_resource path="res://assets/Nova pasta/Ativo 18.png" type="Texture" id=33]
 [ext_resource path="res://assets/Nova pasta/Ativo 15.png" type="Texture" id=34]
 [ext_resource path="res://assets/Nova pasta/Ativo 17.png" type="Texture" id=35]
+[ext_resource path="res://assets/sounds/sons editados/lullaby.wav" type="AudioStream" id=36]
 
 [sub_resource type="Animation" id=1]
 resource_name = "default"
@@ -532,6 +533,9 @@ bus = "zip"
 
 [node name="abajur" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 6 )
+
+[node name="lullaby" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 36 )
 
 [connection signal="pressed" from="PersonalizationButton" to="." method="_on_PersonalizationButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/SleepButton2" to="." method="_on_SleepButton_pressed"]

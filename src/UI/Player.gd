@@ -6,7 +6,7 @@ var show_bubble = false
 var sleeping = false
 
 var timer = 0.0
-
+var last_weather = ""
 var on_bath = false
 
 onready var Anim_Player = $AnimationPlayer
@@ -46,6 +46,26 @@ func to_the_toilet():
 	$player_sprites/toilet.visible = true
 
 func _process(delta: float) -> void:
+	if last_weather != Resources.weather:
+		if Resources.weather == "Rainy" :
+			$rainny_sound.play()
+			$sunny_sound.stop()
+			$snow_sound.stop()
+			last_weather = Resources.weather
+		elif Resources.weather == "Sunny" :
+			$rainny_sound.stop()
+			$sunny_sound.play()
+			$snow_sound.stop()
+			last_weather = Resources.weather
+		elif Resources.weather == "Snowy" :
+			$rainny_sound.stop()
+			$sunny_sound.stop()
+			$snow_sound.play()
+			last_weather = Resources.weather
+		elif Resources.weather == "sleep":
+			$rainny_sound.stop()
+			$sunny_sound.stop()
+			$snow_sound.stop()
 	if( drying ):
 		timer += delta
 		if(timer >= 1):
@@ -73,7 +93,7 @@ func _process(delta: float) -> void:
 			set_bath_clothes()
 			return
 		set_normal_clothes()
-
+		
 func set_normal_clothes():
 	var sprites = CharacterController.all_sprites.plataform
 	

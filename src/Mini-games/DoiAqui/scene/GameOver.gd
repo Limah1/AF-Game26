@@ -1,6 +1,7 @@
 extends Control
 
 func _ready():
+	$applause.play()
 	$Sprite.texture = load("res://assets/DoiAqui/sprites/actor/"+str(GlobalResource.gender)+"/"+str(GlobalResource.gender)+"-acerto.png")
 
 func _on_home_pressed():

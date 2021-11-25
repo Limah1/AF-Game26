@@ -17,7 +17,7 @@
 [ext_resource path="res://src/Mini-games/DoiAqui/scene/Pause.gd" type="Script" id=15]
 [ext_resource path="res://assets/Hidratona/sprites/objects/play-button (1).png" type="Texture" id=16]
 [ext_resource path="res://assets/sounds/sons editados/button_pressed_sound.wav" type="AudioStream" id=17]
-[ext_resource path="res://assets/sounds/sons editados/win_doiaqui.wav" type="AudioStream" id=18]
+[ext_resource path="res://assets/sounds/sons editados/kids_cheering.wav" type="AudioStream" id=18]
 [ext_resource path="res://assets/sounds/sons editados/loose_sound.wav" type="AudioStream" id=19]
 [ext_resource path="res://assets/sounds/sons editados/doiaqui_background.wav" type="AudioStream" id=20]
 

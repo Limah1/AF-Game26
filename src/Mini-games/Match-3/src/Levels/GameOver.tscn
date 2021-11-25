@@ -3,7 +3,6 @@
 [ext_resource path="res://assets/fonts/Teste.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/Mini-games/Match-3/src/GUI/Background.tscn" type="PackedScene" id=2]
 
-
 [node name="GameOver" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0

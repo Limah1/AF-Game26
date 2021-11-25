@@ -420,6 +420,7 @@ text = "Deixar pra depois"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="pressed" from="Control/DorNosBracos/go_to_mother" to="." method="_on_go_to_mother_pressed"]
 [connection signal="pressed" from="Control/DorNosBracos/ok" to="." method="_on_ok_pressed"]
 [connection signal="pressed" from="Control/Febre/ok" to="." method="_on_ok_pressed"]

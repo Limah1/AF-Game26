@@ -7,6 +7,7 @@ var playing3 = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	room_id = 4
+	AnimationController.sound_flush = $flush
 
 func _process(delta: float) -> void:
 	if (NecessityBars.higiene <= (NecessityBars.max_higiene*0.2)) and playing1 == false:
@@ -53,3 +54,4 @@ func _on_toilet_pressed() -> void:
 	
 	NecessityBars.peeing = true
 	yield(AnimationController.go_to_toilet(), "completed") 
+	

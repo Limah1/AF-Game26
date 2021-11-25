@@ -36,6 +36,8 @@ func _process(delta):
 
 
 func _on_Button_pressed():
+	$Button/button_sound.play()
+	yield($Button/button_sound,"finished")
 	NecessityBars.higiene = 900
 	get_parent().bathroom_reference.finish_bath()
 	get_parent().queue_free()

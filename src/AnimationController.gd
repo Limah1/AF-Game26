@@ -8,9 +8,12 @@ var current_room
 var is_room_moving = false
 var is_travelling = false
 var anim_player: AnimationPlayer
+var sound_flush: AudioStreamPlayer2D
 
 func _ready() -> void:
 	add_to_group("Persist")
+	
+	
 
 func set_animation_player(ap: AnimationPlayer):
 	anim_player = ap
@@ -117,7 +120,8 @@ func go_to_toilet():
 	yield(anim_player, "animation_finished")
 
 func return_from_toilet():
-	anim_player.play("start")
+	anim_player.play("start")	
+	sound_flush.play()
 
 func is_playing():
 	if(!anim_player || !is_instance_valid(anim_player)):

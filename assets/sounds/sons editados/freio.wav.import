@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/freio.wav-3e02845470fce0eef7e30e0985ce8363.sample"
+
+[deps]
+
+source_file="res://assets/sounds/sons editados/freio.wav"
+dest_files=[ "res://.import/freio.wav-3e02845470fce0eef7e30e0985ce8363.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

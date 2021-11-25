@@ -11,6 +11,7 @@ var power = false
 var down = false
 var jump_pressed = null
 var time_down = 0
+var playsom
 
 var cd = 0.5
 var timer = 0
@@ -61,11 +62,15 @@ func animations(delta):
 	
 	if down and !Resources.in_hole:
 		$AnimationPlayer.play("squat")
-		
+		if !playsom:
+			playsom = true
+			$freio_sound.play()
+			
 		$CollisionShape2D2.position.y = 70
 		$CollisionShape2D2.scale.y = 0.3
 		
 		if time_down <= 0:
+			playsom = false
 			down = false
 	elif velocity.y < 0 and !Resources.in_hole:
 		$AnimationPlayer.play("jump")

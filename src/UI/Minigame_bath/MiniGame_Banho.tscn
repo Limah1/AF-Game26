@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://assets/fonts/Roboto-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/UI/Toalha.gd" type="Script" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://assets/Match-3/sprites/Artboard 71.png" type="Texture" id=20]
 [ext_resource path="res://assets/sounds/sons editados/chuveiro.wav" type="AudioStream" id=21]
 [ext_resource path="res://assets/sounds/sons editados/toalha.wav" type="AudioStream" id=22]
+[ext_resource path="res://src/UI/sound/sound_button.tscn" type="PackedScene" id=23]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.0745098, 0.454902, 1, 1 )
@@ -957,6 +958,8 @@ text = "Voltar"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="button_sound" parent="Passos/Button" instance=ExtResource( 23 )]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Passos"]
 autoplay = "p0"
