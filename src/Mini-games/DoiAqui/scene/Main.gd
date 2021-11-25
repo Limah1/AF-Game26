@@ -22,6 +22,7 @@ var number_history = []
 var number_history2 = []
 
 func _ready():
+	$sound_background.play()
 	gender = GlobalResource.gender
 	print(gender)
 	$Player/sprite.texture = load("res://assets/DoiAqui/sprites/actor/"+str(gender)+"/"+str(gender)+"-parado.png")
@@ -149,14 +150,15 @@ func _on_Button_pressed(name):
 			if(life > max_life):
 				life = max_life
 			$messageInterGame/message.text = "Você acertou!"
-			$win.play()
+			$sound_win.play()
 			$messageInterGame/message.modulate = "#0BCE4C"			
 			$HealthDisplay.update_healthBar(life)
 		else:
 			life -= 1
 			if(life < 0):
 				life = 0
-			$messageInterGame/message.modulate = "#F4192E"			
+			$messageInterGame/message.modulate = "#F4192E"
+			$lose.play()			
 			$messageInterGame/message.text = "Você errou!"
 			$HealthDisplay.update_healthBar(life)
 		buttonsBlock = true

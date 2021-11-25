@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://assets/fonts/Roboto-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/UI/Toalha.gd" type="Script" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://assets/Hidratona/sprites/back-button.png" type="Texture" id=19]
 [ext_resource path="res://assets/Match-3/sprites/Artboard 71.png" type="Texture" id=20]
 [ext_resource path="res://assets/sounds/sons editados/chuveiro.wav" type="AudioStream" id=21]
+[ext_resource path="res://assets/sounds/sons editados/toalha.wav" type="AudioStream" id=22]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.0745098, 0.454902, 1, 1 )
@@ -974,6 +975,9 @@ __meta__ = {
 
 [node name="shower_sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 21 )
+
+[node name="towel_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 22 )
 
 [connection signal="pressed" from="Ativo 6/TurnOn" to="." method="_on_TurnOn_pressed"]
 [connection signal="pressed" from="Ativo 6/TurnOff" to="." method="_on_TurnOff_pressed"]

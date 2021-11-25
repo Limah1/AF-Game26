@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/doiaqui_background.wav-4024629d686b2ae13594340d8dc39d3b.sample"
+
+[deps]
+
+source_file="res://assets/sounds/sons editados/doiaqui_background.wav"
+dest_files=[ "res://.import/doiaqui_background.wav-4024629d686b2ae13594340d8dc39d3b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

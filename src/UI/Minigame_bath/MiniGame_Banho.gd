@@ -33,6 +33,7 @@ func _on_body_area_body_entered(body):
 	
 	if(body.name == "Toalha"):
 		is_drying = true
+		$towel_sound.play()
 
 func _on_body_area_body_exited(body):
 	if(body.name == "Sabonete"):
@@ -40,10 +41,10 @@ func _on_body_area_body_exited(body):
 	
 	if(body.name == "Toalha"):
 		is_drying = false
+		$towel_sound.stop()
 
 func _on_SwipeArea_input_event(viewport, event, shape_idx):
 	direction = null
-
 	if(cd > 0):
 		pressing = false
 		return
