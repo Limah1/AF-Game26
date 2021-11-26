@@ -21,6 +21,6 @@ shape = SubResource( 1 )
 [node name="trashsound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
 volume_db = 3.029
-bus = "zip"
+bus = "trash"
 
 [connection signal="body_entered" from="." to="." method="_on_Trash_body_entered"]
