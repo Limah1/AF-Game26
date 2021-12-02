@@ -705,4 +705,5 @@ texture = ExtResource( 10 )
 [node name="fever" type="Sprite" parent="expressions"]
 visible = false
 texture = ExtResource( 5 )
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

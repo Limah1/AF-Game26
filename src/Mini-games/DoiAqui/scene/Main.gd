@@ -22,7 +22,6 @@ var number_history = []
 var number_history2 = []
 
 func _ready():
-	$sound_background.play()
 	gender = GlobalResource.gender
 	print(gender)
 	$Player/sprite.texture = load("res://assets/DoiAqui/sprites/actor/"+str(gender)+"/"+str(gender)+"-parado.png")

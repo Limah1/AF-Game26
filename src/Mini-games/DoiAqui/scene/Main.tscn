@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://src/Mini-games/DoiAqui/actor/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/DoiAqui/objects/button.png" type="Texture" id=2]
@@ -19,7 +19,6 @@
 [ext_resource path="res://assets/sounds/sons editados/button_pressed_sound.wav" type="AudioStream" id=17]
 [ext_resource path="res://assets/sounds/sons editados/kids_cheering.wav" type="AudioStream" id=18]
 [ext_resource path="res://assets/sounds/sons editados/loose_sound.wav" type="AudioStream" id=19]
-[ext_resource path="res://assets/sounds/sons editados/doiaqui_background.wav" type="AudioStream" id=20]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 3 )
@@ -339,12 +338,11 @@ stream = ExtResource( 17 )
 
 [node name="sound_win" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 18 )
-
-[node name="sound_background" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 20 )
+bus = "doiaqui"
 
 [node name="lose" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 19 )
+bus = "doiaqui"
 
 [connection signal="pressed" from="TextureButton" to="InitialMessage" method="_on_TextureButton_pressed"]
 [connection signal="timeout" from="start" to="." method="_on_start_timeout"]

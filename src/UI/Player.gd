@@ -51,24 +51,28 @@ func _process(delta: float) -> void:
 			$rainny_sound.play()
 			$sunny_sound.stop()
 			$snow_sound.stop()
+			BackgroundMusic.play_music()
 
 			last_weather = Resources.weather
 		elif Resources.weather == "Sunny" :
 			$rainny_sound.stop()
 			$sunny_sound.play()
 			$snow_sound.stop()
+			BackgroundMusic.play_music()
 	
 			last_weather = Resources.weather
 		elif Resources.weather == "Snowy" :
 			$rainny_sound.stop()
 			$sunny_sound.stop()
 			$snow_sound.play()
+			BackgroundMusic.play_music()
 		
 			last_weather = Resources.weather
 		elif Resources.weather == "sleep":
 			$rainny_sound.stop()
 			$sunny_sound.stop()
 			$snow_sound.stop()
+			BackgroundMusic.stop_music()
 		
 	if( drying ):
 		timer += delta
