@@ -5,6 +5,7 @@ func _ready() -> void:
 	if !SaveController.file_exist():
 		$Continue.disabled = true
 	$title_sound.play()
+	BackgroundMusic.play_music()
 func _on_Continue_pressed() -> void:
 	$button_pressed.play()
 	yield($button_pressed,"finished")

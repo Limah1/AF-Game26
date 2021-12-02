@@ -59,6 +59,7 @@ CharacterController="*res://src/CharacterController.gd"
 AnimationController="*res://src/AnimationController.gd"
 SaveController="*res://src/SaveController.gd"
 GlobalResource="*res://src/Mini-games/DoiAqui/resource.gd"
+BackgroundMusic="*res://assets/sounds/background_music.tscn"
 
 [display]
 

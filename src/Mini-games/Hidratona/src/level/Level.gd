@@ -7,6 +7,8 @@ onready var animation: AnimationPlayer = $AnimationPlayer
 onready var parallax = $floor
 
 func _ready():
+	$Timer.start()
+	$Timer3.start()
 	if(Resources.weather == "Rainy"):
 		$Rain.start(true)
 		if(Resources.acessory != "Umbrella"):
@@ -21,9 +23,10 @@ func _ready():
 			$CanvasLayer/NaoTrouxeCasaco.visible = true
 			get_tree().paused = true
 			Resources.acessory_not_founded = "Coat"
+	else:
+		$sunny_sound.play()
 	
-	$Timer.start()
-	$Timer3.start()
+	
 
 func _process(delta):
 	$Player.global_position.x = $Position2D.global_position.x
