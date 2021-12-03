@@ -3,7 +3,7 @@ extends Board
 #onready var animationInfo: AnimationPlayer = $infoBoxAnimation
 
 func _ready() -> void:
-	S_Conntroller.sound  = $fruits_ex
+	S_Conntroller.sound = $bite
 	S_Conntroller.goals = [20,20,20]
 	S_Conntroller.chances = 35
 	
@@ -45,8 +45,6 @@ func _on_TextureButton2_pressed():
 	#animationInfo.play("fade_in")
 	#yield(animationInfo, "animation_finished")
 	print("2")
-
-
 
 func _on_back_pressed():
 	#animationInfo.play("fade_out")

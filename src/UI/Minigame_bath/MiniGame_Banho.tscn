@@ -532,6 +532,7 @@ tracks/1/keys = {
 }
 
 [node name="MiniGame_Banho" type="Node2D"]
+position = Vector2( 3.1748, 63.4961 )
 script = ExtResource( 14 )
 
 [node name="MiniGame_Banho" type="Camera2D" parent="."]
@@ -734,7 +735,7 @@ position = Vector2( 5.63923, 59.2002 )
 texture = ExtResource( 5 )
 
 [node name="Sabonete" type="KinematicBody2D" parent="."]
-position = Vector2( 753.443, -1984.52 )
+position = Vector2( 759.793, -1651.16 )
 collision_layer = 4
 collision_mask = 2
 script = ExtResource( 3 )
