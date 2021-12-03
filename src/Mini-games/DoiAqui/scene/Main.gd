@@ -15,11 +15,16 @@ var noTreatment = ["assistir tv", "brincar na rua", "jogar video game" ]
 var aux = ["no", "no2", "no3","no4"]
 
 var isStart = false
+var finished_loading = false
+var settingUp = false
 var buttonsBlock
 var gender
 
 var number_history = []
 var number_history2 = []
+
+var timer: float
+var timer_max: float = 5
 
 func _ready():
 	gender = GlobalResource.gender
@@ -40,101 +45,245 @@ func _physics_process(delta):
 		
 	if life >= GlobalResource.max_life:
 		get_tree().change_scene("res://src/Mini-games/DoiAqui/scene/GameOver.tscn")
-		
-	if isStart:
+	
+	if isStart and !settingUp:
 		isStart = false
 		buttonsBlock = true
+		
+		setUpNewGame()
 		#var buttons = get_tree().get_nodes_in_group("button")
 		#for button in buttons:
 		#	if(button.is_connected("pressed", self, "_on_Button_pressed")):
 		#		#print("entrou aqui")
 		#		button.disconnect("pressed", self, "_on_Button_pressed")
 			
-		var rng = RandomNumberGenerator.new()
-		rng.randomize()
-		var number = rng.randi_range(1, 3) #escala de dor
-		while(number_history2.has(number)):
-			rng.randomize()
-			number = rng.randi_range(0, 3)
-			
-		number_history2.append(number)
+#		var rng = RandomNumberGenerator.new()
+#		rng.randomize()
+#		var number = rng.randi_range(1, 3) #escala de dor
+#		while(number_history2.has(number)):
+#			rng.randomize()
+#			number = rng.randi_range(0, 3)
+#
+#		number_history2.append(number)
+#
+#		if(number_history2.size() == 3):
+#			number_history2.clear()		
+#
+#
+#		if(number_history.size() == 3):
+#			number_history.clear()
+#		$scalePain.set_process(true)
+#		$scalePain.visible = true
+#		$scalePain.typeAnimation = number
+#		yield($scalePain/AnimationPlayer,"animation_finished")
+#		$scalePain.set_process(false)
+#		$scalePain.typeAnimation = 0
+#
+#		var number2
+#		if GlobalResource.initialPain >= 0:
+#			number2 = GlobalResource.initialPain
+#			GlobalResource.initialPain = -1
+#		else:
+#			var rng2 = RandomNumberGenerator.new()
+#			rng2.randomize()
+#			number2 = rng2.randi_range(0, 3) #tipo de dor
+#			while(number_history.has(number2)):
+#				rng2.randomize()
+#				number2 = rng2.randi_range(0, 3)
+#
+#			number_history.append(number2)
+#
+#			if(number_history.size() == 3):
+#				number_history.clear()
+#		$Player.typesPain = typesPain[number2]
+#
+#		var namePain = str(typesPain[number2])
+#
+#		register_buttons(namePain)
+#
+#
+#		$askMessage/Sprite.texture = load("res://assets/DoiAqui/sprites/tratamento/pain/1x/Ativo 21.png")
+#		$askMessage/com.visible = true
+#		$askMessage/message.visible = true
+#		$askMessage/como_posso.visible = true
+#		if(number == 1):
+#			nP = number
+#			if(number2 == 0):
+#				$askMessage/message.text = "dor de cabeça."
+#			if(number2 == 1):
+#				$askMessage/message.text = "dor nos braços."
+#			if(number2 == 2):
+#				$askMessage/message.text = "febre."				
+#			if(number2 == 3):
+#				$askMessage/message.text = "ferimentos abertos."								
+#
+#		elif(number == 2):
+#			nP = number
+#			if(number2 == 0):
+#				$askMessage/message.text = "dor de cabeça."
+#			if(number2 == 1):
+#				$askMessage/message.text = "dor nos braços."
+#			if(number2 == 2):
+#				$askMessage/message.text = "febre."				
+#			if(number2 == 3):
+#				$askMessage/message.text = "ferimentos abertos."	
+#
+#		else:
+#			nP = number
+#			if(number2 == 0):
+#				$askMessage/message.text = "dor de cabeça."
+#			if(number2 == 1):
+#				$askMessage/message.text = "dor nos braços."
+#			if(number2 == 2):
+#				$askMessage/message.text = "febre."				
+#			if(number2 == 3):
+#				$askMessage/message.text = "ferimentos abertos."		
+#		buttonsBlock = false 
+	if isCount:
+		GlobalResource.gameTime += 1 * delta
 
-		if(number_history2.size() == 3):
-			number_history2.clear()		
+func _process(delta):
+	timer -= delta;
+	
+#	if settingUp and timer <= 0:
+#		setUpNewGame()
+	
+	if !isStart and buttonsBlock and timer <= 0:
+		timer = timer_max;
+		if $messageInterGame.layer > 1:
+			isStart = false
+			if !messageInitial:
+				$message.start()
+				messageInitial = true
+			elif messageInitial:
+				if messageEnd:
+					$messageInterGame/Sprite.texture = load("")
+					$messageInterGame.layer = -100
+					$askMessage/com.visible = true
+					$askMessage/message.visible = true
+					$askMessage/como_posso.visible = true
+					$askMessage/message.text = "   ..."
+					$painLevel/Sprite.texture = load("res://assets/DoiAqui/sprites/tratamento/pain/"+str(nP)+".png")
+					$painLevel.layer = 100
+					messageInitial = false
+					messageEnd = false
+		elif $painLevel.layer > 1:
+			isStart = false
+			if !messageInitial:
+#				$message.start()
+				messageInitial = true
+				timer = 0;
+			elif messageInitial:
+				$painLevel/Sprite.texture = load("")
+				$painLevel.layer = -100
+				messageInitial = false
+				messageEnd = false
+#				isStart = true
+				$Player.typesPain = "normal"
+				var buttons = get_tree().get_nodes_in_group("button")
+				$askMessage/Sprite.texture = load("res://assets/DoiAqui/objects/empty.png")
+				$askMessage/com.visible = false
+				$askMessage/message.visible = false
+				$askMessage/como_posso.visible = false
+				for button in buttons:
+					button.texture_normal = load("res://assets/DoiAqui/objects/button.png")
+					button.texture_pressed = load("res://assets/DoiAqui/objects/button.png")
+#				isStart = true
+				finished_loading = false
+				setUpNewGame()
+
+	
+	$ProgressLayer/ProgressBar.value = (timer/timer_max) * 100
+
+func setUpNewGame():
+	settingUp = true
+	
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	var number = rng.randi_range(1, 3) #escala de dor
+	while(number_history2.has(number)):
+		rng.randomize()
+		number = rng.randi_range(0, 3)
 		
+	number_history2.append(number)
+
+	if(number_history2.size() == 3):
+		number_history2.clear()		
+	
+	
+	if(number_history.size() == 3):
+		number_history.clear()
+	
+	$scalePain.visible = true
+	
+	#$scalePain.typeAnimation = number
+	yield($scalePain.startCountdown(number), "completed")
+	#$scalePain.typeAnimation = 0
+	
+	var number2
+	if GlobalResource.initialPain >= 0:
+		number2 = GlobalResource.initialPain
+		GlobalResource.initialPain = -1
+	else:
+		var rng2 = RandomNumberGenerator.new()
+		rng2.randomize()
+		number2 = rng2.randi_range(0, 3) #tipo de dor
+		while(number_history.has(number2)):
+			rng2.randomize()
+			number2 = rng2.randi_range(0, 3)
+			
+		number_history.append(number2)
 		
 		if(number_history.size() == 3):
 			number_history.clear()
-		$scalePain.set_process(true)
-		$scalePain.visible = true
-		$scalePain.typeAnimation = number
-		yield($scalePain/AnimationPlayer,"animation_finished")
-		$scalePain.set_process(false)
-		$scalePain.typeAnimation = 0
-		
-		var number2
-		if GlobalResource.initialPain >= 0:
-			number2 = GlobalResource.initialPain
-			GlobalResource.initialPain = -1
-		else:
-			var rng2 = RandomNumberGenerator.new()
-			rng2.randomize()
-			number2 = rng2.randi_range(0, 3) #tipo de dor
-			while(number_history.has(number2)):
-				rng2.randomize()
-				number2 = rng2.randi_range(0, 3)
-				
-			number_history.append(number2)
-			
-			if(number_history.size() == 3):
-				number_history.clear()
-		$Player.typesPain = typesPain[number2]
-		
-		var namePain = str(typesPain[number2])
-
-		register_buttons(namePain)
-		
-			
-		$askMessage/Sprite.texture = load("res://assets/DoiAqui/sprites/tratamento/pain/1x/Ativo 21.png")
-		$askMessage/com.visible = true
-		$askMessage/message.visible = true
-		$askMessage/como_posso.visible = true
-		if(number == 1):
-			nP = number
-			if(number2 == 0):
-				$askMessage/message.text = "dor de cabeça."
-			if(number2 == 1):
-				$askMessage/message.text = "dor nos braços."
-			if(number2 == 2):
-				$askMessage/message.text = "febre."				
-			if(number2 == 3):
-				$askMessage/message.text = "ferimentos abertos."								
-			
-		elif(number == 2):
-			nP = number
-			if(number2 == 0):
-				$askMessage/message.text = "dor de cabeça."
-			if(number2 == 1):
-				$askMessage/message.text = "dor nos braços."
-			if(number2 == 2):
-				$askMessage/message.text = "febre."				
-			if(number2 == 3):
-				$askMessage/message.text = "ferimentos abertos."	
+	$Player.typesPain = typesPain[number2]
 	
-		else:
-			nP = number
-			if(number2 == 0):
-				$askMessage/message.text = "dor de cabeça."
-			if(number2 == 1):
-				$askMessage/message.text = "dor nos braços."
-			if(number2 == 2):
-				$askMessage/message.text = "febre."				
-			if(number2 == 3):
-				$askMessage/message.text = "ferimentos abertos."		
-		buttonsBlock = false 
-	if isCount:
-		GlobalResource.gameTime += 1 * delta
+	var namePain = str(typesPain[number2])
+
+	register_buttons(namePain)
+	
 		
+	$askMessage/Sprite.texture = load("res://assets/DoiAqui/sprites/tratamento/pain/1x/Ativo 21.png")
+	$askMessage/com.visible = true
+	$askMessage/message.visible = true
+	$askMessage/como_posso.visible = true
+	if(number == 1):
+		nP = number
+		if(number2 == 0):
+			$askMessage/message.text = "dor de cabeça."
+		if(number2 == 1):
+			$askMessage/message.text = "dor nos braços."
+		if(number2 == 2):
+			$askMessage/message.text = "febre."				
+		if(number2 == 3):
+			$askMessage/message.text = "ferimentos abertos."								
+		
+	elif(number == 2):
+		nP = number
+		if(number2 == 0):
+			$askMessage/message.text = "dor de cabeça."
+		if(number2 == 1):
+			$askMessage/message.text = "dor nos braços."
+		if(number2 == 2):
+			$askMessage/message.text = "febre."				
+		if(number2 == 3):
+			$askMessage/message.text = "ferimentos abertos."	
+
+	else:
+		nP = number
+		if(number2 == 0):
+			$askMessage/message.text = "dor de cabeça."
+		if(number2 == 1):
+			$askMessage/message.text = "dor nos braços."
+		if(number2 == 2):
+			$askMessage/message.text = "febre."				
+		if(number2 == 3):
+			$askMessage/message.text = "ferimentos abertos."		
+	buttonsBlock = false 
+	
+	settingUp = false
+	
+
 func _on_start_timeout():
 	isStart = true
 
@@ -186,6 +335,8 @@ func register_buttons(name):
 			buttons[i].texture_normal = load("res://assets/DoiAqui/sprites/notratamento/"+nameButton+".png")
 			buttons[i].texture_pressed =load("res://assets/DoiAqui/sprites/notratamento/"+nameButton+"-hover.png")
 		i += 1
+	
+	finished_loading = true;
 
 func get_buttons_group():
 	var buttons = get_tree().get_nodes_in_group("button")
@@ -199,46 +350,48 @@ func get_buttons_group():
 			button.connect("pressed", self, "_on_Button_pressed", [button.name])
 			
 func _input(event):
-	if event is InputEventScreenTouch or ( event is InputEventMouseButton and event.is_pressed()):
-		if buttonsBlock:
-			if $messageInterGame.layer > 1:
-				isStart = false
-				if !messageInitial:
-					$message.start()
-					messageInitial = true
-				elif messageInitial:
-					if messageEnd:
-						$messageInterGame/Sprite.texture = load("")
-						$messageInterGame.layer = -100
-						$askMessage/com.visible = true
-						$askMessage/message.visible = true
-						$askMessage/como_posso.visible = true
-						$askMessage/message.text = "   ..."
-						$painLevel/Sprite.texture = load("res://assets/DoiAqui/sprites/tratamento/pain/"+str(nP)+".png")
-						$painLevel.layer = 100
-						messageInitial = false
-						messageEnd = false
-			elif $painLevel.layer > 1:
-				isStart = false
-				if !messageInitial:
-					$message.start()
-					messageInitial = true
-				elif messageInitial:
-					if messageEnd:
-						$painLevel/Sprite.texture = load("")
-						$painLevel.layer = -100
-						messageInitial = false
-						messageEnd = false
-						isStart = true
-						$Player.typesPain = "normal"
-						var buttons = get_tree().get_nodes_in_group("button")
-						$askMessage/Sprite.texture = load("res://assets/DoiAqui/objects/empty.png")
-						$askMessage/com.visible = false
-						$askMessage/message.visible = false
-						$askMessage/como_posso.visible = false
-						for button in buttons:
-							button.texture_normal = load("res://assets/DoiAqui/objects/button.png")
-							button.texture_pressed = load("res://assets/DoiAqui/objects/button.png")
+	return
+#	if event is InputEventScreenTouch or ( event is InputEventMouseButton and event.is_pressed()):
+#		if buttonsBlock:
+#			if $messageInterGame.layer > 1:
+#				isStart = false
+#				if !messageInitial:
+#					$message.start()
+#					messageInitial = true
+#				elif messageInitial:
+#					if messageEnd:
+#						$messageInterGame/Sprite.texture = load("")
+#						$messageInterGame.layer = -100
+#						$askMessage/com.visible = true
+#						$askMessage/message.visible = true
+#						$askMessage/como_posso.visible = true
+#						$askMessage/message.text = "   ..."
+#						$painLevel/Sprite.texture = load("res://assets/DoiAqui/sprites/tratamento/pain/"+str(nP)+".png")
+#						$painLevel.layer = 100
+#						messageInitial = false
+#						messageEnd = false
+#			elif $painLevel.layer > 1:
+#				isStart = false
+#				if !messageInitial:
+#					$message.start()
+#					messageInitial = true
+#				elif messageInitial:
+#					if messageEnd:
+#						$painLevel/Sprite.texture = load("")
+#						$painLevel.layer = -100
+#						messageInitial = false
+#						messageEnd = false
+#						isStart = true
+#						$Player.typesPain = "normal"
+#						var buttons = get_tree().get_nodes_in_group("button")
+#						$askMessage/Sprite.texture = load("res://assets/DoiAqui/objects/empty.png")
+#						$askMessage/com.visible = false
+#						$askMessage/message.visible = false
+#						$askMessage/como_posso.visible = false
+#						for button in buttons:
+#							button.texture_normal = load("res://assets/DoiAqui/objects/button.png")
+#							button.texture_pressed = load("res://assets/DoiAqui/objects/button.png")
+#						finished_loading
 						
 func _on_message_timeout():
 	messageEnd = true
@@ -259,3 +412,4 @@ func _on_Player_tree_entered():
 	$Player/wound.texture = load("res://assets/DoiAqui/sprites/actor/"+str(gender)+"/"+str(gender)+"-ferimento.png")
 	$Player/expressions/cold.texture = load("res://assets/DoiAqui/sprites/actor/"+str(gender)+"/"+str(gender)+"-frio.png")
 	$Player/expressions/stress.texture = load("res://assets/DoiAqui/sprites/actor/"+str(gender)+"/"+str(gender)+"-nervoso.png")
+

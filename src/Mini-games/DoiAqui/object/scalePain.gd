@@ -7,7 +7,7 @@ onready var animation: AnimationPlayer = $AnimationPlayer
 func _ready():
 	pass
 
-func _process(delta):
+func startCountdown(typeAnimation):
 	if typeAnimation == 1:
 		animation.play("leve")
 	elif typeAnimation == 2:
@@ -15,6 +15,9 @@ func _process(delta):
 	elif typeAnimation == 3:
 		animation.play("intensa")
 	else:
-		animation.stop()
+		animation.play("leve")
 		
+	yield(animation, "animation_finished")
+	
+	
 

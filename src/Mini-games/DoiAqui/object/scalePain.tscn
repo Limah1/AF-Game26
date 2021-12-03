@@ -63,7 +63,7 @@ anims/leve = SubResource( 2 )
 anims/moderada = SubResource( 3 )
 
 [node name="seta" type="Sprite" parent="."]
-position = Vector2( 21.5657, 43.0047 )
+position = Vector2( 20.255, 38.697 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 3 )
 

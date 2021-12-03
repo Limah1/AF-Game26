@@ -28,7 +28,14 @@ func _ready():
 		$sprites/r6.texture = sprites.rain.run.r6
 		
 		$sprites/win.texture = sprites.rain.win
-
+	
+	if Resources.current_life <= 0:
+		$Water_result.visible = true;
+		$life_result.visible = false;
+	
+	if Resources.heart <= 0:
+		$life_result.visible = true;
+		$Water_result.visible = false;
 
 func _on_TryAgainButton_pressed():
 	$button_sound.play()

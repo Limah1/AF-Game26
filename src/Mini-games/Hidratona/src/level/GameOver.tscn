@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://src/Mini-games/Hidratona/src/level/GameOver.gd" type="Script" id=1]
 [ext_resource path="res://assets/Hidratona/LAYOUT/button-ir-de-novo.png" type="Texture" id=2]
@@ -15,6 +15,10 @@
 [ext_resource path="res://assets/Hidratona/LAYOUT/win-hidratona-obstaculos.png" type="Texture" id=13]
 [ext_resource path="res://src/UI/sound/sound_button.tscn" type="PackedScene" id=14]
 [ext_resource path="res://assets/sounds/sons editados/applause.wav" type="AudioStream" id=15]
+[ext_resource path="res://assets/fonts/Raleway-Medium.ttf" type="DynamicFontData" id=16]
+[ext_resource path="res://assets/Hidratona/sprites/objects/agua.png" type="Texture" id=17]
+[ext_resource path="res://assets/Hidratona/sprites/objects/laranja.png" type="Texture" id=18]
+[ext_resource path="res://assets/Hidratona/sprites/objects/strawberry.png" type="Texture" id=19]
 
 [sub_resource type="Animation" id=1]
 resource_name = "run"
@@ -104,6 +108,11 @@ tracks/6/keys = {
 "values": [ false, true, false ]
 }
 
+[sub_resource type="DynamicFont" id=2]
+size = 50
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 16 )
+
 [node name="GameOver" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -113,7 +122,7 @@ __meta__ = {
 }
 
 [node name="background" type="Sprite" parent="."]
-position = Vector2( 706.598, 271.964 )
+position = Vector2( 707.858, 271.964 )
 scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 4 )
 
@@ -156,6 +165,81 @@ anims/run = SubResource( 1 )
 [node name="win-hidratona" type="Sprite" parent="."]
 position = Vector2( 1247.81, 535.817 )
 texture = ExtResource( 13 )
+
+[node name="life_result2" type="ColorRect" parent="."]
+margin_left = 1657.0
+margin_top = 388.0
+margin_right = 1706.0
+margin_bottom = 508.0
+color = Color( 0.941176, 0.941176, 0.941176, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Water_result" type="ColorRect" parent="."]
+margin_left = 622.0
+margin_top = 294.0
+margin_right = 1853.0
+margin_bottom = 645.0
+color = Color( 0.941176, 0.941176, 0.941176, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Water_result"]
+margin_left = 16.0
+margin_top = 8.0
+margin_right = 1068.0
+margin_bottom = 359.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Você correu bem rapido e chegou bem longe ! Mas ficou sem beber agua por muito tempo,  beber mais água e coma as frutas. "
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="laranja" type="Sprite" parent="Water_result"]
+position = Vector2( 1109.57, 253.524 )
+scale = Vector2( 0.459525, 0.459525 )
+texture = ExtResource( 18 )
+
+[node name="strawberry" type="Sprite" parent="Water_result"]
+position = Vector2( 1193.22, 248.897 )
+scale = Vector2( 0.189874, 0.189874 )
+texture = ExtResource( 19 )
+
+[node name="agua" type="Sprite" parent="Water_result"]
+position = Vector2( 1145.89, 116.115 )
+scale = Vector2( 0.898871, 0.898871 )
+texture = ExtResource( 17 )
+
+[node name="life_result" type="ColorRect" parent="."]
+margin_left = 622.0
+margin_top = 294.0
+margin_right = 1681.0
+margin_bottom = 645.0
+color = Color( 0.941176, 0.941176, 0.941176, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="life_result"]
+margin_left = 16.0
+margin_top = 8.0
+margin_right = 1068.0
+margin_bottom = 359.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Você correu bem rapido e chegou bem longe ! Mas você se bateu de mais nos obstaculos. "
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="GoHomeButton" type="TextureButton" parent="."]
 margin_left = 746.62

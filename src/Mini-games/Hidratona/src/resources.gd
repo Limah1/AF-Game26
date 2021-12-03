@@ -25,6 +25,8 @@ var acessory = "" # Umbrella / Coat
 
 var acessory_not_founded = ""
 
+var game_result: int;
+
 func reset_resources():
 	current_life = max_life
 	heart = 3
