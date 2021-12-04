@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/toilet_papper.wav-a017fe8ba8da1a3755aa132f91de30ff.sample"
+
+[deps]
+
+source_file="res://assets/sounds/sons editados/toilet_papper.wav"
+dest_files=[ "res://.import/toilet_papper.wav-a017fe8ba8da1a3755aa132f91de30ff.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
