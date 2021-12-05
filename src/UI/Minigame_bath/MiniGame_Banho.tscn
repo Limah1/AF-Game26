@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://assets/fonts/Roboto-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/UI/Toalha.gd" type="Script" id=2]
@@ -19,7 +19,7 @@
 [ext_resource path="res://assets/Nova pasta/Ativo 13.png" type="Texture" id=17]
 [ext_resource path="res://assets/fonts/Raleway-Medium.ttf" type="DynamicFontData" id=18]
 [ext_resource path="res://assets/Hidratona/sprites/back-button.png" type="Texture" id=19]
-[ext_resource path="res://assets/Match-3/sprites/Artboard 71.png" type="Texture" id=20]
+[ext_resource path="res://assets/Plataforma/rooms/bathroom/iconchuveiro.png" type="Texture" id=20]
 [ext_resource path="res://assets/sounds/sons editados/chuveiro.wav" type="AudioStream" id=21]
 [ext_resource path="res://assets/sounds/sons editados/toalha.wav" type="AudioStream" id=22]
 [ext_resource path="res://src/UI/sound/sound_button.tscn" type="PackedScene" id=23]
@@ -30,24 +30,21 @@ bg_color = Color( 0.0745098, 0.454902, 1, 1 )
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.0666667, 0.384314, 1, 1 )
 
+[sub_resource type="StyleBoxFlat" id=31]
+bg_color = Color( 0.0745098, 0.454902, 1, 1 )
+
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.0745098, 0.454902, 1, 1 )
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color( 0.321569, 0.321569, 0.321569, 1 )
 
-[sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 0.0745098, 0.454902, 1, 1 )
-
-[sub_resource type="StyleBoxFlat" id=5]
-bg_color = Color( 0.0666667, 0.384314, 1, 1 )
-
-[sub_resource type="StyleBoxFlat" id=6]
-bg_color = Color( 0.0745098, 0.454902, 1, 1 )
-border_width_top = 2
-corner_detail = 5
-
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 62.1312, 200.573 )
 
-[sub_resource type="ParticlesMaterial" id=8]
+[sub_resource type="ParticlesMaterial" id=5]
 emission_shape = 2
 emission_box_extents = Vector3( 60, 1, 1 )
 flag_disable_z = true
@@ -61,7 +58,7 @@ orbit_velocity_random = 0.0
 scale = 0.5
 color = Color( 0.270588, 0.631373, 0.996078, 1 )
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=6]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Ativo 12:visible")
 tracks/0/interp = 1
@@ -99,7 +96,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=7]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Ativo 12:visible")
 tracks/0/interp = 1
@@ -137,7 +134,7 @@ tracks/2/keys = {
 "values": [ false, true, false, true, false, true, false, true, false, true, false ]
 }
 
-[sub_resource type="ParticlesMaterial" id=11]
+[sub_resource type="ParticlesMaterial" id=8]
 flag_disable_z = true
 spread = 180.0
 gravity = Vector3( 0, 0, 0 )
@@ -146,24 +143,24 @@ orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 0.5
 
-[sub_resource type="RectangleShape2D" id=12]
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 61.3669, 116.145 )
+
+[sub_resource type="StyleBoxEmpty" id=10]
+
+[sub_resource type="StyleBoxEmpty" id=11]
+
+[sub_resource type="StyleBoxEmpty" id=12]
 
 [sub_resource type="StyleBoxEmpty" id=13]
 
-[sub_resource type="StyleBoxEmpty" id=14]
-
-[sub_resource type="StyleBoxEmpty" id=15]
-
-[sub_resource type="StyleBoxEmpty" id=16]
-
-[sub_resource type="RectangleShape2D" id=17]
+[sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 130.593, 96.9966 )
 
-[sub_resource type="RectangleShape2D" id=18]
+[sub_resource type="RectangleShape2D" id=15]
 extents = Vector2( 115.125, 131.6 )
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=16]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("banheiro-toalha:scale")
@@ -178,7 +175,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=17]
 length = 3.0
 loop = true
 tracks/0/type = "value"
@@ -194,54 +191,54 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="DynamicFont" id=21]
+[sub_resource type="DynamicFont" id=18]
 size = 45
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=22]
+[sub_resource type="DynamicFont" id=19]
 size = 30
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxFlat" id=23]
+[sub_resource type="StyleBoxFlat" id=20]
 bg_color = Color( 0.0745098, 0.454902, 1, 1 )
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id=24]
+[sub_resource type="StyleBoxFlat" id=21]
 bg_color = Color( 0.882353, 0.882353, 0.882353, 1 )
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id=25]
+[sub_resource type="StyleBoxFlat" id=22]
 bg_color = Color( 0.0745098, 0.356863, 1, 1 )
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id=26]
+[sub_resource type="StyleBoxFlat" id=23]
 bg_color = Color( 0.0745098, 0.356863, 1, 1 )
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id=27]
+[sub_resource type="StyleBoxFlat" id=24]
 bg_color = Color( 0.0745098, 0.454902, 1, 1 )
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="DynamicFont" id=28]
+[sub_resource type="DynamicFont" id=25]
 size = 30
 font_data = ExtResource( 18 )
 
-[sub_resource type="Animation" id=29]
+[sub_resource type="Animation" id=26]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Molhar:visible")
 tracks/0/interp = 1
@@ -351,7 +348,7 @@ tracks/8/keys = {
 "values": [ Vector2( -594, 388.179 ) ]
 }
 
-[sub_resource type="Animation" id=30]
+[sub_resource type="Animation" id=27]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Molhar:modulate")
@@ -390,7 +387,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=31]
+[sub_resource type="Animation" id=28]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Ensaboar:rect_position")
@@ -453,7 +450,7 @@ tracks/4/keys = {
 "values": [ Vector2( -658.77, 350.513 ), Vector2( -658.77, 350.513 ), Vector2( -13, 350.513 ) ]
 }
 
-[sub_resource type="Animation" id=32]
+[sub_resource type="Animation" id=29]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Ensaboar:modulate")
@@ -504,7 +501,7 @@ tracks/3/keys = {
 "values": [ Vector2( -658.77, 350.513 ), Vector2( -658.77, 350.513 ), Vector2( -13, 350.513 ) ]
 }
 
-[sub_resource type="Animation" id=33]
+[sub_resource type="Animation" id=30]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Enxugar:modulate")
@@ -545,31 +542,37 @@ texture = ExtResource( 13 )
 
 [node name="TurnOn" type="Button" parent="Ativo 6"]
 margin_left = 335.253
-margin_top = -208.854
+margin_top = -104.854
 margin_right = 545.253
-margin_bottom = 1.146
+margin_bottom = 105.146
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
+custom_styles/normal = SubResource( 31 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="iconchuveiro" type="Sprite" parent="Ativo 6/TurnOn"]
+position = Vector2( 106.87, 104.554 )
+scale = Vector2( 0.538011, 0.553522 )
+texture = ExtResource( 20 )
+
+[node name="TurnOff" type="Button" parent="Ativo 6"]
+visible = false
+margin_left = 335.253
+margin_top = -104.854
+margin_right = 545.253
+margin_bottom = 105.146
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 3 )
 custom_styles/normal = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TurnOff" type="Button" parent="Ativo 6"]
-margin_left = 334.61
-margin_top = 29.3831
-margin_right = 544.61
-margin_bottom = 239.383
-custom_styles/hover = SubResource( 4 )
-custom_styles/pressed = SubResource( 5 )
-custom_styles/normal = SubResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Artboard 71" type="Sprite" parent="Ativo 6/TurnOff"]
-position = Vector2( 105, 105 )
-scale = Vector2( 0.812786, 0.812786 )
+[node name="iconchuveiro" type="Sprite" parent="Ativo 6/TurnOff"]
+position = Vector2( 105.844, 105 )
+scale = Vector2( 0.532765, 0.551181 )
 texture = ExtResource( 20 )
 
 [node name="Ativo 7" type="Sprite" parent="Ativo 6"]
@@ -583,7 +586,7 @@ position = Vector2( 49.8903, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ativo 6/Ativo 7/SwipeArea"]
 position = Vector2( 0, 2 )
-shape = SubResource( 7 )
+shape = SubResource( 4 )
 
 [node name="Ativo 8" type="Sprite" parent="Ativo 6"]
 visible = false
@@ -596,7 +599,7 @@ z_index = 10
 emitting = false
 amount = 200
 lifetime = 1.5
-process_material = SubResource( 8 )
+process_material = SubResource( 5 )
 texture = ExtResource( 6 )
 
 [node name="Ativo 12" type="Sprite" parent="Ativo 6"]
@@ -617,8 +620,8 @@ scale = Vector2( 1.61765, 1.61765 )
 texture = ExtResource( 16 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Ativo 6"]
-anims/close_faucet = SubResource( 9 )
-anims/open_faucet = SubResource( 10 )
+anims/close_faucet = SubResource( 6 )
+anims/open_faucet = SubResource( 7 )
 
 [node name="boy-banho-1" type="Sprite" parent="."]
 position = Vector2( -16.7037, -1520.32 )
@@ -630,7 +633,7 @@ position = Vector2( 6.30869, 23.7148 )
 z_index = 5
 emitting = false
 amount = 20
-process_material = SubResource( 11 )
+process_material = SubResource( 8 )
 texture = ExtResource( 10 )
 
 [node name="body_area" type="Area2D" parent="boy-banho-1"]
@@ -640,7 +643,7 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="boy-banho-1/body_area"]
 position = Vector2( 0, 27.1606 )
-shape = SubResource( 12 )
+shape = SubResource( 9 )
 
 [node name="Molhado" type="Node2D" parent="boy-banho-1"]
 modulate = Color( 1, 1, 1, 0 )
@@ -735,7 +738,7 @@ position = Vector2( 5.63923, 59.2002 )
 texture = ExtResource( 5 )
 
 [node name="Sabonete" type="KinematicBody2D" parent="."]
-position = Vector2( 759.793, -1651.16 )
+position = Vector2( 739.612, -1758.79 )
 collision_layer = 4
 collision_mask = 2
 script = ExtResource( 3 )
@@ -749,17 +752,17 @@ margin_left = -122.0
 margin_top = -90.0
 margin_right = 142.0
 margin_bottom = 76.0
-custom_styles/hover = SubResource( 13 )
-custom_styles/pressed = SubResource( 14 )
-custom_styles/focus = SubResource( 15 )
-custom_styles/normal = SubResource( 16 )
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 11 )
+custom_styles/focus = SubResource( 12 )
+custom_styles/normal = SubResource( 13 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sabonete"]
 visible = false
-shape = SubResource( 17 )
+shape = SubResource( 14 )
 
 [node name="Toalha" type="KinematicBody2D" parent="."]
 position = Vector2( 736.189, -1277.22 )
@@ -770,7 +773,7 @@ script = ExtResource( 2 )
 preset_localization = Vector2( 736.189, -1277.22 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Toalha"]
-shape = SubResource( 18 )
+shape = SubResource( 15 )
 
 [node name="banheiro-toalha" type="Sprite" parent="Toalha"]
 position = Vector2( 5.99329, -2.99661 )
@@ -781,18 +784,18 @@ margin_left = -117.0
 margin_top = -144.0
 margin_right = 130.0
 margin_bottom = 132.0
-custom_styles/hover = SubResource( 13 )
-custom_styles/pressed = SubResource( 14 )
-custom_styles/focus = SubResource( 15 )
-custom_styles/normal = SubResource( 16 )
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 11 )
+custom_styles/focus = SubResource( 12 )
+custom_styles/normal = SubResource( 13 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Toalha"]
 autoplay = "idle"
-anims/idle = SubResource( 19 )
-anims/scale_in_out = SubResource( 20 )
+anims/idle = SubResource( 16 )
+anims/scale_in_out = SubResource( 17 )
 
 [node name="Passos" type="Control" parent="."]
 margin_left = -898.326
@@ -826,7 +829,7 @@ margin_left = -13.0
 margin_top = 226.014
 margin_right = 534.0
 margin_bottom = 298.014
-custom_fonts/font = SubResource( 21 )
+custom_fonts/font = SubResource( 18 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Tomar banho:"
 align = 1
@@ -840,7 +843,7 @@ margin_left = -13.0
 margin_top = 352.011
 margin_right = 534.0
 margin_bottom = 388.011
-custom_fonts/font = SubResource( 22 )
+custom_fonts/font = SubResource( 19 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "1 - Molhar :"
 align = 1
@@ -854,8 +857,8 @@ margin_left = 66.0
 margin_top = 79.3182
 margin_right = 473.0
 margin_bottom = 148.318
-custom_styles/fg = SubResource( 23 )
-custom_styles/bg = SubResource( 24 )
+custom_styles/fg = SubResource( 20 )
+custom_styles/bg = SubResource( 21 )
 step = 1.0
 percent_visible = false
 __meta__ = {
@@ -867,7 +870,7 @@ margin_left = -658.77
 margin_top = 350.513
 margin_right = -111.77
 margin_bottom = 386.513
-custom_fonts/font = SubResource( 22 )
+custom_fonts/font = SubResource( 19 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "2 - Ensaboar :"
 align = 1
@@ -881,8 +884,8 @@ margin_left = 66.0
 margin_top = 79.3182
 margin_right = 473.0
 margin_bottom = 148.318
-custom_styles/fg = SubResource( 23 )
-custom_styles/bg = SubResource( 24 )
+custom_styles/fg = SubResource( 20 )
+custom_styles/bg = SubResource( 21 )
 step = 1.0
 value = 30.0
 percent_visible = false
@@ -895,7 +898,7 @@ margin_left = -658.77
 margin_top = 350.513
 margin_right = -111.77
 margin_bottom = 386.513
-custom_fonts/font = SubResource( 22 )
+custom_fonts/font = SubResource( 19 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "3- Enxaguar:"
 align = 1
@@ -909,8 +912,8 @@ margin_left = 66.0
 margin_top = 79.3182
 margin_right = 473.0
 margin_bottom = 148.318
-custom_styles/fg = SubResource( 23 )
-custom_styles/bg = SubResource( 24 )
+custom_styles/fg = SubResource( 20 )
+custom_styles/bg = SubResource( 21 )
 step = 1.0
 value = 30.0
 percent_visible = false
@@ -923,7 +926,7 @@ margin_left = -658.77
 margin_top = 350.513
 margin_right = -111.77
 margin_bottom = 386.513
-custom_fonts/font = SubResource( 22 )
+custom_fonts/font = SubResource( 19 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "4 - Enxugar:"
 align = 1
@@ -937,8 +940,8 @@ margin_left = 66.0
 margin_top = 79.3182
 margin_right = 473.0
 margin_bottom = 148.318
-custom_styles/fg = SubResource( 23 )
-custom_styles/bg = SubResource( 24 )
+custom_styles/fg = SubResource( 20 )
+custom_styles/bg = SubResource( 21 )
 step = 1.0
 value = 30.0
 percent_visible = false
@@ -947,14 +950,14 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="Passos"]
-margin_left = -594.0
+margin_left = -591.881
 margin_top = 386.179
-margin_right = -174.0
+margin_right = -171.881
 margin_bottom = 486.179
-custom_styles/hover = SubResource( 25 )
-custom_styles/pressed = SubResource( 26 )
-custom_styles/normal = SubResource( 27 )
-custom_fonts/font = SubResource( 28 )
+custom_styles/hover = SubResource( 22 )
+custom_styles/pressed = SubResource( 23 )
+custom_styles/normal = SubResource( 24 )
+custom_fonts/font = SubResource( 25 )
 text = "Voltar"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -964,11 +967,11 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Passos"]
 autoplay = "p0"
-anims/p0 = SubResource( 29 )
-anims/p1 = SubResource( 30 )
-anims/p2 = SubResource( 31 )
-anims/p3 = SubResource( 32 )
-anims/p4 = SubResource( 33 )
+anims/p0 = SubResource( 26 )
+anims/p1 = SubResource( 27 )
+anims/p2 = SubResource( 28 )
+anims/p3 = SubResource( 29 )
+anims/p4 = SubResource( 30 )
 
 [node name="Button" type="Button" parent="."]
 margin_right = 12.0
@@ -984,7 +987,7 @@ stream = ExtResource( 21 )
 stream = ExtResource( 22 )
 
 [connection signal="pressed" from="Ativo 6/TurnOn" to="." method="_on_TurnOn_pressed"]
-[connection signal="pressed" from="Ativo 6/TurnOff" to="." method="_on_TurnOff_pressed"]
+[connection signal="pressed" from="Ativo 6/TurnOff" to="." method="_on_TurnOn_pressed"]
 [connection signal="input_event" from="Ativo 6/Ativo 7/SwipeArea" to="." method="_on_SwipeArea_input_event"]
 [connection signal="body_entered" from="boy-banho-1/body_area" to="." method="_on_body_area_body_entered"]
 [connection signal="body_exited" from="boy-banho-1/body_area" to="." method="_on_body_area_body_exited"]

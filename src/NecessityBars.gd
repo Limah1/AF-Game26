@@ -86,7 +86,9 @@ func _process(delta: float) -> void:
 			AnimationController.return_from_toilet()
 			peeing = false
 	
-	random_pain(delta)
+	if !is_instance_valid(AnimationController.toilet_paper):
+		random_pain(delta)
+	
 
 func go_to_bath(bathroom):
 	bath = bathroom

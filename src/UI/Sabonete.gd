@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export var preset_localization: Vector2 = Vector2(1072.176, 423)
+export var preset_localization: Vector2 = Vector2(1072.176, 473)
 
 var follow = false
 

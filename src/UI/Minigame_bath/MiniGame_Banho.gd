@@ -12,6 +12,8 @@ var is_drying = false
 var direction = null
 var pressing = false
 
+var status_button: bool = false
+
 var cd = 0.5
 var timer = 0
 
@@ -133,14 +135,24 @@ func _process(delta):
 
 
 func _on_TurnOn_pressed():
-	if(chuveiro.emitting == true):
-		return
-	chuveiro.emitting = true
-	$shower_sound.play()
+	if(!status_button):
+		$"Ativo 6/TurnOff".visible = true
+		$"Ativo 6/TurnOn".visible = false
+		
+		if(chuveiro.emitting == true):
+			return
+		chuveiro.emitting = true
+		$shower_sound.play()
+	else:
+		if(chuveiro.emitting == false):
+			return
+			
+		$"Ativo 6/TurnOff".visible = false
+		$"Ativo 6/TurnOn".visible = true
+			
+		chuveiro.emitting = false
+		$shower_sound.stop()
+	
+	status_button = !status_button
+	
 
-
-func _on_TurnOff_pressed():
-	if(chuveiro.emitting == false):
-		return
-	chuveiro.emitting = false
-	$shower_sound.stop()

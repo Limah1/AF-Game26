@@ -7,13 +7,15 @@ var slots_reference = null
 var current_room
 var is_room_moving = false
 var is_travelling = false
+
 var anim_player: AnimationPlayer
 var sound_flush: AudioStreamPlayer2D
+var toilet_paper: AudioStreamPlayer2D
+
+var bathroom_animplayer: AnimationPlayer
 
 func _ready() -> void:
 	add_to_group("Persist")
-	
-	
 
 func set_animation_player(ap: AnimationPlayer):
 	anim_player = ap
@@ -120,8 +122,17 @@ func go_to_toilet():
 	yield(anim_player, "animation_finished")
 
 func return_from_toilet():
-	anim_player.play("start")	
 	sound_flush.play()
+	
+	bathroom_animplayer.play("toilet_paper")
+	yield(countdown(), "completed")
+	anim_player.play("start")
+	yield(bathroom_animplayer, "animation_finished")
+	
+	
+	anim_player.play("start")
+
+
 
 func is_playing():
 	if(!anim_player || !is_instance_valid(anim_player)):
@@ -131,7 +142,11 @@ func is_playing():
 
 func is_travelling():
 	return is_travelling
-	
+
+func countdown():
+	yield(get_tree(), "idle_frame") # returns a GDScriptFunctionState object to _ready()
+	yield(get_tree().create_timer(2), "timeout")
+
 func save():
 	var save_dict = {
 		"filename" : "AnimationController",

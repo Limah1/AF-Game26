@@ -8,6 +8,8 @@ var playing3 = false
 func _ready() -> void:
 	room_id = 4
 	AnimationController.sound_flush = $flush
+	AnimationController.toilet_paper = $toiler_paper
+	AnimationController.bathroom_animplayer = $AnimationPlayer
 
 func _process(delta: float) -> void:
 	if (NecessityBars.higiene <= (NecessityBars.max_higiene*0.2)) and playing1 == false:
