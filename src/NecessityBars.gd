@@ -86,7 +86,11 @@ func _process(delta: float) -> void:
 			AnimationController.return_from_toilet()
 			peeing = false
 	
-	if !is_instance_valid(AnimationController.toilet_paper):
+	if (
+		!is_instance_valid(AnimationController.toilet_paper) 
+		and AnimationController.status != "Hidratona"
+		and AnimationController.status != "Match3"		
+		):
 		random_pain(delta)
 	
 

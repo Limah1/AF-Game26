@@ -51,7 +51,7 @@ func finish_bath():
 	
 
 func _on_toilet_pressed() -> void:
-	if(NecessityBars.soaked):
+	if(NecessityBars.soaked or NecessityBars.bexiga > 800):
 		return
 	
 	NecessityBars.peeing = true
