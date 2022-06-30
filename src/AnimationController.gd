@@ -140,7 +140,7 @@ func is_playing():
 	
 	return anim_player.is_playing()
 
-func is_travelling():
+func isTravelling():
 	return is_travelling
 
 func countdown():

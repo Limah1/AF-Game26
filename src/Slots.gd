@@ -17,8 +17,8 @@ func start(id):
 	
 	AnimationController.current_room = slots[1].current_room
 	
-	if(id == 0):
-		new_room.room_id = 5
+#	if(id == 0):
+#		new_room.room_id = 5
 		
 	slots[1].current_room = new_room
 	

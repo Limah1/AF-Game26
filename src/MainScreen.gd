@@ -15,6 +15,8 @@ func _ready() -> void:
 		$Slots.start(0)
 	elif(AnimationController.status == "Sleeping"):
 		$Slots.start(3)
+	elif(AnimationController.status == "ForgotAcessory"):
+		$Slots.start(3)
 	
 	AnimationController.status = "Started"
 

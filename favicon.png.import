@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/button-celular.png-06a42ed5579c5161c8a0e11b77cf90e9.stex"
+path="res://.import/favicon.png-05a5f25b7b35b567a640a7daf7751a8e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/DoiAqui/sprites/notratamento/button-celular.png"
-dest_files=[ "res://.import/button-celular.png-06a42ed5579c5161c8a0e11b77cf90e9.stex" ]
+source_file="res://favicon.png"
+dest_files=[ "res://.import/favicon.png-05a5f25b7b35b567a640a7daf7751a8e.stex" ]
 
 [params]
 

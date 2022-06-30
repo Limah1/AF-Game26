@@ -161,7 +161,7 @@ margin_right = 495.0
 margin_bottom = 194.0
 custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Voltar pra casa"
+text = "Ir para o quarto"
 align = 1
 valign = 1
 
@@ -234,7 +234,7 @@ margin_right = 495.0
 margin_bottom = 194.0
 custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Voltar pra casa"
+text = "Ir para o quarto"
 align = 1
 valign = 1
 

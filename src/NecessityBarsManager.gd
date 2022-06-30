@@ -86,7 +86,7 @@ func Set_Disabled_Button():
 		$"Button-4".disabled = true
 		return
 	
-	if(AnimationController.current_room.room_id == 0):
+	if(AnimationController.current_room.room_id == 0 or AnimationController.current_room.room_id == 5):
 		$"Button-0".disabled = true
 		$"Button-1".disabled = false
 		$"Button-2".disabled = false
@@ -118,7 +118,7 @@ func Set_Disabled_Button():
 		$"Button-4".disabled = true
 
 func check_if_can_press_button():
-	if AnimationController.is_travelling():
+	if AnimationController.isTravelling():
 		return true
 	if AnimationController.is_playing():
 		return true

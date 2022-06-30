@@ -6,6 +6,10 @@ func _ready() -> void:
 		$Continue.disabled = true
 	$title_sound.play()
 	BackgroundMusic.play_music()
+	
+	AnimationController.is_travelling = false
+	AnimationController.is_room_moving = false
+
 func _on_Continue_pressed() -> void:
 	$button_pressed.play()
 	yield($button_pressed,"finished")
