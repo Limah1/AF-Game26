@@ -8,7 +8,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if (NecessityBars.fome <= (NecessityBars.max_fome*0.2)) and playing == false:
-		$cozinha_geladeira/AnimationPlayer.play("scale_in_out")
+		$cozinha_geladeira/AnimationPlayer.play("Shaking_animation")
 		playing = true
 	elif (NecessityBars.fome > (NecessityBars.max_fome*0.2)) and playing != false:
 		$cozinha_geladeira/AnimationPlayer.play("idle")
@@ -33,6 +33,7 @@ func _process(delta: float) -> void:
 
 func _on_Eat_button_pressed() -> void:
 	$audio_open_refri.play()
+	$AnimationPlayer.stop()
 	$cozinha_geladeira.visible = false
 	$geladeira_aberta.visible = true
 	$Match3PopUp/AnimationPlayer.play("in")
@@ -56,3 +57,6 @@ func _on_LeaveButton_pressed() -> void:
 	$geladeira_aberta.visible = false
 	$cozinha_geladeira.visible = true	
 	$Match3PopUp/AnimationPlayer.play("out")
+	
+	
+

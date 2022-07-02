@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://assets/Plataforma/rooms/kitchen.png" type="Texture" id=1]
 [ext_resource path="res://src/UI/Rooms/Kitchen.gd" type="Script" id=2]
@@ -23,6 +23,73 @@
 [sub_resource type="StyleBoxEmpty" id=3]
 
 [sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="Animation" id=10]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 921, 570 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 14.0549 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "Shaking_animation"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 921, 570 ), Vector2( 921, 570 ), Vector2( 921, 570 ), Vector2( 921, 570 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.288811, 15.1787, -21.2783, 0.230413 ]
+}
 
 [sub_resource type="Animation" id=5]
 resource_name = "idle"
@@ -116,9 +183,6 @@ tracks/1/keys = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="cozinha" type="Sprite" parent="."]
 position = Vector2( 960, 540 )
@@ -162,12 +226,14 @@ __meta__ = {
 }
 
 [node name="cozinha_geladeira" type="Sprite" parent="."]
-position = Vector2( 917.164, 566.095 )
+position = Vector2( 921, 570 )
+rotation = 0.245304
 z_index = -30
 texture = ExtResource( 10 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="cozinha_geladeira"]
-autoplay = "idle"
+anims/RESET = SubResource( 10 )
+anims/Shaking_animation = SubResource( 9 )
 anims/idle = SubResource( 5 )
 anims/scale_in_out = SubResource( 6 )
 
