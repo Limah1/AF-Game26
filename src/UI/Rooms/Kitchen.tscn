@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://assets/Plataforma/rooms/kitchen.png" type="Texture" id=1]
 [ext_resource path="res://src/UI/Rooms/Kitchen.gd" type="Script" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://assets/Plataforma/ambientes/janela_sol.png" type="Texture" id=13]
 [ext_resource path="res://assets/Plataforma/ambientes/janela_neve.png" type="Texture" id=14]
 [ext_resource path="res://assets/sounds/sons editados/open_refrigerator.wav" type="AudioStream" id=15]
+[ext_resource path="res://assets/Particulas/textures/1024/alpha/effect_2.png" type="Texture" id=16]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -24,7 +25,7 @@
 
 [sub_resource type="StyleBoxEmpty" id=4]
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=5]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
@@ -51,7 +52,7 @@ tracks/1/keys = {
 "values": [ 14.0549 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=6]
 resource_name = "Shaking_animation"
 loop = true
 tracks/0/type = "value"
@@ -73,10 +74,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3, 0.6, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 921, 570 ), Vector2( 921, 570 ), Vector2( 921, 570 ), Vector2( 921, 570 ) ]
+"values": [ Vector2( 921, 570 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath(".:rotation_degrees")
@@ -85,14 +86,13 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.3, 0.6, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 0.288811, 15.1787, -21.2783, 0.230413 ]
+"values": [ 0.288811 ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "idle"
+[sub_resource type="Animation" id=7]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
@@ -106,8 +106,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "scale_in_out"
+[sub_resource type="Animation" id=8]
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -123,8 +122,33 @@ tracks/0/keys = {
 "values": [ Vector2( 1.1, 1.1 ), Vector2( 1, 1 ), Vector2( 1.1, 1.1 ) ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "in"
+[sub_resource type="CanvasItemMaterial" id=11]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="Gradient" id=13]
+offsets = PoolRealArray( 0.0930233, 0.155039, 0.488372, 0.860465 )
+colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 1, 0.355963, 0.355963, 0.355963, 1, 0.970726, 0.970726, 0.970726, 1 )
+
+[sub_resource type="GradientTexture" id=14]
+gradient = SubResource( 13 )
+width = 2052
+
+[sub_resource type="ParticlesMaterial" id=12]
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 360.0
+angle_random = 1.0
+color_ramp = SubResource( 14 )
+anim_offset = 1.0
+anim_offset_random = 1.0
+
+[sub_resource type="Animation" id=9]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rect_position")
@@ -151,8 +175,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "out"
+[sub_resource type="Animation" id=10]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rect_position")
@@ -183,6 +206,9 @@ tracks/1/keys = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="cozinha" type="Sprite" parent="."]
 position = Vector2( 960, 540 )
@@ -227,15 +253,21 @@ __meta__ = {
 
 [node name="cozinha_geladeira" type="Sprite" parent="."]
 position = Vector2( 921, 570 )
-rotation = 0.245304
+rotation = 0.0050407
 z_index = -30
 texture = ExtResource( 10 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="cozinha_geladeira"]
-anims/RESET = SubResource( 10 )
-anims/Shaking_animation = SubResource( 9 )
-anims/idle = SubResource( 5 )
-anims/scale_in_out = SubResource( 6 )
+anims/RESET = SubResource( 5 )
+anims/Shaking_animation = SubResource( 6 )
+anims/idle = SubResource( 7 )
+anims/scale_in_out = SubResource( 8 )
+
+[node name="Particles2D" type="Particles2D" parent="cozinha_geladeira"]
+material = SubResource( 11 )
+z_index = -31
+process_material = SubResource( 12 )
+texture = ExtResource( 16 )
 
 [node name="geladeira_aberta" type="Sprite" parent="."]
 visible = false
@@ -296,8 +328,8 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Match3PopUp"]
-anims/in = SubResource( 7 )
-anims/out = SubResource( 8 )
+anims/in = SubResource( 9 )
+anims/out = SubResource( 10 )
 
 [node name="audio_open_refri" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 917.164, 566.095 )
