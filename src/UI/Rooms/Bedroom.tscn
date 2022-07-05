@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=2]
+[gd_scene load_steps=67 format=2]
 
 [ext_resource path="res://assets/Nova pasta/bedroom.png" type="Texture" id=1]
 [ext_resource path="res://src/UI/Rooms/Bedroom.gd" type="Script" id=2]
@@ -36,6 +36,8 @@
 [ext_resource path="res://assets/Nova pasta/Ativo 15.png" type="Texture" id=34]
 [ext_resource path="res://assets/Nova pasta/Ativo 17.png" type="Texture" id=35]
 [ext_resource path="res://assets/sounds/sons editados/lullaby.wav" type="AudioStream" id=36]
+[ext_resource path="res://assets/Particulas/textures/1024/alpha/effect_3.png" type="Texture" id=37]
+[ext_resource path="res://assets/Particulas/textures/1024/alpha/spotlight_5.png" type="Texture" id=38]
 
 [sub_resource type="Animation" id=1]
 resource_name = "default"
@@ -168,6 +170,29 @@ tracks/0/keys = {
 [sub_resource type="StyleBoxEmpty" id=23]
 
 [sub_resource type="StyleBoxEmpty" id=24]
+
+[sub_resource type="CanvasItemMaterial" id=25]
+blend_mode = 1
+
+[sub_resource type="ParticlesMaterial" id=26]
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+initial_velocity_random = 0.26
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 360.0
+angle_random = 1.0
+color = Color( 0.0392157, 0.521569, 0.0823529, 1 )
+
+[sub_resource type="CanvasItemMaterial" id=27]
+blend_mode = 1
+
+[sub_resource type="ParticlesMaterial" id=28]
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color = Color( 0.831373, 0.870588, 0.168627, 1 )
 
 [node name="Bedroom" type="Control"]
 anchor_right = 1.0
@@ -319,10 +344,11 @@ __meta__ = {
 }
 
 [node name="SleepButton" type="Button" parent="."]
-margin_left = 1699.0
-margin_top = 362.0
-margin_right = 1914.0
-margin_bottom = 895.0
+margin_left = 1221.0
+margin_top = 579.0
+margin_right = 1436.0
+margin_bottom = 1112.0
+rect_scale = Vector2( 2.05297, 0.837101 )
 custom_styles/hover = SubResource( 13 )
 custom_styles/pressed = SubResource( 14 )
 custom_styles/focus = SubResource( 15 )
@@ -536,6 +562,23 @@ stream = ExtResource( 6 )
 
 [node name="lullaby" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 36 )
+
+[node name="bed_particle" type="Particles2D" parent="."]
+material = SubResource( 25 )
+position = Vector2( 1412, 790 )
+z_index = -26
+process_material = SubResource( 26 )
+texture = ExtResource( 37 )
+
+[node name="lamp_particle" type="Particles2D" parent="."]
+material = SubResource( 27 )
+position = Vector2( 1803, 483 )
+scale = Vector2( 0.25, 0.25 )
+emitting = false
+lifetime = 5.0
+speed_scale = 3.49
+process_material = SubResource( 28 )
+texture = ExtResource( 38 )
 
 [connection signal="pressed" from="PersonalizationButton" to="." method="_on_PersonalizationButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/SleepButton2" to="." method="_on_SleepButton_pressed"]

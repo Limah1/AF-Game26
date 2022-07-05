@@ -61,6 +61,7 @@ func _on_pick_coat_pressed() -> void:
 
 func _on_SleepButton_pressed() -> void:
 	$abajur.play()
+	$bed_particle.set_emitting(false)
 	if(NecessityBars.sleeping):
 		wake_up()
 	else:
@@ -72,6 +73,7 @@ func sleep():
 	$"quarto-abajur-desligado".visible = true
 	$CanvasLayer/ColorRect.visible = true 
 	$CanvasLayer/SleepButton2.visible = true 
+	$lamp_particle.set_emitting(true)
 	yield(AnimationController.go_to_bed(), "completed")
 	NecessityBars.sleeping = true
 	AnimationController.status = "Sleeping"
@@ -91,6 +93,8 @@ func wake_up():
 	$"quarto-abajur-desligado".visible = false
 	$CanvasLayer/ColorRect.visible = false 
 	$CanvasLayer/SleepButton2.visible = false 
+	$bed_particle.set_emitting(true)
+	$lamp_particle.set_emitting(false)
 	$lullaby.stop()
 	yield(AnimationController.wake_up_from_bed(), "completed")
 

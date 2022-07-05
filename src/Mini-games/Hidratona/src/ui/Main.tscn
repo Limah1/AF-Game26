@@ -31,9 +31,9 @@ texture = ExtResource( 2 )
 
 [node name="Tutorial" type="TextureButton" parent="."]
 margin_left = 560.0
-margin_top = 577.302
+margin_top = 577.0
 margin_right = 928.0
-margin_bottom = 704.302
+margin_bottom = 706.0
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 5 )
 __meta__ = {
