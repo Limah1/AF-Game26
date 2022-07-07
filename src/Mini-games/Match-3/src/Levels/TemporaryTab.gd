@@ -10,7 +10,6 @@ var can_start = false
 
 
 var AllFruits = [
-	load("res://src/Mini-games/Match-3/src/Tiles/Fruits/Egg.tscn"),
 ]
 
 var AllTiles = []
@@ -30,10 +29,19 @@ func _physics_process(delta: float) -> void:
 		if(instance_timer <= 0):
 			start -= 1
 			instance_timer = 0
+			
+			#Load fruits is here
 			for tile in AllTiles[0]:
+				#First randomize for selecting if it will be a harmfull or not,
+				#with a 10% of being harmfull
 				rng.randomize()
-				var random_number = rng.randi_range(0,4)
-				add_fruit(tile, AllFruits[random_number])
+				var random_number = rng.randi_range(1,10)
+				if random_number == 1:
+					add_fruit(tile, AllFruits[3])
+				else:
+					rng.randomize()
+					random_number = rng.randi_range(0,2)
+					add_fruit(tile, AllFruits[random_number])
 		
 		return
 	
@@ -45,9 +53,17 @@ func check_generated_map():
 	for tile in alltiles:
 		if tile.check_combinations():
 			var oldfruit = tile.fruit
+
+			#First randomize for selecting if it will be a harmfull or not,
+			#with a 10% of being harmfull
 			rng.randomize()
-			var random_number = rng.randi_range(0,4)
-			add_fruit(tile, AllFruits[random_number])
+			var random_number = rng.randi_range(1,10)
+			if random_number == 1:
+				add_fruit(tile, AllFruits[3])
+			else:
+				rng.randomize()
+				random_number = rng.randi_range(0,2)
+				add_fruit(tile, AllFruits[random_number])
 			
 			S_Conntroller.ResetTiles()
 			

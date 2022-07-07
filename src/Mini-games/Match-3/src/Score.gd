@@ -9,14 +9,14 @@ var value;
 
 onready var PB = $ProgressBar
 func _ready():
-	$HealthDisplay/HealthBar.max_value = S_Conntroller.goals[0] + S_Conntroller.goals[1] + S_Conntroller.goals[2]
+	$HealthDisplay/HealthBar.max_value = S_Conntroller.goalScore
 
 func _process(delta: float) -> void:
 	p1.text = str(S_Conntroller.score1, " / ",S_Conntroller.goals[0])
 	p2.text = str(S_Conntroller.score2, " / ", S_Conntroller.goals[1])
 	p3.text = str(S_Conntroller.score3, " / ", S_Conntroller.goals[2])
 	
-	value = S_Conntroller.score1 + S_Conntroller.score2 + S_Conntroller.score3
+	value = S_Conntroller.totalScore
 	$HealthDisplay.update_healthBar(value)
 	
 	chances.text = str(S_Conntroller.chances)

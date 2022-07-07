@@ -7,11 +7,11 @@ var bar_yellow: = preload("res://assets/Match-3/sprites/barHorizontal_yellow.png
 onready var healthbar = $HealthBar
 
 func start():
-	healthbar.max_value = S_Conntroller.goals[0] + S_Conntroller.goals[1] + S_Conntroller.goals[2]
+	healthbar.max_value = S_Conntroller.goalScore
 
 func _ready():
 	if get_parent() and get_parent().get("max_health"):
-		healthbar.max_value = S_Conntroller.goals[0] + S_Conntroller.goals[1] + S_Conntroller.goals[2]
+		healthbar.max_value = S_Conntroller.goalScore
 		
 func _process(delta):
 	global_rotation = 0

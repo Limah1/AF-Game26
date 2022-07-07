@@ -98,6 +98,7 @@ __meta__ = {
 }
 
 [node name="Pontuacao1" type="Label" parent="."]
+visible = false
 margin_left = 89.716
 margin_top = 587.995
 margin_right = 152.716
@@ -112,6 +113,7 @@ __meta__ = {
 }
 
 [node name="Pontuacao2" type="Label" parent="."]
+visible = false
 margin_left = 89.716
 margin_top = 712.446
 margin_right = 152.716
@@ -123,6 +125,7 @@ align = 1
 valign = 1
 
 [node name="Pontuacao3" type="Label" parent="."]
+visible = false
 margin_left = 89.716
 margin_top = 834.068
 margin_right = 152.716

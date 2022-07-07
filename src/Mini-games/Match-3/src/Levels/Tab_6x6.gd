@@ -2,7 +2,7 @@ extends Board
 
 onready var animationInfo: AnimationPlayer = $infoBoxAnimation 
 func _ready() -> void:
-	S_Conntroller.goals = [15,15,15]
+	S_Conntroller.goalScore = 60
 	S_Conntroller.chances = 20
 	
 	fruit_max_count = 36
@@ -25,13 +25,13 @@ func _ready() -> void:
 	
 	$Temp_Tab_6x6.start(AllFruits)
 	var textInfobox = get_node("info-box/ColorRect/Label").text
-	for fruit in AllFruits:
-		var fruitNode = fruit.instance()
-		textInfobox += fruitNode.nutrient
-		textInfobox += "\n"
-		get_node("info-box/ColorRect/Label").text = textInfobox
-		print(fruitNode.nutrient)
-		fruitNode.queue_free()
+#	for fruit in AllFruits:
+#		var fruitNode = fruit.instance()
+#		textInfobox += fruitNode.nutrient
+#		textInfobox += "\n"
+#		get_node("info-box/ColorRect/Label").text = textInfobox
+#		print(fruitNode.nutrient)
+#		fruitNode.queue_free()
 
 func _on_back_pressed():	
 	animationInfo.play("fade_out")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://src/Mini-games/Match-3/src/Tiles/Tile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Mini-games/Match-3/src/Levels/Tab_6x6.gd" type="Script" id=2]
@@ -7,11 +7,13 @@
 [ext_resource path="res://src/Mini-games/Match-3/src/GUI/Background.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/fonts/Teste.tres" type="DynamicFont" id=6]
 [ext_resource path="res://assets/Match-3/sprites/Delete-80_icon-icons.com_57340.png" type="Texture" id=7]
+[ext_resource path="res://assets/Match-3/pause.png" type="Texture" id=8]
+[ext_resource path="res://assets/Hidratona/sprites/objects/play-button (1).png" type="Texture" id=9]
+[ext_resource path="res://assets/Plataforma/buttons/button-sair.png" type="Texture" id=10]
 [ext_resource path="res://src/Mini-games/Match-3/src/Levels/Temp_Tab_6x6.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/Hidratona/sprites/back-button.png" type="Texture" id=15]
 [ext_resource path="res://assets/Match-3/sprites/personagens/girl-seria.png" type="Texture" id=16]
 [ext_resource path="res://assets/Match-3/sprites/blue_info_information_12461 (1).png" type="Texture" id=17]
-
 
 [sub_resource type="Animation" id=1]
 resource_name = "fade_in"
@@ -116,6 +118,60 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_horizontal_guides_": [ -159.099, 1010.91, -231.369, 953.637, -155.536, -184.044, -171.572, 85.5376, 150.944 ],
 "_edit_vertical_guides_": [ 1410.1, 1462.62, 1831.27, 1357.15, 504.12, 568.337 ]
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 127
+
+[node name="Pause" type="Control" parent="CanvasLayer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Pause"]
+modulate = Color( 1, 1, 1, 0.662745 )
+margin_left = 4.23785
+margin_right = 1928.24
+margin_bottom = 1086.0
+mouse_filter = 2
+color = Color( 0.0666667, 0.0627451, 0.0627451, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="continue" type="TextureButton" parent="CanvasLayer/Pause"]
+pause_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -359.941
+margin_top = -203.0
+margin_right = -29.9412
+margin_bottom = 203.0
+texture_normal = ExtResource( 9 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="leave" type="TextureButton" parent="CanvasLayer/Pause"]
+pause_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 97.8542
+margin_top = -126.719
+margin_right = 300.854
+margin_bottom = 123.281
+texture_normal = ExtResource( 10 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
 }
 
 [node name="Fila1" type="Node2D" parent="."]
@@ -280,6 +336,7 @@ scale = Vector2( 2.5, 2.5 )
 texture = ExtResource( 16 )
 
 [node name="InfoButton" type="TextureButton" parent="."]
+visible = false
 margin_left = 1745.91
 margin_top = 23.0486
 margin_right = 1821.91
@@ -362,6 +419,19 @@ __meta__ = {
 [node name="infoBoxAnimation" type="AnimationPlayer" parent="."]
 anims/fade_in = SubResource( 3 )
 anims/fade_out = SubResource( 4 )
+
+[node name="PauseButton" type="TextureButton" parent="."]
+margin_left = 1775.24
+margin_top = 33.4757
+margin_right = 1903.24
+margin_bottom = 161.476
+rect_scale = Vector2( 0.8, 0.8 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="pressed" from="LeaveButton" to="." method="_on_LeaveButton_pressed"]
 [connection signal="pressed" from="InfoButton" to="." method="_on_InfoButton_pressed"]
 [connection signal="pressed" from="info-box/back" to="." method="_on_back_pressed"]
