@@ -10,7 +10,7 @@ var complete_match5 = S_Conntroller.score1 != S_Conntroller.goals[0] and S_Connt
 var complete_match6 = S_Conntroller.score1 != S_Conntroller.goals[0] and S_Conntroller.score2 == S_Conntroller.goals[1] and S_Conntroller.score3 != S_Conntroller.goals[2]
 
 var complete_match7 = S_Conntroller.score1 != S_Conntroller.goals[0] and S_Conntroller.score2 != S_Conntroller.goals[1] and S_Conntroller.score3 != S_Conntroller.goals[2]
-var value = S_Conntroller.score1 + S_Conntroller.score2 + S_Conntroller.score3
+var value = S_Conntroller.totalScore
 
 var timer = 2
 var hide = false
@@ -19,35 +19,35 @@ func _ready():
 	$applause.play()
 	$character.texture = CharacterController.all_sprites.match3.win
 	
-	$HealthDisplay/HealthBar.max_value = S_Conntroller.goals[0] + S_Conntroller.goals[1] + S_Conntroller.goals[2]
-	if complete_total_match:
-		$estrela2.visible = true
-		$estrela3.visible = true
-	elif complete_match1:
-		$estrela2.visible = true
-	elif complete_match2:
-		$estrela2.visible = true
-	elif complete_match3:
-		$estrela2.visible = true
+	$HealthDisplay/HealthBar.max_value = S_Conntroller.goalScore
+#	if complete_total_match:
+#		$estrela2.visible = true
+#		$estrela3.visible = true
+#	elif complete_match1:
+#		$estrela2.visible = true
+#	elif complete_match2:
+#		$estrela2.visible = true
+#	elif complete_match3:
+#		$estrela2.visible = true
 		
-	if S_Conntroller.score1 == S_Conntroller.goals[0]:
-		$"arroz-feijao/checked".visible = true
-	else:
-		$"arroz-feijao/checked".visible = false
-	if S_Conntroller.score2 == S_Conntroller.goals[1]:
-		$"suco-abacaxi/checked".visible = true
-	else:
-		$"suco-abacaxi/checked".visible = false
-	if S_Conntroller.score3 == S_Conntroller.goals[2]:
-		$melancia/checked.visible = true
-	else:
-		$melancia/checked.visible = false		
+#	if S_Conntroller.score1 == S_Conntroller.goals[0]:
+#		$"arroz-feijao/checked".visible = true
+#	else:
+#		$"arroz-feijao/checked".visible = false
+#	if S_Conntroller.score2 == S_Conntroller.goals[1]:
+#		$"suco-abacaxi/checked".visible = true
+#	else:
+#		$"suco-abacaxi/checked".visible = false
+#	if S_Conntroller.score3 == S_Conntroller.goals[2]:
+#		$melancia/checked.visible = true
+#	else:
+#		$melancia/checked.visible = false		
 	$HealthDisplay/HealthBar.value = value
 	$HealthDisplay.update_healthBar(value)
 	
-	$score1.text = str(S_Conntroller.score1, " / ", S_Conntroller.goals[0])
-	$score2.text = str(S_Conntroller.score2, " / ", S_Conntroller.goals[1])
-	$score3.text = str(S_Conntroller.score3, " / ", S_Conntroller.goals[2])
+#	$score1.text = str(S_Conntroller.score1, " / ", S_Conntroller.goals[0])
+#	$score2.text = str(S_Conntroller.score2, " / ", S_Conntroller.goals[1])
+#	$score3.text = str(S_Conntroller.score3, " / ", S_Conntroller.goals[2])
 	
 	$Fruit_UI.start_Win(get_fruit_reference(S_Conntroller.fruit1_reference), 0)
 	$Fruit_UI2.start_Win(get_fruit_reference(S_Conntroller.fruit2_reference), 1)
@@ -67,7 +67,7 @@ func _process(delta: float) -> void:
 
 func get_fruit_reference(fruit: String):
 	var fruit_reference = {}
-	var path: String = "res://assets/sprites/"
+	var path: String = "res://assets/Match-3/sprites/"
 	
 	var fruit_name = translated_name(fruit)
 	fruit_name = fruit_name.replace(" ", "-").to_lower()
@@ -128,6 +128,9 @@ func _on_TextureButton_pressed():
 	get_parent().get_tree().change_scene("res://src/Levels/Main.tscn")
 
 func _on_VoltarParaCasa_pressed() -> void:
+	S_Conntroller.reset_all()
+	M_Controller.reset_all()
+	C_Controller.reset_score()
 	NecessityBars.eating = false
 	get_tree().change_scene("res://src/MainScreen.tscn")
 
@@ -135,7 +138,7 @@ func _on_IrDeNovo_pressed() -> void:
 	S_Conntroller.reset_all()
 	M_Controller.reset_all()
 	C_Controller.reset_score()
-	get_tree().change_scene("res://src/Mini-games/Match-3/src/Levels/Tab_9x9.tscn")
+	get_tree().change_scene("res://src/Mini-games/Match-3/src/Levels/Tab_6x6.tscn")
 
 
 func _on_Button_button_up():

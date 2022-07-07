@@ -50,7 +50,7 @@ func _on_StartButton_pressed() -> void:
 	
 	AnimationController.status = "Match3"
 	NecessityBars.eating = true
-	get_tree().change_scene("res://src/Mini-games/Match-3/src/Levels/Tab_9x9.tscn")
+	get_tree().change_scene("res://src/Mini-games/Match-3/src/Levels/Tab_6x6.tscn")
 
 func _on_LeaveButton_pressed() -> void:
 	$geladeira_aberta.visible = false

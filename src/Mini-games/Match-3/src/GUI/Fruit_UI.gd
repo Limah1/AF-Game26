@@ -8,8 +8,8 @@ func start_show(_fruit, index):
 	$icon.scale.x = 0.7
 	$icon.scale.y = 0.7
 	
-	$Label.visible = true
-	$Label3.visible = true
+#	$Label.visible = true
+#	$Label3.visible = true
 	
 	if fruit.name == "Maca":
 		fruit.name = "Maçã"
@@ -25,8 +25,8 @@ func start_Win(_fruit, index):
 	$icon.scale.x = 0.7
 	$icon.scale.y = 0.7
 	
-	$Label.visible = true
-	$Label3.visible = true
+#	$Label.visible = true
+#	$Label3.visible = true
 	
 	if fruit.name == "Maca":
 		fruit.name = "Maçã"
@@ -39,6 +39,7 @@ func start_Win(_fruit, index):
 	
 	$Label.text = fruit.name
 	$icon.texture = load(fruit.sprite)
+	$checked.visible = true
 
 func start_ongame(_fruit):
 	fruit = _fruit

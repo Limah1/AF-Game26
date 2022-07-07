@@ -5,7 +5,6 @@
 [ext_resource path="res://assets/fonts/Raleway-Medium.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://assets/Match-3/sprites/checked-task-icon.png" type="Texture" id=4]
 
-
 [sub_resource type="StyleBoxEmpty" id=1]
 
 [sub_resource type="StyleBoxEmpty" id=2]
@@ -50,16 +49,19 @@ scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="."]
-visible = false
-margin_left = 125.858
-margin_top = 11.9865
-margin_right = 373.858
-margin_bottom = 48.9865
+margin_left = 126.358
+margin_top = 35.0
+margin_right = 374.358
+margin_bottom = 72.0
 custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Nome da Comida"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label3" type="Label" parent="."]
+visible = false
 margin_left = 130.353
 margin_top = 49.4441
 margin_right = 308.353

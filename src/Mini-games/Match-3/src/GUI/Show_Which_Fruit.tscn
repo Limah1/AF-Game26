@@ -125,6 +125,7 @@ margin_right = 980.0
 margin_bottom = 265.0
 
 [node name="fried-egg" type="Sprite" parent="Metas"]
+visible = false
 position = Vector2( 911.449, 482.937 )
 scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 6 )

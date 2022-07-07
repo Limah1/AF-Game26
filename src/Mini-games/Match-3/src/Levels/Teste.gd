@@ -54,7 +54,7 @@ var selected_good_fruits = []
 var selected_harmful_fruit
 
 var AllFruits = [
-	load("res://src/Mini-games/Match-3/src/Tiles/Fruits/Egg.tscn"),
+	#load("res://src/Mini-games/Match-3/src/Tiles/Fruits/Egg.tscn"),
 ]
 
 func _ready():
@@ -124,14 +124,29 @@ func _physics_process(delta: float) -> void:
 		for tile in AllTiles[0]:
 			if !is_instance_valid(tile.fruit):
 				instance_timer = 0.5
+				
+				#LoadFruit here
+				#First randomize for selecting if it will be a harmfull or not,
+				#with a 5% of being harmfull
 				rng.randomize()
-				var random_number = rng.randi_range(0,4)
-				add_fruit(tile, AllFruits[random_number])
+				var random_number = rng.randi_range(1,20)
+				if random_number == 1:
+					add_fruit(tile, AllFruits[3])
+				else:
+					rng.randomize()
+					random_number = rng.randi_range(0,2)
+					add_fruit(tile, AllFruits[random_number])
 	
 	if (S_Conntroller.chances == 0):
 		get_parent().get_tree().change_scene("res://src/Mini-games/Match-3/src/Levels/Win.tscn")
-	if (S_Conntroller.goals[0] == S_Conntroller.score1 and S_Conntroller.goals[1] == S_Conntroller.score2
-	and S_Conntroller.goals[2] == S_Conntroller.score3):
+#	if (
+#		(S_Conntroller.goals[0] == S_Conntroller.score1 
+#		and S_Conntroller.goals[1] == S_Conntroller.score2
+#		and S_Conntroller.goals[2] == S_Conntroller.score3)
+#		):
+#		get_parent().get_tree().change_scene("res://src/Mini-games/Match-3/src/Levels/Win.tscn")
+
+	if S_Conntroller.totalScore >= S_Conntroller.goalScore:
 		get_parent().get_tree().change_scene("res://src/Mini-games/Match-3/src/Levels/Win.tscn")
 
 func start(fruits):
