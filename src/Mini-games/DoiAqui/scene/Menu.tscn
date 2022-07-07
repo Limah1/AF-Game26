@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/Mini-games/DoiAqui/scene/Control.gd" type="Script" id=1]
 [ext_resource path="res://assets/DoiAqui/objects/botao-comecar.png" type="Texture" id=2]
 [ext_resource path="res://assets/DoiAqui/objects/pop-up-doi-aqui.png" type="Texture" id=3]
-[ext_resource path="res://assets/DoiAqui/objects/botao-tutorial-hover.png" type="Texture" id=4]
 [ext_resource path="res://assets/DoiAqui/objects/botao-comecar-hover.png" type="Texture" id=5]
 [ext_resource path="res://assets/DoiAqui/objects/botao-tutorial-hover_1.png" type="Texture" id=6]
 [ext_resource path="res://src/UI/sound/sound_button.tscn" type="PackedScene" id=7]
@@ -35,22 +34,23 @@ position = Vector2( 1369.02, 549.342 )
 texture = ExtResource( 3 )
 
 [node name="learnButton" type="TextureButton" parent="."]
-margin_left = 1026.0
-margin_top = 592.0
-margin_right = 1348.0
-margin_bottom = 702.0
-texture_normal = ExtResource( 4 )
+margin_left = 972.0
+margin_top = 590.0
+margin_right = 1328.0
+margin_bottom = 738.0
+texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 6 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="startButton" type="TextureButton" parent="."]
-margin_left = 1398.31
-margin_top = 590.63
-margin_right = 1720.31
-margin_bottom = 700.63
+margin_left = 1385.0
+margin_top = 591.0
+margin_right = 1759.0
+margin_bottom = 741.0
 texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 5 )
 expand = true
