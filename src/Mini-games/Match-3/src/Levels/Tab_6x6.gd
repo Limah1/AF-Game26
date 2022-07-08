@@ -47,3 +47,19 @@ func _on_InfoButton_pressed():
 	animationInfo.play("fade_in")
 	yield(animationInfo, "animation_finished")
 	print("2")
+
+
+func _on_PauseButton_pressed():
+	$CanvasLayer/Pause.visible = true
+	var necessitybar = load("res://src/UI/NecessityManager.tscn").instance()
+	$CanvasLayer/Pause.add_child(necessitybar)
+
+
+func _on_continue_pressed():
+	$CanvasLayer/Pause.visible = false
+	$CanvasLayer/Pause.get_node("NecessityManager").queue_free()
+
+
+func _on_leave_pressed():
+	NecessityBars.eating = false
+	get_tree().change_scene("res://src/MainScreen.tscn")

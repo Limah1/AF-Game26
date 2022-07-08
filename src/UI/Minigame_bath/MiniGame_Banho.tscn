@@ -738,20 +738,20 @@ position = Vector2( 5.63923, 59.2002 )
 texture = ExtResource( 5 )
 
 [node name="Sabonete" type="KinematicBody2D" parent="."]
-position = Vector2( 739.612, -1758.79 )
+position = Vector2( 760.825, -1648.5 )
 collision_layer = 4
 collision_mask = 2
 script = ExtResource( 3 )
-preset_localization = Vector2( 753.443, -1984.52 )
+preset_localization = Vector2( 760.825, -1648.5 )
 
 [node name="Sabonete" type="Sprite" parent="Sabonete"]
 texture = ExtResource( 12 )
 
 [node name="Press" type="Button" parent="Sabonete"]
-margin_left = -122.0
-margin_top = -90.0
-margin_right = 142.0
-margin_bottom = 76.0
+margin_left = -105.787
+margin_top = -94.7061
+margin_right = 158.213
+margin_bottom = 71.2939
 custom_styles/hover = SubResource( 11 )
 custom_styles/pressed = SubResource( 12 )
 custom_styles/focus = SubResource( 13 )
