@@ -4,7 +4,7 @@
 [ext_resource path="res://src/UI/Rooms/LivingRoom.gd" type="Script" id=2]
 [ext_resource path="res://assets/Plataforma/buttons/tv-on.png" type="Texture" id=3]
 [ext_resource path="res://assets/Plataforma/buttons/tv-off.png" type="Texture" id=4]
-[ext_resource path="res://assets/Plataforma/buttons/button-tutorial.png" type="Texture" id=5]
+[ext_resource path="res://assets/Plataforma/buttons/button-fechar.png" type="Texture" id=5]
 [ext_resource path="res://assets/Plataforma/buttons/button-comecar.png" type="Texture" id=6]
 [ext_resource path="res://assets/Plataforma/buttons/pop-up-doi-aqui.png" type="Texture" id=7]
 [ext_resource path="res://assets/DoiAqui/objects/botao-tutorial-hover_1.png" type="Texture" id=8]
@@ -207,20 +207,20 @@ __meta__ = {
 [node name="DoiAqui" type="Control" parent="."]
 visible = false
 margin_left = 876.811
-margin_top = -885.893
+margin_top = 130.107
 margin_right = 1826.81
-margin_bottom = -85.893
+margin_bottom = 930.107
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="pop-up-doi-aqui" type="Sprite" parent="DoiAqui"]
-position = Vector2( 480.162, 422.602 )
+position = Vector2( 480.189, 420.893 )
 texture = ExtResource( 7 )
 
 [node name="button-tutorial" type="Sprite" parent="DoiAqui"]
 position = Vector2( 299.143, 521.597 )
-texture = ExtResource( 5 )
+texture = ExtResource( 8 )
 
 [node name="StartButton" type="TextureButton" parent="DoiAqui"]
 margin_left = 510.0
@@ -239,8 +239,7 @@ margin_left = 852.0
 margin_top = 56.5
 margin_right = 899.0
 margin_bottom = 104.5
-texture_normal = ExtResource( 8 )
-texture_pressed = ExtResource( 8 )
+texture_normal = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
