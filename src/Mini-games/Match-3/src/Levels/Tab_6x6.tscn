@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://src/Mini-games/Match-3/src/Tiles/Tile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Mini-games/Match-3/src/Levels/Tab_6x6.gd" type="Script" id=2]
@@ -11,40 +11,15 @@
 [ext_resource path="res://assets/Hidratona/sprites/objects/play-button (1).png" type="Texture" id=9]
 [ext_resource path="res://assets/Plataforma/buttons/button-sair.png" type="Texture" id=10]
 [ext_resource path="res://src/Mini-games/Match-3/src/Levels/Temp_Tab_6x6.tscn" type="PackedScene" id=11]
-[ext_resource path="res://assets/Hidratona/sprites/back-button.png" type="Texture" id=15]
 [ext_resource path="res://assets/Match-3/sprites/personagens/girl-seria.png" type="Texture" id=16]
 [ext_resource path="res://assets/Match-3/sprites/blue_info_information_12461 (1).png" type="Texture" id=17]
 
 [sub_resource type="Animation" id=1]
 resource_name = "fade_in"
-tracks/0/type = "value"
-tracks/0/path = NodePath("LeaveButton:rect_position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.9 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 61.449, 44 ), Vector2( 61.449, 250 ) ]
-}
 
 [sub_resource type="Animation" id=2]
 resource_name = "fade_out"
 length = 0.7
-tracks/0/type = "value"
-tracks/0/path = NodePath("LeaveButton:rect_position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.69 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 61.449, 250 ), Vector2( 61.449, 44 ) ]
-}
 
 [sub_resource type="Animation" id=3]
 resource_name = "fade_in"
@@ -72,18 +47,6 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
-tracks/2/type = "value"
-tracks/2/path = NodePath("LeaveButton:rect_position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.9 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 61.449, 44 ), Vector2( 61.449, 250 ) ]
-}
 
 [sub_resource type="Animation" id=4]
 resource_name = "fade_out"
@@ -99,18 +62,6 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("LeaveButton:rect_position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.7 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 61.449, 250 ), Vector2( 61.449, 44 ) ]
 }
 
 [node name="Tab_6x6" type="Node2D"]
@@ -318,18 +269,6 @@ layer = -10
 position = Vector2( 950.474, 541.853 )
 texture = ExtResource( 4 )
 
-[node name="LeaveButton" type="TextureButton" parent="."]
-margin_left = 61.449
-margin_top = 44.0
-margin_right = 251.449
-margin_bottom = 161.0
-texture_normal = ExtResource( 15 )
-expand = true
-stretch_mode = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="character" type="Sprite" parent="."]
 position = Vector2( 203.351, 628.77 )
 scale = Vector2( 2.5, 2.5 )
@@ -434,7 +373,6 @@ __meta__ = {
 
 [connection signal="pressed" from="CanvasLayer/Pause/continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="CanvasLayer/Pause/leave" to="." method="_on_leave_pressed"]
-[connection signal="pressed" from="LeaveButton" to="." method="_on_LeaveButton_pressed"]
 [connection signal="pressed" from="InfoButton" to="." method="_on_InfoButton_pressed"]
 [connection signal="pressed" from="info-box/back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="PauseButton" to="." method="_on_PauseButton_pressed"]

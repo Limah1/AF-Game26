@@ -514,10 +514,10 @@ __meta__ = {
 [node name="back" type="TextureButton" parent="info-box"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 54.1707
-margin_top = 65.4886
-margin_right = -1737.83
-margin_bottom = -886.511
+margin_left = 56.0
+margin_top = 108.0
+margin_right = -1736.0
+margin_bottom = -844.0
 rect_scale = Vector2( 0.7, 0.7 )
 texture_normal = ExtResource( 6 )
 expand = true

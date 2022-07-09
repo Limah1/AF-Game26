@@ -19,7 +19,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Mini-games/Match-3/src/Tiles/Fruits/Fruit.gd"
 }, {
-"base": "Control",
+"base": "Reference",
 "class": "Room",
 "language": "GDScript",
 "path": "res://src/UI/Room.gd"

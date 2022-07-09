@@ -111,7 +111,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=14]
 resource_name = "higienic_paper"
 length = 1.5
 loop = true
@@ -140,8 +140,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=14]
-resource_name = "toilet_paper"
+[sub_resource type="Animation" id=15]
 length = 2.5
 step = 0.05
 tracks/0/type = "value"
@@ -313,11 +312,10 @@ tracks/13/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=15]
-resource_name = "wait"
+[sub_resource type="Animation" id=16]
 length = 1.5
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=17]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("wash_hands/1:visible")
@@ -432,6 +430,7 @@ __meta__ = {
 [node name="papelh" type="Sprite" parent="."]
 position = Vector2( 1083.12, 641.503 )
 scale = Vector2( 0.195206, 0.195206 )
+z_index = -30
 texture = ExtResource( 27 )
 
 [node name="tutorial-dedo" type="Sprite" parent="."]
@@ -613,10 +612,10 @@ position = Vector2( 702.801, 508.035 )
 texture = ExtResource( 24 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/higienic_paper = SubResource( 17 )
-anims/toilet_paper = SubResource( 14 )
-anims/wait = SubResource( 15 )
-anims/wash_hands = SubResource( 16 )
+anims/higienic_paper = SubResource( 14 )
+anims/toilet_paper = SubResource( 15 )
+anims/wait = SubResource( 16 )
+anims/wash_hands = SubResource( 17 )
 
 [connection signal="pressed" from="bath" to="." method="_on_bath_pressed"]
 [connection signal="pressed" from="toilet" to="." method="_on_toilet_pressed"]
