@@ -121,6 +121,9 @@ func go_to_toilet():
 	anim_player.play("go_to_toilet")
 	yield(anim_player, "animation_finished")
 
+func higienic_paper_animation():
+	bathroom_animplayer.play("higienic_paper")
+
 func return_from_toilet():
 	sound_flush.play()
 	

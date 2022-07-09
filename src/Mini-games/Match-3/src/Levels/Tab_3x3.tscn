@@ -17,7 +17,6 @@
 [ext_resource path="res://assets/Match-3/sprites/blue_info_information_12461 (1).png" type="Texture" id=17]
 [ext_resource path="res://assets/Match-3/sprites/Delete-80_icon-icons.com_57340.png" type="Texture" id=18]
 
-
 [sub_resource type="DynamicFont" id=1]
 size = 100
 font_data = ExtResource( 6 )
@@ -228,7 +227,7 @@ script = ExtResource( 8 )
 
 [node name="tutorial-dedo" type="Sprite" parent="TutorialController"]
 visible = false
-position = Vector2( 1222.25, 528.049 )
+position = Vector2( 939.907, 602.049 )
 texture = ExtResource( 4 )
 
 [node name="feedback" type="ColorRect" parent="TutorialController"]
@@ -893,6 +892,7 @@ expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="gui_input" from="TutorialController/Input1" to="TutorialController" method="_on_Input1_gui_input"]
 [connection signal="gui_input" from="TutorialController/Input2" to="TutorialController" method="_on_Input2_gui_input"]
 [connection signal="gui_input" from="TutorialController/Input3" to="TutorialController" method="_on_Input3_gui_input"]

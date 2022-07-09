@@ -64,6 +64,8 @@ func _process(delta: float) -> void:
 		if timer <= 0:
 			$CanvasLayer/Tutorial.visible = true
 			hide = true
+			
+			S_Conntroller.reset_all()
 
 func get_fruit_reference(fruit: String):
 	var fruit_reference = {}

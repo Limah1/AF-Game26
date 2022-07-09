@@ -4,6 +4,7 @@ onready var animationInfo: AnimationPlayer = $infoBoxAnimation
 func _ready() -> void:
 	S_Conntroller.goalScore = 60
 	S_Conntroller.chances = 20
+	S_Conntroller.totalScore = 0
 	
 	fruit_max_count = 36
 	line_quant = 6

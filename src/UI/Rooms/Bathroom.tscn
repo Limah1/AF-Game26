@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://assets/Plataforma/rooms/room-banheiro.png" type="Texture" id=1]
 [ext_resource path="res://src/UI/Rooms/Bathroom.gd" type="Script" id=2]
@@ -26,6 +26,8 @@
 [ext_resource path="res://assets/Plataforma/rooms/bathroom/lm/5.png" type="Texture" id=24]
 [ext_resource path="res://assets/Plataforma/rooms/bathroom/lm/2.png" type="Texture" id=25]
 [ext_resource path="res://assets/Plataforma/rooms/bathroom/lm/1.png" type="Texture" id=26]
+[ext_resource path="res://assets/Plataforma/papelh.png" type="Texture" id=27]
+[ext_resource path="res://assets/Match-3/sprites/tutorial-dedo.png" type="Texture" id=28]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -107,6 +109,35 @@ tracks/0/keys = {
 "transitions": PoolRealArray( -2, 2, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=17]
+resource_name = "higienic_paper"
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("tutorial-dedo:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1079.33, 841.011 ), Vector2( 1079.33, 769.195 ), Vector2( 1079.33, 841.011 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("tutorial-dedo:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=14]
@@ -269,6 +300,18 @@ tracks/12/keys = {
 "update": 1,
 "values": [ false, true, false ]
 }
+tracks/13/type = "value"
+tracks/13/path = NodePath("tutorial-dedo:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=15]
 resource_name = "wait"
@@ -372,6 +415,36 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="higienic_paper" type="Button" parent="."]
+margin_left = 1012.0
+margin_top = 576.0
+margin_right = 1144.0
+margin_bottom = 709.0
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="papelh" type="Sprite" parent="."]
+position = Vector2( 1083.12, 641.503 )
+scale = Vector2( 0.195206, 0.195206 )
+texture = ExtResource( 27 )
+
+[node name="tutorial-dedo" type="Sprite" parent="."]
+visible = false
+position = Vector2( 1079.33, 841.011 )
+scale = Vector2( 1.69912, 1.69912 )
+texture = ExtResource( 28 )
+
+[node name="tutorial-dedo" type="Sprite" parent="tutorial-dedo"]
+position = Vector2( 1079.33, 769.195 )
+scale = Vector2( 1.69912, 1.69912 )
+texture = ExtResource( 28 )
+
 [node name="bathroom" type="Sprite" parent="."]
 position = Vector2( 960, 540 )
 z_index = -100
@@ -379,7 +452,7 @@ texture = ExtResource( 1 )
 
 [node name="vazo" type="Sprite" parent="."]
 position = Vector2( 819.892, 680.323 )
-scale = Vector2( 0.495441, 0.495441 )
+scale = Vector2( 0.4, 0.4 )
 z_index = -30
 texture = ExtResource( 8 )
 
@@ -511,11 +584,11 @@ z_index = 50
 texture = ExtResource( 19 )
 
 [node name="wash_hands" type="Node2D" parent="."]
+visible = false
 position = Vector2( 670.118, 500.41 )
 scale = Vector2( 0.2, 0.2 )
 
 [node name="1" type="Sprite" parent="wash_hands"]
-visible = false
 position = Vector2( 702.801, 508.035 )
 texture = ExtResource( 26 )
 
@@ -540,9 +613,11 @@ position = Vector2( 702.801, 508.035 )
 texture = ExtResource( 24 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/higienic_paper = SubResource( 17 )
 anims/toilet_paper = SubResource( 14 )
 anims/wait = SubResource( 15 )
 anims/wash_hands = SubResource( 16 )
 
 [connection signal="pressed" from="bath" to="." method="_on_bath_pressed"]
 [connection signal="pressed" from="toilet" to="." method="_on_toilet_pressed"]
+[connection signal="pressed" from="higienic_paper" to="." method="_on_higienic_paper_pressed"]

@@ -46,7 +46,7 @@ var Ordem = [
 ]
 
 func _ready():
-	S_Conntroller.goals = [3,3,3]
+	S_Conntroller.goalScore = 9
 	
 	AllTiles = [
 		$Fila1.get_children(),
@@ -111,11 +111,10 @@ func _physics_process(delta: float) -> void:
 				add_fruit(tile, get_fruit_by_name(Ordem[0][index]))
 				index += 1
 		Ordem.remove(0)
-	
+
 	if (S_Conntroller.chances == 0):
 		get_parent().get_tree().change_scene("res://src/Mini-games/Match-3/src/Levels/Win.tscn")
-	if (S_Conntroller.goals[0] == S_Conntroller.score1 and S_Conntroller.goals[1] == S_Conntroller.score2
-	and S_Conntroller.goals[2] == S_Conntroller.score3):
+	if S_Conntroller.totalScore >= S_Conntroller.goalScore:
 		S_Conntroller.tutorial = true
 		get_parent().get_tree().change_scene("res://src/Mini-games/Match-3/src/Levels/Win.tscn")
 	set_reaction()
@@ -181,7 +180,6 @@ func check_map_combinations():
 	S_Conntroller.DestroyTiles()
 	C_Controller.reset_score()
 	
-	yield(countdown(), "completed") 
 	yield(countdown(), "completed") 
 	
 	if get_tree().get_nodes_in_group("fruits").size() < fruit_max_count:

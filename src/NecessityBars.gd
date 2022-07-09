@@ -33,6 +33,9 @@ var inpain = false
 var second = 0
 var some_problem = ""
 
+var toilet_timer: float = 0
+var use_toilet_paper = false
+
 func _ready() -> void:
 	add_to_group("Persist")
 	self.pause_mode = Node.PAUSE_MODE_PROCESS
@@ -79,12 +82,14 @@ func _process(delta: float) -> void:
 			fome = max_fome
 	
 	if(peeing == true):
-		bexiga += 85 * delta
+		toilet_timer += delta
+		bexiga += 120 * delta
 		
-		if (bexiga >= max_bexiga):
-			bexiga = max_bexiga
-			AnimationController.return_from_toilet()
+		if (toilet_timer >= 7):
 			peeing = false
+			toilet_timer = 0
+			use_toilet_paper = true
+			AnimationController.higienic_paper_animation()
 	
 	if (
 		!is_instance_valid(AnimationController.toilet_paper) 

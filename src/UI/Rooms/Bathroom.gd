@@ -51,9 +51,14 @@ func finish_bath():
 	
 
 func _on_toilet_pressed() -> void:
-	if(NecessityBars.soaked or NecessityBars.bexiga > 800):
+	if(NecessityBars.soaked):
 		return
 	
 	NecessityBars.peeing = true
 	yield(AnimationController.go_to_toilet(), "completed") 
 	
+
+func _on_higienic_paper_pressed():
+	if(NecessityBars.use_toilet_paper):
+		NecessityBars.use_toilet_paper = false
+		AnimationController.return_from_toilet()

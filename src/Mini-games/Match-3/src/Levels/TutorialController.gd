@@ -127,7 +127,7 @@ func _physics_process(delta: float) -> void:
 
 func countdown():
 	yield(get_tree(), "idle_frame") # returns a GDScriptFunctionState object to _ready()
-	yield(get_tree().create_timer(3.0), "timeout")
+	yield(get_tree().create_timer(3.2), "timeout")
 
 func _on_Input1_gui_input(event: InputEvent) -> void:
 	if !input1:

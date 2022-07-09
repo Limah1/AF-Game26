@@ -26,6 +26,8 @@ var totalScore = 0
 var goalScore = 60
 
 func score(fruit, points, tile):
+	print(fruit)
+	
 	if ((fruit == fruit1_reference 
 		or fruit == fruit2_reference 
 		or fruit == fruit3_reference) 
@@ -36,7 +38,7 @@ func score(fruit, points, tile):
 	if fruit == harmful_fruit_reference:
 		last_fruit_is_harmful = true
 		
-		totalScore -= 0
+		totalScore -= 1
 
 #	if fruit == fruit1_reference and score1 < goals[0]:
 #		score1 += points
