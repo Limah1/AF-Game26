@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://src/Mini-games/Hidratona/src/Actor/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Mini-games/Hidratona/src/level/tutorial_floor.gd" type="Script" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://src/Mini-games/Hidratona/src/ui/TutorialController.gd" type="Script" id=13]
 [ext_resource path="res://assets/Hidratona/sprites/right-arrow.png" type="Texture" id=14]
 [ext_resource path="res://src/Mini-games/Hidratona/src/ui/Start.tscn" type="PackedScene" id=15]
+[ext_resource path="res://assets/Match-3/sprites/tutorial-dedo.png" type="Texture" id=16]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -27,7 +28,7 @@
 [sub_resource type="StyleBoxEmpty" id=5]
 
 [sub_resource type="DynamicFont" id=6]
-size = 65
+size = 75
 font_data = ExtResource( 12 )
 
 [sub_resource type="StyleBoxEmpty" id=7]
@@ -39,6 +40,52 @@ font_data = ExtResource( 12 )
 [sub_resource type="StyleBoxEmpty" id=10]
 
 [sub_resource type="StyleBoxEmpty" id=11]
+
+[sub_resource type="Animation" id=14]
+resource_name = "dedo"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("tutorial-dedo:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 100.472, 187.748 ), Vector2( 100.472, -239.345 ), Vector2( 100.472, -239.345 ) ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "dedo"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("tutorial-dedo:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("tutorial-dedo2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 111.278, -290.622 ), Vector2( 111.278, 210.01 ), Vector2( 111.278, 210.01 ) ]
+}
 
 [sub_resource type="DynamicFont" id=12]
 size = 50
@@ -72,7 +119,7 @@ script = ExtResource( 13 )
 
 [node name="stop_input" type="Button" parent="TutorialController"]
 margin_left = 80.0
-margin_top = 732.0
+margin_top = 399.0
 margin_right = 244.0
 margin_bottom = 900.0
 custom_styles/hover = SubResource( 1 )
@@ -280,8 +327,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -1.0
 margin_top = -3620.0
-margin_right = 2.00002
-margin_bottom = -198.0
+margin_right = 2.0004
+margin_bottom = -513.0
 mouse_filter = 2
 color = Color( 0, 0, 0, 0.784314 )
 __meta__ = {
@@ -302,8 +349,8 @@ __meta__ = {
 }
 
 [node name="feedback_box6" type="Sprite" parent="TutorialController/feedback/jump"]
-position = Vector2( 407.898, -395.798 )
-scale = Vector2( 0.68073, 0.68073 )
+position = Vector2( 287.69, -510.349 )
+scale = Vector2( 0.482856, 0.407011 )
 texture = ExtResource( 11 )
 
 [node name="right-arrow" type="Sprite" parent="TutorialController/feedback/jump/feedback_box6"]
@@ -313,30 +360,37 @@ scale = Vector2( 0.494873, 0.494873 )
 texture = ExtResource( 14 )
 
 [node name="Label" type="Label" parent="TutorialController/feedback/jump/feedback_box6"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -607.5
-margin_top = -418.5
-margin_right = -607.5
-margin_bottom = -418.5
+anchor_right = 1.18848
+anchor_bottom = 1.39068
+margin_left = -607.0
+margin_top = -418.0
+margin_right = -836.0
+margin_bottom = -745.0
 custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Aperte e segure aqui pra pular.
-
-(A altura do pulo dependerá de quanto tempo você pressionar o botão)"
+text = "Deslize para cima pra pular."
 align = 1
 valign = 1
 autowrap = true
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TutorialController/feedback/jump"]
+autoplay = "dedo"
+anims/dedo = SubResource( 14 )
+
+[node name="tutorial-dedo" type="Sprite" parent="TutorialController/feedback/jump"]
+position = Vector2( 100.472, -239.345 )
+scale = Vector2( 1.54393, 1.54393 )
+texture = ExtResource( 16 )
 
 [node name="down" type="Button" parent="TutorialController/feedback"]
 visible = false
-margin_left = 242.521
-margin_top = 714.049
-margin_right = 429.521
-margin_bottom = 912.049
+margin_left = 243.0
+margin_top = 356.0
+margin_right = 430.0
+margin_bottom = 912.0
 custom_styles/hover = SubResource( 7 )
 custom_styles/pressed = SubResource( 8 )
 custom_styles/focus = SubResource( 9 )
@@ -376,9 +430,9 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -1.0
-margin_top = -3620.0
-margin_right = 2.00002
-margin_bottom = -198.0
+margin_top = -3264.0
+margin_right = 2.0
+margin_bottom = -555.0
 mouse_filter = 2
 color = Color( 0, 0, 0, 0.784314 )
 __meta__ = {
@@ -389,9 +443,9 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -1.0
-margin_top = 197.686
-margin_right = 2.00002
-margin_bottom = 3619.69
+margin_top = 603.0
+margin_right = 2.0
+margin_bottom = 3620.0
 mouse_filter = 2
 color = Color( 0, 0, 0, 0.784314 )
 __meta__ = {
@@ -399,8 +453,8 @@ __meta__ = {
 }
 
 [node name="feedback_box6" type="Sprite" parent="TutorialController/feedback/down"]
-position = Vector2( 407.898, -395.798 )
-scale = Vector2( 0.68073, 0.68073 )
+position = Vector2( 261.493, -528.866 )
+scale = Vector2( 0.439735, 0.362765 )
 texture = ExtResource( 11 )
 
 [node name="right-arrow" type="Sprite" parent="TutorialController/feedback/down/feedback_box6"]
@@ -418,15 +472,22 @@ margin_right = -607.5
 margin_bottom = -418.5
 custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Aperte aqui para se abaixar.
-
-(Se você estiver pulando, você  cancelará o pulo, se jogando imediatametne no chão)"
+text = "Deslize para baixo para abaixar."
 align = 1
 valign = 1
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="tutorial-dedo2" type="Sprite" parent="TutorialController/feedback/down"]
+position = Vector2( 111.278, 210.01 )
+scale = Vector2( 1.54393, 1.54393 )
+texture = ExtResource( 16 )
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="TutorialController/feedback/down"]
+autoplay = "dedo"
+anims/dedo = SubResource( 15 )
 
 [node name="feedback_box6" type="Node2D" parent="TutorialController/feedback"]
 visible = false

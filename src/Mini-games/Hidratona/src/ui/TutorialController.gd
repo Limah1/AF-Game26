@@ -91,7 +91,7 @@ func change_fb():
 		get_parent().add_child(obstacle)
 		
 		input2 = true
-		timer = 1.9
+		timer = 2.5
 		
 		return
 	if fb_index == 8:
@@ -107,7 +107,7 @@ func change_fb():
 		get_parent().add_child(obstacle)
 		
 		input3 = true
-		timer = 1.85
+		timer = 2.3
 		return
 	if fb_index == 10:
 		get_tree().paused = true
@@ -119,7 +119,7 @@ func change_fb():
 		get_tree().paused = false
 		$ColorRect.visible = false
 		$feedback/feedback_box6.visible = false
-		timer = 2.2
+		timer = 2.7
 		input4 = true
 		return
 	if fb_index == 12:
@@ -133,7 +133,7 @@ func change_fb():
 		get_tree().paused = false
 		$ColorRect.visible = false
 		$feedback/feedback_box7.visible = false
-		timer = 2.2
+		timer = 2.8
 		input4 = true
 		return
 	if fb_index == 14:
@@ -147,7 +147,7 @@ func change_fb():
 		get_tree().paused = false
 		$ColorRect.visible = false
 		$feedback/feedback_box8.visible = false
-		timer = 2.8
+		timer = 3.6
 		input4 = true
 		return
 	if fb_index == 16:
@@ -175,7 +175,7 @@ func change_fb():
 		get_tree().paused = false
 		$ColorRect.visible = false
 		$feedback/feedback_box10.visible = false
-		timer = 7
+		timer = 4
 		input4 = true
 		return
 	if fb_index == 20:
@@ -266,3 +266,7 @@ func _on_Start_pressed() -> void:
 	get_tree().paused = false
 	Resources.reset_resources()
 	get_tree().change_scene("res://src/Mini-games/Hidratona/src/level/Level.tscn")
+
+
+func _on_down_pressed():
+	_on_down_button_down()
