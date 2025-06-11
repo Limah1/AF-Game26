@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/SFX_Rain, Vegetation, Rural Palm Forest, Light, Loop SND122357 1.wav-db3f3e2086f58efdf852b4ac791a541d.sample"
+
+[deps]
+
+source_file="res://assets/sounds/Sons Atualizados/SFX_Rain, Vegetation, Rural Palm Forest, Light, Loop SND122357 1.wav"
+dest_files=[ "res://.import/SFX_Rain, Vegetation, Rural Palm Forest, Light, Loop SND122357 1.wav-db3f3e2086f58efdf852b4ac791a541d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
