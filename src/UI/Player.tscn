@@ -11,9 +11,9 @@
 [ext_resource path="res://assets/Plataforma/objects/espuma.png" type="Texture" id=9]
 [ext_resource path="res://assets/All_Character_Sprites/Boy/Walk/boy-1/boy-1-1.png" type="Texture" id=10]
 [ext_resource path="res://assets/All_Character_Sprites/Boy/boy-dormindo/boy-1-dormindo.png" type="Texture" id=11]
-[ext_resource path="res://assets/sounds/sons editados/snow_sound.wav" type="AudioStream" id=12]
-[ext_resource path="res://assets/sounds/sons editados/bemtivi.wav" type="AudioStream" id=13]
-[ext_resource path="res://assets/sounds/sons editados/rain.mp3" type="AudioStream" id=14]
+[ext_resource path="res://assets/sounds/Sons Atualizados/SFX_Rain, Vegetation, Rural Palm Forest, Light, Loop SND122357 1.wav" type="AudioStream" id=12]
+[ext_resource path="res://assets/sounds/Sons Atualizados/SFX_AMBIENCE Birds Forest Quiet Wind Loop 02.wav" type="AudioStream" id=13]
+[ext_resource path="res://assets/sounds/Sons Atualizados/SFX_birds_outside_002_wide.wav" type="AudioStream" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 30.4641, 30.1339 )
@@ -377,14 +377,14 @@ position = Vector2( -2.1123, 67.7344 )
 shape = SubResource( 5 )
 
 [node name="sunny_sound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 13 )
+stream = ExtResource( 14 )
 bus = "bemtivi"
 
 [node name="rainny_sound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 14 )
+stream = ExtResource( 12 )
 
 [node name="snow_sound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 12 )
+stream = ExtResource( 13 )
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
