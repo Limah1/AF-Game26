@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/SFX_Paper Handling and Turning Sequence.wav-f6f4af7f43b05fc1adb96a4c4eb167bc.sample"
+
+[deps]
+
+source_file="res://assets/sounds/Sons Atualizados/SFX_Paper Handling and Turning Sequence.wav"
+dest_files=[ "res://.import/SFX_Paper Handling and Turning Sequence.wav-f6f4af7f43b05fc1adb96a4c4eb167bc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

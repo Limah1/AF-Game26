@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://assets/Plataforma/Char_Select/tela-escolha-personagem.png" type="Texture" id=1]
 [ext_resource path="res://assets/Plataforma/Char_Select/button-confirmar.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/Plataforma/Char_Select/color-selectors-girl/n-girl-estilo-1.png" type="Texture" id=7]
 [ext_resource path="res://assets/Plataforma/Char_Select/color-selectors-girl/n-girl-estilo-1-hover.png" type="Texture" id=8]
 [ext_resource path="res://assets/Plataforma/Char_Select/color-selectors-girl/b-girl-estilo-1.png" type="Texture" id=9]
+[ext_resource path="res://assets/sounds/Sons Atualizados/SFX_Paper Handling and Turning Sequence.wav" type="AudioStream" id=10]
 [ext_resource path="res://src/UI/sound/sound_button.tscn" type="PackedScene" id=12]
 [ext_resource path="res://src/UI/sound/selector_gender.tscn" type="PackedScene" id=13]
 [ext_resource path="res://assets/Hidratona/sprites/back-button.png" type="Texture" id=14]
@@ -109,6 +110,7 @@ __meta__ = {
 autoplay = false
 
 [node name="gendersound" parent="." instance=ExtResource( 13 )]
+stream = ExtResource( 10 )
 
 [node name="TextureButton" type="TextureButton" parent="."]
 margin_left = 73.0

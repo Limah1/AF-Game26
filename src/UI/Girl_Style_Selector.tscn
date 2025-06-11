@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://assets/Plataforma/Char_Select/tela-escolha-personagem.png" type="Texture" id=1]
 [ext_resource path="res://assets/Plataforma/Char_Select/button-confirmar.png" type="Texture" id=2]
@@ -14,25 +14,26 @@
 [ext_resource path="res://src/UI/sound/sound_button.tscn" type="PackedScene" id=12]
 [ext_resource path="res://src/UI/sound/selector_gender.tscn" type="PackedScene" id=13]
 [ext_resource path="res://assets/Hidratona/sprites/back-button.png" type="Texture" id=14]
+[ext_resource path="res://assets/sounds/Sons Atualizados/SFX_Paper Handling and Turning Sequence.wav" type="AudioStream" id=15]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.94902, 0.94902, 0.94902, 1 )
 
-[sub_resource type="DynamicFontData" id=6]
+[sub_resource type="DynamicFontData" id=2]
 font_path = "res://assets/fonts/Roboto-Regular.ttf"
 
 [sub_resource type="DynamicFont" id=3]
 size = 100
 outline_color = Color( 0, 0, 0, 1 )
-font_data = SubResource( 6 )
+font_data = SubResource( 2 )
 
-[sub_resource type="DynamicFontData" id=7]
+[sub_resource type="DynamicFontData" id=4]
 font_path = "res://assets/fonts/Roboto-Regular.ttf"
 
 [sub_resource type="DynamicFont" id=5]
 size = 80
 outline_color = Color( 0, 0, 0, 1 )
-font_data = SubResource( 7 )
+font_data = SubResource( 4 )
 
 [node name="Girl_Style_Selector" type="Control"]
 anchor_right = 1.0
@@ -124,6 +125,7 @@ __meta__ = {
 [node name="button_sound" parent="." instance=ExtResource( 12 )]
 
 [node name="sound_gender" parent="." instance=ExtResource( 13 )]
+stream = ExtResource( 15 )
 
 [node name="TextureButton2" type="TextureButton" parent="."]
 margin_left = 73.0
