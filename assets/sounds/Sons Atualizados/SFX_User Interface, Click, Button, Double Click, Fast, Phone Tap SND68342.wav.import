@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/SFX_User Interface, Click, Button, Double Click, Fast, Phone Tap SND68342.wav-92b80887bb13edb183d68c4adc16e448.sample"
+
+[deps]
+
+source_file="res://assets/sounds/Sons Atualizados/SFX_User Interface, Click, Button, Double Click, Fast, Phone Tap SND68342.wav"
+dest_files=[ "res://.import/SFX_User Interface, Click, Button, Double Click, Fast, Phone Tap SND68342.wav-92b80887bb13edb183d68c4adc16e448.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
