@@ -41,7 +41,7 @@ font_data = ExtResource( 12 )
 
 [sub_resource type="StyleBoxEmpty" id=11]
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=12]
 resource_name = "dedo"
 length = 2.0
 loop = true
@@ -58,7 +58,7 @@ tracks/0/keys = {
 "values": [ Vector2( 100.472, 187.748 ), Vector2( 100.472, -239.345 ), Vector2( 100.472, -239.345 ) ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=13]
 resource_name = "dedo"
 length = 2.0
 loop = true
@@ -87,11 +87,11 @@ tracks/1/keys = {
 "values": [ Vector2( 111.278, -290.622 ), Vector2( 111.278, 210.01 ), Vector2( 111.278, 210.01 ) ]
 }
 
-[sub_resource type="DynamicFont" id=12]
+[sub_resource type="DynamicFont" id=14]
 size = 50
 font_data = ExtResource( 12 )
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=15]
 length = 10.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:position")
@@ -378,7 +378,7 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TutorialController/feedback/jump"]
 autoplay = "dedo"
-anims/dedo = SubResource( 14 )
+anims/dedo = SubResource( 12 )
 
 [node name="tutorial-dedo" type="Sprite" parent="TutorialController/feedback/jump"]
 position = Vector2( 100.472, -239.345 )
@@ -487,7 +487,7 @@ texture = ExtResource( 16 )
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="TutorialController/feedback/down"]
 autoplay = "dedo"
-anims/dedo = SubResource( 15 )
+anims/dedo = SubResource( 13 )
 
 [node name="feedback_box6" type="Node2D" parent="TutorialController/feedback"]
 visible = false
@@ -511,7 +511,7 @@ margin_left = 645.0
 margin_top = 589.0
 margin_right = 1250.0
 margin_bottom = 1001.0
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 14 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Colete àgua para continuar correndo."
 align = 1
@@ -543,7 +543,7 @@ margin_left = 645.0
 margin_top = 589.0
 margin_right = 1250.0
 margin_bottom = 1001.0
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 14 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Colete laranjas para ganhar bônus de distância percorrida por 15 segundos."
 align = 1
@@ -575,7 +575,7 @@ margin_left = 645.0
 margin_top = 589.0
 margin_right = 1250.0
 margin_bottom = 1001.0
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 14 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Coletando melancias você ganhará, por 15 segundos, o dobro de hidrataçaõ quando coletar àgua."
 align = 1
@@ -607,7 +607,7 @@ margin_left = 645.0
 margin_top = 589.0
 margin_right = 1250.0
 margin_bottom = 1001.0
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 14 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Colete morangos para ganhar 20 pontos de distância."
 align = 1
@@ -638,7 +638,7 @@ margin_left = 665.0
 margin_top = 589.0
 margin_right = 1242.0
 margin_bottom = 1001.0
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 14 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Observe que quando você coleta alguma fruta, o tempo de duração é mostado aqui."
 align = 1
@@ -670,7 +670,7 @@ margin_left = 561.0
 margin_top = 589.0
 margin_right = 1346.0
 margin_bottom = 1001.0
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 14 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Quando o Sol aparece, tenha cuidado!
 
@@ -891,7 +891,7 @@ one_shot = true
 wait_time = 10.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/sun = SubResource( 13 )
+anims/sun = SubResource( 15 )
 
 [connection signal="button_down" from="TutorialController/feedback/jump" to="TutorialController" method="_on_jump_button_down"]
 [connection signal="button_up" from="TutorialController/feedback/jump" to="TutorialController" method="_on_jump_button_up"]
