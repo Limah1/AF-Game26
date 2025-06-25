@@ -1,4 +1,4 @@
-extends Room
+extends HouseRoom
 
 var news_chuva = preload("res://assets/Plataforma/buttons/news-chuva.png")
 var news_neve = preload("res://assets/Plataforma/buttons/news-neve.png")

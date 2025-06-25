@@ -1,4 +1,4 @@
-extends Room
+extends HouseRoom
 
 var playing = false
 

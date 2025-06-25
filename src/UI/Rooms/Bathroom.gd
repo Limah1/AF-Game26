@@ -1,8 +1,9 @@
-extends Room
+extends HouseRoom
 
 var playing1 = false
 var playing2 = false
 var playing3 = false
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

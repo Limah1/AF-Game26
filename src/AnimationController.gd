@@ -46,6 +46,7 @@ func travel(from, to):
 	is_travelling = true
 	
 	print(from)
+	print(to)
 	
 	if(from == 5):
 		slots_reference.to_right(to)

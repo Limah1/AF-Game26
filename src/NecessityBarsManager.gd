@@ -10,6 +10,7 @@ func _on_Button0_pressed():
 	if NecessityBars.onbath:
 		return true
 	
+	$MapContainer.visible = false
 	var button_room = 0
 	var current_room = get_room_number(AnimationController.current_room)
 	AnimationController.travel(current_room, button_room)
@@ -23,6 +24,7 @@ func _on_Button1_pressed():
 	if NecessityBars.soaked:
 		return
 		
+	$MapContainer.visible = false
 	var button_room = 1
 	var current_room = get_room_number(AnimationController.current_room)
 	AnimationController.travel(current_room, button_room)
@@ -35,6 +37,8 @@ func _on_Button2_pressed():
 		return		
 	if NecessityBars.onbath:
 		return true
+	
+	$MapContainer.visible = false
 	var button_room = 2
 	var current_room = get_room_number(AnimationController.current_room)
 	AnimationController.travel(current_room, button_room)
@@ -47,6 +51,8 @@ func _on_Button3_pressed():
 		return	
 	if NecessityBars.onbath:
 		return true
+	
+	$MapContainer.visible = false
 	var button_room = 3
 	var current_room = get_room_number(AnimationController.current_room)
 	AnimationController.travel(current_room, button_room)
@@ -59,12 +65,14 @@ func _on_Button4_pressed():
 		return
 	if NecessityBars.onbath:
 		return true
+		
+	$MapContainer.visible = false
 	var button_room = 4
 	var current_room = get_room_number(AnimationController.current_room)
 	AnimationController.travel(current_room, button_room)
 
 func _process(delta: float) -> void:
-	Set_Disabled_Button()
+#	Set_Disabled_Button()
 	
 	$BathroomProgress.value = NecessityBars.banheiro
 	$KitchenProgress.value = NecessityBars.fome
@@ -76,46 +84,46 @@ func _process(delta: float) -> void:
 	else:
 		$ColorRect.visible = false
 		
-
-func Set_Disabled_Button():
-	if(AnimationController.status == "Hidratona" or AnimationController.status == "Match3" or AnimationController.status == "DoiAqui" or AnimationController.current_room == null):
-		$"Button-0".disabled = true
-		$"Button-1".disabled = true
-		$"Button-2".disabled = true
-		$"Button-3".disabled = true
-		$"Button-4".disabled = true
-		return
-	
-	if(AnimationController.current_room.room_id == 0 or AnimationController.current_room.room_id == 5):
-		$"Button-0".disabled = true
-		$"Button-1".disabled = false
-		$"Button-2".disabled = false
-		$"Button-3".disabled = false
-		$"Button-4".disabled = false
-	elif(AnimationController.current_room.room_id == 1):
-		$"Button-0".disabled = false
-		$"Button-1".disabled = true
-		$"Button-2".disabled = false
-		$"Button-3".disabled = false
-		$"Button-4".disabled = false
-	elif(AnimationController.current_room.room_id == 2):
-		$"Button-0".disabled = false
-		$"Button-1".disabled = false
-		$"Button-2".disabled = true
-		$"Button-3".disabled = false
-		$"Button-4".disabled = false
-	elif(AnimationController.current_room.room_id == 3):
-		$"Button-0".disabled = false
-		$"Button-1".disabled = false
-		$"Button-2".disabled = false
-		$"Button-3".disabled = true
-		$"Button-4".disabled = false
-	elif(AnimationController.current_room.room_id == 4):
-		$"Button-0".disabled = false
-		$"Button-1".disabled = false
-		$"Button-2".disabled = false
-		$"Button-3".disabled = false
-		$"Button-4".disabled = true
+#
+#func Set_Disabled_Button():
+#	if(AnimationController.status == "Hidratona" or AnimationController.status == "Match3" or AnimationController.status == "DoiAqui" or AnimationController.current_room == null):
+#		$"Button-0".disabled = true
+#		$"Button-1".disabled = true
+#		$"Button-2".disabled = true
+#		$"Button-3".disabled = true
+#		$"Button-4".disabled = true
+#		return
+#
+#	if(AnimationController.current_room.room_id == 0 or AnimationController.current_room.room_id == 5):
+#		$"Button-0".disabled = true
+#		$"Button-1".disabled = false
+#		$"Button-2".disabled = false
+#		$"Button-3".disabled = false
+#		$"Button-4".disabled = false
+#	elif(AnimationController.current_room.room_id == 1):
+#		$"Button-0".disabled = false
+#		$"Button-1".disabled = true
+#		$"Button-2".disabled = false
+#		$"Button-3".disabled = false
+#		$"Button-4".disabled = false
+#	elif(AnimationController.current_room.room_id == 2):
+#		$"Button-0".disabled = false
+#		$"Button-1".disabled = false
+#		$"Button-2".disabled = true
+#		$"Button-3".disabled = false
+#		$"Button-4".disabled = false
+#	elif(AnimationController.current_room.room_id == 3):
+#		$"Button-0".disabled = false
+#		$"Button-1".disabled = false
+#		$"Button-2".disabled = false
+#		$"Button-3".disabled = true
+#		$"Button-4".disabled = false
+#	elif(AnimationController.current_room.room_id == 4):
+#		$"Button-0".disabled = false
+#		$"Button-1".disabled = false
+#		$"Button-2".disabled = false
+#		$"Button-3".disabled = false
+#		$"Button-4".disabled = true
 
 func check_if_can_press_button():
 	if AnimationController.isTravelling():
@@ -150,3 +158,58 @@ func get_room_number(room):
 	if(room.name == "Bathroom"):
 		return 4
 	
+
+
+func _on_left_pressed():
+	if(check_if_can_press_button()):
+		return
+	
+	if NecessityBars.soaked:
+		return
+		
+	if NecessityBars.onbath:
+		return true
+	
+	var current_room = get_room_number(AnimationController.current_room)
+	var button_room = current_room - 1
+	
+	if current_room == 0:
+		return
+	
+	AnimationController.travel(current_room, button_room)
+	
+	pass
+
+
+func _on_right_pressed():
+	if(check_if_can_press_button()):
+		return
+	
+	if NecessityBars.soaked:
+		return
+		
+	if NecessityBars.onbath:
+		return true
+	
+	var current_room = get_room_number(AnimationController.current_room)
+	var button_room = current_room + 1
+	
+	if current_room == 4:
+		return
+		
+	if current_room == 5:
+		AnimationController.travel(current_room, 1)
+		return
+	
+	AnimationController.travel(current_room, button_room)
+	
+	pass
+
+
+func _on_MenuButton_pressed():
+	$MapContainer.visible = !$MapContainer.visible
+
+
+
+func _on_Button3_button_up():
+	pass # Replace with function body.

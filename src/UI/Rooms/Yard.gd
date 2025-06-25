@@ -1,4 +1,4 @@
-extends Room
+extends HouseRoom
 
 var countdown = 3
 
@@ -8,6 +8,7 @@ var sunny = preload("res://assets/Plataforma/ambientes/quintal_sol.png")
 var rainy = preload("res://assets/Plataforma/ambientes/quintal_chuva.png")
 var snowy = preload("res://assets/Plataforma/ambientes/quintal_neve.png")
 var night = preload("res://assets/Plataforma/ambientes/quintal_noite.png")
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

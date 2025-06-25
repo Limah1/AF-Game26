@@ -1,4 +1,4 @@
-class_name Room
+class_name HouseRoom
 extends Control
 
 signal stop_moving

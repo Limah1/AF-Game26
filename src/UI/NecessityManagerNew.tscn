@@ -1,0 +1,253 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://assets/Plataforma/buttons/button-quintal-on.png" type="Texture" id=1]
+[ext_resource path="res://assets/Plataforma/buttons/button-cozinha.png" type="Texture" id=2]
+[ext_resource path="res://assets/Plataforma/buttons/button-sala.png" type="Texture" id=3]
+[ext_resource path="res://assets/Plataforma/buttons/conect-line.png" type="Texture" id=4]
+[ext_resource path="res://assets/Plataforma/buttons/button-cozinha-on.png" type="Texture" id=5]
+[ext_resource path="res://assets/Plataforma/buttons/button-quarto-on.png" type="Texture" id=6]
+[ext_resource path="res://src/NecessityBarsManagerNew.gd" type="Script" id=7]
+[ext_resource path="res://assets/Plataforma/ambientes/button-banheiro-on.png" type="Texture" id=8]
+[ext_resource path="res://assets/Plataforma/buttons/button-banheiro.png" type="Texture" id=9]
+[ext_resource path="res://assets/Plataforma/buttons/button-quintal.png" type="Texture" id=10]
+[ext_resource path="res://assets/Plataforma/buttons/button-quarto.png" type="Texture" id=11]
+[ext_resource path="res://assets/Plataforma/buttons/Prancheta 62.png" type="Texture" id=12]
+[ext_resource path="res://assets/Plataforma/buttons/button-sala-on.png" type="Texture" id=13]
+[ext_resource path="res://assets/Plataforma/buttons/Prancheta 63.png" type="Texture" id=14]
+
+[sub_resource type="Animation" id=1]
+resource_name = "start"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Button-0:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( -0.01, 1.5 ),
+"transitions": PoolRealArray( 2.5, 1 ),
+"update": 0,
+"values": [ Vector2( -374.714, 662 ), Vector2( 117.431, 662 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Button-1:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( -0.02, 1.5 ),
+"transitions": PoolRealArray( 2.5, 1 ),
+"update": 0,
+"values": [ Vector2( -374.713, 828 ), Vector2( 117.432, 828 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Button-4:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( -0.02, 1.5 ),
+"transitions": PoolRealArray( 2.5, 1 ),
+"update": 0,
+"values": [ Vector2( -374.714, 156 ), Vector2( 117.431, 156 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Button-2:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( -0.01, 1.5 ),
+"transitions": PoolRealArray( 2.5, 1 ),
+"update": 0,
+"values": [ Vector2( -374.714, 328 ), Vector2( 117.431, 328 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Button-3:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( -0.01, 1.5 ),
+"transitions": PoolRealArray( 2.5, 1 ),
+"update": 0,
+"values": [ Vector2( -374.714, 490 ), Vector2( 117.431, 490 ) ]
+}
+
+[node name="NecessityManagerOld" type="CanvasLayer"]
+pause_mode = 2
+layer = 128
+script = ExtResource( 7 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 1, 1, 1, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button-1" type="TextureButton" parent="."]
+margin_left = 120.0
+margin_top = 114.301
+margin_right = 246.0
+margin_bottom = 234.301
+rect_scale = Vector2( 0.95, 0.95 )
+texture_normal = ExtResource( 3 )
+texture_disabled = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="conect-line" type="Sprite" parent="Button-1"]
+position = Vector2( 60.0002, 166.369 )
+rotation = -1.5708
+scale = Vector2( 3.57605, 1 )
+z_index = -5
+texture = ExtResource( 4 )
+
+[node name="Button-4" type="TextureButton" parent="."]
+margin_left = 120.0
+margin_top = 300.0
+margin_right = 240.0
+margin_bottom = 420.0
+rect_scale = Vector2( 0.95, 0.95 )
+texture_normal = ExtResource( 9 )
+texture_disabled = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="conect-line2" type="Sprite" parent="Button-4"]
+position = Vector2( 138.959, 60 )
+scale = Vector2( 1.89644, 1 )
+z_index = -5
+texture = ExtResource( 4 )
+
+[node name="BathroomProgress" type="TextureProgress" parent="."]
+margin_left = 256.0
+margin_top = 280.0
+margin_right = 407.0
+margin_bottom = 431.0
+max_value = 1800.0
+value = 450.0
+texture_under = ExtResource( 12 )
+texture_progress = ExtResource( 14 )
+fill_mode = 3
+tint_progress = Color( 0.756863, 0.592157, 0.501961, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button-2" type="TextureButton" parent="."]
+margin_left = 120.0
+margin_top = 462.0
+margin_right = 240.0
+margin_bottom = 582.0
+rect_scale = Vector2( 0.95, 0.95 )
+texture_normal = ExtResource( 2 )
+texture_disabled = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="conect-line3" type="Sprite" parent="Button-2"]
+position = Vector2( 131.099, 60 )
+scale = Vector2( 2.29128, 1 )
+z_index = -5
+texture = ExtResource( 4 )
+
+[node name="KitchenProgress" type="TextureProgress" parent="."]
+margin_left = 256.356
+margin_top = 441.0
+margin_right = 407.356
+margin_bottom = 592.0
+max_value = 900.0
+value = 450.0
+texture_under = ExtResource( 12 )
+texture_progress = ExtResource( 14 )
+fill_mode = 3
+tint_progress = Color( 0.94902, 0.556863, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button-3" type="TextureButton" parent="."]
+margin_left = 120.0
+margin_top = 621.0
+margin_right = 239.0
+margin_bottom = 740.0
+rect_scale = Vector2( 0.95, 0.95 )
+texture_normal = ExtResource( 11 )
+texture_disabled = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="conect-line4" type="Sprite" parent="Button-3"]
+position = Vector2( 130.338, 60 )
+scale = Vector2( 2.029, 1 )
+z_index = -5
+texture = ExtResource( 4 )
+
+[node name="BedroomProgress" type="TextureProgress" parent="."]
+margin_left = 256.356
+margin_top = 602.0
+margin_right = 407.356
+margin_bottom = 753.0
+max_value = 1800.0
+value = 900.0
+texture_under = ExtResource( 12 )
+texture_progress = ExtResource( 14 )
+fill_mode = 3
+tint_progress = Color( 0.027451, 0.588235, 0.847059, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button-0" type="TextureButton" parent="."]
+margin_left = 120.0
+margin_top = 782.0
+margin_right = 240.0
+margin_bottom = 901.0
+rect_scale = Vector2( 0.95, 0.95 )
+texture_normal = ExtResource( 10 )
+texture_disabled = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="conect-line5" type="Sprite" parent="Button-0"]
+position = Vector2( 132.95, 60 )
+scale = Vector2( 2.174, 1 )
+z_index = -5
+texture = ExtResource( 4 )
+
+[node name="YardProgress" type="TextureProgress" parent="."]
+margin_left = 256.356
+margin_top = 763.0
+margin_right = 407.356
+margin_bottom = 914.0
+max_value = 900.0
+value = 200.0
+texture_under = ExtResource( 12 )
+texture_progress = ExtResource( 14 )
+fill_mode = 3
+tint_progress = Color( 1, 0.803922, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/start = SubResource( 1 )
+
+[connection signal="pressed" from="Button-1" to="." method="_on_Button1_pressed"]
+[connection signal="pressed" from="Button-4" to="." method="_on_Button4_pressed"]
+[connection signal="pressed" from="Button-2" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="Button-3" to="." method="_on_Button3_pressed"]
+[connection signal="pressed" from="Button-0" to="." method="_on_Button0_pressed"]
