@@ -157,8 +157,8 @@ anchor_right = 0.5
 margin_left = -612.5
 margin_right = 612.5
 margin_bottom = 154.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 20 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Selecione pra onde você quer ir: "
 __meta__ = {
 "_edit_use_anchors_": false
@@ -230,5 +230,5 @@ __meta__ = {
 [connection signal="pressed" from="MapContainer/Button-0" to="." method="_on_Button0_pressed"]
 [connection signal="pressed" from="MapContainer/Button-1" to="." method="_on_Button1_pressed"]
 [connection signal="pressed" from="MapContainer/Button-2" to="." method="_on_Button2_pressed"]
-[connection signal="button_up" from="MapContainer/Button-3" to="." method="_on_Button3_button_up"]
+[connection signal="pressed" from="MapContainer/Button-3" to="." method="_on_Button3_pressed"]
 [connection signal="pressed" from="MapContainer/Button-4" to="." method="_on_Button4_pressed"]

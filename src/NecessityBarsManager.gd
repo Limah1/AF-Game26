@@ -209,7 +209,3 @@ func _on_right_pressed():
 func _on_MenuButton_pressed():
 	$MapContainer.visible = !$MapContainer.visible
 
-
-
-func _on_Button3_button_up():
-	pass # Replace with function body.
