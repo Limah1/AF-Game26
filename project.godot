@@ -19,10 +19,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Mini-games/Match-3/src/Tiles/Fruits/Fruit.gd"
 }, {
-"base": "Control",
+"base": "Reference",
 "class": "HouseRoom",
 "language": "GDScript",
-"path": "res://src/UI/Room.gd"
+"path": "res://src/UI/HouseRoom.gd"
 }, {
 "base": "Node2D",
 "class": "Temp_Tab",
