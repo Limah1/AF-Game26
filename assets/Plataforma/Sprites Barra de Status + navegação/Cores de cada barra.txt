@@ -1,0 +1,4 @@
+Banheiro:  #c19780
+Comida:    #f28e00
+Dormir:    #0796d8
+Brincar:   #ffcd00
