@@ -1,0 +1,170 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://assets/Plataforma/rooms/living-room.png" type="Texture" id=1]
+[ext_resource path="res://src/UI/Rooms/hospital_rooms/Psychologist.gd" type="Script" id=2]
+[ext_resource path="res://src/UI/Dialog.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/Plataforma/buttons/tv-off.png" type="Texture" id=4]
+[ext_resource path="res://assets/Plataforma/buttons/button-fechar.png" type="Texture" id=5]
+[ext_resource path="res://assets/Plataforma/buttons/button-comecar.png" type="Texture" id=6]
+[ext_resource path="res://assets/Plataforma/buttons/pop-up-doi-aqui.png" type="Texture" id=7]
+[ext_resource path="res://assets/DoiAqui/objects/botao-tutorial-hover_1.png" type="Texture" id=8]
+[ext_resource path="res://assets/Plataforma/buttons/button-comecar-hover.png" type="Texture" id=9]
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="StyleBoxEmpty" id=9]
+
+[sub_resource type="StyleBoxEmpty" id=10]
+
+[sub_resource type="Animation" id=11]
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 1.5 ),
+"transitions": PoolRealArray( 3, 0.16, 1 ),
+"update": 0,
+"values": [ Vector2( 876.811, -885.893 ), Vector2( 876.811, 198.107 ), Vector2( 876.811, 130.107 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=12]
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 1.5 ),
+"transitions": PoolRealArray( 0.16, 3, 3 ),
+"update": 0,
+"values": [ Vector2( 876.811, 130.107 ), Vector2( 876.811, 198.107 ), Vector2( 876.811, -885.893 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[node name="Psychologist" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="sala" type="Sprite" parent="."]
+visible = false
+position = Vector2( 960, 540 )
+z_index = -100
+texture = ExtResource( 1 )
+
+[node name="tv-off" type="Sprite" parent="."]
+visible = false
+position = Vector2( 1239, 900 )
+scale = Vector2( 0.395337, 0.395337 )
+texture = ExtResource( 4 )
+
+[node name="Tv_button" type="Button" parent="."]
+margin_left = 972.0
+margin_top = 744.0
+margin_right = 1524.0
+margin_bottom = 1052.0
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/normal = SubResource( 10 )
+
+[node name="DoiAqui" type="Control" parent="."]
+visible = false
+margin_left = 876.811
+margin_top = 130.107
+margin_right = 1826.81
+margin_bottom = 930.107
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pop-up-doi-aqui" type="Sprite" parent="DoiAqui"]
+position = Vector2( 480.189, 420.893 )
+texture = ExtResource( 7 )
+
+[node name="button-tutorial" type="Sprite" parent="DoiAqui"]
+position = Vector2( 299.143, 521.597 )
+texture = ExtResource( 8 )
+
+[node name="StartButton" type="TextureButton" parent="DoiAqui"]
+margin_left = 510.0
+margin_top = 468.0
+margin_right = 833.0
+margin_bottom = 581.0
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="DoiAqui"]
+margin_left = 852.0
+margin_top = 56.5
+margin_right = 899.0
+margin_bottom = 104.5
+texture_normal = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DoiAqui"]
+anims/fade_in = SubResource( 11 )
+anims/fade_out = SubResource( 12 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 51.0
+margin_top = 492.0
+margin_right = 278.0
+margin_bottom = 532.0
+rect_scale = Vector2( 5, 5 )
+text = "Psicologo"
+
+[node name="DialogSystem" parent="." instance=ExtResource( 3 )]
+margin_left = -544.5
+margin_right = 383.5
+margin_bottom = 354.5
+json_path = "res://assets/dialogos/psicologista.json"
+npc_name = "Psicologo"
+
+[node name="Button" type="Button" parent="."]
+margin_left = 1596.0
+margin_top = 456.0
+margin_right = 1855.0
+margin_bottom = 629.0
+
+[connection signal="pressed" from="Tv_button" to="." method="_on_Tv_button_pressed"]
+[connection signal="pressed" from="DoiAqui/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="DoiAqui/TextureButton" to="." method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

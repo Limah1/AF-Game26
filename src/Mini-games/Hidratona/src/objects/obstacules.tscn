@@ -6,9 +6,7 @@
 
 [sub_resource type="CircleShape2D" id=1]
 
-[node name="obstacules" type="ParallaxBackground" groups=[
-"parallax",
-]]
+[node name="obstacules" type="ParallaxBackground" groups=["parallax"]]
 layer = 50
 script = ExtResource( 1 )
 
@@ -18,54 +16,34 @@ motion_scale = Vector2( 0.5, 0.5 )
 [node name="hole" parent="ParallaxLayer" instance=ExtResource( 2 )]
 position = Vector2( 1944, 987.553 )
 
-[node name="Position2D" type="Position2D" parent="ParallaxLayer" groups=[
-"position",
-]]
+[node name="Position2D" type="Position2D" parent="ParallaxLayer" groups=["position"]]
 position = Vector2( 2322.61, 623.125 )
 
-[node name="Position2D2" type="Position2D" parent="ParallaxLayer" groups=[
-"position",
-]]
+[node name="Position2D2" type="Position2D" parent="ParallaxLayer" groups=["position"]]
 position = Vector2( 2839.48, 591.149 )
 
-[node name="Position2D3" type="Position2D" parent="ParallaxLayer" groups=[
-"position",
-]]
+[node name="Position2D3" type="Position2D" parent="ParallaxLayer" groups=["position"]]
 position = Vector2( 3892.51, 584.968 )
 
-[node name="Position2D4" type="Position2D" parent="ParallaxLayer" groups=[
-"position",
-]]
+[node name="Position2D4" type="Position2D" parent="ParallaxLayer" groups=["position"]]
 position = Vector2( 1888.96, 580.314 )
 
-[node name="Position2D5" type="Position2D" parent="ParallaxLayer" groups=[
-"obstacules",
-]]
+[node name="Position2D5" type="Position2D" parent="ParallaxLayer" groups=["obstacules"]]
 position = Vector2( 2788.9, 868.31 )
 
-[node name="Position2D6" type="Position2D" parent="ParallaxLayer" groups=[
-"obstacules",
-]]
+[node name="Position2D6" type="Position2D" parent="ParallaxLayer" groups=["obstacules"]]
 position = Vector2( 3853.05, 874.472 )
 
-[node name="Position2D7" type="Position2D" parent="ParallaxLayer" groups=[
-"obstacules",
-]]
+[node name="Position2D7" type="Position2D" parent="ParallaxLayer" groups=["obstacules"]]
 position = Vector2( 5255.12, 860.369 )
 
-[node name="Position2D8" type="Position2D" parent="ParallaxLayer" groups=[
-"mosquito",
-]]
+[node name="Position2D8" type="Position2D" parent="ParallaxLayer" groups=["mosquito"]]
 position = Vector2( 3295.39, 780.064 )
 
-[node name="Position2D9" type="Position2D" parent="ParallaxLayer" groups=[
-"mosquito",
-]]
+[node name="Position2D9" type="Position2D" parent="ParallaxLayer" groups=["mosquito"]]
 position = Vector2( 4571.9, 800.395 )
 
-[node name="Position2D10" type="Position2D" parent="ParallaxLayer" groups=[
-"mosquito",
-]]
+[node name="Position2D10" type="Position2D" parent="ParallaxLayer" groups=["mosquito"]]
 position = Vector2( 6063.31, 727.16 )
 
 [node name="Area2D" type="Area2D" parent="ParallaxLayer"]

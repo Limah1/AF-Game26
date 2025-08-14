@@ -24,6 +24,8 @@ func _process(delta):
 	parallax_offset -= delta * Resources.parallax_speed
 	set_scroll_offset(Vector2(parallax_offset, 0))
 	
+	return
+	
 	time += 1 * delta
 	if time > 5:
 		var node = preload("res://src/Mini-games/Hidratona/src/objects/obstacules.tscn")
@@ -40,6 +42,8 @@ func paralax_dash():
 	dash_timer = 1
 
 func increment_parallax_speed():
+	return
+	# Por enquanto o aumento de velocidade está desligado
 	var percent = Resources.parallax_speed * 0.1
 	Resources.parallax_speed += percent
 

@@ -1,0 +1,64 @@
+{
+    "texto": "Oi! Eu sou o Dr. João, seu pediatra. Como você está se sentindo hoje?",
+    "opcao1": {
+        "botao": "Estou me sentindo bem!",
+        "resposta": "Que ótimo! Tem se lembrado de beber bastante água durante o dia?",
+        "opcao1": {
+            "botao": "Sim, todos os dias",
+            "resposta": "Perfeito! A água ajuda o sangue a circular melhor e diminui o risco de crises.",
+            "opcao1": {
+                "botao": "Quero perguntar outra coisa"
+            }
+        },
+        "opcao2": {
+            "botao": "Às vezes esqueço",
+            "resposta": "Tente beber pelo menos um copo a cada hora. Quer que eu te ensine um truque para lembrar?",
+            "opcao1": {
+                "botao": "Sim",
+                "resposta": "Você pode usar um copinho colorido ou marcar no relógio! Assim fica mais divertido.",
+                "opcao1": {
+                    "botao": "Quero perguntar outra coisa"
+                }
+            },
+            "opcao2": {
+                "botao": "Não, tudo bem",
+                "resposta": "Tudo bem! Mas não esqueça: hidratação é muito importante.",
+                "opcao1": {
+                    "botao": "Quero perguntar outra coisa"
+                }
+            }
+        }
+    },
+    "opcao2": {
+        "botao": "Estou cansado...",
+        "resposta": "Entendo. O cansaço pode acontecer por causa da anemia falciforme. Você sentiu dor junto?",
+        "opcao1": {
+            "botao": "Sim, um pouco",
+            "resposta": "É importante avisar um adulto quando sentir dor. Você quer saber como podemos ajudar nessas horas?",
+            "opcao1": {
+                "botao": "Sim",
+                "resposta": "Podemos descansar, beber água e, se necessário, tomar o remédio indicado.",
+                "opcao1": {
+                    "botao": "Quero perguntar outra coisa"
+                }
+            },
+            "opcao2": {
+                "botao": "Não",
+                "resposta": "Tudo bem! Mas não guarde a dor para você, combinado?",
+                "opcao1": {
+                    "botao": "Quero perguntar outra coisa"
+                }
+            }
+        },
+        "opcao2": {
+            "botao": "Não, só cansado",
+            "resposta": "O descanso e a hidratação ajudam. Também é bom evitar brincar de forma muito intensa.",
+            "opcao1": {
+                "botao": "Quero perguntar outra coisa"
+            }
+        }
+    },
+    "opcao3": {
+        "botao": "Até logo"
+    }
+}

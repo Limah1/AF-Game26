@@ -1,0 +1,53 @@
+{
+    "texto": "Oi! Eu sou o Dr. Carlos, dentista. Você tem escovado os dentes direitinho?",
+    "opcao1": {
+        "botao": "Sim, todos os dias",
+        "resposta": "Muito bem! Escovar os dentes evita infecções, que podem ser mais perigosas para quem tem anemia falciforme.",
+        "opcao1": {
+            "botao": "Sim, e uso fio dental",
+            "resposta": "Excelente! Continue assim e não esqueça das visitas ao dentista.",
+            "opcao1": {
+                "botao": "Quero perguntar outra coisa"
+            }
+        },
+        "opcao2": {
+            "botao": "Não uso fio dental",
+            "resposta": "O fio dental tira restos de comida que a escova não alcança. Quer aprender a usar?",
+            "opcao1": {
+                "botao": "Sim",
+                "resposta": "Você passa o fio entre os dentes, devagar, e remove a sujeira. Posso te mostrar na próxima visita.",
+                "opcao1": {
+                    "botao": "Quero perguntar outra coisa"
+                }
+            },
+            "opcao2": {
+                "botao": "Não, obrigado",
+                "resposta": "Tudo bem! Mas lembre-se: ele é muito importante para evitar cáries.",
+                "opcao1": {
+                    "botao": "Quero perguntar outra coisa"
+                }
+            }
+        }
+    },
+    "opcao2": {
+        "botao": "Às vezes esqueço",
+        "resposta": "Tente lembrar de escovar pelo menos 2 vezes por dia. Você quer uma dica para não esquecer?",
+        "opcao1": {
+            "botao": "Sim",
+            "resposta": "Você pode escovar sempre depois das refeições e antes de dormir. Deixe a escova em um lugar visível.",
+            "opcao1": {
+                "botao": "Quero perguntar outra coisa"
+            }
+        },
+        "opcao2": {
+            "botao": "Não",
+            "resposta": "Ok, mas não esqueça que a higiene bucal evita problemas que podem causar dor e febre.",
+            "opcao1": {
+                "botao": "Quero perguntar outra coisa"
+            }
+        }
+    },
+    "opcao3": {
+        "botao": "Até logo"
+    }
+}

@@ -49,14 +49,23 @@ func _on_Button0_pressed() -> void:
 	$"quintal-portao-fechado".visible = false
 	$Hidratona_PopUp/AnimationPlayer.play("in")
 
+#func _on_TutorialButton_pressed() -> void:
+#	$button_sound.play()
+#	yield($button_sound,"finished")
+#	AnimationController.is_travelling = false
+#	
+#	AnimationController.status = "Hidratona"
+#	NecessityBars.fun = true
+#	get_tree().change_scene("res://src/Mini-games/Hidratona/src/level/Tutorial.tscn")
+	
 func _on_TutorialButton_pressed() -> void:
 	$button_sound.play()
 	yield($button_sound,"finished")
 	AnimationController.is_travelling = false
 	
-	AnimationController.status = "Hidratona"
+	AnimationController.status = "Hospital"
 	NecessityBars.fun = true
-	get_tree().change_scene("res://src/Mini-games/Hidratona/src/level/Tutorial.tscn")
+	get_tree().change_scene("res://src/Hospital.tscn")
 
 func _on_StartButton_pressed() -> void:
 	AnimationController.is_travelling = false

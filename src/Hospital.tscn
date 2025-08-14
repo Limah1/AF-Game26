@@ -5,7 +5,7 @@
 [ext_resource path="res://src/UI/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/UI/NecessityManager.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/Plataforma/pop-up-emergencia.png" type="Texture" id=5]
-[ext_resource path="res://src/Slots.gd" type="Script" id=6]
+[ext_resource path="res://src/SlotsHospital.gd" type="Script" id=6]
 [ext_resource path="res://assets/Hidratona/sprites/objects/play-button (1).png" type="Texture" id=7]
 [ext_resource path="res://assets/Plataforma/buttons/button-sair.png" type="Texture" id=8]
 [ext_resource path="res://assets/Plataforma/Sprites Barra de Status + navegação/pause.png" type="Texture" id=9]
@@ -489,7 +489,7 @@ tracks/2/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1, 1 ) ]
 }
 
-[node name="Teste" type="Node2D"]
+[node name="Hospital" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="Slots" type="Node2D" parent="."]

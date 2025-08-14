@@ -7,7 +7,7 @@ func _ready() -> void:
 	
 	AnimationController.set_animation_player($Player/AnimationPlayer)
 	
-	if(AnimationController.status == "Hospital" or AnimationController.status == "Started" or AnimationController.status == "MainGame" or AnimationController.status == "DoiAqui"):
+	if(AnimationController.status == "Started" or AnimationController.status == "MainGame" or AnimationController.status == "DoiAqui"):
 		$Slots.start(1)
 	elif(AnimationController.status == "Match3"):
 		$Slots.start(2)

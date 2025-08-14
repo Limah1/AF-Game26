@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://src/Mini-games/Hidratona/src/Actor/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Mini-games/Hidratona/src/level/ParallaxBackground.gd" type="Script" id=2]
@@ -6,7 +6,7 @@
 [ext_resource path="res://assets/Hidratona/sprites/background.png" type="Texture" id=4]
 [ext_resource path="res://src/Mini-games/Hidratona/src/objects/HidratationBar.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/Mini-games/Hidratona/src/objects/Heart.tscn" type="PackedScene" id=6]
-[ext_resource path="res://src/Mini-games/Hidratona/src/level/Level.gd" type="Script" id=7]
+[ext_resource path="res://src/Mini-games/Hidratona/src/level/NewLevel.gd" type="Script" id=7]
 [ext_resource path="res://assets/Hidratona/sprites/objects/pausa.png" type="Texture" id=8]
 [ext_resource path="res://assets/Hidratona/sprites/objects/play-button (1).png" type="Texture" id=9]
 [ext_resource path="res://assets/Hidratona/sprites/objects/sol.png" type="Texture" id=10]
@@ -19,6 +19,7 @@
 [ext_resource path="res://assets/Nova pasta/Ativo 16.png" type="Texture" id=17]
 [ext_resource path="res://src/Mini-games/Hidratona/src/level/Rain.tscn" type="PackedScene" id=18]
 [ext_resource path="res://assets/sounds/sons editados/bemtivi.wav" type="AudioStream" id=19]
+[ext_resource path="res://src/Mini-games/Hidratona/src/level/ObstacleManager.gd" type="Script" id=20]
 
 [sub_resource type="DynamicFont" id=1]
 size = 65
@@ -57,6 +58,13 @@ script = ExtResource( 7 )
 __meta__ = {
 "_edit_vertical_guides_": [ 1920.66, 3805.8, 7.51227 ]
 }
+
+[node name="ObstacleManager" type="Node2D" parent="."]
+script = ExtResource( 20 )
+
+[node name="SpawnTimer" type="Timer" parent="ObstacleManager"]
+wait_time = 5.0
+autostart = true
 
 [node name="Rain" parent="." instance=ExtResource( 18 )]
 
@@ -417,6 +425,7 @@ autostart = true
 [node name="sunny_sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 19 )
 
+[connection signal="timeout" from="ObstacleManager/SpawnTimer" to="ObstacleManager" method="_on_SpawnTimer_timeout"]
 [connection signal="button_up" from="pause" to="." method="_on_pause_button_up"]
 [connection signal="pressed" from="CanvasLayer/NaoTrouxeCapa/Button" to="CanvasLayer" method="_on_Button_pressed"]
 [connection signal="pressed" from="CanvasLayer/NaoTrouxeCapa/Button2" to="CanvasLayer" method="_on_Button2_pressed"]

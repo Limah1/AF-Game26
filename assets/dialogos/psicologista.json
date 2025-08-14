@@ -1,0 +1,64 @@
+{
+    "texto": "Olá! Eu sou a Dra. Ana, psicóloga. Como você tem se sentido com os cuidados da anemia falciforme?",
+    "opcao1": {
+        "botao": "Às vezes fico triste",
+        "resposta": "É normal sentir isso. Você quer me contar o que te deixa triste?",
+        "opcao1": {
+            "botao": "Não posso brincar como antes",
+            "resposta": "Podemos pensar em brincadeiras que não te cansem muito. Quer algumas ideias?",
+            "opcao1": {
+                "botao": "Sim",
+                "resposta": "Jogos de tabuleiro, desenho, contar histórias... Podemos inventar coisas novas também!",
+                "opcao1": {
+                    "botao": "Quero perguntar outra coisa"
+                }
+            },
+            "opcao2": {
+                "botao": "Não",
+                "resposta": "Tudo bem, mas lembre-se que sempre dá para se divertir de formas diferentes.",
+                "opcao1": {
+                    "botao": "Quero perguntar outra coisa"
+                }
+            }
+        },
+        "opcao2": {
+            "botao": "Tenho medo das crises",
+            "resposta": "O medo é normal, mas vamos pensar no que você pode fazer para se sentir mais seguro.",
+            "opcao1": {
+                "botao": "Chamar um adulto",
+                "resposta": "Isso mesmo! Além disso, beber água e descansar ajudam muito.",
+                "opcao1": {
+                    "botao": "Quero perguntar outra coisa"
+                }
+            },
+            "opcao2": {
+                "botao": "Tomar o remédio",
+                "resposta": "Correto! O remédio foi receitado para te proteger e deve ser tomado nos horários certos.",
+                "opcao1": {
+                    "botao": "Quero perguntar outra coisa"
+                }
+            }
+        }
+    },
+    "opcao2": {
+        "botao": "Estou feliz hoje",
+        "resposta": "Fico muito feliz! O que deixou o seu dia bom?",
+        "opcao1": {
+            "botao": "Brinquei com meus amigos",
+            "resposta": "Amizades são importantes. É bom contar para eles sobre a anemia falciforme, assim eles entendem quando você precisa descansar.",
+            "opcao1": {
+                "botao": "Quero perguntar outra coisa"
+            }
+        },
+        "opcao2": {
+            "botao": "Ganhei um presente",
+            "resposta": "Que bom! Aproveite esses momentos, eles ajudam a manter nosso coração feliz.",
+            "opcao1": {
+                "botao": "Quero perguntar outra coisa"
+            }
+        }
+    },
+    "opcao3": {
+        "botao": "Até logo"
+    }
+}

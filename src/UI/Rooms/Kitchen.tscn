@@ -205,9 +205,6 @@ tracks/1/keys = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="cozinha" type="Sprite" parent="."]
 position = Vector2( 960, 540 )
@@ -252,7 +249,7 @@ __meta__ = {
 
 [node name="cozinha_geladeira" type="Sprite" parent="."]
 position = Vector2( 921, 570 )
-rotation = 0.0050407
+rotation = 0.245304
 z_index = -30
 texture = ExtResource( 10 )
 
@@ -283,9 +280,6 @@ margin_left = -64.6428
 margin_top = -1384.0
 margin_right = 885.357
 margin_bottom = -583.999
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="pop-up-match-3" type="Sprite" parent="Match3PopUp"]
 position = Vector2( 475, 400 )
