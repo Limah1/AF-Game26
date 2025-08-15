@@ -3,6 +3,7 @@ extends Node2D
 var current_room
 
 func _ready() -> void:
+	AnimationController.status = "Hospital"
 	CharacterController.player_ref = $Player/Player
 	
 	AnimationController.set_animation_player($Player/AnimationPlayer)
@@ -18,7 +19,12 @@ func _ready() -> void:
 	elif(AnimationController.status == "ForgotAcessory"):
 		$Slots.start(3)
 	
-	AnimationController.status = "Started"
+	$Player/Player/rainny_sound.stop()
+	$Player/Player/sunny_sound.stop()
+	$Player/Player/snow_sound.stop()
+	
+	BackgroundMusic.stop_music()
+	$hospital_sound.play()
 
 func _process(delta: float) -> void:
 	current_room = $Slots/Slot1.current_room

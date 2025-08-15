@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://src/MainScreen.gd" type="Script" id=1]
 [ext_resource path="res://src/UI/RoomSlot.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/Plataforma/buttons/button-sair.png" type="Texture" id=8]
 [ext_resource path="res://assets/Plataforma/Sprites Barra de Status + navegação/pause.png" type="Texture" id=9]
 [ext_resource path="res://src/UI/Pause.gd" type="Script" id=10]
+[ext_resource path="res://assets/Plataforma/LofiHospital.wav" type="AudioStream" id=11]
 
 [sub_resource type="Animation" id=1]
 resource_name = "fade_in_out"
@@ -605,6 +606,9 @@ margin_right = 1855.0
 margin_bottom = 137.0
 texture_normal = ExtResource( 9 )
 texture_pressed = ExtResource( 9 )
+
+[node name="hospital_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
 
 [connection signal="pressed" from="Pause/Pause/play-button" to="Pause" method="_on_playbutton_pressed"]
 [connection signal="pressed" from="Pause/Pause/play-button2" to="Pause" method="_on_playbutton2_pressed"]

@@ -46,7 +46,13 @@ func to_the_toilet():
 	$player_sprites/toilet.visible = true
 
 func _process(delta: float) -> void:
-	if last_weather != Resources.weather:
+	if AnimationController.status == "Hospital":
+		$rainny_sound.stop()
+		$sunny_sound.stop()
+		$snow_sound.stop()
+		BackgroundMusic.stop_music()
+
+	elif last_weather != Resources.weather:
 		if Resources.weather == "Rainy" :
 			$rainny_sound.play()
 			$sunny_sound.stop()
