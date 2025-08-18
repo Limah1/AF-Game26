@@ -83,6 +83,9 @@ margin_right = 732.548
 margin_bottom = 723.52
 texture_normal = ExtResource( 4 )
 texture_disabled = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="pardo" type="TextureButton" parent="."]
 margin_left = 836.548
@@ -91,6 +94,9 @@ margin_right = 1081.55
 margin_bottom = 723.52
 texture_normal = ExtResource( 7 )
 texture_disabled = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="negro" type="TextureButton" parent="."]
 margin_left = 1212.55

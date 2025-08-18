@@ -10,7 +10,7 @@ func _ready():
 
 func _on_branco_pressed():
 	$gendersound.play()
-	
+
 	$branco.disabled = true
 	$pardo.disabled = false
 	$negro.disabled = false

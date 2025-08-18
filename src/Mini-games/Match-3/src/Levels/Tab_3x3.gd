@@ -2,6 +2,9 @@ extends Node2D
 
 var SWF = preload("res://src/Mini-games/Match-3/src/GUI/Show_Which_Fruit.tscn")
 
+var personagem_sprite
+var cor_pele = ""
+
 var instance_timer = 0.3
 var rng = RandomNumberGenerator.new()
 var start = 0
@@ -46,6 +49,14 @@ var Ordem = [
 ]
 
 func _ready():
+	# Shaders mudando a etnia
+	personagem_sprite = get_node("character")
+	cor_pele = NewCharData.cor_pele
+	var new_color_pele = Color(cor_pele)
+	var shader_material = personagem_sprite.material as ShaderMaterial
+	shader_material.set_shader_param("nova_cor_pele", new_color_pele)
+	
+	
 	S_Conntroller.goalScore = 9
 	
 	AllTiles = [

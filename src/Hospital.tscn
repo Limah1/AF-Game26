@@ -1,6 +1,6 @@
 [gd_scene load_steps=26 format=2]
 
-[ext_resource path="res://src/MainScreen.gd" type="Script" id=1]
+[ext_resource path="res://src/Hospital.gd" type="Script" id=1]
 [ext_resource path="res://src/UI/RoomSlot.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/UI/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/UI/NecessityManager.tscn" type="PackedScene" id=4]
@@ -518,11 +518,30 @@ anims/fade_in_out = SubResource( 1 )
 position = Vector2( 1430, 788.145 )
 z_index = -5
 
+[node name="idle" parent="Player/Player/player_sprites" index="0"]
+scale = Vector2( 0.25, 0.25 )
+
+[node name="w1" parent="Player/Player/player_sprites" index="1"]
+scale = Vector2( 0.25, 0.25 )
+
+[node name="w2" parent="Player/Player/player_sprites" index="2"]
+scale = Vector2( 0.25, 0.25 )
+
+[node name="w3" parent="Player/Player/player_sprites" index="3"]
+scale = Vector2( 0.25, 0.25 )
+
+[node name="w4" parent="Player/Player/player_sprites" index="4"]
+scale = Vector2( 0.25, 0.25 )
+
+[node name="w5" parent="Player/Player/player_sprites" index="5"]
+scale = Vector2( 0.25, 0.25 )
+
 [node name="sleeping" parent="Player/Player/player_sprites" index="6"]
 visible = true
+scale = Vector2( 0.11, 0.11 )
 
 [node name="toilet" parent="Player/Player/player_sprites" index="7"]
-visible = false
+scale = Vector2( 0.25, 0.25 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
 autoplay = "start"

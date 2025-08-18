@@ -23,10 +23,33 @@ onready var bubbles = $"boy-banho-1/bubbles"
 onready var water_circles = $"boy-banho-1/Molhado"
 onready var foam = $"boy-banho-1/espuma"
 
+# variaveis p shaders,
+var personagem_sprite
+var cor_pele
+var roupa
+var cor_roupa_cima
+var cor_roupa_baixo
+
 func start(ref):
 	bathroom_reference = ref
+	personagem_sprite = $"boy-banho-1"
 	
 	$"boy-banho-1".texture = CharacterController.all_sprites.plataform.idle_bath
+	
+			# Variaveis para Shaders
+	cor_pele = NewCharData.cor_pele
+	roupa = NewCharData.roupa
+	cor_roupa_cima = NewCharData.cor_roupa_cima
+	cor_roupa_baixo = NewCharData.cor_roupa_baixo
+	#
+	print("cores pele, camisa, calça")
+	print(cor_pele, cor_roupa_cima, cor_roupa_baixo)
+	#
+	var new_color_pele = Color(cor_pele)
+	var new_color_cima = Color(cor_roupa_cima)
+	var new_color_baixo = Color(cor_roupa_baixo)
+	var shader_material = personagem_sprite.material as ShaderMaterial
+	shader_material.set_shader_param("nova_cor_pele", new_color_pele)
 	
 
 func _on_body_area_body_entered(body):

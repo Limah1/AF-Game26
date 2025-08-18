@@ -1,13 +1,10 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://src/Teste.gd" type="Script" id=1]
 [ext_resource path="res://src/UI/RoomSlot.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/UI/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/UI/NecessityManager.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/Plataforma/pop-up-emergencia.png" type="Texture" id=5]
-[ext_resource path="res://assets/sounds/Sons Atualizados/SFX_Rain, Vegetation, Rural Palm Forest, Light, Loop SND122357 1.wav" type="AudioStream" id=6]
-[ext_resource path="res://assets/sounds/Sons Atualizados/SFX_AMBIENCE Birds Forest Quiet Wind Loop 02.wav" type="AudioStream" id=7]
-[ext_resource path="res://assets/sounds/Sons Atualizados/SFX_birds_outside_002_wide.wav" type="AudioStream" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "fade_in_out"
@@ -540,15 +537,6 @@ visible = true
 
 [node name="toilet" parent="Player/Player/player_sprites" index="7"]
 visible = false
-
-[node name="sunny_sound" parent="Player/Player" index="6"]
-stream = ExtResource( 8 )
-
-[node name="rainny_sound" parent="Player/Player" index="7"]
-stream = ExtResource( 6 )
-
-[node name="snow_sound" parent="Player/Player" index="8"]
-stream = ExtResource( 7 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
 autoplay = "start"

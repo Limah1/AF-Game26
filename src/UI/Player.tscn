@@ -318,11 +318,11 @@ position = Vector2( 0, -209.888 )
 scale = Vector2( 2.3, 2.3 )
 
 [node name="idle" type="Sprite" parent="player_sprites"]
-visible = false
 position = Vector2( 0, 70 )
 texture = ExtResource( 10 )
 
 [node name="w1" type="Sprite" parent="player_sprites"]
+visible = false
 position = Vector2( 0, 70 )
 texture = ExtResource( 3 )
 
@@ -353,6 +353,7 @@ scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 11 )
 
 [node name="toilet" type="Sprite" parent="player_sprites"]
+visible = false
 position = Vector2( 0, 91.3845 )
 texture = ExtResource( 4 )
 

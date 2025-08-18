@@ -60,6 +60,7 @@ AnimationController="*res://src/AnimationController.gd"
 SaveController="*res://src/SaveController.gd"
 GlobalResource="*res://src/Mini-games/DoiAqui/resource.gd"
 BackgroundMusic="*res://assets/sounds/background_music.tscn"
+NewCharData="*res://src/UI/new_char_data.gd"
 
 [display]
 

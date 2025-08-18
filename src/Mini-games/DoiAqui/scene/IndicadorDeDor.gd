@@ -83,4 +83,4 @@ func _on_novamente_pressed():
 
 
 func _on_casa_pressed():
-	pass # Replace with function body.
+	get_tree().change_scene("res://src/MainScreen.tscn")

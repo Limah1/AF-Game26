@@ -1,9 +1,8 @@
 [gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://assets/fonts/Roboto-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/Landing_Page_Temp.gd" type="Script" id=2]
-[ext_resource path="res://assets/Plataforma/landing_page/af-logo.png" type="Texture" id=3]
-[ext_resource path="res://assets/Plataforma/landing_page/af-background.png" type="Texture" id=4]
+[ext_resource path="res://assets/NEW-TelaTitulo/logo.png" type="Texture" id=3]
+[ext_resource path="res://assets/NEW-TelaTitulo/Hemácias BG (sem fundo) png.png" type="Texture" id=4]
 [ext_resource path="res://assets/Plataforma/landing_page/button-sair.png" type="Texture" id=5]
 [ext_resource path="res://assets/Plataforma/landing_page/asf.png" type="Texture" id=6]
 [ext_resource path="res://assets/Plataforma/landing_page/hover.png" type="Texture" id=7]
@@ -14,17 +13,44 @@
 [ext_resource path="res://assets/sounds/Sons Atualizados/SFX_User Interface, Click, Button, Double Click, Fast, Phone Tap SND68342.wav" type="AudioStream" id=12]
 [ext_resource path="res://assets/sounds/sons editados/title_audio.wav" type="AudioStream" id=13]
 
-[sub_resource type="DynamicFont" id=1]
-size = 300
-font_data = ExtResource( 1 )
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform float scroll_speed_x = 0.03;
+uniform float scroll_speed_y = 0.03;
+
+void fragment() {
+    vec2 uv = UV;
+    uv.x += TIME * scroll_speed_x;
+    uv.y += TIME * scroll_speed_y;
+    COLOR = texture(TEXTURE, uv);
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/scroll_speed_x = 0.03
+shader_param/scroll_speed_y = 0.03
 
 [node name="Landing_Page" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 783.31 ],
+"_edit_vertical_guides_": [ 959.859 ]
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 1.0
+margin_top = 2.0
+margin_right = 1908.0
+margin_bottom = 1086.0
+color = Color( 0.94902, 0.94902, 0.94902, 1 )
 
 [node name="af-background" type="Sprite" parent="."]
-position = Vector2( 960, 540 )
+material = SubResource( 2 )
+position = Vector2( 969.485, 482.906 )
+scale = Vector2( 0.581233, 0.581233 )
 texture = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="."]
@@ -36,7 +62,6 @@ margin_top = 181.429
 margin_right = 744.5
 margin_bottom = 534.429
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 1 )
 text = "Plataforma"
 align = 1
 valign = 1
@@ -45,7 +70,8 @@ __meta__ = {
 }
 
 [node name="af-logo" type="Sprite" parent="."]
-position = Vector2( 569.405, 540 )
+position = Vector2( 957.673, 404.02 )
+scale = Vector2( 0.527291, 0.527291 )
 texture = ExtResource( 3 )
 
 [node name="Continue" type="TextureButton" parent="."]
@@ -53,10 +79,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 133.151
-margin_top = -416.881
-margin_right = 884.151
-margin_bottom = -187.881
+margin_left = -843.429
+margin_top = 242.105
+margin_right = -92.4286
+margin_bottom = 471.105
+rect_scale = Vector2( 0.8, 0.8 )
 texture_normal = ExtResource( 9 )
 texture_pressed = ExtResource( 10 )
 texture_hover = ExtResource( 10 )
@@ -70,10 +97,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 133.151
-margin_top = -98.881
-margin_right = 864.151
-margin_bottom = 130.119
+margin_left = -195.314
+margin_top = 244.0
+margin_right = 535.686
+margin_bottom = 473.0
+rect_scale = Vector2( 0.8, 0.8 )
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 7 )
 texture_hover = ExtResource( 7 )
@@ -86,10 +114,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 304.5
-margin_top = 196.218
-margin_right = 662.5
-margin_bottom = 425.218
+margin_left = 430.308
+margin_top = 242.716
+margin_right = 788.308
+margin_bottom = 471.716
+rect_scale = Vector2( 0.8, 0.8 )
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 8 )
 texture_hover = ExtResource( 8 )

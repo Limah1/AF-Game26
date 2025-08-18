@@ -1,0 +1,51 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform vec4 cor_base_pele:hint_color;
+uniform vec4 cor_base_camisa:hint_color;
+uniform vec4 cor_base_calca:hint_color;
+
+uniform vec4 nova_cor_pele:hint_color;
+uniform vec4 nova_cor_camisa:hint_color;
+uniform vec4 nova_cor_calca:hint_color;
+
+uniform float tolerancia : hint_range(0.0, 1.0) = 0.6;
+uniform float transparencia : hint_range(0.0, 1.0) = 0.01; // corrige problema de pixel transpartente ser afetado (pode acontecer do PNG armazenar (0,255,0,0), no pixel, por exemplo, o que leva ao erro). Poderia programar pra 0 e n ter isso, mas talvez seja bom pra trocar cor de itens semi-transparantes
+
+void fragment(){
+	vec4 current_pixel = texture(TEXTURE, UV);
+	vec4 final_color = current_pixel; // Inicializa a cor final com o pixel original
+
+	// confere se pixel n é transparente antes de tentar mudar a cor
+	if (current_pixel.a > transparencia) { // só muda se o alfa for maior q 0.1
+		// Pele
+		float dist_pele = length(current_pixel.rgb - cor_base_pele.rgb);
+		
+		if (dist_pele < tolerancia) {
+			final_color = nova_cor_pele;
+		}
+		// Camisa
+		else if (length(current_pixel.rgb - cor_base_camisa.rgb) < tolerancia) {
+			final_color = nova_cor_camisa;
+		}
+		// Calça
+		else if (length(current_pixel.rgb - cor_base_calca.rgb) < tolerancia) {
+			final_color = nova_cor_calca;
+		}
+	}
+	
+	COLOR = final_color; // Define a cor do pixel final
+}"
+
+[resource]
+shader = SubResource( 1 )
+shader_param/cor_base_pele = Color( 0, 1, 0, 1 )
+shader_param/cor_base_camisa = Color( 1, 0, 0.0823529, 1 )
+shader_param/cor_base_calca = Color( 0, 0, 1, 1 )
+shader_param/nova_cor_pele = Color( 0.960784, 0.890196, 0.823529, 1 )
+shader_param/nova_cor_camisa = Color( 0.541176, 0.615686, 0.647059, 1 )
+shader_param/nova_cor_calca = Color( 0.317647, 0.317647, 0.317647, 1 )
+shader_param/tolerancia = 0.6
+shader_param/transparencia = 0.01

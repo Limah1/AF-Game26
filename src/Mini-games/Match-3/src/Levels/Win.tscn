@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://assets/fonts/Teste.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/Mini-games/Match-3/src/GUI/Background.tscn" type="PackedScene" id=2]
@@ -12,7 +12,7 @@
 [ext_resource path="res://assets/Match-3/sprites/melancia.png" type="Texture" id=10]
 [ext_resource path="res://assets/Match-3/sprites/arroz-e-feijao.png" type="Texture" id=11]
 [ext_resource path="res://assets/Match-3/sprites/checked-task-icon.png" type="Texture" id=12]
-[ext_resource path="res://assets/Match-3/sprites/personagens/girl-win.png" type="Texture" id=13]
+[ext_resource path="res://assets/Match-3/sprites_novo/personagem/boy-a-match3-mto-feliz-comemora.png" type="Texture" id=13]
 [ext_resource path="res://assets/Match-3/sprites/line.png" type="Texture" id=14]
 [ext_resource path="res://assets/Match-3/buttons/button-ir-de-novo-hover_1.png" type="Texture" id=15]
 [ext_resource path="res://assets/Match-3/LAYOUTS/moeda.png" type="Texture" id=16]
@@ -23,6 +23,7 @@
 [ext_resource path="res://assets/Match-3/buttons/button-ir-de-novo-hover.png" type="Texture" id=21]
 [ext_resource path="res://assets/Match-3/buttons/button-ir-casa.png" type="Texture" id=22]
 [ext_resource path="res://assets/sounds/sons editados/applause.wav" type="AudioStream" id=23]
+[ext_resource path="res://src/UI/ShaderPersonagem.tres" type="Material" id=24]
 
 [sub_resource type="ParticlesMaterial" id=1]
 flag_rotate_y = true
@@ -96,9 +97,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 3 )
 __meta__ = {
-"_edit_horizontal_guides_": [ 603.438, 143.27, 388.812, 175.224, 356.858 ],
-"_edit_use_anchors_": false,
-"_edit_vertical_guides_": [ 1155.05, 1005.37, 1266.05, 773.287, 958.284, 1308.1 ]
+"_edit_horizontal_guides_": [ 163.895, 958.598 ],
+"_edit_use_anchors_": false
 }
 
 [node name="p2d_red" type="Particles2D" parent="."]
@@ -358,8 +358,9 @@ __meta__ = {
 }
 
 [node name="character" type="Sprite" parent="."]
+material = ExtResource( 24 )
 position = Vector2( 271.351, 566.77 )
-scale = Vector2( 2.5, 2.5 )
+scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 13 )
 
 [node name="line" type="Sprite" parent="."]

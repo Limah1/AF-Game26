@@ -1,0 +1,511 @@
+[gd_scene load_steps=43 format=2]
+
+[ext_resource path="res://src/UI/sound/sound_button.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/UI/sound/selector_gender.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/Sprites-v3/boy-b/boy-b-r1-m0.png" type="Texture" id=3]
+[ext_resource path="res://assets/Plataforma/Char_Select/tela-escolha-personagem.png" type="Texture" id=4]
+[ext_resource path="res://assets/sounds/Sons Atualizados/SFX_Paper Handling and Turning Sequence.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/Character_Creator/btn_roupa_2_boy.png" type="Texture" id=6]
+[ext_resource path="res://assets/Character_Creator/btn_roupa_1_boy_on.png" type="Texture" id=7]
+[ext_resource path="res://assets/Plataforma/Char_Select/button-confirmar.png" type="Texture" id=8]
+[ext_resource path="res://assets/Character_Creator/btn_roupa_2_boy_on.png" type="Texture" id=9]
+[ext_resource path="res://assets/Character_Creator/btn_roupa_1_boy.png" type="Texture" id=10]
+[ext_resource path="res://src/UI/Character_Clothes_Selector.gd" type="Script" id=11]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.94902, 0.94902, 0.94902, 1 )
+
+[sub_resource type="DynamicFontData" id=2]
+font_path = "res://assets/fonts/Roboto-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=3]
+size = 100
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 2 )
+
+[sub_resource type="Shader" id=4]
+code = "shader_type canvas_item;
+
+uniform vec4 cor_base_pele:hint_color;
+uniform vec4 cor_base_camisa:hint_color;
+uniform vec4 cor_base_calca:hint_color;
+
+uniform vec4 nova_cor_pele:hint_color;
+uniform vec4 nova_cor_camisa:hint_color;
+uniform vec4 nova_cor_calca:hint_color;
+
+uniform float tolerancia : hint_range(0.0, 1.0) = 0.6;
+uniform float transparencia : hint_range(0.0, 1.0) = 0.01; // corrige problema de pixel transpartente ser afetado (pode acontecer do PNG armazenar (0,255,0,0), no pixel, por exemplo, o que leva ao erro). Poderia programar pra 0 e n ter isso, mas talvez seja bom pra trocar cor de itens semi-transparantes
+
+void fragment(){
+	vec4 current_pixel = texture(TEXTURE, UV);
+	vec4 final_color = current_pixel; // Inicializa a cor final com o pixel original
+
+	// confere se pixel n é transparente antes de tentar mudar a cor
+	if (current_pixel.a > transparencia) { // só muda se o alfa for maior q 0.1
+		// Pele
+		float dist_pele = length(current_pixel.rgb - cor_base_pele.rgb);
+		
+		if (dist_pele < tolerancia) {
+			final_color = nova_cor_pele;
+		}
+		// Camisa
+		else if (length(current_pixel.rgb - cor_base_camisa.rgb) < tolerancia) {
+			final_color = nova_cor_camisa;
+		}
+		// Calça
+		else if (length(current_pixel.rgb - cor_base_calca.rgb) < tolerancia) {
+			final_color = nova_cor_calca;
+		}
+	}
+	
+	COLOR = final_color; // Define a cor do pixel final
+}"
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = SubResource( 4 )
+shader_param/cor_base_pele = Color( 0, 1, 0, 1 )
+shader_param/cor_base_camisa = Color( 1, 0, 0.0823529, 1 )
+shader_param/cor_base_calca = Color( 0, 0, 1, 1 )
+shader_param/nova_cor_pele = Color( 0.960784, 0.890196, 0.823529, 1 )
+shader_param/nova_cor_camisa = Color( 0.541176, 0.615686, 0.647059, 1 )
+shader_param/nova_cor_calca = Color( 0.317647, 0.317647, 0.317647, 1 )
+shader_param/tolerancia = 0.6
+shader_param/transparencia = 0.01
+
+[sub_resource type="DynamicFontData" id=6]
+font_path = "res://assets/fonts/Roboto-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=7]
+size = 80
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 6 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.929412, 0.105882, 0.141176, 1 )
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color( 0.196078, 0.196078, 0.196078, 1 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.929412, 0.105882, 0.141176, 1 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.956863, 0.396078, 0.137255, 1 )
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color( 0.196078, 0.196078, 0.196078, 1 )
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.956863, 0.396078, 0.137255, 1 )
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0.835294, 0.803922, 0.203922, 1 )
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color( 0.196078, 0.196078, 0.196078, 1 )
+
+[sub_resource type="StyleBoxFlat" id=13]
+bg_color = Color( 0.835294, 0.803922, 0.203922, 1 )
+
+[sub_resource type="StyleBoxFlat" id=14]
+bg_color = Color( 0.129412, 0.698039, 0.294118, 1 )
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color( 0.196078, 0.196078, 0.196078, 1 )
+
+[sub_resource type="StyleBoxFlat" id=15]
+bg_color = Color( 0.129412, 0.698039, 0.294118, 1 )
+
+[sub_resource type="StyleBoxFlat" id=16]
+bg_color = Color( 0.180392, 0.188235, 0.580392, 1 )
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color( 0.196078, 0.196078, 0.196078, 1 )
+
+[sub_resource type="StyleBoxFlat" id=17]
+bg_color = Color( 0.180392, 0.188235, 0.580392, 1 )
+
+[sub_resource type="StyleBoxFlat" id=18]
+bg_color = Color( 0.541176, 0.615686, 0.647059, 1 )
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color( 0.196078, 0.196078, 0.196078, 1 )
+
+[sub_resource type="StyleBoxFlat" id=19]
+bg_color = Color( 0.541176, 0.615686, 0.647059, 1 )
+
+[sub_resource type="StyleBoxFlat" id=20]
+bg_color = Color( 0.72549, 0.0941176, 0.121569, 1 )
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color( 0.196078, 0.196078, 0.196078, 1 )
+
+[sub_resource type="StyleBoxFlat" id=21]
+bg_color = Color( 0.72549, 0.0941176, 0.121569, 1 )
+
+[sub_resource type="StyleBoxFlat" id=22]
+bg_color = Color( 0.447059, 0.270588, 0.188235, 1 )
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color( 0.196078, 0.196078, 0.196078, 1 )
+
+[sub_resource type="StyleBoxFlat" id=23]
+bg_color = Color( 0.447059, 0.270588, 0.188235, 1 )
+
+[sub_resource type="StyleBoxFlat" id=24]
+bg_color = Color( 0.635294, 0.623529, 0.384314, 1 )
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color( 0.196078, 0.196078, 0.196078, 1 )
+
+[sub_resource type="StyleBoxFlat" id=25]
+bg_color = Color( 0.635294, 0.623529, 0.384314, 1 )
+
+[sub_resource type="StyleBoxFlat" id=26]
+bg_color = Color( 0.0941176, 0.345098, 0.105882, 1 )
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color( 0.196078, 0.196078, 0.196078, 1 )
+
+[sub_resource type="StyleBoxFlat" id=27]
+bg_color = Color( 0.0941176, 0.345098, 0.105882, 1 )
+
+[sub_resource type="StyleBoxFlat" id=28]
+bg_color = Color( 0.176471, 0.176471, 0.294118, 1 )
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color( 0.196078, 0.196078, 0.196078, 1 )
+
+[sub_resource type="StyleBoxFlat" id=29]
+bg_color = Color( 0.176471, 0.176471, 0.294118, 1 )
+
+[sub_resource type="StyleBoxFlat" id=30]
+bg_color = Color( 0.317647, 0.317647, 0.317647, 1 )
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color( 0.196078, 0.196078, 0.196078, 1 )
+
+[sub_resource type="StyleBoxFlat" id=31]
+bg_color = Color( 0.317647, 0.317647, 0.317647, 1 )
+
+[node name="Character_Clothes_Selector" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( -1621.1, 324.808 )
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tela-escolha-personagem" type="Sprite" parent="."]
+position = Vector2( 964.52, 540 )
+texture = ExtResource( 4 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 3.0
+margin_top = 2.48016
+margin_right = 1918.0
+margin_bottom = 281.48
+custom_styles/normal = SubResource( 1 )
+custom_fonts/normal_font = SubResource( 3 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_colors/selection_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_selected = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ConfirmButton" type="TextureButton" parent="."]
+anchor_left = 0.501239
+anchor_top = 1.0
+anchor_right = 0.501239
+anchor_bottom = 1.0
+margin_left = 382.686
+margin_top = -171.107
+margin_right = 880.686
+margin_bottom = -24.1067
+rect_pivot_offset = Vector2( -2966.4, -786.267 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 5 )
+position = Vector2( 1598.28, 485.035 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 3 )
+
+[node name="button_sound" parent="." instance=ExtResource( 1 )]
+autoplay = false
+
+[node name="gendersound" parent="." instance=ExtResource( 2 )]
+stream = ExtResource( 5 )
+
+[node name="Roupa" type="Label" parent="."]
+anchor_top = 0.00185185
+anchor_bottom = 0.00185185
+margin_left = 273.0
+margin_top = 85.0
+margin_right = 1111.0
+margin_bottom = 180.0
+rect_pivot_offset = Vector2( -3076.03, 366.979 )
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "Escolha suas Roupas"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_roupa_1" type="TextureButton" parent="."]
+margin_left = 267.32
+margin_top = 195.924
+margin_right = 716.32
+margin_bottom = 467.924
+rect_scale = Vector2( 0.9, 0.9 )
+toggle_mode = true
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_roupa_2" type="TextureButton" parent="."]
+margin_left = 706.701
+margin_top = 195.924
+margin_right = 1155.7
+margin_bottom = 467.924
+rect_scale = Vector2( 0.9, 0.9 )
+toggle_mode = true
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cor_Roupa_Cima" type="Label" parent="."]
+margin_left = 142.0
+margin_top = 459.859
+margin_right = 1237.0
+margin_bottom = 554.859
+rect_pivot_offset = Vector2( -1699.33, -136.379 )
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "Cor da parte de cima"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_cima_cor_1" type="Button" parent="."]
+anchor_left = 0.00131251
+anchor_right = 0.00131251
+margin_left = 132.605
+margin_top = 566.165
+margin_right = 307.605
+margin_bottom = 741.165
+custom_styles/pressed = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+toggle_mode = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_cima_cor_2" type="Button" parent="."]
+margin_left = 317.605
+margin_top = 564.165
+margin_right = 492.605
+margin_bottom = 739.165
+custom_styles/pressed = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
+toggle_mode = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_cima_cor_3" type="Button" parent="."]
+margin_left = 502.605
+margin_top = 566.165
+margin_right = 677.605
+margin_bottom = 741.165
+custom_styles/pressed = SubResource( 12 )
+custom_styles/normal = SubResource( 13 )
+toggle_mode = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_cima_cor_4" type="Button" parent="."]
+margin_left = 687.605
+margin_top = 564.976
+margin_right = 862.605
+margin_bottom = 739.976
+custom_styles/pressed = SubResource( 14 )
+custom_styles/normal = SubResource( 15 )
+toggle_mode = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_cima_cor_5" type="Button" parent="."]
+margin_left = 872.605
+margin_top = 566.165
+margin_right = 1047.6
+margin_bottom = 741.165
+custom_styles/pressed = SubResource( 16 )
+custom_styles/normal = SubResource( 17 )
+toggle_mode = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_cima_cor_6" type="Button" parent="."]
+margin_left = 1057.6
+margin_top = 566.165
+margin_right = 1232.6
+margin_bottom = 741.165
+custom_styles/pressed = SubResource( 18 )
+custom_styles/normal = SubResource( 19 )
+toggle_mode = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cor_Roupa_Baixo" type="Label" parent="."]
+margin_left = 142.0
+margin_top = 745.859
+margin_right = 1237.0
+margin_bottom = 840.859
+rect_pivot_offset = Vector2( -1699.33, -136.379 )
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "Cor da parte de baixo"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_baixo_cor_1" type="Button" parent="."]
+anchor_left = 0.00131251
+anchor_right = 0.00131251
+margin_left = 132.605
+margin_top = 852.165
+margin_right = 307.605
+margin_bottom = 1027.16
+custom_styles/pressed = SubResource( 20 )
+custom_styles/normal = SubResource( 21 )
+toggle_mode = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_baixo_cor_2" type="Button" parent="."]
+margin_left = 317.605
+margin_top = 852.165
+margin_right = 492.605
+margin_bottom = 1027.16
+custom_styles/pressed = SubResource( 22 )
+custom_styles/normal = SubResource( 23 )
+toggle_mode = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_baixo_cor_3" type="Button" parent="."]
+margin_left = 502.605
+margin_top = 852.165
+margin_right = 677.605
+margin_bottom = 1027.16
+custom_styles/pressed = SubResource( 24 )
+custom_styles/normal = SubResource( 25 )
+toggle_mode = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_baixo_cor_4" type="Button" parent="."]
+margin_left = 687.605
+margin_top = 850.976
+margin_right = 862.605
+margin_bottom = 1025.98
+custom_styles/pressed = SubResource( 26 )
+custom_styles/normal = SubResource( 27 )
+toggle_mode = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_baixo_cor_5" type="Button" parent="."]
+margin_left = 872.605
+margin_top = 852.165
+margin_right = 1047.6
+margin_bottom = 1027.16
+custom_styles/pressed = SubResource( 28 )
+custom_styles/normal = SubResource( 29 )
+toggle_mode = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_baixo_cor_6" type="Button" parent="."]
+margin_left = 1055.6
+margin_top = 852.165
+margin_right = 1230.6
+margin_bottom = 1027.16
+custom_styles/pressed = SubResource( 30 )
+custom_styles/normal = SubResource( 31 )
+toggle_mode = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="ConfirmButton" to="." method="_on_ConfirmButton_pressed"]
+[connection signal="pressed" from="btn_roupa_1" to="." method="_on_btn_roupa_1_pressed"]
+[connection signal="pressed" from="btn_roupa_2" to="." method="_on_btn_roupa_2_pressed"]
+[connection signal="pressed" from="btn_cima_cor_1" to="." method="_on_btn_cima_cor_1_pressed"]
+[connection signal="pressed" from="btn_cima_cor_2" to="." method="_on_btn_cima_cor_2_pressed"]
+[connection signal="pressed" from="btn_cima_cor_3" to="." method="_on_btn_cima_cor_3_pressed"]
+[connection signal="pressed" from="btn_cima_cor_4" to="." method="_on_btn_cima_cor_4_pressed"]
+[connection signal="pressed" from="btn_cima_cor_5" to="." method="_on_btn_cima_cor_5_pressed"]
+[connection signal="pressed" from="btn_cima_cor_6" to="." method="_on_btn_cima_cor_6_pressed"]
+[connection signal="pressed" from="btn_baixo_cor_1" to="." method="_on_btn_baixo_cor_1_pressed"]
+[connection signal="pressed" from="btn_baixo_cor_2" to="." method="_on_btn_baixo_cor_2_pressed"]
+[connection signal="pressed" from="btn_baixo_cor_3" to="." method="_on_btn_baixo_cor_3_pressed"]
+[connection signal="pressed" from="btn_baixo_cor_4" to="." method="_on_btn_baixo_cor_4_pressed"]
+[connection signal="pressed" from="btn_baixo_cor_5" to="." method="_on_btn_baixo_cor_5_pressed"]
+[connection signal="pressed" from="btn_baixo_cor_6" to="." method="_on_btn_baixo_cor_6_pressed"]

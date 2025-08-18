@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://assets/Plataforma/rooms/living-room.png" type="Texture" id=1]
 [ext_resource path="res://src/UI/Rooms/LivingRoom.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/DoiAqui/objects/botao-tutorial-hover_1.png" type="Texture" id=8]
 [ext_resource path="res://assets/Plataforma/buttons/button-comecar-hover.png" type="Texture" id=9]
 [ext_resource path="res://assets/Plataforma/buttons/sala-pais.png" type="Texture" id=10]
+[ext_resource path="res://assets/Plataforma/buttons/button-tutorial.png" type="Texture" id=11]
 [ext_resource path="res://assets/Plataforma/buttons/news-chuva.png" type="Texture" id=12]
 
 [sub_resource type="StyleBoxEmpty" id=1]
@@ -210,15 +211,13 @@ margin_left = 876.811
 margin_top = 130.107
 margin_right = 1826.81
 margin_bottom = 930.107
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="pop-up-doi-aqui" type="Sprite" parent="DoiAqui"]
 position = Vector2( 480.189, 420.893 )
 texture = ExtResource( 7 )
 
 [node name="button-tutorial" type="Sprite" parent="DoiAqui"]
+visible = false
 position = Vector2( 299.143, 521.597 )
 texture = ExtResource( 8 )
 
@@ -234,15 +233,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Tutorial" type="TextureButton" parent="DoiAqui"]
+margin_left = 119.189
+margin_top = 463.893
+margin_right = 442.189
+margin_bottom = 576.893
+rect_scale = Vector2( 1.1, 1.1 )
+texture_normal = ExtResource( 11 )
+
 [node name="TextureButton" type="TextureButton" parent="DoiAqui"]
 margin_left = 852.0
 margin_top = 56.5
 margin_right = 899.0
 margin_bottom = 104.5
 texture_normal = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DoiAqui"]
 anims/fade_in = SubResource( 11 )
@@ -251,4 +255,5 @@ anims/fade_out = SubResource( 12 )
 [connection signal="pressed" from="Pais" to="." method="_on_Pais_pressed"]
 [connection signal="pressed" from="Tv_button" to="." method="_on_Tv_button_pressed"]
 [connection signal="pressed" from="DoiAqui/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="DoiAqui/Tutorial" to="." method="_on_Tutorial_pressed"]
 [connection signal="pressed" from="DoiAqui/TextureButton" to="." method="_on_TextureButton_pressed"]

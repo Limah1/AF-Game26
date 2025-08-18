@@ -1,5 +1,8 @@
 extends Control
 
+var personagem_sprite
+var cor_pele = ""
+
 var complete_total_match = S_Conntroller.score1 == S_Conntroller.goals[0] and S_Conntroller.score2 == S_Conntroller.goals[1] and S_Conntroller.score3 == S_Conntroller.goals[2]
 var complete_match1 = S_Conntroller.score1 == S_Conntroller.goals[0] and S_Conntroller.score2 == S_Conntroller.goals[1] and S_Conntroller.score3 != S_Conntroller.goals[2]
 var complete_match2 = S_Conntroller.score1 == S_Conntroller.goals[0] and S_Conntroller.score2 != S_Conntroller.goals[1] and S_Conntroller.score3 == S_Conntroller.goals[2]
@@ -16,6 +19,14 @@ var timer = 2
 var hide = false
 
 func _ready():
+	# Shaders mudando a etnia
+	personagem_sprite = get_node("character")
+	cor_pele = NewCharData.cor_pele
+	var new_color_pele = Color(cor_pele)
+	var shader_material = personagem_sprite.material as ShaderMaterial
+	shader_material.set_shader_param("nova_cor_pele", new_color_pele)
+	
+	
 	$applause.play()
 	$character.texture = CharacterController.all_sprites.match3.win
 	

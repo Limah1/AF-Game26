@@ -21,7 +21,7 @@ func _on_Continue_pressed() -> void:
 func _on_Restart_pressed() -> void:
 	$button_pressed.play()
 	yield($button_pressed,"finished")
-	get_tree().change_scene("res://src/UI/Sex_Selector.tscn")
+	get_tree().change_scene("res://src/UI/Character_Creator.tscn")
 
 
 func _on_Leave_pressed() -> void:

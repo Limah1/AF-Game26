@@ -1,5 +1,13 @@
 extends Node
 
+var cabelo
+var genero
+var cor_pele
+var roupa
+var cor_roupa_cima
+var cor_roupa_baixo
+
+
 func _notification(what: int) -> void:
 	if what == 1006 or what == 1007 or what == 1005:
 		save_game()
@@ -8,6 +16,7 @@ func save_game():
 	var save_game = File.new()
 	save_game.open("user://savegame.save", File.WRITE)
 	var save_nodes = get_tree().get_nodes_in_group("Persist")
+	print(save_nodes)
 	for node in save_nodes:
 		# Check the node has a save function.
 		if !node.has_method("save"):
@@ -34,7 +43,9 @@ func load_game():
 		return false # Error! We don't have a save to load.
 
 	save_game.open("user://savegame.save", File.READ)
-	
+
+
+	# Lê linha, que deve ser do NecessityBars
 	var node_data2 = parse_json(save_game.get_line())
 	
 	if node_data2 == null:
@@ -47,6 +58,7 @@ func load_game():
 	NecessityBars.diversao = node_data2.diversao
 	NecessityBars.energia = node_data2.energia
 	
+	# Lê a próxima linha, que deve ser do CharacterController
 	var node_data1 = parse_json(save_game.get_line())
 	
 	if node_data1 == null:
@@ -57,6 +69,7 @@ func load_game():
 	CharacterController.glass = node_data1.glass
 	CharacterController.variation = node_data1.variation
 
+	# Lê a próxima linha, que deve ser do AnimationController
 	var node_data3 = parse_json(save_game.get_line())
 	
 	if node_data3 == null:
@@ -64,7 +77,23 @@ func load_game():
 		
 	AnimationController.status = node_data3.status
 	
+	# Lendo prox linha (caracteristicas personagem: roupa, etnia, cabelo, genero)
+	var char_data_dict = parse_json(save_game.get_line())
+	if char_data_dict == null:
+		return false
+		
+	# Atribui os valores de volta ao seu Singleton NewCharData
+	NewCharData.cabelo = char_data_dict.cabelo
+	NewCharData.genero = char_data_dict.genero
+	NewCharData.cor_pele = char_data_dict.cor_pele
+	NewCharData.roupa = char_data_dict.roupa
+	NewCharData.cor_roupa_cima = char_data_dict.cor_roupa_cima
+	NewCharData.cor_roupa_baixo = char_data_dict.cor_roupa_baixo
+	
+	#CharacterController.apply_loaded_data() #11/08/25
 	CharacterController.start()
 	save_game.close()
 	
 	return true
+
+

@@ -47,3 +47,7 @@ func _on_StartButton_pressed() -> void:
 	
 	NecessityBars.inpain = false
 	get_tree().change_scene("res://src/Mini-games/DoiAqui/scene/Main.tscn")
+
+
+func _on_Tutorial_pressed():
+	get_tree().change_scene("res://src/Mini-games/DoiAqui/scene/IndicadorDeDor.tscn")

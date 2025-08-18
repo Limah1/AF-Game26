@@ -1,7 +1,19 @@
 extends Board
 
 onready var animationInfo: AnimationPlayer = $infoBoxAnimation 
+
+var personagem_sprite
+var cor_pele = ""
+
 func _ready() -> void:
+	# Shaders mudando a etnia
+	personagem_sprite = get_node("character")
+	cor_pele = NewCharData.cor_pele
+	var new_color_pele = Color(cor_pele)
+	var shader_material = personagem_sprite.material as ShaderMaterial
+	shader_material.set_shader_param("nova_cor_pele", new_color_pele)
+	
+	
 	S_Conntroller.goalScore = 60
 	S_Conntroller.chances = 20
 	S_Conntroller.totalScore = 0
