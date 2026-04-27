@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/MiniGame_Escovar/sujeira.png" type="Texture" id=4]
 [ext_resource path="res://assets/fonts/Raleway-Medium.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://assets/Match-3/LAYOUTS/feedback-box.png" type="Texture" id=6]
+[ext_resource path="res://src/UI/ShaderPersonagem.tres" type="Material" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 60, 40 )
@@ -35,14 +36,14 @@ corner_radius_bottom_left = 10
 size = 35
 font_data = ExtResource( 5 )
 
-[node name="MiniGame_EscovarDentes" type="Node2D"]
-z_index = 100
+[node name="MiniGame_EscovarDentes" type="CanvasLayer"]
+layer = 5
 script = ExtResource( 1 )
 
 [node name="Background" type="ColorRect" parent="."]
-margin_right = 1920.0
-margin_bottom = 1080.0
-color = Color( 0, 0, 0, 0.784314 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.470588 )
 
 [node name="Boca" type="Sprite" parent="."]
 position = Vector2( 960, 540 )
@@ -263,6 +264,11 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.470588 )
+
+[node name="character" type="Sprite" parent="TelaFinal/ColorRect"]
+material = ExtResource( 7 )
+position = Vector2( 350, 566 )
+scale = Vector2( 0.75, 0.75 )
 
 [node name="feedback-box" type="Sprite" parent="TelaFinal/ColorRect"]
 position = Vector2( 960, 540 )

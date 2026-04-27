@@ -42,8 +42,13 @@ func reach_from(dir):
 	return
 
 func travel(from, to):
+	if is_travelling: return # Evita chamadas duplicadas
 	var result = from - to
 	is_travelling = true
+	
+	# Segurança: se algo der errado, libera a trava após 5 segundos
+	var timer = get_tree().create_timer(5.0)
+	timer.connect("timeout", self, "set", ["is_travelling", false])
 	
 	print(from)
 	print(to)

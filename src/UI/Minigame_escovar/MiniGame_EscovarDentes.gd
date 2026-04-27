@@ -1,4 +1,4 @@
-extends Node2D
+extends CanvasLayer
 
 var bathroom_reference = null
 
@@ -11,12 +11,13 @@ var max_y = 1080
 onready var escova = $Escova
 onready var sujeiras = $Sujeiras
 onready var tela_final = $TelaFinal
-onready var btn_start = $TelaInicial/Panel/BtnStart
+onready var btn_start = $TelaInicial/ColorRect/BtnStart
 
 var total_sujeiras = 0
 
 func _ready():
 	total_sujeiras = sujeiras.get_child_count()
+	$Background.visible = true
 	$TelaInicial/ColorRect.visible = true
 	$TelaFinal/ColorRect.visible = false
 	escova.visible = false
@@ -35,7 +36,7 @@ func _on_BtnStart_pressed():
 
 func _process(delta):
 	if escova.visible:
-		escova.global_position = get_global_mouse_position()
+		escova.global_position = escova.get_global_mouse_position()
 
 func _on_EscovaArea_area_entered(area):
 	if area.is_in_group("sujeira"):
@@ -59,6 +60,20 @@ func finish_minigame():
 	set_process(false)
 	escova.visible = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	
+	var personagem_sprite = $TelaFinal/ColorRect/character
+	var cor_pele = NewCharData.cor_pele
+	if cor_pele != "":
+		if personagem_sprite.material:
+			var shader_material = personagem_sprite.material.duplicate() as ShaderMaterial
+			personagem_sprite.material = shader_material
+			var new_color_pele = Color(cor_pele)
+			shader_material.set_shader_param("nova_cor_pele", new_color_pele)
+	
+	if CharacterController.all_sprites and CharacterController.all_sprites.has("match3") and typeof(CharacterController.all_sprites.match3) == TYPE_DICTIONARY and CharacterController.all_sprites.match3.has("win"):
+		if CharacterController.all_sprites.match3.win != null:
+			personagem_sprite.texture = CharacterController.all_sprites.match3.win
+
 	$TelaFinal/ColorRect.visible = true
 
 func _on_BtnConcluir_pressed():
