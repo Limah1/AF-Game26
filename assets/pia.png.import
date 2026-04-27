@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/logo.png-d8deadcee6d66377b84a180086443dad.stex"
+path="res://.import/pia.png-66f5a141ca3cd8e8fd8e4483113d2031.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/NEW-TelaTitulo/logo.png"
-dest_files=[ "res://.import/logo.png-d8deadcee6d66377b84a180086443dad.stex" ]
+source_file="res://assets/pia.png"
+dest_files=[ "res://.import/pia.png-66f5a141ca3cd8e8fd8e4483113d2031.stex" ]
 
 [params]
 

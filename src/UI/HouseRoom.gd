@@ -39,7 +39,7 @@ func movement(delta):
 		rect_position = destination
 		AnimationController.is_room_moving = false
 		emit_signal("stop_moving")
-		yield(AnimationController.reach_from(last_dir), "completed")
+		AnimationController.reach_from(last_dir)
 
 func change_room(dir):
 	var next_room

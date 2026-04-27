@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/logo.png-d8deadcee6d66377b84a180086443dad.stex"
+path="res://.import/sujeira.png-6740555d940e1a5c5fb9b677c36e71a5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/NEW-TelaTitulo/logo.png"
-dest_files=[ "res://.import/logo.png-d8deadcee6d66377b84a180086443dad.stex" ]
+source_file="res://assets/MiniGame_Escovar/sujeira.png"
+dest_files=[ "res://.import/sujeira.png-6740555d940e1a5c5fb9b677c36e71a5.stex" ]
 
 [params]
 

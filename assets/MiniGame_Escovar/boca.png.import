@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/logo.png-d8deadcee6d66377b84a180086443dad.stex"
+path="res://.import/boca.png-62026fd3666ffe0c13cd8c45f85dc68a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/NEW-TelaTitulo/logo.png"
-dest_files=[ "res://.import/logo.png-d8deadcee6d66377b84a180086443dad.stex" ]
+source_file="res://assets/MiniGame_Escovar/boca.png"
+dest_files=[ "res://.import/boca.png-62026fd3666ffe0c13cd8c45f85dc68a.stex" ]
 
 [params]
 

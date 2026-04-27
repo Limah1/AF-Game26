@@ -800,10 +800,10 @@ func save():
 #11/08/25
 func _update_character_visuals():
 	# Verifique se o nó do sprite principal existe
-	var personagem_sprite = get_node("Player/Player/player_sprites")
-	if personagem_sprite == null:
+	if not has_node("Player/Player/player_sprites"):
 		print("Erro: Nó 'player_sprites' não encontrado para atualizar. Variável 'personagem_sprite' não foi definida.")
 		return
+	var personagem_sprite = get_node("Player/Player/player_sprites")
 	
 	# 1. Aplica a textura inicial 
 	if all_sprites.plataform.idle:

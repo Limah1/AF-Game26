@@ -15,9 +15,13 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if (NecessityBars.higiene <= (NecessityBars.max_higiene*0.2)) and playing1 == false:
 		$"banheiro-box/AnimationPlayer".play("scale_in_out")
+		if has_node("pia/AnimationPlayer"):
+			$pia/AnimationPlayer.play("scale_in_out")
 		playing1 = true
 	elif (NecessityBars.higiene > (NecessityBars.max_higiene*0.2)) and playing1 != false:
 		$"banheiro-box/AnimationPlayer".play("idle")
+		if has_node("pia/AnimationPlayer"):
+			$pia/AnimationPlayer.play("idle")
 		playing1 = false
 
 	if (NecessityBars.bexiga <= (NecessityBars.max_bexiga*0.2)) and playing2 == false:
@@ -64,3 +68,15 @@ func _on_higienic_paper_pressed():
 	if(NecessityBars.use_toilet_paper):
 		NecessityBars.use_toilet_paper = false
 		AnimationController.return_from_toilet()
+
+func _on_sink_pressed() -> void:
+	if(NecessityBars.soaked):
+		return
+	
+	var minigame_escovar = load("res://src/UI/Minigame_escovar/MiniGame_EscovarDentes.tscn").instance()
+	minigame_escovar.start(self)
+	add_child(minigame_escovar)
+	get_tree().current_scene.toggle_NM()
+
+func finish_escovar():
+	get_tree().current_scene.toggle_NM()
