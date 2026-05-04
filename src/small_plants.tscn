@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/Plants.gd" type="Script" id=1]
+[ext_resource path="res://src/PlantIcon-removebg-preview.png" type="Texture" id=2]
+
+[node name="SmallPlants" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.11224
+margin_top = 2.43878
+margin_right = -1711.11
+margin_bottom = -806.561
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SquareButton" type="Button" parent="."]
+margin_left = 0.796036
+margin_top = 51.1021
+margin_right = 105.796
+margin_bottom = 161.102
+hint_tooltip = "Clique para encher"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="SquareButton"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 1, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+margin_left = 1.0
+margin_top = 3.0
+margin_right = 86.0
+margin_bottom = 47.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0.00392157, 0.137255, 1, 1 )
+value = 50.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 41.5858, 104.243 )
+scale = Vector2( 0.287235, 0.406512 )
+texture = ExtResource( 2 )
+
+[connection signal="button_down" from="SquareButton" to="." method="_on_SquareButton_button_down"]
+[connection signal="button_up" from="SquareButton" to="." method="_on_SquareButton_button_up"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

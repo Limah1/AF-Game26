@@ -535,9 +535,6 @@ z_index = -5
 [node name="sleeping" parent="Player/Player/player_sprites" index="6"]
 visible = true
 
-[node name="toilet" parent="Player/Player/player_sprites" index="7"]
-visible = false
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
 autoplay = "start"
 anims/already_on_bed = SubResource( 2 )

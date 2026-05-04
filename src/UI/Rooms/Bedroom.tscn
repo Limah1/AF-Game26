@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=2]
+[gd_scene load_steps=68 format=2]
 
 [ext_resource path="res://assets/Nova pasta/bedroom.png" type="Texture" id=1]
 [ext_resource path="res://src/UI/Rooms/Bedroom.gd" type="Script" id=2]
@@ -38,6 +38,7 @@
 [ext_resource path="res://assets/sounds/sons editados/lullaby.wav" type="AudioStream" id=36]
 [ext_resource path="res://assets/Particulas/textures/1024/alpha/effect_3.png" type="Texture" id=37]
 [ext_resource path="res://assets/Particulas/textures/1024/alpha/spotlight_5.png" type="Texture" id=38]
+[ext_resource path="res://src/small_plants.tscn" type="PackedScene" id=39]
 
 [sub_resource type="Animation" id=1]
 resource_name = "default"
@@ -579,6 +580,12 @@ lifetime = 5.0
 speed_scale = 3.49
 process_material = SubResource( 28 )
 texture = ExtResource( 38 )
+
+[node name="SmallPlants" parent="." instance=ExtResource( 39 )]
+margin_left = 1475.99
+margin_top = 52.0
+margin_right = -336.007
+margin_bottom = -760.0
 
 [connection signal="pressed" from="PersonalizationButton" to="." method="_on_PersonalizationButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/SleepButton2" to="." method="_on_SleepButton_pressed"]
