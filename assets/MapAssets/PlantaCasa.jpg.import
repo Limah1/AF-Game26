@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pia.png-4be78c672248c8f6a1b26a177c4c7594.stex"
+path="res://.import/PlantaCasa.jpg-556bb0df365e46820db090d68c2d8407.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/MiniGame_Escovar/pia.png"
-dest_files=[ "res://.import/pia.png-4be78c672248c8f6a1b26a177c4c7594.stex" ]
+source_file="res://assets/MapAssets/PlantaCasa.jpg"
+dest_files=[ "res://.import/PlantaCasa.jpg-556bb0df365e46820db090d68c2d8407.stex" ]
 
 [params]
 

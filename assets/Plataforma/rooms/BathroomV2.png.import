@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pia.png-4be78c672248c8f6a1b26a177c4c7594.stex"
+path="res://.import/BathroomV2.png-fc42f571ce41fc6956a0c2d2f1eed71d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/MiniGame_Escovar/pia.png"
-dest_files=[ "res://.import/pia.png-4be78c672248c8f6a1b26a177c4c7594.stex" ]
+source_file="res://assets/Plataforma/rooms/BathroomV2.png"
+dest_files=[ "res://.import/BathroomV2.png-fc42f571ce41fc6956a0c2d2f1eed71d.stex" ]
 
 [params]
 

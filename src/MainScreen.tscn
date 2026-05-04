@@ -498,7 +498,7 @@ script = ExtResource( 1 )
 script = ExtResource( 6 )
 
 [node name="Slot1" parent="Slots" instance=ExtResource( 2 )]
-position = Vector2( -960, 540 )
+position = Vector2( -960, 537.622 )
 
 [node name="Slot2" parent="Slots" instance=ExtResource( 2 )]
 
@@ -644,6 +644,9 @@ margin_right = 1855.0
 margin_bottom = 137.0
 texture_normal = ExtResource( 9 )
 texture_pressed = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="pressed" from="Pause/Pause/play-button" to="Pause" method="_on_playbutton_pressed"]
 [connection signal="pressed" from="Pause/Pause/play-button2" to="Pause" method="_on_playbutton2_pressed"]

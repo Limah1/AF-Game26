@@ -1,5 +1,6 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=49 format=2]
 
+[ext_resource path="res://assets/Plataforma/rooms/BathroomV2.png" type="Texture" id=1]
 [ext_resource path="res://src/UI/Rooms/Bathroom.gd" type="Script" id=2]
 [ext_resource path="res://assets/Plataforma/objects/espuma-banheiro.png" type="Texture" id=3]
 [ext_resource path="res://assets/Plataforma/objects/espuma-banheiro-2.png" type="Texture" id=4]
@@ -59,7 +60,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0.4, 0.4 ) ]
+"values": [ Vector2( 0.6, 0.6 ) ]
 }
 
 [sub_resource type="Animation" id=11]
@@ -76,11 +77,40 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1, 2 ),
 "transitions": PoolRealArray( -2, 2, 1 ),
 "update": 0,
-"values": [ Vector2( 0.4, 0.4 ), Vector2( 0.5, 0.5 ), Vector2( 0.4, 0.4 ) ]
+"values": [ Vector2( 0.6, 0.6 ), Vector2( 0.7, 0.7 ), Vector2( 0.6, 0.6 ) ]
 }
 
 [sub_resource type="Animation" id=12]
-resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.4, 0.4 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( -2, 2, 1 ),
+"update": 0,
+"values": [ Vector2( 0.4, 0.4 ), Vector2( 0.5, 0.5 ), Vector2( 0.4, 0.4 ) ]
+}
+
+[sub_resource type="Animation" id=14]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
@@ -94,8 +124,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=13]
-resource_name = "scale_in_out"
+[sub_resource type="Animation" id=15]
 length = 3.0
 loop = true
 tracks/0/type = "value"
@@ -111,40 +140,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=18]
-resource_name = "idle"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0.6, 0.6 ) ]
-}
-
-[sub_resource type="Animation" id=19]
-resource_name = "scale_in_out"
-length = 3.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2 ),
-"transitions": PoolRealArray( -2, 2, 1 ),
-"update": 0,
-"values": [ Vector2( 0.6, 0.6 ), Vector2( 0.7, 0.7 ), Vector2( 0.6, 0.6 ) ]
-}
-
-[sub_resource type="Animation" id=14]
-resource_name = "higienic_paper"
+[sub_resource type="Animation" id=16]
 length = 1.5
 loop = true
 tracks/0/type = "value"
@@ -172,7 +168,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=17]
 length = 2.5
 step = 0.05
 tracks/0/type = "value"
@@ -344,10 +340,10 @@ tracks/13/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=18]
 length = 1.5
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=19]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("wash_hands/1:visible")
@@ -413,6 +409,8 @@ tracks/4/keys = {
 [node name="Bathroom" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = -8.97974
+margin_bottom = -8.97974
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -474,7 +472,6 @@ z_index = -30
 texture = ExtResource( 27 )
 
 [node name="tutorial-dedo" type="Sprite" parent="."]
-visible = false
 position = Vector2( 1079.33, 841.011 )
 scale = Vector2( 1.69912, 1.69912 )
 texture = ExtResource( 28 )
@@ -492,8 +489,8 @@ texture = ExtResource( 29 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="pia"]
 autoplay = "idle"
-anims/idle = SubResource( 18 )
-anims/scale_in_out = SubResource( 19 )
+anims/idle = SubResource( 10 )
+anims/scale_in_out = SubResource( 11 )
 
 [node name="vazo" type="Sprite" parent="."]
 position = Vector2( 819.892, 680.323 )
@@ -503,8 +500,8 @@ texture = ExtResource( 8 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="vazo"]
 autoplay = "idle"
-anims/idle = SubResource( 10 )
-anims/scale_in_out = SubResource( 11 )
+anims/idle = SubResource( 12 )
+anims/scale_in_out = SubResource( 13 )
 
 [node name="banheiro-box" type="Sprite" parent="."]
 position = Vector2( 1545.04, 547.889 )
@@ -513,8 +510,8 @@ texture = ExtResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="banheiro-box"]
 autoplay = "idle"
-anims/idle = SubResource( 12 )
-anims/scale_in_out = SubResource( 13 )
+anims/idle = SubResource( 14 )
+anims/scale_in_out = SubResource( 15 )
 
 [node name="espuma-banheiro-2" type="Sprite" parent="."]
 visible = false
@@ -658,10 +655,17 @@ position = Vector2( 702.801, 508.035 )
 texture = ExtResource( 24 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/higienic_paper = SubResource( 14 )
-anims/toilet_paper = SubResource( 15 )
-anims/wait = SubResource( 16 )
-anims/wash_hands = SubResource( 17 )
+anims/higienic_paper = SubResource( 16 )
+anims/toilet_paper = SubResource( 17 )
+anims/wait = SubResource( 18 )
+anims/wash_hands = SubResource( 19 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 958.54, 541.258 )
+scale = Vector2( 1.3905, 1.3806 )
+z_index = -200
+z_as_relative = false
+texture = ExtResource( 1 )
 
 [connection signal="pressed" from="bath" to="." method="_on_bath_pressed"]
 [connection signal="pressed" from="toilet" to="." method="_on_toilet_pressed"]
