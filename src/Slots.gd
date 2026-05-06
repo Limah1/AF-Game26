@@ -5,6 +5,7 @@ var livingroom = preload("res://src/UI/Rooms/LivingRoom.tscn")
 var yard = preload("res://src/UI/Rooms/Yard.tscn")
 var bathroom = preload("res://src/UI/Rooms/Bathroom.tscn")
 var kitchen = preload("res://src/UI/Rooms/Kitchen.tscn")
+var jardim = preload("res://src/UI/Rooms/Jardim.tscn")
 
 onready var slots = [ $Slot1, $Slot2, $Slot3]
 
@@ -48,6 +49,8 @@ func id_to_preloaded_room(id):
 		return bedroom
 	elif(id == 4):
 		return bathroom
+	elif(id == 5):
+		return jardim
 
 func reset_rooms(side):
 	if(side == "L"):
