@@ -1,5 +1,6 @@
 extends Control
 
 func _ready():
-	# Initial setup
-	pass
+	# Teste Direto: Força status e carrega o Hospital
+	AnimationController.status = "Hospital"
+	get_tree().change_scene("res://src/Hospital.tscn")
