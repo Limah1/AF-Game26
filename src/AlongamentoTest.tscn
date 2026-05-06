@@ -1,16 +1,31 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/AlongamentoTest.gd" type="Script" id=1]
+[ext_resource path="res://assets/Alongamento/image 92.png" type="Texture" id=2]
+[ext_resource path="res://assets/Alongamento/image 93.png" type="Texture" id=3]
+[ext_resource path="res://assets/Alongamento/image 91.png" type="Texture" id=4]
+[ext_resource path="res://assets/Alongamento/image 88.png" type="Texture" id=5]
+[ext_resource path="res://assets/Alongamento/image 95.png" type="Texture" id=6]
+[ext_resource path="res://assets/Alongamento/AlongamentoBackground.png" type="Texture" id=7]
 
 [node name="AlongamentoTest" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+image_pool = [ ExtResource( 5 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 6 ) ]
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.15, 0.15, 0.15, 1 )
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="StatusLabel" type="Label" parent="."]
 margin_left = 312.0
@@ -21,11 +36,13 @@ text = "Rodada 1 de 4"
 align = 1
 valign = 1
 
-[node name="TargetRect" type="ColorRect" parent="."]
-margin_left = 150.0
-margin_top = 200.0
-margin_right = 350.0
-margin_bottom = 400.0
+[node name="TargetRect" type="TextureRect" parent="."]
+margin_left = 185.959
+margin_top = 250.942
+margin_right = 649.959
+margin_bottom = 920.942
+expand = true
+stretch_mode = 6
 
 [node name="Options" type="GridContainer" parent="."]
 margin_left = 879.627
@@ -46,10 +63,17 @@ margin_bottom = 350.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ColorRect" type="ColorRect" parent="Options/Btn0"]
+[node name="Sprite" type="TextureRect" parent="Options/Btn0"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -2.99658
+margin_right = -2.99658
 mouse_filter = 2
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Btn1" type="Button" parent="Options"]
 margin_left = 391.0
@@ -58,10 +82,12 @@ margin_bottom = 350.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ColorRect" type="ColorRect" parent="Options/Btn1"]
+[node name="Sprite" type="TextureRect" parent="Options/Btn1"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
+expand = true
+stretch_mode = 6
 
 [node name="Btn2" type="Button" parent="Options"]
 margin_top = 370.0
@@ -70,10 +96,12 @@ margin_bottom = 720.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ColorRect" type="ColorRect" parent="Options/Btn2"]
+[node name="Sprite" type="TextureRect" parent="Options/Btn2"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
+expand = true
+stretch_mode = 6
 
 [node name="Btn3" type="Button" parent="Options"]
 margin_left = 391.0
@@ -83,7 +111,42 @@ margin_bottom = 720.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ColorRect" type="ColorRect" parent="Options/Btn3"]
+[node name="Sprite" type="TextureRect" parent="Options/Btn3"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="EndPanel" type="Panel" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="SequenceContainer" type="HBoxContainer" parent="EndPanel"]
+margin_left = 100.0
+margin_top = 100.0
+margin_right = 900.0
+margin_bottom = 300.0
+alignment = 1
+
+[node name="LoreText" type="RichTextLabel" parent="EndPanel"]
+margin_left = 100.0
+margin_top = 350.0
+margin_right = 900.0
+margin_bottom = 550.0
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+
+[node name="BtnRepeat" type="Button" parent="EndPanel"]
+margin_left = 200.0
+margin_top = 600.0
+margin_right = 400.0
+margin_bottom = 700.0
+text = "Repetir"
+
+[node name="BtnRoom" type="Button" parent="EndPanel"]
+margin_left = 600.0
+margin_top = 600.0
+margin_right = 800.0
+margin_bottom = 700.0
+text = "Ir para o Quarto"
