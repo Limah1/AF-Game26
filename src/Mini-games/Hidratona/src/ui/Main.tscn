@@ -1,15 +1,22 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/Mini-games/Hidratona/src/Main.gd" type="Script" id=1]
 [ext_resource path="res://assets/Hidratona/sprites/objects/agua.png" type="Texture" id=2]
 [ext_resource path="res://assets/Hidratona/sprites/objects/tela-inicial.png" type="Texture" id=3]
 [ext_resource path="res://assets/DoiAqui/objects/botao-tutorial-hover_1.png" type="Texture" id=4]
+[ext_resource path="res://assets/Hidratona/sprites/objects/HospitalPng.png" type="Texture" id=5]
 [ext_resource path="res://src/Mini-games/Hidratona/src/ui/Start.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/UI/sound/sound_button.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/Mini-games/Hidratona/src/temp/BotaoCasaNormal.png" type="Texture" id=8]
+[ext_resource path="res://src/Mini-games/Hidratona/src/temp/BotaoHospitalNormal.png" type="Texture" id=9]
+[ext_resource path="res://src/Mini-games/Hidratona/src/temp/BotaoHospitalHover.png" type="Texture" id=10]
+[ext_resource path="res://src/Mini-games/Hidratona/src/temp/BotaoCasaHover.png" type="Texture" id=11]
 
 [node name="Main" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = -25.0
+margin_bottom = 526.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false,
@@ -19,23 +26,72 @@ __meta__ = {
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 943.225
+margin_top = 20.6697
+margin_right = 32.2246
+margin_bottom = -1132.33
 texture = ExtResource( 3 )
 expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="agua" type="Sprite" parent="TextureRect"]
-position = Vector2( 597.532, 401.682 )
+position = Vector2( 307.937, 181.439 )
+scale = Vector2( 0.599121, 0.599121 )
 texture = ExtResource( 2 )
 
+[node name="TextureRect2" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.27759
+margin_top = 450.606
+margin_right = -951.722
+margin_bottom = -531.394
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Start" parent="." instance=ExtResource( 6 )]
+margin_left = 1466.19
+margin_top = 290.364
+margin_right = 1834.19
+margin_bottom = 417.364
 
 [node name="Tutorial" type="TextureButton" parent="."]
-margin_left = 560.0
-margin_top = 577.0
-margin_right = 928.0
-margin_bottom = 706.0
+margin_left = 1039.49
+margin_top = 301.389
+margin_right = 1407.49
+margin_bottom = 430.389
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 4 )
 texture_hover = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Home" type="TextureButton" parent="."]
+margin_left = 88.1802
+margin_top = 920.858
+margin_right = 456.18
+margin_bottom = 1049.86
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hospital" type="TextureButton" parent="."]
+margin_left = 520.339
+margin_top = 920.521
+margin_right = 888.339
+margin_bottom = 1049.52
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -45,3 +101,5 @@ autoplay = false
 
 [connection signal="pressed" from="Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="Tutorial" to="." method="_on_Tutorial_pressed"]
+[connection signal="pressed" from="Home" to="." method="_on_Home_pressed"]
+[connection signal="pressed" from="Hospital" to="." method="_on_Hospital_pressed"]

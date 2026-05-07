@@ -218,5 +218,48 @@ func _on_right_pressed():
 
 
 func _on_MenuButton_pressed():
-	$MapContainer.visible = !$MapContainer.visible
+	if AnimationController.status == "Hospital":
+		$HospitalMapContainer.visible = !$HospitalMapContainer.visible
+		$MapContainer.visible = false
+	else:
+		$MapContainer.visible = !$MapContainer.visible
+		$HospitalMapContainer.visible = false
 
+func _on_HospButton1_pressed():
+	if(check_if_can_press_button()):
+		return
+	$HospitalMapContainer.visible = false
+	var button_room = 1
+	var current_room = get_room_number(AnimationController.current_room)
+	AnimationController.travel(current_room, button_room)
+
+func _on_HospButton2_pressed():
+	if(check_if_can_press_button()):
+		return
+	$HospitalMapContainer.visible = false
+	var button_room = 2
+	var current_room = get_room_number(AnimationController.current_room)
+	AnimationController.travel(current_room, button_room)
+
+func _on_HospButton3_pressed():
+	if(check_if_can_press_button()):
+		return
+	$HospitalMapContainer.visible = false
+	var button_room = 3
+	var current_room = get_room_number(AnimationController.current_room)
+	AnimationController.travel(current_room, button_room)
+
+func _on_HospButton4_pressed():
+	if(check_if_can_press_button()):
+		return
+	$HospitalMapContainer.visible = false
+	var button_room = 4
+	var current_room = get_room_number(AnimationController.current_room)
+	AnimationController.travel(current_room, button_room)
+
+func _on_HospButton5_pressed():
+	if(check_if_can_press_button()):
+		return
+	$HospitalMapContainer.visible = false
+	AnimationController.status = "MainGame"
+	get_tree().change_scene("res://src/Teste.tscn")

@@ -48,6 +48,7 @@ func _on_Button0_pressed() -> void:
 	$"quintal-portao-aberto".visible = true
 	$"quintal-portao-fechado".visible = false
 	$Hidratona_PopUp/AnimationPlayer.play("in")
+	$Hidratona_PopUp2/AnimationPlayer.play("in")
 
 #func _on_TutorialButton_pressed() -> void:
 #	$button_sound.play()
@@ -80,3 +81,9 @@ func _on_LeaveButton_pressed() -> void:
 	$"quintal-portao-aberto".visible = false
 	$"quintal-portao-fechado".visible = true
 	$Hidratona_PopUp/AnimationPlayer.play("out")
+	$Hidratona_PopUp2/AnimationPlayer.play("out")
+
+
+func _on_HospitalButton_pressed():
+	get_tree().change_scene("res://src/Hospital.tscn")
+	pass # Replace with function body.
