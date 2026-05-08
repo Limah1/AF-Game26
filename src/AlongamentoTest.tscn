@@ -62,6 +62,7 @@ margin_right = 371.0
 margin_bottom = 350.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+flat = true
 
 [node name="Sprite" type="TextureRect" parent="Options/Btn0"]
 anchor_right = 1.0
@@ -81,6 +82,7 @@ margin_right = 762.0
 margin_bottom = 350.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+flat = true
 
 [node name="Sprite" type="TextureRect" parent="Options/Btn1"]
 anchor_right = 1.0
@@ -95,6 +97,7 @@ margin_right = 371.0
 margin_bottom = 720.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+flat = true
 
 [node name="Sprite" type="TextureRect" parent="Options/Btn2"]
 anchor_right = 1.0
@@ -110,6 +113,7 @@ margin_right = 762.0
 margin_bottom = 720.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+flat = true
 
 [node name="Sprite" type="TextureRect" parent="Options/Btn3"]
 anchor_right = 1.0

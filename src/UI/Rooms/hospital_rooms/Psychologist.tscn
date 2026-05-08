@@ -161,10 +161,11 @@ json_path = "res://assets/dialogos/psicologista.json"
 npc_name = "Psicologo"
 
 [node name="Button" type="Button" parent="."]
-margin_left = 1596.0
-margin_top = 456.0
-margin_right = 1855.0
-margin_bottom = 629.0
+margin_left = 1476.0
+margin_top = 213.0
+margin_right = 1793.0
+margin_bottom = 1066.0
+flat = true
 
 [connection signal="pressed" from="Tv_button" to="." method="_on_Tv_button_pressed"]
 [connection signal="pressed" from="DoiAqui/StartButton" to="." method="_on_StartButton_pressed"]

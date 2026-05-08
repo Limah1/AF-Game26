@@ -48,15 +48,15 @@ func _ready() -> void:
 	var new_color_pele = Color(cor_pele)
 	var new_color_cima = Color(cor_roupa_cima)
 	var new_color_baixo = Color(cor_roupa_baixo)
-	var shader_material = personagem_sprite.material as ShaderMaterial
-	
-	if shader_material == null:
-		return
+	var shader_material = preload("res://src/UI/ShaderPersonagem.tres").duplicate()
 	
 	shader_material.set_shader_param("nova_cor_pele", new_color_pele)
 	shader_material.set_shader_param("nova_cor_camisa", new_color_cima)
 	shader_material.set_shader_param("nova_cor_calca", new_color_baixo)
 	
+	for child in personagem_sprite.get_children():
+		if child is Sprite:
+			child.material = shader_material
 
 
 func _process(delta: float) -> void:

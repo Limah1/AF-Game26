@@ -144,10 +144,11 @@ json_path = "res://assets/dialogos/dentista.json"
 npc_name = "Dentista"
 
 [node name="Button" type="Button" parent="."]
-margin_left = 1455.0
-margin_top = 496.0
-margin_right = 1802.0
-margin_bottom = 703.0
+margin_left = 988.881
+margin_top = 165.454
+margin_right = 1449.88
+margin_bottom = 1020.45
+flat = true
 
 [connection signal="pressed" from="DoiAqui/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="DoiAqui/TextureButton" to="." method="_on_TextureButton_pressed"]
