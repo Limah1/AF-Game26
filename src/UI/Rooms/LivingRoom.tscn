@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://assets/NewLivingRoom.png" type="Texture" id=1]
 [ext_resource path="res://src/UI/Rooms/LivingRoom.gd" type="Script" id=2]
@@ -13,6 +13,8 @@
 [ext_resource path="res://assets/Plataforma/buttons/button-tutorial.png" type="Texture" id=11]
 [ext_resource path="res://assets/Plataforma/buttons/news-chuva.png" type="Texture" id=12]
 [ext_resource path="res://src/Plants.tscn" type="PackedScene" id=13]
+[ext_resource path="res://assets/carpete-enrolado.png" type="Texture" id=14]
+[ext_resource path="res://assets/AlongamentoCard.png" type="Texture" id=15]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -78,15 +80,27 @@ tracks/1/keys = {
 "values": [ Vector2( 1.11826, 1.11826 ), Vector2( 1.168, 1.168 ), Vector2( 1.118, 1.118 ) ]
 }
 
-[sub_resource type="StyleBoxEmpty" id=7]
+[sub_resource type="StyleBoxTexture" id=16]
+texture = ExtResource( 14 )
+region_rect = Rect2( 0, 0, 191, 338 )
 
-[sub_resource type="StyleBoxEmpty" id=8]
+[sub_resource type="StyleBoxTexture" id=17]
+texture = ExtResource( 14 )
+region_rect = Rect2( 0, 0, 191, 338 )
 
-[sub_resource type="StyleBoxEmpty" id=9]
+[sub_resource type="StyleBoxTexture" id=18]
+texture = ExtResource( 14 )
+region_rect = Rect2( 0, 0, 191, 338 )
 
-[sub_resource type="StyleBoxEmpty" id=10]
+[sub_resource type="StyleBoxEmpty" id=19]
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="StyleBoxEmpty" id=20]
+
+[sub_resource type="StyleBoxEmpty" id=21]
+
+[sub_resource type="StyleBoxEmpty" id=22]
+
+[sub_resource type="Animation" id=23]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rect_position")
@@ -113,7 +127,61 @@ tracks/1/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=13]
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 1.5 ),
+"transitions": PoolRealArray( 0.16, 3, 3 ),
+"update": 0,
+"values": [ Vector2( 876.811, 130.107 ), Vector2( 876.811, 198.107 ), Vector2( 876.811, -885.893 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=14]
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 1.5 ),
+"transitions": PoolRealArray( 3, 0.16, 1 ),
+"update": 0,
+"values": [ Vector2( 876.811, -885.893 ), Vector2( 876.811, 198.107 ), Vector2( 876.811, 130.107 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=15]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rect_position")
@@ -183,6 +251,18 @@ position = Vector2( 1239, 900 )
 scale = Vector2( 0.395337, 0.395337 )
 texture = ExtResource( 4 )
 
+[node name="YogaButton" type="Button" parent="."]
+margin_left = 394.702
+margin_top = 466.647
+margin_right = 608.702
+margin_bottom = 995.647
+custom_styles/hover = SubResource( 16 )
+custom_styles/pressed = SubResource( 17 )
+custom_styles/normal = SubResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="tv_on" type="Sprite" parent="."]
 visible = false
 position = Vector2( 1239, 900 )
@@ -199,10 +279,10 @@ margin_left = 972.0
 margin_top = 744.0
 margin_right = 1524.0
 margin_bottom = 1052.0
-custom_styles/hover = SubResource( 7 )
-custom_styles/pressed = SubResource( 8 )
-custom_styles/focus = SubResource( 9 )
-custom_styles/normal = SubResource( 10 )
+custom_styles/hover = SubResource( 19 )
+custom_styles/pressed = SubResource( 20 )
+custom_styles/focus = SubResource( 21 )
+custom_styles/normal = SubResource( 22 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -251,8 +331,8 @@ margin_bottom = 104.5
 texture_normal = ExtResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DoiAqui"]
-anims/fade_in = SubResource( 11 )
-anims/fade_out = SubResource( 12 )
+anims/fade_in = SubResource( 23 )
+anims/fade_out = SubResource( 13 )
 
 [node name="Plants" parent="." instance=ExtResource( 13 )]
 margin_left = 1572.0
@@ -266,8 +346,57 @@ margin_top = 304.514
 margin_right = -1662.81
 margin_bottom = -229.486
 
+[node name="Alongamento" type="Control" parent="."]
+visible = false
+margin_left = 182.314
+margin_top = 73.025
+margin_right = 1132.31
+margin_bottom = 873.025
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pop-up-doi-aqui" type="Sprite" parent="Alongamento"]
+position = Vector2( 480.189, 420.893 )
+scale = Vector2( 0.936685, 0.78707 )
+texture = ExtResource( 15 )
+
+[node name="button-tutorial" type="Sprite" parent="Alongamento"]
+visible = false
+position = Vector2( 299.143, 521.597 )
+texture = ExtResource( 8 )
+
+[node name="AlongamentoStartButton" type="TextureButton" parent="Alongamento"]
+margin_left = 279.294
+margin_top = 463.243
+margin_right = 602.294
+margin_bottom = 576.243
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="Alongamento"]
+margin_left = 859.135
+margin_top = 118.339
+margin_right = 906.135
+margin_bottom = 166.339
+texture_normal = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Alongamento"]
+anims/fade_in = SubResource( 14 )
+anims/fade_out = SubResource( 15 )
+
 [connection signal="pressed" from="Pais" to="." method="_on_Pais_pressed"]
+[connection signal="pressed" from="YogaButton" to="." method="_on_YogaButton_pressed"]
 [connection signal="pressed" from="Tv_button" to="." method="_on_Tv_button_pressed"]
 [connection signal="pressed" from="DoiAqui/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="DoiAqui/Tutorial" to="." method="_on_Tutorial_pressed"]
 [connection signal="pressed" from="DoiAqui/TextureButton" to="." method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="Alongamento/AlongamentoStartButton" to="." method="_on_AlongamentoStartButton_pressed"]
+[connection signal="pressed" from="Alongamento/TextureButton" to="." method="_on_AlongamentoClose_pressed"]

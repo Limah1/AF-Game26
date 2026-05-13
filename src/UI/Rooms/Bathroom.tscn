@@ -661,7 +661,7 @@ anims/wait = SubResource( 18 )
 anims/wash_hands = SubResource( 19 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 958.54, 541.258 )
+position = Vector2( 951.805, 543.503 )
 scale = Vector2( 1.3905, 1.3806 )
 z_index = -200
 z_as_relative = false

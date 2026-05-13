@@ -10,7 +10,7 @@ onready var target_rect = $TargetRect
 onready var options_container = $Options
 onready var status_label = $StatusLabel
 onready var end_panel = $EndPanel
-onready var sequence_container = $EndPanel/SequenceContainer
+onready var sequence_container = $EndPanel/SequenceWhiteBox/SequenceContainer
 onready var btn_repeat = $EndPanel/BtnRepeat
 onready var btn_room = $EndPanel/BtnRoom
 
@@ -102,6 +102,5 @@ func show_end_screen():
 		sequence_container.add_child(rect)
 
 func _on_room_pressed():
-	print("Indo para o quarto")
-	# Descomente e coloque o caminho correto da cena do quarto:
-	# get_tree().change_scene("res://src/Quarto.tscn")
+	AnimationController.status = "MainGame"
+	get_tree().change_scene("res://src/MainScreen.tscn")

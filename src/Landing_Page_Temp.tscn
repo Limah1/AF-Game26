@@ -46,6 +46,9 @@ margin_top = 2.0
 margin_right = 1908.0
 margin_bottom = 1086.0
 color = Color( 0.94902, 0.94902, 0.94902, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="af-background" type="Sprite" parent="."]
 material = SubResource( 2 )

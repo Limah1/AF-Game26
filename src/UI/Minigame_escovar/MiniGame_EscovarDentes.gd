@@ -12,8 +12,10 @@ onready var escova = $Escova
 onready var sujeiras = $Sujeiras
 onready var tela_final = $TelaFinal
 onready var btn_start = $TelaInicial/ColorRect/BtnStart
+onready var score_label = $ScoreLabel
 
 var total_sujeiras = 0
+var pontos = 0
 
 func _ready():
 	total_sujeiras = sujeiras.get_child_count()
@@ -52,6 +54,10 @@ func _on_EscovaArea_area_entered(area):
 			espuma_inst.global_position = pos
 			$Espumas.add_child(espuma_inst)
 		
+		pontos += 1
+		if score_label:
+			score_label.text = "Pontos: " + str(pontos)
+		
 		total_sujeiras -= 1
 		if total_sujeiras <= 0:
 			finish_minigame()
@@ -60,6 +66,8 @@ func finish_minigame():
 	set_process(false)
 	escova.visible = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	
+	yield(get_tree().create_timer(1.5), "timeout")
 	
 	var personagem_sprite = $TelaFinal/ColorRect/character
 	var cor_pele = NewCharData.cor_pele

@@ -31,6 +31,12 @@ func _on_Pais_pressed() -> void:
 func _on_TextureButton_pressed() -> void:
 	$DoiAqui/AnimationPlayer.play("fade_out")
 
+func _on_YogaButton_pressed() -> void:
+	$Alongamento/AnimationPlayer.play("fade_in")
+
+func _on_AlongamentoClose_pressed() -> void:
+	$Alongamento/AnimationPlayer.play("fade_out")
+
 func _on_Tv_button_pressed() -> void:
 	$tv_on.visible = !$tv_on.visible
 	$news.visible = !$news.visible
@@ -51,3 +57,7 @@ func _on_StartButton_pressed() -> void:
 
 func _on_Tutorial_pressed():
 	get_tree().change_scene("res://src/Mini-games/DoiAqui/scene/IndicadorDeDor.tscn")
+
+
+func _on_AlongamentoStartButton_pressed():
+	get_tree().change_scene("res://src/AlongamentoTest.tscn")
