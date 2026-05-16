@@ -378,14 +378,14 @@ collision_mask = 4
 position = Vector2( -2.1123, 67.7344 )
 shape = SubResource( 5 )
 
-[node name="sunny_sound" type="AudioStreamPlayer2D" parent="."]
+[node name="sunny_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 14 )
 bus = "bemtivi"
 
-[node name="rainny_sound" type="AudioStreamPlayer2D" parent="."]
+[node name="rainny_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
 
-[node name="snow_sound" type="AudioStreamPlayer2D" parent="."]
+[node name="snow_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
 
 [node name="hospital" type="AudioStreamPlayer" parent="."]

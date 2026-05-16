@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Watering Plant SOUND Effect - SOUND Effects Public Domain (No Copyrights).mp3-f1659ad03b2efe1845f46e9b3e9d5a5d.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/Sons Atualizados/Watering Plant SOUND Effect - SOUND Effects Public Domain (No Copyrights).mp3"
+dest_files=[ "res://.import/Watering Plant SOUND Effect - SOUND Effects Public Domain (No Copyrights).mp3-f1659ad03b2efe1845f46e9b3e9d5a5d.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

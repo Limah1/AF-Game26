@@ -323,8 +323,7 @@ __meta__ = {
 anims/in = SubResource( 13 )
 anims/out = SubResource( 14 )
 
-[node name="audio_open_refri" type="AudioStreamPlayer2D" parent="."]
-position = Vector2( 917.164, 566.095 )
+[node name="audio_open_refri" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 15 )
 
 [connection signal="pressed" from="Eat_button" to="." method="_on_Eat_button_pressed"]

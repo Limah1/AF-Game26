@@ -36,6 +36,9 @@ func _ready() -> void:
 	BackgroundMusic.stop_music()
 	$hospital_sound.play()
 	
+	if AnimationController.status == "Sleeping":
+		$snoring_sound.play()
+	
 	# Variaveis para Shaders
 	cor_pele = NewCharData.cor_pele
 	roupa = NewCharData.roupa
