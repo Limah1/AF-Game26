@@ -11,6 +11,7 @@
 [ext_resource path="res://assets/Plataforma/Sprites Barra de Status + navegação/pause.png" type="Texture" id=9]
 [ext_resource path="res://src/UI/Pause.gd" type="Script" id=10]
 [ext_resource path="res://assets/Plataforma/LofiHospital.wav" type="AudioStream" id=11]
+[ext_resource path="res://assets/sounds/Sons Atualizados/Snoring - sound effect - IT Tan.mp3" type="AudioStream" id=12]
 
 [sub_resource type="Animation" id=1]
 resource_name = "fade_in_out"
@@ -631,6 +632,9 @@ __meta__ = {
 
 [node name="hospital_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
+
+[node name="snoring_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
 
 [connection signal="pressed" from="Pause/Pause/play-button" to="Pause" method="_on_playbutton_pressed"]
 [connection signal="pressed" from="Pause/Pause/play-button2" to="Pause" method="_on_playbutton2_pressed"]

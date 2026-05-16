@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Snoring - sound effect - IT Tan.mp3-e665eb604a5db4713a1c496dcc5576be.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/Sons Atualizados/Snoring - sound effect - IT Tan.mp3"
+dest_files=[ "res://.import/Snoring - sound effect - IT Tan.mp3-e665eb604a5db4713a1c496dcc5576be.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

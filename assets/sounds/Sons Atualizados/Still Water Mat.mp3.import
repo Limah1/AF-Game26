@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Still Water Mat.mp3-7cddff80de8c3c2d63adb43edd84024d.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/Sons Atualizados/Still Water Mat.mp3"
+dest_files=[ "res://.import/Still Water Mat.mp3-7cddff80de8c3c2d63adb43edd84024d.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

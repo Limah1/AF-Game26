@@ -35,6 +35,7 @@ var _font_data: DynamicFontData
 func _ready():
 	_font_data = load("res://assets/fonts/PottaOne-Regular.ttf")
 	_build_scene()
+	BackgroundMusic.stop_music()
 
 
 func _make_font(size: int) -> DynamicFont:
@@ -147,6 +148,12 @@ func _build_scene():
 	water_particles.texture = load("res://assets/Match-3/circle.png")
 	water_particles.position = Vector2(CX, SOIL_Y - 80)
 	add_child(water_particles)
+	
+	# Watering sound
+	var ws := AudioStreamPlayer.new()
+	ws.name = "watering_sound"
+	ws.stream = load("res://assets/sounds/Sons Atualizados/Watering Plant SOUND Effect - SOUND Effects Public Domain (No Copyrights).mp3")
+	add_child(ws)
 
 	# UI layer
 	var ui := CanvasLayer.new()
@@ -398,6 +405,7 @@ func _on_water_pressed() -> void:
 		emit_y = plant_stem.rect_position.y - 20
 	water_particles.position = Vector2(CX, emit_y)
 	water_particles.restart()
+	$watering_sound.play()
 
 
 func _on_back_pressed() -> void:

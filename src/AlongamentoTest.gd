@@ -24,6 +24,15 @@ func _ready():
 		for i in range(10):
 			image_pool.append(preload("res://icon.png"))
 			
+	BackgroundMusic.stop_music()
+			
+	# Music
+	var music := AudioStreamPlayer.new()
+	music.name = "bg_music"
+	music.stream = load("res://assets/sounds/Sons Atualizados/Still Water Mat.mp3")
+	add_child(music)
+	music.play()
+			
 	start_session()
 
 func start_session():

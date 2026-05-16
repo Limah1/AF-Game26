@@ -11,7 +11,7 @@
 [ext_resource path="res://assets/Plataforma/landing_page/button-continuar-hover.png" type="Texture" id=10]
 [ext_resource path="res://assets/Plataforma/landing_page/aaa.png" type="Texture" id=11]
 [ext_resource path="res://assets/sounds/Sons Atualizados/SFX_User Interface, Click, Button, Double Click, Fast, Phone Tap SND68342.wav" type="AudioStream" id=12]
-[ext_resource path="res://assets/sounds/sons editados/title_audio.wav" type="AudioStream" id=13]
+[ext_resource path="res://assets/sounds/Sons Atualizados/TitleMenu.wav" type="AudioStream" id=13]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -129,11 +129,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="button_pressed" type="AudioStreamPlayer2D" parent="."]
+[node name="button_pressed" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
 volume_db = 0.203
 
-[node name="title_sound" type="AudioStreamPlayer2D" parent="."]
+[node name="title_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
 
 [connection signal="pressed" from="Continue" to="." method="_on_Continue_pressed"]

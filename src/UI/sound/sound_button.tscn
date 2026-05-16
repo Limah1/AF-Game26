@@ -2,6 +2,6 @@
 
 [ext_resource path="res://assets/sounds/Sons Atualizados/SFX_User Interface, Click, Button, Double Click, Fast, Phone Tap SND68342.wav" type="AudioStream" id=1]
 
-[node name="button_sound" type="AudioStreamPlayer2D"]
+[node name="button_sound" type="AudioStreamPlayer"]
 stream = ExtResource( 1 )
 autoplay = true

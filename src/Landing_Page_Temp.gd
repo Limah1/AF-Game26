@@ -5,7 +5,6 @@ func _ready() -> void:
 	if !SaveController.file_exist():
 		$Continue.disabled = true
 	$title_sound.play()
-	BackgroundMusic.play_music()
 	
 	AnimationController.is_travelling = false
 	AnimationController.is_room_moving = false

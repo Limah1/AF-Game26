@@ -528,10 +528,10 @@ position = Vector2( 1542.64, 517.666 )
 scale = Vector2( 0.32262, 0.37196 )
 texture = ExtResource( 3 )
 
-[node name="flush" type="AudioStreamPlayer2D" parent="."]
+[node name="flush" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 
-[node name="toiler_paper" type="AudioStreamPlayer2D" parent="."]
+[node name="toiler_paper" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
 
 [node name="toilet_paper_s" type="Node2D" parent="."]

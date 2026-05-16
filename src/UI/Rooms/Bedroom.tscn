@@ -554,14 +554,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="zip" type="AudioStreamPlayer2D" parent="."]
+[node name="zip" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 bus = "zip"
 
-[node name="abajur" type="AudioStreamPlayer2D" parent="."]
+[node name="abajur" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 
-[node name="lullaby" type="AudioStreamPlayer2D" parent="."]
+[node name="lullaby" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 36 )
 
 [node name="bed_particle" type="Particles2D" parent="."]
