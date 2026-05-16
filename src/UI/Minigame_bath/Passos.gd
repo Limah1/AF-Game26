@@ -10,6 +10,8 @@ var p2_played = false
 var p3_played = false
 var p4_played = false
 
+var finished = false
+
 func _process(delta):
 	molhado = get_parent().molhado
 	ensaboado = get_parent().ensaboado
@@ -36,6 +38,8 @@ func _process(delta):
 
 
 func _on_Button_pressed():
+	if finished: return
+	finished = true
 	$Button/button_sound.play()
 	yield($Button/button_sound,"finished")
 	NecessityBars.higiene = 900
@@ -44,5 +48,7 @@ func _on_Button_pressed():
 
 
 func _on_TextureButton_pressed():
+	if finished: return
+	finished = true
 	get_parent().bathroom_reference.finish_bath()
 	get_parent().queue_free()

@@ -50,6 +50,7 @@ func _on_bath_pressed() -> void:
 
 func finish_bath():
 	NecessityBars.bathing = true
+	get_viewport().canvas_transform = Transform2D()
 	get_tree().current_scene.toggle_NM()
 	yield(AnimationController.return_from_bath(), "completed") 
 	NecessityBars.bathing = false
