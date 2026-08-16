@@ -64,7 +64,10 @@ func check_generated_map():
 				rng.randomize()
 				random_number = rng.randi_range(0,2)
 				add_fruit(tile, AllFruits[random_number])
-			
+
+			if oldfruit != null:
+				oldfruit.queue_free()
+
 			S_Conntroller.ResetTiles()
 			
 			check_generated_map()

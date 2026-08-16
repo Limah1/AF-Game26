@@ -17,6 +17,7 @@ func _ready() -> void:
 	S_Conntroller.sound = $bite
 	S_Conntroller.goals = [20,20,20]
 	S_Conntroller.chances = 35
+	S_Conntroller.last_result_won = true
 	
 	fruit_max_count = 81
 	line_quant = 9

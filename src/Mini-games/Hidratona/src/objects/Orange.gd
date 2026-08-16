@@ -10,7 +10,7 @@ func _on_Orange_body_entered(body):
 	$CollisionShape2D.disabled = true
 	Resources.power_orange = true 
 	Resources.orange_timer = 15 
-	if Resources.current_life < 50:
+	if Resources.current_life < Resources.max_life:
 		Resources.current_life += 1
 	yield($crunch,"finished")
 	queue_free()

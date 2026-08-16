@@ -99,6 +99,19 @@ custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
 
+[node name="PainButton" type="Button" parent="."]
+margin_left = 40.0
+margin_top = 780.0
+margin_right = 340.0
+margin_bottom = 1080.0
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="DoiAqui" type="Control" parent="."]
 visible = false
 margin_left = 876.811
@@ -166,6 +179,7 @@ margin_bottom = 996.0
 flat = true
 
 [connection signal="pressed" from="Tv_button" to="." method="_on_Tv_button_pressed"]
+[connection signal="pressed" from="PainButton" to="." method="_on_PainButton_pressed"]
 [connection signal="pressed" from="DoiAqui/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="DoiAqui/TextureButton" to="." method="_on_TextureButton_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

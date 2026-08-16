@@ -39,10 +39,10 @@ func _ready():
 func _physics_process(delta):
 	if (life == (max_life / 2)):
 		isHalthLife = true
-		
-	#if isHalthLife and life == 0:
-	#	get_tree().change_scene("res://src/scene/GameOver.tscn")
-		
+
+	if isHalthLife and life == 0:
+		get_tree().change_scene("res://src/Mini-games/DoiAqui/scene/GameOver.tscn")
+
 	if life >= GlobalResource.max_life:
 		get_tree().change_scene("res://src/Mini-games/DoiAqui/scene/GameOver.tscn")
 	
@@ -405,11 +405,4 @@ func _on_start_pressed():
 	isStart = true
 	isCount = true
 
-
-func _on_Player_tree_entered():
-	gender = GlobalResource.gender
-	$Player/sprite.texture = load("res://assets/DoiAqui/sprites/actor/"+str(gender)+"/"+str(gender)+"-parado.png")
-	$Player/wound.texture = load("res://assets/DoiAqui/sprites/actor/"+str(gender)+"/"+str(gender)+"-ferimento.png")
-	$Player/expressions/cold.texture = load("res://assets/DoiAqui/sprites/actor/"+str(gender)+"/"+str(gender)+"-frio.png")
-	$Player/expressions/stress.texture = load("res://assets/DoiAqui/sprites/actor/"+str(gender)+"/"+str(gender)+"-nervoso.png")
 

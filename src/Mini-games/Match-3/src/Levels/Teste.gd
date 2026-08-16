@@ -138,6 +138,7 @@ func _physics_process(delta: float) -> void:
 					add_fruit(tile, AllFruits[random_number])
 	
 	if (S_Conntroller.chances == 0):
+		S_Conntroller.last_result_won = false
 		get_parent().get_tree().change_scene("res://src/Mini-games/Match-3/src/Levels/Win.tscn")
 #	if (
 #		(S_Conntroller.goals[0] == S_Conntroller.score1 
@@ -147,6 +148,7 @@ func _physics_process(delta: float) -> void:
 #		get_parent().get_tree().change_scene("res://src/Mini-games/Match-3/src/Levels/Win.tscn")
 
 	if S_Conntroller.totalScore >= S_Conntroller.goalScore:
+		S_Conntroller.last_result_won = true
 		get_parent().get_tree().change_scene("res://src/Mini-games/Match-3/src/Levels/Win.tscn")
 
 func start(fruits):
@@ -266,9 +268,10 @@ func _on_TextureButton_pressed():
 
 func _on_LeaveButton_pressed() -> void:
 	S_Conntroller.tutorial = false
-	
+
 	S_Conntroller.chances = 15
-	S_Conntroller.score1 = 0	
+	S_Conntroller.last_result_won = true
+	S_Conntroller.score1 = 0
 	S_Conntroller.score2 = 0	
 	S_Conntroller.score3 = 0
 	S_Conntroller.checked = true

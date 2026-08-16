@@ -16,9 +16,6 @@ var fome: float = 0
 var diversao: float = 0
 var energia: float = 0
 
-var wake_up = null
-var bath = null
-
 var fun = false
 var sleeping = false
 var eating = false
@@ -84,7 +81,8 @@ func _process(delta: float) -> void:
 	if(peeing == true):
 		toilet_timer += delta
 		bexiga += 120 * delta
-		
+		bexiga = min(bexiga, max_bexiga)
+
 		if (toilet_timer >= 7):
 			peeing = false
 			toilet_timer = 0
@@ -99,39 +97,36 @@ func _process(delta: float) -> void:
 		random_pain(delta)
 	
 
-func go_to_bath(bathroom):
-	bath = bathroom
-	bathing = true
-
 func _input(event):
 	var key = event.as_text()
-	
+
 	if key == "Z":
 		painpaused = !painpaused
-	
-	if key == "X" and !inpain:
-		var rng = RandomNumberGenerator.new()
-		rng.randomize()
-		var number = rng.randi_range(0, 2)
-		
-		var popup = load("res://src/UI/PopUpDor.tscn").instance()
-		if(number == 0):
-			popup.start("headache")
-			some_problem = "headache"
-		elif(number == 1):
-			popup.start("fever")
-			some_problem = "fever"
-		elif(number == 2):
-			popup.start("armPain")
-			some_problem = "armPain"
-		
-		get_tree().paused = true
-		get_tree().current_scene.add_child(popup)
-	
-	if key == "C":
-		S_Conntroller.score1 = 30
-		S_Conntroller.score2 = 30
-		S_Conntroller.score3 = 30
+
+	if OS.is_debug_build():
+		if key == "X" and !inpain:
+			var rng = RandomNumberGenerator.new()
+			rng.randomize()
+			var number = rng.randi_range(0, 2)
+
+			var popup = load("res://src/UI/PopUpDor.tscn").instance()
+			if(number == 0):
+				popup.start("headache")
+				some_problem = "headache"
+			elif(number == 1):
+				popup.start("fever")
+				some_problem = "fever"
+			elif(number == 2):
+				popup.start("armPain")
+				some_problem = "armPain"
+
+			get_tree().paused = true
+			get_tree().current_scene.add_child(popup)
+
+		if key == "C":
+			S_Conntroller.score1 = 30
+			S_Conntroller.score2 = 30
+			S_Conntroller.score3 = 30
 
 func random_pain(delta):
 	second += delta
@@ -172,7 +167,6 @@ func save():
 		"filename" : "NecessityManager",
 		"higiene" : higiene,
 		"bexiga": bexiga,
-		"banheiro": banheiro,
 		"fome" : fome,
 		"diversao": diversao,
 		"energia": energia

@@ -27,7 +27,7 @@ func start(selected_fruits: Array, _harmful_fruit: String):
 	
 	$Metas/Fruit_UI.start_show(all_fruits[0], 0)
 	$Metas/Fruit_UI2.start_show(all_fruits[1], 1)
-	$Metas/Fruit_UI3.start_show(all_fruits[2], 1)
+	$Metas/Fruit_UI3.start_show(all_fruits[2], 2)
 	$Metas/Fruit_UI4.start_show(harmful_fruit)
 	
 func get_fruit_reference(fruit: String):

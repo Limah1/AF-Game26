@@ -32,7 +32,7 @@ func start(pain):
 
 func _on_go_to_mother_pressed() -> void:
 	
-	if(AnimationController.status == "" and NecessityBars.soaked and AnimationController.is_playing() and AnimationController.is_travelling()):
+	if(AnimationController.status == "" and AnimationController.is_playing() and AnimationController.isTravelling()):
 		get_tree().paused = false
 		queue_free()
 		return

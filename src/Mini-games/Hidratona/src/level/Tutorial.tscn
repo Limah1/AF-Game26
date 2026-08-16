@@ -895,7 +895,6 @@ anims/sun = SubResource( 15 )
 
 [connection signal="button_down" from="TutorialController/feedback/jump" to="TutorialController" method="_on_jump_button_down"]
 [connection signal="button_up" from="TutorialController/feedback/jump" to="TutorialController" method="_on_jump_button_up"]
-[connection signal="pressed" from="TutorialController/feedback/jump" to="TutorialController" method="_on_jump_pressed"]
 [connection signal="button_down" from="TutorialController/feedback/down" to="TutorialController" method="_on_down_button_down"]
 [connection signal="button_down" from="TutorialController/feedback/dash" to="TutorialController" method="_on_dash_button_down"]
 [connection signal="pressed" from="TutorialController/feedback/feedback_box12/Start" to="TutorialController" method="_on_Start_pressed"]

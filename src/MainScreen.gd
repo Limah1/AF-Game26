@@ -11,24 +11,26 @@ var cor_roupa_baixo
 func _ready() -> void:
 	personagem_sprite = get_node("Player/Player/player_sprites")
 	#sujeira_sprite = get_node("Player/Player/player_sprites/sujeira")
-	AnimationController.status = "Started"
+	var previous_status = AnimationController.status
 	CharacterController.player_ref = $Player/Player
-	
+
 	CharacterController.personagem_sprite = personagem_sprite
-	
+
 	AnimationController.set_animation_player($Player/AnimationPlayer)
-	
-	if(AnimationController.status == "Hospital" or AnimationController.status == "Started" or AnimationController.status == "MainGame" or AnimationController.status == "DoiAqui"):
+
+	if(previous_status == "Hospital" or previous_status == "Started" or previous_status == "MainGame" or previous_status == "DoiAqui"):
 		$Slots.start(1)
-	elif(AnimationController.status == "Match3"):
+	elif(previous_status == "Match3"):
 		$Slots.start(2)
-	elif(AnimationController.status == "Hidratona"):
+	elif(previous_status == "Hidratona"):
 		$Slots.start(0)
-	elif(AnimationController.status == "Sleeping"):
+	elif(previous_status == "Sleeping"):
 		$Slots.start(3)
-	elif(AnimationController.status == "ForgotAcessory"):
+	elif(previous_status == "ForgotAcessory"):
 		$Slots.start(3)
-	
+
+	AnimationController.status = "Started"
+
 	$Player/Player/rainny_sound.stop()
 	$Player/Player/sunny_sound.stop()
 	$Player/Player/snow_sound.stop()

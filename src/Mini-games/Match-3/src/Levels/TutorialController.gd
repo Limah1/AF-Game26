@@ -79,7 +79,7 @@ func change_fb():
 		p1_finished = true
 		
 		$Input3.visible = true
-		$AnimationPlayer.play("Input2")
+		$AnimationPlayer.play("Input3")
 		input3 = true
 		input2 = false
 
@@ -91,7 +91,7 @@ func change_fb():
 		yield(countdown(), "completed") 
 		
 		$Input4.visible = true
-		$AnimationPlayer.play("Input3")
+		$AnimationPlayer.play("Input4 ")
 		input4 = true
 		input3 = false
 

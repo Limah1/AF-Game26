@@ -1,8 +1,5 @@
 extends KinematicBody2D
 
-var swipe_start = null
-var minimum_drag = 100
-
 const FLOOR_NORMAL: = Vector2.UP
 export var speed: = Vector2(0, 1400)
 export var gravity = 3000.0
@@ -15,7 +12,6 @@ var playsom
 
 var cd = 0.5
 var timer = 0
-var pressing = false
 
 var jump = 0.0
 var is_jump_interrupted = false
@@ -26,8 +22,7 @@ var velocity: = Vector2.ZERO
 
 func _ready():
 	set_sprites()
-	
-	connect("fall", self, "_fall")
+
 	parallax = get_parent().get_node("floor")
 	
 func _physics_process(delta):
@@ -94,12 +89,7 @@ func calculate_move_velocity(
 	
 	if velocity.y != 0:
 		jump_pressed = false
-	
-#	if is_jump_interrupted:
-#		out.y = 0.0
-#		jump = 0
-#		jump_pressed = false
-	
+
 	if not_in_floor:
 		out.y = speed.y
 		
@@ -116,15 +106,7 @@ func input():
 		down = false
 	else:
 		jump = 0
-		
-#	if (Input.is_action_just_pressed("jump") or jump_pressed) and down == true and is_on_floor():
-#		down = false
-#		jump = -1.0
 
-#	if (Input.is_action_just_released("jump") or jump_pressed == false) and velocity.y < 0.0:
-#		is_jump_interrupted = true
-#	else:
-#		is_jump_interrupted = false
 	if Input.is_action_just_pressed("down"):
 		time_down = 1.2
 		down = true
@@ -239,41 +221,21 @@ func set_sprites():
 
 func _input(event):
 	if Resources.in_hole:
-		print("inhole")
 		return;
-	
+
 #	print(event.as_text())
-	
+
 	if event is InputEventKey and event.is_pressed() and char(event.scancode) == "W" and is_on_floor():
 		jump_pressed = true
-	
+
 	if event is InputEventScreenDrag:
 		#get_relative_direction(event.relative)
-		print("Funcionando")
 		var aux = event.relative.y
 		if aux > 3 and time_down <= 0:
 			time_down = 1.2
 			down = true
 		elif aux < 3 and is_on_floor():
 			jump_pressed = true
-
-#func _on_Area2D_input_event(viewport, event, shape_idx):
-#	if Resources.in_hole:
-#		print("inhole")
-#		return;
-#
-#	print("not_inhole")
-#
-#
-#	if event is InputEventScreenDrag:
-#		#get_relative_direction(event.relative)
-#		print("Funcionando")
-#		var aux = event.relative.y
-#		if(aux > 3):
-#			time_down = 1.2
-#			down = true
-#		elif aux < 3 and is_on_floor():
-#			jump_pressed = true
 
 
 func get_relative_direction(relative):

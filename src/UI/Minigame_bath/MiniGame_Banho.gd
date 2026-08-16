@@ -15,7 +15,10 @@ var pressing = false
 var status_button: bool = false
 
 var cd = 0.5
-var timer = 0
+var wet_timer = 0
+var soap_timer = 0
+var rinse_timer = 0
+var dry_timer = 0
 
 onready var chuveiro = $"Ativo 6/Chuveiro"
 onready var bubbles = $"boy-banho-1/bubbles"
@@ -98,62 +101,58 @@ func get_relative_direction(relative):
 			diminuir_chuveiro()
 
 func aumentar_chuveiro():
+	if(chuveiro.emitting == true):
+		return
+	chuveiro.emitting = true
+	$"Ativo 6/AnimationPlayer".play("open_faucet")
+
+func diminuir_chuveiro():
 	if(chuveiro.emitting == false):
 		return
 	chuveiro.emitting = false
 	$"Ativo 6/AnimationPlayer".play("open_faucet")
 
-func diminuir_chuveiro():
-	if(chuveiro.emitting == true):
-		return
-	chuveiro.emitting = true
-	$"Ativo 6/AnimationPlayer".play("open_faucet")	
-
 func _process(delta):
 	cd -= delta
-	
+
 	if(chuveiro.emitting == true and ensaboado <= 0):
-		timer += delta
-		
+		wet_timer += delta
+
 		molhado += (20 * delta)
-		
-		if(timer >= 1):
-			if(water_circles.modulate.a >= 1):
-				timer = 0
-				return
-			timer = 0
-			water_circles.modulate.a = water_circles.modulate.a + 0.2
-	
+
+		if(wet_timer >= 1):
+			wet_timer = 0
+			if(water_circles.modulate.a < 1):
+				water_circles.modulate.a = water_circles.modulate.a + 0.2
+
 	if(bubbles.emitting == true):
-		timer += delta
-		
+		soap_timer += delta
+
 		ensaboado += (20 * delta)
-		
-		if(timer >= 1):
-			if(foam.modulate.a >= 1):
-				timer = 0
-				return
-			timer = 0
-			foam.modulate.a = foam.modulate.a + 0.2
-	
+
+		if(soap_timer >= 1):
+			soap_timer = 0
+			if(foam.modulate.a < 1):
+				foam.modulate.a = foam.modulate.a + 0.2
+
 	if(chuveiro.emitting and ensaboado != 0):
-		timer += delta
-		
+		rinse_timer += delta
+
 		enxaguar += (20 * delta)
-		
-		if(timer >= 1):
-			timer = 0
+
+		if(rinse_timer >= 1):
+			rinse_timer = 0
 			foam.modulate.a = foam.modulate.a - 0.2
-		
+
 	if(is_drying):
-		timer += delta
-		
+		dry_timer += delta
+
 		enxugado += (20 * delta)
-		
-		if(timer >= 1):
-			timer = 0
+
+		if(dry_timer >= 1):
+			dry_timer = 0
 			water_circles.modulate.a = water_circles.modulate.a - 0.2
-	
+
 
 
 

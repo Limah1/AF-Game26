@@ -19,7 +19,6 @@ func _process(delta: float) -> void:
 
 
 func _on_Press_button_down() -> void:
-	print("Pressing")
 	$CollisionShape2D.set_deferred("disabled", false)
 	
 	z_index = 20

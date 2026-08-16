@@ -27,9 +27,6 @@ func _ready():
 	shader_material.set_shader_param("nova_cor_pele", new_color_pele)
 	
 	
-	$applause.play()
-	$character.texture = CharacterController.all_sprites.match3.win
-	
 	$HealthDisplay/HealthBar.max_value = S_Conntroller.goalScore
 #	if complete_total_match:
 #		$estrela2.visible = true
@@ -40,7 +37,7 @@ func _ready():
 #		$estrela2.visible = true
 #	elif complete_match3:
 #		$estrela2.visible = true
-		
+
 #	if S_Conntroller.score1 == S_Conntroller.goals[0]:
 #		$"arroz-feijao/checked".visible = true
 #	else:
@@ -52,17 +49,31 @@ func _ready():
 #	if S_Conntroller.score3 == S_Conntroller.goals[2]:
 #		$melancia/checked.visible = true
 #	else:
-#		$melancia/checked.visible = false		
+#		$melancia/checked.visible = false
 	$HealthDisplay/HealthBar.value = value
 	$HealthDisplay.update_healthBar(value)
-	
+
 #	$score1.text = str(S_Conntroller.score1, " / ", S_Conntroller.goals[0])
 #	$score2.text = str(S_Conntroller.score2, " / ", S_Conntroller.goals[1])
 #	$score3.text = str(S_Conntroller.score3, " / ", S_Conntroller.goals[2])
-	
-	$Fruit_UI.start_Win(get_fruit_reference(S_Conntroller.fruit1_reference), 0)
-	$Fruit_UI2.start_Win(get_fruit_reference(S_Conntroller.fruit2_reference), 1)
-	$Fruit_UI3.start_Win(get_fruit_reference(S_Conntroller.fruit3_reference), 2)
+
+	if S_Conntroller.last_result_won:
+		# Vitoria: aplausos, pose de comemoracao e estrelas/checks por fruta
+		$applause.play()
+		$character.texture = CharacterController.all_sprites.match3.win
+
+		$Fruit_UI.start_Win(get_fruit_reference(S_Conntroller.fruit1_reference), 0)
+		$Fruit_UI2.start_Win(get_fruit_reference(S_Conntroller.fruit2_reference), 1)
+		$Fruit_UI3.start_Win(get_fruit_reference(S_Conntroller.fruit3_reference), 2)
+	else:
+		# Derrota (ficou sem chances antes de bater a meta): sem aplausos/comemoracao
+		$character.texture = CharacterController.all_sprites.match3.very_sad
+
+		for particles in [$p2d_red, $p2d_green, $p2d_blue, $p2d_violet, $p2d_white, $p2d_white2]:
+			particles.emitting = false
+
+		$Label.text = "Você ficou sem chances...\nTente novamente!"
+		$Label.visible = true
 
 func _input(event: InputEvent) -> void:
 	if (event is InputEventMouseButton and event.is_pressed() and timer<=0) or (event is InputEventScreenTouch and event.is_pressed() and timer <= 0):
@@ -115,30 +126,6 @@ func translated_name(fruit: String):
 		return "Salada"
 	elif fruit == "Soda":
 		return "Refrigerante"
-
-func _on_TextureButton_pressed():
-	S_Conntroller.tutorial = false
-	
-	S_Conntroller.chances = 15
-	S_Conntroller.score1 = 0	
-	S_Conntroller.score2 = 0	
-	S_Conntroller.score3 = 0
-	S_Conntroller.checked = true
-	S_Conntroller.tilestodestroy = [] 
-	
-	
-	C_Controller.started = false
-
-	C_Controller.center = null
-	C_Controller.score_t = []
-	C_Controller.score_r = []
-	C_Controller.score_l = []
-	C_Controller.score_b = []
-	
-	M_Controller.moving = []
-	M_Controller.pressing = false
-	M_Controller.tile = null
-	get_parent().get_tree().change_scene("res://src/Levels/Main.tscn")
 
 func _on_VoltarParaCasa_pressed() -> void:
 	S_Conntroller.reset_all()

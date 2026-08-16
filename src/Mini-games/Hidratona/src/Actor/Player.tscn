@@ -762,7 +762,6 @@ stream = ExtResource( 5 )
 [connection signal="pressed" from="CanvasLayer/jump" to="." method="_on_jump_pressed"]
 [connection signal="button_down" from="CanvasLayer/down" to="." method="_on_down_button_down"]
 [connection signal="button_up" from="CanvasLayer/down" to="." method="_on_down_button_up"]
-[connection signal="pressed" from="CanvasLayer/down" to="." method="_on_down_pressed"]
 [connection signal="pressed" from="CanvasLayer/power" to="." method="_on_power_pressed"]
 
 [editable path="CanvasLayer"]

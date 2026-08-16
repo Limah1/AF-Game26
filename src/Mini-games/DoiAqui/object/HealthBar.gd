@@ -1,7 +1,5 @@
 extends Node2D
 
-var bar_green: = preload("res://assets/Match-3/sprites/barHorizontal_green.png")
-
 onready var healthbar = $HealthBar
 
 func start():

@@ -4,7 +4,7 @@ func start(gpos):
 	global_position = gpos
 
 
-func _on_Trash_body_entered(body):
+func _on_Mosquito_body_entered(body):
 	$mosquitosound.play()
 	$Sprite.visible = false
 	$CollisionShape2D.disabled = true

@@ -1,7 +1,7 @@
 extends Node
 
-var max_life = 5
-var initialPain = 0
+var max_life = 10
+var initialPain = 1
 var gameTime = 0.0
 var currentLife
 var gender = "girl"
