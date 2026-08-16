@@ -28,6 +28,8 @@ func _ready() -> void:
 		$Slots.start(3)
 	elif(previous_status == "ForgotAcessory"):
 		$Slots.start(3)
+	else:
+		$Slots.start(1)
 
 	AnimationController.status = "Started"
 

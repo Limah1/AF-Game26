@@ -15,7 +15,8 @@ func start(id):
 	var new_room = id_to_preloaded_room(id).instance()
 	new_room.start(slots[1])
 	get_parent().add_child(new_room)
-	
+	get_parent().move_child(new_room, 0)
+
 	AnimationController.current_room = slots[1].current_room
 	
 #	if(id == 0):
@@ -28,14 +29,16 @@ func to_left(id):
 	var new_room = id_to_preloaded_room(id).instance()
 	new_room.start(slots[0])
 	get_parent().add_child(new_room)
-	
+	get_parent().move_child(new_room, 0)
+
 	slots[0].current_room = new_room
 
 func to_right(id):
 	var new_room = id_to_preloaded_room(id).instance()
 	new_room.start(slots[2])
 	get_parent().add_child(new_room)
-	
+	get_parent().move_child(new_room, 0)
+
 	slots[2].current_room = new_room
 
 func id_to_preloaded_room(id):
