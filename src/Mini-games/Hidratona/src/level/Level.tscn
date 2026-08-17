@@ -80,7 +80,9 @@ position = Vector2( 502.141, 743.772 )
 [node name="HidratationBar" parent="." instance=ExtResource( 5 )]
 layer = 10
 
-[node name="floor" type="ParallaxBackground" parent="." groups=["parallax"]]
+[node name="floor" type="ParallaxBackground" parent="." groups=[
+"parallax",
+]]
 script = ExtResource( 2 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="floor"]
@@ -131,8 +133,8 @@ margin_left = -543.168
 margin_top = -340.616
 margin_right = 320.832
 margin_bottom = 102.384
-custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Está chovendo e você não trouxe a sua capa de chuva ! 
 Volte para casa e pegue-a!"
 align = 1
@@ -157,8 +159,8 @@ __meta__ = {
 [node name="Label" type="Label" parent="CanvasLayer/NaoTrouxeCapa/Button"]
 margin_right = 495.0
 margin_bottom = 194.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Ir para o quarto"
 align = 1
 valign = 1
@@ -178,8 +180,8 @@ __meta__ = {
 [node name="Label" type="Label" parent="CanvasLayer/NaoTrouxeCapa/Button2"]
 margin_right = 495.0
 margin_bottom = 194.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Continuar"
 align = 1
 valign = 1
@@ -203,8 +205,8 @@ margin_left = -598.0
 margin_top = -404.0
 margin_right = 355.0
 margin_bottom = 138.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Está nevando e você não trouxe a seu casaco ! 
 
 Volte para casa e pegue-o"
@@ -230,8 +232,8 @@ __meta__ = {
 [node name="Label" type="Label" parent="CanvasLayer/NaoTrouxeCasaco/Button"]
 margin_right = 495.0
 margin_bottom = 194.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Ir para o quarto"
 align = 1
 valign = 1
@@ -251,8 +253,8 @@ __meta__ = {
 [node name="Label" type="Label" parent="CanvasLayer/NaoTrouxeCasaco/Button2"]
 margin_right = 495.0
 margin_bottom = 194.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Continuar"
 align = 1
 valign = 1
@@ -268,8 +270,8 @@ margin_left = -602.0
 margin_top = -415.0
 margin_right = 604.0
 margin_bottom = 119.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Opa, você se esqueceu de trazer o casaco e agora está sentindo dor ! 
 
 Volte pra casa e Avise seus pais"
@@ -295,8 +297,8 @@ __meta__ = {
 [node name="Label" type="Label" parent="CanvasLayer/neve/Button"]
 margin_right = 495.0
 margin_bottom = 194.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Voltar pra casa"
 align = 1
 valign = 1
@@ -312,8 +314,8 @@ margin_left = -602.0
 margin_top = -373.047
 margin_right = 604.0
 margin_bottom = 160.953
-custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Opa, você se esqueceu de trazer o guarda chuva e agora está sentindo dor ! 
 
 Volte pra casa e Avise seus pais"
@@ -339,8 +341,8 @@ __meta__ = {
 [node name="Label" type="Label" parent="CanvasLayer/chuva/Button"]
 margin_right = 495.0
 margin_bottom = 194.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Voltar pra casa"
 align = 1
 valign = 1

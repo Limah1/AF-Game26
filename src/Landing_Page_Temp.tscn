@@ -1,8 +1,7 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
+[ext_resource path="res://assets/NEW-TelaTitulo/New_Logo_CuidadosEDesafios-removebg-preview.png" type="Texture" id=1]
 [ext_resource path="res://src/Landing_Page_Temp.gd" type="Script" id=2]
-[ext_resource path="res://assets/NEW-TelaTitulo/logo.png" type="Texture" id=3]
-[ext_resource path="res://assets/NEW-TelaTitulo/Hemácias BG (sem fundo) png.png" type="Texture" id=4]
 [ext_resource path="res://assets/Plataforma/landing_page/button-sair.png" type="Texture" id=5]
 [ext_resource path="res://assets/Plataforma/landing_page/asf.png" type="Texture" id=6]
 [ext_resource path="res://assets/Plataforma/landing_page/hover.png" type="Texture" id=7]
@@ -37,14 +36,15 @@ anchor_bottom = 1.0
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 783.31 ],
+"_edit_use_anchors_": false,
 "_edit_vertical_guides_": [ 959.859 ]
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_left = 1.0
-margin_top = 2.0
-margin_right = 1908.0
-margin_bottom = 1086.0
+margin_left = 8.74246
+margin_top = -12.4485
+margin_right = 1915.75
+margin_bottom = 1071.55
 color = Color( 0.94902, 0.94902, 0.94902, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -52,9 +52,8 @@ __meta__ = {
 
 [node name="af-background" type="Sprite" parent="."]
 material = SubResource( 2 )
-position = Vector2( 969.485, 482.906 )
+position = Vector2( 957.498, 485.903 )
 scale = Vector2( 0.581233, 0.581233 )
-texture = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="."]
 visible = false
@@ -71,11 +70,6 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="af-logo" type="Sprite" parent="."]
-position = Vector2( 957.673, 404.02 )
-scale = Vector2( 0.527291, 0.527291 )
-texture = ExtResource( 3 )
 
 [node name="Continue" type="TextureButton" parent="."]
 anchor_left = 0.5
@@ -135,6 +129,11 @@ volume_db = 0.203
 
 [node name="title_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
+
+[node name="New_Logo_CuidadosEDesafios-removebg-preview" type="Sprite" parent="."]
+position = Vector2( 945.887, 444.039 )
+scale = Vector2( 3.40956, 3.63404 )
+texture = ExtResource( 1 )
 
 [connection signal="pressed" from="Continue" to="." method="_on_Continue_pressed"]
 [connection signal="pressed" from="Restart" to="." method="_on_Restart_pressed"]

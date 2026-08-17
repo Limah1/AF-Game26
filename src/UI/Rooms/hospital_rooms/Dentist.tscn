@@ -136,10 +136,6 @@ rect_scale = Vector2( 5, 5 )
 text = "Dentista"
 
 [node name="DialogSystem" parent="." instance=ExtResource( 3 )]
-margin_left = -1685.5
-margin_top = -659.5
-margin_right = -757.5
-margin_bottom = -40.5
 json_path = "res://assets/dialogos/dentista.json"
 npc_name = "Dentista"
 

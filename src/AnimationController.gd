@@ -9,8 +9,8 @@ var is_room_moving = false
 var is_travelling = false
 
 var anim_player: AnimationPlayer
-var sound_flush: AudioStreamPlayer2D
-var toilet_paper: AudioStreamPlayer2D
+var sound_flush: AudioStreamPlayer
+var toilet_paper: AudioStreamPlayer
 
 var bathroom_animplayer: AnimationPlayer
 
@@ -104,8 +104,10 @@ func travel(from, to):
 	is_travelling = false
 
 func go_to_bath():
+	print("[AnimationController] go_to_bath() playing animation")
 	anim_player.play("go_to_bath")
 	yield(anim_player, "animation_finished")
+	print("[AnimationController] go_to_bath() animation finished")
 
 func go_to_bed():
 	anim_player.play("go_to_bed")
@@ -120,8 +122,10 @@ func wake_up_from_bed():
 	yield(anim_player, "animation_finished")
 
 func return_from_bath():
+	print("[AnimationController] return_from_bath() playing animation")
 	anim_player.play("return_from_bath")
 	yield(anim_player, "animation_finished")
+	print("[AnimationController] return_from_bath() animation finished")
 
 func go_to_toilet():
 	anim_player.play("go_to_toilet")
@@ -131,15 +135,28 @@ func higienic_paper_animation():
 	bathroom_animplayer.play("higienic_paper")
 
 func return_from_toilet():
-	sound_flush.play()
+	if is_instance_valid(sound_flush):
+		sound_flush.play()
+	else:
+		print("[AnimationController] WARNING: sound_flush is invalid or null!")
 	
-	bathroom_animplayer.play("toilet_paper")
+	if is_instance_valid(bathroom_animplayer):
+		bathroom_animplayer.play("toilet_paper")
+	else:
+		print("[AnimationController] WARNING: bathroom_animplayer is invalid or null!")
+		
 	yield(countdown(), "completed")
-	anim_player.play("start")
-	yield(bathroom_animplayer, "animation_finished")
 	
+	if is_instance_valid(anim_player):
+		anim_player.play("start")
+	else:
+		print("[AnimationController] WARNING: anim_player is invalid or null!")
+		
+	if is_instance_valid(bathroom_animplayer):
+		yield(bathroom_animplayer, "animation_finished")
 	
-	anim_player.play("start")
+	if is_instance_valid(anim_player):
+		anim_player.play("start")
 
 
 

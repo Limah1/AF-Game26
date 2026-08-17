@@ -154,9 +154,6 @@ rect_scale = Vector2( 5, 5 )
 text = "Psicologo"
 
 [node name="DialogSystem" parent="." instance=ExtResource( 3 )]
-margin_left = -544.5
-margin_right = 383.5
-margin_bottom = 354.5
 json_path = "res://assets/dialogos/psicologista.json"
 npc_name = "Psicologo"
 

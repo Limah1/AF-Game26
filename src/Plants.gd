@@ -56,7 +56,7 @@ func _on_SquareButton_button_up():
 	filling = false
 
 func start_cooldown():
-	timer.start(10) # 10 segundos
+	timer.start(45) # 45 segundos
 
 func _on_Timer_timeout():
 	progress_bar.value = 0

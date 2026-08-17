@@ -16,6 +16,10 @@ var _current := {}
 var _waiting_next = null 
 
 func _ready():
+	print("[DialogSystem] Node initialized: ", name)
+	print("[DialogSystem] NPC Name: ", npc_name)
+	print("[DialogSystem] JSON Path: ", json_path)
+
 	if NpcName:
 		NpcName.text = npc_name
 
@@ -23,14 +27,21 @@ func _ready():
 		var f = File.new()
 		if f.file_exists(json_path):
 			f.open(json_path, File.READ)
-			var parsed = parse_json(f.get_as_text())
+			var text_content = f.get_as_text()
+			print("[DialogSystem] JSON file loaded successfully. Size: ", text_content.length(), " bytes.")
+			var parsed = parse_json(text_content)
 			f.close()
 			if typeof(parsed) == TYPE_DICTIONARY:
 				conversation_root = parsed
+				print("[DialogSystem] JSON parsed successfully. Root keys: ", conversation_root.keys())
 			else:
+				print("[DialogSystem] ERROR: JSON parsed as type ", typeof(parsed), " instead of Dictionary.")
 				push_error("JSON inválido em %s" % json_path)
 		else:
+			print("[DialogSystem] ERROR: File not found at path: ", json_path)
 			push_error("Arquivo JSON não encontrado: %s" % json_path)
+	else:
+		print("[DialogSystem] WARNING: json_path is empty!")
 
 	Btn1.connect("pressed", self, "_on_choice", [1])
 	Btn2.connect("pressed", self, "_on_choice", [2])

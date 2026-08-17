@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/Mini-games/CharacterTest/MinigameLoadTest.gd" type="Script" id=1]
+[ext_resource path="res://src/Mini-games/CharacterTest/CharacterRig.tscn" type="PackedScene" id=2]
+
+[node name="MinigameLoadTest" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.2, 0.3, 0.4, 1 )
+
+[node name="RigRun" parent="." instance=ExtResource( 2 )]
+position = Vector2( 960, 540 )
+scale = Vector2( 4, 4 )
+state = 2
+
+[node name="Label" type="Label" parent="."]
+margin_left = 700.0
+margin_top = 200.0
+margin_right = 1220.0
+margin_bottom = 231.0
+text = "Teste de Carregamento Modular (Personagem Correndo)"
+align = 1
+valign = 1
+
+[node name="BtnBack" type="Button" parent="."]
+margin_left = 50.0
+margin_top = 50.0
+margin_right = 250.0
+margin_bottom = 100.0
+text = "Voltar"
+
+[connection signal="pressed" from="BtnBack" to="." method="_on_BtnBack_pressed"]

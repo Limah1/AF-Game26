@@ -152,10 +152,6 @@ rect_scale = Vector2( 5, 5 )
 text = "Pediatra"
 
 [node name="DialogSystem" parent="." instance=ExtResource( 3 )]
-margin_left = -1184.5
-margin_top = -258.5
-margin_right = -256.5
-margin_bottom = 360.5
 npc_name = "Pediatra"
 
 [node name="Button" type="Button" parent="."]

@@ -66,5 +66,8 @@ func _process(delta: float) -> void:
 	current_room = $Slots/Slot1.current_room
 	AnimationController.current_room = $Slots/Slot1.current_room
 
-func toggle_NM():
-	$NecessityManager.layer *= -1
+func toggle_NM(visible = null):
+	if visible != null:
+		$NecessityManager.layer = abs($NecessityManager.layer) if visible else -abs($NecessityManager.layer)
+	else:
+		$NecessityManager.layer = -$NecessityManager.layer

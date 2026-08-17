@@ -3,6 +3,7 @@ extends HouseRoom
 var playing1 = false
 var playing2 = false
 var playing3 = false
+var is_doing_action = false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -39,22 +40,33 @@ func _process(delta: float) -> void:
 		playing3 = false
 
 func _on_bath_pressed() -> void:
+	if is_doing_action:
+		print("[Bathroom] Cannot start bath: is_doing_action is already true")
+		return
+	print("[Bathroom] Starting bath action...")
+	is_doing_action = true
 	yield(AnimationController.go_to_bath(), "completed") 
+	print("[Bathroom] Character reached bath, instantiating minigame...")
 	var minigame_banho = load("res://src/UI/Minigame_bath/MiniGame_Banho.tscn").instance()
 	#var sprite_do_personagem = CharacterController.personagem_sprite
 	minigame_banho.start(self)
 	add_child(minigame_banho)
-	get_tree().current_scene.toggle_NM()
+	get_tree().current_scene.toggle_NM(false)
 	NecessityBars.onbath = true	
 
 
 func finish_bath():
+	print("[Bathroom] finish_bath() triggered")
 	NecessityBars.bathing = true
 	get_viewport().canvas_transform = Transform2D()
-	get_tree().current_scene.toggle_NM()
+	get_tree().current_scene.toggle_NM(true)
+	print("[Bathroom] Playing return_from_bath animation...")
 	yield(AnimationController.return_from_bath(), "completed") 
+	print("[Bathroom] return_from_bath completed, resetting states...")
 	NecessityBars.bathing = false
 	NecessityBars.onbath = false	
+	is_doing_action = false
+	print("[Bathroom] Bath action finalized.")
 	
 
 func _on_toilet_pressed() -> void:
@@ -73,11 +85,19 @@ func _on_higienic_paper_pressed():
 func _on_sink_pressed() -> void:
 	if(NecessityBars.soaked):
 		return
+	if is_doing_action:
+		print("[Bathroom] Cannot start sink: is_doing_action is already true")
+		return
+	print("[Bathroom] Starting sink action (escovar dentes)...")
+	is_doing_action = true
 	
 	var minigame_escovar = load("res://src/UI/Minigame_escovar/MiniGame_EscovarDentes.tscn").instance()
 	minigame_escovar.start(self)
 	add_child(minigame_escovar)
-	get_tree().current_scene.toggle_NM()
+	get_tree().current_scene.toggle_NM(false)
 
 func finish_escovar():
-	get_tree().current_scene.toggle_NM()
+	print("[Bathroom] finish_escovar() triggered")
+	get_tree().current_scene.toggle_NM(true)
+	is_doing_action = false
+	print("[Bathroom] Sink action finalized.")

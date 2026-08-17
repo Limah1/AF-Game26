@@ -8,7 +8,7 @@
 [ext_resource path="res://src/SlotsHospital.gd" type="Script" id=6]
 [ext_resource path="res://assets/Hidratona/sprites/objects/play-button (1).png" type="Texture" id=7]
 [ext_resource path="res://assets/Plataforma/buttons/button-sair.png" type="Texture" id=8]
-[ext_resource path="res://assets/Plataforma/Sprites Barra de Status + navegação/pause.png" type="Texture" id=9]
+[ext_resource path="res://assets/Plataforma/Sprites Barra de Status + navegacao/pause.png" type="Texture" id=9]
 [ext_resource path="res://src/UI/Pause.gd" type="Script" id=10]
 [ext_resource path="res://assets/Plataforma/LofiHospital.wav" type="AudioStream" id=11]
 [ext_resource path="res://assets/sounds/Sons Atualizados/Snoring - sound effect - IT Tan.mp3" type="AudioStream" id=12]
