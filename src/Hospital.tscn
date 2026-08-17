@@ -517,7 +517,6 @@ anims/fade_in_out = SubResource( 1 )
 
 [node name="Player" parent="Player" instance=ExtResource( 3 )]
 position = Vector2( 1430, 788.145 )
-z_index = -5
 
 [node name="idle" parent="Player/Player/player_sprites" index="0"]
 scale = Vector2( 0.25, 0.25 )

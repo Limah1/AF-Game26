@@ -374,4 +374,3 @@ bus = "doiaqui"
 [connection signal="pressed" from="InitialMessage/start" to="." method="_on_start_pressed"]
 [connection signal="timeout" from="message" to="." method="_on_message_timeout"]
 [connection signal="timeout" from="message2" to="." method="_on_message_timeout"]
-[connection signal="tree_entered" from="Player" to="." method="_on_Player_tree_entered"]

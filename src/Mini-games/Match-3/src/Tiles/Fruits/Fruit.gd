@@ -5,6 +5,11 @@ var fruit_name
 var speed = 350
 var tile
 
+# Small tolerance (in pixels) used to snap the fruit to its tile once it's
+# close enough, instead of relying on fragile/asymmetric magic numbers or an
+# exact float == 0 comparison.
+const SNAP_EPSILON = 4.2
+
 onready var a_dir = get_node("AnimationDirection")
 
 onready var AP: AnimationPlayer = get_node("AnimationPlayer")
@@ -21,10 +26,7 @@ func reparenting(new_tile):
 func _physics_process(delta: float) -> void:
 	if tile != null:
 		var tile_distance = (tile.global_position - self.global_position)
-		if tile_distance.y <= 1.667786 && tile_distance.y >= -4.165527 && tile_distance.x == 0:
-			self.global_position = tile.global_position
-			return
-		if tile_distance.x >= -4.166321 && tile_distance.x <= 4.166321 && tile_distance.y == 0:
+		if abs(tile_distance.y) <= SNAP_EPSILON && abs(tile_distance.x) <= SNAP_EPSILON:
 			self.global_position = tile.global_position
 			return
 		

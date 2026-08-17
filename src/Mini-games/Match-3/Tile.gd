@@ -10,7 +10,7 @@ var fruit = null
 var pressing = false
 
 func _on_Tile_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if !S_Conntroller.checked or M_Controller.is_moving():
+	if M_Controller.is_moving():
 		return
 	
 	if event is InputEventScreenTouch and event.is_pressed() and !M_Controller.is_moving():

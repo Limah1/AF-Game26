@@ -249,6 +249,7 @@ anims/scale_in_out = SubResource( 6 )
 [node name="tv-off" type="Sprite" parent="."]
 position = Vector2( 1239, 900 )
 scale = Vector2( 0.395337, 0.395337 )
+z_index = 1
 texture = ExtResource( 4 )
 
 [node name="YogaButton" type="Button" parent="."]
@@ -267,11 +268,13 @@ __meta__ = {
 visible = false
 position = Vector2( 1239, 900 )
 scale = Vector2( 0.395, 0.395 )
+z_index = 1
 texture = ExtResource( 3 )
 
 [node name="news" type="Sprite" parent="."]
 visible = false
 position = Vector2( 1238.93, 903.15 )
+z_index = 1
 texture = ExtResource( 12 )
 
 [node name="Tv_button" type="Button" parent="."]

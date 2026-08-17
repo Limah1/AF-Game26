@@ -11,6 +11,7 @@ var sunny = false
 var power_watermelon = false
 var watermelon_timer = 0
 var power_melon = false
+var melon_timer = 0
 var power_orange = false
 var orange_timer = 0
 var power_strawberry = false
@@ -39,6 +40,7 @@ func reset_resources():
 	power_watermelon = false
 	watermelon_timer = 0
 	power_melon = false
+	melon_timer = 0
 	power_orange = false
 	orange_timer = 0
 	power_strawberry = false

@@ -127,10 +127,11 @@ func _ready() -> void:
 	add_to_group("Persist")	
 	#start() #11/08/25
 
-func start():	
+func start(target_node = null):
 	#Preenche as variáveis de criação de personagem nova
 	cabelo = NewCharData.cabelo
 	genero = NewCharData.genero
+	boyorgirl = "Boy" if genero == "boy" else "Girl"
 	cor_pele = NewCharData.cor_pele
 	roupa = NewCharData.roupa
 	cor_roupa_cima = NewCharData.cor_roupa_cima
@@ -150,7 +151,7 @@ func start():
 	all_sprites.hidratona = Load_Hidratona()
 	
 	# 3. APÓS TUDO SER CARREGADO, APLICA AS ATUALIZAÇÕES VISUAIS
-	_update_character_visuals()
+	_update_character_visuals(target_node)
 	print("CharacterController inicializado com sucesso!")
 
 func Load_Plataform():
@@ -798,13 +799,24 @@ func save():
 	return save_dict
 
 #11/08/25
-func _update_character_visuals():
-	# Verifique se o nó do sprite principal existe
-	if not has_node("Player/Player/player_sprites"):
+func _update_character_visuals(target_node = null):
+	# Descobre o nó do sprite do personagem a atualizar.
+	# CharacterController é um autoload e não tem "Player/Player/player_sprites"
+	# como filho seu, então o nó real precisa ser localizado na cena ativa
+	# (ou recebido explicitamente via target_node / personagem_sprite).
+	var sprite_node = target_node
+	if sprite_node == null:
+		sprite_node = personagem_sprite
+	if sprite_node == null:
+		var current_scene = get_tree().current_scene
+		if current_scene and current_scene.has_node("Player/Player/player_sprites"):
+			sprite_node = current_scene.get_node("Player/Player/player_sprites")
+
+	if sprite_node == null or not is_instance_valid(sprite_node):
 		print("Erro: Nó 'player_sprites' não encontrado para atualizar. Variável 'personagem_sprite' não foi definida.")
 		return
-	var personagem_sprite = get_node("Player/Player/player_sprites")
-	
+	var personagem_sprite = sprite_node
+
 	# 1. Aplica a textura inicial 
 	if all_sprites.plataform.idle:
 		personagem_sprite.texture = all_sprites.plataform.idle

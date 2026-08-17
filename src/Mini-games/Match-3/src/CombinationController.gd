@@ -28,7 +28,7 @@ func score():
 		S_Conntroller.add_tile_to_destroy(center.fruit)
 
 	#Score onde faz um T e mais um adicional
-	if(score_t.size() >= 1 && score_b.size() >= 2 && score_l.size() >= 2 && score_r.size() >= 2):
+	elif(score_t.size() >= 1 && score_b.size() >= 2 && score_l.size() >= 2 && score_r.size() >= 2):
 		for tile in score_b:
 			S_Conntroller.add_tile_to_destroy(tile.fruit)
 			score += 1
@@ -42,7 +42,7 @@ func score():
 			S_Conntroller.add_tile_to_destroy(tile.fruit)
 			score += 1
 		S_Conntroller.add_tile_to_destroy(center.fruit)
-	if(score_t.size() >= 2 && score_b.size() >= 1 && score_l.size() >= 2 && score_r.size() >= 2):
+	elif(score_t.size() >= 2 && score_b.size() >= 1 && score_l.size() >= 2 && score_r.size() >= 2):
 		for tile in score_b:
 			S_Conntroller.add_tile_to_destroy(tile.fruit)
 			score += 1
@@ -56,7 +56,7 @@ func score():
 			S_Conntroller.add_tile_to_destroy(tile.fruit)
 			score += 1
 		S_Conntroller.add_tile_to_destroy(center.fruit)
-	if(score_t.size() >= 2 && score_b.size() >= 2 && score_l.size() >= 1 && score_r.size() >= 2):
+	elif(score_t.size() >= 2 && score_b.size() >= 2 && score_l.size() >= 1 && score_r.size() >= 2):
 		for tile in score_b:
 			S_Conntroller.add_tile_to_destroy(tile.fruit)
 			score += 1
@@ -70,7 +70,7 @@ func score():
 			S_Conntroller.add_tile_to_destroy(tile.fruit)
 			score += 1
 		S_Conntroller.add_tile_to_destroy(center.fruit)
-	if(score_t.size() >= 2 && score_b.size() >= 2 && score_l.size() >= 2 && score_r.size() >= 1):
+	elif(score_t.size() >= 2 && score_b.size() >= 2 && score_l.size() >= 2 && score_r.size() >= 1):
 		for tile in score_b:
 			S_Conntroller.add_tile_to_destroy(tile.fruit)
 			score += 1
@@ -133,6 +133,12 @@ func score():
 			S_Conntroller.add_tile_to_destroy(tile.fruit)
 			score += 1
 		for tile in score_r:
+			S_Conntroller.add_tile_to_destroy(tile.fruit)
+			score += 1
+		for tile in score_l:
+			S_Conntroller.add_tile_to_destroy(tile.fruit)
+			score += 1
+		for tile in score_t:
 			S_Conntroller.add_tile_to_destroy(tile.fruit)
 			score += 1
 		S_Conntroller.add_tile_to_destroy(center.fruit)

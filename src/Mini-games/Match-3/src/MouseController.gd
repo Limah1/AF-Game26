@@ -31,13 +31,13 @@ func get_relative_direction(relative):
 		var aux = relative.x
 		if(aux > 2):
 			return "Right"
-		elif(aux < 2):
+		else:
 			return "Left"
 	else:
 		var aux = relative.y
 		if(aux > 2):
 			return "Bottom"
-		elif(aux < 2):
+		else:
 			return "Top"
 
 func move(fruit):

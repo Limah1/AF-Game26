@@ -24,41 +24,9 @@ preload("res://src/Mini-games/Hidratona/src/objects/Strawberry.tscn")]
 var timer_1 = 6
 
 func _ready():
+	# Tutorial obstacles are spawned explicitly via start() calls from
+	# TutorialController.gd, not randomly like the regular obstacules.gd.
 	return
-	rng.randomize()
-	rng2.randomize()
-	
-	rng3.randomize()
-	rng4.randomize()
-	
-	#Criando lixo em um dos lugares aleatorios
-	var trash_random = rng3.randi_range(0,2)
-	var nodeTrash = preload("res://src/Mini-games/Hidratona/src/objects/Trash.tscn")
-	var sceneTrash = nodeTrash.instance()
-	var posTrash = get_tree().get_nodes_in_group("obstacules")
-	sceneTrash.global_position = posTrash[trash_random].position
-	$ParallaxLayer.add_child(sceneTrash)
-	
-	#Criando mosquitos em um dos lugares aleatorios	
-	var radom_mosquito = rng3.randi_range(0,2)
-	var nodeMosquito = preload("res://src/Mini-games/Hidratona/src/objects/Mosquito.tscn")
-	var sceneMosquito = nodeMosquito.instance()
-	var posMosquito = get_tree().get_nodes_in_group("mosquito")
-	var sizeMosquito = posMosquito.size() - 1
-	sceneMosquito.global_position = posMosquito[radom_mosquito].position
-	$ParallaxLayer.add_child(sceneMosquito)
-	
-	paralax = get_tree().get_nodes_in_group("parallax")
-	
-	var pos = get_tree().get_nodes_in_group("position");
-	
-	#Criando frutas em um dos lugares aleatorios		
-	var random_number = rng.randi_range(0, 3)
-	var index_random =rng2.randi_range(0, 3)
-	var node = fruit[index_random]
-	var scene = node.instance()
-	scene.global_position = pos[random_number].position
-	$ParallaxLayer.add_child(scene)
 
 func start(obstacule, position):
 	positions = $ParallaxLayer.get_children()

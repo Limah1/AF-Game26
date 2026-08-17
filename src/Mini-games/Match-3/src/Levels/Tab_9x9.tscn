@@ -428,17 +428,6 @@ position = Vector2( 945.612, 538.422 )
 scale = Vector2( 0.615656, 0.623162 )
 texture = ExtResource( 12 )
 
-[node name="LeaveButton" type="TextureButton" parent="."]
-visible = false
-margin_left = 61.449
-margin_top = 44.0
-margin_right = 126.449
-margin_bottom = 161.0
-texture_normal = ExtResource( 15 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="character" type="Sprite" parent="."]
 material = ExtResource( 13 )
 position = Vector2( 203.351, 600 )
@@ -544,7 +533,6 @@ stream = ExtResource( 10 )
 
 [connection signal="pressed" from="CanvasLayer/Pause/continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="CanvasLayer/Pause/leave" to="." method="_on_leave_pressed"]
-[connection signal="pressed" from="LeaveButton" to="." method="_on_LeaveButton_pressed"]
 [connection signal="pressed" from="TextureButton2" to="." method="_on_TextureButton2_pressed"]
 [connection signal="pressed" from="info-box/back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="PauseButton" to="." method="_on_PauseButton_pressed"]

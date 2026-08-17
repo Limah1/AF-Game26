@@ -19,9 +19,11 @@ func _ready():
 	btn_repeat.connect("pressed", self, "start_session")
 	btn_room.connect("pressed", self, "_on_room_pressed")
 	
-	# Fallback if array empty
-	if image_pool.empty():
-		for i in range(10):
+	# Fallback if array empty or too small for a full round (a round needs
+	# at least 5 distinct images: 1 target + 3 distractions per round, with
+	# 5 different targets picked across the session).
+	if image_pool.size() < 5:
+		while image_pool.size() < 5:
 			image_pool.append(preload("res://icon.png"))
 			
 	BackgroundMusic.stop_music()
@@ -45,7 +47,7 @@ func start_session():
 	pool_copy.shuffle()
 	
 	session_targets.clear()
-	for i in range(5):
+	for i in range(min(5, pool_copy.size())):
 		session_targets.append(pool_copy[i])
 		
 	start_round()
@@ -66,7 +68,7 @@ func start_round():
 	pool_copy.erase(target_image)
 	pool_copy.shuffle()
 	
-	for i in range(3):
+	for i in range(min(3, pool_copy.size())):
 		distractions.append(pool_copy[i])
 		
 	# Prepara as 4 opções da rodada

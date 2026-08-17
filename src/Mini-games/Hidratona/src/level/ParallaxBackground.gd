@@ -23,9 +23,7 @@ func _process(delta):
 	
 	parallax_offset -= delta * Resources.parallax_speed
 	set_scroll_offset(Vector2(parallax_offset, 0))
-	
-	return
-	
+
 	time += 1 * delta
 	if time > 5:
 		var node = preload("res://src/Mini-games/Hidratona/src/objects/obstacules.tscn")
@@ -33,10 +31,7 @@ func _process(delta):
 		get_parent().add_child(scene)
 		obstacules = scene
 		time = 0
-		
-	#if Resources.heart <= 0 or Resources.current_life <= 0:
-	#	get_tree().change_scene("res://src/Mini-games/Hidratona/src/level/GameOver.tscn")
-	
+
 func paralax_dash():
 	Resources.parallax_speed *= 2
 	dash_timer = 1

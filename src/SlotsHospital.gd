@@ -9,34 +9,49 @@ onready var slots = [ $Slot1, $Slot2, $Slot3]
 
 func start(id):
 	AnimationController.slots_reference = self
-	
-	var new_room = id_to_preloaded_room(id).instance()
+
+	var room_resource = id_to_preloaded_room(id)
+	if room_resource == null:
+		push_error("SlotsHospital.start: no hospital room mapped for id %s" % str(id))
+		return
+	var new_room = room_resource.instance()
 	new_room.start(slots[1])
 	get_parent().add_child(new_room)
-	
+
 	AnimationController.current_room = slots[1].current_room
-	
+
 #	if(id == 0):
 #		new_room.room_id = 5
-		
+
 	slots[1].current_room = new_room
-	
+
 
 func to_left(id):
-	var new_room = id_to_preloaded_room(id).instance()
+	var room_resource = id_to_preloaded_room(id)
+	if room_resource == null:
+		push_error("SlotsHospital.to_left: no hospital room mapped for id %s" % str(id))
+		return
+	var new_room = room_resource.instance()
 	new_room.start(slots[0])
 	get_parent().add_child(new_room)
-	
+
 	slots[0].current_room = new_room
 
 func to_right(id):
-	var new_room = id_to_preloaded_room(id).instance()
+	var room_resource = id_to_preloaded_room(id)
+	if room_resource == null:
+		push_error("SlotsHospital.to_right: no hospital room mapped for id %s" % str(id))
+		return
+	var new_room = room_resource.instance()
 	new_room.start(slots[2])
 	get_parent().add_child(new_room)
-	
+
 	slots[2].current_room = new_room
 
 func id_to_preloaded_room(id):
+	# The hospital only has rooms 1-4 (WaitingRoom, Pediatrician, Dentist, Psychologist).
+	# ids 0/5 (Yard/Jardim equivalents in the house) have no hospital counterpart, so
+	# they intentionally fall through to null and are guarded against by callers above.
 	if(id == 1):
 		return waitingroom
 	elif(id == 2):
@@ -45,6 +60,7 @@ func id_to_preloaded_room(id):
 		return dentist
 	elif(id == 4):
 		return psychologist
+	return null
 
 func reset_rooms(side):
 	if(side == "L"):

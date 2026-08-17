@@ -1,6 +1,5 @@
 extends CanvasLayer
 
-var boyorgirl = CharacterController.boyorgirl
 var glass = CharacterController.glass
 var variation = CharacterController.variation
 

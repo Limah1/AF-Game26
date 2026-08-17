@@ -5,10 +5,6 @@ extends Control # Ou Node2D, dependendo do seu nó base
 # Declare a variável, mas não a inicialize aqui no Godot 3.x
 var personagem_sprite
 
-var cabelo
-var cor_pele
-var genero
-
 var sprite_boy_a = preload("res://assets/Sprites-v3/boy-a/boy-a-r1-m0.png")
 var sprite_girl_a = preload("res://assets/Sprites-v3/girl-a/girl-a-r1-m0.png")
 var sprite_boy_b = preload("res://assets/Sprites-v3/boy-b/boy-b-r1-m0.png")

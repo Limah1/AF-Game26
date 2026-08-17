@@ -9,7 +9,7 @@ var cor_roupa_baixo
 
 
 func _notification(what: int) -> void:
-	if what == 1006 or what == 1007 or what == 1005:
+	if what == NOTIFICATION_WM_QUIT_REQUEST or what == NOTIFICATION_WM_GO_BACK_REQUEST or what == NOTIFICATION_WM_FOCUS_OUT:
 		save_game()
 
 func save_game():
@@ -53,7 +53,6 @@ func load_game():
 	
 	NecessityBars.higiene = node_data2.higiene
 	NecessityBars.bexiga = node_data2.bexiga
-	NecessityBars.banheiro = node_data2.banheiro
 	NecessityBars.fome = node_data2.fome
 	NecessityBars.diversao = node_data2.diversao
 	NecessityBars.energia = node_data2.energia

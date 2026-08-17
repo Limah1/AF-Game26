@@ -125,7 +125,7 @@ func back_from_sleeping():
 	bth.start($Slots/Slot7)
 	add_child(bth)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	current_room = $Slots/Slot6.current_room
 	AnimationController.current_room = $Slots/Slot6.current_room
 	

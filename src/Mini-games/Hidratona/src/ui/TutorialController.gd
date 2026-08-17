@@ -1,8 +1,5 @@
 extends CanvasLayer
 
-var checked = false
-var pressing = false
-
 var p1_finished = false
 
 var timer = 0.7

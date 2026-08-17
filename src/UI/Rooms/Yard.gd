@@ -1,6 +1,18 @@
 extends HouseRoom
 
-var countdown = 3
+# Time (seconds) the Yard stays "settled" as room_id 0 before it starts also
+# answering to room_id 5 (see _process() below). This is not a random delay:
+# room_id 5 is the id AnimationController.travel() checks for its "from == 5"
+# wraparound branch, and it's also the fixed room_id of the separate Jardim
+# room (see src/UI/Rooms/Jardim.gd, PlantCare minigame entrance). The Yard
+# sits at one end of the room strip and Jardim conceptually sits at the other;
+# letting the Yard answer to id 5 too lets travel() treat leaving the Yard
+# (after this short settle time) as leaving the wrap-around slot, so the
+# circular left/right navigation across the room strip works without a
+# dedicated UI button for room 5. NecessityBarsManagerNew.gd's
+# Set_Disabled_Button() has a matching `room_id == 0 or room_id == 5` check,
+# confirming both ids are meant to be treated as "the Yard" while here.
+var yard_wrap_timer = 3
 
 var playing = false
 
@@ -16,11 +28,11 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	
-	if(countdown > 0):
-		countdown -= delta
-		
-		if(countdown <= 0):
-			room_id = 5
+	if(yard_wrap_timer > 0):
+		yard_wrap_timer -= delta
+
+		if(yard_wrap_timer <= 0):
+			room_id = 5 # See comment on yard_wrap_timer above.
 	
 	if (NecessityBars.diversao <= (NecessityBars.max_diversao*0.2)) and playing == false:
 		$"quintal-portao-fechado/AnimationPlayer".play("scale_in_out")
@@ -50,23 +62,14 @@ func _on_Button0_pressed() -> void:
 	$Hidratona_PopUp/AnimationPlayer.play("in")
 	$Hidratona_PopUp2/AnimationPlayer.play("in")
 
-#func _on_TutorialButton_pressed() -> void:
-#	$button_sound.play()
-#	yield($button_sound,"finished")
-#	AnimationController.is_travelling = false
-#	
-#	AnimationController.status = "Hidratona"
-#	NecessityBars.fun = true
-#	get_tree().change_scene("res://src/Mini-games/Hidratona/src/level/Tutorial.tscn")
-	
 func _on_TutorialButton_pressed() -> void:
 	$button_sound.play()
 	yield($button_sound,"finished")
 	AnimationController.is_travelling = false
-	
-	AnimationController.status = "Hospital"
+
+	AnimationController.status = "Hidratona"
 	NecessityBars.fun = true
-	get_tree().change_scene("res://src/Hospital.tscn")
+	get_tree().change_scene("res://src/Mini-games/Hidratona/src/level/Tutorial.tscn")
 
 func _on_StartButton_pressed() -> void:
 	AnimationController.is_travelling = false

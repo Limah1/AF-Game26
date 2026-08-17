@@ -8,6 +8,8 @@ var current_room
 var is_room_moving = false
 var is_travelling = false
 
+var _travel_failsafe_timer = null
+
 var anim_player: AnimationPlayer
 var sound_flush: AudioStreamPlayer
 var toilet_paper: AudioStreamPlayer
@@ -45,63 +47,74 @@ func travel(from, to):
 	if is_travelling: return # Evita chamadas duplicadas
 	var result = from - to
 	is_travelling = true
-	
+
 	# Segurança: se algo der errado, libera a trava após 5 segundos
-	var timer = get_tree().create_timer(5.0)
-	timer.connect("timeout", self, "set", ["is_travelling", false])
-	
+	_cancel_travel_failsafe()
+	_travel_failsafe_timer = get_tree().create_timer(5.0)
+	_travel_failsafe_timer.connect("timeout", self, "set", ["is_travelling", false])
+
 	print(from)
 	print(to)
-	
+
 	if(from == 5):
 		slots_reference.to_right(to)
-		
+
 		print("to left")
 		yield(go_to("special"), "completed")
 		get_tree().call_group("rooms", "go_to", "special")
-		print("reach from left")		
+		print("reach from left")
 		yield(current_room, "stop_moving")
-		
+
 		slots_reference.reset_rooms("L")
-		
-		is_travelling = false
+
+		_finish_travel()
 		return
-	
+
 	if(to == 0):
 		slots_reference.to_left(to)
-		
+
 		yield(go_to("special2"), "completed")
 		get_tree().call_group("rooms", "go_to", "special2")
 		yield(current_room, "stop_moving")
-		
+
 		slots_reference.reset_rooms("R")
-		
-		is_travelling = false		
+
+		_finish_travel()
 		return
-	
+
 	if result < 0:
 		slots_reference.to_right(to)
-		
+
 		yield(go_to("right"), "completed")
 		get_tree().call_group("rooms", "go_to", "left")
 		yield(current_room, "stop_moving")
-		
+
 		slots_reference.reset_rooms("L")
 
 	elif result > 0:
 		slots_reference.to_left(to)
-		
+
 		yield(go_to("left"), "completed")
 		get_tree().call_group("rooms", "go_to", "right")
 		yield(current_room, "stop_moving")
-		
+
 		slots_reference.reset_rooms("R")
 
 	else:
-		is_travelling = false
+		_finish_travel()
 		return
-	
+
+	_finish_travel()
+
+func _finish_travel():
 	is_travelling = false
+	_cancel_travel_failsafe()
+
+func _cancel_travel_failsafe():
+	if _travel_failsafe_timer != null and is_instance_valid(_travel_failsafe_timer):
+		if _travel_failsafe_timer.is_connected("timeout", self, "set"):
+			_travel_failsafe_timer.disconnect("timeout", self, "set")
+	_travel_failsafe_timer = null
 
 func go_to_bath():
 	print("[AnimationController] go_to_bath() playing animation")

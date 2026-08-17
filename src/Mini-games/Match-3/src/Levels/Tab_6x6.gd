@@ -17,6 +17,7 @@ func _ready() -> void:
 	S_Conntroller.goalScore = 60
 	S_Conntroller.chances = 20
 	S_Conntroller.totalScore = 0
+	S_Conntroller.last_result_won = true
 	
 	fruit_max_count = 36
 	line_quant = 6
@@ -38,13 +39,13 @@ func _ready() -> void:
 	
 	$Temp_Tab_6x6.start(AllFruits)
 	var textInfobox = get_node("info-box/ColorRect/Label").text
-#	for fruit in AllFruits:
-#		var fruitNode = fruit.instance()
-#		textInfobox += fruitNode.nutrient
-#		textInfobox += "\n"
-#		get_node("info-box/ColorRect/Label").text = textInfobox
-#		print(fruitNode.nutrient)
-#		fruitNode.queue_free()
+	for fruit in AllFruits:
+		var fruitNode = fruit.instance()
+		textInfobox += fruitNode.nutrient
+		textInfobox += "\n"
+		get_node("info-box/ColorRect/Label").text = textInfobox
+		print(fruitNode.nutrient)
+		fruitNode.queue_free()
 
 func _on_back_pressed():	
 	animationInfo.play("fade_out")

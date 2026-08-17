@@ -58,6 +58,8 @@ func _ready():
 	
 	
 	S_Conntroller.goalScore = 9
+	S_Conntroller.chances = 15
+	S_Conntroller.last_result_won = true
 	
 	AllTiles = [
 		$Fila1.get_children(),
@@ -121,12 +123,14 @@ func _physics_process(delta: float) -> void:
 				rng.randomize()
 				add_fruit(tile, get_fruit_by_name(Ordem[0][index]))
 				index += 1
-		Ordem.remove(0)
+				Ordem.remove(0)
 
 	if (S_Conntroller.chances == 0):
+		S_Conntroller.last_result_won = false
 		get_parent().get_tree().change_scene("res://src/Mini-games/Match-3/src/Levels/Win.tscn")
 	if S_Conntroller.totalScore >= S_Conntroller.goalScore:
 		S_Conntroller.tutorial = true
+		S_Conntroller.last_result_won = true
 		get_parent().get_tree().change_scene("res://src/Mini-games/Match-3/src/Levels/Win.tscn")
 	set_reaction()
 

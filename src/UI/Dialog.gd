@@ -13,7 +13,6 @@ export(String) var npc_name = "NPC"
 
 var conversation_root := {}
 var _current := {}
-var _waiting_next = null 
 
 func _ready():
 	print("[DialogSystem] Node initialized: ", name)
@@ -51,7 +50,6 @@ func _ready():
 
 func start_conversation(root: Dictionary) -> void:
 	_current = root
-	_waiting_next = null
 	_refresh()
 
 func _refresh() -> void:
@@ -81,13 +79,17 @@ func _on_choice(idx: int) -> void:
 	if typeof(choice) != TYPE_DICTIONARY:
 		return
 
-	var botao_text = str(choice.get("botao", "")).strip_edges()
+	# Os dados de diálogo (assets/dialogos/*.json) só carregam o rótulo do
+	# botão, sem um id/flag de ação, então o fluxo é decidido comparando o
+	# texto. Normalizamos acentos e maiúsculas/minúsculas para não depender
+	# de variantes exatas como "Ate logo" / "Até logo".
+	var botao_text = _strip_accents(str(choice.get("botao", "")).strip_edges().to_lower())
 
 	match botao_text:
-		"Ate logo", "Até logo":
+		"ate logo":
 			hide()
 			return
-		"Quero perguntar outra coisa":
+		"quero perguntar outra coisa":
 			_current = conversation_root
 			_refresh()
 			return
@@ -101,8 +103,10 @@ func _on_choice(idx: int) -> void:
 	_current = choice
 	_refresh()
 
-func _input(event):
-	if _waiting_next and event.is_action_pressed("ui_accept"):
-		_current = _waiting_next
-		_waiting_next = null
-		_refresh()
+func _strip_accents(text: String) -> String:
+	var accented = ["á","à","ã","â","ä","é","è","ê","ë","í","ì","î","ï","ó","ò","õ","ô","ö","ú","ù","û","ü","ç"]
+	var plain    = ["a","a","a","a","a","e","e","e","e","i","i","i","i","o","o","o","o","o","u","u","u","u","c"]
+	var result = text
+	for i in range(accented.size()):
+		result = result.replace(accented[i], plain[i])
+	return result

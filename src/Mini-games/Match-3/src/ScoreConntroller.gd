@@ -5,6 +5,8 @@ var goals = [8,8,8] #posicao 0 para metas do RiceAndBean, posicao 1 para waterme
 
 var last_fruit_is_harmful = false
 
+var last_result_won = true
+
 var sound: AudioStreamPlayer2D
 
 var checked = true
@@ -35,33 +37,29 @@ func score(fruit, points, tile):
 		
 		totalScore += points
 	
+	if fruit == fruit1_reference and score1 < goals[0]:
+		score1 += points
+		last_fruit_is_harmful = false
+	if fruit == fruit2_reference and score2 < goals[1]:
+		score2 += points
+		last_fruit_is_harmful = false
+	if fruit == fruit3_reference and score3 < goals[2]:
+		score3 += points
+		last_fruit_is_harmful = false
+
 	if fruit == harmful_fruit_reference:
 		last_fruit_is_harmful = true
 		
 		totalScore -= 1
-
-#	if fruit == fruit1_reference and score1 < goals[0]:
-#		score1 += points
-#		last_fruit_is_harmful = false
-#	if fruit == fruit2_reference and score2 < goals[1]:
-#		score2 += points
-#		last_fruit_is_harmful = false		
-#	if fruit == fruit3_reference and score3 < goals[2]:
-#		score3 += points
-#		last_fruit_is_harmful = false		
-#
-#	if fruit == harmful_fruit_reference:
-#		last_fruit_is_harmful = true
-#		if score1 >= score2  and score1 >= score3:
-#			if score1 > 0:
-#				score1 -= points
-#		elif score2 >= score1  and score2 >= score3:
-#			if score2 > 0:
-#				score2 -= points
-#		elif score3 >= score1  and score3 >= score2:
-#			if score3 > 0:
-#				score3 -= points
-#		return
+		if score1 >= score2 and score1 >= score3:
+			if score1 > 0:
+				score1 -= points
+		elif score2 >= score1 and score2 >= score3:
+			if score2 > 0:
+				score2 -= points
+		elif score3 >= score1 and score3 >= score2:
+			if score3 > 0:
+				score3 -= points
 
 func set_reference(good_fruits, harmful_fruit):
 	fruit1_reference = good_fruits[0]
@@ -81,9 +79,10 @@ func reset_all():
 	score1 = 0
 	score2 = 0
 	score3 = 0
-	
+
 	totalScore = 0
-	
+	last_result_won = true
+
 	ResetTiles()
 
 func DestroyTiles():

@@ -54,6 +54,7 @@ one_shot = true
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 109.711, 314.315 )
 scale = Vector2( 0.976806, 1.38682 )
+z_index = -1
 texture = ExtResource( 2 )
 
 [connection signal="button_down" from="SquareButton" to="." method="_on_SquareButton_button_down"]

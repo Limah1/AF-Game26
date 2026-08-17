@@ -10,7 +10,8 @@ func _on_Strawberry_body_entered(body):
 	$crunch.play()
 	$icon.visible = false
 	$CollisionShape2D.disabled = true
-	if Resources.current_life < 50:
+	Resources.power_strawberry = true
+	if Resources.current_life < Resources.max_life:
 		Resources.current_life += 1
 	yield($crunch,"finished")
 	queue_free()
