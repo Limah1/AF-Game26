@@ -3,6 +3,8 @@ extends Control
 onready var rig_idle = $RigIdle
 onready var rig_walk = $RigWalk
 onready var rig_run = $RigRun
+onready var rig_sleep = $RigSleep
+onready var rig_toilet = $RigToilet
 
 var current_hair: Color
 var current_skin: Color
@@ -11,6 +13,15 @@ var current_clothes: Color
 func _ready():
 	yield(get_tree(), "idle_frame")
 	_apply_default_colors()
+	
+	# Aplica as texturas globais em todos os bonecos de teste
+	for rig in [rig_idle, rig_walk, rig_run, rig_sleep, rig_toilet]:
+		if rig != null:
+			ModularCharacterData.apply_to_rig(rig)
+	
+	# Substitui especificamente o rosto do boneco dormindo
+	if ModularCharacterData.tex_rosto_dormindo != null:
+		rig_sleep.set_face_texture(ModularCharacterData.tex_rosto_dormindo)
 
 func _apply_default_colors():
 	_on_BtnHairBlue_pressed()
@@ -42,10 +53,11 @@ func _on_BtnClothesYellow_pressed():
 	_update_rigs()
 
 func _update_rigs():
-	for rig in [rig_idle, rig_walk, rig_run]:
-		rig.set_hair_color(current_hair)
-		rig.set_skin_color(current_skin)
-		rig.set_clothes_color(current_clothes)
+	for rig in [rig_idle, rig_walk, rig_run, rig_sleep, rig_toilet]:
+		if rig != null:
+			rig.set_hair_color(current_hair)
+			rig.set_skin_color(current_skin)
+			rig.set_shirt_color(current_clothes)
 
 func _on_BtnSave_pressed():
 	ModularTestVariables.hair_color = current_hair

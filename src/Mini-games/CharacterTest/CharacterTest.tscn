@@ -14,7 +14,12 @@ __meta__ = {
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -1.41425
+margin_right = -1.41431
 color = Color( 0.137255, 0.137255, 0.137255, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label1" type="Label" parent="."]
 margin_left = 400.0
@@ -25,7 +30,7 @@ text = "Parado"
 align = 1
 
 [node name="RigIdle" parent="." instance=ExtResource( 2 )]
-position = Vector2( 420, 500 )
+position = Vector2( 420, 335.951 )
 scale = Vector2( 2, 2 )
 
 [node name="Label2" type="Label" parent="."]
@@ -37,7 +42,7 @@ text = "Andando"
 align = 1
 
 [node name="RigWalk" parent="." instance=ExtResource( 2 )]
-position = Vector2( 820, 500 )
+position = Vector2( 827.071, 343.022 )
 scale = Vector2( 2, 2 )
 state = 1
 
@@ -50,9 +55,38 @@ text = "Correndo"
 align = 1
 
 [node name="RigRun" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1220, 500 )
+position = Vector2( 1222.83, 376.963 )
 scale = Vector2( 2, 2 )
 state = 2
+
+[node name="Label4" type="Label" parent="."]
+margin_left = 752.886
+margin_top = 581.838
+margin_right = 816.886
+margin_bottom = 595.838
+text = "Dormindo"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RigSleep" parent="." instance=ExtResource( 2 )]
+position = Vector2( 771.472, 736.174 )
+scale = Vector2( 2, 2 )
+state = 3
+
+[node name="Label5" type="Label" parent="."]
+margin_left = 400.0
+margin_top = 600.0
+margin_right = 456.0
+margin_bottom = 614.0
+text = "Banheiro"
+align = 1
+
+[node name="RigToilet" parent="." instance=ExtResource( 2 )]
+position = Vector2( 425.085, 749.386 )
+scale = Vector2( 2, 2 )
+state = 4
 
 [node name="UI" type="VBoxContainer" parent="."]
 anchor_left = 1.0

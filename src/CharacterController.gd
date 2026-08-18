@@ -813,7 +813,8 @@ func _update_character_visuals(target_node = null):
 			sprite_node = current_scene.get_node("Player/Player/player_sprites")
 
 	if sprite_node == null or not is_instance_valid(sprite_node):
-		print("Erro: Nó 'player_sprites' não encontrado para atualizar. Variável 'personagem_sprite' não foi definida.")
+		# Não é um erro fatal. O start() pode ser chamado antes do boneco existir na cena.
+		# print("Aviso: Sprite do jogador não está na tela. Cores serão aplicadas depois.")
 		return
 	var personagem_sprite = sprite_node
 

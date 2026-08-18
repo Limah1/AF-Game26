@@ -23,5 +23,8 @@ position = Vector2( 7.5, 90 )
 [node name="Torso" type="Sprite" parent="."]
 position = Vector2( 0, 20 )
 
+[node name="Pants" type="Sprite" parent="."]
+position = Vector2( 0, 55 )
+
 [node name="Head" type="Sprite" parent="."]
 position = Vector2( 0, -30 )

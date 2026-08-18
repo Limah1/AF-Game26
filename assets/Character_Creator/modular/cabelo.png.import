@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/mapa.png-e97cbde17a0de523c663aed9a9384ef2.stex"
+path="res://.import/cabelo.png-8757cb4c3a4557c6d9c684cece43e8c8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Plataforma/Sprites Barra de Status + navegação/mapa.png"
-dest_files=[ "res://.import/mapa.png-e97cbde17a0de523c663aed9a9384ef2.stex" ]
+source_file="res://assets/Character_Creator/modular/cabelo.png"
+dest_files=[ "res://.import/cabelo.png-8757cb4c3a4557c6d9c684cece43e8c8.stex" ]
 
 [params]
 
