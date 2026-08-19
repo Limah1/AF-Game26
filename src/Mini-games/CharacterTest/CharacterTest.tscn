@@ -6,6 +6,10 @@
 [node name="CharacterTest" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 363.076
+margin_top = 77.4207
+margin_right = 363.076
+margin_bottom = 77.4207
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -87,6 +91,25 @@ align = 1
 position = Vector2( 425.085, 749.386 )
 scale = Vector2( 2, 2 )
 state = 4
+
+[node name="Label6" type="Label" parent="."]
+margin_left = 1200.0
+margin_top = 600.0
+margin_right = 1260.0
+margin_bottom = 614.0
+text = "Jump"
+align = 1
+
+[node name="RigJump" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1222.83, 749.386 )
+scale = Vector2( 2, 2 )
+state = 5
+jump_head_position = Vector2( -2, -62 )
+jump_left_leg_position = Vector2( -18, 58 )
+jump_right_leg_position = Vector2( 10, 58 )
+jump_left_hand_visible = false
+jump_right_hand_visible = false
+jump_pants_visible = false
 
 [node name="UI" type="VBoxContainer" parent="."]
 anchor_left = 1.0

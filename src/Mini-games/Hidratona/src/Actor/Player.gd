@@ -20,8 +20,16 @@ var parallax
 
 var velocity: = Vector2.ZERO
 
+onready var modular_rig = $ModularRig
+
 func _ready():
 	set_sprites()
+	# Keep legacy sprites in scene as fallback, but render modular character.
+	$AllSprites.visible = false
+	modular_rig.visible = true
+	if ModularCharacterData.has_method("apply_to_rig"):
+		ModularCharacterData.apply_to_rig(modular_rig)
+	_update_modular_state()
 
 	parallax = get_parent().get_node("floor")
 	
@@ -31,6 +39,8 @@ func _physics_process(delta):
 	time += delta
 	
 	if Resources.in_hole:
+		# Legacy hole animation stays hidden; keep modular player in airborne pose.
+		_set_modular_state(5)
 		return
 	
 	input()
@@ -45,6 +55,7 @@ func animations(delta):
 	$CollisionShape2D2.scale.y = 1
 	
 	if Resources.in_hole:
+		_set_modular_state(5)
 		$AnimationPlayer.play("hole")
 		if time > 2:
 			#$AnimatedSprite.play("run")
@@ -56,6 +67,7 @@ func animations(delta):
 		return
 	
 	if down and !Resources.in_hole:
+		_set_modular_state(0)
 		$AnimationPlayer.play("squat")
 		if !playsom:
 			playsom = true
@@ -68,11 +80,30 @@ func animations(delta):
 			playsom = false
 			down = false
 	elif velocity.y < 0 and !Resources.in_hole:
+		_set_modular_state(5)
 		$AnimationPlayer.play("jump")
 	elif velocity.y > 0 and !Resources.in_hole:
+		_set_modular_state(5)
 		$AnimationPlayer.play("down")
 	elif velocity.y == 0 and !Resources.in_hole:
+		_set_modular_state(2)
 		$AnimationPlayer.play("run")
+
+func _update_modular_state() -> void:
+	if Resources.in_hole:
+		_set_modular_state(5)
+	elif down:
+		_set_modular_state(0)
+	elif velocity.y != 0:
+		_set_modular_state(5)
+	else:
+		_set_modular_state(2)
+
+func _set_modular_state(next_state: int) -> void:
+	if modular_rig == null:
+		return
+	if modular_rig.state != next_state:
+		modular_rig.set_state(next_state)
 
 func calculate_move_velocity(
 		linear_velocity: Vector2,

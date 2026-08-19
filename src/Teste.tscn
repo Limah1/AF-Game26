@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://src/Teste.gd" type="Script" id=1]
 [ext_resource path="res://src/UI/RoomSlot.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/UI/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/UI/NecessityManager.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/Plataforma/pop-up-emergencia.png" type="Texture" id=5]
+[ext_resource path="res://src/Mini-games/CharacterTest/CharacterRig.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "fade_in_out"
@@ -530,6 +531,14 @@ anims/fade_in_out = SubResource( 1 )
 
 [node name="Player" parent="Player" instance=ExtResource( 3 )]
 position = Vector2( 1430, 788.145 )
+
+[node name="player_sprites" parent="Player/Player" index="2"]
+visible = false
+
+[node name="ModularPlayer" parent="Player" instance=ExtResource( 6 )]
+position = Vector2( 1430, 788.145 )
+scale = Vector2( 3, 3 )
+z_index = 0
 
 [node name="sleeping" parent="Player/Player/player_sprites" index="6"]
 visible = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://src/Hospital.gd" type="Script" id=1]
 [ext_resource path="res://src/UI/RoomSlot.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://src/UI/Pause.gd" type="Script" id=10]
 [ext_resource path="res://assets/Plataforma/LofiHospital.wav" type="AudioStream" id=11]
 [ext_resource path="res://assets/sounds/Sons Atualizados/Snoring - sound effect - IT Tan.mp3" type="AudioStream" id=12]
+[ext_resource path="res://src/Mini-games/CharacterTest/CharacterRig.tscn" type="PackedScene" id=13]
 
 [sub_resource type="Animation" id=1]
 resource_name = "fade_in_out"
@@ -517,6 +518,14 @@ anims/fade_in_out = SubResource( 1 )
 
 [node name="Player" parent="Player" instance=ExtResource( 3 )]
 position = Vector2( 1430, 788.145 )
+
+[node name="player_sprites" parent="Player/Player" index="2"]
+visible = false
+
+[node name="ModularPlayer" parent="Player" instance=ExtResource( 13 )]
+position = Vector2( 1430, 788.145 )
+scale = Vector2( 3, 3 )
+z_index = 0
 
 [node name="idle" parent="Player/Player/player_sprites" index="0"]
 scale = Vector2( 0.25, 0.25 )

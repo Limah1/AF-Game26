@@ -1,9 +1,14 @@
 extends HouseRoom
 
 var playing = false
+const SLEEP_TEST_RIG_SCALE = 2.0
 
 onready var umbrella = $"bedroom/Ativo 15/Ativo 18/umbrella"
 onready var coat = $"bedroom/Ativo 15/Ativo 19/coat"
+onready var sleep_test_rig = $SleepTestRig
+onready var sleep_test_head_target = $SleepTestHeadTarget
+onready var sleep_test_left_hand_target = $SleepTestLeftHandTarget
+onready var sleep_test_right_hand_target = $SleepTestRightHandTarget
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,6 +17,48 @@ func _ready() -> void:
 		umbrella.get_node("AnimationPlayer").play("idle")
 	if(Resources.acessory_not_founded == "Coat"):
 		coat.get_node("AnimationPlayer").play("idle")
+	_setup_sleep_test_rig()
+
+func _setup_sleep_test_rig() -> void:
+	if sleep_test_rig == null:
+		return
+	sleep_test_rig.position = Vector2.ZERO
+	sleep_test_rig.rotation = 0.0
+	sleep_test_rig.scale = Vector2(SLEEP_TEST_RIG_SCALE, SLEEP_TEST_RIG_SCALE)
+	sleep_test_rig.set_state(0)
+	if ModularCharacterData.has_method("apply_to_rig"):
+		ModularCharacterData.apply_to_rig(sleep_test_rig)
+	sleep_test_rig.visible = false
+
+func _show_sleep_test_rig() -> void:
+	if sleep_test_rig == null:
+		return
+
+	# Targets live in Bedroom's 1920x1080 scene space.
+	sleep_test_rig.position = Vector2.ZERO
+	sleep_test_rig.rotation = 0.0
+	sleep_test_rig.scale = Vector2(SLEEP_TEST_RIG_SCALE, SLEEP_TEST_RIG_SCALE)
+	# Convert room-space targets to local rig-space, preserving exact screen anchors at 2x.
+	sleep_test_rig.sleep_head_position = sleep_test_head_target.position / SLEEP_TEST_RIG_SCALE
+	sleep_test_rig.sleep_left_hand_position = sleep_test_left_hand_target.position / SLEEP_TEST_RIG_SCALE
+	sleep_test_rig.sleep_right_hand_position = sleep_test_right_hand_target.position / SLEEP_TEST_RIG_SCALE
+	sleep_test_rig.sleep_head_visible = true
+	sleep_test_rig.sleep_torso_visible = false
+	sleep_test_rig.sleep_left_arm_visible = false
+	sleep_test_rig.sleep_right_arm_visible = false
+	sleep_test_rig.sleep_left_hand_visible = true
+	sleep_test_rig.sleep_right_hand_visible = true
+	sleep_test_rig.sleep_left_leg_visible = false
+	sleep_test_rig.sleep_right_leg_visible = false
+	sleep_test_rig.sleep_pants_visible = false
+	sleep_test_rig.set_state(3)
+	sleep_test_rig.visible = true
+
+func _hide_sleep_test_rig() -> void:
+	if sleep_test_rig == null:
+		return
+	sleep_test_rig.set_state(0)
+	sleep_test_rig.visible = false
 
 func back_sleeping():
 	AnimationController.already_on_bed()
@@ -20,6 +67,7 @@ func back_sleeping():
 	$CanvasLayer/ColorRect.visible = true 
 	$CanvasLayer/SleepButton2.visible = true 
 	NecessityBars.sleeping = true
+	_show_sleep_test_rig()
 
 func _process(delta: float) -> void:
 	if (NecessityBars.energia <= (NecessityBars.max_energia*0.2)) and playing == false:
@@ -75,12 +123,14 @@ func sleep():
 	$CanvasLayer/SleepButton2.visible = true 
 	$lamp_particle.set_emitting(true)
 	yield(AnimationController.go_to_bed(), "completed")
+	_show_sleep_test_rig()
 	NecessityBars.sleeping = true
 	AnimationController.status = "Sleeping"
 	$lullaby.play()
 	
 
 func wake_up():
+	_hide_sleep_test_rig()
 	Resources.weather_randomize()
 	AnimationController.status = "MainGame"
 	

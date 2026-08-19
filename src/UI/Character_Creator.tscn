@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://assets/Plataforma/Char_Select/tela-escolha-personagem.png" type="Texture" id=1]
 [ext_resource path="res://assets/Character_Creator/cabelo_boy_A.png" type="Texture" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://src/UI/sound/selector_gender.tscn" type="PackedScene" id=15]
 [ext_resource path="res://src/UI/Character_Creator.gd" type="Script" id=16]
 [ext_resource path="res://src/UI/ShaderPersonagem.tres" type="Material" id=17]
+[ext_resource path="res://src/Mini-games/CharacterTest/CharacterRig.tscn" type="PackedScene" id=18]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.94902, 0.94902, 0.94902, 1 )
@@ -147,10 +148,15 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="."]
+visible = false
 material = ExtResource( 17 )
 position = Vector2( 1598.28, 485.035 )
-scale = Vector2( 0.75, 0.75 )
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 12 )
+
+[node name="ModularCharacter" parent="." instance=ExtResource( 18 )]
+position = Vector2( 1598.28, 485.035 )
+scale = Vector2( 1.5, 1.5 )
 
 [node name="button_sound" parent="." instance=ExtResource( 14 )]
 autoplay = false

@@ -8,10 +8,16 @@ var yard = preload("res://src/UI/Rooms/Yard.tscn")
 var bathroom = preload("res://src/UI/Rooms/Bathroom.tscn")
 var kitchen = preload("res://src/UI/Rooms/Kitchen.tscn")
 
+onready var legacy_player = $Player/Player
+onready var legacy_player_sprites = $Player/Player/player_sprites
+onready var legacy_animation_player = $Player/AnimationPlayer
+onready var modular_player = $Player/ModularPlayer
+
 func _ready() -> void:
 	CharacterController.player_ref = $Player/Player
 	
 	AnimationController.set_animation_player($Player/AnimationPlayer)
+	_setup_modular_player()
 	
 	if(AnimationController.status == "Started" or AnimationController.status == "MainGame" or AnimationController.status == "DoiAqui"):
 		started()
@@ -128,9 +134,47 @@ func back_from_sleeping():
 func _process(_delta: float) -> void:
 	current_room = $Slots/Slot6.current_room
 	AnimationController.current_room = $Slots/Slot6.current_room
+	_sync_modular_player()
 	
 	if (NecessityBars.some_problem != ""):
 		$"Player/pop-up-emergencia/AnimationPlayer".play("fade_in_out")
 	else:
 		$"Player/pop-up-emergencia/AnimationPlayer".stop()
+
+func _setup_modular_player() -> void:
+	if modular_player == null or legacy_player == null:
+		return
+	legacy_player_sprites.visible = false
+	modular_player.position = legacy_player.position
+	modular_player.scale = Vector2(3, 3)
+	modular_player.z_index = legacy_player.z_index
+	modular_player.set_state(0)
+	if ModularCharacterData.has_method("apply_to_rig"):
+		ModularCharacterData.apply_to_rig(modular_player)
+
+func _sync_modular_player() -> void:
+	if modular_player == null or legacy_player == null:
+		return
+
+	modular_player.position = legacy_player.position
+	modular_player.z_index = legacy_player.z_index
+	if AnimationController.status == "Sleeping":
+		modular_player.visible = false
+		return
+	modular_player.visible = true
+
+	var animation_name = legacy_animation_player.current_animation
+	var movement_animation = legacy_animation_player.is_playing() and (
+		animation_name.begins_with("go_to_") or
+		animation_name.begins_with("reach_from_") or
+		animation_name == "return_from_bath" or
+		animation_name == "return_from_toilet"
+	)
+	var walking = AnimationController.isTravelling() or movement_animation
+	var desired_state = 1 if walking else 0
+	if modular_player.state != desired_state:
+		modular_player.set_state(desired_state)
+
+	if legacy_player_sprites.scale.x != 0.0 and modular_player.has_method("set_facing"):
+		modular_player.set_facing(-1 if legacy_player_sprites.scale.x < 0.0 else 1)
 

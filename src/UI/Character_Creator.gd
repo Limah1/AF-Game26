@@ -6,6 +6,8 @@ extends Control # Ou Node2D, dependendo do seu nó base
 var personagem_sprite
 var selected_skin_tone_id = "skin_01"
 
+onready var modular_character = $ModularCharacter
+
 var sprite_boy_a = preload("res://assets/Sprites-v3/boy-a/boy-a-r1-m0.png")
 var sprite_girl_a = preload("res://assets/Sprites-v3/girl-a/girl-a-r1-m0.png")
 var sprite_boy_b = preload("res://assets/Sprites-v3/boy-b/boy-b-r1-m0.png")
@@ -24,11 +26,26 @@ var cabelo_boy_B_on = preload("res://assets/Character_Creator/cabelo_boy_B_on.pn
 func _ready():
 	# Inicialize a variável 'personagem_sprite' usando get_node()
 	personagem_sprite = get_node("Sprite") 
+	_hide_legacy_preview()
 	get_node("btn_cor_1").pressed = true
 	get_node("btn_boy").pressed = true
 	ModularCharacterData.set_gender("boy")
 	get_node("cabelo_B").pressed = true
 	_set_skin_tone(selected_skin_tone_id)
+	_apply_modular_preview()
+
+func _hide_legacy_preview() -> void:
+	# Keep the old preview in the scene for rollback/debugging.
+	if personagem_sprite != null:
+		personagem_sprite.visible = false
+		personagem_sprite.scale = Vector2(0.5, 0.5)
+
+func _apply_modular_preview() -> void:
+	if modular_character == null:
+		return
+	modular_character.scale = Vector2(3, 3)
+	if ModularCharacterData.has_method("apply_to_rig"):
+		ModularCharacterData.apply_to_rig(modular_character)
 
 func _set_skin_tone(tone_id: String):
 	var new_color = ModularCharacterData.get_skin_tone_color(tone_id)
@@ -37,6 +54,8 @@ func _set_skin_tone(tone_id: String):
 
 	var shader_material = personagem_sprite.material as ShaderMaterial
 	shader_material.set_shader_param("nova_cor_pele", new_color)
+	if modular_character != null:
+		modular_character.set_skin_color(new_color)
 
 # Métodos que serão chamados quando os botões forem clicados
 func _on_btn_cor_1_pressed():
@@ -107,6 +126,7 @@ func _on_btn_boy_pressed():
 	$cabelo_B.texture_normal = cabelo_boy_B
 	$cabelo_B.texture_pressed = cabelo_boy_B_on
 	get_node("btn_girl").pressed = false
+	_apply_modular_preview()
 
 func _on_btn_girl_pressed():
 	ModularCharacterData.set_gender("girl")
@@ -120,6 +140,7 @@ func _on_btn_girl_pressed():
 	$cabelo_B.texture_normal = cabelo_girl_B
 	$cabelo_B.texture_pressed = cabelo_girl_B_on
 	get_node("btn_boy").pressed = false
+	_apply_modular_preview()
 
 
 

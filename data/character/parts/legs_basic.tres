@@ -1,15 +1,14 @@
-[gd_resource type="Resource" load_steps=4 format=2]
+[gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://src/CharacterData/CharacterLimbSet.gd" type="Script" id=1]
 [ext_resource path="res://assets/Character_Creator/modular/pernaesquerda.png" type="Texture" id=2]
-[ext_resource path="res://assets/Character_Creator/modular/pernadireita.png" type="Texture" id=3]
 
 [resource]
 script = ExtResource( 1 )
 id = "legs_basic"
 display_name = "Basic Legs"
 left_texture = ExtResource( 2 )
-right_texture = ExtResource( 3 )
+right_texture = ExtResource( 2 )
 tint = Color( 1, 1, 1, 1 )
 left_position = Vector2( 0, 0 )
 right_position = Vector2( 0, 0 )

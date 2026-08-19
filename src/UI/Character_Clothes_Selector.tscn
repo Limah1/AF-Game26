@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://src/UI/sound/sound_button.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/UI/sound/selector_gender.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://assets/Character_Creator/btn_roupa_2_boy_on.png" type="Texture" id=9]
 [ext_resource path="res://assets/Character_Creator/btn_roupa_1_boy.png" type="Texture" id=10]
 [ext_resource path="res://src/UI/Character_Clothes_Selector.gd" type="Script" id=11]
+[ext_resource path="res://src/Mini-games/CharacterTest/CharacterRig.tscn" type="PackedScene" id=12]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.94902, 0.94902, 0.94902, 1 )
@@ -259,10 +260,15 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="."]
+visible = false
 material = SubResource( 5 )
 position = Vector2( 1598.28, 485.035 )
-scale = Vector2( 0.75, 0.75 )
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
+
+[node name="ModularCharacter" parent="." instance=ExtResource( 12 )]
+position = Vector2( 1598.28, 485.035 )
+scale = Vector2( 3, 3 )
 
 [node name="button_sound" parent="." instance=ExtResource( 1 )]
 autoplay = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://src/MainScreen.gd" type="Script" id=1]
 [ext_resource path="res://src/UI/RoomSlot.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://src/UI/Pause.gd" type="Script" id=10]
 [ext_resource path="res://src/UI/ShaderPersonagem.tres" type="Material" id=11]
 [ext_resource path="res://assets/Sprites-v3/boy-a/boy-a-r1-m0.png" type="Texture" id=12]
+[ext_resource path="res://src/Mini-games/CharacterTest/CharacterRig.tscn" type="PackedScene" id=13]
 
 [sub_resource type="Animation" id=1]
 resource_name = "fade_in_out"
@@ -561,6 +562,10 @@ scale = Vector2( 0.11, 0.11 )
 [node name="toilet" parent="Player/Player/player_sprites" index="7"]
 use_parent_material = true
 scale = Vector2( 0.25, 0.25 )
+
+[node name="ModularPlayer" parent="Player" instance=ExtResource( 13 )]
+position = Vector2( 1430, 788.145 )
+scale = Vector2( 2, 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
 autoplay = "start"

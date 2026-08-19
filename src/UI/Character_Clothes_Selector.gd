@@ -5,6 +5,8 @@ var cabelo = NewCharData.cabelo
 var genero = NewCharData.genero
 var cor_pele = NewCharData.cor_pele
 
+onready var modular_character = $ModularCharacter
+
 var sprite_boy_a_r1 = preload("res://assets/Sprites-v3/boy-a/boy-a-r1-m0.png")
 var sprite_boy_a_r2 = preload("res://assets/Sprites-v3/boy-a/boy-a-r2-m0.png")
 var sprite_girl_a_r1 = preload("res://assets/Sprites-v3/girl-a/girl-a-r1-m0.png")
@@ -26,12 +28,18 @@ var sprite_btn_roupa_boy_2_on = preload("res://assets/Character_Creator/btn_roup
 
 func _ready():
 	personagem_sprite = get_node("Sprite") 
+	_hide_legacy_preview()
+	if genero != "boy" and genero != "girl":
+		genero = ModularCharacterData.genero
+	ModularCharacterData.set_gender(genero)
+	if cor_pele != "":
+		ModularCharacterData.cor_pele = Color(cor_pele)
 	get_node("btn_cima_cor_6").pressed = true
 	get_node("btn_baixo_cor_6").pressed = true
 	get_node("btn_roupa_1").pressed = true
 	
 	# Seta a cor da pele escolhida na tela anterior
-	var new_color = Color(cor_pele)
+	var new_color = ModularCharacterData.cor_pele if cor_pele == "" else Color(cor_pele)
 	var shader_material = personagem_sprite.material as ShaderMaterial
 	shader_material.set_shader_param("nova_cor_pele", new_color)
 	
@@ -53,6 +61,24 @@ func _ready():
 			$Sprite.texture = sprite_boy_a_r1
 		else:
 			$Sprite.texture = sprite_boy_b_r1
+
+	# Match the old selector defaults on the modular rig.
+	_set_camisa_color(NewCharData.cor_roupa_cima if NewCharData.cor_roupa_cima != "" else "#8a9da5")
+	_set_calca_color(NewCharData.cor_roupa_baixo if NewCharData.cor_roupa_baixo != "" else "#515151")
+	_apply_modular_preview()
+
+func _hide_legacy_preview() -> void:
+	# Keep the old preview in the scene for rollback/debugging.
+	if personagem_sprite != null:
+		personagem_sprite.visible = false
+		personagem_sprite.scale = Vector2(0.5, 0.5)
+
+func _apply_modular_preview() -> void:
+	if modular_character == null:
+		return
+	modular_character.scale = Vector2(3, 3)
+	if ModularCharacterData.has_method("apply_to_rig"):
+		ModularCharacterData.apply_to_rig(modular_character)
 	
 	
 
@@ -64,6 +90,9 @@ func _set_camisa_color(color_hex: String):
 	var shader_material = personagem_sprite.material as ShaderMaterial
 	# Define a nova cor de pele no shader
 	shader_material.set_shader_param("nova_cor_camisa", new_color)
+	ModularCharacterData.cor_roupa_cima = new_color
+	if modular_character != null:
+		modular_character.set_shirt_color(new_color)
 	
 
 
@@ -74,6 +103,9 @@ func _set_calca_color(color_hex: String):
 	var shader_material = personagem_sprite.material as ShaderMaterial
 	# Define a nova cor de pele no shader
 	shader_material.set_shader_param("nova_cor_calca", new_color)
+	ModularCharacterData.cor_roupa_baixo = new_color
+	if modular_character != null:
+		modular_character.set_pants_color(new_color)
 
 
 

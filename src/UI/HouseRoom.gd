@@ -21,9 +21,14 @@ func start(_roomslot):
 	rect_global_position = roomslot.get_node("position").global_position
 
 func _process(delta: float) -> void:
+	# Room scenes can be opened directly for testing before room manager assigns slot.
+	if roomslot == null or not is_instance_valid(roomslot):
+		return
 	movement(delta)
 
 func movement(delta):
+	if roomslot == null or not is_instance_valid(roomslot):
+		return
 	var destination = roomslot.get_node("position").global_position
 	
 	if(rect_position == destination):

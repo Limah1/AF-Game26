@@ -1,16 +1,16 @@
 extends Node2D
 
-export(int, "Idle", "Walk", "Run", "Sleep", "Toilet") var state = 0 setget set_state
+export(int, "Idle", "Walk", "Run", "Sleep", "Toilet", "Jump") var state = 0 setget set_state
 
 # Idle pose positions.
 export(Vector2) var idle_head_position = Vector2(0, 0)
 export(Vector2) var idle_torso_position = Vector2(0, 0)
-export(Vector2) var idle_left_arm_position = Vector2(-50, -22)
-export(Vector2) var idle_right_arm_position = Vector2(50, -22)
+export(Vector2) var idle_left_arm_position = Vector2(-35, 12)
+export(Vector2) var idle_right_arm_position = Vector2(35, 12)
 export(Vector2) var idle_left_hand_position = Vector2(-50, -22)
 export(Vector2) var idle_right_hand_position = Vector2(50, -22)
-export(Vector2) var idle_left_leg_position = Vector2(-25, 58)
-export(Vector2) var idle_right_leg_position = Vector2(25, 58)
+export(Vector2) var idle_left_leg_position = Vector2(-18, 20)
+export(Vector2) var idle_right_leg_position = Vector2(10, 20)
 export(Vector2) var idle_pants_position = Vector2(0, 55)
 export(bool) var idle_head_visible = true
 export(bool) var idle_torso_visible = true
@@ -25,12 +25,12 @@ export(bool) var idle_pants_visible = true
 # Walk pose positions. Animation changes rotations, not these anchors.
 export(Vector2) var walk_head_position = Vector2(0, 0)
 export(Vector2) var walk_torso_position = Vector2(0, 0)
-export(Vector2) var walk_left_arm_position = Vector2(-50, -22)
-export(Vector2) var walk_right_arm_position = Vector2(50, -22)
+export(Vector2) var walk_left_arm_position = Vector2(-33, -22)
+export(Vector2) var walk_right_arm_position = Vector2(33, -22)
 export(Vector2) var walk_left_hand_position = Vector2(-50, -22)
 export(Vector2) var walk_right_hand_position = Vector2(50, -22)
-export(Vector2) var walk_left_leg_position = Vector2(-25, 58)
-export(Vector2) var walk_right_leg_position = Vector2(25, 58)
+export(Vector2) var walk_left_leg_position = Vector2(-18, 20)
+export(Vector2) var walk_right_leg_position = Vector2(10, 20)
 export(Vector2) var walk_pants_position = Vector2(0, 55)
 export(bool) var walk_head_visible = true
 export(bool) var walk_torso_visible = true
@@ -45,12 +45,12 @@ export(bool) var walk_pants_visible = true
 # Run pose positions. Separate defaults allow independent tuning later.
 export(Vector2) var run_head_position = Vector2(0, 0)
 export(Vector2) var run_torso_position = Vector2(0, 0)
-export(Vector2) var run_left_arm_position = Vector2(-50, -22)
-export(Vector2) var run_right_arm_position = Vector2(50, -22)
+export(Vector2) var run_left_arm_position = Vector2(-33, -22)
+export(Vector2) var run_right_arm_position = Vector2(33, -22)
 export(Vector2) var run_left_hand_position = Vector2(-50, -22)
 export(Vector2) var run_right_hand_position = Vector2(50, -22)
-export(Vector2) var run_left_leg_position = Vector2(-25, 58)
-export(Vector2) var run_right_leg_position = Vector2(25, 58)
+export(Vector2) var run_left_leg_position = Vector2(-18, 20)
+export(Vector2) var run_right_leg_position = Vector2(10, 20)
 export(Vector2) var run_pants_position = Vector2(0, 55)
 export(bool) var run_head_visible = true
 export(bool) var run_torso_visible = true
@@ -102,6 +102,30 @@ export(bool) var toilet_left_leg_visible = true
 export(bool) var toilet_right_leg_visible = true
 export(bool) var toilet_pants_visible = true
 
+# Jump pose. Static anchors; arm rotations stay exposed for tuning.
+export(Vector2) var jump_head_position = Vector2(0, 0)
+export(Vector2) var jump_torso_position = Vector2(0, 0)
+export(Vector2) var jump_left_arm_position = Vector2(-35, 12)
+export(Vector2) var jump_right_arm_position = Vector2(35, 12)
+export(Vector2) var jump_left_hand_position = Vector2(-50, -22)
+export(Vector2) var jump_right_hand_position = Vector2(50, -22)
+export(Vector2) var jump_left_leg_position = Vector2(-18, 20)
+export(Vector2) var jump_right_leg_position = Vector2(10, 20)
+export(Vector2) var jump_pants_position = Vector2(0, 55)
+export(bool) var jump_head_visible = true
+export(bool) var jump_torso_visible = true
+export(bool) var jump_left_arm_visible = true
+export(bool) var jump_right_arm_visible = true
+export(bool) var jump_left_hand_visible = true
+export(bool) var jump_right_hand_visible = true
+export(bool) var jump_left_leg_visible = true
+export(bool) var jump_right_leg_visible = true
+export(bool) var jump_pants_visible = true
+export(float) var jump_left_arm_rotation_degrees = 180.0
+export(float) var jump_right_arm_rotation_degrees = 180.0
+export(float) var jump_left_hand_rotation_degrees = 180.0
+export(float) var jump_right_hand_rotation_degrees = 180.0
+
 # Pivot offsets are measured in rig units from the sprite center.
 # They are converted to texture pixels after each part's scale is applied.
 # Sprite origin acts as rotation pivot. Tune in CharacterRig Inspector.
@@ -126,6 +150,7 @@ onready var rig_pants = $Pants
 var time = 0.0
 var walk_time = 0.0
 var torso_base_scale = Vector2.ONE
+var facing_direction = 1
 
 func _ready():
 	_apply_state_setup()
@@ -135,6 +160,13 @@ func set_state(new_state):
 		walk_time = 0.0
 	state = new_state
 	_apply_state_setup()
+
+func set_facing(direction: int) -> void:
+	if direction == 0:
+		return
+	facing_direction = -1 if direction < 0 else 1
+	# Flip root, so every body part mirrors together.
+	scale.x = abs(scale.x) * facing_direction
 
 func _apply_state_setup():
 	if rig_head == null: return
@@ -164,7 +196,7 @@ func _apply_state_setup():
 			]
 		)
 		_apply_pivot_offsets()
-		rig_head.rotation_degrees = -90
+		rig_head.rotation_degrees = 0
 		rig_left_arm.rotation_degrees = -90
 		rig_right_arm.rotation_degrees = -90
 		rig_left_hand.rotation_degrees = -90
@@ -201,6 +233,37 @@ func _apply_state_setup():
 		rig_right_hand.rotation_degrees = 20
 		rig_left_leg.rotation_degrees = -90
 		rig_right_leg.rotation_degrees = -90
+	elif state == 5: # Jump
+		show_all()
+		_apply_pose(
+			jump_head_position,
+			jump_torso_position,
+			jump_left_arm_position,
+			jump_right_arm_position,
+			jump_left_hand_position,
+			jump_right_hand_position,
+			jump_left_leg_position,
+			jump_right_leg_position,
+			jump_pants_position,
+			[
+				jump_head_visible,
+				jump_torso_visible,
+				jump_left_arm_visible,
+				jump_right_arm_visible,
+				jump_left_hand_visible,
+				jump_right_hand_visible,
+				jump_left_leg_visible,
+				jump_right_leg_visible,
+				jump_pants_visible
+			]
+		)
+		_apply_pivot_offsets()
+		_reset_pose()
+		rig_head.rotation_degrees = 0
+		rig_left_arm.rotation_degrees = jump_left_arm_rotation_degrees
+		rig_right_arm.rotation_degrees = jump_right_arm_rotation_degrees
+		rig_left_hand.rotation_degrees = jump_left_hand_rotation_degrees
+		rig_right_hand.rotation_degrees = jump_right_hand_rotation_degrees
 	else:
 		show_all()
 		if state == 1: # Walk
@@ -299,6 +362,23 @@ func _process(delta):
 	if state == 4: # Toilet
 		var toilet_breath = sin(time * 2.0) * 2.0
 		rig_torso.scale = Vector2(torso_base_scale.x, torso_base_scale.y * (1.0 + (toilet_breath * 0.01)))
+		return
+
+	if state == 5: # Jump
+		# Static jump pose: no vertical animation.
+		rig_head.position = jump_head_position
+		rig_torso.position = jump_torso_position
+		rig_left_arm.position = jump_left_arm_position
+		rig_right_arm.position = jump_right_arm_position
+		rig_left_hand.position = jump_left_hand_position
+		rig_right_hand.position = jump_right_hand_position
+		rig_left_leg.position = jump_left_leg_position
+		rig_right_leg.position = jump_right_leg_position
+		rig_pants.position = jump_pants_position
+		rig_left_arm.rotation_degrees = jump_left_arm_rotation_degrees
+		rig_right_arm.rotation_degrees = jump_right_arm_rotation_degrees
+		rig_left_hand.rotation_degrees = jump_left_hand_rotation_degrees
+		rig_right_hand.rotation_degrees = jump_right_hand_rotation_degrees
 		return
 
 	# Walk and run keep their exported anchors. Only rotation animates.
@@ -406,13 +486,15 @@ func set_skin_color(c: Color):
 	rig_right_arm.modulate = c
 	rig_left_hand.modulate = c
 	rig_right_hand.modulate = c
-	rig_left_leg.modulate = c
-	rig_right_leg.modulate = c
 
 func set_shirt_color(c: Color):
 	rig_torso.modulate = c
 
 func set_pants_color(c: Color):
+	# The modular lower-body assets are the two leg sprites.
+	rig_left_leg.modulate = c
+	rig_right_leg.modulate = c
+	# Keep the legacy Pants node compatible for toilet/fallback poses.
 	if rig_pants: rig_pants.modulate = c
 
 func hide_all():
