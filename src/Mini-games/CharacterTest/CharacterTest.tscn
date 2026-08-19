@@ -98,94 +98,102 @@ margin_top = -200.0
 margin_right = -50.0
 margin_bottom = 200.0
 
-[node name="LabelHair" type="Label" parent="UI"]
+[node name="LabelSkin" type="Label" parent="UI"]
 margin_right = 250.0
 margin_bottom = 14.0
-text = "Cabelo"
+text = "Pele"
 
-[node name="BtnHairBlue" type="Button" parent="UI"]
+[node name="BtnSkin1" type="Button" parent="UI"]
 margin_top = 18.0
 margin_right = 250.0
 margin_bottom = 38.0
-text = "Azul"
+text = "Pele 1"
 
-[node name="BtnHairRed" type="Button" parent="UI"]
+[node name="BtnSkin2" type="Button" parent="UI"]
 margin_top = 42.0
 margin_right = 250.0
 margin_bottom = 62.0
-text = "Vermelho"
+text = "Pele 2"
 
-[node name="Control" type="Control" parent="UI"]
+[node name="Control2" type="Control" parent="UI"]
 margin_top = 66.0
 margin_right = 250.0
 margin_bottom = 86.0
 rect_min_size = Vector2( 0, 20 )
 
-[node name="LabelSkin" type="Label" parent="UI"]
+[node name="LabelClothes" type="Label" parent="UI"]
 margin_top = 90.0
 margin_right = 250.0
 margin_bottom = 104.0
-text = "Pele"
+text = "Roupa"
 
-[node name="BtnSkin1" type="Button" parent="UI"]
+[node name="BtnClothesBlue" type="Button" parent="UI"]
 margin_top = 108.0
 margin_right = 250.0
 margin_bottom = 128.0
-text = "Pele 1"
+text = "Azul"
 
-[node name="BtnSkin2" type="Button" parent="UI"]
+[node name="BtnClothesYellow" type="Button" parent="UI"]
 margin_top = 132.0
 margin_right = 250.0
 margin_bottom = 152.0
-text = "Pele 2"
+text = "Amarela"
 
-[node name="Control2" type="Control" parent="UI"]
+[node name="Control3" type="Control" parent="UI"]
 margin_top = 156.0
 margin_right = 250.0
 margin_bottom = 176.0
 rect_min_size = Vector2( 0, 20 )
 
-[node name="LabelClothes" type="Label" parent="UI"]
+[node name="BtnSave" type="Button" parent="UI"]
 margin_top = 180.0
 margin_right = 250.0
-margin_bottom = 194.0
-text = "Roupa"
-
-[node name="BtnClothesBlue" type="Button" parent="UI"]
-margin_top = 198.0
-margin_right = 250.0
-margin_bottom = 218.0
-text = "Azul"
-
-[node name="BtnClothesYellow" type="Button" parent="UI"]
-margin_top = 222.0
-margin_right = 250.0
-margin_bottom = 242.0
-text = "Amarela"
-
-[node name="Control3" type="Control" parent="UI"]
-margin_top = 246.0
-margin_right = 250.0
-margin_bottom = 266.0
-rect_min_size = Vector2( 0, 20 )
-
-[node name="BtnSave" type="Button" parent="UI"]
-margin_top = 270.0
-margin_right = 250.0
-margin_bottom = 290.0
+margin_bottom = 200.0
 text = "Salvar Cores"
 
 [node name="BtnLoadTest" type="Button" parent="UI"]
+margin_top = 204.0
+margin_right = 250.0
+margin_bottom = 224.0
+text = "Testar Minigame (Correndo)"
+
+[node name="BtnMovementTest" type="Button" parent="UI"]
+margin_top = 228.0
+margin_right = 250.0
+margin_bottom = 248.0
+text = "Movement Test"
+
+[node name="LabelCatalog" type="Label" parent="UI"]
+margin_top = 252.0
+margin_right = 250.0
+margin_bottom = 266.0
+text = "Data Catalog"
+
+[node name="BtnHeadWhite" type="Button" parent="UI"]
+margin_top = 270.0
+margin_right = 250.0
+margin_bottom = 290.0
+text = "Boy Head"
+
+[node name="BtnHeadGreen" type="Button" parent="UI"]
 margin_top = 294.0
 margin_right = 250.0
 margin_bottom = 314.0
-text = "Testar Minigame (Correndo)"
+text = "Girl Head"
 
-[connection signal="pressed" from="UI/BtnHairBlue" to="." method="_on_BtnHairBlue_pressed"]
-[connection signal="pressed" from="UI/BtnHairRed" to="." method="_on_BtnHairRed_pressed"]
+[node name="BtnCatalogClothes" type="Button" parent="UI"]
+margin_top = 318.0
+margin_right = 250.0
+margin_bottom = 338.0
+text = "Current Gender Torso"
+
 [connection signal="pressed" from="UI/BtnSkin1" to="." method="_on_BtnSkin1_pressed"]
 [connection signal="pressed" from="UI/BtnSkin2" to="." method="_on_BtnSkin2_pressed"]
 [connection signal="pressed" from="UI/BtnClothesBlue" to="." method="_on_BtnClothesBlue_pressed"]
 [connection signal="pressed" from="UI/BtnClothesYellow" to="." method="_on_BtnClothesYellow_pressed"]
 [connection signal="pressed" from="UI/BtnSave" to="." method="_on_BtnSave_pressed"]
 [connection signal="pressed" from="UI/BtnLoadTest" to="." method="_on_BtnLoadTest_pressed"]
+[connection signal="pressed" from="UI/BtnMovementTest" to="." method="_on_BtnMovementTest_pressed"]
+[connection signal="pressed" from="UI/BtnHeadWhite" to="." method="_on_BtnHeadWhite_pressed"]
+[connection signal="pressed" from="UI/BtnHeadGreen" to="." method="_on_BtnHeadGreen_pressed"]
+[connection signal="pressed" from="UI/BtnCatalogClothes" to="." method="_on_BtnCatalogClothes_pressed"]

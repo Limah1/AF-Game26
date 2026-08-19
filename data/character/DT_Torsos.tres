@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CharacterPartCatalog" load_steps=4 format=2]
+
+[ext_resource path="res://src/CharacterData/CharacterPartCatalog.gd" type="Script" id=1]
+[ext_resource path="res://data/character/parts/torso_boy.tres" type="Resource" id=2]
+[ext_resource path="res://data/character/parts/torso_girl.tres" type="Resource" id=3]
+
+[resource]
+script = ExtResource( 1 )
+entries = [ ExtResource( 2 ), ExtResource( 3 ) ]

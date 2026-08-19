@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CharacterArmSet" load_steps=4 format=2]
+
+[ext_resource path="res://src/CharacterData/CharacterArmSet.gd" type="Script" id=1]
+[ext_resource path="res://assets/Character_Creator/modular/braco_esquerdo.png" type="Texture" id=2]
+[ext_resource path="res://assets/Character_Creator/modular/braco_direito.png" type="Texture" id=3]
+
+[resource]
+script = ExtResource( 1 )
+id = "arms_basic"
+display_name = "Basic Arms"
+left_texture = ExtResource( 2 )
+right_texture = ExtResource( 3 )
+left_scale = Vector2( 0.06, 0.06 )
+right_scale = Vector2( 0.06, 0.06 )

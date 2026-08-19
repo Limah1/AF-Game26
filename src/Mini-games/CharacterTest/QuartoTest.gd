@@ -6,7 +6,6 @@ onready var btn_deitar = $Button
 func _ready():
 	# Configura cores para teste
 	rig_sleep.set_skin_color(Color("#644931"))
-	rig_sleep.set_hair_color(Color("#21b24b"))
 	
 	# Simula o autoload setando as texturas caso você teste direto essa cena
 	# Aqui, passamos a "cabeça" como se fosse a textura de rosto dormindo

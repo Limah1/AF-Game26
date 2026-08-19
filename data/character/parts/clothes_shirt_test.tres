@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CharacterPart" load_steps=3 format=2]
+
+[ext_resource path="res://src/CharacterData/CharacterPart.gd" type="Script" id=1]
+[ext_resource path="res://assets/Character_Creator/modular/CamisaTest.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+id = "shirt_test"
+display_name = "Test Shirt"
+texture = ExtResource( 2 )
+scale = Vector2( 0.07, 0.07 )

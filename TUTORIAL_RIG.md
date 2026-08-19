@@ -92,3 +92,22 @@ Lá, adicione um novo `if` para o seu estado e use Matemática (Seno) para criar
 2. **Esconde/Mostra** peças no `_apply_state_setup()`.
 3. **Muda Posições fixas** no `_apply_state_setup()`.
 4. (Opcional) **Faz Balançar** no `_process(delta)`.
+
+---
+
+## 5. E se eu quiser uma animação complexa (Keyframes)?
+
+O método 4 (usar matemática no código) é ótimo para coisas simples (respirar, braço balançar). Mas se você quiser uma animação de "Ataque" com espada ou "Cair", usar matemática é muito difícil.
+
+Para animações complexas, você deve usar o sistema tradicional do Godot:
+
+1. Abra o `CharacterRig.tscn`.
+2. Adicione um nó **`AnimationPlayer`** (Filho do CharacterRig).
+3. Crie uma Nova Animação (Ex: "Andar_Frente").
+4. Na linha do tempo (Timeline) embaixo, adicione chaves (Keyframes) na propriedade `Position` e `Rotation` de cada pedaço do corpo no tempo exato que você quer (como num vídeo).
+5. Depois, no `CharacterRig.gd`, em vez de fazer contas matemáticas, você só roda o comando:
+```gdscript
+$AnimationPlayer.play("Andar_Frente")
+```
+
+Isso tira a responsabilidade da animação do código e joga para a interface visual poderosa do Godot! Você usa código só para carregar a textura, e usa a Timeline para animar.

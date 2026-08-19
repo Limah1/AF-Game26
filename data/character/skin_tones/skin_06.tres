@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CharacterSkinTone" load_steps=2 format=2]
+
+[ext_resource path="res://src/CharacterData/CharacterSkinTone.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+id = "skin_06"
+display_name = "Skin Tone 6"
+hex_color = "#644931"

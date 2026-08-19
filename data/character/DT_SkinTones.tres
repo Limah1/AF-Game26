@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CharacterSkinToneCatalog" load_steps=8 format=2]
+
+[ext_resource path="res://src/CharacterData/CharacterSkinToneCatalog.gd" type="Script" id=1]
+[ext_resource path="res://data/character/skin_tones/skin_01.tres" type="Resource" id=2]
+[ext_resource path="res://data/character/skin_tones/skin_02.tres" type="Resource" id=3]
+[ext_resource path="res://data/character/skin_tones/skin_03.tres" type="Resource" id=4]
+[ext_resource path="res://data/character/skin_tones/skin_04.tres" type="Resource" id=5]
+[ext_resource path="res://data/character/skin_tones/skin_05.tres" type="Resource" id=6]
+[ext_resource path="res://data/character/skin_tones/skin_06.tres" type="Resource" id=7]
+
+[resource]
+script = ExtResource( 1 )
+entries = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ]

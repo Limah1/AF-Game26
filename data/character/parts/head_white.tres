@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://src/CharacterData/CharacterPart.gd" type="Script" id=1]
+[ext_resource path="res://assets/Character_Creator/1.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+id = "head_white"
+display_name = "Head White"
+texture = ExtResource( 2 )
+tint = Color( 1, 1, 1, 1 )
+position = Vector2( 0, 0 )
+scale = Vector2( 0.028, 0.028 )
+rotation_degrees = 0.0

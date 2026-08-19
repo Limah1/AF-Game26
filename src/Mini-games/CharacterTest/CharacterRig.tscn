@@ -3,22 +3,54 @@
 [ext_resource path="res://src/Mini-games/CharacterTest/CharacterRig.gd" type="Script" id=1]
 
 [node name="CharacterRig" type="Node2D"]
+rotation = -0.0225154
 script = ExtResource( 1 )
-
-[node name="Hair" type="Sprite" parent="."]
-position = Vector2( 0, -50 )
+idle_head_position = Vector2( -2, -62 )
+idle_left_arm_position = Vector2( -18, 12 )
+idle_right_arm_position = Vector2( 35, 12 )
+idle_left_leg_position = Vector2( -18, 58 )
+idle_right_leg_position = Vector2( 18, 58 )
+idle_left_hand_visible = false
+idle_right_hand_visible = false
+idle_pants_visible = false
+walk_head_position = Vector2( -2, -62 )
+walk_left_arm_position = Vector2( -35, 12 )
+walk_right_arm_position = Vector2( 35, 12 )
+walk_left_leg_position = Vector2( -18, 58 )
+walk_right_leg_position = Vector2( 18, 58 )
+walk_left_hand_visible = false
+walk_right_hand_visible = false
+walk_pants_visible = false
+run_head_position = Vector2( -2, -62 )
+run_left_arm_position = Vector2( -35, 12 )
+run_right_arm_position = Vector2( 35, 12 )
+run_left_leg_position = Vector2( -18, 58 )
+run_right_leg_position = Vector2( 18, 58 )
+run_left_hand_visible = false
+run_right_hand_visible = false
+run_pants_visible = false
+left_arm_pivot_offset = Vector2( 0, 36 )
+right_arm_pivot_offset = Vector2( 0, 36 )
+left_leg_pivot_offset = Vector2( 0, 44 )
+right_leg_pivot_offset = Vector2( 0, 36 )
 
 [node name="LeftArm" type="Sprite" parent="."]
-position = Vector2( -50, 10 )
+position = Vector2( -29, 20 )
 
 [node name="RightArm" type="Sprite" parent="."]
-position = Vector2( 28.5, 10 )
+position = Vector2( 29, 20 )
+
+[node name="LeftHand" type="Sprite" parent="."]
+position = Vector2( -50, 20 )
+
+[node name="RightHand" type="Sprite" parent="."]
+position = Vector2( 50, 20 )
 
 [node name="LeftLeg" type="Sprite" parent="."]
 position = Vector2( -25, 90 )
 
 [node name="RightLeg" type="Sprite" parent="."]
-position = Vector2( 7.5, 90 )
+position = Vector2( 25, 90 )
 
 [node name="Torso" type="Sprite" parent="."]
 position = Vector2( 0, 20 )
@@ -27,4 +59,3 @@ position = Vector2( 0, 20 )
 position = Vector2( 0, 55 )
 
 [node name="Head" type="Sprite" parent="."]
-position = Vector2( 0, -30 )

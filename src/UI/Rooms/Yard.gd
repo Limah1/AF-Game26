@@ -73,7 +73,6 @@ func _on_TutorialButton_pressed() -> void:
 
 func _on_StartButton_pressed() -> void:
 	AnimationController.is_travelling = false
-	
 	AnimationController.status = "Hidratona"
 	NecessityBars.fun = true
 	$button_sound.play()

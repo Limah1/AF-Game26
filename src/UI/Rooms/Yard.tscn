@@ -122,7 +122,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1, 1.5 ),
 "transitions": PoolRealArray( 3, 0.16, 1 ),
 "update": 0,
-"values": [ Vector2( 907.249, -822.651 ), Vector2( 907.249, 242.194 ), Vector2( 907.249, 140 ) ]
+"values": [ Vector2( 15, -822.651 ), Vector2( 15, 242.194 ), Vector2( 15, 140 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:visible")
@@ -218,7 +218,6 @@ __meta__ = {
 
 [node name="quintal-portao-fechado" type="Sprite" parent="."]
 position = Vector2( 1672.16, 718.103 )
-scale = Vector2( 0.9, 0.9 )
 z_index = -15
 texture = ExtResource( 3 )
 
@@ -290,24 +289,24 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -71.7998
-margin_top = -1371.49
-margin_right = 897.2
-margin_bottom = -536.49
+margin_left = -923.0
+margin_top = -1382.0
+margin_right = -74.0
+margin_bottom = -569.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="pop-up-hidratona" type="Sprite" parent="Hidratona_PopUp2"]
-position = Vector2( -443.418, 409.914 )
+position = Vector2( 420.129, 432.138 )
 scale = Vector2( 0.877228, 0.906337 )
 texture = ExtResource( 14 )
 
 [node name="HospitalButton" type="TextureButton" parent="Hidratona_PopUp2"]
-margin_left = -601.625
-margin_top = 650.835
-margin_right = -278.625
-margin_bottom = 763.835
+margin_left = 261.922
+margin_top = 673.059
+margin_right = 629.922
+margin_bottom = 800.059
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 5 )
 texture_hover = ExtResource( 15 )
@@ -316,10 +315,10 @@ __meta__ = {
 }
 
 [node name="LeaveButton" type="TextureButton" parent="Hidratona_PopUp2"]
-margin_left = -114.129
-margin_top = 76.6852
-margin_right = -67.1295
-margin_bottom = 124.685
+margin_left = 749.418
+margin_top = 98.9088
+margin_right = 796.418
+margin_bottom = 146.909
 texture_normal = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false

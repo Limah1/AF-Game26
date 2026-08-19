@@ -4,6 +4,7 @@ extends Control # Ou Node2D, dependendo do seu nó base
 
 # Declare a variável, mas não a inicialize aqui no Godot 3.x
 var personagem_sprite
+var selected_skin_tone_id = "skin_01"
 
 var sprite_boy_a = preload("res://assets/Sprites-v3/boy-a/boy-a-r1-m0.png")
 var sprite_girl_a = preload("res://assets/Sprites-v3/girl-a/girl-a-r1-m0.png")
@@ -25,21 +26,21 @@ func _ready():
 	personagem_sprite = get_node("Sprite") 
 	get_node("btn_cor_1").pressed = true
 	get_node("btn_boy").pressed = true
+	ModularCharacterData.set_gender("boy")
 	get_node("cabelo_B").pressed = true
-	
-	
+	_set_skin_tone(selected_skin_tone_id)
 
-func _set_skin_color(color_hex: String):
-	# Converte a string hexadecimal para um obj Color do Godot
-	var new_color = Color(color_hex)
-	
+func _set_skin_tone(tone_id: String):
+	var new_color = ModularCharacterData.get_skin_tone_color(tone_id)
+	selected_skin_tone_id = tone_id
+	ModularCharacterData.select_skin_tone(tone_id)
+
 	var shader_material = personagem_sprite.material as ShaderMaterial
-	# Define a nova cor de pele no shader
 	shader_material.set_shader_param("nova_cor_pele", new_color)
 
 # Métodos que serão chamados quando os botões forem clicados
 func _on_btn_cor_1_pressed():
-	_set_skin_color("#f5e3d2")
+	_set_skin_tone("skin_01")
 	get_node("btn_cor_1").pressed = true
 	get_node("btn_cor_2").pressed = false
 	get_node("btn_cor_3").pressed = false
@@ -48,7 +49,7 @@ func _on_btn_cor_1_pressed():
 	get_node("btn_cor_6").pressed = false
 
 func _on_btn_cor_2_pressed():
-	_set_skin_color("#f0ccbb")
+	_set_skin_tone("skin_02")
 	get_node("btn_cor_1").pressed = false
 	get_node("btn_cor_2").pressed = true
 	get_node("btn_cor_3").pressed = false
@@ -57,7 +58,7 @@ func _on_btn_cor_2_pressed():
 	get_node("btn_cor_6").pressed = false
 
 func _on_btn_cor_3_pressed():
-	_set_skin_color("#e6b489")
+	_set_skin_tone("skin_03")
 	get_node("btn_cor_1").pressed = false
 	get_node("btn_cor_2").pressed = false
 	get_node("btn_cor_3").pressed = true
@@ -66,7 +67,7 @@ func _on_btn_cor_3_pressed():
 	get_node("btn_cor_6").pressed = false
 
 func _on_btn_cor_4_pressed():
-	_set_skin_color("#ba8f67")
+	_set_skin_tone("skin_04")
 	get_node("btn_cor_1").pressed = false
 	get_node("btn_cor_2").pressed = false
 	get_node("btn_cor_3").pressed = false
@@ -75,7 +76,7 @@ func _on_btn_cor_4_pressed():
 	get_node("btn_cor_6").pressed = false
 
 func _on_btn_cor_5_pressed():
-	_set_skin_color("#7f5c3e")
+	_set_skin_tone("skin_05")
 	get_node("btn_cor_1").pressed = false
 	get_node("btn_cor_2").pressed = false
 	get_node("btn_cor_3").pressed = false
@@ -84,7 +85,7 @@ func _on_btn_cor_5_pressed():
 	get_node("btn_cor_6").pressed = false
 
 func _on_btn_cor_6_pressed():
-	_set_skin_color("#644931")
+	_set_skin_tone("skin_06")
 	get_node("btn_cor_1").pressed = false
 	get_node("btn_cor_2").pressed = false
 	get_node("btn_cor_3").pressed = false
@@ -95,6 +96,7 @@ func _on_btn_cor_6_pressed():
 
 
 func _on_btn_boy_pressed():
+	ModularCharacterData.set_gender("boy")
 	if	$cabelo_A.pressed:
 		$Sprite.texture = sprite_boy_a
 	else:
@@ -107,6 +109,7 @@ func _on_btn_boy_pressed():
 	get_node("btn_girl").pressed = false
 
 func _on_btn_girl_pressed():
+	ModularCharacterData.set_gender("girl")
 	if	$cabelo_A.pressed:
 		$Sprite.texture = sprite_girl_a
 	else:
@@ -152,20 +155,10 @@ func _on_ConfirmButton_pressed():
 		NewCharData.genero = "boy"
 	else:
 		NewCharData.genero = "girl"
+	ModularCharacterData.set_gender(NewCharData.genero)
 
-	# Definir cor de pele
-	if get_node("btn_cor_1").pressed:
-		NewCharData.cor_pele = "#f5e3d2"
-	elif get_node("btn_cor_2").pressed:
-		NewCharData.cor_pele = "#f0ccbb"
-	elif get_node("btn_cor_3").pressed:
-		NewCharData.cor_pele = "#e6b489"
-	elif get_node("btn_cor_4").pressed:
-		NewCharData.cor_pele = "#ba8f67"
-	elif get_node("btn_cor_5").pressed:
-		NewCharData.cor_pele = "#7f5c3e"
-	elif get_node("btn_cor_6").pressed:
-		NewCharData.cor_pele = "#644931"
+	# Save the catalog ID and exact catalog color.
+	NewCharData.cor_pele = ModularCharacterData.get_skin_tone_hex(selected_skin_tone_id)
 		
 	get_tree().change_scene("res://src/UI/Character_Clothes_Selector.tscn")
 		
