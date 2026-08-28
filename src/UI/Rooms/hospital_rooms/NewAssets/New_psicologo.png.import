@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pernadireita.png-58304c728e35394e69f647fc45dd75c3.stex"
+path="res://.import/New_psicologo.png-7e9535bf2e0eeb200d38008eb9e3ce0e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Character_Creator/modular/pernadireita.png"
-dest_files=[ "res://.import/pernadireita.png-58304c728e35394e69f647fc45dd75c3.stex" ]
+source_file="res://src/UI/Rooms/hospital_rooms/NewAssets/New_psicologo.png"
+dest_files=[ "res://.import/New_psicologo.png-7e9535bf2e0eeb200d38008eb9e3ce0e.stex" ]
 
 [params]
 

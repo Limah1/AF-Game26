@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Cacheada_Menina_Papo.png-56ba4045edfbbf83a4d14a748a0d500b.stex"
+path="res://.import/New_dentista.png-680d329893815436a03da4a2e9a1d5de.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Character_Creator/Cacheada_Menina_Papo.png"
-dest_files=[ "res://.import/Cacheada_Menina_Papo.png-56ba4045edfbbf83a4d14a748a0d500b.stex" ]
+source_file="res://src/UI/Rooms/hospital_rooms/NewAssets/New_dentista.png"
+dest_files=[ "res://.import/New_dentista.png-680d329893815436a03da4a2e9a1d5de.stex" ]
 
 [params]
 

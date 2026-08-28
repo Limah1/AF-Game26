@@ -27,7 +27,7 @@ func _setup_sleep_test_rig() -> void:
 	sleep_test_rig.scale = Vector2(SLEEP_TEST_RIG_SCALE, SLEEP_TEST_RIG_SCALE)
 	sleep_test_rig.set_state(0)
 	if ModularCharacterData.has_method("apply_to_rig"):
-		ModularCharacterData.apply_to_rig(sleep_test_rig)
+		ModularCharacterData.apply_to_rig(sleep_test_rig, "sleeping")
 	sleep_test_rig.visible = false
 
 func _show_sleep_test_rig() -> void:
@@ -51,6 +51,8 @@ func _show_sleep_test_rig() -> void:
 	sleep_test_rig.sleep_left_leg_visible = false
 	sleep_test_rig.sleep_right_leg_visible = false
 	sleep_test_rig.sleep_pants_visible = false
+	if ModularCharacterData.has_method("apply_to_rig"):
+		ModularCharacterData.apply_to_rig(sleep_test_rig, "sleeping")
 	sleep_test_rig.set_state(3)
 	sleep_test_rig.visible = true
 

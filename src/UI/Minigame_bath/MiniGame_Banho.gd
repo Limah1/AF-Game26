@@ -21,6 +21,7 @@ var rinse_timer = 0
 var dry_timer = 0
 
 onready var chuveiro = $"Ativo 6/Chuveiro"
+onready var bath_character_rig = $BathCharacterRig
 onready var bubbles = $"boy-banho-1/bubbles"
 
 onready var water_circles = $"boy-banho-1/Molhado"
@@ -33,26 +34,55 @@ var roupa
 var cor_roupa_cima
 var cor_roupa_baixo
 
+func _ready() -> void:
+	# Allow direct scene testing as well as Bathroom.gd's explicit start(ref).
+	start(null)
+
 func start(ref):
 	bathroom_reference = ref
 	personagem_sprite = $"boy-banho-1"
-	
-	$"boy-banho-1".texture = CharacterController.all_sprites.plataform.idle_bath
-	
-			# Variaveis para Shaders
-	cor_pele = NewCharData.cor_pele
-	roupa = NewCharData.roupa
-	cor_roupa_cima = NewCharData.cor_roupa_cima
-	cor_roupa_baixo = NewCharData.cor_roupa_baixo
-	#
-	print("cores pele, camisa, calça")
-	print(cor_pele, cor_roupa_cima, cor_roupa_baixo)
-	#
-	var new_color_pele = Color(cor_pele)
-	var new_color_cima = Color(cor_roupa_cima)
-	var new_color_baixo = Color(cor_roupa_baixo)
-	var shader_material = personagem_sprite.material as ShaderMaterial
-	shader_material.set_shader_param("nova_cor_pele", new_color_pele)
+	status_button = false
+	chuveiro.emitting = false
+	$shower_sound.stop()
+	$"Ativo 6/TurnOn".visible = true
+	$"Ativo 6/TurnOff".visible = false
+
+	# The bath outfit is scoped to this minigame. Keep the legacy body node as
+	# the collision/effects parent, but render the modular rig in its place.
+	if bath_character_rig != null:
+		bath_character_rig.position = personagem_sprite.position
+		# Keep the 3x scale authored on BathCharacterRig in MiniGame_Banho.tscn.
+		# The legacy sprite's 0.55 scale is only for its old full-body texture.
+		bath_character_rig.rotation = personagem_sprite.rotation
+		bath_character_rig.z_index = personagem_sprite.z_index
+		bath_character_rig.visible = true
+		bath_character_rig.set_state(0)
+		if bath_character_rig.has_method("set_appearance_variant"):
+			bath_character_rig.set_appearance_variant("bath")
+		elif ModularCharacterData.has_method("apply_to_rig"):
+			ModularCharacterData.apply_to_rig(bath_character_rig, "bath")
+		# Keep legacy effects and Area2D alive, but remove its old body texture.
+		personagem_sprite.texture = null
+	else:
+		# Safe fallback for older scene instances that do not contain the rig.
+		personagem_sprite.texture = CharacterController.all_sprites.plataform.idle_bath
+
+	# Legacy shader setup remains available for the fallback sprite.
+	if bath_character_rig == null:
+		cor_pele = NewCharData.cor_pele
+		roupa = NewCharData.roupa
+		cor_roupa_cima = NewCharData.cor_roupa_cima
+		cor_roupa_baixo = NewCharData.cor_roupa_baixo
+		#
+		print("cores pele, camisa, calça")
+		print(cor_pele, cor_roupa_cima, cor_roupa_baixo)
+		#
+		var new_color_pele = Color(cor_pele)
+		var new_color_cima = Color(cor_roupa_cima)
+		var new_color_baixo = Color(cor_roupa_baixo)
+		var shader_material = personagem_sprite.material as ShaderMaterial
+		if shader_material != null:
+			shader_material.set_shader_param("nova_cor_pele", new_color_pele)
 	
 
 func _on_body_area_body_entered(body):
@@ -101,21 +131,35 @@ func get_relative_direction(relative):
 			diminuir_chuveiro()
 
 func aumentar_chuveiro():
-	if(chuveiro.emitting == true):
+	if status_button:
 		return
-	chuveiro.emitting = true
-	$"Ativo 6/AnimationPlayer".play("open_faucet")
+	_set_shower_enabled(true)
 
 func diminuir_chuveiro():
-	if(chuveiro.emitting == false):
+	if not status_button:
 		return
-	chuveiro.emitting = false
-	$"Ativo 6/AnimationPlayer".play("open_faucet")
+	_set_shower_enabled(false)
+
+func _set_shower_enabled(enabled: bool) -> void:
+	# Keep gameplay state independent from Particles2D's runtime emitter flag.
+	# This also makes the button reliable when the renderer has not initialized
+	# the particle system yet.
+	status_button = enabled
+	chuveiro.emitting = enabled
+	if enabled:
+		chuveiro.restart()
+		$"Ativo 6/AnimationPlayer".play("open_faucet")
+		$shower_sound.play()
+	else:
+		$"Ativo 6/AnimationPlayer".play("close_faucet")
+		$shower_sound.stop()
+	$"Ativo 6/TurnOn".visible = not enabled
+	$"Ativo 6/TurnOff".visible = enabled
 
 func _process(delta):
 	cd -= delta
 
-	if(chuveiro.emitting == true and ensaboado <= 0):
+	if(status_button and ensaboado <= 0):
 		wet_timer += delta
 
 		molhado += (20 * delta)
@@ -135,7 +179,7 @@ func _process(delta):
 			if(foam.modulate.a < 1):
 				foam.modulate.a = foam.modulate.a + 0.2
 
-	if(chuveiro.emitting and ensaboado != 0):
+	if(status_button and ensaboado != 0):
 		rinse_timer += delta
 
 		enxaguar += (20 * delta)
@@ -157,24 +201,6 @@ func _process(delta):
 
 
 func _on_TurnOn_pressed():
-	if(!status_button):
-		$"Ativo 6/TurnOff".visible = true
-		$"Ativo 6/TurnOn".visible = false
-		
-		if(chuveiro.emitting == true):
-			return
-		chuveiro.emitting = true
-		$shower_sound.play()
-	else:
-		if(chuveiro.emitting == false):
-			return
-			
-		$"Ativo 6/TurnOff".visible = false
-		$"Ativo 6/TurnOn".visible = true
-			
-		chuveiro.emitting = false
-		$shower_sound.stop()
-	
-	status_button = !status_button
+	_set_shower_enabled(not status_button)
 	
 

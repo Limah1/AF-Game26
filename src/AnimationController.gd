@@ -56,6 +56,20 @@ func travel(from, to):
 	print(from)
 	print(to)
 
+	# The hospital has rooms 1-4. Moving right from the Psychologist (4)
+	# wraps to the Waiting Room (1) while preserving the rightward transition.
+	if status == "Hospital" and from == 4 and to == 1:
+		slots_reference.to_right(to)
+
+		yield(go_to("right"), "completed")
+		get_tree().call_group("rooms", "go_to", "left")
+		yield(current_room, "stop_moving")
+
+		slots_reference.reset_rooms("L")
+
+		_finish_travel()
+		return
+
 	if(from == 5):
 		slots_reference.to_right(to)
 

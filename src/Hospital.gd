@@ -68,29 +68,35 @@ func _ready() -> void:
 	shader_material.set_shader_param("nova_cor_calca", new_color_baixo)
 	
 	for child in personagem_sprite.get_children():
-		if child is Sprite:
+		# Head uses LegacyHead.shader because each head texture has its own
+		# placeholder skin color. The generic body shader leaves it green.
+		if child is Sprite and child != legacy_player.legacy_head:
 			child.material = shader_material
+	legacy_player._refresh_legacy_head()
 
 
 func _process(delta: float) -> void:
-	current_room = $Slots/Slot1.current_room
-	AnimationController.current_room = $Slots/Slot1.current_room
+	current_room = $Slots/Slot2.current_room
+	AnimationController.current_room = $Slots/Slot2.current_room
 	_sync_modular_player()
 
 func _setup_modular_player() -> void:
 	if modular_player == null or legacy_player == null:
 		return
-	legacy_player_sprites.visible = false
+	legacy_player_sprites.visible = true
+	modular_player.visible = false
 	modular_player.position = legacy_player.position
 	modular_player.scale = Vector2(3, 3)
 	modular_player.z_index = legacy_player.z_index
 	modular_player.set_state(0)
 	if ModularCharacterData.has_method("apply_to_rig"):
-		ModularCharacterData.apply_to_rig(modular_player)
+		ModularCharacterData.apply_to_rig(modular_player, "hospital")
 
 func _sync_modular_player() -> void:
 	if modular_player == null or legacy_player == null:
 		return
+	modular_player.visible = false
+	return
 
 	modular_player.position = legacy_player.position
 	modular_player.z_index = legacy_player.z_index
@@ -110,6 +116,12 @@ func _sync_modular_player() -> void:
 	var desired_state = 1 if walking else 0
 	if modular_player.state != desired_state:
 		modular_player.set_state(desired_state)
+
+	# Hospital owns the hospital outfit. The bath variant is local to the bath
+	# minigame and must never leak into the persistent room character.
+	var desired_variant = "hospital"
+	if modular_player.has_method("set_appearance_variant") and modular_player.appearance_variant != desired_variant:
+		modular_player.set_appearance_variant(desired_variant)
 
 	if legacy_player_sprites.scale.x != 0.0 and modular_player.has_method("set_facing"):
 		modular_player.set_facing(-1 if legacy_player_sprites.scale.x < 0.0 else 1)

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/braco_direito.png-a11d7d2510ed19a570961aab4598ef1b.stex"
+path="res://.import/New_Medico.png-06a9b9a554a2453cd4071c86e837abb1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Character_Creator/modular/braco_direito.png"
-dest_files=[ "res://.import/braco_direito.png-a11d7d2510ed19a570961aab4598ef1b.stex" ]
+source_file="res://src/UI/Rooms/hospital_rooms/NewAssets/New_Medico.png"
+dest_files=[ "res://.import/New_Medico.png-06a9b9a554a2453cd4071c86e837abb1.stex" ]
 
 [params]
 

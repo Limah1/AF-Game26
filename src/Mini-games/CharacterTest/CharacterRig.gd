@@ -1,6 +1,9 @@
 extends Node2D
 
-export(int, "Idle", "Walk", "Run", "Sleep", "Toilet", "Jump") var state = 0 setget set_state
+const TORSO_SKIN_TINT_SHADER = preload("res://src/Mini-games/CharacterTest/torso_skin_tint.shader")
+
+export(int, "Idle", "Walk", "Run", "Sleep", "Toilet", "Jump", "Bath", "Hospital") var state = 0 setget set_state
+export(String, "default", "running", "sleeping", "sick", "bath", "swimwear", "hospital") var appearance_variant = "default"
 
 # Idle pose positions.
 export(Vector2) var idle_head_position = Vector2(0, 0)
@@ -21,6 +24,46 @@ export(bool) var idle_right_hand_visible = true
 export(bool) var idle_left_leg_visible = true
 export(bool) var idle_right_leg_visible = true
 export(bool) var idle_pants_visible = true
+
+# Bath pose positions. Used by the Bath state and by a rig with the bath appearance variant.
+export(Vector2) var bath_head_position = Vector2(0, 0)
+export(Vector2) var bath_torso_position = Vector2(0, 0)
+export(Vector2) var bath_left_arm_position = Vector2(-35, 12)
+export(Vector2) var bath_right_arm_position = Vector2(35, 12)
+export(Vector2) var bath_left_hand_position = Vector2(-50, -22)
+export(Vector2) var bath_right_hand_position = Vector2(50, -22)
+export(Vector2) var bath_left_leg_position = Vector2(-18, 20)
+export(Vector2) var bath_right_leg_position = Vector2(10, 20)
+export(Vector2) var bath_pants_position = Vector2(0, 55)
+export(bool) var bath_head_visible = true
+export(bool) var bath_torso_visible = true
+export(bool) var bath_left_arm_visible = true
+export(bool) var bath_right_arm_visible = true
+export(bool) var bath_left_hand_visible = true
+export(bool) var bath_right_hand_visible = true
+export(bool) var bath_left_leg_visible = true
+export(bool) var bath_right_leg_visible = true
+export(bool) var bath_pants_visible = true
+
+# Hospital pose positions. Used by the Hospital state and hospital appearance variant.
+export(Vector2) var hospital_head_position = Vector2(0, 0)
+export(Vector2) var hospital_torso_position = Vector2(0, 0)
+export(Vector2) var hospital_left_arm_position = Vector2(-35, 12)
+export(Vector2) var hospital_right_arm_position = Vector2(35, 12)
+export(Vector2) var hospital_left_hand_position = Vector2(-50, -22)
+export(Vector2) var hospital_right_hand_position = Vector2(50, -22)
+export(Vector2) var hospital_left_leg_position = Vector2(-18, 20)
+export(Vector2) var hospital_right_leg_position = Vector2(10, 20)
+export(Vector2) var hospital_pants_position = Vector2(0, 55)
+export(bool) var hospital_head_visible = true
+export(bool) var hospital_torso_visible = true
+export(bool) var hospital_left_arm_visible = true
+export(bool) var hospital_right_arm_visible = true
+export(bool) var hospital_left_hand_visible = true
+export(bool) var hospital_right_hand_visible = true
+export(bool) var hospital_left_leg_visible = true
+export(bool) var hospital_right_leg_visible = true
+export(bool) var hospital_pants_visible = true
 
 # Walk pose positions. Animation changes rotations, not these anchors.
 export(Vector2) var walk_head_position = Vector2(0, 0)
@@ -151,6 +194,9 @@ var time = 0.0
 var walk_time = 0.0
 var torso_base_scale = Vector2.ONE
 var facing_direction = 1
+var skin_color = Color.white
+var pants_color = Color.white
+var lower_body_mode = "pants"
 
 func _ready():
 	_apply_state_setup()
@@ -160,6 +206,20 @@ func set_state(new_state):
 		walk_time = 0.0
 	state = new_state
 	_apply_state_setup()
+
+func refresh_pose() -> void:
+	# Reapply the exported pose anchors after visual data changes.
+	_apply_state_setup()
+
+func set_appearance_variant(variant: String) -> void:
+	appearance_variant = "default" if variant == "" else variant
+	# The appearance can select the Bath pose while the state remains Idle.
+	_apply_state_setup()
+	if ModularCharacterData.has_method("apply_to_rig"):
+		ModularCharacterData.apply_to_rig(self, appearance_variant)
+
+func refresh_appearance() -> void:
+	set_appearance_variant(appearance_variant)
 
 func set_facing(direction: int) -> void:
 	if direction == 0:
@@ -171,7 +231,59 @@ func set_facing(direction: int) -> void:
 func _apply_state_setup():
 	if rig_head == null: return
 
-	if state == 3: # Sleep
+	if state == 7 or (state == 0 and appearance_variant == "hospital"): # Hospital
+		show_all()
+		_apply_pose(
+			hospital_head_position,
+			hospital_torso_position,
+			hospital_left_arm_position,
+			hospital_right_arm_position,
+			hospital_left_hand_position,
+			hospital_right_hand_position,
+			hospital_left_leg_position,
+			hospital_right_leg_position,
+			hospital_pants_position,
+			[
+				hospital_head_visible,
+				hospital_torso_visible,
+				hospital_left_arm_visible,
+				hospital_right_arm_visible,
+				hospital_left_hand_visible,
+				hospital_right_hand_visible,
+				hospital_left_leg_visible,
+				hospital_right_leg_visible,
+				hospital_pants_visible
+			]
+		)
+		_reset_pose()
+		_apply_pivot_offsets()
+	elif state == 6 or (state == 0 and appearance_variant == "bath"): # Bath
+		show_all()
+		_apply_pose(
+			bath_head_position,
+			bath_torso_position,
+			bath_left_arm_position,
+			bath_right_arm_position,
+			bath_left_hand_position,
+			bath_right_hand_position,
+			bath_left_leg_position,
+			bath_right_leg_position,
+			bath_pants_position,
+			[
+				bath_head_visible,
+				bath_torso_visible,
+				bath_left_arm_visible,
+				bath_right_arm_visible,
+				bath_left_hand_visible,
+				bath_right_hand_visible,
+				bath_left_leg_visible,
+				bath_right_leg_visible,
+				bath_pants_visible
+			]
+		)
+		_reset_pose()
+		_apply_pivot_offsets()
+	elif state == 3: # Sleep
 		show_parts(["Head", "LeftArm", "RightArm", "LeftHand", "RightHand"])
 		_apply_pose(
 			sleep_head_position,
@@ -337,6 +449,8 @@ func _apply_state_setup():
 			)
 		_reset_pose()
 
+	_apply_lower_body_mode()
+
 func _process(delta):
 	time += delta
 	if state == 1:
@@ -345,7 +459,7 @@ func _process(delta):
 		# Reapply after data-driven scale changes. Sprite.offset uses texture pixels.
 		_apply_pivot_offsets()
 
-	if state == 0:
+	if state == 0 or state == 6 or state == 7:
 		var breath = sin(time * 3.0) * 2.0
 		rig_torso.scale = Vector2(torso_base_scale.x, torso_base_scale.y * (1.0 + (breath * 0.01)))
 		return
@@ -481,21 +595,67 @@ func _set_pivot_offset(sprite: Sprite, rig_offset: Vector2):
 	sprite.offset = Vector2(rig_offset.x / scale_x, rig_offset.y / scale_y)
 
 func set_skin_color(c: Color):
+	skin_color = c
 	rig_head.modulate = c
 	rig_left_arm.modulate = c
 	rig_right_arm.modulate = c
 	rig_left_hand.modulate = c
 	rig_right_hand.modulate = c
+	if lower_body_mode == "skin":
+		rig_left_leg.modulate = c
+		rig_right_leg.modulate = c
 
 func set_shirt_color(c: Color):
+	set_torso_color(c)
+
+func set_torso_color(c: Color):
 	rig_torso.modulate = c
 
+func set_torso_skin_tone(c: Color) -> void:
+	if rig_torso == null:
+		return
+	var shader_material = rig_torso.material as ShaderMaterial
+	if shader_material == null or shader_material.shader != TORSO_SKIN_TINT_SHADER:
+		shader_material = ShaderMaterial.new()
+		shader_material.shader = TORSO_SKIN_TINT_SHADER
+		rig_torso.material = shader_material
+	shader_material.set_shader_param("skin_tone", c)
+
+func clear_torso_skin_tone() -> void:
+	if rig_torso == null:
+		return
+	var shader_material = rig_torso.material as ShaderMaterial
+	if shader_material != null and shader_material.shader == TORSO_SKIN_TINT_SHADER:
+		rig_torso.material = null
+
 func set_pants_color(c: Color):
+	pants_color = c
 	# The modular lower-body assets are the two leg sprites.
-	rig_left_leg.modulate = c
-	rig_right_leg.modulate = c
+	if lower_body_mode == "pants":
+		rig_left_leg.modulate = c
+		rig_right_leg.modulate = c
 	# Keep the legacy Pants node compatible for toilet/fallback poses.
 	if rig_pants: rig_pants.modulate = c
+
+func set_lower_body_mode(mode: String):
+	if mode != "skin" and mode != "pants":
+		mode = "pants"
+	var mode_changed = lower_body_mode != mode
+	lower_body_mode = mode
+	if mode_changed and mode == "pants":
+		# Restore state-defined Pants visibility after leaving bath/skin mode.
+		_apply_state_setup()
+	else:
+		_apply_lower_body_mode()
+
+func _apply_lower_body_mode():
+	if lower_body_mode == "skin":
+		rig_left_leg.modulate = skin_color
+		rig_right_leg.modulate = skin_color
+		if rig_pants: rig_pants.visible = false
+	else:
+		rig_left_leg.modulate = pants_color
+		rig_right_leg.modulate = pants_color
 
 func hide_all():
 	rig_head.visible = false

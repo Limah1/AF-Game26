@@ -44,6 +44,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/CharacterData/CharacterSkinToneCatalog.gd"
 }, {
+"base": "Resource",
+"class": "CharacterVisualCatalog",
+"language": "GDScript",
+"path": "res://src/CharacterData/CharacterVisualCatalog.gd"
+}, {
+"base": "Resource",
+"class": "CharacterVisualProfile",
+"language": "GDScript",
+"path": "res://src/CharacterData/CharacterVisualProfile.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Fruit",
 "language": "GDScript",
@@ -72,6 +82,8 @@ _global_script_class_icons={
 "CharacterPartCatalog": "",
 "CharacterSkinTone": "",
 "CharacterSkinToneCatalog": "",
+"CharacterVisualCatalog": "",
+"CharacterVisualProfile": "",
 "Fruit": "",
 "HouseRoom": "",
 "Temp_Tab": "",

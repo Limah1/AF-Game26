@@ -94,7 +94,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 2021.95, 724 ), Vector2( -122, 724 ) ]
+"values": [ Vector2( 2021.95, 900 ), Vector2( -122, 900 ) ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath("Player")
@@ -123,7 +123,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( -122, 724 ), Vector2( 2021.95, 724 ) ]
+"values": [ Vector2( -122, 900 ), Vector2( 2021.95, 900 ) ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath("Player")
@@ -152,7 +152,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 622, 724 ), Vector2( 1559.23, 650 ) ]
+"values": [ Vector2( 290, 900 ), Vector2( 1559.23, 650 ) ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath("Player")
@@ -187,7 +187,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.001, 2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 622, 724 ), Vector2( 622, 724 ), Vector2( 1430, 788.145 ) ]
+"values": [ Vector2( 290, 900 ), Vector2( 290, 900 ), Vector2( 1430, 788.145 ) ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath("Player")
@@ -246,7 +246,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 622, 724 ), Vector2( -200, 724 ) ]
+"values": [ Vector2( 290, 900 ), Vector2( -200, 900 ) ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath("Player")
@@ -275,7 +275,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 3.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 622, 724 ), Vector2( 2128.45, 724 ) ]
+"values": [ Vector2( 290, 900 ), Vector2( 2128.45, 900 ) ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath("Player")
@@ -304,7 +304,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 820.562, 506.034 ) ]
+"values": [ Vector2( 820.562, 626.034 ) ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath("Player")
@@ -333,7 +333,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( -91.9999, 724 ), Vector2( 622, 724 ) ]
+"values": [ Vector2( -91.9999, 900 ), Vector2( 290, 900 ) ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath("Player")
@@ -365,7 +365,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 3.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1980, 724 ), Vector2( 622, 724 ) ]
+"values": [ Vector2( 1980, 900 ), Vector2( 290, 900 ) ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath("Player")
@@ -394,7 +394,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1559.23, 650 ), Vector2( 622, 724 ) ]
+"values": [ Vector2( 1559.23, 650 ), Vector2( 290, 900 ) ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath("Player")
@@ -428,7 +428,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 622, 724 ) ]
+"values": [ Vector2( 290, 900 ) ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath("Player")
@@ -457,7 +457,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1430, 788.145 ), Vector2( 622, 724 ) ]
+"values": [ Vector2( 1430, 788.145 ), Vector2( 290, 900 ) ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath("Player")
@@ -518,7 +518,7 @@ texture = ExtResource( 5 )
 anims/fade_in_out = SubResource( 1 )
 
 [node name="Player" parent="Player" instance=ExtResource( 3 )]
-position = Vector2( 1430, 788.145 )
+position = Vector2( 290, 900 )
 
 [node name="player_sprites" parent="Player/Player" index="2"]
 material = ExtResource( 11 )

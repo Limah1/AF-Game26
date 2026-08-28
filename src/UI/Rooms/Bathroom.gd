@@ -49,8 +49,10 @@ func _on_bath_pressed() -> void:
 	print("[Bathroom] Character reached bath, instantiating minigame...")
 	var minigame_banho = load("res://src/UI/Minigame_bath/MiniGame_Banho.tscn").instance()
 	#var sprite_do_personagem = CharacterController.personagem_sprite
-	minigame_banho.start(self)
 	add_child(minigame_banho)
+	# Add first so MiniGame_Banho's onready nodes (including BathCharacterRig)
+	# are initialized before its bath-specific appearance is applied.
+	minigame_banho.start(self)
 	get_tree().current_scene.toggle_NM(false)
 	NecessityBars.onbath = true	
 

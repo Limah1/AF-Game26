@@ -19,6 +19,9 @@ var finished_loading = false
 var settingUp = false
 var buttonsBlock
 var gender
+export(bool) var show_legacy_player = true
+export(bool) var show_modular_player = true
+export(Vector2) var modular_player_offset = Vector2(400, 0)
 
 var number_history = []
 var number_history2 = []
@@ -35,6 +38,21 @@ func _ready():
 	$Player/expressions/stress.texture = load("res://assets/DoiAqui/sprites/actor/"+str(gender)+"/"+str(gender)+"-nervoso.png")
 	$Player/expressions/fever.texture = load("res://assets/DoiAqui/sprites/actor/"+str(gender)+"/"+str(gender)+"-febre.png")
 	$Player/pain.texture = load("res://assets/DoiAqui/sprites/actor/"+str(gender)+"/"+str(gender)+"-dores.png")
+	_setup_modular_player()
+
+func _setup_modular_player():
+	# Exposed switches support legacy, modular, or side-by-side comparison.
+	if !has_node("ModularPlayer"):
+		return
+	$Player.visible = show_legacy_player
+	$ModularPlayer.visible = show_modular_player
+	if !show_modular_player:
+		return
+	$ModularPlayer.position = $Player.position + modular_player_offset
+	$ModularPlayer.scale = $Player.scale
+	$ModularPlayer.z_index = $Player.z_index
+	$ModularPlayer.set_state(0)
+	$ModularPlayer.set_appearance_variant("hospital")
 
 func _physics_process(delta):
 	if (life == (max_life / 2)):

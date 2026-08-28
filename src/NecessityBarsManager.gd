@@ -192,6 +192,10 @@ func _on_right_pressed():
 	
 	var current_room = get_room_number(AnimationController.current_room)
 	var button_room = current_room + 1
+
+	if AnimationController.status == "Hospital" and current_room == 4:
+		AnimationController.travel(current_room, 1)
+		return
 	
 	if current_room == 5:
 		AnimationController.travel(current_room, 1)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://src/Mini-games/DoiAqui/actor/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/DoiAqui/objects/button.png" type="Texture" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://assets/sounds/sons editados/button_pressed_sound.wav" type="AudioStream" id=17]
 [ext_resource path="res://assets/sounds/sons editados/kids_cheering.wav" type="AudioStream" id=18]
 [ext_resource path="res://assets/sounds/sons editados/loose_sound.wav" type="AudioStream" id=19]
+[ext_resource path="res://src/Mini-games/CharacterTest/CharacterRig.tscn" type="PackedScene" id=20]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.427451, 1, 0.447059, 1 )
@@ -28,6 +29,9 @@ bg_color = Color( 1, 1, 1, 1 )
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 3 )
+show_legacy_player = true
+show_modular_player = true
+modular_player_offset = Vector2( 400, 0 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 844.015, 246.865, 543.195, 678.451, 394.991, 820.96 ],
 "_edit_vertical_guides_": [ 1408.91, 1779.32, 1383.15, 1001.69 ]
@@ -354,7 +358,14 @@ wait_time = 0.1
 one_shot = true
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
+visible = true
 position = Vector2( 594.641, 590.865 )
+
+[node name="ModularPlayer" parent="." instance=ExtResource( 20 )]
+visible = true
+position = Vector2( 994.641, 590.865 )
+scale = Vector2( 3, 3 )
+appearance_variant = "hospital"
 
 [node name="button" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 17 )

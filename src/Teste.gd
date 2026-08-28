@@ -144,7 +144,8 @@ func _process(_delta: float) -> void:
 func _setup_modular_player() -> void:
 	if modular_player == null or legacy_player == null:
 		return
-	legacy_player_sprites.visible = false
+	legacy_player_sprites.visible = true
+	modular_player.visible = false
 	modular_player.position = legacy_player.position
 	modular_player.scale = Vector2(3, 3)
 	modular_player.z_index = legacy_player.z_index
@@ -155,6 +156,8 @@ func _setup_modular_player() -> void:
 func _sync_modular_player() -> void:
 	if modular_player == null or legacy_player == null:
 		return
+	modular_player.visible = false
+	return
 
 	modular_player.position = legacy_player.position
 	modular_player.z_index = legacy_player.z_index
@@ -174,6 +177,11 @@ func _sync_modular_player() -> void:
 	var desired_state = 1 if walking else 0
 	if modular_player.state != desired_state:
 		modular_player.set_state(desired_state)
+
+	# Bath clothing is owned by MiniGame_Banho, not by the persistent room rig.
+	var desired_variant = "default"
+	if modular_player.has_method("set_appearance_variant") and modular_player.appearance_variant != desired_variant:
+		modular_player.set_appearance_variant(desired_variant)
 
 	if legacy_player_sprites.scale.x != 0.0 and modular_player.has_method("set_facing"):
 		modular_player.set_facing(-1 if legacy_player_sprites.scale.x < 0.0 else 1)

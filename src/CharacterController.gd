@@ -154,6 +154,24 @@ func start(target_node = null):
 	_update_character_visuals(target_node)
 	print("CharacterController inicializado com sucesso!")
 
+func get_legacy_head_texture() -> Texture:
+	var gender = "boy" if boyorgirl == "Boy" else "girl"
+	var hair = cabelo if cabelo == "a" or cabelo == "b" else "a"
+	return load("res://assets/Sprites-v3/heads/%s-%s-head.png" % [gender, hair]) as Texture
+
+func get_legacy_head_source_skin_for(gender: String, hair: String) -> Color:
+	# Each head asset was exported with a different placeholder skin color.
+	match "%s-%s" % [gender, hair]:
+		"boy-a":
+			return Color(0.627451, 0.949020, 0.011765, 1.0)
+		"boy-b":
+			return Color(0.682353, 0.984314, 0.007843, 1.0)
+		"girl-a":
+			return Color(0.447059, 0.835294, 0.262745, 1.0)
+		"girl-b":
+			return Color(0.992157, 0.992157, 0.992157, 1.0)
+	return Color.white
+
 func Load_Plataform():
 	var plataform = {
 		idle = null,

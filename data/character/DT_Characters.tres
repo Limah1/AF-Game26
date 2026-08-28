@@ -1,0 +1,34 @@
+[gd_resource type="Resource" load_steps=7 format=2]
+
+[ext_resource path="res://src/CharacterData/CharacterVisualCatalog.gd" type="Script" id=1]
+[ext_resource path="res://src/CharacterData/CharacterVisualProfile.gd" type="Script" id=2]
+[ext_resource path="res://assets/Character_Creator/modular/New_Assets/sunga.png" type="Texture" id=4]
+[ext_resource path="res://assets/Character_Creator/modular/New_Assets/CamisaHospital.png" type="Texture" id=5]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 2 )
+id = "Girl1"
+display_name = "Girl 1"
+gender = "girl"
+torso_scale = Vector2( 0, 0 )
+running_torso_scale = Vector2( 0, 0 )
+bath_torso_scale = Vector2( 0.2637, 0.0848 )
+swimwear_torso_scale = Vector2( 0.2637, 0.0848 )
+hospital_torso_scale = Vector2( 0.1343, 0.1166 )
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 2 )
+id = "Boy1"
+display_name = "Boy 1"
+gender = "boy"
+swimwear_torso = ExtResource( 4 )
+hospital_torso = ExtResource( 5 )
+torso_scale = Vector2( 0, 0 )
+running_torso_scale = Vector2( 0, 0 )
+bath_torso_scale = Vector2( 0.2637, 0.0848 )
+swimwear_torso_scale = Vector2( 0.2637, 0.0848 )
+hospital_torso_scale = Vector2( 0.1343, 0.1166 )
+
+[resource]
+script = ExtResource( 1 )
+entries = [ SubResource( 1 ), SubResource( 2 ) ]

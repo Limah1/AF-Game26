@@ -260,11 +260,16 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="."]
-visible = false
 material = SubResource( 5 )
-position = Vector2( 1598.28, 485.035 )
-scale = Vector2( 0.5, 0.5 )
+position = Vector2( 1594.28, 549.035 )
+scale = Vector2( 0.4, 0.4 )
+z_index = 2
 texture = ExtResource( 3 )
+
+[node name="LegacyHead" type="Sprite" parent="."]
+position = Vector2( 1602.28, 250 )
+scale = Vector2( 0.252, 0.252 )
+z_index = 3
 
 [node name="ModularCharacter" parent="." instance=ExtResource( 12 )]
 position = Vector2( 1598.28, 485.035 )

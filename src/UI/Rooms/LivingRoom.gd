@@ -12,10 +12,10 @@ func _ready() -> void:
 	_setup_modular_test_rig()
 	
 	if NecessityBars.some_problem != "" and playing == false:
-		$sala_pais/AnimationPlayer.play("scale_in_out")
+		$PaisSprite/AnimationPlayer.play("scale_in_out")
 		playing = true
 	elif NecessityBars.some_problem == "" and playing != false:
-		$sala_pais/AnimationPlayer.play("idle")
+		$PaisSprite/AnimationPlayer.play("idle")
 		playing = false
 
 func _setup_modular_test_rig() -> void:

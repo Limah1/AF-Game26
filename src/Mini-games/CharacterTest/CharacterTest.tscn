@@ -28,27 +28,30 @@ __meta__ = {
 [node name="Label1" type="Label" parent="."]
 margin_left = 400.0
 margin_top = 200.0
-margin_right = 440.0
+margin_right = 456.0
 margin_bottom = 214.0
-text = "Parado"
+text = "Hospital"
 align = 1
 
-[node name="RigIdle" parent="." instance=ExtResource( 2 )]
+[node name="RigHospital" parent="." instance=ExtResource( 2 )]
 position = Vector2( 420, 335.951 )
 scale = Vector2( 2, 2 )
+state = 7
+appearance_variant = "hospital"
 
 [node name="Label2" type="Label" parent="."]
 margin_left = 800.0
 margin_top = 200.0
 margin_right = 852.0
 margin_bottom = 214.0
-text = "Andando"
+text = "Bath"
 align = 1
 
-[node name="RigWalk" parent="." instance=ExtResource( 2 )]
+[node name="RigBath" parent="." instance=ExtResource( 2 )]
 position = Vector2( 827.071, 343.022 )
 scale = Vector2( 2, 2 )
-state = 1
+state = 6
+appearance_variant = "bath"
 
 [node name="Label3" type="Label" parent="."]
 margin_left = 1200.0

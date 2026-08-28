@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/braco_esquerdo.png-05a8c800216e883ff2877cd5f26b4554.stex"
+path="res://.import/boy-a-head.png-1b6fb892290f2faa859f5617a4725187.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Character_Creator/modular/braco_esquerdo.png"
-dest_files=[ "res://.import/braco_esquerdo.png-05a8c800216e883ff2877cd5f26b4554.stex" ]
+source_file="res://assets/Sprites-v3/heads/boy-a-head.png"
+dest_files=[ "res://.import/boy-a-head.png-1b6fb892290f2faa859f5617a4725187.stex" ]
 
 [params]
 

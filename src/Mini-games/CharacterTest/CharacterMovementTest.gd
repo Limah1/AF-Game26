@@ -47,6 +47,7 @@ func _walk_to(target: Vector2, final_state: int, message: String, direction: int
 func _on_MovementTween_tween_all_completed() -> void:
 	moving = false
 	character.set_state(next_state)
+	character.set_appearance_variant("sleeping" if next_state == 3 else "default")
 	if next_state == 3:
 		status_label.text = "Sleeping at bed"
 	else:
@@ -75,6 +76,7 @@ func _on_SleepButton_pressed() -> void:
 
 	if character.state == 3:
 		character.set_state(0)
+		character.set_appearance_variant("default")
 		status_label.text = "Idle at bed"
 		_sync_sleep_button()
 		return
@@ -82,6 +84,7 @@ func _on_SleepButton_pressed() -> void:
 	var bed_position = $BedTarget.position
 	if character.position.distance_to(bed_position) <= 2.0:
 		character.set_state(3)
+		character.set_appearance_variant("sleeping")
 		status_label.text = "Sleeping at bed"
 		_sync_sleep_button()
 	else:

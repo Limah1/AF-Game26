@@ -3,6 +3,7 @@ extends KinematicBody2D
 const FLOOR_NORMAL: = Vector2.UP
 export var speed: = Vector2(0, 1400)
 export var gravity = 3000.0
+export(bool) var use_modular_character = true
 var time = 0
 var power = false
 var down = false
@@ -24,12 +25,13 @@ onready var modular_rig = $ModularRig
 
 func _ready():
 	set_sprites()
-	# Keep legacy sprites in scene as fallback, but render modular character.
-	$AllSprites.visible = false
-	modular_rig.visible = true
-	if ModularCharacterData.has_method("apply_to_rig"):
-		ModularCharacterData.apply_to_rig(modular_rig)
-	_update_modular_state()
+	# Keep legacy sprites as fallback while modular mode owns rendering.
+	$AllSprites.visible = !use_modular_character
+	modular_rig.visible = use_modular_character
+	if use_modular_character:
+		if ModularCharacterData.has_method("apply_to_rig"):
+			ModularCharacterData.apply_to_rig(modular_rig)
+		_update_modular_state()
 
 	parallax = get_parent().get_node("floor")
 	
@@ -100,10 +102,13 @@ func _update_modular_state() -> void:
 		_set_modular_state(2)
 
 func _set_modular_state(next_state: int) -> void:
-	if modular_rig == null:
+	if !use_modular_character or modular_rig == null:
 		return
 	if modular_rig.state != next_state:
 		modular_rig.set_state(next_state)
+	var desired_variant = "running" if next_state == 2 else "default"
+	if modular_rig.has_method("set_appearance_variant") and modular_rig.appearance_variant != desired_variant:
+		modular_rig.set_appearance_variant(desired_variant)
 
 func calculate_move_velocity(
 		linear_velocity: Vector2,

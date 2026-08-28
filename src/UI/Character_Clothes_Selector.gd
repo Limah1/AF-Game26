@@ -1,11 +1,16 @@
 extends Control 
 
+const LEGACY_HEAD_SHADER = preload("res://src/UI/LegacyHead.shader")
+const LEGACY_R1_SCALE = 0.6
+const LEGACY_HEAD_SCALE = 0.252
+
 var personagem_sprite
 var cabelo = NewCharData.cabelo
 var genero = NewCharData.genero
 var cor_pele = NewCharData.cor_pele
 
 onready var modular_character = $ModularCharacter
+onready var legacy_head = $LegacyHead
 
 var sprite_boy_a_r1 = preload("res://assets/Sprites-v3/boy-a/boy-a-r1-m0.png")
 var sprite_boy_a_r2 = preload("res://assets/Sprites-v3/boy-a/boy-a-r2-m0.png")
@@ -28,7 +33,7 @@ var sprite_btn_roupa_boy_2_on = preload("res://assets/Character_Creator/btn_roup
 
 func _ready():
 	personagem_sprite = get_node("Sprite") 
-	_hide_legacy_preview()
+	_show_legacy_preview()
 	if genero != "boy" and genero != "girl":
 		genero = ModularCharacterData.genero
 	ModularCharacterData.set_gender(genero)
@@ -61,17 +66,37 @@ func _ready():
 			$Sprite.texture = sprite_boy_a_r1
 		else:
 			$Sprite.texture = sprite_boy_b_r1
+	_update_legacy_head()
 
 	# Match the old selector defaults on the modular rig.
 	_set_camisa_color(NewCharData.cor_roupa_cima if NewCharData.cor_roupa_cima != "" else "#8a9da5")
 	_set_calca_color(NewCharData.cor_roupa_baixo if NewCharData.cor_roupa_baixo != "" else "#515151")
 	_apply_modular_preview()
 
-func _hide_legacy_preview() -> void:
-	# Keep the old preview in the scene for rollback/debugging.
+func _show_legacy_preview() -> void:
+	# Use the original character preview with the new head overlay.
 	if personagem_sprite != null:
-		personagem_sprite.visible = false
-		personagem_sprite.scale = Vector2(0.5, 0.5)
+		personagem_sprite.visible = true
+		personagem_sprite.scale = Vector2(0.6, 0.6)
+	if modular_character != null:
+		modular_character.visible = false
+
+func _update_legacy_head() -> void:
+	if legacy_head == null:
+		return
+	var hair = "a" if cabelo == "a" else "b"
+	legacy_head.texture = load("res://assets/Sprites-v3/heads/%s-%s-head.png" % [genero, hair])
+	legacy_head.visible = true
+	personagem_sprite.scale = Vector2(LEGACY_R1_SCALE, LEGACY_R1_SCALE)
+	legacy_head.scale = Vector2(LEGACY_HEAD_SCALE, LEGACY_HEAD_SCALE)
+	legacy_head.position.y = 145 if $btn_roupa_1.pressed else 276
+	var head_material = legacy_head.material as ShaderMaterial
+	if head_material == null or head_material.shader != LEGACY_HEAD_SHADER:
+		head_material = ShaderMaterial.new()
+		head_material.shader = LEGACY_HEAD_SHADER
+		legacy_head.material = head_material
+	head_material.set_shader_param("source_skin", CharacterController.get_legacy_head_source_skin_for(genero, hair))
+	head_material.set_shader_param("target_skin", ModularCharacterData.cor_pele)
 
 func _apply_modular_preview() -> void:
 	if modular_character == null:
@@ -122,6 +147,7 @@ func _on_btn_roupa_2_pressed():
 			$Sprite.texture = sprite_boy_a_r2
 		else:
 			$Sprite.texture = sprite_boy_b_r2
+	_update_legacy_head()
 
 
 func _on_btn_roupa_1_pressed():
@@ -137,6 +163,7 @@ func _on_btn_roupa_1_pressed():
 			$Sprite.texture = sprite_boy_a_r1
 		else:
 			$Sprite.texture = sprite_boy_b_r1
+	_update_legacy_head()
 
 
 func _on_btn_cima_cor_1_pressed():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://assets/fonts/Roboto-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/UI/Toalha.gd" type="Script" id=2]
@@ -24,6 +24,7 @@
 [ext_resource path="res://assets/sounds/sons editados/toalha.wav" type="AudioStream" id=22]
 [ext_resource path="res://src/UI/sound/sound_button.tscn" type="PackedScene" id=23]
 [ext_resource path="res://src/UI/ShaderPersonagem.tres" type="Material" id=24]
+[ext_resource path="res://src/Mini-games/CharacterTest/CharacterRig.tscn" type="PackedScene" id=25]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.0745098, 0.454902, 1, 1 )
@@ -597,7 +598,6 @@ texture = ExtResource( 8 )
 [node name="Chuveiro" type="Particles2D" parent="Ativo 6"]
 position = Vector2( -2.82849, -416.852 )
 z_index = 10
-emitting = false
 amount = 200
 lifetime = 1.5
 process_material = SubResource( 6 )
@@ -624,6 +624,12 @@ texture = ExtResource( 16 )
 anims/close_faucet = SubResource( 7 )
 anims/open_faucet = SubResource( 8 )
 
+[node name="BathCharacterRig" parent="." instance=ExtResource( 25 )]
+visible = false
+position = Vector2( -16.704, -1550.32 )
+rotation = 0.0
+scale = Vector2( 3, 3 )
+
 [node name="boy-banho-1" type="Sprite" parent="."]
 material = ExtResource( 24 )
 position = Vector2( -16.704, -1550.32 )
@@ -633,7 +639,6 @@ texture = ExtResource( 9 )
 [node name="bubbles" type="Particles2D" parent="boy-banho-1"]
 position = Vector2( 6.30869, 23.7148 )
 z_index = 5
-emitting = false
 amount = 20
 process_material = SubResource( 9 )
 texture = ExtResource( 10 )
