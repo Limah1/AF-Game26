@@ -29,9 +29,6 @@ bg_color = Color( 1, 1, 1, 1 )
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 3 )
-show_legacy_player = true
-show_modular_player = true
-modular_player_offset = Vector2( 400, 0 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 844.015, 246.865, 543.195, 678.451, 394.991, 820.96 ],
 "_edit_vertical_guides_": [ 1408.91, 1779.32, 1383.15, 1001.69 ]
@@ -358,11 +355,9 @@ wait_time = 0.1
 one_shot = true
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-visible = true
-position = Vector2( 594.641, 590.865 )
+position = Vector2( 495.863, 625.571 )
 
 [node name="ModularPlayer" parent="." instance=ExtResource( 20 )]
-visible = true
 position = Vector2( 994.641, 590.865 )
 scale = Vector2( 3, 3 )
 appearance_variant = "hospital"

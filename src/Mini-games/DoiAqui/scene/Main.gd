@@ -18,9 +18,8 @@ var isStart = false
 var finished_loading = false
 var settingUp = false
 var buttonsBlock
-var gender
 export(bool) var show_legacy_player = true
-export(bool) var show_modular_player = true
+export(bool) var show_modular_player = false
 export(Vector2) var modular_player_offset = Vector2(400, 0)
 
 var number_history = []
@@ -30,14 +29,6 @@ var timer: float
 var timer_max: float = 5
 
 func _ready():
-	gender = GlobalResource.gender
-	print(gender)
-	$Player/sprite.texture = load("res://assets/DoiAqui/sprites/actor/"+str(gender)+"/"+str(gender)+"-parado.png")
-	$Player/wound.texture = load("res://assets/DoiAqui/sprites/actor/"+str(gender)+"/"+str(gender)+"-ferimento.png")
-	$Player/expressions/cold.texture = load("res://assets/DoiAqui/sprites/actor/"+str(gender)+"/"+str(gender)+"-frio.png")
-	$Player/expressions/stress.texture = load("res://assets/DoiAqui/sprites/actor/"+str(gender)+"/"+str(gender)+"-nervoso.png")
-	$Player/expressions/fever.texture = load("res://assets/DoiAqui/sprites/actor/"+str(gender)+"/"+str(gender)+"-febre.png")
-	$Player/pain.texture = load("res://assets/DoiAqui/sprites/actor/"+str(gender)+"/"+str(gender)+"-dores.png")
 	_setup_modular_player()
 
 func _setup_modular_player():

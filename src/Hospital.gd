@@ -14,7 +14,7 @@ onready var legacy_animation_player = $Player/AnimationPlayer
 onready var modular_player = $Player/ModularPlayer
 
 func _ready() -> void:
-	personagem_sprite = get_node("Player/Player/player_sprites")
+	personagem_sprite = get_node("Player/Player/player_sprites/idle")
 	#sujeira_sprite = get_node("Player/Player/player_sprites/sujeira")
 	var previous_status = AnimationController.status
 	CharacterController.player_ref = $Player/Player
@@ -58,21 +58,10 @@ func _ready() -> void:
 	print("cores pele, camisa, calça")
 	print(cor_pele, cor_roupa_cima, cor_roupa_baixo)
 	
-	var new_color_pele = Color(cor_pele)
-	var new_color_cima = Color(cor_roupa_cima)
-	var new_color_baixo = Color(cor_roupa_baixo)
-	var shader_material = preload("res://src/UI/ShaderPersonagem.tres").duplicate()
-	
-	shader_material.set_shader_param("nova_cor_pele", new_color_pele)
-	shader_material.set_shader_param("nova_cor_camisa", new_color_cima)
-	shader_material.set_shader_param("nova_cor_calca", new_color_baixo)
-	
-	for child in personagem_sprite.get_children():
-		# Head uses LegacyHead.shader because each head texture has its own
-		# placeholder skin color. The generic body shader leaves it green.
-		if child is Sprite and child != legacy_player.legacy_head:
-			child.material = shader_material
-	legacy_player._refresh_legacy_head()
+	var new_color_pele = Color(cor_pele) if cor_pele != "" else Color.white
+	var new_color_cima = Color(cor_roupa_cima) if cor_roupa_cima != "" else Color("#8aa0a5")
+	var new_color_baixo = Color(cor_roupa_baixo) if cor_roupa_baixo != "" else Color("#515151")
+	legacy_player.apply_visual_consistency(new_color_pele, new_color_cima, new_color_baixo)
 
 
 func _process(delta: float) -> void:
@@ -86,7 +75,7 @@ func _setup_modular_player() -> void:
 	legacy_player_sprites.visible = true
 	modular_player.visible = false
 	modular_player.position = legacy_player.position
-	modular_player.scale = Vector2(3, 3)
+	modular_player.scale = Vector2(2, 2)
 	modular_player.z_index = legacy_player.z_index
 	modular_player.set_state(0)
 	if ModularCharacterData.has_method("apply_to_rig"):
@@ -95,7 +84,12 @@ func _setup_modular_player() -> void:
 func _sync_modular_player() -> void:
 	if modular_player == null or legacy_player == null:
 		return
+	# Hospital also renders the legacy player; prevent a previous rig scale
+	# from leaking into the next room.
+	legacy_player_sprites.visible = true
+	legacy_player.scale = Vector2.ONE
 	modular_player.visible = false
+	modular_player.scale = Vector2(2, 2)
 	return
 
 	modular_player.position = legacy_player.position

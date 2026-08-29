@@ -1,17 +1,25 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://assets/DoiAqui/sprites/actor/boy/boy-parado.png" type="Texture" id=1]
+[ext_resource path="res://assets/DoiAqui/sprites/actor/boy/boy-parado-sem-cabeca-branco.png" type="Texture" id=1]
 [ext_resource path="res://assets/DoiAqui/sprites/Ativo 11.png" type="Texture" id=2]
 [ext_resource path="res://src/Mini-games/DoiAqui/actor/Player.gd" type="Script" id=3]
-[ext_resource path="res://assets/DoiAqui/sprites/actor/boy/boy-dores.png" type="Texture" id=4]
-[ext_resource path="res://assets/DoiAqui/sprites/actor/boy/boy-febre.png" type="Texture" id=5]
-[ext_resource path="res://assets/DoiAqui/sprites/actor/boy/boy-ferimento.png" type="Texture" id=8]
-[ext_resource path="res://assets/DoiAqui/sprites/actor/boy/boy-nervoso.png" type="Texture" id=10]
-[ext_resource path="res://assets/DoiAqui/sprites/actor/boy/boy-frio.png" type="Texture" id=11]
+[ext_resource path="res://assets/DoiAqui/sprites/actor/boy/boy-dores-sem-cabeca-branco.png" type="Texture" id=4]
+[ext_resource path="res://assets/DoiAqui/sprites/actor/boy/boy-febre-sem-cabeca-branco.png" type="Texture" id=5]
+[ext_resource path="res://assets/DoiAqui/sprites/actor/boy/boy-ferimento-sem-cabeca-branco.png" type="Texture" id=8]
+[ext_resource path="res://assets/DoiAqui/sprites/actor/boy/boy-nervoso-sem-cabeca-branco.png" type="Texture" id=10]
+[ext_resource path="res://assets/DoiAqui/sprites/actor/boy/boy-frio-sem-cabeca-branco.png" type="Texture" id=11]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 44.0
 height = 168.0
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "armPain"
@@ -641,12 +649,26 @@ tracks/7/keys = {
 scale = Vector2( 3, 3 )
 script = ExtResource( 3 )
 
+[node name="SkinColorRect" type="Panel" parent="."]
+visible = false
+rect_position = Vector2( -10, -30 )
+rect_size = Vector2( 20, 20 )
+mouse_filter = 2
+custom_styles/panel = SubResource( 7 )
+
 [node name="sprite" type="Sprite" parent="."]
+position = Vector2( 0, -0.889893 )
 texture = ExtResource( 1 )
 
 [node name="pain" type="Sprite" parent="."]
 visible = false
 texture = ExtResource( 4 )
+
+[node name="LegacyHead" type="Sprite" parent="."]
+visible = false
+position = Vector2( 5, -51 )
+scale = Vector2( 0.094, 0.094 )
+z_index = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -664,6 +686,7 @@ visible = false
 modulate = Color( 1, 1, 1, 0.32549 )
 position = Vector2( 2.83169, -85.7951 )
 scale = Vector2( 1.07479, 0.735359 )
+z_index = 2
 texture = ExtResource( 2 )
 
 [node name="fever" type="Sprite" parent="."]
@@ -671,6 +694,7 @@ visible = false
 modulate = Color( 1, 1, 1, 0.366013 )
 position = Vector2( 3.25168, -7.99281 )
 scale = Vector2( 1, 3 )
+z_index = 2
 texture = ExtResource( 2 )
 
 [node name="armPainCollection" type="Node2D" parent="."]
@@ -680,12 +704,14 @@ visible = false
 modulate = Color( 1, 1, 1, 0.312503 )
 position = Vector2( 35.9226, 34.3604 )
 scale = Vector2( 0.5, 0.5 )
+z_index = 2
 texture = ExtResource( 2 )
 
 [node name="armLeftPain" type="Sprite" parent="armPainCollection"]
 modulate = Color( 1, 1, 1, 0.312503 )
 position = Vector2( -37.2523, 34.5786 )
 scale = Vector2( 0.5, 0.5 )
+z_index = 2
 texture = ExtResource( 2 )
 
 [node name="wound" type="Sprite" parent="."]

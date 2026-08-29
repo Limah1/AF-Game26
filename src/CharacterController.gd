@@ -834,6 +834,12 @@ func _update_character_visuals(target_node = null):
 		# Não é um erro fatal. O start() pode ser chamado antes do boneco existir na cena.
 		# print("Aviso: Sprite do jogador não está na tela. Cores serão aplicadas depois.")
 		return
+	# Some legacy scenes register the player_sprites container instead of an
+	# actual Sprite. Resolve the idle child before assigning texture/material.
+	if not (sprite_node is Sprite) and sprite_node.has_node("idle"):
+		sprite_node = sprite_node.get_node("idle")
+	if not (sprite_node is Sprite):
+		return
 	var personagem_sprite = sprite_node
 
 	# 1. Aplica a textura inicial 

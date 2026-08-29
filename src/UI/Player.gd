@@ -1,7 +1,9 @@
 extends KinematicBody2D
 
 const LEGACY_HEAD_SHADER = preload("res://src/UI/LegacyHead.shader")
+const BODY_SKIN_SHADER = preload("res://src/UI/ShaderPersonagem.tres")
 const LEGACY_R1_SCALE = 1.38
+const LEGACY_IDLE_WALK_HEAD_OFFSET = Vector2(0, 8)
 
 var drying = false
 var dirty = false
@@ -23,6 +25,42 @@ var legacy_toilet_base_position = Vector2.ZERO
 func _ready() -> void:
 	legacy_toilet_base_position = legacy_toilet_body.position
 	set_normal_clothes()
+	_refresh_legacy_head()
+	apply_visual_consistency()
+
+# Reaplica as propriedades visuais do player depois de uma troca de cena.
+# As cenas Hospital/MainScreen usam instâncias diferentes do player; manter
+# esta rotina aqui evita que materiais e escala fiquem dependentes da cena
+# anterior.
+func apply_visual_consistency(skin_color = null, shirt_color = null, pants_color = null) -> void:
+	if not has_node("player_sprites"):
+		return
+
+	# O player legado deve sempre voltar ao tamanho base da plataforma.
+	scale = Vector2.ONE
+	_set_legacy_player_scale()
+
+	var resolved_skin = Color(CharacterController.cor_pele) if CharacterController.cor_pele != "" else Color.white
+	var resolved_shirt = Color(NewCharData.cor_roupa_cima) if NewCharData.cor_roupa_cima != "" else Color("#8aa0a5")
+	var resolved_pants = Color(NewCharData.cor_roupa_baixo) if NewCharData.cor_roupa_baixo != "" else Color("#515151")
+	if skin_color != null:
+		resolved_skin = skin_color
+	if shirt_color != null:
+		resolved_shirt = shirt_color
+	if pants_color != null:
+		resolved_pants = pants_color
+
+	# Atribui o material diretamente a cada Sprite. Isso funciona tanto para
+	# cenas que usam use_parent_material quanto para as que não o configuram.
+	var body_material = BODY_SKIN_SHADER.duplicate()
+	body_material.set_shader_param("nova_cor_pele", resolved_skin)
+	body_material.set_shader_param("nova_cor_camisa", resolved_shirt)
+	body_material.set_shader_param("nova_cor_calca", resolved_pants)
+	$player_sprites.material = body_material
+	for child in $player_sprites.get_children():
+		if child is Sprite and child != legacy_head:
+			child.material = body_material
+
 	_refresh_legacy_head()
 
 func _refresh_legacy_head() -> void:
@@ -68,10 +106,15 @@ func _sync_legacy_head_visibility() -> void:
 	if legacy_head == null:
 		return
 	var toilet_visible = $player_sprites/toilet.visible
+	var idle_or_walking = $player_sprites/idle.visible or \
+		$player_sprites/w1.visible or $player_sprites/w2.visible or \
+		$player_sprites/w3.visible or $player_sprites/w4.visible or \
+		$player_sprites/w5.visible
 	var toilet_head_offset = Vector2(-5, 70) if toilet_visible else Vector2.ZERO
 	var toilet_neck_offset = Vector2(-5, 70) if toilet_visible else Vector2.ZERO
 	var toilet_body_offset = Vector2(0, 60) if toilet_visible else Vector2.ZERO
-	legacy_head.position = legacy_head_base_position + toilet_head_offset
+	var idle_walk_head_offset = LEGACY_IDLE_WALK_HEAD_OFFSET if idle_or_walking else Vector2.ZERO
+	legacy_head.position = legacy_head_base_position + idle_walk_head_offset + toilet_head_offset
 	legacy_toilet_body.position = legacy_toilet_base_position + toilet_body_offset
 	var body_visible = $player_sprites/idle.visible or \
 		$player_sprites/w1.visible or $player_sprites/w2.visible or \
@@ -83,7 +126,7 @@ func _sync_legacy_head_visibility() -> void:
 		skin_tone_rect.rect_position = Vector2(
 			legacy_head_base_position.x - 23,
 			legacy_head_base_position.y + 28
-		) + toilet_neck_offset
+		) + idle_walk_head_offset + toilet_neck_offset
 
 func _set_legacy_player_scale() -> void:
 	var base_scale = LEGACY_R1_SCALE

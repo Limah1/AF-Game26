@@ -127,6 +127,7 @@ scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 4 )
 
 [node name="sprites" type="Node2D" parent="."]
+visible = false
 position = Vector2( 299.458, 643.117 )
 
 [node name="win" type="Sprite" parent="sprites"]

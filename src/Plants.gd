@@ -13,28 +13,27 @@ var pulse_time = 0.0
 
 func _ready():
 	progress_bar.value = 0
-	# Definindo cor azul para a barra de progresso via código (Override)
-	var sb = StyleBoxFlat.new()
-	sb.bg_color = Color(0, 0, 1) # Azul
-	progress_bar.add_stylebox_override("fg", sb)
+	progress_bar.rect_pivot_offset = progress_bar.rect_size / 2.0
+	progress_bar.rect_scale = Vector2(1, 1)
 	
 	# Configurações para deixar apenas o Sprite visível
 	square_button.flat = true # Remove o fundo padrão do botão
 	if square_button.has_node("ColorRect"):
 		square_button.get_node("ColorRect").visible = false # Esconde o quadrado verde
 		
-	# Define o eixo de escala para o centro do botão
-	square_button.rect_pivot_offset = square_button.rect_size / 2.0
-
 func _process(delta):
 	if is_full:
-		square_button.rect_scale = Vector2(1, 1) # Reseta o tamanho ao encher
+		progress_bar.rect_scale = Vector2(1, 1)
 		return
-		
-	# Efeito de pulsação suave (cresce e diminui)
-	pulse_time += delta * 5.0 # Velocidade da pulsação
-	var scale_amount = 1.0 + sin(pulse_time) * 0.05 # Oscila entre 0.95 e 1.05
-	square_button.rect_scale = Vector2(scale_amount, scale_amount)
+
+	# Pulsação suave aplicada somente à barra enquanto ela está enchendo.
+	if filling:
+		pulse_time += delta * 8.0
+		var scale_amount = 1.0 + sin(pulse_time) * 0.05
+		progress_bar.rect_scale = Vector2(scale_amount, scale_amount)
+	else:
+		pulse_time = 0.0
+		progress_bar.rect_scale = progress_bar.rect_scale.linear_interpolate(Vector2(1, 1), min(delta * 10.0, 1.0))
 		
 	if filling:
 		progress_bar.value += fill_speed * delta

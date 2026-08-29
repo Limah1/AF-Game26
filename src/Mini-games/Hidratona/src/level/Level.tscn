@@ -57,6 +57,9 @@ script = ExtResource( 7 )
 __meta__ = {
 "_edit_vertical_guides_": [ 1920.66, 3805.8, 7.51227 ]
 }
+weather_override = 2
+test_gender = "Boy"
+test_hair = "B"
 
 [node name="Rain" parent="." instance=ExtResource( 18 )]
 
@@ -76,7 +79,28 @@ tile_data = PoolIntArray( 1048575, 0, 0, 983040, 0, 0, 983041, 0, 0, 983042, 0, 
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 502.141, 743.772 )
+legacy_run_neck_offset = Vector2( -10, 10 )
+legacy_squat_head_position = Vector2( -30, 31.5 )
+legacy_squat_neck_offset = Vector2( 0, 25 )
+legacy_neck_size = Vector2( 24, 20 )
 use_modular_character = false
+use_shared_hidratona_test_body = true
+
+[node name="AllSprites" parent="Player" index="0"]
+visible = true
+
+[node name="squat" parent="Player/AllSprites" index="9"]
+visible = false
+
+[node name="SkinColorRect" parent="Player/AllSprites" index="10"]
+margin_left = -24.009
+margin_top = 19.0
+margin_right = 7.99097
+margin_bottom = 50.0
+
+[node name="LegacyHead" parent="Player/AllSprites" index="11"]
+visible = true
+position = Vector2( -2.01807, -13.0093 )
 
 [node name="HidratationBar" parent="." instance=ExtResource( 5 )]
 layer = 10

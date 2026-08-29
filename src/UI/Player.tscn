@@ -323,10 +323,10 @@ position = Vector2( 0, -159.888 )
 scale = Vector2( 1.38, 1.38 )
 
 [node name="SkinToneRect" type="Panel" parent="player_sprites"]
-margin_left = -13.0
-margin_top = -60.0
-margin_right = 33.0
-margin_bottom = -15.0
+margin_left = -19.5257
+margin_top = -36.9682
+margin_right = 26.4743
+margin_bottom = 8.0318
 mouse_filter = 2
 custom_styles/panel = SubResource( 2 )
 __meta__ = {

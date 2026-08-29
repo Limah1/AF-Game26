@@ -18,6 +18,7 @@ func _ready() -> void:
 	
 	AnimationController.set_animation_player($Player/AnimationPlayer)
 	_setup_modular_player()
+	_apply_player_visuals()
 	
 	if(AnimationController.status == "Started" or AnimationController.status == "MainGame" or AnimationController.status == "DoiAqui"):
 		started()
@@ -147,16 +148,27 @@ func _setup_modular_player() -> void:
 	legacy_player_sprites.visible = true
 	modular_player.visible = false
 	modular_player.position = legacy_player.position
-	modular_player.scale = Vector2(3, 3)
+	modular_player.scale = Vector2(2, 2)
 	modular_player.z_index = legacy_player.z_index
 	modular_player.set_state(0)
 	if ModularCharacterData.has_method("apply_to_rig"):
 		ModularCharacterData.apply_to_rig(modular_player)
 
+func _apply_player_visuals() -> void:
+	if legacy_player == null or not legacy_player.has_method("apply_visual_consistency"):
+		return
+	var skin = Color(NewCharData.cor_pele) if NewCharData.cor_pele != "" else Color.white
+	var shirt = Color(NewCharData.cor_roupa_cima) if NewCharData.cor_roupa_cima != "" else Color("#8aa0a5")
+	var pants = Color(NewCharData.cor_roupa_baixo) if NewCharData.cor_roupa_baixo != "" else Color("#515151")
+	legacy_player.apply_visual_consistency(skin, shirt, pants)
+
 func _sync_modular_player() -> void:
 	if modular_player == null or legacy_player == null:
 		return
+	legacy_player_sprites.visible = true
+	legacy_player.scale = Vector2.ONE
 	modular_player.visible = false
+	modular_player.scale = Vector2(2, 2)
 	return
 
 	modular_player.position = legacy_player.position

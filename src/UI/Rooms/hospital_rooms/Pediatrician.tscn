@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/HospitalBackgroundImage/New_SalaPediatra.png" type="Texture" id=1]
 [ext_resource path="res://src/UI/Rooms/hospital_rooms/Pediatrician.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/Plataforma/buttons/pop-up-doi-aqui.png" type="Texture" id=7]
 [ext_resource path="res://assets/DoiAqui/objects/botao-tutorial-hover_1.png" type="Texture" id=8]
 [ext_resource path="res://assets/Plataforma/buttons/button-comecar-hover.png" type="Texture" id=9]
+[ext_resource path="res://src/pediatrician.png" type="Texture" id=10]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -90,6 +91,11 @@ position = Vector2( -1.78503, -0.502258 )
 scale = Vector2( 1.14051, 1.1417 )
 texture = ExtResource( 1 )
 
+[node name="pediatrician" type="Sprite" parent="sala/New_SalaPediatra"]
+position = Vector2( 413.375, 63.9575 )
+scale = Vector2( 0.417234, 0.451165 )
+texture = ExtResource( 10 )
+
 [node name="tv-off" type="Sprite" parent="."]
 visible = false
 position = Vector2( 1239, 900 )
@@ -105,6 +111,9 @@ custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="PainButton" type="Button" parent="."]
 margin_left = 40.0
@@ -175,10 +184,10 @@ text = "Pediatra"
 npc_name = "Pediatra"
 
 [node name="Button" type="Button" parent="."]
-margin_left = 1367.0
-margin_top = 82.0
-margin_right = 1662.0
-margin_bottom = 996.0
+margin_left = 1274.93
+margin_top = 132.797
+margin_right = 1569.93
+margin_bottom = 1046.8
 flat = true
 
 [connection signal="pressed" from="Tv_button" to="." method="_on_Tv_button_pressed"]

@@ -1,7 +1,21 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/Plants.gd" type="Script" id=1]
 [ext_resource path="res://src/PlantIcon-removebg-preview.png" type="Texture" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.0431373, 0.239216, 0.537255, 1 )
+corner_radius_top_left = 44
+corner_radius_top_right = 44
+corner_radius_bottom_right = 44
+corner_radius_bottom_left = 44
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.560784, 0.854902, 0.972549, 1 )
+corner_radius_top_left = 44
+corner_radius_top_right = 44
+corner_radius_bottom_right = 44
+corner_radius_bottom_left = 44
 
 [node name="Plants" type="Control"]
 anchor_right = 1.0
@@ -41,6 +55,9 @@ margin_left = 2.0
 margin_top = 7.0
 margin_right = 172.0
 margin_bottom = 94.0
+z_index = -1
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.00392157, 0.137255, 1, 1 )
 value = 50.0

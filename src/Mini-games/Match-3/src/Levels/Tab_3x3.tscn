@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://src/Mini-games/Match-3/src/Tiles/Tile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Mini-games/Match-3/src/Levels/Tab_3x3.gd" type="Script" id=2]
@@ -12,9 +12,10 @@
 [ext_resource path="res://assets/Match-3/sprites/grade-3x3.png" type="Texture" id=10]
 [ext_resource path="res://src/Mini-games/Match-3/src/Levels/Temp_Tab_3x3.tscn" type="PackedScene" id=11]
 [ext_resource path="res://src/UI/ShaderPersonagem.tres" type="Material" id=12]
-[ext_resource path="res://assets/Match-3/sprites_novo/personagem/boy-a-match3-serio.png" type="Texture" id=13]
 [ext_resource path="res://assets/fonts/Teste.tres" type="DynamicFont" id=14]
 [ext_resource path="res://assets/Match-3/sprites/blue_info_information_12461 (1).png" type="Texture" id=17]
+[ext_resource path="res://assets/Match-3/sprites_novo/personagem/headless/boy-a-match3-serio-headless.png" type="Texture" id=18]
+[ext_resource path="res://src/UI/LegacyHead.shader" type="Shader" id=19]
 
 [sub_resource type="DynamicFont" id=1]
 size = 100
@@ -148,7 +149,21 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.960784, 0.890196, 0.823529, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="ShaderMaterial" id=8]
+shader = ExtResource( 19 )
+shader_param/source_skin = Color( 0, 1, 0, 1 )
+shader_param/target_skin = Color( 1, 1, 1, 1 )
+shader_param/tolerance = 0.6
+
+[sub_resource type="Animation" id=9]
 tracks/0/type = "value"
 tracks/0/path = NodePath("info-box/ColorRect:visible")
 tracks/0/interp = 1
@@ -174,7 +189,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=10]
 length = 0.7
 tracks/0/type = "value"
 tracks/0/path = NodePath("info-box/ColorRect:modulate")
@@ -194,6 +209,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 222.263, 987.782 ]
 }
+legacy_head_position = Vector2( 203.351, 497 )
 
 [node name="TutorialController" type="CanvasLayer" parent="."]
 pause_mode = 2
@@ -768,11 +784,28 @@ position = Vector2( 946.81, 556.884 )
 scale = Vector2( 1.91708, 1.97527 )
 texture = ExtResource( 10 )
 
+[node name="SkinToneRect" type="Panel" parent="."]
+margin_left = 184.0
+margin_top = 517.0
+margin_right = 222.0
+margin_bottom = 577.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="character" type="Sprite" parent="."]
 material = ExtResource( 12 )
 position = Vector2( 203.351, 600 )
 scale = Vector2( 0.75, 0.75 )
-texture = ExtResource( 13 )
+texture = ExtResource( 18 )
+
+[node name="Head" type="Sprite" parent="."]
+material = SubResource( 8 )
+position = Vector2( 203.351, 457 )
+scale = Vector2( 0.252, 0.252 )
+z_index = 1
 
 [node name="TextureButton2" type="TextureButton" parent="."]
 margin_left = 1745.91
@@ -789,8 +822,8 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/fade_in = SubResource( 7 )
-anims/fade_out = SubResource( 8 )
+anims/fade_in = SubResource( 9 )
+anims/fade_out = SubResource( 10 )
 
 [node name="info-box" type="CanvasLayer" parent="."]
 layer = -128

@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=2]
+[gd_scene load_steps=70 format=2]
 
 [ext_resource path="res://assets/Nova pasta/bedroom.png" type="Texture" id=1]
 [ext_resource path="res://src/UI/Rooms/Bedroom.gd" type="Script" id=2]
@@ -40,6 +40,7 @@
 [ext_resource path="res://assets/Particulas/textures/1024/alpha/spotlight_5.png" type="Texture" id=38]
 [ext_resource path="res://src/small_plants.tscn" type="PackedScene" id=39]
 [ext_resource path="res://src/Mini-games/CharacterTest/CharacterRig.tscn" type="PackedScene" id=40]
+[ext_resource path="res://src/UI/Assets/manta.png" type="Texture" id=41]
 
 [sub_resource type="Animation" id=1]
 resource_name = "default"
@@ -247,6 +248,12 @@ position = Vector2( 1351.64, 769.514 )
 
 [node name="SleepTestRightHandTarget" type="Position2D" parent="."]
 position = Vector2( 1469.17, 771.633 )
+
+[node name="Manta" type="Sprite" parent="."]
+visible = false
+position = Vector2( 1421.64, 841.573 )
+z_index = 9
+texture = ExtResource( 41 )
 
 [node name="SleepTestRig" parent="." instance=ExtResource( 40 )]
 visible = false
@@ -602,7 +609,6 @@ margin_top = 52.0
 margin_right = -336.007
 margin_bottom = -760.0
 
-[connection signal="pressed" from="PersonalizationButton" to="." method="_on_PersonalizationButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/SleepButton2" to="." method="_on_SleepButton_pressed"]
 [connection signal="pressed" from="pick_coat" to="." method="_on_pick_coat_pressed"]
 [connection signal="pressed" from="pick_umbrella" to="." method="_on_pick_umbrella_pressed"]

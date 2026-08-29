@@ -3,6 +3,7 @@
 extends Control # Ou Node2D, dependendo do seu nó base
 
 const LEGACY_HEAD_SHADER = preload("res://src/UI/LegacyHead.shader")
+const CHARACTER_SHADER_MATERIAL = preload("res://src/UI/ShaderPersonagem.tres")
 
 # Declare a variável, mas não a inicialize aqui no Godot 3.x
 var personagem_sprite
@@ -73,8 +74,12 @@ func _set_skin_tone(tone_id: String):
 	selected_skin_tone_id = tone_id
 	ModularCharacterData.select_skin_tone(tone_id)
 
-	var shader_material = personagem_sprite.material as ShaderMaterial
-	shader_material.set_shader_param("nova_cor_pele", new_color)
+	if personagem_sprite != null:
+		var shader_material = personagem_sprite.material as ShaderMaterial
+		if shader_material == null:
+			shader_material = CHARACTER_SHADER_MATERIAL.duplicate()
+			personagem_sprite.material = shader_material
+		shader_material.set_shader_param("nova_cor_pele", new_color)
 	if legacy_head != null and legacy_head.material is ShaderMaterial:
 		legacy_head.material.set_shader_param("target_skin", new_color)
 	if modular_character != null:
