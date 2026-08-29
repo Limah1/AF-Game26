@@ -1,8 +1,13 @@
 extends Control 
 
 const LEGACY_HEAD_SHADER = preload("res://src/UI/LegacyHead.shader")
-const LEGACY_R1_SCALE = 0.6
+const LEGACY_R1_SCALE = 0.5236
+const LEGACY_R2_SCALE = 0.6
 const LEGACY_HEAD_SCALE = 0.252
+const LEGACY_R1_SPRITE_POSITION = Vector2(1628.16, 617.38)
+const LEGACY_R2_SPRITE_POSITION = Vector2(1594.28, 549.035)
+const LEGACY_R1_HEAD_POSITION_Y = 256.0
+const LEGACY_R2_HEAD_POSITION_Y = 276.0
 
 var personagem_sprite
 var cabelo = NewCharData.cabelo
@@ -77,7 +82,7 @@ func _show_legacy_preview() -> void:
 	# Use the original character preview with the new head overlay.
 	if personagem_sprite != null:
 		personagem_sprite.visible = true
-		personagem_sprite.scale = Vector2(0.6, 0.6)
+		personagem_sprite.scale = Vector2(LEGACY_R2_SCALE, LEGACY_R2_SCALE)
 	if modular_character != null:
 		modular_character.visible = false
 
@@ -85,11 +90,13 @@ func _update_legacy_head() -> void:
 	if legacy_head == null:
 		return
 	var hair = "a" if cabelo == "a" else "b"
+	var roupa_1 = $btn_roupa_1.pressed
 	legacy_head.texture = load("res://assets/Sprites-v3/heads/%s-%s-head.png" % [genero, hair])
 	legacy_head.visible = true
-	personagem_sprite.scale = Vector2(LEGACY_R1_SCALE, LEGACY_R1_SCALE)
+	personagem_sprite.scale = Vector2(LEGACY_R1_SCALE, LEGACY_R1_SCALE) if roupa_1 else Vector2(LEGACY_R2_SCALE, LEGACY_R2_SCALE)
+	personagem_sprite.position = LEGACY_R1_SPRITE_POSITION if roupa_1 else LEGACY_R2_SPRITE_POSITION
 	legacy_head.scale = Vector2(LEGACY_HEAD_SCALE, LEGACY_HEAD_SCALE)
-	legacy_head.position.y = 145 if $btn_roupa_1.pressed else 276
+	legacy_head.position.y = LEGACY_R1_HEAD_POSITION_Y if roupa_1 else LEGACY_R2_HEAD_POSITION_Y
 	var head_material = legacy_head.material as ShaderMaterial
 	if head_material == null or head_material.shader != LEGACY_HEAD_SHADER:
 		head_material = ShaderMaterial.new()

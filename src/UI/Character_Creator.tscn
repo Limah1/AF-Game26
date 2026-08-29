@@ -1,15 +1,13 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://assets/Plataforma/Char_Select/tela-escolha-personagem.png" type="Texture" id=1]
-[ext_resource path="res://assets/Character_Creator/cabelo_boy_A.png" type="Texture" id=2]
-[ext_resource path="res://assets/Character_Creator/cabelo_boy_B.png" type="Texture" id=3]
+[ext_resource path="res://src/UI/Assets/Frame 9 - branco.png" type="Texture" id=2]
+[ext_resource path="res://src/UI/Assets/Frame 6 - branco.png" type="Texture" id=3]
 [ext_resource path="res://assets/Character_Creator/btn gender-girl-on.png" type="Texture" id=4]
 [ext_resource path="res://assets/sounds/Sons Atualizados/SFX_Paper Handling and Turning Sequence.wav" type="AudioStream" id=5]
 [ext_resource path="res://assets/Hidratona/sprites/back-button.png" type="Texture" id=6]
 [ext_resource path="res://assets/Plataforma/Char_Select/button-confirmar.png" type="Texture" id=7]
 [ext_resource path="res://assets/Character_Creator/btn gender-boy-on.png" type="Texture" id=8]
-[ext_resource path="res://assets/Character_Creator/cabelo_boy_B_on.png" type="Texture" id=9]
-[ext_resource path="res://assets/Character_Creator/cabelo_boy_A_on.png" type="Texture" id=10]
 [ext_resource path="res://assets/Character_Creator/btn gender-boy.png" type="Texture" id=11]
 [ext_resource path="res://assets/Sprites-v3/boy-b/boy-b-r1-m0.png" type="Texture" id=12]
 [ext_resource path="res://assets/Character_Creator/btn gender-girl.png" type="Texture" id=13]
@@ -229,9 +227,9 @@ __meta__ = {
 
 [node name="btn_girl" type="TextureButton" parent="."]
 margin_left = 141.548
-margin_top = 463.958
+margin_top = 466.336
 margin_right = 709.548
-margin_bottom = 627.958
+margin_bottom = 630.336
 rect_scale = Vector2( 0.8, 0.8 )
 toggle_mode = true
 texture_normal = ExtResource( 13 )
@@ -321,8 +319,8 @@ margin_right = 962.534
 margin_bottom = 623.38
 rect_scale = Vector2( 0.9, 0.9 )
 toggle_mode = true
-texture_normal = ExtResource( 2 )
-texture_pressed = ExtResource( 10 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -334,8 +332,8 @@ margin_right = 1251.91
 margin_bottom = 623.38
 rect_scale = Vector2( 0.9, 0.9 )
 toggle_mode = true
-texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 9 )
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

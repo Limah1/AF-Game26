@@ -16,14 +16,14 @@ var sprite_girl_a = preload("res://assets/Sprites-v3/girl-a/girl-a-r1-m0.png")
 var sprite_boy_b = preload("res://assets/Sprites-v3/boy-b/boy-b-r1-m0.png")
 var sprite_girl_b = preload("res://assets/Sprites-v3/girl-b/girl-b-r1-m0.png")
 
-var cabelo_girl_A = preload("res://assets/Character_Creator/cabelo_girl_A.png")
-var cabelo_girl_A_on = preload("res://assets/Character_Creator/cabelo_girl_A_on.png")
-var cabelo_girl_B = preload("res://assets/Character_Creator/cabelo_girl_B.png")
-var cabelo_girl_B_on = preload("res://assets/Character_Creator/cabelo_girl_B_on.png")
-var cabelo_boy_A = preload("res://assets/Character_Creator/cabelo_boy_A.png")
-var cabelo_boy_A_on = preload("res://assets/Character_Creator/cabelo_boy_A_on.png")
-var cabelo_boy_B = preload("res://assets/Character_Creator/cabelo_boy_B.png")
-var cabelo_boy_B_on = preload("res://assets/Character_Creator/cabelo_boy_B_on.png")
+var cabelo_girl_A = preload("res://src/UI/Assets/Frame 7 - branco.png")
+var cabelo_girl_A_on = preload("res://src/UI/Assets/Frame 7 - branco.png")
+var cabelo_girl_B = preload("res://src/UI/Assets/Frame 8.png")
+var cabelo_girl_B_on = preload("res://src/UI/Assets/Frame 8.png")
+var cabelo_boy_A = preload("res://src/UI/Assets/Frame 6 - branco.png")
+var cabelo_boy_A_on = preload("res://src/UI/Assets/Frame 6 - branco.png")
+var cabelo_boy_B = preload("res://src/UI/Assets/Frame 9 - branco.png")
+var cabelo_boy_B_on = preload("res://src/UI/Assets/Frame 9 - branco.png")
 
 
 func _ready():

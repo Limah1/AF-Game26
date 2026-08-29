@@ -37,7 +37,7 @@ func _refresh_legacy_head() -> void:
 	legacy_head.texture = head_texture
 	legacy_head.visible = true
 	var head_x = 20 if CharacterController.roupa == "r2" else 10
-	var head_y = -18 if CharacterController.roupa == "r2" else -88
+	var head_y = -37 if CharacterController.roupa == "r2" else -107
 	legacy_head_base_position = Vector2(head_x, head_y)
 	legacy_head.position = legacy_head_base_position
 	legacy_head.scale = Vector2(0.1512, 0.1512)
