@@ -45,8 +45,8 @@ func _on_bath_pressed() -> void:
 		return
 	print("[Bathroom] Starting bath action...")
 	is_doing_action = true
-	yield(AnimationController.go_to_bath(), "completed") 
-	print("[Bathroom] Character reached bath, instantiating minigame...")
+	_set_persistent_player_visible(false)
+	print("[Bathroom] Player hidden, instantiating minigame...")
 	var minigame_banho = load("res://src/UI/Minigame_bath/MiniGame_Banho.tscn").instance()
 	#var sprite_do_personagem = CharacterController.personagem_sprite
 	add_child(minigame_banho)
@@ -55,6 +55,14 @@ func _on_bath_pressed() -> void:
 	minigame_banho.start(self)
 	get_tree().current_scene.toggle_NM(false)
 	NecessityBars.onbath = true	
+
+func _set_persistent_player_visible(is_visible: bool) -> void:
+	var current_scene = get_tree().current_scene
+	if current_scene == null:
+		return
+	var player_container = current_scene.get_node_or_null("Player")
+	if player_container != null:
+		player_container.visible = is_visible
 
 
 func finish_bath():
@@ -67,6 +75,7 @@ func finish_bath():
 	print("[Bathroom] return_from_bath completed, resetting states...")
 	NecessityBars.bathing = false
 	NecessityBars.onbath = false	
+	_set_persistent_player_visible(true)
 	is_doing_action = false
 	print("[Bathroom] Bath action finalized.")
 	
