@@ -1,5 +1,7 @@
 extends Control
 
+const BATHROOM_SCENE = "res://src/UI/Rooms/Bathroom.tscn"
+
 var molhado
 var ensaboado
 var enxaguar
@@ -43,12 +45,24 @@ func _on_Button_pressed():
 	$Button/button_sound.play()
 	yield($Button/button_sound,"finished")
 	NecessityBars.higiene = 900
-	get_parent().bathroom_reference.finish_bath()
-	get_parent().queue_free()
+	_finish_minigame()
 
 
 func _on_TextureButton_pressed():
 	if finished: return
 	finished = true
-	get_parent().bathroom_reference.finish_bath()
-	get_parent().queue_free()
+	_finish_minigame()
+
+func _finish_minigame() -> void:
+	var minigame = get_parent()
+	var bathroom = minigame.bathroom_reference
+	if is_instance_valid(bathroom) and bathroom.has_method("finish_bath"):
+		bathroom.finish_bath()
+		minigame.queue_free()
+		return
+
+	# Direct scene testing has no Bathroom instance behind the minigame.
+	if get_tree().current_scene == minigame:
+		get_tree().change_scene(BATHROOM_SCENE)
+	else:
+		minigame.queue_free()

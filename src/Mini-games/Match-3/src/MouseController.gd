@@ -41,12 +41,20 @@ func get_relative_direction(relative):
 			return "Top"
 
 func move(fruit):
-	moving.append(fruit)
+	if fruit == null or !is_instance_valid(fruit):
+		return
+	if !moving.has(fruit):
+		moving.append(fruit)
 
 func stop_moving(fruit):
-	moving.erase(fruit)
+	while moving.has(fruit):
+		moving.erase(fruit)
 
 func is_moving() -> bool:
+	# Discard objects that were freed while an animation/cascade was running.
+	for index in range(moving.size() - 1, -1, -1):
+		if moving[index] == null or !is_instance_valid(moving[index]):
+			moving.remove(index)
 	return !moving.empty()
 
 func reset_all():

@@ -2,6 +2,7 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "Match"
+length = 0.7
 tracks/0/type = "value"
 tracks/0/path = NodePath("ExplosionEffect:emitting")
 tracks/0/interp = 1
@@ -15,16 +16,64 @@ tracks/0/keys = {
 "values": [ true ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("icon:scale")
+tracks/1/path = NodePath("ExplosionEffect/Hearts:emitting")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0.03 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("icon:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.38 ),
+"transitions": PoolRealArray( 1, 1.7, 1.2, 1 ),
 "update": 0,
-"values": [ Vector2( 0.7, 0.7 ), Vector2( 1e-05, 1e-05 ) ]
+"values": [ Vector2( 0.7, 0.7 ), Vector2( 0.84, 0.78 ), Vector2( 0.62, 0.72 ), Vector2( 1e-05, 1e-05 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("icon:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.38 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -5.0, 4.0, 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("ExplosionEffect/Glow:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.12, 0.5 ),
+"transitions": PoolRealArray( 1.8, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.15, 0.15 ), Vector2( 1.7, 1.7 ), Vector2( 2.5, 2.5 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("ExplosionEffect/Glow:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.08, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.0588235, 0.156863, 0.490196, 0 ), Color( 0.0588235, 0.156863, 0.490196, 0.95 ), Color( 0.117647, 0.27451, 0.701961, 0 ) ]
 }
 
 [sub_resource type="Animation" id=2]

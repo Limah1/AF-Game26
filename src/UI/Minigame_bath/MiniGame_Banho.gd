@@ -8,6 +8,7 @@ var enxaguar = 0
 var enxugado = 0
 
 var is_drying = false
+var soap_contact = false
 
 var direction = null
 var pressing = false
@@ -22,6 +23,12 @@ var dry_timer = 0
 
 onready var chuveiro = $"Ativo 6/Chuveiro"
 onready var bath_character_rig = $BathCharacterRig
+onready var character_body_area = $"boy-banho-1/body_area"
+onready var character_body_shape = $"boy-banho-1/body_area/CollisionShape2D"
+onready var modular_player_soap_area = $SoapDetector
+onready var modular_player_soap_shape = $"SoapDetector/CollisionShape2D"
+onready var sabonete = $Sabonete
+onready var sabonete_shape = $"Sabonete/CollisionShape2D"
 onready var bubbles = $"boy-banho-1/bubbles"
 
 onready var water_circles = $"boy-banho-1/Molhado"
@@ -43,12 +50,13 @@ func start(ref):
 	personagem_sprite = $"boy-banho-1"
 	status_button = false
 	chuveiro.emitting = false
+	soap_contact = false
+	bubbles.emitting = false
 	$shower_sound.stop()
 	$"Ativo 6/TurnOn".visible = true
 	$"Ativo 6/TurnOff".visible = false
-
 	# The bath outfit is scoped to this minigame. Keep the legacy body node as
-	# the collision/effects parent, but render the modular rig in its place.
+	# the effects parent, but render the modular rig in its place.
 	if bath_character_rig != null:
 		bath_character_rig.position = personagem_sprite.position
 		# Keep the 3x scale authored on BathCharacterRig in MiniGame_Banho.tscn.
@@ -61,11 +69,23 @@ func start(ref):
 			bath_character_rig.set_appearance_variant("bath")
 		elif ModularCharacterData.has_method("apply_to_rig"):
 			ModularCharacterData.apply_to_rig(bath_character_rig, "bath")
-		# Keep legacy effects and Area2D alive, but remove its old body texture.
+		# The modular rig uses its own invisible soap hitbox. Keep the old area
+		# disabled to avoid mixing the two character coordinate systems.
+		if character_body_area != null:
+			character_body_area.collision_mask = 0
+		if modular_player_soap_area != null:
+			modular_player_soap_area.global_position = bath_character_rig.global_position + Vector2(0, 20)
+			modular_player_soap_area.global_rotation = bath_character_rig.global_rotation
+			modular_player_soap_area.monitoring = true
+		# Keep legacy effects alive, but remove its old body texture.
 		personagem_sprite.texture = null
 	else:
 		# Safe fallback for older scene instances that do not contain the rig.
 		personagem_sprite.texture = CharacterController.all_sprites.plataform.idle_bath
+		if character_body_area != null:
+			character_body_area.collision_mask = 4
+		if modular_player_soap_area != null:
+			modular_player_soap_area.monitoring = false
 
 	# Legacy shader setup remains available for the fallback sprite.
 	if bath_character_rig == null:
@@ -87,7 +107,7 @@ func start(ref):
 
 func _on_body_area_body_entered(body):
 	if(body.name == "Sabonete"):
-		bubbles.emitting = true
+		_set_soap_contact(true)
 	
 	if(body.name == "Toalha"):
 		is_drying = true
@@ -95,7 +115,7 @@ func _on_body_area_body_entered(body):
 
 func _on_body_area_body_exited(body):
 	if(body.name == "Sabonete"):
-		bubbles.emitting = false
+		_set_soap_contact(false)
 	
 	if(body.name == "Toalha"):
 		is_drying = false
@@ -158,6 +178,7 @@ func _set_shower_enabled(enabled: bool) -> void:
 
 func _process(delta):
 	cd -= delta
+	_update_soap_contact()
 
 	if(status_button and ensaboado <= 0):
 		wet_timer += delta
@@ -169,7 +190,7 @@ func _process(delta):
 			if(water_circles.modulate.a < 1):
 				water_circles.modulate.a = water_circles.modulate.a + 0.2
 
-	if(bubbles.emitting == true):
+	if(soap_contact):
 		soap_timer += delta
 
 		ensaboado += (20 * delta)
@@ -196,6 +217,42 @@ func _process(delta):
 		if(dry_timer >= 1):
 			dry_timer = 0
 			water_circles.modulate.a = water_circles.modulate.a - 0.2
+
+func _update_soap_contact() -> void:
+	# The visible character is modular, while the old body_area is retained as
+	# a gameplay hitbox. Check the actual transformed shapes so soap contact is
+	# reliable even when Area2D body signals are delayed or unavailable.
+	if sabonete == null or not sabonete.follow:
+		_set_soap_contact(false)
+		return
+
+	var player_soap_area = modular_player_soap_shape if bath_character_rig != null else character_body_shape
+	_set_soap_contact(_get_shape_rect(player_soap_area).intersects(
+		_get_shape_rect(sabonete_shape)
+	))
+
+func _set_soap_contact(contacting: bool) -> void:
+	if soap_contact == contacting:
+		return
+
+	soap_contact = contacting
+	bubbles.emitting = contacting
+	if contacting:
+		bubbles.restart()
+
+func _get_shape_rect(collision_shape: CollisionShape2D) -> Rect2:
+	if collision_shape == null or collision_shape.shape == null:
+		return Rect2()
+
+	var rectangle_shape = collision_shape.shape as RectangleShape2D
+	if rectangle_shape == null:
+		return Rect2()
+
+	var global_shape_scale = collision_shape.global_scale
+	var size = rectangle_shape.extents * 2.0
+	size.x *= abs(global_shape_scale.x)
+	size.y *= abs(global_shape_scale.y)
+	return Rect2(collision_shape.global_position - size / 2.0, size)
 
 
 

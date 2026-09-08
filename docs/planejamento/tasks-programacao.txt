@@ -1,0 +1,195 @@
+TASKS DE PROGRAMACAO - AF-GAME26
+================================
+
+Observacao:
+- O bloco geral de "Personagens e roupas" foi removido.
+- O guarda-roupa do quarto permanece no backlog.
+- Esta lista inclui somente programacao, configuracao de cenas, integracao e testes tecnicos.
+
+
+MATCH-3
+-------
+
+[X] Substituir ou refatorar o resolvedor atual de combinacoes.
+[ ] Implementar deteccao deterministica de combinacoes horizontais.
+[ ] Implementar deteccao deterministica de combinacoes verticais.
+[ ] Tratar corretamente combinacoes cruzadas, em L e em T.
+[ ] Remover pecas duplicadas da mesma combinacao antes da pontuacao.
+[ ] Corrigir pontuacao de combinacoes simples e cascatas.
+[ ] Implementar ciclo controlado de destruir, cair, preencher e verificar novamente.
+[ ] Bloquear entrada enquanto o tabuleiro estiver sendo resolvido.
+[ ] Adicionar limite de seguranca para impedir ciclos infinitos e travamentos.
+[ ] Garantir que movimentos invalidos sejam revertidos corretamente.
+[ ] Corrigir as condicoes de vitoria e derrota.
+[ ] Garantir transicao segura para a tela final.
+[ ] Resetar corretamente estado, pontuacao e pecas ao repetir ou sair.
+[ ] Criar testes automatizados para combinacoes e cascatas.
+
+
+NARRACAO E MENSAGENS
+====================
+
+[ ] Criar um componente reutilizavel de narracao.
+[ ] Associar cada mensagem a um arquivo de audio.
+[ ] Iniciar a narracao junto com a exibicao da mensagem.
+[ ] Manter o texto visivel ate o termino do audio.
+[ ] Implementar botao de repetir narracao.
+[ ] Implementar botao de interromper ou pausar narracao.
+[ ] Tratar mensagens sem audio usando duracao calculada pelo tamanho do texto.
+[ ] Impedir que uma nova narracao sobreponha a anterior.
+[ ] Encerrar corretamente o audio ao trocar de tela.
+[ ] Reutilizar o componente no Match-3, Servico de Saude, lavagem das maos e respiracao.
+
+
+GUARDA-ROUPA NO QUARTO
+======================
+
+[ ] Transformar o guarda-roupa existente em personalizacao real de roupas.
+[ ] Abrir a interface ao clicar no armario ou nas roupas.
+[ ] Configurar areas clicaveis dos itens.
+[ ] Exibir previa da roupa selecionada no personagem.
+[ ] Permitir alternar entre saia e calca.
+[ ] Aplicar a roupa somente ao confirmar.
+[ ] Restaurar a aparencia anterior ao cancelar.
+[ ] Atualizar imediatamente o personagem presente no quarto.
+[ ] Manter a roupa aplicada ao sair do quarto.
+[ ] Integrar a alteracao com o salvamento do jogo.
+
+
+BANHO E LAVAGEM DAS MAOS
+========================
+
+[ ] Consolidar o banho em uma maquina de estados controlada.
+[ ] Corrigir o acionamento de abrir e fechar o chuveiro.
+[ ] Corrigir o travamento durante o enxague.
+[ ] Impedir avanco de etapa antes da interacao necessaria.
+[ ] Corrigir o bloqueio do mapa superior durante e depois do banho.
+[ ] Restaurar personagem, navegacao e camera ao concluir ou cancelar.
+[ ] Criar a cena e a atividade de lavagem das maos.
+[ ] Implementar sequencia: molhar, ensaboar, esfregar, enxaguar e secar.
+[ ] Criar deteccao de contato com agua, sabonete, maos e toalha.
+[ ] Exibir progresso e instrucoes de cada etapa.
+[ ] Integrar os estados de animacao da crianca.
+[ ] Implementar conclusao da atividade e atualizacao da higiene.
+[ ] Garantir retorno correto ao banheiro e posteriormente ao mapa.
+[ ] Integrar sons de chuveiro, agua, sabonete, enxague e conclusao.
+[ ] Preparar suporte opcional para instrucoes narradas.
+
+
+MAPAS E NAVEGACAO
+=================
+
+[ ] Revisar as areas clicaveis de todos os pontos dos mapas.
+[ ] Corrigir pontos que nao recebem clique ou toque.
+[ ] Criar uma tabela unica relacionando locais, IDs e cenas.
+[ ] Garantir que cada ponto abra a cena correta.
+[ ] Impedir cliques repetidos durante transicoes.
+[ ] Corrigir estados de navegacao que permanecem bloqueados.
+[ ] Adicionar recuperacao segura quando uma animacao de viagem falhar.
+[ ] Padronizar o retorno ao mapa apos cada minigame.
+[ ] Restaurar menus, camera e estado global apos retornos.
+[ ] Validar navegacao sequencial e navegacao direta pelo mapa.
+
+
+SERVICO DE SAUDE
+================
+
+[ ] Substituir textos internos e visiveis de "Hospital" por "Servico de Saude".
+[ ] Atualizar titulos, botoes, mapas e referencias de navegacao.
+[ ] Traduzir "Waiting Room" para "Sala de Espera".
+[ ] Atualizar o dialogo do psicologo com o texto aprovado.
+[ ] Tornar o layout dos dialogos adaptavel ao personagem exibido.
+[ ] Reposicionar automaticamente textos e baloes para evitar sobreposicao.
+[ ] Criar area clicavel e interacao para a enfermeira existente.
+[ ] Criar dados de dialogo sobre a importancia das vacinas.
+[ ] Integrar a enfermeira ao sistema compartilhado de dialogos.
+[ ] Configurar estados e gatilhos das animacoes da enfermeira.
+[ ] Ajustar posicionamento dos profissionais apos a correcao dos recursos visuais.
+[ ] Integrar audios do psicologo e da enfermeira.
+[ ] Sincronizar texto, audio e animacao dos dialogos.
+[ ] Garantir encerramento e repeticao segura das conversas.
+
+
+HIDRATONA
+=========
+
+[ ] Refatorar o estado de salto e queda.
+[ ] Corrigir entrada por mouse, toque e acao de teclado.
+[ ] Corrigir interrupcao e repeticao do salto.
+[ ] Revisar mascaras e formas de colisao do personagem.
+[ ] Corrigir a coleta de agua.
+[ ] Corrigir a coleta de melancia.
+[ ] Garantir que cada coletavel seja processado apenas uma vez.
+[ ] Corrigir atualizacao de hidratacao, bonus e contadores.
+[ ] Validar colisoes com buracos, lixo, mosquitos e demais obstaculos.
+[ ] Centralizar a condicao de conclusao da partida.
+[ ] Impedir multiplas transicoes simultaneas no fim da partida.
+[ ] Revisar e atualizar a tela final de "Parabens".
+[ ] Implementar os textos finais aprovados.
+[ ] Encaminhar o jogador para o exercicio respiratorio apos a conclusao.
+[ ] Integrar animacoes de salto, coleta, colisao e vitoria.
+[ ] Integrar sons de salto, agua, melancia, colisao e conclusao.
+[ ] Resetar todos os recursos ao repetir ou retornar ao mapa.
+
+
+EXERCICIO DE RESPIRACAO
+=======================
+
+[ ] Criar uma nova cena para o exercicio.
+[ ] Definir entrada pela conclusao do Hidratona.
+[ ] Implementar maquina de estados: preparacao, inspiracao, pausa e expiracao.
+[ ] Implementar temporizadores configuraveis para cada etapa.
+[ ] Criar controles de iniciar, pausar, continuar, repetir e concluir.
+[ ] Implementar indicador visual sincronizado com a etapa atual.
+[ ] Integrar animacoes respiratorias do personagem.
+[ ] Integrar narracao por etapa.
+[ ] Sincronizar narracao, temporizadores e animacoes.
+[ ] Integrar musica ambiente e efeitos suaves.
+[ ] Pausar e restaurar corretamente todos os audios.
+[ ] Implementar conclusao e retorno seguro ao mapa.
+
+
+ARVORE
+======
+
+[ ] Substituir a arvore programatica pelo recurso visual fornecido.
+[ ] Implementar estados: seca, sendo cuidada e saudavel.
+[ ] Relacionar os estados ao progresso da atividade.
+[ ] Implementar transicoes e animacoes entre os estados.
+[ ] Preservar as interacoes existentes de plantar e regar.
+[ ] Garantir que vitoria, reinicio e saida restaurem o estado correto.
+
+
+ESTABILIZACAO E TESTES
+======================
+
+[ ] Criar matriz de testes com os quatro personagens, roupas e tons de pele.
+[ ] Testar cada personagem nas poses principais e minigames.
+[ ] Testar persistencia apos troca de cena, saida e reabertura do jogo.
+[ ] Criar testes do Match-3 para horizontal, vertical, L, T, cruz e cascata.
+[ ] Criar testes de transicao entre casa, mapas, minigames e Servico de Saude.
+[ ] Testar interrupcao, repeticao e troca de tela durante narracoes.
+[ ] Validar toque e areas clicaveis nas resolucoes suportadas.
+[ ] Testar todos os fluxos no APK Android.
+[ ] Remover estados globais presos, referencias destruidas e transicoes duplicadas.
+[ ] Adicionar registros de erro e limites de seguranca nos fluxos assincronos.
+
+
+INTERFACES TECNICAS COMPARTILHADAS
+=================================
+
+[ ] Criar um servico unico de aparencia para aplicar personagem, roupa e pose.
+[ ] Criar um controlador compartilhado de narracao com play, pause, stop e repeat.
+[ ] Padronizar minigames com eventos de inicio, conclusao, cancelamento e retorno.
+[ ] Centralizar rotas de mapas e cenas para evitar caminhos duplicados.
+[ ] Manter compatibilidade com os arquivos de salvamento atuais, adicionando valores padrao para novos campos.
+
+
+FORA DESTE BACKLOG
+==================
+
+- Criacao de ilustracoes e sprites.
+- Producao de poses e animacoes quadro a quadro.
+- Gravacao de voz.
+- Producao de efeitos sonoros e musica.
+- Revisao gramatical e aprovacao dos textos.

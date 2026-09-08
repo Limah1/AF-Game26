@@ -10,6 +10,11 @@ var line_quant
 
 var checked = false
 
+const MAX_CASCADE_STEPS = 50
+const MAX_REFILL_WAITS = 20
+
+var resolving_board = false
+
 var preview_points;
 
 var fruit_max_count = 81
@@ -191,39 +196,54 @@ func get_fruit_by_name(fruit_name):
 		return load("res://src/Mini-games/Match-3/src/Tiles/Fruits/Egg.tscn")
 
 func check_map_combinations():
-	while get_tree().get_nodes_in_group("fruits").size() < fruit_max_count:
-		yield(countdown(), "completed") 
-	
+	# Only one resolver may own the board. The previous recursive implementation
+	# started another coroutine without waiting for it, allowing cascades and
+	# player input to overlap after a few moves.
+	if resolving_board:
+		return
+
+	resolving_board = true
 	M_Controller.move(self)
-	
-	var has_combination = false
-	
-	for tile in alltiles:
-		if tile.check_combinations():
-			has_combination = true
-	
-	if !has_combination:
-		M_Controller.stop_moving(self)
-		
+
+	var cascade_step = 0
+	while cascade_step < MAX_CASCADE_STEPS:
+		var refill_waits = 0
+		while get_tree().get_nodes_in_group("fruits").size() < fruit_max_count and refill_waits < MAX_REFILL_WAITS:
+			yield(countdown(), "completed")
+			refill_waits += 1
+
+		if get_tree().get_nodes_in_group("fruits").size() < fruit_max_count:
+			push_warning("Match-3: timed out while waiting for the board to refill.")
+			break
+
 		S_Conntroller.ResetTiles()
 		C_Controller.reset_score()
-		return
-	
-	S_Conntroller.DestroyTiles()
-	C_Controller.reset_score()
-	
-	yield(countdown(), "completed") 
-	yield(countdown(), "completed") 
-	
-	if get_tree().get_nodes_in_group("fruits").size() < fruit_max_count:
-		yield(countdown(), "completed") 
 
-	
-	check_map_combinations()
-	
+		var has_combination = false
+		for tile in alltiles:
+			if is_instance_valid(tile) and is_instance_valid(tile.fruit) and tile.check_combinations():
+				has_combination = true
+
+		if !has_combination:
+			break
+
+		S_Conntroller.DestroyTiles()
+		C_Controller.reset_score()
+		cascade_step += 1
+
+		# Wait for the match animation, deletion, falling and refill before the
+		# next scan. Keeping this inside the same coroutine prevents overlap.
+		yield(countdown(), "completed")
+		yield(countdown(), "completed")
+
+	if cascade_step >= MAX_CASCADE_STEPS:
+		push_warning("Match-3: cascade safety limit reached.")
+
+	S_Conntroller.ResetTiles()
+	C_Controller.reset_score()
 	S_Conntroller.checked = true
 	M_Controller.stop_moving(self)
-	return
+	resolving_board = false
 
 func countdown():
 	yield(get_tree(), "idle_frame") # returns a GDScriptFunctionState object to _ready()

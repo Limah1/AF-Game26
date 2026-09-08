@@ -88,9 +88,14 @@ func reset_all():
 func DestroyTiles():
 	if(tilestodestroy.empty()):
 		return
-	for tile in tilestodestroy:
-		tile.score(1)
+
+	# Detach the current batch before starting animations. New matches can then
+	# build their own batch without clearing or reusing this one.
+	var fruits_to_destroy = tilestodestroy.duplicate()
+	ResetTiles()
+	for tile in fruits_to_destroy:
+		if is_instance_valid(tile):
+			tile.score(1)
 	#sound.play()
 	checked = true
-	ResetTiles()
 	

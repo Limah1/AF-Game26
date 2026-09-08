@@ -1,0 +1,42 @@
+Hidratona scene path: res://src/Mini-games/Hidratona/src/level/Level.tscn
+
+Hidratona folder path: res://src/Mini-games/Hidratona/src/
+
+Body hidratona rain:
+res://src/Mini-games/Hidratona/src/level/rain/
+
+Body hidratona snow:
+res://src/Mini-games/Hidratona/src/level/snow/
+
+HeadsHidratona:
+res://src/Mini-games/Hidratona/src/level/heads/
+
+
+MATCH3 folder path:
+res://src/Mini-games/Match-3/src/Levels/
+
+
+MATCH3 scene path:
+res://src/Mini-games/Match-3/src/Levels/Tab_6x6.tscn
+
+
+Banheiro scene path: res://src/UI/Rooms/Bathroom.tscn
+
+Banho minigame: res://src/UI/Minigame_bath/MiniGame_Banho.tscn
+
+
+Player (cena): [src/UI/Player.tscn](E:\\GODOT\\AF-Game26\\src\\UI\\Player.tscn)
+Player (script): [src/UI/Player.gd](E:\\GODOT\\AF-Game26\\src\\UI\\Player.gd)
+Character Controller: [src/CharacterController.gd](E:\\GODOT\\AF-Game26\\src\\CharacterController.gd)
+
+
+
+Target build path:
+
+E:\GODOT\build\AFGame26_Builds
+
+
+REGRA DE BUILD:
+
+Nao gerar nem atualizar APK ou build de Windows automaticamente apos alteracoes no projeto.
+Fazer uma nova build somente quando o usuario pedir explicitamente.

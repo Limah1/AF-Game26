@@ -609,6 +609,7 @@ margin_top = 52.0
 margin_right = -336.007
 margin_bottom = -760.0
 
+[connection signal="pressed" from="PersonalizationButton" to="." method="_on_PersonalizationButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/SleepButton2" to="." method="_on_SleepButton_pressed"]
 [connection signal="pressed" from="pick_coat" to="." method="_on_pick_coat_pressed"]
 [connection signal="pressed" from="pick_umbrella" to="." method="_on_pick_umbrella_pressed"]

@@ -30,4 +30,5 @@ cast_to = Vector2( -94, 0 )
 [node name="RayCast_Right" type="RayCast2D" parent="."]
 enabled = true
 cast_to = Vector2( 94, 0 )
+
 [connection signal="input_event" from="." to="." method="_on_Tile_input_event"]

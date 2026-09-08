@@ -53,7 +53,7 @@ func _on_bath_pressed() -> void:
 	# Add first so MiniGame_Banho's onready nodes (including BathCharacterRig)
 	# are initialized before its bath-specific appearance is applied.
 	minigame_banho.start(self)
-	get_tree().current_scene.toggle_NM(false)
+	_set_navigation_menu_visible(false)
 	NecessityBars.onbath = true	
 
 func _set_persistent_player_visible(is_visible: bool) -> void:
@@ -64,15 +64,23 @@ func _set_persistent_player_visible(is_visible: bool) -> void:
 	if player_container != null:
 		player_container.visible = is_visible
 
+func _set_navigation_menu_visible(is_visible: bool) -> void:
+	var current_scene = get_tree().current_scene
+	if current_scene != null and current_scene.has_method("toggle_NM"):
+		current_scene.toggle_NM(is_visible)
+
 
 func finish_bath():
 	print("[Bathroom] finish_bath() triggered")
 	NecessityBars.bathing = true
 	get_viewport().canvas_transform = Transform2D()
-	get_tree().current_scene.toggle_NM(true)
-	print("[Bathroom] Playing return_from_bath animation...")
-	yield(AnimationController.return_from_bath(), "completed") 
-	print("[Bathroom] return_from_bath completed, resetting states...")
+	_set_navigation_menu_visible(true)
+	if is_instance_valid(AnimationController.anim_player):
+		print("[Bathroom] Playing return_from_bath animation...")
+		yield(AnimationController.return_from_bath(), "completed")
+	else:
+		print("[Bathroom] No persistent player animation; skipping return_from_bath.")
+	print("[Bathroom] Resetting bath states...")
 	NecessityBars.bathing = false
 	NecessityBars.onbath = false	
 	_set_persistent_player_visible(true)
@@ -105,10 +113,10 @@ func _on_sink_pressed() -> void:
 	var minigame_escovar = load("res://src/UI/Minigame_escovar/MiniGame_EscovarDentes.tscn").instance()
 	minigame_escovar.start(self)
 	add_child(minigame_escovar)
-	get_tree().current_scene.toggle_NM(false)
+	_set_navigation_menu_visible(false)
 
 func finish_escovar():
 	print("[Bathroom] finish_escovar() triggered")
-	get_tree().current_scene.toggle_NM(true)
+	_set_navigation_menu_visible(true)
 	is_doing_action = false
 	print("[Bathroom] Sink action finalized.")

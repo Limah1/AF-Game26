@@ -10,9 +10,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if(follow):
 		self.visible = true
-		global_position = get_viewport().get_mouse_position()
-		global_position.y -= 1620 + 540
-		global_position.x -= 1920/2
+		# Use the scene's transformed mouse position, like the shower Button
+		# does through Godot's UI input handling. Fixed 1920x1080 offsets break
+		# dragging when the game window is scaled.
+		global_position = get_global_mouse_position()
 	elif(!follow):
 		position = preset_localization
 		self.visible = true		

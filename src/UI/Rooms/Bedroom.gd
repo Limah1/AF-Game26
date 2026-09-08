@@ -137,6 +137,7 @@ func _on_pick_umbrella_pressed() -> void:
 	coat.visible = true
 	
 	Resources.equip_acessory("Umbrella")
+	_refresh_player_outfit()
 
 func _on_pick_coat_pressed() -> void:
 	$zip.play()
@@ -144,6 +145,12 @@ func _on_pick_coat_pressed() -> void:
 	coat.visible = !coat.visible
 	
 	Resources.equip_acessory("Coat")
+	_refresh_player_outfit()
+
+func _refresh_player_outfit() -> void:
+	for player in get_tree().get_nodes_in_group("platform_player"):
+		if is_instance_valid(player) and player.has_method("refresh_outfit"):
+			player.refresh_outfit()
 
 func _on_SleepButton_pressed() -> void:
 	$abajur.play()

@@ -22,9 +22,10 @@ func _on_Tile_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> 
 		M_Controller.set_tile(self)
 
 func add_fruit(new_fruit):
-	fruit = new_fruit
-	if(!is_instance_valid(fruit)):
+	if !is_instance_valid(new_fruit):
+		fruit = null
 		return
+	fruit = new_fruit
 	fruit.reparenting(self)
 
 func remove_fruit():
@@ -72,14 +73,15 @@ func _physics_process(delta: float) -> void:
 
 func check_bellow():
 	var tile: Tile = check_on_direction_tile("Bottom")
-	if tile != null && is_instance_valid(tile) && !is_instance_valid(tile.fruit):
+	if tile != null && is_instance_valid(tile) && is_instance_valid(fruit) && !is_instance_valid(tile.fruit):
 		var _fruit = remove_fruit()
-		tile.add_fruit(_fruit)
+		if is_instance_valid(_fruit):
+			tile.add_fruit(_fruit)
 
 func move_to(direction):
 	var tile = check_on_direction_tile(direction)
 	
-	if(tile == null):
+	if tile == null or !is_instance_valid(tile) or !is_instance_valid(fruit) or !is_instance_valid(tile.fruit):
 		return
 	
 	var aux = tile.fruit
@@ -124,6 +126,10 @@ func countdown():
 	yield(get_tree().create_timer(0.8), "timeout")
 
 func check_combinations():
+	if !is_instance_valid(fruit):
+		C_Controller.reset_score()
+		return false
+
 	C_Controller.center = self
 	
 	#Checking top
@@ -141,8 +147,8 @@ func check_combinations():
 	return C_Controller.score()
 
 func check_for_points(fruit_name, dir):
-	if fruit != null && fruit.fruit_name == fruit_name:
+	if is_instance_valid(fruit) && fruit.fruit_name == fruit_name:
 		C_Controller.add_score(self, dir)
 		var tile = check_on_direction_tile(dir)
-		if tile != null:
+		if tile != null and is_instance_valid(tile) and is_instance_valid(tile.fruit):
 			tile.check_for_points(fruit_name, dir)

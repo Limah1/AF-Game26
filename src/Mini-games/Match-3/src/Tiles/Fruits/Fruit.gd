@@ -35,6 +35,12 @@ func _physics_process(delta: float) -> void:
 
 func score(points):
 	S_Conntroller.score(fruit_name, points, self)
+
+	# Clear the owning tile immediately. Leaving a queued-for-deletion fruit in
+	# tile.fruit lets a concurrent board scan access a stale reference.
+	if tile != null and is_instance_valid(tile) and tile.fruit == self:
+		tile.remove_fruit()
+	tile = null
 	
 	AP.play("Match")
 	yield(AP, "animation_finished") 
