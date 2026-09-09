@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/banho_torneira_abrir_v01.mp3-8957afa53c7c2da00caa3c907310ef8a.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/sons editados/banho_torneira_abrir_v01.mp3"
+dest_files=[ "res://.import/banho_torneira_abrir_v01.mp3-8957afa53c7c2da00caa3c907310ef8a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

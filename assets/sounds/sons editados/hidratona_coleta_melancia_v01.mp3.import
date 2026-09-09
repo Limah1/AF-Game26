@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/hidratona_coleta_melancia_v01.mp3-f5ff6a07cd91071413c0f0a1f5af21cc.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/sons editados/hidratona_coleta_melancia_v01.mp3"
+dest_files=[ "res://.import/hidratona_coleta_melancia_v01.mp3-f5ff6a07cd91071413c0f0a1f5af21cc.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

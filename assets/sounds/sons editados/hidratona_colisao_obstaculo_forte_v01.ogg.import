@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/hidratona_colisao_obstaculo_forte_v01.ogg-2275caf2c148d0150c5e303c6f3609af.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/sons editados/hidratona_colisao_obstaculo_forte_v01.ogg"
+dest_files=[ "res://.import/hidratona_colisao_obstaculo_forte_v01.ogg-2275caf2c148d0150c5e303c6f3609af.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

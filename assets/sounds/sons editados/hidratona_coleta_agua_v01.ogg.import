@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/hidratona_coleta_agua_v01.ogg-9136e0483a5095a9ad35310e3177696a.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/sons editados/hidratona_coleta_agua_v01.ogg"
+dest_files=[ "res://.import/hidratona_coleta_agua_v01.ogg-9136e0483a5095a9ad35310e3177696a.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/hidratona_conclusao_v01.ogg-28c5cd8ae394e84dfc390130f998d1f7.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/sons editados/hidratona_conclusao_v01.ogg"
+dest_files=[ "res://.import/hidratona_conclusao_v01.ogg-28c5cd8ae394e84dfc390130f998d1f7.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
