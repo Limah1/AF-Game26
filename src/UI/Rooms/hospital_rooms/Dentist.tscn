@@ -166,7 +166,7 @@ rect_scale = Vector2( 5, 5 )
 text = "Dentista"
 
 [node name="DialogSystem" parent="." instance=ExtResource( 3 )]
-json_path = "res://assets/dialogos/dentista.json"
+json_path = "res://assets/hospital/dentista/dialogo.json"
 npc_name = "Dentista"
 
 [node name="Button" type="Button" parent="."]

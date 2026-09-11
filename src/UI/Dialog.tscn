@@ -54,7 +54,7 @@ texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 620, 35 )
 
 [node name="DialogSystem" type="PopupPanel"]
-visible = true
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -70,7 +70,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-json_path = "res://assets/dialogos/pediatra.json"
+json_path = ""
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 margin_right = 925.0
@@ -130,6 +130,17 @@ bbcode_text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vari
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius velit a imperdiet luctus. Vestibulum consequat vulputate mauris, vitae sagittis turpis. Mauris efficitur, massa non hendrerit bibendum, justo leo bibendum risus, ut efficitur diam massa sed felis. Nunc non lorem arcu. Cras congue ex eros, eget euismod turpis scelerisque non. Nulla viverra, turpis gravida vehicula molestie, risus nulla tincidunt urna, a placerat lacus ipsum in sapien. "
 fit_content_height = true
 
+[node name="VoiceButton" type="Button" parent="MarginContainer/HBoxContainer/Right"]
+margin_right = 620.0
+margin_bottom = 36.0
+size_flags_horizontal = 3
+text = "Ouvir locução"
+tooltip_text = "Reproduzir locução desta fala"
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
 [node name="Buttons" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Right"]
 margin_top = 282.0
 margin_right = 620.0
@@ -169,3 +180,5 @@ custom_styles/hover = SubResource( 9 )
 custom_styles/pressed = SubResource( 10 )
 custom_styles/normal = SubResource( 11 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Right/VoiceButton" to="." method="_on_voice_button_pressed"]

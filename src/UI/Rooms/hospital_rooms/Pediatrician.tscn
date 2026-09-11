@@ -181,13 +181,14 @@ rect_scale = Vector2( 5, 5 )
 text = "Pediatra"
 
 [node name="DialogSystem" parent="." instance=ExtResource( 3 )]
+json_path = "res://assets/hospital/pediatra/dialogo.json"
 npc_name = "Pediatra"
 
 [node name="Button" type="Button" parent="."]
 margin_left = 1274.93
-margin_top = 132.797
+margin_top = 131.906
 margin_right = 1569.93
-margin_bottom = 1046.8
+margin_bottom = 1045.91
 flat = true
 
 [connection signal="pressed" from="Tv_button" to="." method="_on_Tv_button_pressed"]

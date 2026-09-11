@@ -1,0 +1,24 @@
+{
+    "profissional": "enfermeira",
+    "texto": "Oi! Eu sou a enfermeira. Como você está se sentindo hoje?",
+    "voice": "res://assets/hospital/enfermeira/audio/intro.ogg",
+    "opcao1": {
+        "botao": "Estou bem",
+        "resposta": "Que bom! Se sentir dor ou mal-estar, avise um adulto e procure a equipe de saúde.",
+        "voice": "res://assets/hospital/enfermeira/audio/opcao1.ogg",
+        "opcao1": {
+            "botao": "Até logo"
+        }
+    },
+    "opcao2": {
+        "botao": "Não estou me sentindo bem",
+        "resposta": "Obrigado por contar. Vamos chamar um profissional para ajudar você.",
+        "voice": "res://assets/hospital/enfermeira/audio/opcao2.ogg",
+        "opcao1": {
+            "botao": "Até logo"
+        }
+    },
+    "opcao3": {
+        "botao": "Até logo"
+    }
+}

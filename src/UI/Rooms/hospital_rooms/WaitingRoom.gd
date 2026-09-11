@@ -6,6 +6,9 @@ func _ready() -> void:
 func _on_Tv_button_pressed() -> void:
 	$"tv-off".visible = !$"tv-off".visible
 
+func _on_Button_pressed() -> void:
+	$DialogSystem.popup_centered()
+
 func _on_PainButton_pressed() -> void:
 	$DoiAqui/AnimationPlayer.play("fade_in")
 

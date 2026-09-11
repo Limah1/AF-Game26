@@ -1,11 +1,15 @@
 {
+    "profissional": "dentista",
     "texto": "Oi! Eu sou o Dra Amelia, dentista. Você tem escovado os dentes direitinho?",
+    "voice": "res://assets/hospital/dentista/audio/intro.ogg",
     "opcao1": {
         "botao": "Sim, todos os dias",
         "resposta": "Muito bem! Escovar os dentes evita infecções, que podem ser mais perigosas para quem tem anemia falciforme.",
+        "voice": "res://assets/hospital/dentista/audio/opcao1.ogg",
         "opcao1": {
             "botao": "Sim, e uso fio dental",
             "resposta": "Excelente! Continue assim e não esqueça das visitas ao dentista.",
+            "voice": "res://assets/hospital/dentista/audio/opcao1_opcao1.ogg",
             "opcao1": {
                 "botao": "Quero perguntar outra coisa"
             }
@@ -13,9 +17,11 @@
         "opcao2": {
             "botao": "Não uso fio dental",
             "resposta": "O fio dental tira restos de comida que a escova não alcança. Quer aprender a usar?",
+            "voice": "res://assets/hospital/dentista/audio/opcao1_opcao2.ogg",
             "opcao1": {
                 "botao": "Sim",
                 "resposta": "Você passa o fio entre os dentes, devagar, e remove a sujeira. Posso te mostrar na próxima visita.",
+                "voice": "res://assets/hospital/dentista/audio/opcao1_opcao2_opcao1.ogg",
                 "opcao1": {
                     "botao": "Quero perguntar outra coisa"
                 }
@@ -23,6 +29,7 @@
             "opcao2": {
                 "botao": "Não, obrigado",
                 "resposta": "Tudo bem! Mas lembre-se: ele é muito importante para evitar cáries.",
+                "voice": "res://assets/hospital/dentista/audio/opcao1_opcao2_opcao2.ogg",
                 "opcao1": {
                     "botao": "Quero perguntar outra coisa"
                 }
@@ -32,9 +39,11 @@
     "opcao2": {
         "botao": "Às vezes esqueço",
         "resposta": "Tente lembrar de escovar pelo menos 2 vezes por dia. Você quer uma dica para não esquecer?",
+        "voice": "res://assets/hospital/dentista/audio/opcao2.ogg",
         "opcao1": {
             "botao": "Sim",
             "resposta": "Você pode escovar sempre depois das refeições e antes de dormir. Deixe a escova em um lugar visível.",
+            "voice": "res://assets/hospital/dentista/audio/opcao2_opcao1.ogg",
             "opcao1": {
                 "botao": "Quero perguntar outra coisa"
             }
@@ -42,6 +51,7 @@
         "opcao2": {
             "botao": "Não",
             "resposta": "Ok, mas não esqueça que a higiene bucal evita problemas que podem causar dor e febre.",
+            "voice": "res://assets/hospital/dentista/audio/opcao2_opcao2.ogg",
             "opcao1": {
                 "botao": "Quero perguntar outra coisa"
             }

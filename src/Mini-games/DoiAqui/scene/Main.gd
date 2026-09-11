@@ -27,9 +27,26 @@ var number_history2 = []
 
 var timer: float
 var timer_max: float = 5
+export(bool) var voice_enabled = true
+
+const VOICE_ROOT = "res://assets/voices/doiaqui/"
 
 func _ready():
 	_setup_modular_player()
+
+func _exit_tree() -> void:
+	VoiceManager.stop()
+
+func _play_doi_voice(stem: String) -> void:
+	if !voice_enabled:
+		VoiceManager.stop()
+		return
+
+	VoiceManager.play_first_available([
+		VOICE_ROOT + stem + ".ogg",
+		VOICE_ROOT + stem + ".wav",
+		VOICE_ROOT + stem + ".mp3"
+	])
 
 func _setup_modular_player():
 	# Exposed switches support legacy, modular, or side-by-side comparison.
@@ -287,7 +304,8 @@ func setUpNewGame():
 		if(number2 == 2):
 			$askMessage/message.text = "febre."				
 		if(number2 == 3):
-			$askMessage/message.text = "ferimentos abertos."		
+			$askMessage/message.text = "ferimentos abertos."
+	_play_doi_voice("pain_" + typesPain[number2])
 	buttonsBlock = false 
 	
 	settingUp = false
@@ -308,6 +326,7 @@ func _on_Button_pressed(name):
 				life = max_life
 			$messageInterGame/message.text = "Você acertou!"
 			$sound_win.play()
+			_play_doi_voice("correct")
 			$messageInterGame/message.modulate = "#0BCE4C"			
 			$HealthDisplay.update_healthBar(life)
 		else:
@@ -316,6 +335,7 @@ func _on_Button_pressed(name):
 				life = 0
 			$messageInterGame/message.modulate = "#F4192E"
 			$lose.play()			
+			_play_doi_voice("incorrect")
 			$messageInterGame/message.text = "Você errou!"
 			$HealthDisplay.update_healthBar(life)
 		buttonsBlock = true
@@ -407,6 +427,7 @@ func _on_message_timeout():
 
 func _on_start_pressed():
 	$button.play()
+	_play_doi_voice("intro")
 	$InitialMessage/ColorRect.queue_free()
 	$InitialMessage/ColorRect2.queue_free()
 	$InitialMessage/Label.queue_free()

@@ -1,11 +1,15 @@
 {
+    "profissional": "pediatra",
     "texto": "Oi! Eu sou o Dr. João, seu pediatra. Como você está se sentindo hoje?",
+    "voice": "res://assets/hospital/pediatra/audio/intro.ogg",
     "opcao1": {
         "botao": "Estou me sentindo bem!",
         "resposta": "Que ótimo! Tem se lembrado de beber bastante água durante o dia?",
+        "voice": "res://assets/hospital/pediatra/audio/opcao1.ogg",
         "opcao1": {
             "botao": "Sim, todos os dias",
             "resposta": "Perfeito! A água ajuda o sangue a circular melhor e diminui o risco de crises.",
+            "voice": "res://assets/hospital/pediatra/audio/opcao1_opcao1.ogg",
             "opcao1": {
                 "botao": "Quero perguntar outra coisa"
             }
@@ -13,9 +17,11 @@
         "opcao2": {
             "botao": "Às vezes esqueço",
             "resposta": "Tente beber pelo menos um copo a cada hora. Quer que eu te ensine um truque para lembrar?",
+            "voice": "res://assets/hospital/pediatra/audio/opcao1_opcao2.ogg",
             "opcao1": {
                 "botao": "Sim",
                 "resposta": "Você pode usar um copinho colorido ou marcar no relógio! Assim fica mais divertido.",
+                "voice": "res://assets/hospital/pediatra/audio/opcao1_opcao2_opcao1.ogg",
                 "opcao1": {
                     "botao": "Quero perguntar outra coisa"
                 }
@@ -23,6 +29,7 @@
             "opcao2": {
                 "botao": "Não, tudo bem",
                 "resposta": "Tudo bem! Mas não esqueça: hidratação é muito importante.",
+                "voice": "res://assets/hospital/pediatra/audio/opcao1_opcao2_opcao2.ogg",
                 "opcao1": {
                     "botao": "Quero perguntar outra coisa"
                 }
@@ -32,12 +39,15 @@
     "opcao2": {
         "botao": "Estou cansado...",
         "resposta": "Entendo. O cansaço pode acontecer por causa da anemia falciforme. Você sentiu dor junto?",
+        "voice": "res://assets/hospital/pediatra/audio/opcao2.ogg",
         "opcao1": {
             "botao": "Sim, um pouco",
             "resposta": "É importante avisar um adulto quando sentir dor. Você quer saber como podemos ajudar nessas horas?",
+            "voice": "res://assets/hospital/pediatra/audio/opcao2_opcao1.ogg",
             "opcao1": {
                 "botao": "Sim",
                 "resposta": "Podemos descansar, beber água e, se necessário, tomar o remédio indicado.",
+                "voice": "res://assets/hospital/pediatra/audio/opcao2_opcao1_opcao1.ogg",
                 "opcao1": {
                     "botao": "Quero perguntar outra coisa"
                 }
@@ -45,6 +55,7 @@
             "opcao2": {
                 "botao": "Não",
                 "resposta": "Tudo bem! Mas não guarde a dor para você, combinado?",
+                "voice": "res://assets/hospital/pediatra/audio/opcao2_opcao1_opcao2.ogg",
                 "opcao1": {
                     "botao": "Quero perguntar outra coisa"
                 }
@@ -53,6 +64,7 @@
         "opcao2": {
             "botao": "Não, só cansado",
             "resposta": "O descanso e a hidratação ajudam. Também é bom evitar brincar de forma muito intensa.",
+            "voice": "res://assets/hospital/pediatra/audio/opcao2_opcao2.ogg",
             "opcao1": {
                 "botao": "Quero perguntar outra coisa"
             }

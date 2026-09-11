@@ -1,14 +1,19 @@
 {
+    "profissional": "psicologo",
     "texto": "Olá! Eu sou a Dr Walter, psicólogo. Como você tem se sentido com os cuidados da anemia falciforme?",
+    "voice": "res://assets/hospital/psicologo/audio/intro.ogg",
     "opcao1": {
         "botao": "Às vezes fico triste",
         "resposta": "É normal sentir isso. Você quer me contar o que te deixa triste?",
+        "voice": "res://assets/hospital/psicologo/audio/opcao1.ogg",
         "opcao1": {
             "botao": "Não posso brincar como antes",
             "resposta": "Podemos pensar em brincadeiras que não te cansem muito. Quer algumas ideias?",
+            "voice": "res://assets/hospital/psicologo/audio/opcao1_opcao1.ogg",
             "opcao1": {
                 "botao": "Sim",
                 "resposta": "Jogos de tabuleiro, desenho, contar histórias... Podemos inventar coisas novas também!",
+                "voice": "res://assets/hospital/psicologo/audio/opcao1_opcao1_opcao1.ogg",
                 "opcao1": {
                     "botao": "Quero perguntar outra coisa"
                 }
@@ -16,6 +21,7 @@
             "opcao2": {
                 "botao": "Não",
                 "resposta": "Tudo bem, mas lembre-se que sempre dá para se divertir de formas diferentes.",
+                "voice": "res://assets/hospital/psicologo/audio/opcao1_opcao1_opcao2.ogg",
                 "opcao1": {
                     "botao": "Quero perguntar outra coisa"
                 }
@@ -24,9 +30,11 @@
         "opcao2": {
             "botao": "Tenho medo das crises",
             "resposta": "O medo é normal, mas vamos pensar no que você pode fazer para se sentir mais seguro.",
+            "voice": "res://assets/hospital/psicologo/audio/opcao1_opcao2.ogg",
             "opcao1": {
                 "botao": "Chamar um adulto",
                 "resposta": "Isso mesmo! Além disso, beber água e descansar ajudam muito.",
+                "voice": "res://assets/hospital/psicologo/audio/opcao1_opcao2_opcao1.ogg",
                 "opcao1": {
                     "botao": "Quero perguntar outra coisa"
                 }
@@ -34,6 +42,7 @@
             "opcao2": {
                 "botao": "Tomar o remédio",
                 "resposta": "Correto! O remédio foi receitado para te proteger e deve ser tomado nos horários certos.",
+                "voice": "res://assets/hospital/psicologo/audio/opcao1_opcao2_opcao2.ogg",
                 "opcao1": {
                     "botao": "Quero perguntar outra coisa"
                 }
@@ -43,9 +52,11 @@
     "opcao2": {
         "botao": "Estou feliz hoje",
         "resposta": "Fico muito feliz! O que deixou o seu dia bom?",
+        "voice": "res://assets/hospital/psicologo/audio/opcao2.ogg",
         "opcao1": {
             "botao": "Brinquei com meus amigos",
             "resposta": "Amizades são importantes. É bom contar para eles sobre a anemia falciforme, assim eles entendem quando você precisa descansar.",
+            "voice": "res://assets/hospital/psicologo/audio/opcao2_opcao1.ogg",
             "opcao1": {
                 "botao": "Quero perguntar outra coisa"
             }
@@ -53,6 +64,7 @@
         "opcao2": {
             "botao": "Ganhei um presente",
             "resposta": "Que bom! Aproveite esses momentos, eles ajudam a manter nosso coração feliz.",
+            "voice": "res://assets/hospital/psicologo/audio/opcao2_opcao2.ogg",
             "opcao1": {
                 "botao": "Quero perguntar outra coisa"
             }

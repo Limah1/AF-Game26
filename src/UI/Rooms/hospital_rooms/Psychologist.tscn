@@ -172,7 +172,7 @@ rect_scale = Vector2( 5, 5 )
 text = "Psicologo"
 
 [node name="DialogSystem" parent="." instance=ExtResource( 3 )]
-json_path = "res://assets/dialogos/psicologista.json"
+json_path = "res://assets/hospital/psicologo/dialogo.json"
 npc_name = "Psicologo"
 
 [node name="Button" type="Button" parent="."]
