@@ -3,6 +3,8 @@ extends Control
 func _ready():
 	var sprites = CharacterController.all_sprites.hidratona
 	$applaude.play()
+	yield($applaude, "finished")
+	$stinger.play()
 	$sprites/r2.texture = sprites.run.r2
 	$sprites/r3.texture = sprites.run.r3
 	$sprites/r4.texture = sprites.run.r4

@@ -169,9 +169,11 @@ func _set_shower_enabled(enabled: bool) -> void:
 	if enabled:
 		chuveiro.restart()
 		$"Ativo 6/AnimationPlayer".play("open_faucet")
+		$faucet_open_sound.play()
 		$shower_sound.play()
 	else:
 		$"Ativo 6/AnimationPlayer".play("close_faucet")
+		$faucet_close_sound.play()
 		$shower_sound.stop()
 	$"Ativo 6/TurnOn".visible = not enabled
 	$"Ativo 6/TurnOff".visible = enabled

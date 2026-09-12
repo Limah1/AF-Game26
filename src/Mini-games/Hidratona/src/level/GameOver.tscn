@@ -15,6 +15,7 @@
 [ext_resource path="res://assets/Hidratona/LAYOUT/win-hidratona-obstaculos.png" type="Texture" id=13]
 [ext_resource path="res://src/UI/sound/sound_button.tscn" type="PackedScene" id=14]
 [ext_resource path="res://assets/sounds/sons editados/applause.wav" type="AudioStream" id=15]
+[ext_resource path="res://assets/sounds/sons editados/hidratona_conclusao_v01.ogg" type="AudioStream" id=20]
 [ext_resource path="res://assets/fonts/Raleway-Medium.ttf" type="DynamicFontData" id=16]
 [ext_resource path="res://assets/Hidratona/sprites/objects/agua.png" type="Texture" id=17]
 [ext_resource path="res://assets/Hidratona/sprites/objects/laranja.png" type="Texture" id=18]
@@ -273,6 +274,10 @@ autoplay = false
 
 [node name="applaude" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 15 )
+bus = "applause"
+
+[node name="stinger" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 20 )
 bus = "applause"
 
 [connection signal="pressed" from="GoHomeButton" to="." method="_on_GoHomeButton_pressed"]
