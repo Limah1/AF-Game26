@@ -4,11 +4,13 @@ var playing1 = false
 var playing2 = false
 var playing3 = false
 var is_doing_action = false
+var WashingHands = false
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	room_id = 4
+	$sink.set_meta("WashingHands", WashingHands)
 	AnimationController.sound_flush = $flush
 	AnimationController.toilet_paper = $toiler_paper
 	AnimationController.bathroom_animplayer = $AnimationPlayer
@@ -99,7 +101,12 @@ func _on_toilet_pressed() -> void:
 func _on_higienic_paper_pressed():
 	if(NecessityBars.use_toilet_paper):
 		NecessityBars.use_toilet_paper = false
-		AnimationController.return_from_toilet()
+		yield(AnimationController.return_from_toilet(), "completed")
+		# A higiene das mãos vira a próxima ação obrigatória da pia depois
+		# que o jogador termina de usar a privada.
+		WashingHands = true
+		$sink.set_meta("WashingHands", true)
+		print("[Bathroom] WashingHands=true: sink now opens hand-washing minigame")
 
 func _on_sink_pressed() -> void:
 	if(NecessityBars.soaked):
@@ -107,12 +114,16 @@ func _on_sink_pressed() -> void:
 	if is_doing_action:
 		print("[Bathroom] Cannot start sink: is_doing_action is already true")
 		return
-	print("[Bathroom] Starting sink action (escovar dentes)...")
+	print("[Bathroom] Starting sink action...")
 	is_doing_action = true
-	
-	var minigame_escovar = load("res://src/UI/Minigame_escovar/MiniGame_EscovarDentes.tscn").instance()
-	minigame_escovar.start(self)
-	add_child(minigame_escovar)
+
+	var minigame_path = "res://src/UI/Minigame_escovar/MiniGame_EscovarDentes.tscn"
+	if WashingHands:
+		minigame_path = "res://src/UI/Minigame_lavar_maos/MiniGame_LavarMaos.tscn"
+
+	var minigame = load(minigame_path).instance()
+	add_child(minigame)
+	minigame.start(self)
 	_set_navigation_menu_visible(false)
 
 func finish_escovar():
@@ -120,3 +131,10 @@ func finish_escovar():
 	_set_navigation_menu_visible(true)
 	is_doing_action = false
 	print("[Bathroom] Sink action finalized.")
+
+func finish_washing_hands():
+	WashingHands = false
+	$sink.set_meta("WashingHands", false)
+	_set_navigation_menu_visible(true)
+	is_doing_action = false
+	print("[Bathroom] WashingHands=false: hand-washing minigame finalized.")

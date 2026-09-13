@@ -1,6 +1,7 @@
 extends HouseRoom
 
 var playing = false
+var breathing_test_active = false
 const SLEEP_TEST_RIG_SCALE = 2.0
 const SLEEPING_HEAD_SCALE_MULTIPLIER = 3.0
 const LEGACY_HEAD_SHADER = preload("res://src/UI/LegacyHead.shader")
@@ -198,3 +199,18 @@ func _on_PersonalizationButton_pressed() -> void:
 		$PersonalizationScreen/Boy_closet.visible = true
 	elif CharacterController.boyorgirl == "Girl":
 		$PersonalizationScreen/Girl_closet.visible = true
+
+func _on_BreathingTestButton_pressed() -> void:
+	if breathing_test_active:
+		return
+
+	var minigame = load("res://src/Mini-games/Respiracao/Respiracao.tscn").instance()
+	breathing_test_active = true
+	$BreathingTestButton.hide()
+	add_child(minigame)
+	minigame.start(self)
+
+func finish_breathing_test() -> void:
+	breathing_test_active = false
+	if has_node("BreathingTestButton"):
+		$BreathingTestButton.show()
