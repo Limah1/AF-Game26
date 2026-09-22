@@ -4,7 +4,7 @@
 [ext_resource path="res://src/UI/Rooms/Yard.gd" type="Script" id=2]
 [ext_resource path="res://assets/Plataforma/objects/quintal-portao-fechado.png" type="Texture" id=3]
 [ext_resource path="res://assets/DoiAqui/objects/botao-tutorial-hover_1.png" type="Texture" id=4]
-[ext_resource path="res://src/Mini-games/Hidratona/src/temp/BotaoHospitalNormal.png" type="Texture" id=5]
+[ext_resource path="res://src/UI/Rooms/Hospital_Normal.png" type="Texture" id=5]
 [ext_resource path="res://assets/Plataforma/buttons/button-comecar.png" type="Texture" id=6]
 [ext_resource path="res://assets/Plataforma/buttons/button-comecar-hover.png" type="Texture" id=7]
 [ext_resource path="res://assets/Plataforma/buttons/pop-up-hidratona.png" type="Texture" id=8]
@@ -13,8 +13,8 @@
 [ext_resource path="res://assets/Match-3/circle.png" type="Texture" id=11]
 [ext_resource path="res://src/Assets/Audio/SFX/Home/gate_open.wav" type="AudioStream" id=12]
 [ext_resource path="res://src/UI/sound/sound_button.tscn" type="PackedScene" id=13]
-[ext_resource path="res://assets/Hidratona/sprites/objects/Frame 20.png" type="Texture" id=14]
-[ext_resource path="res://src/Mini-games/Hidratona/src/temp/BotaoHospitalHover.png" type="Texture" id=15]
+[ext_resource path="res://src/UI/Rooms/New_HospitalIcon.png" type="Texture" id=14]
+[ext_resource path="res://src/UI/Rooms/Hospital_Hover.png" type="Texture" id=15]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -248,10 +248,10 @@ position = Vector2( 485.212, 425.788 )
 texture = ExtResource( 8 )
 
 [node name="TutorialButton" type="TextureButton" parent="Hidratona_PopUp"]
-margin_left = 140.485
-margin_top = 466.696
-margin_right = 463.485
-margin_bottom = 579.696
+margin_left = 140.0
+margin_top = 467.0
+margin_right = 508.0
+margin_bottom = 594.0
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 4 )
 __meta__ = {
@@ -259,10 +259,10 @@ __meta__ = {
 }
 
 [node name="StartButton" type="TextureButton" parent="Hidratona_PopUp"]
-margin_left = 512.73
-margin_top = 466.696
-margin_right = 835.73
-margin_bottom = 579.696
+margin_left = 513.0
+margin_top = 467.0
+margin_right = 836.0
+margin_bottom = 580.0
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 7 )
 texture_hover = ExtResource( 7 )
@@ -303,10 +303,10 @@ scale = Vector2( 0.877228, 0.906337 )
 texture = ExtResource( 14 )
 
 [node name="HospitalButton" type="TextureButton" parent="Hidratona_PopUp2"]
-margin_left = 261.922
-margin_top = 673.059
-margin_right = 629.922
-margin_bottom = 800.059
+margin_left = 235.619
+margin_top = 632.376
+margin_right = 603.619
+margin_bottom = 759.376
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 5 )
 texture_hover = ExtResource( 15 )
@@ -329,8 +329,8 @@ anims/in = SubResource( 9 )
 anims/out = SubResource( 10 )
 
 [node name="opengate" type="AudioStreamPlayer" parent="."]
-bus = "SFX"
 stream = ExtResource( 12 )
+bus = "SFX"
 
 [node name="button_sound" parent="." instance=ExtResource( 13 )]
 autoplay = false
