@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="PlantData" load_steps=3 format=2]
+
+[ext_resource path="res://src/Mini-games/PlantCare/PlantData.gd" type="Script" id=1]
+[ext_resource path="res://src/PlantIcon.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+id = "plant_1"
+display_name = "Planta 1"
+icon = ExtResource( 2 )
+stage_sprites = [ ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ) ]
+plant_cost = 5
+sell_value = 10
+watering_seconds = 3.0
+wait_seconds = 10.0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/falling.mp3-6790c1da9a127c70f7270c1def41711e.mp3str"
+
+[deps]
+
+source_file="res://src/Assets/Audio/SFX/Minigames/Hidratona/falling.mp3"
+dest_files=[ "res://.import/falling.mp3-6790c1da9a127c70f7270c1def41711e.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

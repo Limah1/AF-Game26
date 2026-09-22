@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/choice1.ogg-4e56a718bd1909fc4bca94350fff82ae.oggstr"
+
+[deps]
+
+source_file="res://src/Assets/Audio/Voice/Hospital/Nurse/choice1.ogg"
+dest_files=[ "res://.import/choice1.ogg-4e56a718bd1909fc4bca94350fff82ae.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -3,8 +3,8 @@
 [ext_resource path="res://assets/Hidratona/sprites/actor/agachar.png" type="Texture" id=1]
 [ext_resource path="res://src/Mini-games/Hidratona/src/Actor/Player.gd" type="Script" id=2]
 [ext_resource path="res://src/Mini-games/Hidratona/src/objects/Buttons.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/sounds/sons editados/sprint.wav" type="AudioStream" id=4]
-[ext_resource path="res://assets/sounds/sons editados/freio.wav" type="AudioStream" id=5]
+[ext_resource path="res://src/Assets/Audio/SFX/Minigames/Hidratona/sprint.wav" type="AudioStream" id=4]
+[ext_resource path="res://src/Assets/Audio/SFX/Minigames/Hidratona/brake.wav" type="AudioStream" id=5]
 [ext_resource path="res://assets/All_Character_Sprites/Boy/hidratona-BOY/correr-4.png" type="Texture" id=12]
 [ext_resource path="res://assets/All_Character_Sprites/Boy/hidratona-BOY/correr-6.png" type="Texture" id=13]
 [ext_resource path="res://assets/All_Character_Sprites/Boy/hidratona-BOY/correr-3.png" type="Texture" id=14]
@@ -14,7 +14,7 @@
 [ext_resource path="res://assets/All_Character_Sprites/Boy/hidratona-BOY/correr-2.png" type="Texture" id=18]
 [ext_resource path="res://assets/All_Character_Sprites/Boy/hidratona-BOY/pular-1.png" type="Texture" id=19]
 [ext_resource path="res://assets/All_Character_Sprites/Boy/hidratona-BOY/pular-2.png" type="Texture" id=20]
-[ext_resource path="res://assets/sounds/sons editados/jump_sound.wav" type="AudioStream" id=21]
+[ext_resource path="res://src/Assets/Audio/SFX/Minigames/Hidratona/jump.wav" type="AudioStream" id=21]
 [ext_resource path="res://src/Mini-games/CharacterTest/CharacterRig.tscn" type="PackedScene" id=22]
 
 [sub_resource type="CapsuleShape2D" id=1]
@@ -786,12 +786,15 @@ anims/run = SubResource( 5 )
 anims/squat = SubResource( 6 )
 
 [node name="jump" type="AudioStreamPlayer2D" parent="."]
+bus = "SFX"
 stream = ExtResource( 21 )
 
 [node name="sprint" type="AudioStreamPlayer2D" parent="."]
+bus = "SFX"
 stream = ExtResource( 4 )
 
 [node name="freio_sound" type="AudioStreamPlayer2D" parent="."]
+bus = "SFX"
 stream = ExtResource( 5 )
 
 [connection signal="button_up" from="CanvasLayer/jump" to="." method="_on_jump_button_up"]

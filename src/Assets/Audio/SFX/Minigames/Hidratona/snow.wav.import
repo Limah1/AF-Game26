@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/snow.wav-d12b90def1d24688c16162fa67e1a998.sample"
+
+[deps]
+
+source_file="res://src/Assets/Audio/SFX/Minigames/Hidratona/snow.wav"
+dest_files=[ "res://.import/snow.wav-d12b90def1d24688c16162fa67e1a998.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

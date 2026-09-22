@@ -5,8 +5,8 @@
 [ext_resource path="res://assets/Plataforma/objects/espuma-banheiro.png" type="Texture" id=3]
 [ext_resource path="res://assets/Plataforma/objects/espuma-banheiro-2.png" type="Texture" id=4]
 [ext_resource path="res://assets/Plataforma/objects/banheiro-box.png" type="Texture" id=5]
-[ext_resource path="res://assets/sounds/sons editados/flushdns.wav" type="AudioStream" id=6]
-[ext_resource path="res://assets/sounds/sons editados/toilet_papper.wav" type="AudioStream" id=7]
+[ext_resource path="res://src/Assets/Audio/SFX/Home/toilet_flush.wav" type="AudioStream" id=6]
+[ext_resource path="res://src/Assets/Audio/SFX/Home/toilet_paper.wav" type="AudioStream" id=7]
 [ext_resource path="res://assets/Plataforma/objects/vazo.png" type="Texture" id=8]
 [ext_resource path="res://assets/Plataforma/rooms/bathroom/ph/4.png" type="Texture" id=9]
 [ext_resource path="res://assets/Plataforma/rooms/bathroom/ph/5.png" type="Texture" id=10]
@@ -529,9 +529,11 @@ scale = Vector2( 0.32262, 0.37196 )
 texture = ExtResource( 3 )
 
 [node name="flush" type="AudioStreamPlayer" parent="."]
+bus = "SFX"
 stream = ExtResource( 6 )
 
 [node name="toiler_paper" type="AudioStreamPlayer" parent="."]
+bus = "SFX"
 stream = ExtResource( 7 )
 
 [node name="toilet_paper_s" type="Node2D" parent="."]

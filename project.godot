@@ -64,6 +64,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/UI/HouseRoom.gd"
 }, {
+"base": "Resource",
+"class": "PlantData",
+"language": "GDScript",
+"path": "res://src/Mini-games/PlantCare/PlantData.gd"
+}, {
 "base": "Node2D",
 "class": "Temp_Tab",
 "language": "GDScript",
@@ -86,6 +91,7 @@ _global_script_class_icons={
 "CharacterVisualProfile": "",
 "Fruit": "",
 "HouseRoom": "",
+"PlantData": "",
 "Temp_Tab": "",
 "Tile": ""
 }
@@ -107,11 +113,12 @@ CharacterController="*res://src/CharacterController.gd"
 AnimationController="*res://src/AnimationController.gd"
 SaveController="*res://src/SaveController.gd"
 GlobalResource="*res://src/Mini-games/DoiAqui/resource.gd"
-BackgroundMusic="*res://assets/sounds/background_music.tscn"
+BackgroundMusic="*res://src/Audio/BackgroundMusic.tscn"
 NewCharData="*res://src/UI/new_char_data.gd"
 ModularTestVariables="*res://src/Mini-games/CharacterTest/ModularTestVariables.gd"
 ModularCharacterData="*res://src/ModularCharacterData.gd"
 VoiceManager="*res://src/Audio/VoiceManager.gd"
+AudioSettings="*res://src/Audio/AudioSettings.gd"
 
 [display]
 

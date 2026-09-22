@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/collect_watermelon.mp3-f0435f6f5712708384de4eb0e474cd61.mp3str"
+
+[deps]
+
+source_file="res://src/Assets/Audio/SFX/Minigames/Hidratona/collect_watermelon.mp3"
+dest_files=[ "res://.import/collect_watermelon.mp3-f0435f6f5712708384de4eb0e474cd61.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

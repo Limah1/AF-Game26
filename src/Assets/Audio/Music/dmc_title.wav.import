@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/dmc_title.wav-faa0c3a06b4bb3bdc95c1da56e6a6e24.sample"
+
+[deps]
+
+source_file="res://src/Assets/Audio/Music/dmc_title.wav"
+dest_files=[ "res://.import/dmc_title.wav-faa0c3a06b4bb3bdc95c1da56e6a6e24.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

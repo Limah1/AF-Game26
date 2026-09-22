@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/towel.wav-4c0627c2f32d0a779d3197ee9cbd6e7f.sample"
+
+[deps]
+
+source_file="res://src/Assets/Audio/SFX/Home/towel.wav"
+dest_files=[ "res://.import/towel.wav-4c0627c2f32d0a779d3197ee9cbd6e7f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

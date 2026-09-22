@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/zipper.wav-7159ac902623983d4b34d2e275c515bb.sample"
+
+[deps]
+
+source_file="res://src/Assets/Audio/SFX/Home/zipper.wav"
+dest_files=[ "res://.import/zipper.wav-7159ac902623983d4b34d2e275c515bb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -10,7 +10,7 @@ var _current_path = ""
 func _ready() -> void:
 	_player = AudioStreamPlayer.new()
 	_player.name = "VoicePlayer"
-	_player.bus = "voice"
+	_player.bus = "Voice"
 	add_child(_player)
 	_player.connect("finished", self, "_on_voice_finished")
 

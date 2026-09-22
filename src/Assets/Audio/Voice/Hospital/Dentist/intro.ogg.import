@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/intro.ogg-6b49def53a4f4d1204e701f9433367b5.oggstr"
+
+[deps]
+
+source_file="res://src/Assets/Audio/Voice/Hospital/Dentist/intro.ogg"
+dest_files=[ "res://.import/intro.ogg-6b49def53a4f4d1204e701f9433367b5.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

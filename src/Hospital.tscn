@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://src/Hospital.gd" type="Script" id=1]
 [ext_resource path="res://src/UI/RoomSlot.tscn" type="PackedScene" id=2]
@@ -10,9 +10,12 @@
 [ext_resource path="res://assets/Plataforma/buttons/button-sair.png" type="Texture" id=8]
 [ext_resource path="res://assets/Plataforma/Sprites Barra de Status + navegacao/pause.png" type="Texture" id=9]
 [ext_resource path="res://src/UI/Pause.gd" type="Script" id=10]
-[ext_resource path="res://assets/Plataforma/LofiHospital.wav" type="AudioStream" id=11]
-[ext_resource path="res://assets/sounds/Sons Atualizados/Snoring - sound effect - IT Tan.mp3" type="AudioStream" id=12]
+[ext_resource path="res://src/Assets/Audio/Music/hospital_lofi.wav" type="AudioStream" id=11]
+[ext_resource path="res://src/Assets/Audio/SFX/Hospital/snoring.mp3" type="AudioStream" id=12]
 [ext_resource path="res://src/Mini-games/CharacterTest/CharacterRig.tscn" type="PackedScene" id=13]
+[ext_resource path="res://src/UI/AudioButtonStyle.tres" type="StyleBox" id=97]
+[ext_resource path="res://src/audioIcon.png" type="Texture" id=98]
+[ext_resource path="res://src/Audio/AudioSettingsPanel.tscn" type="PackedScene" id=99]
 
 [sub_resource type="Animation" id=1]
 resource_name = "fade_in_out"
@@ -540,11 +543,11 @@ scale = Vector2( 0.25, 0.25 )
 [node name="w5" parent="Player/Player/player_sprites" index="6"]
 scale = Vector2( 0.25, 0.25 )
 
-[node name="sleeping" parent="Player/Player/player_sprites" index="7"]
+[node name="sleeping" parent="Player/Player/player_sprites" index="11"]
 visible = true
 scale = Vector2( 0.11, 0.11 )
 
-[node name="toilet" parent="Player/Player/player_sprites" index="8"]
+[node name="toilet" parent="Player/Player/player_sprites" index="12"]
 scale = Vector2( 0.25, 0.25 )
 
 [node name="ModularPlayer" parent="Player" instance=ExtResource( 13 )]
@@ -626,6 +629,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="AudioButton" type="Button" parent="Pause/Pause"]
+pause_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = 230.0
+margin_right = 32.0
+margin_bottom = 294.0
+hint_tooltip = "Configurações de áudio"
+custom_styles/hover = ExtResource( 97 )
+custom_styles/pressed = ExtResource( 97 )
+custom_styles/normal = ExtResource( 97 )
+icon = ExtResource( 98 )
+
 [node name="TextureButton" type="TextureButton" parent="Pause"]
 margin_left = 1767.0
 margin_top = 40.0
@@ -637,14 +656,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="AudioSettingsPanel" parent="Pause" instance=ExtResource( 99 )]
+
 [node name="hospital_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
+bus = "Music"
 
 [node name="snoring_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
+bus = "SFX"
 
 [connection signal="pressed" from="Pause/Pause/play-button" to="Pause" method="_on_playbutton_pressed"]
 [connection signal="pressed" from="Pause/Pause/play-button2" to="Pause" method="_on_playbutton2_pressed"]
+[connection signal="pressed" from="Pause/Pause/AudioButton" to="Pause/AudioSettingsPanel" method="open"]
 [connection signal="pressed" from="Pause/TextureButton" to="Pause" method="_on_TextureButton_pressed"]
 
 [editable path="Player/Player"]

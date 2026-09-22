@@ -29,7 +29,7 @@ var timer: float
 var timer_max: float = 5
 export(bool) var voice_enabled = true
 
-const VOICE_ROOT = "res://assets/voices/doiaqui/"
+const VOICE_ROOT = "res://src/Assets/Audio/Voice/Minigames/DoiAqui/"
 
 func _ready():
 	_setup_modular_player()

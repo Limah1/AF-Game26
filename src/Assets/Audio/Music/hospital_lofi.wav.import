@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/hospital_lofi.wav-918cd254d076912989896179e4a1d42a.sample"
+
+[deps]
+
+source_file="res://src/Assets/Audio/Music/hospital_lofi.wav"
+dest_files=[ "res://.import/hospital_lofi.wav-918cd254d076912989896179e4a1d42a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

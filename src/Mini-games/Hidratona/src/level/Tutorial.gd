@@ -16,6 +16,7 @@ func _process(delta):
 func _on_pause_button_up():
 	$CanvasLayer.layer = 128
 	$CanvasLayer/play_button.visible = true
+	$CanvasLayer/AudioButton.visible = true
 	$CanvasLayer/ColorRect.visible = true
 	var colorRect = get_tree().get_nodes_in_group("sun")
 	for i in colorRect:
@@ -25,6 +26,7 @@ func _on_pause_button_up():
 func _on_playbutton_button_up():
 	$CanvasLayer.layer = -128
 	$CanvasLayer/play_button.visible = false
+	$CanvasLayer/AudioButton.visible = false
 
 	$CanvasLayer/ColorRect.visible = false
 	var colorRect = get_tree().get_nodes_in_group("sun")

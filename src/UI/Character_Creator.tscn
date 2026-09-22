@@ -4,7 +4,7 @@
 [ext_resource path="res://src/UI/Assets/Frame 9 - branco.png" type="Texture" id=2]
 [ext_resource path="res://src/UI/Assets/Frame 6 - branco.png" type="Texture" id=3]
 [ext_resource path="res://assets/Character_Creator/btn gender-girl-on.png" type="Texture" id=4]
-[ext_resource path="res://assets/sounds/Sons Atualizados/SFX_Paper Handling and Turning Sequence.wav" type="AudioStream" id=5]
+[ext_resource path="res://src/Assets/Audio/SFX/Common/paper_turn.wav" type="AudioStream" id=5]
 [ext_resource path="res://assets/Hidratona/sprites/back-button.png" type="Texture" id=6]
 [ext_resource path="res://assets/Plataforma/Char_Select/button-confirmar.png" type="Texture" id=7]
 [ext_resource path="res://assets/Character_Creator/btn gender-boy-on.png" type="Texture" id=8]

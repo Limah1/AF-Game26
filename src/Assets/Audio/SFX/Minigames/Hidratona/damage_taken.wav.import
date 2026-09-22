@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/damage_taken.wav-eebf20bd04a72b7751d2ea281bc6f0ee.sample"
+
+[deps]
+
+source_file="res://src/Assets/Audio/SFX/Minigames/Hidratona/damage_taken.wav"
+dest_files=[ "res://.import/damage_taken.wav-eebf20bd04a72b7751d2ea281bc6f0ee.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/applause.wav-e943220dfffd1a08827f5ae9ed7de873.sample"
+
+[deps]
+
+source_file="res://src/Assets/Audio/SFX/Common/applause.wav"
+dest_files=[ "res://.import/applause.wav-e943220dfffd1a08827f5ae9ed7de873.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

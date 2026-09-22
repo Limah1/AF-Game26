@@ -7,7 +7,7 @@
 [ext_resource path="res://assets/Plataforma/Sprites Barra de Status + navegacao/dormir.png" type="Texture" id=5]
 [ext_resource path="res://assets/Plataforma/Sprites Barra de Status + navegacao/brincar.png" type="Texture" id=6]
 [ext_resource path="res://src/NecessityBarsManager.gd" type="Script" id=7]
-[ext_resource path="res://assets/Plataforma/Sprites Barra de Status + navegacao/mapa.png" type="Texture" id=8]
+[ext_resource path="res://assets/Plataforma/Sprites Barra de Status + navegacao/NewMapButton.png" type="Texture" id=8]
 [ext_resource path="res://assets/MapAssets/PlantaCasa.jpg" type="Texture" id=9]
 [ext_resource path="res://src/UI/Mapa_Hospital.jpg" type="Texture" id=10]
 [ext_resource path="res://assets/Plataforma/buttons/button-sala-on.png" type="Texture" id=13]
@@ -84,18 +84,18 @@ nine_patch_stretch = true
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -1.68179
-margin_bottom = -1.68176
+margin_top = -0.932644
+margin_bottom = -0.932617
 color = Color( 1, 1, 1, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MapButton" type="ColorRect" parent="."]
-margin_left = 32.0
-margin_top = 40.0
-margin_right = 296.0
-margin_bottom = 198.0
+margin_left = 81.0815
+margin_top = 47.551
+margin_right = 272.081
+margin_bottom = 151.551
 color = Color( 1, 1, 1, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -103,14 +103,19 @@ __meta__ = {
 
 [node name="MenuButton" type="Button" parent="MapButton"]
 modulate = Color( 1, 1, 1, 0 )
-margin_right = 299.0
-margin_bottom = 201.0
+anchor_top = -0.0200937
+anchor_bottom = -0.0200937
+margin_left = 22.653
+margin_top = -3.60071
+margin_right = 219.653
+margin_bottom = 108.399
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Mapa" type="Sprite" parent="MapButton"]
-position = Vector2( 128, 96 )
+position = Vector2( 154.49, 48.081 )
+scale = Vector2( 3.70196, 3.43401 )
 texture = ExtResource( 8 )
 
 [node name="left" type="TextureButton" parent="."]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/bath_faucet_open.mp3-f8f60d318c0d670796ef69060372b75c.mp3str"
+
+[deps]
+
+source_file="res://src/Assets/Audio/SFX/Home/bath_faucet_open.mp3"
+dest_files=[ "res://.import/bath_faucet_open.mp3-f8f60d318c0d670796ef69060372b75c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

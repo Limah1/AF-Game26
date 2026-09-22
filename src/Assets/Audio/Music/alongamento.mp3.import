@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/alongamento.mp3-f757e0af24c5a66a957810ad17d7e2c9.mp3str"
+
+[deps]
+
+source_file="res://src/Assets/Audio/Music/alongamento.mp3"
+dest_files=[ "res://.import/alongamento.mp3-f757e0af24c5a66a957810ad17d7e2c9.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

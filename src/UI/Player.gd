@@ -5,14 +5,18 @@ const BODY_SKIN_SHADER = preload("res://src/UI/ShaderPersonagem.tres")
 const LEGACY_R1_SCALE = 1.38
 const LEGACY_IDLE_WALK_HEAD_OFFSET = Vector2(0, 8)
 const WEATHER_SPRITE_SCALE = Vector2(1.5, 1.5)
-const OUTFIT_SPRITE_NAMES = ["idle", "w1", "w2", "w3", "w4", "w5"]
+const OUTFIT_SPRITE_NAMES = ["idle", "w1", "w2", "w3", "w4", "w5", "w6", "w7", "w8", "w9"]
 const HEADLESS_OUTFIT_RUN_SPRITES = {
 	"Rainy": [
-		preload("res://src/Mini-games/Hidratona/src/level/rain/rc_1_no_head.png"),
-		preload("res://src/Mini-games/Hidratona/src/level/rain/rc_2_no_head.png"),
-		preload("res://src/Mini-games/Hidratona/src/level/rain/rc_3_no_head.png"),
-		preload("res://src/Mini-games/Hidratona/src/level/rain/rc_4_no_head.png"),
-		preload("res://src/Mini-games/Hidratona/src/level/rain/rc_5_no_head.png")
+		preload("res://src/Mini-games/Hidratona/src/level/rain/an_capa_1.png"),
+		preload("res://src/Mini-games/Hidratona/src/level/rain/an_capa_2.png"),
+		preload("res://src/Mini-games/Hidratona/src/level/rain/an_capa_3.png"),
+		preload("res://src/Mini-games/Hidratona/src/level/rain/an_capa_4.png"),
+		preload("res://src/Mini-games/Hidratona/src/level/rain/an_capa_5.png"),
+		preload("res://src/Mini-games/Hidratona/src/level/rain/an_capa_6.png"),
+		preload("res://src/Mini-games/Hidratona/src/level/rain/an_capa_7.png"),
+		preload("res://src/Mini-games/Hidratona/src/level/rain/an_capa_8.png"),
+		preload("res://src/Mini-games/Hidratona/src/level/rain/an_capa_9.png")
 	],
 	"Snowy": [
 		preload("res://src/Mini-games/Hidratona/src/level/snow/rs_1_no_head.png"),
@@ -101,11 +105,18 @@ func _apply_weather_outfit() -> bool:
 	# These are the existing headless Hidratona bodies. The legacy customized
 	# head is kept as a separate sprite and follows the same walk animation.
 	$player_sprites/idle.texture = run_sprites[0]
-	$player_sprites/w1.texture = run_sprites[0]
-	$player_sprites/w2.texture = run_sprites[1]
-	$player_sprites/w3.texture = run_sprites[2]
-	$player_sprites/w4.texture = run_sprites[3]
-	$player_sprites/w5.texture = run_sprites[4]
+	for frame_index in range(1, run_sprites.size() + 1):
+		var sprite_name = "w" + str(frame_index)
+		if has_node("player_sprites/" + sprite_name):
+			get_node("player_sprites/" + sprite_name).texture = run_sprites[frame_index - 1]
+	# The old rainy/snowy sets have fewer frames. Clear unused slots so they do
+	# not leak into another outfit or into the normal animation.
+	for frame_index in range(run_sprites.size() + 1, OUTFIT_SPRITE_NAMES.size()):
+		var extra_sprite = get_node("player_sprites/w" + str(frame_index))
+		extra_sprite.texture = null
+		extra_sprite.visible = false
+	if Anim_Player.current_animation == "walk":
+		Anim_Player.play("walk_rain")
 	_refresh_legacy_head()
 	if skin_tone_rect != null:
 		skin_tone_rect.visible = false
@@ -118,12 +129,17 @@ func _restore_normal_sprite_layout() -> void:
 
 	weather_outfit_active = false
 	active_outfit = "Normal"
+	if Anim_Player.current_animation == "walk_rain":
+		Anim_Player.play("walk")
 	for sprite_name in OUTFIT_SPRITE_NAMES:
 		var sprite = get_node("player_sprites/" + sprite_name)
 		var layout = normal_sprite_layout[sprite_name]
 		sprite.scale = layout.scale
 		sprite.position = layout.position
 		sprite.use_parent_material = layout.use_parent_material
+		if sprite_name != "idle" and sprite_name != "w1" and sprite_name != "w2" and sprite_name != "w3" and sprite_name != "w4" and sprite_name != "w5":
+			sprite.texture = null
+			sprite.visible = false
 	apply_visual_consistency()
 
 func refresh_outfit() -> void:
@@ -224,7 +240,9 @@ func _sync_legacy_head_visibility() -> void:
 	var idle_or_walking = $player_sprites/idle.visible or \
 		$player_sprites/w1.visible or $player_sprites/w2.visible or \
 		$player_sprites/w3.visible or $player_sprites/w4.visible or \
-		$player_sprites/w5.visible
+		$player_sprites/w5.visible or $player_sprites/w6.visible or \
+		$player_sprites/w7.visible or $player_sprites/w8.visible or \
+		$player_sprites/w9.visible
 	var toilet_head_offset = Vector2(-8, 89) if toilet_visible else Vector2.ZERO
 	var toilet_neck_offset = Vector2(-8, 89) if toilet_visible else Vector2.ZERO
 	var toilet_body_offset = Vector2(0, 60) if toilet_visible else Vector2.ZERO
@@ -234,7 +252,9 @@ func _sync_legacy_head_visibility() -> void:
 	var body_visible = $player_sprites/idle.visible or \
 		$player_sprites/w1.visible or $player_sprites/w2.visible or \
 		$player_sprites/w3.visible or $player_sprites/w4.visible or \
-		$player_sprites/w5.visible or toilet_visible
+		$player_sprites/w5.visible or $player_sprites/w6.visible or \
+		$player_sprites/w7.visible or $player_sprites/w8.visible or \
+		$player_sprites/w9.visible or toilet_visible
 	legacy_head.visible = body_visible and legacy_head.texture != null
 	if skin_tone_rect != null:
 		skin_tone_rect.visible = body_visible and legacy_head.texture != null and not weather_outfit_active
@@ -251,12 +271,12 @@ func _set_legacy_player_scale() -> void:
 func Walk_to_Right():
 	_set_legacy_player_scale()
 	$player_sprites.scale.x = abs($player_sprites.scale.x)
-	Anim_Player.play("walk")
+	Anim_Player.play("walk_rain" if weather_outfit_active else "walk")
 
 func Walk_to_Left():
 	_set_legacy_player_scale()
 	$player_sprites.scale.x = -abs($player_sprites.scale.x)
-	Anim_Player.play("walk")
+	Anim_Player.play("walk_rain" if weather_outfit_active else "walk")
 
 func Idle():
 	_set_legacy_player_scale()

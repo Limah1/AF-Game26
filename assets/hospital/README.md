@@ -1,24 +1,19 @@
 # Áudios e diálogos do Hospital
 
-Cada profissional possui uma pasta própria com o JSON de falas e a pasta de
-áudio correspondente:
+Cada profissional mantém seu JSON de falas nesta pasta. As dublagens ficam
+centralizadas em `src/Assets/Audio/Voice/Hospital`:
 
 ```text
 assets/hospital/
 ├── dentista/
-│   ├── dialogo.json
-│   └── audio/
+│   └── dialogo.json
 ├── pediatra/
-│   ├── dialogo.json
-│   └── audio/
+│   └── dialogo.json
 ├── psicologo/
-│   ├── dialogo.json
-│   └── audio/
+│   └── dialogo.json
 └── enfermeira/
-    ├── dialogo.json
-    └── audio/
+    └── dialogo.json
 ```
 
-Os caminhos dos JSONs são definidos explicitamente nas cenas de cada sala.
-Os áudios serão vinculados às falas na próxima etapa, quando o botão de voz
-for adicionado ao painel.
+Os caminhos dos JSONs são definidos nas cenas de cada sala e cada campo
+`voice` aponta para a dublagem centralizada.

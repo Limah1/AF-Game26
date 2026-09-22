@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/collision_heavy.ogg-b350d9885c51aa3481b6f48011825c05.oggstr"
+
+[deps]
+
+source_file="res://src/Assets/Audio/SFX/Minigames/Hidratona/collision_heavy.ogg"
+dest_files=[ "res://.import/collision_heavy.ogg-b350d9885c51aa3481b6f48011825c05.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

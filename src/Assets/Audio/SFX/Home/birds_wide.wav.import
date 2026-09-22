@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/birds_wide.wav-d184279192fc06204a1d2e98177f61bb.sample"
+
+[deps]
+
+source_file="res://src/Assets/Audio/SFX/Home/birds_wide.wav"
+dest_files=[ "res://.import/birds_wide.wav-d184279192fc06204a1d2e98177f61bb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

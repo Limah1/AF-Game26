@@ -46,6 +46,7 @@ Ficam na pasta `src/Mini-games/`:
 
 ## 6. Sons
 Efeitos sonoros e músicas divididos em:
-- `assets/sounds/sons editados/`
-- `assets/sounds/Sons Atualizados/`
+- `src/Assets/Audio/Music/`
+- `src/Assets/Audio/SFX/`
+- `src/Assets/Audio/Voice/`
 Tocados por nodes `AudioStreamPlayer` e chamados via código (ex: `_on_Button_pressed()`).

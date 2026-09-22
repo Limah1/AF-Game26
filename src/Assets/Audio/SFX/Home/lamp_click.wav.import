@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/lamp_click.wav-8f42e447cd2ef08da31f62a34f3088ba.sample"
+
+[deps]
+
+source_file="res://src/Assets/Audio/SFX/Home/lamp_click.wav"
+dest_files=[ "res://.import/lamp_click.wav-8f42e447cd2ef08da31f62a34f3088ba.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/watering.mp3-9a9d0b2406a9c593b9c9d79f4d0c96af.mp3str"
+
+[deps]
+
+source_file="res://src/Assets/Audio/SFX/Minigames/PlantCare/watering.mp3"
+dest_files=[ "res://.import/watering.mp3-9a9d0b2406a9c593b9c9d79f4d0c96af.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -14,7 +14,7 @@
 [ext_resource path="res://src/UI/sound/sound_button.tscn" type="PackedScene" id=12]
 [ext_resource path="res://src/UI/sound/selector_gender.tscn" type="PackedScene" id=13]
 [ext_resource path="res://assets/Hidratona/sprites/back-button.png" type="Texture" id=14]
-[ext_resource path="res://assets/sounds/Sons Atualizados/SFX_Paper Handling and Turning Sequence.wav" type="AudioStream" id=15]
+[ext_resource path="res://src/Assets/Audio/SFX/Common/paper_turn.wav" type="AudioStream" id=15]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.94902, 0.94902, 0.94902, 1 )

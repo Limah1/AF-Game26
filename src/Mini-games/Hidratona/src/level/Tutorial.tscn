@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://src/Mini-games/Hidratona/src/Actor/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Mini-games/Hidratona/src/level/tutorial_floor.gd" type="Script" id=2]
@@ -16,6 +16,9 @@
 [ext_resource path="res://assets/Hidratona/sprites/right-arrow.png" type="Texture" id=14]
 [ext_resource path="res://src/Mini-games/Hidratona/src/ui/Start.tscn" type="PackedScene" id=15]
 [ext_resource path="res://assets/Match-3/sprites/tutorial-dedo.png" type="Texture" id=16]
+[ext_resource path="res://src/Audio/AudioSettingsPanel.tscn" type="PackedScene" id=99]
+[ext_resource path="res://src/audioIcon.png" type="Texture" id=98]
+[ext_resource path="res://src/UI/AudioButtonStyle.tres" type="StyleBox" id=97]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -893,6 +896,26 @@ wait_time = 10.0
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/sun = SubResource( 15 )
 
+[node name="AudioButton" type="Button" parent="CanvasLayer"]
+pause_mode = 2
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = 230.0
+margin_right = 32.0
+margin_bottom = 294.0
+icon = ExtResource( 98 )
+hint_tooltip = "Configurações de áudio"
+custom_styles/normal = ExtResource( 97 )
+custom_styles/hover = ExtResource( 97 )
+custom_styles/pressed = ExtResource( 97 )
+text = ""
+
+[node name="AudioSettingsPanel" parent="CanvasLayer" instance=ExtResource( 99 )]
+
 [connection signal="button_down" from="TutorialController/feedback/jump" to="TutorialController" method="_on_jump_button_down"]
 [connection signal="button_up" from="TutorialController/feedback/jump" to="TutorialController" method="_on_jump_button_up"]
 [connection signal="button_down" from="TutorialController/feedback/down" to="TutorialController" method="_on_down_button_down"]
@@ -902,6 +925,7 @@ anims/sun = SubResource( 15 )
 [connection signal="button_up" from="CanvasLayer/play_button" to="." method="_on_playbutton_button_up"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_Timer2_timeout"]
+[connection signal="pressed" from="CanvasLayer/AudioButton" to="CanvasLayer/AudioSettingsPanel" method="open"]
 
 [editable path="Player"]
 [editable path="Player/CanvasLayer"]

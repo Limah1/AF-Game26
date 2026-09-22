@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/choice1_choice2_choice2.ogg-6da696a42ed8a8501f19dbb9c6d3d9f2.oggstr"
+
+[deps]
+
+source_file="res://src/Assets/Audio/Voice/Hospital/Psychologist/choice1_choice2_choice2.ogg"
+dest_files=[ "res://.import/choice1_choice2_choice2.ogg-6da696a42ed8a8501f19dbb9c6d3d9f2.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

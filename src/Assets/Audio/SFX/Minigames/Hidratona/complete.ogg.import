@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/complete.ogg-d7915a6cb99352e0ddab11dcfad33d38.oggstr"
+
+[deps]
+
+source_file="res://src/Assets/Audio/SFX/Minigames/Hidratona/complete.ogg"
+dest_files=[ "res://.import/complete.ogg-d7915a6cb99352e0ddab11dcfad33d38.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

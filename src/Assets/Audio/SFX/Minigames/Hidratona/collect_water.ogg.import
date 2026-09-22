@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/collect_water.ogg-98ed47dd750d8d757a0d257889082f58.oggstr"
+
+[deps]
+
+source_file="res://src/Assets/Audio/SFX/Minigames/Hidratona/collect_water.ogg"
+dest_files=[ "res://.import/collect_water.ogg-98ed47dd750d8d757a0d257889082f58.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

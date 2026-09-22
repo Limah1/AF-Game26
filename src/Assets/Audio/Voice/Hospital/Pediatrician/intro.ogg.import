@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/intro.ogg-5db5b7141e7a235a602be8adfdf10af9.oggstr"
+
+[deps]
+
+source_file="res://src/Assets/Audio/Voice/Hospital/Pediatrician/intro.ogg"
+dest_files=[ "res://.import/intro.ogg-5db5b7141e7a235a602be8adfdf10af9.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

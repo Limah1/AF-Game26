@@ -1,8 +1,9 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://assets/sounds/Sons Atualizados/SFX_User Interface, Click, Button, Double Click, Fast, Phone Tap SND68342.wav" type="AudioStream" id=1]
+[ext_resource path="res://src/Assets/Audio/SFX/Common/ui_click.wav" type="AudioStream" id=1]
 
 [node name="button_sound" type="AudioStreamPlayer"]
+bus = "SFX"
 pause_mode = 2
 stream = ExtResource( 1 )
 autoplay = true

@@ -13,7 +13,7 @@
 [ext_resource path="res://assets/Plataforma/ambientes/janela_noite.png" type="Texture" id=12]
 [ext_resource path="res://assets/Plataforma/ambientes/janela_sol.png" type="Texture" id=13]
 [ext_resource path="res://assets/Plataforma/ambientes/janela_neve.png" type="Texture" id=14]
-[ext_resource path="res://assets/sounds/sons editados/open_refrigerator.wav" type="AudioStream" id=15]
+[ext_resource path="res://src/Assets/Audio/SFX/Home/fridge_open.wav" type="AudioStream" id=15]
 [ext_resource path="res://assets/Particulas/textures/1024/alpha/effect_2.png" type="Texture" id=16]
 
 [sub_resource type="StyleBoxEmpty" id=1]
@@ -324,6 +324,7 @@ anims/in = SubResource( 13 )
 anims/out = SubResource( 14 )
 
 [node name="audio_open_refri" type="AudioStreamPlayer" parent="."]
+bus = "SFX"
 stream = ExtResource( 15 )
 
 [connection signal="pressed" from="Eat_button" to="." method="_on_Eat_button_pressed"]

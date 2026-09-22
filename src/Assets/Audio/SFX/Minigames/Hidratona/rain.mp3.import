@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/rain.mp3-5ccd1bbd518d3ba7c9295fdb0cdd8900.mp3str"
+
+[deps]
+
+source_file="res://src/Assets/Audio/SFX/Minigames/Hidratona/rain.mp3"
+dest_files=[ "res://.import/rain.mp3-5ccd1bbd518d3ba7c9295fdb0cdd8900.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

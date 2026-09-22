@@ -22,7 +22,7 @@
 [ext_resource path="res://assets/Match-3/buttons/button-ir-de-novo.png" type="Texture" id=20]
 [ext_resource path="res://assets/Match-3/buttons/button-ir-de-novo-hover.png" type="Texture" id=21]
 [ext_resource path="res://assets/Match-3/buttons/button-ir-casa.png" type="Texture" id=22]
-[ext_resource path="res://assets/sounds/sons editados/applause.wav" type="AudioStream" id=23]
+[ext_resource path="res://src/Assets/Audio/SFX/Common/applause.wav" type="AudioStream" id=23]
 [ext_resource path="res://src/UI/ShaderPersonagem.tres" type="Material" id=24]
 
 [sub_resource type="ParticlesMaterial" id=1]
@@ -409,6 +409,7 @@ __meta__ = {
 }
 
 [node name="applause" type="AudioStreamPlayer2D" parent="."]
+bus = "SFX"
 stream = ExtResource( 23 )
 
 [connection signal="pressed" from="VoltarParaCasa" to="." method="_on_VoltarParaCasa_pressed"]

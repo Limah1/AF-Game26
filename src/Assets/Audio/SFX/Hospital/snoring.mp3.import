@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/snoring.mp3-0985efbe5c19c6c006f8052f09671347.mp3str"
+
+[deps]
+
+source_file="res://src/Assets/Audio/SFX/Hospital/snoring.mp3"
+dest_files=[ "res://.import/snoring.mp3-0985efbe5c19c6c006f8052f09671347.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

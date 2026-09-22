@@ -11,7 +11,7 @@
 [ext_resource path="res://assets/Plataforma/buttons/button-fechar.png" type="Texture" id=9]
 [ext_resource path="res://assets/Plataforma/objects/quintal-portao-aberto.png" type="Texture" id=10]
 [ext_resource path="res://assets/Match-3/circle.png" type="Texture" id=11]
-[ext_resource path="res://assets/sounds/sons editados/Metal Door Open Sound Effect.wav" type="AudioStream" id=12]
+[ext_resource path="res://src/Assets/Audio/SFX/Home/gate_open.wav" type="AudioStream" id=12]
 [ext_resource path="res://src/UI/sound/sound_button.tscn" type="PackedScene" id=13]
 [ext_resource path="res://assets/Hidratona/sprites/objects/Frame 20.png" type="Texture" id=14]
 [ext_resource path="res://src/Mini-games/Hidratona/src/temp/BotaoHospitalHover.png" type="Texture" id=15]
@@ -329,6 +329,7 @@ anims/in = SubResource( 9 )
 anims/out = SubResource( 10 )
 
 [node name="opengate" type="AudioStreamPlayer" parent="."]
+bus = "SFX"
 stream = ExtResource( 12 )
 
 [node name="button_sound" parent="." instance=ExtResource( 13 )]

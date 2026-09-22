@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://assets/All_Character_Sprites/Boy/Walk/boy-1/boy-1-3.png" type="Texture" id=2]
@@ -11,10 +11,10 @@
 [ext_resource path="res://assets/Plataforma/objects/espuma.png" type="Texture" id=9]
 [ext_resource path="res://assets/All_Character_Sprites/Boy/Walk/boy-1/boy-1-1.png" type="Texture" id=10]
 [ext_resource path="res://assets/All_Character_Sprites/Boy/boy-dormindo/boy-1-dormindo.png" type="Texture" id=11]
-[ext_resource path="res://assets/sounds/Sons Atualizados/SFX_Rain, Vegetation, Rural Palm Forest, Light, Loop SND122357 1.wav" type="AudioStream" id=12]
-[ext_resource path="res://assets/sounds/Sons Atualizados/SFX_AMBIENCE Birds Forest Quiet Wind Loop 02.wav" type="AudioStream" id=13]
-[ext_resource path="res://assets/sounds/Sons Atualizados/SFX_birds_outside_002_wide.wav" type="AudioStream" id=14]
-[ext_resource path="res://assets/Plataforma/LofiHospital.wav" type="AudioStream" id=15]
+[ext_resource path="res://src/Assets/Audio/SFX/Home/rain_ambience.wav" type="AudioStream" id=12]
+[ext_resource path="res://src/Assets/Audio/SFX/Home/forest_ambience.wav" type="AudioStream" id=13]
+[ext_resource path="res://src/Assets/Audio/SFX/Home/birds_wide.wav" type="AudioStream" id=14]
+[ext_resource path="res://src/Assets/Audio/Music/hospital_lofi.wav" type="AudioStream" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 30.4641, 30.1339 )
@@ -107,6 +107,54 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("player_sprites/w6:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("player_sprites/w7:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("player_sprites/w8:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("player_sprites/w9:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
@@ -211,8 +259,192 @@ tracks/7/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/8/type = "value"
+tracks/8/path = NodePath("player_sprites/w6:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("player_sprites/w7:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("player_sprites/w8:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("player_sprites/w9:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=5]
+length = 0.9
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("player_sprites/idle:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("player_sprites/w1:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("player_sprites/w2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("player_sprites/w3:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("player_sprites/w4:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("player_sprites/w5:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("player_sprites/sleeping:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("player_sprites/w6:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("player_sprites/w7:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("player_sprites/w8:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("player_sprites/w9:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0.8, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=7]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -363,6 +595,22 @@ visible = false
 position = Vector2( 0, 70 )
 texture = ExtResource( 6 )
 
+[node name="w6" type="Sprite" parent="player_sprites"]
+visible = false
+position = Vector2( 0, 70 )
+
+[node name="w7" type="Sprite" parent="player_sprites"]
+visible = false
+position = Vector2( 0, 70 )
+
+[node name="w8" type="Sprite" parent="player_sprites"]
+visible = false
+position = Vector2( 0, 70 )
+
+[node name="w9" type="Sprite" parent="player_sprites"]
+visible = false
+position = Vector2( 0, 70 )
+
 [node name="sleeping" type="Sprite" parent="player_sprites"]
 visible = false
 position = Vector2( 0, 93.913 )
@@ -386,9 +634,10 @@ texture = ExtResource( 9 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
-anims/hide_everything = SubResource( 3 )
-anims/idle = SubResource( 4 )
-anims/walk = SubResource( 5 )
+	anims/hide_everything = SubResource( 3 )
+	anims/idle = SubResource( 4 )
+	anims/walk = SubResource( 7 )
+	anims/walk_rain = SubResource( 5 )
 
 [node name="Area2D" type="Area2D" parent="."]
 visible = false
@@ -401,15 +650,19 @@ shape = SubResource( 6 )
 
 [node name="sunny_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 14 )
-bus = "bemtivi"
+volume_db = -20.3684
+bus = "SFX"
 
 [node name="rainny_sound" type="AudioStreamPlayer" parent="."]
+bus = "SFX"
 stream = ExtResource( 12 )
 
 [node name="snow_sound" type="AudioStreamPlayer" parent="."]
+bus = "SFX"
 stream = ExtResource( 13 )
 
 [node name="hospital" type="AudioStreamPlayer" parent="."]
+bus = "Music"
 stream = ExtResource( 15 )
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

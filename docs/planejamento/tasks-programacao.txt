@@ -29,9 +29,9 @@ MATCH-3
 NARRACAO E MENSAGENS
 ====================
 
-[ ] Criar um componente reutilizavel de narracao.
-[ ] Associar cada mensagem a um arquivo de audio.
-[ ] Iniciar a narracao junto com a exibicao da mensagem.
+[X] Criar um componente reutilizavel de narracao.
+[X] Associar cada mensagem a um arquivo de audio.
+[X] Iniciar a narracao junto com a exibicao da mensagem.
 [ ] Manter o texto visivel ate o termino do audio.
 [ ] Implementar botao de repetir narracao.
 [ ] Implementar botao de interromper ou pausar narracao.
@@ -44,8 +44,8 @@ NARRACAO E MENSAGENS
 GUARDA-ROUPA NO QUARTO
 ======================
 
-[ ] Transformar o guarda-roupa existente em personalizacao real de roupas.
-[ ] Abrir a interface ao clicar no armario ou nas roupas.
+[X] Transformar o guarda-roupa existente em personalizacao real de roupas.
+[X] Abrir a interface ao clicar no armario ou nas roupas.
 [ ] Configurar areas clicaveis dos itens.
 [ ] Exibir previa da roupa selecionada no personagem.
 [ ] Permitir alternar entre saia e calca.
@@ -178,7 +178,7 @@ ESTABILIZACAO E TESTES
 INTERFACES TECNICAS COMPARTILHADAS
 =================================
 
-[ ] Criar um servico unico de aparencia para aplicar personagem, roupa e pose.
+[X] Criar um servico unico de aparencia para aplicar personagem, roupa e pose.
 [ ] Criar um controlador compartilhado de narracao com play, pause, stop e repeat.
 [ ] Padronizar minigames com eventos de inicio, conclusao, cancelamento e retorno.
 [ ] Centralizar rotas de mapas e cenas para evitar caminhos duplicados.

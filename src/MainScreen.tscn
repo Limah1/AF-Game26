@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://src/MainScreen.gd" type="Script" id=1]
 [ext_resource path="res://src/UI/RoomSlot.tscn" type="PackedScene" id=2]
@@ -8,11 +8,14 @@
 [ext_resource path="res://src/Slots.gd" type="Script" id=6]
 [ext_resource path="res://assets/Hidratona/sprites/objects/play-button (1).png" type="Texture" id=7]
 [ext_resource path="res://assets/Plataforma/buttons/button-sair.png" type="Texture" id=8]
-[ext_resource path="res://assets/Plataforma/Sprites Barra de Status + navegacao/pause.png" type="Texture" id=9]
+[ext_resource path="res://assets/Plataforma/Sprites Barra de Status + navegacao/NewPauseButton.png" type="Texture" id=9]
 [ext_resource path="res://src/UI/Pause.gd" type="Script" id=10]
 [ext_resource path="res://src/UI/ShaderPersonagem.tres" type="Material" id=11]
 [ext_resource path="res://assets/Sprites-v3/boy-a/boy-a-r1-m0.png" type="Texture" id=12]
 [ext_resource path="res://src/Mini-games/CharacterTest/CharacterRig.tscn" type="PackedScene" id=13]
+[ext_resource path="res://src/audio-icon-graphic-clipart-design-free-png.webp" type="Texture" id=14]
+[ext_resource path="res://src/UI/AudioButtonStyle.tres" type="StyleBox" id=97]
+[ext_resource path="res://src/Audio/AudioSettingsPanel.tscn" type="PackedScene" id=99]
 
 [sub_resource type="Animation" id=1]
 resource_name = "fade_in_out"
@@ -523,45 +526,57 @@ position = Vector2( 290, 900 )
 [node name="player_sprites" parent="Player/Player" index="2"]
 material = ExtResource( 11 )
 
-[node name="idle" parent="Player/Player/player_sprites" index="0"]
+[node name="idle" parent="Player/Player/player_sprites" index="1"]
 use_parent_material = true
 position = Vector2( 0.580444, 90 )
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 12 )
 
-[node name="w1" parent="Player/Player/player_sprites" index="1"]
+[node name="w1" parent="Player/Player/player_sprites" index="2"]
 use_parent_material = true
 position = Vector2( 0, 90 )
 scale = Vector2( 0.25, 0.25 )
 
-[node name="w2" parent="Player/Player/player_sprites" index="2"]
+[node name="w2" parent="Player/Player/player_sprites" index="3"]
 use_parent_material = true
 position = Vector2( 0, 90 )
 scale = Vector2( 0.25, 0.25 )
 
-[node name="w3" parent="Player/Player/player_sprites" index="3"]
+[node name="w3" parent="Player/Player/player_sprites" index="4"]
 use_parent_material = true
 position = Vector2( 0, 90 )
 scale = Vector2( 0.25, 0.25 )
 
-[node name="w4" parent="Player/Player/player_sprites" index="4"]
+[node name="w4" parent="Player/Player/player_sprites" index="5"]
 use_parent_material = true
 position = Vector2( 0, 90 )
 scale = Vector2( 0.25, 0.25 )
 
-[node name="w5" parent="Player/Player/player_sprites" index="5"]
+[node name="w5" parent="Player/Player/player_sprites" index="6"]
 use_parent_material = true
 position = Vector2( 0, 90 )
 scale = Vector2( 0.25, 0.25 )
 
-[node name="sleeping" parent="Player/Player/player_sprites" index="6"]
+[node name="sleeping" parent="Player/Player/player_sprites" index="11"]
 use_parent_material = true
 position = Vector2( 0, 60 )
 scale = Vector2( 0.11, 0.11 )
 
-[node name="toilet" parent="Player/Player/player_sprites" index="7"]
+[node name="toilet" parent="Player/Player/player_sprites" index="12"]
 use_parent_material = true
 scale = Vector2( 0.25, 0.25 )
+
+[node name="sunny_sound" parent="Player/Player" index="6"]
+bus = "Master"
+
+[node name="rainny_sound" parent="Player/Player" index="7"]
+bus = "Master"
+
+[node name="snow_sound" parent="Player/Player" index="8"]
+bus = "Master"
+
+[node name="hospital" parent="Player/Player" index="9"]
+bus = "Master"
 
 [node name="ModularPlayer" parent="Player" instance=ExtResource( 13 )]
 position = Vector2( 1430, 788.145 )
@@ -592,7 +607,6 @@ layer = 128
 script = ExtResource( 10 )
 
 [node name="Pause" type="Control" parent="Pause"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -642,19 +656,47 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureButton" type="TextureButton" parent="Pause"]
-margin_left = 1767.0
-margin_top = 40.0
-margin_right = 1855.0
-margin_bottom = 137.0
-texture_normal = ExtResource( 9 )
-texture_pressed = ExtResource( 9 )
+[node name="AudioButton" type="Button" parent="Pause/Pause"]
+pause_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 375.755
+margin_top = -121.449
+margin_right = 616.755
+margin_bottom = 119.551
+hint_tooltip = "Configurações de áudio"
+custom_styles/hover = ExtResource( 97 )
+custom_styles/pressed = ExtResource( 97 )
+custom_styles/normal = ExtResource( 97 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="audio-icon-graphic-clipart-design-free-png" type="Sprite" parent="Pause/Pause/AudioButton"]
+position = Vector2( 126.106, 124.44 )
+scale = Vector2( 0.237195, 0.237195 )
+texture = ExtResource( 14 )
+
+[node name="TextureButton" type="TextureButton" parent="Pause"]
+margin_left = 1635.96
+margin_top = 41.0
+margin_right = 1762.96
+margin_bottom = 137.0
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 9 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioSettingsPanel" parent="Pause" instance=ExtResource( 99 )]
+visible = false
+
 [connection signal="pressed" from="Pause/Pause/play-button" to="Pause" method="_on_playbutton_pressed"]
 [connection signal="pressed" from="Pause/Pause/play-button2" to="Pause" method="_on_playbutton2_pressed"]
+[connection signal="pressed" from="Pause/Pause/AudioButton" to="Pause/AudioSettingsPanel" method="open"]
 [connection signal="pressed" from="Pause/TextureButton" to="Pause" method="_on_TextureButton_pressed"]
 
 [editable path="Player/Player"]

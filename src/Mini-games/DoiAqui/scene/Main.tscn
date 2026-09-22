@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://src/Mini-games/DoiAqui/actor/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/DoiAqui/objects/button.png" type="Texture" id=2]
@@ -16,10 +16,13 @@
 [ext_resource path="res://assets/Plataforma/buttons/button-sair.png" type="Texture" id=14]
 [ext_resource path="res://src/Mini-games/DoiAqui/scene/Pause.gd" type="Script" id=15]
 [ext_resource path="res://assets/Hidratona/sprites/objects/play-button (1).png" type="Texture" id=16]
-[ext_resource path="res://assets/sounds/sons editados/button_pressed_sound.wav" type="AudioStream" id=17]
-[ext_resource path="res://assets/sounds/sons editados/kids_cheering.wav" type="AudioStream" id=18]
-[ext_resource path="res://assets/sounds/sons editados/loose_sound.wav" type="AudioStream" id=19]
+[ext_resource path="res://src/Assets/Audio/SFX/Common/button_press.wav" type="AudioStream" id=17]
+[ext_resource path="res://src/Assets/Audio/SFX/Minigames/DoiAqui/cheering.wav" type="AudioStream" id=18]
+[ext_resource path="res://src/Assets/Audio/SFX/Minigames/DoiAqui/lose.wav" type="AudioStream" id=19]
 [ext_resource path="res://src/Mini-games/CharacterTest/CharacterRig.tscn" type="PackedScene" id=20]
+[ext_resource path="res://src/Audio/AudioSettingsPanel.tscn" type="PackedScene" id=99]
+[ext_resource path="res://src/audioIcon.png" type="Texture" id=98]
+[ext_resource path="res://src/UI/AudioButtonStyle.tres" type="StyleBox" id=97]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.427451, 1, 0.447059, 1 )
@@ -363,15 +366,37 @@ scale = Vector2( 3, 3 )
 appearance_variant = "hospital"
 
 [node name="button" type="AudioStreamPlayer2D" parent="."]
+bus = "SFX"
 stream = ExtResource( 17 )
 
 [node name="sound_win" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 18 )
-bus = "doiaqui"
+volume_db = -4.25003
+bus = "SFX"
 
 [node name="lose" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 19 )
-bus = "doiaqui"
+volume_db = -4.25003
+bus = "SFX"
+
+[node name="AudioButton" type="Button" parent="InitialMessage/Pause2"]
+pause_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = 230.0
+margin_right = 32.0
+margin_bottom = 294.0
+icon = ExtResource( 98 )
+hint_tooltip = "Configurações de áudio"
+custom_styles/normal = ExtResource( 97 )
+custom_styles/hover = ExtResource( 97 )
+custom_styles/pressed = ExtResource( 97 )
+text = ""
+
+[node name="AudioSettingsPanel" parent="InitialMessage" instance=ExtResource( 99 )]
 
 [connection signal="pressed" from="TextureButton" to="InitialMessage" method="_on_TextureButton_pressed"]
 [connection signal="timeout" from="start" to="." method="_on_start_timeout"]
@@ -380,3 +405,4 @@ bus = "doiaqui"
 [connection signal="pressed" from="InitialMessage/start" to="." method="_on_start_pressed"]
 [connection signal="timeout" from="message" to="." method="_on_message_timeout"]
 [connection signal="timeout" from="message2" to="." method="_on_message_timeout"]
+[connection signal="pressed" from="InitialMessage/Pause2/AudioButton" to="InitialMessage/AudioSettingsPanel" method="open"]

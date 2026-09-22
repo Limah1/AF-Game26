@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/choice1_choice2_choice1.ogg-fdb34b17e528e2d317bb8d27edaf71b8.oggstr"
+
+[deps]
+
+source_file="res://src/Assets/Audio/Voice/Hospital/Dentist/choice1_choice2_choice1.ogg"
+dest_files=[ "res://.import/choice1_choice2_choice1.ogg-fdb34b17e528e2d317bb8d27edaf71b8.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

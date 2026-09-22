@@ -173,12 +173,15 @@ anims/fade_in = SubResource( 5 )
 anims/fade_out = SubResource( 6 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 34.0
-margin_top = 506.0
-margin_right = 523.0
-margin_bottom = 546.0
+margin_left = 1361.33
+margin_top = 33.5305
+margin_right = 1428.33
+margin_bottom = 57.5305
 rect_scale = Vector2( 5, 5 )
 text = "Pediatra"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="DialogSystem" parent="." instance=ExtResource( 3 )]
 json_path = "res://assets/hospital/pediatra/dialogo.json"

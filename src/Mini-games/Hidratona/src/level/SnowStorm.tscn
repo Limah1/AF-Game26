@@ -3,7 +3,7 @@
 [ext_resource path="res://src/Mini-games/Hidratona/src/level/SnowStorm.gd" type="Script" id=1]
 [ext_resource path="res://assets/Hidratona/sprites/nuvem-1.png" type="Texture" id=2]
 [ext_resource path="res://assets/Match-3/circle.png" type="Texture" id=3]
-[ext_resource path="res://assets/sounds/sons editados/snow_sound.wav" type="AudioStream" id=4]
+[ext_resource path="res://src/Assets/Audio/SFX/Minigames/Hidratona/snow.wav" type="AudioStream" id=4]
 
 [node name="Snow" type="Node2D"]
 script = ExtResource( 1 )
@@ -52,4 +52,5 @@ position = Vector2( 1875.6, 83.5782 )
 texture = ExtResource( 2 )
 
 [node name="snow_sound" type="AudioStreamPlayer2D" parent="."]
+bus = "SFX"
 stream = ExtResource( 4 )

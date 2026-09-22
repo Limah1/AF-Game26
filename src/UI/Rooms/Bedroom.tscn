@@ -4,8 +4,8 @@
 [ext_resource path="res://src/UI/Rooms/Bedroom.gd" type="Script" id=2]
 [ext_resource path="res://assets/Plataforma/objects/quarto-abajur-desligado.png" type="Texture" id=3]
 [ext_resource path="res://assets/Plataforma/objects/quarto-abajur-ligado.png" type="Texture" id=4]
-[ext_resource path="res://assets/sounds/sons editados/zipper2.wav" type="AudioStream" id=5]
-[ext_resource path="res://assets/sounds/sons editados/abajur_click.wav" type="AudioStream" id=6]
+[ext_resource path="res://src/Assets/Audio/SFX/Home/zipper.wav" type="AudioStream" id=5]
+[ext_resource path="res://src/Assets/Audio/SFX/Home/lamp_click.wav" type="AudioStream" id=6]
 [ext_resource path="res://src/UI/PersonalizationScreen.gd" type="Script" id=7]
 [ext_resource path="res://assets/Plataforma/buttons/button-fechar.png" type="Texture" id=8]
 [ext_resource path="res://assets/Plataforma/Char_Select/boy-estilo-2.png" type="Texture" id=9]
@@ -35,7 +35,7 @@
 [ext_resource path="res://assets/Nova pasta/Ativo 18.png" type="Texture" id=33]
 [ext_resource path="res://assets/Nova pasta/Ativo 15.png" type="Texture" id=34]
 [ext_resource path="res://assets/Nova pasta/Ativo 17.png" type="Texture" id=35]
-[ext_resource path="res://assets/sounds/sons editados/lullaby.wav" type="AudioStream" id=36]
+[ext_resource path="res://src/Assets/Audio/Music/lullaby.wav" type="AudioStream" id=36]
 [ext_resource path="res://assets/Particulas/textures/1024/alpha/effect_3.png" type="Texture" id=37]
 [ext_resource path="res://assets/Particulas/textures/1024/alpha/spotlight_5.png" type="Texture" id=38]
 [ext_resource path="res://src/small_plants.tscn" type="PackedScene" id=39]
@@ -174,30 +174,19 @@ tracks/0/keys = {
 
 [sub_resource type="StyleBoxEmpty" id=24]
 
-[sub_resource type="CanvasItemMaterial" id=25]
-blend_mode = 1
+[sub_resource type="StyleBoxFlat" id=25]
+bg_color = Color( 0.22, 0.56, 0.6, 1 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0.9, 1, 1, 1 )
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
 
-[sub_resource type="ParticlesMaterial" id=26]
-flag_disable_z = true
-gravity = Vector3( 0, 0, 0 )
-initial_velocity_random = 0.26
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-angle = 360.0
-angle_random = 1.0
-color = Color( 0.0392157, 0.521569, 0.0823529, 1 )
-
-[sub_resource type="CanvasItemMaterial" id=27]
-blend_mode = 1
-
-[sub_resource type="ParticlesMaterial" id=28]
-flag_disable_z = true
-gravity = Vector3( 0, 0, 0 )
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-color = Color( 0.831373, 0.870588, 0.168627, 1 )
-
-[sub_resource type="StyleBoxFlat" id=29]
+[sub_resource type="StyleBoxFlat" id=26]
 bg_color = Color( 0.16, 0.43, 0.47, 0.92 )
 border_width_left = 3
 border_width_top = 3
@@ -209,17 +198,28 @@ corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
-[sub_resource type="StyleBoxFlat" id=30]
-bg_color = Color( 0.22, 0.56, 0.6, 1 )
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color( 0.9, 1, 1, 1 )
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
+[sub_resource type="CanvasItemMaterial" id=27]
+blend_mode = 1
+
+[sub_resource type="ParticlesMaterial" id=28]
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+initial_velocity_random = 0.26
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 360.0
+angle_random = 1.0
+color = Color( 0.0392157, 0.521569, 0.0823529, 1 )
+
+[sub_resource type="CanvasItemMaterial" id=29]
+blend_mode = 1
+
+[sub_resource type="ParticlesMaterial" id=30]
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color = Color( 0.831373, 0.870588, 0.168627, 1 )
 
 [node name="Bedroom" type="Control"]
 anchor_right = 1.0
@@ -406,18 +406,17 @@ __meta__ = {
 }
 
 [node name="BreathingTestButton" type="Button" parent="."]
-margin_left = 1235.0
-margin_top = 650.0
-margin_right = 1422.0
-margin_bottom = 735.0
+margin_left = 1330.35
+margin_top = 520.745
+margin_right = 1517.35
+margin_bottom = 605.745
 mouse_default_cursor_shape = 2
-custom_styles/hover = SubResource( 30 )
-custom_styles/pressed = SubResource( 30 )
-custom_styles/normal = SubResource( 29 )
+custom_styles/hover = SubResource( 25 )
+custom_styles/pressed = SubResource( 25 )
+custom_styles/normal = SubResource( 26 )
 custom_colors/font_color = Color( 0.98, 1, 1, 1 )
-text = "RESPIRAÇÃO\n(TESTE)"
-align = 1
-valign = 1
+text = "RESPIRAÇÃO
+(TESTE)"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -620,28 +619,31 @@ __meta__ = {
 
 [node name="zip" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
-bus = "zip"
+volume_db = 6.02
+bus = "SFX"
 
 [node name="abajur" type="AudioStreamPlayer" parent="."]
+bus = "SFX"
 stream = ExtResource( 6 )
 
 [node name="lullaby" type="AudioStreamPlayer" parent="."]
+bus = "Music"
 stream = ExtResource( 36 )
 
 [node name="bed_particle" type="Particles2D" parent="."]
-material = SubResource( 25 )
+material = SubResource( 27 )
 position = Vector2( 1412, 790 )
 z_index = -26
-process_material = SubResource( 26 )
+process_material = SubResource( 28 )
 texture = ExtResource( 37 )
 
 [node name="lamp_particle" type="Particles2D" parent="."]
-material = SubResource( 27 )
+material = SubResource( 29 )
 position = Vector2( 1803, 483 )
 scale = Vector2( 0.25, 0.25 )
 lifetime = 5.0
 speed_scale = 3.49
-process_material = SubResource( 28 )
+process_material = SubResource( 30 )
 texture = ExtResource( 38 )
 
 [node name="SmallPlants" parent="." instance=ExtResource( 39 )]

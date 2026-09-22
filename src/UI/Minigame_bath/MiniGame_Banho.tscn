@@ -20,11 +20,11 @@
 [ext_resource path="res://assets/fonts/Raleway-Medium.ttf" type="DynamicFontData" id=18]
 [ext_resource path="res://assets/Hidratona/sprites/back-button.png" type="Texture" id=19]
 [ext_resource path="res://assets/Plataforma/rooms/bathroom/iconchuveiro.png" type="Texture" id=20]
-[ext_resource path="res://assets/sounds/sons editados/chuveiro.wav" type="AudioStream" id=21]
-[ext_resource path="res://assets/sounds/sons editados/toalha.wav" type="AudioStream" id=22]
+[ext_resource path="res://src/Assets/Audio/SFX/Home/shower.wav" type="AudioStream" id=21]
+[ext_resource path="res://src/Assets/Audio/SFX/Home/towel.wav" type="AudioStream" id=22]
 [ext_resource path="res://src/UI/sound/sound_button.tscn" type="PackedScene" id=23]
-[ext_resource path="res://assets/sounds/sons editados/banho_torneira_abrir_v01.mp3" type="AudioStream" id=26]
-[ext_resource path="res://assets/sounds/sons editados/banho_torneira_fechar_v01.mp3" type="AudioStream" id=27]
+[ext_resource path="res://src/Assets/Audio/SFX/Home/bath_faucet_open.mp3" type="AudioStream" id=26]
+[ext_resource path="res://src/Assets/Audio/SFX/Home/bath_faucet_close.mp3" type="AudioStream" id=27]
 [ext_resource path="res://src/UI/ShaderPersonagem.tres" type="Material" id=24]
 [ext_resource path="res://src/Mini-games/CharacterTest/CharacterRig.tscn" type="PackedScene" id=25]
 
@@ -997,15 +997,19 @@ anims/p3 = SubResource( 31 )
 anims/p4 = SubResource( 32 )
 
 [node name="shower_sound" type="AudioStreamPlayer2D" parent="."]
+bus = "SFX"
 stream = ExtResource( 21 )
 
 [node name="towel_sound" type="AudioStreamPlayer2D" parent="."]
+bus = "SFX"
 stream = ExtResource( 22 )
 
 [node name="faucet_open_sound" type="AudioStreamPlayer2D" parent="."]
+bus = "SFX"
 stream = ExtResource( 26 )
 
 [node name="faucet_close_sound" type="AudioStreamPlayer2D" parent="."]
+bus = "SFX"
 stream = ExtResource( 27 )
 
 [connection signal="pressed" from="Ativo 6/TurnOn" to="." method="_on_TurnOn_pressed"]

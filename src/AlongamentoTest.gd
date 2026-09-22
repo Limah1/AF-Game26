@@ -31,7 +31,8 @@ func _ready():
 	# Music
 	var music := AudioStreamPlayer.new()
 	music.name = "bg_music"
-	music.stream = load("res://assets/sounds/Sons Atualizados/Still Water Mat.mp3")
+	music.stream = load("res://src/Assets/Audio/Music/alongamento.mp3")
+	music.bus = "Music"
 	add_child(music)
 	music.play()
 			
