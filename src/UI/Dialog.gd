@@ -15,10 +15,13 @@ export(String) var npc_name = "NPC"
 var conversation_root = {}
 var _current = {}
 var _current_voice_path = ""
+var _voice_has_stopped = false
+var _voice_button_style: StyleBoxFlat
 
 export(bool) var voice_enabled = true
 
 func _ready():
+	_setup_voice_button()
 	print("[DialogSystem] Node initialized: ", name)
 	print("[DialogSystem] NPC Name: ", npc_name)
 	print("[DialogSystem] JSON Path: ", json_path)
@@ -123,6 +126,7 @@ func _get_line_text(line: Dictionary) -> String:
 	return ""
 
 func _play_current_voice() -> void:
+	_voice_has_stopped = false
 	_current_voice_path = ""
 	for key in ["voice", "voz", "audio", "audio_path"]:
 		if _current.has(key):
@@ -141,6 +145,7 @@ func _on_voice_button_pressed() -> void:
 		return
 	if VoiceManager.is_playing() and VoiceManager.get_current_path() == _current_voice_path:
 		VoiceManager.stop()
+		_voice_has_stopped = true
 	else:
 		VoiceManager.play_path(_current_voice_path)
 	_update_voice_button()
@@ -151,17 +156,44 @@ func _update_voice_button() -> void:
 	var available = voice_enabled and _current_voice_path != "" and ResourceLoader.exists(_current_voice_path)
 	VoiceButton.disabled = !available
 	if !available:
-		VoiceButton.text = "Locução indisponível"
+		VoiceButton.hint_tooltip = "Locução indisponível"
+		_set_voice_button_color(Color(1, 1, 1))
 	elif VoiceManager.is_playing() and VoiceManager.get_current_path() == _current_voice_path:
-		VoiceButton.text = "Parar locução"
+		VoiceButton.hint_tooltip = "Parar locução"
+		_set_voice_button_color(Color(0.35, 0.8, 0.38))
+	elif _voice_has_stopped:
+		VoiceButton.hint_tooltip = "Ouvir locução novamente"
+		_set_voice_button_color(Color(0.9, 0.3, 0.3))
 	else:
-		VoiceButton.text = "Ouvir locução"
+		VoiceButton.hint_tooltip = "Reproduzir locução desta fala"
+		_set_voice_button_color(Color(1, 1, 1))
 
 func _on_voice_started(path: String) -> void:
 	_update_voice_button()
 
 func _on_voice_finished(path: String) -> void:
+	if path == _current_voice_path:
+		_voice_has_stopped = true
 	_update_voice_button()
+
+func _setup_voice_button() -> void:
+	_voice_button_style = StyleBoxFlat.new()
+	_voice_button_style.border_width_left = 2
+	_voice_button_style.border_width_top = 2
+	_voice_button_style.border_width_right = 2
+	_voice_button_style.border_width_bottom = 2
+	_voice_button_style.border_color = Color(0, 0, 0)
+	_voice_button_style.corner_radius_top_left = 8
+	_voice_button_style.corner_radius_top_right = 8
+	_voice_button_style.corner_radius_bottom_right = 8
+	_voice_button_style.corner_radius_bottom_left = 8
+	VoiceButton.add_stylebox_override("normal", _voice_button_style)
+	VoiceButton.add_stylebox_override("hover", _voice_button_style)
+	VoiceButton.add_stylebox_override("pressed", _voice_button_style)
+	VoiceButton.add_stylebox_override("disabled", _voice_button_style)
+
+func _set_voice_button_color(color: Color) -> void:
+	_voice_button_style.bg_color = color
 
 func _strip_accents(text: String) -> String:
 	var accented = ["á","à","ã","â","ä","é","è","ê","ë","í","ì","î","ï","ó","ò","õ","ô","ö","ú","ù","û","ü","ç"]
