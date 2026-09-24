@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://src/Mini-games/PlantCare/PlantCareMenu.gd" type="Script" id=1]
 [ext_resource path="res://src/Mini-games/PlantCare/PlantSlot.tscn" type="PackedScene" id=2]
@@ -9,6 +9,11 @@
 [ext_resource path="res://src/Mini-games/PlantCare/data/plant_4.tres" type="Resource" id=7]
 [ext_resource path="res://src/Mini-games/PlantCare/data/plant_5.tres" type="Resource" id=8]
 [ext_resource path="res://src/Assets/Audio/SFX/Minigames/PlantCare/watering.mp3" type="AudioStream" id=9]
+[ext_resource path="res://src/Assets/Audio/SFX/Minigames/PlantCare/planting.ogg" type="AudioStream" id=10]
+[ext_resource path="res://src/Assets/Audio/SFX/Minigames/PlantCare/plant_ready.ogg" type="AudioStream" id=11]
+[ext_resource path="res://src/Assets/Audio/SFX/Minigames/PlantCare/harvest_coin.ogg" type="AudioStream" id=12]
+[ext_resource path="res://src/Assets/Audio/SFX/Minigames/PlantCare/slot_purchase.ogg" type="AudioStream" id=13]
+[ext_resource path="res://src/Assets/Audio/Music/plantcare_theme.ogg" type="AudioStream" id=14]
 
 [sub_resource type="DynamicFont" id=1]
 size = 42
@@ -268,6 +273,29 @@ one_shot = true
 
 [node name="WateringSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
+bus = "SFX"
+
+[node name="PlantingSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+bus = "SFX"
+
+[node name="PlantReadySound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+bus = "SFX"
+
+[node name="HarvestSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+bus = "SFX"
+
+[node name="SlotPurchaseSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+bus = "SFX"
+
+[node name="PlantMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+volume_db = -8.0
+autoplay = true
+bus = "Music"
 
 [connection signal="pressed" from="TopBar/BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="confirmed" from="PurchaseDialog" to="." method="_on_PurchaseDialog_confirmed"]

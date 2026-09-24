@@ -5,6 +5,7 @@ signal state_changed(slot)
 signal sell_requested(slot)
 signal watering_started
 signal watering_stopped
+signal plant_matured
 
 const MATURE_STAGE := 3
 const STAGE_NAMES := ["Semente", "Broto", "Jovem", "Madura"]
@@ -169,6 +170,8 @@ func _complete_watering() -> void:
 		cooldown_until = 0
 	_water_changed = false
 	_refresh()
+	if stage == MATURE_STAGE:
+		emit_signal("plant_matured")
 	emit_signal("state_changed", self)
 
 

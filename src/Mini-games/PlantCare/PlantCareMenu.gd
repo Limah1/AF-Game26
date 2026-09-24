@@ -29,6 +29,10 @@ onready var drag_preview: TextureRect = $DragPreview
 onready var purchase_dialog: ConfirmationDialog = $PurchaseDialog
 onready var message_timer: Timer = $MessageTimer
 onready var watering_sound: AudioStreamPlayer = $WateringSound
+onready var planting_sound: AudioStreamPlayer = $PlantingSound
+onready var plant_ready_sound: AudioStreamPlayer = $PlantReadySound
+onready var harvest_sound: AudioStreamPlayer = $HarvestSound
+onready var slot_purchase_sound: AudioStreamPlayer = $SlotPurchaseSound
 
 
 func _ready() -> void:
@@ -123,6 +127,7 @@ func _configure_slots() -> void:
 		slot.connect("sell_requested", self, "_on_slot_sell_requested")
 		slot.connect("watering_started", self, "_on_watering_started")
 		slot.connect("watering_stopped", self, "_on_watering_stopped")
+		slot.connect("plant_matured", plant_ready_sound, "play")
 
 
 func _on_plant_card_gui_input(event: InputEvent, data, card: Control) -> void:
@@ -175,6 +180,7 @@ func _update_drag_target(delta: float) -> void:
 	if hover_time >= PLANT_HOLD_SECONDS:
 		coins -= dragged_plant.plant_cost
 		candidate.plant(dragged_plant)
+		planting_sound.play()
 		_update_coins()
 		_show_message("%s plantada!" % dragged_plant.display_name)
 		_save_game()
@@ -220,6 +226,7 @@ func _on_PurchaseDialog_confirmed() -> void:
 	coins -= pending_purchase.unlock_price
 	pending_purchase.configure(pending_purchase.slot_index, pending_purchase.unlock_price, true)
 	_update_coins()
+	slot_purchase_sound.play()
 	_show_message("Slot desbloqueado!")
 	pending_purchase = null
 	_save_game()
@@ -239,6 +246,7 @@ func _on_slot_sell_requested(slot) -> void:
 	coins += slot.plant_data.sell_value
 	var sold_name: String = slot.plant_data.display_name
 	slot.clear_plant()
+	harvest_sound.play()
 	_update_coins()
 	_show_message("%s vendida!" % sold_name)
 	_save_game()
