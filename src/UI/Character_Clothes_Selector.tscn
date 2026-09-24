@@ -2,7 +2,7 @@
 
 [ext_resource path="res://src/UI/sound/sound_button.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/UI/sound/selector_gender.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/Sprites-v3/boy-b/boy-b-r1-m0.png" type="Texture" id=3]
+[ext_resource path="res://assets/SpritesV4/RoupasNormais/Menino/Variacao1/m0.png" type="Texture" id=3]
 [ext_resource path="res://assets/Plataforma/Char_Select/tela-escolha-personagem.png" type="Texture" id=4]
 [ext_resource path="res://src/Assets/Audio/SFX/Common/paper_turn.wav" type="AudioStream" id=5]
 [ext_resource path="res://assets/Character_Creator/btn_roupa_2_boy.png" type="Texture" id=6]
@@ -222,6 +222,7 @@ script = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+roupa_2_body_position = Vector2( 1606.6, 420 )
 
 [node name="tela-escolha-personagem" type="Sprite" parent="."]
 position = Vector2( 964.52, 540 )
@@ -261,14 +262,14 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 5 )
-position = Vector2( 1594.28, 549.035 )
+position = Vector2( 1606.6, 513.576 )
 scale = Vector2( 0.4, 0.4 )
 z_index = 2
 texture = ExtResource( 3 )
 
 [node name="LegacyHead" type="Sprite" parent="."]
-position = Vector2( 1602.28, 250 )
-scale = Vector2( 0.252, 0.252 )
+position = Vector2( 1600, 190 )
+scale = Vector2( 0.4, 0.4 )
 z_index = 3
 
 [node name="ModularCharacter" parent="." instance=ExtResource( 12 )]

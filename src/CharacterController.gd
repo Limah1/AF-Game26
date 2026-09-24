@@ -1,5 +1,15 @@
 extends Node
 
+signal expression_changed(expression)
+var expression = "default"
+
+func set_expression(value: String) -> void:
+	var next_expression = "default" if value == "" else value
+	if expression == next_expression:
+		return
+	expression = next_expression
+	emit_signal("expression_changed", expression)
+
 #Codigo antigo
 var boyorgirl = "Boy" # Boy or Girl
 var etnia = "negro"#negro, pardo ou branco
@@ -157,20 +167,31 @@ func start(target_node = null):
 func get_legacy_head_texture() -> Texture:
 	var gender = "boy" if boyorgirl == "Boy" else "girl"
 	var hair = cabelo if cabelo == "a" or cabelo == "b" else "a"
-	return load("res://assets/Sprites-v3/heads/%s-%s-head.png" % [gender, hair]) as Texture
+	return get_head_texture_for(gender, hair)
+
+func get_expression_head_texture_for(gender: String, hair: String, requested_expression: String = "") -> Texture:
+	var face = expression if requested_expression == "" else requested_expression
+	var gender_folder = "Menino" if gender == "boy" else "Menina"
+	var selected_hair = hair if hair == "a" or hair == "b" else "a"
+	if face == "feliz":
+		var happy_head = "res://assets/SpritesV4/Cabecas/%s/%s1.png" % [gender_folder, "boy" if gender == "boy" else "girl"]
+		if ResourceLoader.exists(happy_head):
+			return load(happy_head) as Texture
+	# Asset convention: a-feliz.png, b-triste.png, etc. Missing art uses the base head.
+	if face != "default":
+		var path = "res://assets/SpritesV4/Cabecas/%s/%s-%s.png" % [gender_folder, selected_hair, face]
+		if ResourceLoader.exists(path):
+			return load(path) as Texture
+	return get_head_texture_for(gender, selected_hair)
+
+func get_head_texture_for(gender: String, hair: String, sleeping: bool = false) -> Texture:
+	var gender_folder = "Menino" if gender == "boy" else "Menina"
+	var head_name = ("boy" if gender == "boy" else "girl") + ("1" if hair == "a" else "2")
+	return load("res://assets/SpritesV4/Cabecas/%s/%s.png" % [gender_folder, head_name]) as Texture
 
 func get_legacy_head_source_skin_for(gender: String, hair: String) -> Color:
-	# Each head asset was exported with a different placeholder skin color.
-	match "%s-%s" % [gender, hair]:
-		"boy-a":
-			return Color(0.627451, 0.949020, 0.011765, 1.0)
-		"boy-b":
-			return Color(0.682353, 0.984314, 0.007843, 1.0)
-		"girl-a":
-			return Color(0.447059, 0.835294, 0.262745, 1.0)
-		"girl-b":
-			return Color(0.992157, 0.992157, 0.992157, 1.0)
-	return Color.white
+	# Current boy1/boy2/girl1/girl2 heads share this placeholder skin color.
+	return Color(0.129412, 0.960784, 0.003922, 1.0)
 
 func Load_Plataform():
 	var plataform = {
@@ -212,371 +233,29 @@ func Load_Plataform():
 		}
 	}
 	
-	var pathN = "res://assets/Sprites-v3/"
-	var pathBath = "res://assets/Sprites-v3/"
-	var pathD = "res://assets/Sprites-v3/"
-	print("genero A =", genero)
-	if(genero == "boy"):
-		print("genero =", genero)
-		if (cabelo == "a"):
-			pathN = str(pathN, "boy-a/boy-a")
-			if (roupa == "r1"):
-				pathN = str(pathN, "-r1")
-				plataform.idle = load(str(pathN, "-m0.png"))
-				plataform.walk.w1 = load(str(pathN, "-m1.png"))
-				plataform.walk.w2 = load(str(pathN, "-m2.png"))
-				plataform.walk.w3 = load(str(pathN, "-m3.png"))
-				plataform.walk.w4 = load(str(pathN, "-m4.png"))
-				plataform.walk.w5 = load(str(pathN, "-m5.png"))
-				print(str(pathN, "-m5.png"))
-				
-				plataform.idle_dirty = load(str(pathN, "-m0-s.png"))
-				plataform.walk_dirty.w1 = load(str(pathN, "-m1-s.png"))
-				plataform.walk_dirty.w2 = load(str(pathN, "-m2-s.png"))
-				plataform.walk_dirty.w3 = load(str(pathN, "-m3-s.png"))
-				plataform.walk_dirty.w4 = load(str(pathN, "-m4-s.png"))
-				plataform.walk_dirty.w5 = load(str(pathN, "-m5-s.png"))
-				print(str(pathN, "-m4-s.png"))
-				
-				plataform.seated = load(str(pathN, "-sentado.png"))
-				plataform.seated_dirty = load(str(pathN, "-sentado-s.png"))
-				
-			elif (roupa == "r2"):
-				pathN = str(pathN, "-r2")
-				plataform.idle = load(str(pathN, "-m0.png"))
-				plataform.walk.w1 = load(str(pathN, "-m1.png"))
-				plataform.walk.w2 = load(str(pathN, "-m2.png"))
-				plataform.walk.w3 = load(str(pathN, "-m3.png"))
-				plataform.walk.w4 = load(str(pathN, "-m4.png"))
-				plataform.walk.w5 = load(str(pathN, "-m5.png"))
-				print(str(pathN, "-m5.png"))
-				
-				plataform.idle_dirty = load(str(pathN, "-m0-s.png"))
-				plataform.walk_dirty.w1 = load(str(pathN, "-m1-s.png"))
-				plataform.walk_dirty.w2 = load(str(pathN, "-m2-s.png"))
-				plataform.walk_dirty.w3 = load(str(pathN, "-m3-s.png"))
-				plataform.walk_dirty.w4 = load(str(pathN, "-m4-s.png"))
-				plataform.walk_dirty.w5 = load(str(pathN, "-m5-s.png"))
-				print(str(pathN, "-m4-s.png"))
-				
-				plataform.seated = load(str(pathN, "-sentado.png"))
-				plataform.seated_dirty = load(str(pathN, "-sentado-s.png"))
-			
-			plataform.sleeping = load(str(pathD, "boy-a/boy-a-dormindo.png"))	
-		
-		elif (cabelo == "b"):
-			pathN = str(pathN, "boy-b/boy-b")
-			if (roupa == "r1"):
-				pathN = str(pathN, "-r1")
-				plataform.idle = load(str(pathN, "-m0.png"))
-				plataform.walk.w1 = load(str(pathN, "-m1.png"))
-				plataform.walk.w2 = load(str(pathN, "-m2.png"))
-				plataform.walk.w3 = load(str(pathN, "-m3.png"))
-				plataform.walk.w4 = load(str(pathN, "-m4.png"))
-				plataform.walk.w5 = load(str(pathN, "-m5.png"))
-				print(str(pathN, "-m5.png"))
-				
-				plataform.idle_dirty = load(str(pathN, "-m0-s.png"))
-				plataform.walk_dirty.w1 = load(str(pathN, "-m1-s.png"))
-				plataform.walk_dirty.w2 = load(str(pathN, "-m2-s.png"))
-				plataform.walk_dirty.w3 = load(str(pathN, "-m3-s.png"))
-				plataform.walk_dirty.w4 = load(str(pathN, "-m4-s.png"))
-				plataform.walk_dirty.w5 = load(str(pathN, "-m5-s.png"))
-				print(str(pathN, "-m4-s.png"))
-				
-				plataform.seated = load(str(pathN, "-sentado.png"))
-				plataform.seated_dirty = load(str(pathN, "-sentado-s.png"))
-				
-			elif (roupa == "r2"):
-				pathN = str(pathN, "-r2")
-				plataform.idle = load(str(pathN, "-m0.png"))
-				plataform.walk.w1 = load(str(pathN, "-m1.png"))
-				plataform.walk.w2 = load(str(pathN, "-m2.png"))
-				plataform.walk.w3 = load(str(pathN, "-m3.png"))
-				plataform.walk.w4 = load(str(pathN, "-m4.png"))
-				plataform.walk.w5 = load(str(pathN, "-m5.png"))
-				print(str(pathN, "-m5.png"))
-				
-				plataform.idle_dirty = load(str(pathN, "-m0-s.png"))
-				plataform.walk_dirty.w1 = load(str(pathN, "-m1-s.png"))
-				plataform.walk_dirty.w2 = load(str(pathN, "-m2-s.png"))
-				plataform.walk_dirty.w3 = load(str(pathN, "-m3-s.png"))
-				plataform.walk_dirty.w4 = load(str(pathN, "-m4-s.png"))
-				plataform.walk_dirty.w5 = load(str(pathN, "-m5-s.png"))
-				print(str(pathN, "-m4-s.png"))
-				
-				plataform.seated = load(str(pathN, "-sentado.png"))
-				plataform.seated_dirty = load(str(pathN, "-sentado-s.png"))
-				
-			plataform.sleeping = load(str(pathD, "boy-b/boy-b-dormindo.png"))
-			
-			
-		plataform.idle_bath = load(str(pathBath, "boy-banho/boy-banho-m0.png")) 
-		
-		plataform.bath.w1 = load(str(pathBath, "boy-banho/boy-banho-m1.png"))
-		plataform.bath.w2 = load(str(pathBath, "boy-banho/boy-banho-m2.png"))
-		plataform.bath.w3 = load(str(pathBath, "boy-banho/boy-banho-m3.png"))
-		plataform.bath.w4 = load(str(pathBath, "boy-banho/boy-banho-m4.png"))
-		plataform.bath.w5 = load(str(pathBath, "boy-banho/boy-banho-m5.png"))
+	var gender_folder = "Menino" if genero == "boy" else "Menina"
+	var variation_folder = "Variacao2" if roupa == "r2" else "Variacao1"
+	var normal_path = "res://assets/SpritesV4/RoupasNormais/%s/%s/" % [gender_folder, variation_folder]
+	plataform.idle = load(normal_path + "m0.png")
+	plataform.idle_dirty = load(normal_path + "m0-s.png")
+	plataform.seated = load(normal_path + "sentado.png")
+	plataform.seated_dirty = load(normal_path + "sentado-s.png")
+	for frame in range(1, 6):
+		var key = "w" + str(frame)
+		plataform.walk[key] = load(normal_path + "m%d.png" % frame)
+		plataform.walk_dirty[key] = load(normal_path + "m%d-s.png" % frame)
 
-		plataform.idle_bath_dirty = load(str(pathBath, "boy-banho/boy-banho-m0-s.png"))
-		
-		plataform.bath_dirty.w1 = load(str(pathBath, "boy-banho/boy-banho-m1-s.png"))
-		plataform.bath_dirty.w2 = load(str(pathBath, "boy-banho/boy-banho-m2-s.png"))
-		plataform.bath_dirty.w3 = load(str(pathBath, "boy-banho/boy-banho-m3-s.png"))
-		plataform.bath_dirty.w4 = load(str(pathBath, "boy-banho/boy-banho-m4-s.png"))
-		plataform.bath_dirty.w5 = load(str(pathBath, "boy-banho/boy-banho-m5-s.png"))
-	
-				
-	elif(genero == "girl"):
-		print("genero =", genero)
-		if (cabelo == "a"):
-			pathN = str(pathN, "girl-a/girl-a")
-			if (roupa == "r1"):
-				pathN = str(pathN, "-r1")
-				plataform.idle = load(str(pathN, "-m0.png"))
-				plataform.walk.w1 = load(str(pathN, "-m1.png"))
-				plataform.walk.w2 = load(str(pathN, "-m2.png"))
-				plataform.walk.w3 = load(str(pathN, "-m3.png"))
-				plataform.walk.w4 = load(str(pathN, "-m4.png"))
-				plataform.walk.w5 = load(str(pathN, "-m5.png"))
-				print(str(pathN, "-m5.png"))
-				
-				plataform.idle_dirty = load(str(pathN, "-m0.png"))
-				plataform.walk_dirty.w1 = load(str(pathN, "-m1-s.png"))
-				plataform.walk_dirty.w2 = load(str(pathN, "-m2-s.png"))
-				plataform.walk_dirty.w3 = load(str(pathN, "-m3-s.png"))
-				plataform.walk_dirty.w4 = load(str(pathN, "-m4-s.png"))
-				plataform.walk_dirty.w5 = load(str(pathN, "-m5-s.png"))
-				print(str(pathN, "-m4-s.png"))
-				
-				plataform.seated = load(str(pathN, "-sentado.png"))
-				plataform.seated_dirty = load(str(pathN, "-sentado-s.png"))
-				
-			elif (roupa == "r2"):
-				pathN = str(pathN, "-r2")
-				plataform.idle = load(str(pathN, "-m0.png"))
-				plataform.walk.w1 = load(str(pathN, "-m1.png"))
-				plataform.walk.w2 = load(str(pathN, "-m2.png"))
-				plataform.walk.w3 = load(str(pathN, "-m3.png"))
-				plataform.walk.w4 = load(str(pathN, "-m4.png"))
-				plataform.walk.w5 = load(str(pathN, "-m5.png"))
-				print(str(pathN, "-m5.png"))
-				
-				plataform.idle_dirty = load(str(pathN, "-m0-s.png"))
-				plataform.walk_dirty.w1 = load(str(pathN, "-m1-s.png"))
-				plataform.walk_dirty.w2 = load(str(pathN, "-m2-s.png"))
-				plataform.walk_dirty.w3 = load(str(pathN, "-m3-s.png"))
-				plataform.walk_dirty.w4 = load(str(pathN, "-m4-s.png"))
-				plataform.walk_dirty.w5 = load(str(pathN, "-m5-s.png"))
-				print(str(pathN, "-m4-s.png"))
-				
-				plataform.seated = load(str(pathN, "-sentado.png"))
-				plataform.seated_dirty = load(str(pathN, "-sentado-s.png"))
-				
-			plataform.sleeping = load(str(pathD, "girl-a/girl-a-dormindo.png"))
-		elif (cabelo == "b"):
-			pathN = str(pathN, "girl-b/girl-b")
-			if (roupa == "r1"):
-				pathN = str(pathN, "-r1")
-				plataform.idle = load(str(pathN, "-m0.png"))
-				plataform.walk.w1 = load(str(pathN, "-m1.png"))
-				plataform.walk.w2 = load(str(pathN, "-m2.png"))
-				plataform.walk.w3 = load(str(pathN, "-m3.png"))
-				plataform.walk.w4 = load(str(pathN, "-m4.png"))
-				plataform.walk.w5 = load(str(pathN, "-m5.png"))
-				print(str(pathN, "-m5.png"))
-				
-				plataform.idle_dirty = load(str(pathN, "-m0-s.png"))
-				plataform.walk_dirty.w1 = load(str(pathN, "-m1-s.png"))
-				plataform.walk_dirty.w2 = load(str(pathN, "-m2-s.png"))
-				plataform.walk_dirty.w3 = load(str(pathN, "-m3-s.png"))
-				plataform.walk_dirty.w4 = load(str(pathN, "-m4-s.png"))
-				plataform.walk_dirty.w5 = load(str(pathN, "-m5-s.png"))
-				print(str(pathN, "-m4-s.png"))
-				
-				plataform.seated = load(str(pathN, "-sentado.png"))
-				plataform.seated_dirty = load(str(pathN, "-sentado-s.png"))
-				
-			elif (roupa == "r2"):
-				pathN = str(pathN, "-r2")
-				plataform.idle = load(str(pathN, "-m0.png"))
-				plataform.walk.w1 = load(str(pathN, "-m1.png"))
-				plataform.walk.w2 = load(str(pathN, "-m2.png"))
-				plataform.walk.w3 = load(str(pathN, "-m3.png"))
-				plataform.walk.w4 = load(str(pathN, "-m4.png"))
-				plataform.walk.w5 = load(str(pathN, "-m5.png"))
-				print(str(pathN, "-m5.png"))
-				
-				plataform.idle_dirty = load(str(pathN, "-m0-s.png"))
-				plataform.walk_dirty.w1 = load(str(pathN, "-m1-s.png"))
-				plataform.walk_dirty.w2 = load(str(pathN, "-m2-s.png"))
-				plataform.walk_dirty.w3 = load(str(pathN, "-m3-s.png"))
-				plataform.walk_dirty.w4 = load(str(pathN, "-m4-s.png"))
-				plataform.walk_dirty.w5 = load(str(pathN, "-m5-s.png"))
-				print(str(pathN, "-m4-s.png"))
-				
-				plataform.seated = load(str(pathN, "-sentado.png"))
-				plataform.seated_dirty = load(str(pathN, "-sentado-s.png"))
-			plataform.sleeping = load(str(pathD, "girl-b/girl-b-dormindo.png"))
-			
-	
-		plataform.idle_bath = load(str(pathBath, "girl-banho/girl-banho-m0.png")) 
-		
-		plataform.bath.w1 = load(str(pathBath, "girl-banho/girl-banho-m1.png"))
-		plataform.bath.w2 = load(str(pathBath, "girl-banho/girl-banho-m2.png"))
-		plataform.bath.w3 = load(str(pathBath, "girl-banho/girl-banho-m3.png"))
-		plataform.bath.w4 = load(str(pathBath, "girl-banho/girl-banho-m4.png"))
-		plataform.bath.w5 = load(str(pathBath, "girl-banho/girl-banho-m5.png"))
+	var hair = cabelo if cabelo == "a" or cabelo == "b" else "a"
+	plataform.sleeping = load("res://assets/SpritesV4/RoupasNormais/%s/dormindo-%s.png" % [gender_folder, hair])
 
-		plataform.idle_bath_dirty = load(str(pathBath, "girl-banho/girl-banho-m0-s.png"))
-		
-		plataform.bath_dirty.w1 = load(str(pathBath, "girl-banho/girl-banho-m1-s.png"))
-		plataform.bath_dirty.w2 = load(str(pathBath, "girl-banho/girl-banho-m2-s.png"))
-		plataform.bath_dirty.w3 = load(str(pathBath, "girl-banho/girl-banho-m3-s.png"))
-		plataform.bath_dirty.w4 = load(str(pathBath, "girl-banho/girl-banho-m4-s.png"))
-		plataform.bath_dirty.w5 = load(str(pathBath, "girl-banho/girl-banho-m5-s.png"))
-	
-	"""
-	var path = "res://assets/All_Character_Sprites/"
-	
-	if(boyorgirl == "Boy"):
-		path = str(path, "Boy/")
-		path = str(path, etnia, "/")
-		if (glass == false):
-			
-			var walkpath = str(path, "Walk/boy-", str(variation))
-			
-			plataform.idle = load(str(walkpath, "/boy-", str(variation) ,"-1.png"))
-			print(str(walkpath, "/boy-", str(variation) ,"-1.png"))
-			
-			plataform.seated = load(str(path, "boy-", variation, "-sentado/boy-", variation, "-sentado.png"))
-			plataform.seated_dirty = load(str(path, "boy-", variation, "-sentado/boy-", variation, "-sujo-sentado.png"))
-			
-			plataform.walk.w1 = load(str(walkpath, "/boy-", str(variation) ,"-2.png"))
-			plataform.walk.w2 = load(str(walkpath, "/boy-", str(variation) ,"-3.png"))
-			plataform.walk.w3 = load(str(walkpath, "/boy-", str(variation) ,"-4.png")) 
-			plataform.walk.w4 = load(str(walkpath, "/boy-", str(variation) ,"-5.png"))
-			plataform.walk.w5 = load(str(walkpath, "/boy-", str(variation) ,"-6.png"))
-			
-			walkpath = str(walkpath, "-sujo")
-			
-			plataform.idle_dirty =  load(str(walkpath, "/boy-", str(variation) ,"-1.png"))
-			plataform.walk_dirty.w1 = load(str(walkpath, "/boy-", str(variation) ,"-2.png")) 
-			plataform.walk_dirty.w2 = load(str(walkpath, "/boy-", str(variation) ,"-3.png")) 
-			plataform.walk_dirty.w3 = load(str(walkpath, "/boy-", str(variation) ,"-4.png"))
-			plataform.walk_dirty.w4 = load(str(walkpath, "/boy-", str(variation) ,"-5.png")) 
-			plataform.walk_dirty.w5 = load(str(walkpath, "/boy-", str(variation) ,"-6.png"))
-			
-			print(str(walkpath, "/boy-", str(variation) ,"-6.png"))
-			
-		elif (glass == true):
-			var walkpath = str(path, "Walk/boy-", str(variation))
-			
-			plataform.idle = load(str(walkpath, "-oculos/boy-", str(variation) ,"-1.png"))
-			plataform.walk.w1 = load(str(walkpath, "-oculos/boy-", str(variation) ,"-2.png"))
-			plataform.walk.w2 = load(str(walkpath, "-oculos/boy-", str(variation) ,"-3.png"))
-			plataform.walk.w3 = load(str(walkpath, "-oculos/boy-", str(variation) ,"-4.png")) 
-			plataform.walk.w4 = load(str(walkpath, "-oculos/boy-", str(variation) ,"-5.png"))
-			plataform.walk.w5 = load(str(walkpath, "-oculos/boy-", str(variation) ,"-6.png"))
-			
-			walkpath = str(walkpath, "-sujo")
-			
-			plataform.seated = load(str(path, "boy-", variation, "-sentado/boy-", variation, "-sentado-oculos.png"))
-			plataform.seated_dirty = load(str(path, "boy-", variation, "-sentado/boy-", variation, "-sujo-sentado-oculos.png"))
-			
-			
-			plataform.idle_dirty =  load(str(walkpath, "-oculos/boy-", str(variation) ,"-1.png"))
-			plataform.walk_dirty.w1 = load(str(walkpath, "-oculos/boy-", str(variation) ,"-2.png")) 
-			plataform.walk_dirty.w2 = load(str(walkpath, "-oculos/boy-", str(variation) ,"-3.png")) 
-			plataform.walk_dirty.w3 = load(str(walkpath, "-oculos/boy-", str(variation) ,"-4.png"))
-			plataform.walk_dirty.w4 = load(str(walkpath, "-oculos/boy-", str(variation) ,"-5.png")) 
-			plataform.walk_dirty.w5 = load(str(walkpath, "-oculos/boy-", str(variation) ,"-6.png"))
-		
-		plataform.idle_bath = load(str(path, "boy-banho/boy-banho-1.png"))
-		
-		plataform.bath.w1 = load(str(path, "boy-banho/boy-banho-2.png"))
-		plataform.bath.w2 = load(str(path, "boy-banho/boy-banho-3.png"))
-		plataform.bath.w3 = load(str(path, "boy-banho/boy-banho-4.png"))
-		plataform.bath.w4 = load(str(path, "boy-banho/boy-banho-5.png"))
-		plataform.bath.w5 = load(str(path, "boy-banho/boy-banho-6.png"))
-
-		plataform.idle_bath_dirty = load(str(path, "boy-banho-sujo/boy-banho-1.png"))
-		
-		plataform.bath_dirty.w1 = load(str(path, "boy-banho-sujo/boy-banho-2.png"))
-		plataform.bath_dirty.w2 = load(str(path, "boy-banho-sujo/boy-banho-3.png"))
-		plataform.bath_dirty.w3 = load(str(path, "boy-banho-sujo/boy-banho-4.png"))
-		plataform.bath_dirty.w4 = load(str(path, "boy-banho-sujo/boy-banho-5.png"))
-		plataform.bath_dirty.w5 = load(str(path, "boy-banho-sujo/boy-banho-6.png"))
-		
-		plataform.sleeping = load(str(path, "boy-dormindo/boy-", str(variation) ,"-dormindo.png"))
-	elif(boyorgirl == "Girl"):
-		path = str(path, "Girl/")
-		path = str(path, etnia, "/")
-		
-		if (glass == false):
-			var walkpath = str(path, "Walk/girl-", str(variation))
-			
-			plataform.seated = load(str(path, "girl-", variation, "-sentada/girl-", variation, "-sentada.png"))
-			plataform.seated_dirty = load(str(path, "girl-", variation, "-sentada/girl-", variation, "-suja-sentada.png"))
-			print(str(path, "girl-", variation, "-sentada/girl-", variation, "-suja-sentada.png"))
-			
-			
-			plataform.idle = load(str(walkpath, "/girl-", str(variation) ,"-1.png"))
-			plataform.walk.w1 = load(str(walkpath, "/girl-", str(variation) ,"-2.png"))
-			plataform.walk.w2 = load(str(walkpath, "/girl-", str(variation) ,"-3.png"))
-			plataform.walk.w3 = load(str(walkpath, "/girl-", str(variation) ,"-4.png")) 
-			plataform.walk.w4 = load(str(walkpath, "/girl-", str(variation) ,"-5.png"))
-			plataform.walk.w5 = load(str(walkpath, "/girl-", str(variation) ,"-6.png"))
-			
-			walkpath = str(walkpath, "-suja")
-			
-			plataform.idle_dirty =  load(str(walkpath, "/girl-", str(variation) ,"-1.png"))
-			plataform.walk_dirty.w1 = load(str(walkpath, "/girl-", str(variation) ,"-2.png")) 
-			plataform.walk_dirty.w2 = load(str(walkpath, "/girl-", str(variation) ,"-3.png")) 
-			plataform.walk_dirty.w3 = load(str(walkpath, "/girl-", str(variation) ,"-4.png"))
-			plataform.walk_dirty.w4 = load(str(walkpath, "/girl-", str(variation) ,"-5.png")) 
-			plataform.walk_dirty.w5 = load(str(walkpath, "/girl-", str(variation) ,"-6.png"))
-		elif (glass == true):
-			var walkpath = str(path, "Walk/girl-", str(variation))
-			
-			plataform.seated = load(str(path, "girl-", variation, "-sentada/girl-", variation, "-sentada-oculos.png"))
-			plataform.seated_dirty = load(str(path, "girl-", variation, "-sentada/girl-", variation, "-suja-sentada-oculos.png"))
-			
-			plataform.idle = load(str(walkpath, "-oculos/girl-", str(variation) ,"-1.png"))
-			plataform.walk.w1 = load(str(walkpath, "-oculos/girl-", str(variation) ,"-2.png"))
-			plataform.walk.w2 = load(str(walkpath, "-oculos/girl-", str(variation) ,"-3.png"))
-			plataform.walk.w3 = load(str(walkpath, "-oculos/girl-", str(variation) ,"-4.png")) 
-			plataform.walk.w4 = load(str(walkpath, "-oculos/girl-", str(variation) ,"-5.png"))
-			plataform.walk.w5 = load(str(walkpath, "-oculos/girl-", str(variation) ,"-6.png"))
-			
-			walkpath = str(walkpath, "-suja")
-			
-			plataform.idle_dirty =  load(str(walkpath, "-oculos/girl-", str(variation) ,"-1.png"))
-			plataform.walk_dirty.w1 = load(str(walkpath, "-oculos/girl-", str(variation) ,"-2.png")) 
-			plataform.walk_dirty.w2 = load(str(walkpath, "-oculos/girl-", str(variation) ,"-3.png")) 
-			plataform.walk_dirty.w3 = load(str(walkpath, "-oculos/girl-", str(variation) ,"-4.png"))
-			plataform.walk_dirty.w4 = load(str(walkpath, "-oculos/girl-", str(variation) ,"-5.png")) 
-			plataform.walk_dirty.w5 = load(str(walkpath, "-oculos/girl-", str(variation) ,"-6.png"))
-		
-		plataform.idle_bath = load(str(path, "girl-banho/girl-banho-1.png"))
-		
-		plataform.bath.w1 = load(str(path, "girl-banho/girl-banho-2.png"))
-		plataform.bath.w2 = load(str(path, "girl-banho/girl-banho-3.png"))
-		plataform.bath.w3 = load(str(path, "girl-banho/girl-banho-4.png"))
-		plataform.bath.w4 = load(str(path, "girl-banho/girl-banho-5.png"))
-		plataform.bath.w5 = load(str(path, "girl-banho/girl-banho-6.png"))
-
-		plataform.idle_bath_dirty = load(str(path, "girl-banho-sujo/girl-banho-1.png"))
-		
-		plataform.bath_dirty.w1 = load(str(path, "girl-banho-sujo/girl-banho-2.png"))
-		plataform.bath_dirty.w2 = load(str(path, "girl-banho-sujo/girl-banho-3.png"))
-		plataform.bath_dirty.w3 = load(str(path, "girl-banho-sujo/girl-banho-4.png"))
-		plataform.bath_dirty.w4 = load(str(path, "girl-banho-sujo/girl-banho-5.png"))
-		plataform.bath_dirty.w5 = load(str(path, "girl-banho-sujo/girl-banho-6.png"))
-		
-		plataform.sleeping = load(str(path, "girl-dormindo/girl-", str(variation) ,"-dormindo.png"))
-	"""
+	var bath_prefix = "boy" if genero == "boy" else "girl"
+	var bath_path = "res://assets/Sprites-v3/%s-banho/%s-banho-" % [bath_prefix, bath_prefix]
+	plataform.idle_bath = load(bath_path + "m0.png")
+	plataform.idle_bath_dirty = load(bath_path + "m0-s.png")
+	for bath_frame in range(1, 6):
+		var bath_key = "w" + str(bath_frame)
+		plataform.bath[bath_key] = load(bath_path + "m%d.png" % bath_frame)
+		plataform.bath_dirty[bath_key] = load(bath_path + "m%d-s.png" % bath_frame)
 	return plataform
 
 func Load_Match3():

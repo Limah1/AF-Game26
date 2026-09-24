@@ -78,6 +78,11 @@ _global_script_classes=[ {
 "class": "Tile",
 "language": "GDScript",
 "path": "res://src/Mini-games/Match-3/Tile.gd"
+}, {
+"base": "Resource",
+"class": "WeatherOutfitTuning",
+"language": "GDScript",
+"path": "res://src/UI/WeatherOutfitTuning.gd"
 } ]
 _global_script_class_icons={
 "Board": "",
@@ -93,7 +98,8 @@ _global_script_class_icons={
 "HouseRoom": "",
 "PlantData": "",
 "Temp_Tab": "",
-"Tile": ""
+"Tile": "",
+"WeatherOutfitTuning": ""
 }
 
 [application]

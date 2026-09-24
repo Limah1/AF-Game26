@@ -1,13 +1,14 @@
 extends Control 
 
 const LEGACY_HEAD_SHADER = preload("res://src/UI/LegacyHead.shader")
-const LEGACY_R1_SCALE = 0.5236
-const LEGACY_R2_SCALE = 0.6
-const LEGACY_HEAD_SCALE = 0.252
-const LEGACY_R1_SPRITE_POSITION = Vector2(1628.16, 617.38)
-const LEGACY_R2_SPRITE_POSITION = Vector2(1594.28, 549.035)
-const LEGACY_R1_HEAD_POSITION_Y = 256.0
-const LEGACY_R2_HEAD_POSITION_Y = 276.0
+export(Vector2) var roupa_1_body_position = Vector2(1606.6, 513.576)
+export(float, 0.05, 2.0, 0.001) var roupa_1_body_scale = 0.4
+export(Vector2) var roupa_1_head_position = Vector2(1600, 190)
+export(float, 0.05, 2.0, 0.001) var roupa_1_head_scale = 0.4
+export(Vector2) var roupa_2_body_position = Vector2(1606.6, 513.576)
+export(float, 0.05, 2.0, 0.001) var roupa_2_body_scale = 0.4
+export(Vector2) var roupa_2_head_position = Vector2(1600, 190)
+export(float, 0.05, 2.0, 0.001) var roupa_2_head_scale = 0.4
 
 var personagem_sprite
 var cabelo = NewCharData.cabelo
@@ -17,14 +18,10 @@ var cor_pele = NewCharData.cor_pele
 onready var modular_character = $ModularCharacter
 onready var legacy_head = $LegacyHead
 
-var sprite_boy_a_r1 = preload("res://assets/Sprites-v3/boy-a/boy-a-r1-m0.png")
-var sprite_boy_a_r2 = preload("res://assets/Sprites-v3/boy-a/boy-a-r2-m0.png")
-var sprite_girl_a_r1 = preload("res://assets/Sprites-v3/girl-a/girl-a-r1-m0.png")
-var sprite_girl_a_r2 = preload("res://assets/Sprites-v3/girl-a/girl-a-r2-m0.png")
-var sprite_boy_b_r1 = preload("res://assets/Sprites-v3/boy-b/boy-b-r1-m0.png")
-var sprite_boy_b_r2 = preload("res://assets/Sprites-v3/boy-b/boy-b-r2-m0.png")
-var sprite_girl_b_r1 = preload("res://assets/Sprites-v3/girl-b/girl-b-r1-m0.png")
-var sprite_girl_b_r2 = preload("res://assets/Sprites-v3/girl-b/girl-b-r2-m0.png")
+var sprite_boy_r1 = preload("res://assets/SpritesV4/RoupasNormais/Menino/Variacao1/m0.png")
+var sprite_boy_r2 = preload("res://assets/SpritesV4/RoupasNormais/Menino/Variacao2/m0.png")
+var sprite_girl_r1 = preload("res://assets/SpritesV4/RoupasNormais/Menina/Variacao1/m0.png")
+var sprite_girl_r2 = preload("res://assets/SpritesV4/RoupasNormais/Menina/Variacao2/m0.png")
 
 var sprite_btn_roupa_girl_1 = preload("res://assets/Character_Creator/btn_roupa_1_girl.png")
 var sprite_btn_roupa_girl_1_on = preload("res://assets/Character_Creator/btn_roupa_1_girl_on.png")
@@ -58,19 +55,13 @@ func _ready():
 		$btn_roupa_1.texture_pressed = sprite_btn_roupa_girl_1_on
 		$btn_roupa_2.texture_normal = sprite_btn_roupa_girl_2
 		$btn_roupa_2.texture_pressed = sprite_btn_roupa_girl_2_on
-		if (cabelo == "a"):
-			$Sprite.texture = sprite_girl_a_r1
-		else:
-			$Sprite.texture = sprite_girl_b_r1
+		$Sprite.texture = sprite_girl_r1
 	else:
 		$btn_roupa_1.texture_normal = sprite_btn_roupa_boy_1
 		$btn_roupa_1.texture_pressed = sprite_btn_roupa_boy_1_on
 		$btn_roupa_2.texture_normal = sprite_btn_roupa_boy_2
 		$btn_roupa_2.texture_pressed = sprite_btn_roupa_boy_2_on
-		if (cabelo == "a"):
-			$Sprite.texture = sprite_boy_a_r1
-		else:
-			$Sprite.texture = sprite_boy_b_r1
+		$Sprite.texture = sprite_boy_r1
 	_update_legacy_head()
 
 	# Match the old selector defaults on the modular rig.
@@ -82,7 +73,8 @@ func _show_legacy_preview() -> void:
 	# Use the original character preview with the new head overlay.
 	if personagem_sprite != null:
 		personagem_sprite.visible = true
-		personagem_sprite.scale = Vector2(LEGACY_R2_SCALE, LEGACY_R2_SCALE)
+		personagem_sprite.position = roupa_1_body_position
+		personagem_sprite.scale = Vector2.ONE * roupa_1_body_scale
 	if modular_character != null:
 		modular_character.visible = false
 
@@ -91,12 +83,12 @@ func _update_legacy_head() -> void:
 		return
 	var hair = "a" if cabelo == "a" else "b"
 	var roupa_1 = $btn_roupa_1.pressed
-	legacy_head.texture = load("res://assets/Sprites-v3/heads/%s-%s-head.png" % [genero, hair])
+	legacy_head.texture = CharacterController.get_head_texture_for(genero, hair)
 	legacy_head.visible = true
-	personagem_sprite.scale = Vector2(LEGACY_R1_SCALE, LEGACY_R1_SCALE) if roupa_1 else Vector2(LEGACY_R2_SCALE, LEGACY_R2_SCALE)
-	personagem_sprite.position = LEGACY_R1_SPRITE_POSITION if roupa_1 else LEGACY_R2_SPRITE_POSITION
-	legacy_head.scale = Vector2(LEGACY_HEAD_SCALE, LEGACY_HEAD_SCALE)
-	legacy_head.position.y = LEGACY_R1_HEAD_POSITION_Y if roupa_1 else LEGACY_R2_HEAD_POSITION_Y
+	personagem_sprite.position = roupa_1_body_position if roupa_1 else roupa_2_body_position
+	personagem_sprite.scale = Vector2.ONE * (roupa_1_body_scale if roupa_1 else roupa_2_body_scale)
+	legacy_head.position = roupa_1_head_position if roupa_1 else roupa_2_head_position
+	legacy_head.scale = Vector2.ONE * (roupa_1_head_scale if roupa_1 else roupa_2_head_scale)
 	var head_material = legacy_head.material as ShaderMaterial
 	if head_material == null or head_material.shader != LEGACY_HEAD_SHADER:
 		head_material = ShaderMaterial.new()
@@ -145,15 +137,9 @@ func _on_btn_roupa_2_pressed():
 	get_node("btn_roupa_1").pressed = false
 	get_node("btn_roupa_2").pressed = true
 	if (genero == "girl"):
-		if (cabelo == "a"):
-			$Sprite.texture = sprite_girl_a_r2
-		else:
-			$Sprite.texture = sprite_girl_b_r2	
+		$Sprite.texture = sprite_girl_r2
 	else:
-		if (cabelo == "a"):
-			$Sprite.texture = sprite_boy_a_r2
-		else:
-			$Sprite.texture = sprite_boy_b_r2
+		$Sprite.texture = sprite_boy_r2
 	_update_legacy_head()
 
 
@@ -161,15 +147,9 @@ func _on_btn_roupa_1_pressed():
 	get_node("btn_roupa_1").pressed = true
 	get_node("btn_roupa_2").pressed = false
 	if (genero == "girl"):
-		if (cabelo == "a"):
-			$Sprite.texture = sprite_girl_a_r1
-		else:
-			$Sprite.texture = sprite_girl_b_r1
+		$Sprite.texture = sprite_girl_r1
 	else:
-		if (cabelo == "a"):
-			$Sprite.texture = sprite_boy_a_r1
-		else:
-			$Sprite.texture = sprite_boy_b_r1
+		$Sprite.texture = sprite_boy_r1
 	_update_legacy_head()
 
 

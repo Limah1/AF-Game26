@@ -4,6 +4,19 @@ extends Control # Ou Node2D, dependendo do seu nó base
 
 const LEGACY_HEAD_SHADER = preload("res://src/UI/LegacyHead.shader")
 const CHARACTER_SHADER_MATERIAL = preload("res://src/UI/ShaderPersonagem.tres")
+const BOY_CARD_COLOR = Color("#5853ff")
+const GIRL_CARD_COLOR = Color("#ec2ac5")
+
+export(Vector2) var body_position = Vector2(1606.6, 513.576)
+export(float, 0.05, 2.0, 0.001) var body_scale = 0.2
+export(Vector2) var boy1_head_position = Vector2(1600, 141)
+export(float, 0.05, 2.0, 0.001) var boy1_head_scale = 0.252
+export(Vector2) var boy2_head_position = Vector2(1600, 141)
+export(float, 0.05, 2.0, 0.001) var boy2_head_scale = 0.252
+export(Vector2) var girl1_head_position = Vector2(1600, 141)
+export(float, 0.05, 2.0, 0.001) var girl1_head_scale = 0.252
+export(Vector2) var girl2_head_position = Vector2(1600, 141)
+export(float, 0.05, 2.0, 0.001) var girl2_head_scale = 0.252
 
 # Declare a variável, mas não a inicialize aqui no Godot 3.x
 var personagem_sprite
@@ -11,21 +24,11 @@ var selected_skin_tone_id = "skin_01"
 
 onready var modular_character = $ModularCharacter
 onready var legacy_head = $LegacyHead
+onready var hair_a_icon = $cabelo_A/HeadIcon
+onready var hair_b_icon = $cabelo_B/HeadIcon
 
-var sprite_boy_a = preload("res://assets/Sprites-v3/boy-a/boy-a-r1-m0.png")
-var sprite_girl_a = preload("res://assets/Sprites-v3/girl-a/girl-a-r1-m0.png")
-var sprite_boy_b = preload("res://assets/Sprites-v3/boy-b/boy-b-r1-m0.png")
-var sprite_girl_b = preload("res://assets/Sprites-v3/girl-b/girl-b-r1-m0.png")
-
-var cabelo_girl_A = preload("res://src/UI/Assets/Frame 7 - branco.png")
-var cabelo_girl_A_on = preload("res://src/UI/Assets/Frame 7 - branco.png")
-var cabelo_girl_B = preload("res://src/UI/Assets/Frame 8.png")
-var cabelo_girl_B_on = preload("res://src/UI/Assets/Frame 8.png")
-var cabelo_boy_A = preload("res://src/UI/Assets/Frame 6 - branco.png")
-var cabelo_boy_A_on = preload("res://src/UI/Assets/Frame 6 - branco.png")
-var cabelo_boy_B = preload("res://src/UI/Assets/Frame 9 - branco.png")
-var cabelo_boy_B_on = preload("res://src/UI/Assets/Frame 9 - branco.png")
-
+var sprite_boy = preload("res://assets/SpritesV4/RoupasNormais/Menino/Variacao1/m0.png")
+var sprite_girl = preload("res://assets/SpritesV4/RoupasNormais/Menina/Variacao1/m0.png")
 
 func _ready():
 	# Inicialize a variável 'personagem_sprite' usando get_node()
@@ -35,6 +38,7 @@ func _ready():
 	get_node("btn_boy").pressed = true
 	ModularCharacterData.set_gender("boy")
 	get_node("cabelo_B").pressed = true
+	_update_hair_buttons("boy")
 	_set_skin_tone(selected_skin_tone_id)
 	_update_legacy_head()
 	_apply_modular_preview()
@@ -43,7 +47,8 @@ func _show_legacy_preview() -> void:
 	# Use the original single-sprite character preview.
 	if personagem_sprite != null:
 		personagem_sprite.visible = true
-		personagem_sprite.scale = Vector2(0.6, 0.6)
+		personagem_sprite.position = body_position
+		personagem_sprite.scale = Vector2.ONE * body_scale
 	if modular_character != null:
 		modular_character.visible = false
 
@@ -52,8 +57,21 @@ func _update_legacy_head() -> void:
 		return
 	var gender = "boy" if $btn_boy.pressed else "girl"
 	var hair = "a" if $cabelo_A.pressed else "b"
-	legacy_head.texture = load("res://assets/Sprites-v3/heads/%s-%s-head.png" % [gender, hair])
+	legacy_head.texture = CharacterController.get_head_texture_for(gender, hair)
 	legacy_head.visible = true
+	match "%s-%s" % [gender, hair]:
+		"boy-a":
+			legacy_head.position = boy1_head_position
+			legacy_head.scale = Vector2.ONE * boy1_head_scale
+		"boy-b":
+			legacy_head.position = boy2_head_position
+			legacy_head.scale = Vector2.ONE * boy2_head_scale
+		"girl-a":
+			legacy_head.position = girl1_head_position
+			legacy_head.scale = Vector2.ONE * girl1_head_scale
+		"girl-b":
+			legacy_head.position = girl2_head_position
+			legacy_head.scale = Vector2.ONE * girl2_head_scale
 	var head_material = legacy_head.material as ShaderMaterial
 	if head_material == null or head_material.shader != LEGACY_HEAD_SHADER:
 		head_material = ShaderMaterial.new()
@@ -61,6 +79,16 @@ func _update_legacy_head() -> void:
 		legacy_head.material = head_material
 	head_material.set_shader_param("source_skin", CharacterController.get_legacy_head_source_skin_for(gender, hair))
 	head_material.set_shader_param("target_skin", ModularCharacterData.cor_pele)
+
+func _update_hair_buttons(gender: String) -> void:
+	var card_color = BOY_CARD_COLOR if gender == "boy" else GIRL_CARD_COLOR
+	$cabelo_A.material.set_shader_param("top_color", card_color)
+	hair_a_icon.texture = CharacterController.get_head_texture_for(gender, "a")
+	hair_b_icon.texture = CharacterController.get_head_texture_for(gender, "b")
+	for icon in [hair_a_icon, hair_b_icon]:
+		var icon_material = icon.material as ShaderMaterial
+		icon_material.set_shader_param("source_skin", CharacterController.get_legacy_head_source_skin_for(gender, "a"))
+		icon_material.set_shader_param("target_skin", Color.white)
 
 func _apply_modular_preview() -> void:
 	if modular_character == null:
@@ -144,30 +172,16 @@ func _on_btn_cor_6_pressed():
 
 func _on_btn_boy_pressed():
 	ModularCharacterData.set_gender("boy")
-	if	$cabelo_A.pressed:
-		$Sprite.texture = sprite_boy_a
-	else:
-		$Sprite.texture = sprite_boy_b
-		
-	$cabelo_A.texture_normal = cabelo_boy_A
-	$cabelo_A.texture_pressed = cabelo_boy_A_on
-	$cabelo_B.texture_normal = cabelo_boy_B
-	$cabelo_B.texture_pressed = cabelo_boy_B_on
+	$Sprite.texture = sprite_boy
+	_update_hair_buttons("boy")
 	get_node("btn_girl").pressed = false
 	_update_legacy_head()
 	_apply_modular_preview()
 
 func _on_btn_girl_pressed():
 	ModularCharacterData.set_gender("girl")
-	if	$cabelo_A.pressed:
-		$Sprite.texture = sprite_girl_a
-	else:
-		$Sprite.texture = sprite_girl_b
-		
-	$cabelo_A.texture_normal = cabelo_girl_A
-	$cabelo_A.texture_pressed = cabelo_girl_A_on
-	$cabelo_B.texture_normal = cabelo_girl_B
-	$cabelo_B.texture_pressed = cabelo_girl_B_on
+	$Sprite.texture = sprite_girl
+	_update_hair_buttons("girl")
 	get_node("btn_boy").pressed = false
 	_update_legacy_head()
 	_apply_modular_preview()
@@ -179,9 +193,9 @@ func _on_cabelo_A_pressed():
 	get_node("cabelo_B").pressed = false
 	
 	if $btn_boy.pressed:
-		$Sprite.texture = sprite_boy_a
+		$Sprite.texture = sprite_boy
 	else:
-		$Sprite.texture = sprite_girl_a
+		$Sprite.texture = sprite_girl
 	_update_legacy_head()
 
 
@@ -190,9 +204,9 @@ func _on_cabelo_B_pressed():
 	get_node("cabelo_B").pressed = true
 	
 	if $btn_boy.pressed:
-		$Sprite.texture = sprite_boy_b
+		$Sprite.texture = sprite_boy
 	else:
-		$Sprite.texture = sprite_girl_b
+		$Sprite.texture = sprite_girl
 	_update_legacy_head()
 
 

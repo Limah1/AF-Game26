@@ -2,35 +2,41 @@ extends KinematicBody2D
 
 const LEGACY_HEAD_SHADER = preload("res://src/UI/LegacyHead.shader")
 const BODY_SKIN_SHADER = preload("res://src/UI/ShaderPersonagem.tres")
+const DEFAULT_WEATHER_OUTFIT_TUNING = preload("res://assets/SpritesV4/RoupasEspeciais/ConfiguracaoRoupasEspeciais.tres")
 const LEGACY_R1_SCALE = 1.38
 const LEGACY_IDLE_WALK_HEAD_OFFSET = Vector2(0, 8)
-const WEATHER_SPRITE_SCALE = Vector2(1.5, 1.5)
 const OUTFIT_SPRITE_NAMES = ["idle", "w1", "w2", "w3", "w4", "w5", "w6", "w7", "w8", "w9"]
+const WEATHER_OUTFIT_SPRITE_POSITIONS = {
+	"idle": Vector2(0.580444, 90),
+	"w1": Vector2(0, 90),
+	"w2": Vector2(0, 90),
+	"w3": Vector2(0, 90),
+	"w4": Vector2(0, 90),
+	"w5": Vector2(0, 90),
+	"w6": Vector2(0, 90),
+	"w7": Vector2(0, 90),
+	"w8": Vector2(0, 90),
+	"w9": Vector2(0, 90)
+}
 const HEADLESS_OUTFIT_RUN_SPRITES = {
 	"Rainy": [
-		preload("res://src/Mini-games/Hidratona/src/level/rain/an_capa_1.png"),
-		preload("res://src/Mini-games/Hidratona/src/level/rain/an_capa_2.png"),
-		preload("res://src/Mini-games/Hidratona/src/level/rain/an_capa_3.png"),
-		preload("res://src/Mini-games/Hidratona/src/level/rain/an_capa_4.png"),
-		preload("res://src/Mini-games/Hidratona/src/level/rain/an_capa_5.png"),
-		preload("res://src/Mini-games/Hidratona/src/level/rain/an_capa_6.png"),
-		preload("res://src/Mini-games/Hidratona/src/level/rain/an_capa_7.png"),
-		preload("res://src/Mini-games/Hidratona/src/level/rain/an_capa_8.png"),
-		preload("res://src/Mini-games/Hidratona/src/level/rain/an_capa_9.png")
+		preload("res://assets/SpritesV4/RoupasEspeciais/Chuva/Andando/an_capa_1.png"),
+		preload("res://assets/SpritesV4/RoupasEspeciais/Chuva/Andando/an_capa_2.png"),
+		preload("res://assets/SpritesV4/RoupasEspeciais/Chuva/Andando/an_capa_3.png"),
+		preload("res://assets/SpritesV4/RoupasEspeciais/Chuva/Andando/an_capa_4.png"),
+		preload("res://assets/SpritesV4/RoupasEspeciais/Chuva/Andando/an_capa_5.png"),
+		preload("res://assets/SpritesV4/RoupasEspeciais/Chuva/Andando/an_capa_6.png"),
+		preload("res://assets/SpritesV4/RoupasEspeciais/Chuva/Andando/an_capa_7.png"),
+		preload("res://assets/SpritesV4/RoupasEspeciais/Chuva/Andando/an_capa_8.png"),
+		preload("res://assets/SpritesV4/RoupasEspeciais/Chuva/Andando/an_capa_9.png")
 	],
 	"Snowy": [
-		preload("res://src/Mini-games/Hidratona/src/level/snow/rs_1_no_head.png"),
-		preload("res://src/Mini-games/Hidratona/src/level/snow/rs_2_no_head.png"),
-		preload("res://src/Mini-games/Hidratona/src/level/snow/rs_3_no_head.png"),
-		preload("res://src/Mini-games/Hidratona/src/level/snow/rs_4_no_head.png"),
-		preload("res://src/Mini-games/Hidratona/src/level/snow/rs_5_no_head.png")
+		preload("res://assets/SpritesV4/RoupasEspeciais/Neve/Andando/an_neve_1.png"),
+		preload("res://assets/SpritesV4/RoupasEspeciais/Neve/Andando/an_neve_2.png"),
+		preload("res://assets/SpritesV4/RoupasEspeciais/Neve/Andando/an_neve_3.png"),
+		preload("res://assets/SpritesV4/RoupasEspeciais/Neve/Andando/an_neve_4.png"),
+		preload("res://assets/SpritesV4/RoupasEspeciais/Neve/Andando/an_neve_5.png")
 	]
-}
-const OUTFIT_HEAD_POSITIONS = {
-	"boy-a": Vector2(0, -12),
-	"boy-b": Vector2(0, -8),
-	"girl-a": Vector2(0, -22),
-	"girl-b": Vector2(0, -4)
 }
 
 var drying = false
@@ -44,6 +50,7 @@ var on_bath = false
 var weather_outfit_active = false
 var active_outfit = "Normal"
 var normal_sprite_layout = {}
+var weather_outfit_tuning = DEFAULT_WEATHER_OUTFIT_TUNING
 
 onready var Anim_Player = $AnimationPlayer
 onready var legacy_head = $player_sprites/Head
@@ -55,6 +62,7 @@ var legacy_toilet_base_position = Vector2.ZERO
 
 func _ready() -> void:
 	add_to_group("platform_player")
+	CharacterController.connect("expression_changed", self, "_on_expression_changed")
 	legacy_toilet_base_position = legacy_toilet_body.position
 	_capture_normal_sprite_layout()
 	set_normal_clothes()
@@ -95,11 +103,14 @@ func _apply_weather_outfit() -> bool:
 
 	weather_outfit_active = true
 	active_outfit = outfit
+	var outfit_scale = weather_outfit_tuning.outfit_scale
 	for sprite_name in OUTFIT_SPRITE_NAMES:
 		var sprite = get_node("player_sprites/" + sprite_name)
-		sprite.scale = WEATHER_SPRITE_SCALE
-		sprite.position = normal_sprite_layout[sprite_name].position
-		sprite.use_parent_material = false
+		sprite.scale = Vector2(outfit_scale, outfit_scale)
+		sprite.position = WEATHER_OUTFIT_SPRITE_POSITIONS[sprite_name]
+		# Weather sprites use the same parent shader as normal clothes so skin
+		# customization remains visible on every walking frame.
+		sprite.use_parent_material = true
 		sprite.material = null
 
 	# These are the existing headless Hidratona bodies. The legacy customized
@@ -149,6 +160,12 @@ func refresh_outfit() -> void:
 	else:
 		set_normal_clothes()
 
+func set_weather_outfit_tuning(tuning: Resource) -> void:
+	if tuning == null:
+		return
+	weather_outfit_tuning = tuning
+	refresh_outfit()
+
 # Reaplica as propriedades visuais do player depois de uma troca de cena.
 # As cenas Hospital/MainScreen usam instâncias diferentes do player; manter
 # esta rotina aqui evita que materiais e escala fiquem dependentes da cena
@@ -181,6 +198,7 @@ func apply_visual_consistency(skin_color = null, shirt_color = null, pants_color
 	for child in $player_sprites.get_children():
 		if child is Sprite and child != legacy_head:
 			if weather_outfit_active and child.name in OUTFIT_SPRITE_NAMES:
+				child.use_parent_material = true
 				child.material = null
 			else:
 				child.material = body_material
@@ -190,7 +208,9 @@ func apply_visual_consistency(skin_color = null, shirt_color = null, pants_color
 func _refresh_legacy_head() -> void:
 	if legacy_head == null or not has_node("player_sprites/Head"):
 		return
-	var head_texture = CharacterController.get_legacy_head_texture()
+	var gender = "boy" if CharacterController.boyorgirl == "Boy" else "girl"
+	var hair = CharacterController.cabelo if CharacterController.cabelo == "a" or CharacterController.cabelo == "b" else "a"
+	var head_texture = CharacterController.get_expression_head_texture_for(gender, hair)
 	if head_texture == null:
 		legacy_head.visible = false
 		if skin_tone_rect != null:
@@ -198,26 +218,22 @@ func _refresh_legacy_head() -> void:
 		return
 	legacy_head.texture = head_texture
 	legacy_head.visible = true
-	var gender = "boy" if CharacterController.boyorgirl == "Boy" else "girl"
-	var hair = CharacterController.cabelo if CharacterController.cabelo == "a" or CharacterController.cabelo == "b" else "a"
 	if weather_outfit_active:
-		legacy_head_base_position = OUTFIT_HEAD_POSITIONS.get("%s-%s" % [gender, hair], Vector2(0, -12))
+		legacy_head_base_position = weather_outfit_tuning.get_head_position(gender, hair)
 	else:
-		var head_x = 20 if CharacterController.roupa == "r2" else 10
-		var head_y = -37 if CharacterController.roupa == "r2" else -107
-		legacy_head_base_position = Vector2(head_x, head_y)
+		legacy_head_base_position = weather_outfit_tuning.get_normal_head_position(gender, hair, CharacterController.roupa)
 	legacy_head.position = legacy_head_base_position
-	legacy_head.scale = Vector2(0.1512, 0.1512)
-	# The walk sprites do not include a neck. Keep this rectangle behind the
-	# head and torso so it fills the opening without covering either sprite.
+	var head_scale = weather_outfit_tuning.get_head_scale(gender, hair) if weather_outfit_active else weather_outfit_tuning.get_normal_head_scale(gender, hair, CharacterController.roupa)
+	legacy_head.scale = Vector2(head_scale, head_scale)
+	# The normal sprites are headless at the neck. Keep this rectangle behind the
+	# head and torso so it fills that opening without covering either sprite.
 	if skin_tone_rect != null:
-		skin_tone_rect.rect_position = Vector2(
-			legacy_head_base_position.x - 23,
-			legacy_head_base_position.y + 28
-		)
-		skin_tone_rect.rect_size = Vector2(46, 45)
+		var show_neck = _should_show_normal_neck(gender)
+		var neck_offset = weather_outfit_tuning.get_normal_neck_offset(CharacterController.roupa, gender)
+		skin_tone_rect.rect_position = legacy_head_base_position + neck_offset
+		skin_tone_rect.rect_size = weather_outfit_tuning.get_normal_neck_size(CharacterController.roupa, gender)
 		skin_tone_rect.rect_scale = Vector2.ONE
-		skin_tone_rect.visible = not weather_outfit_active
+		skin_tone_rect.visible = show_neck
 	var head_material = legacy_head.material as ShaderMaterial
 	if head_material == null or head_material.shader != LEGACY_HEAD_SHADER:
 		head_material = ShaderMaterial.new()
@@ -232,6 +248,12 @@ func _refresh_legacy_head() -> void:
 			skin_tone_rect.add_stylebox_override("panel", neck_style)
 	head_material.set_shader_param("source_skin", CharacterController.get_legacy_head_source_skin_for(gender, hair))
 	head_material.set_shader_param("target_skin", skin)
+
+func _on_expression_changed(_expression: String) -> void:
+	_refresh_legacy_head()
+
+func _should_show_normal_neck(gender: String) -> bool:
+	return not weather_outfit_active and (CharacterController.roupa == "r1" or CharacterController.roupa == "r2") and (gender == "boy" or gender == "girl")
 
 func _sync_legacy_head_visibility() -> void:
 	if legacy_head == null:
@@ -257,11 +279,9 @@ func _sync_legacy_head_visibility() -> void:
 		$player_sprites/w9.visible or toilet_visible
 	legacy_head.visible = body_visible and legacy_head.texture != null
 	if skin_tone_rect != null:
-		skin_tone_rect.visible = body_visible and legacy_head.texture != null and not weather_outfit_active
-		skin_tone_rect.rect_position = Vector2(
-			legacy_head_base_position.x - 23,
-			legacy_head_base_position.y + 28
-		) + idle_walk_head_offset + toilet_neck_offset
+		var gender = "boy" if CharacterController.boyorgirl == "Boy" else "girl"
+		skin_tone_rect.visible = body_visible and legacy_head.texture != null and _should_show_normal_neck(gender)
+		skin_tone_rect.rect_position = legacy_head_base_position + weather_outfit_tuning.get_normal_neck_offset(CharacterController.roupa, gender) + idle_walk_head_offset + toilet_neck_offset
 
 func _set_legacy_player_scale() -> void:
 	var base_scale = LEGACY_R1_SCALE

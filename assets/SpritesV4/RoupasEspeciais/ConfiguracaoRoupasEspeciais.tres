@@ -1,0 +1,55 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://src/UI/WeatherOutfitTuning.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+outfit_scale = 1.3
+head_positions = {
+"boy-a": Vector2( -5, -120 ),
+"boy-b": Vector2( -5, -120 ),
+"girl-a": Vector2( -5, -120 ),
+"girl-b": Vector2( -5, -120 )
+}
+head_scales = {
+"boy-a": 0.28,
+"boy-b": 0.28,
+"girl-a": 0.28,
+"girl-b": 0.28
+}
+normal_head_positions = {
+"boy-a": Vector2( 0, -125 ),
+"boy-b": Vector2( 0, -125 ),
+"girl-a": Vector2( 0, -125 ),
+"girl-b": Vector2( 0, -125 )
+}
+normal_head_scales = {
+"boy-a": 0.28,
+"boy-b": 0.28,
+"girl-a": 0.28,
+"girl-b": 0.28
+}
+normal_r2_head_positions = {
+"boy-a": Vector2( 5, -55 ),
+"boy-b": Vector2( 5, -55 ),
+"girl-a": Vector2( 5, -55 ),
+"girl-b": Vector2( 5, -55 )
+}
+normal_r2_head_scales = {
+"boy-a": 0.26,
+"boy-b": 0.26,
+"girl-a": 0.26,
+"girl-b": 0.26
+}
+normal_neck_offsets = {
+"r1-boy": Vector2( -23, 28 ),
+"r1-girl": Vector2( -23, 28 ),
+"r2-boy": Vector2( -23, 48 ),
+"r2-girl": Vector2( -23, 48 )
+}
+normal_neck_sizes = {
+"r1-boy": Vector2( 46, 45 ),
+"r1-girl": Vector2( 46, 45 ),
+"r2-boy": Vector2( 46, 45 ),
+"r2-girl": Vector2( 46, 45 )
+}
