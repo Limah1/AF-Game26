@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/slot_purchase.ogg-65ee9b8dbcb9dc31e09dd5a43b739501.oggstr"
+
+[deps]
+
+source_file="res://src/Assets/Audio/SFX/Minigames/PlantCare/slot_purchase.ogg"
+dest_files=[ "res://.import/slot_purchase.ogg-65ee9b8dbcb9dc31e09dd5a43b739501.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

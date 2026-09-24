@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/planting.ogg-226339751839724a80dc7ae78491aace.oggstr"
+
+[deps]
+
+source_file="res://src/Assets/Audio/SFX/Minigames/PlantCare/planting.ogg"
+dest_files=[ "res://.import/planting.ogg-226339751839724a80dc7ae78491aace.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
