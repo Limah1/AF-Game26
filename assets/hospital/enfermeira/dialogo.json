@@ -9,19 +9,19 @@
         "opcao1": {
             "botao": "Quero saber sobre vacinas",
             "resposta": "As vacinas são superpoderes que protegem você! Quem tem anemia falciforme precisa de algumas vacinas especiais. Sobre qual você quer saber?",
-            "voice": "res://assets/hospital/enfermeira/audio/opcao1_opcao1.ogg",
+            "voice": "res://src/Assets/Audio/Voice/Hospital/Nurse/choice1_choice1.ogg",
             "opcao1": {
                 "botao": "Pneumonia e meningite",
                 "resposta": "A vacina pneumocócica protege contra pneumonia, meningite e dor de ouvido. Você toma as doses no primeiro ano de vida e depois os reforços.",
-                "voice": "res://assets/hospital/enfermeira/audio/opcao1_opcao1_opcao1.ogg",
+                "voice": "res://src/Assets/Audio/Voice/Hospital/Nurse/choice1_choice1_choice1.ogg",
                 "opcao1": {
                     "botao": "E as vacinas da meningite?",
                     "resposta": "As vacinas meningocócicas ACWY e B protegem contra vários tipos de meningite, além da vacina que todo mundo já toma.",
-                    "voice": "res://assets/hospital/enfermeira/audio/opcao1_opcao1_opcao1_opcao1.ogg",
+                    "voice": "res://src/Assets/Audio/Voice/Hospital/Nurse/choice1_choice1_choice1_choice1.ogg",
                     "opcao1": {
                         "botao": "E a vacina Hib?",
                         "resposta": "A vacina Hib protege contra meningite e pneumonia causadas por uma bactéria. O médico avalia se você precisa de doses extras.",
-                        "voice": "res://assets/hospital/enfermeira/audio/opcao1_opcao1_opcao1_opcao1_opcao1.ogg",
+                        "voice": "res://src/Assets/Audio/Voice/Hospital/Nurse/choice1_choice1_choice1_choice1_choice1.ogg",
                         "opcao1": {
                             "botao": "Quero perguntar outra coisa"
                         }
@@ -37,7 +37,7 @@
             "opcao2": {
                 "botao": "Vacina da gripe",
                 "resposta": "A vacina da gripe é todo ano, a partir dos seis meses de idade. A gripe pode virar um problema sério nos pulmões de quem tem anemia falciforme.",
-                "voice": "res://assets/hospital/enfermeira/audio/opcao1_opcao1_opcao2.ogg",
+                "voice": "res://src/Assets/Audio/Voice/Hospital/Nurse/choice1_choice1_choice2.ogg",
                 "opcao1": {
                     "botao": "Quero perguntar outra coisa"
                 }
@@ -45,7 +45,7 @@
             "opcao3": {
                 "botao": "Vacinas do fígado",
                 "resposta": "As vacinas de hepatite A e B protegem o seu fígado. Quem tem anemia falciforme pode precisar de transfusão de sangue, e a vacina da hepatite B ajuda a proteger você.",
-                "voice": "res://assets/hospital/enfermeira/audio/opcao1_opcao1_opcao3.ogg",
+                "voice": "res://src/Assets/Audio/Voice/Hospital/Nurse/choice1_choice1_choice3.ogg",
                 "opcao1": {
                     "botao": "Quero perguntar outra coisa"
                 }
