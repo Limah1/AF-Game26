@@ -1,14 +1,18 @@
-[gd_resource type="Resource" script_class="PlantData" load_steps=3 format=2]
+[gd_resource type="Resource" script_class="PlantData" load_steps=6 format=2]
 
 [ext_resource path="res://src/Mini-games/PlantCare/PlantData.gd" type="Script" id=1]
-[ext_resource path="res://src/PlantIcon.png" type="Texture" id=2]
+[ext_resource path="res://src/Mini-games/PlantCare/sprites/Semente.png" type="Texture" id=2]
+[ext_resource path="res://src/Mini-games/PlantCare/sprites/FlorEstagio1.png" type="Texture" id=3]
+[ext_resource path="res://src/Mini-games/PlantCare/sprites/FlorEstagio2png.png" type="Texture" id=4]
+[ext_resource path="res://src/Mini-games/PlantCare/sprites/FlorEstagio3.png" type="Texture" id=5]
 
 [resource]
 script = ExtResource( 1 )
 id = "plant_5"
 display_name = "Planta 5"
-icon = ExtResource( 2 )
-stage_sprites = [ ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ) ]
+icon = ExtResource( 5 )
+stage_sprites = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ]
+flower_color = Color( 1, 0.84, 0.2, 1 )
 plant_cost = 25
 sell_value = 50
 watering_seconds = 3.0

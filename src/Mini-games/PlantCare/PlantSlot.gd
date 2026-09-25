@@ -193,9 +193,11 @@ func _refresh() -> void:
 	if plant_data == null:
 		status_label.text = "Slot vazio"
 		plant_texture.texture = null
+		plant_texture.material = null
 		return
 
 	plant_texture.texture = plant_data.get_stage_texture(stage)
+	plant_texture.material = plant_data.create_stage_material(stage)
 	call_deferred("_resize_plant")
 	if stage >= MATURE_STAGE:
 		status_label.text = "%s madura" % plant_data.display_name
@@ -214,7 +216,7 @@ func _refresh() -> void:
 func _resize_plant() -> void:
 	if plant_data == null or stage < 0:
 		return
-	var size: Vector2 = Vector2(210, 190) * STAGE_SCALES[stage]
+	var size: Vector2 = Vector2(220.5, 199.5) * STAGE_SCALES[stage]
 	plant_texture.rect_size = size
 	plant_texture.rect_position = (plant_area.rect_size - size) * 0.5
 

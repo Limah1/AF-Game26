@@ -22,7 +22,7 @@ margin_left = 48.0
 margin_top = 32.0
 margin_right = 950.0
 margin_bottom = 66.0
-text = "Calibração das roupas especiais"
+text = "Calibração de roupas e corrida do Hidratona"
 
 [node name="Hint" type="Label" parent="."]
 modulate = Color( 0.72, 0.76, 0.82, 1 )
@@ -30,7 +30,7 @@ margin_left = 48.0
 margin_top = 72.0
 margin_right = 1000.0
 margin_bottom = 100.0
-text = "A prévia usa o mesmo Player.tscn das cenas da casa, nas variações 1 e 2."
+text = "Hidratona: selecione cada quadro da corrida para alinhar a cabeça e o pescoço."
 
 [node name="PreviewArea" type="ColorRect" parent="."]
 margin_left = 48.0
@@ -60,6 +60,19 @@ color = Color( 0.42, 0.48, 0.55, 0.35 )
 position = Vector2( 694, 760 )
 
 [node name="Player" parent="Preview" instance=ExtResource( 2 )]
+
+[node name="HidratonaRun" type="Node2D" parent="Preview"]
+visible = false
+
+[node name="Body" type="Sprite" parent="Preview/HidratonaRun"]
+position = Vector2( 9, 46 )
+
+[node name="Neck" type="ColorRect" parent="Preview/HidratonaRun"]
+mouse_filter = 2
+color = Color( 0.435, 0.306, 0.216, 1 )
+
+[node name="Head" type="Sprite" parent="Preview/HidratonaRun"]
+z_index = 2
 
 [node name="Panel" type="PanelContainer" parent="."]
 anchor_left = 1.0

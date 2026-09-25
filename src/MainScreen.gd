@@ -24,7 +24,9 @@ func _ready() -> void:
 	AnimationController.set_animation_player($Player/AnimationPlayer)
 	_setup_modular_player()
 
-	if(previous_status == "Hospital" or previous_status == "Started" or previous_status == "MainGame" or previous_status == "DoiAqui"):
+	if(previous_status == "Bathroom"):
+		$Slots.start(4)
+	elif(previous_status == "Hospital" or previous_status == "Started" or previous_status == "MainGame" or previous_status == "DoiAqui"):
 		$Slots.start(1)
 	elif(previous_status == "Match3"):
 		$Slots.start(2)

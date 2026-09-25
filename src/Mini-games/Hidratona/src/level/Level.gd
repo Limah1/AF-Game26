@@ -33,7 +33,11 @@ func _ready():
 	# applying the scene override.
 	$Player.set_sprites()
 	if active_weather == "Rainy" and use_rain_test_assets:
-		$Player.set_weather_test_sprites("Rainy", rain_test_assets_root)
+		if CharacterController.boyorgirl == "Boy":
+			for frame in range(1, 8):
+				$Player.get_node("AllSprites/r%d" % frame).texture = load(rain_test_assets_root.plus_file("boy_rc_%d.png" % frame))
+		else:
+			$Player.set_weather_test_sprites("Rainy", rain_test_assets_root)
 	elif active_weather == "Snowy" and use_snow_test_assets:
 		$Player.set_weather_test_sprites("Snowy", snow_test_assets_root)
 	$Player._refresh_legacy_head()

@@ -59,7 +59,7 @@ mouse_filter = 2
 [node name="PlantTexture" type="TextureRect" parent="Content/PlantArea"]
 mouse_filter = 2
 expand = true
-stretch_mode = 4
+stretch_mode = 6
 
 [node name="StatusLabel" type="Label" parent="Content"]
 rect_min_size = Vector2( 0, 55 )

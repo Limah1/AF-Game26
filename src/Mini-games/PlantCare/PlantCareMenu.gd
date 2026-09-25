@@ -102,6 +102,7 @@ func _build_plant_list() -> void:
 		var icon := TextureRect.new()
 		icon.rect_min_size = Vector2(112, 112)
 		icon.texture = data.icon
+		icon.material = data.create_stage_material(3)
 		icon.expand = true
 		icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -143,6 +144,7 @@ func _begin_drag(data, position: Vector2) -> void:
 	dragged_plant = data
 	drag_position = position
 	drag_preview.texture = data.icon
+	drag_preview.material = data.create_stage_material(3)
 	drag_preview.visible = true
 	_last_drag_issue = ""
 	_show_message("Arraste para um slot vazio e segure por 1,5s")

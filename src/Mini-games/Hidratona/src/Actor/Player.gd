@@ -3,10 +3,12 @@ extends KinematicBody2D
 const FLOOR_NORMAL: = Vector2.UP
 const LEGACY_HEAD_SHADER = preload("res://src/UI/LegacyHead.shader")
 const LEGACY_BODY_SKIN_SHADER = preload("res://src/UI/LegacyBodySkin.shader")
+const RAIN_RUN_SKIN_SHADER = preload("res://src/Mini-games/Hidratona/src/level/rain/RainRunSkin.shader")
 const LEGACY_HEAD_SCALE = Vector2(0.105, 0.105)
 const LEGACY_HEAD_X_OFFSET = -15.0
 const LEVEL_HEADS_PATH = "res://src/Mini-games/Hidratona/src/level/heads/"
 const SHARED_HIDRATONA_TEST_PATH = "res://assets/Hidratona/sprites/HidratonaNewTest/"
+const RAIN_RUN_CALIBRATION = preload("res://src/Mini-games/Hidratona/src/level/rain/RunCalibration.tres")
 export var legacy_neck_offset = Vector2(-10, 25)
 export var legacy_run_head_offset = Vector2.ZERO
 export var legacy_run_neck_offset = Vector2(-10, 25)
@@ -74,7 +76,7 @@ func _refresh_legacy_head() -> void:
 			skin_color_rect.visible = false
 		return
 	legacy_head.texture = head_texture
-	legacy_head.scale = LEGACY_HEAD_SCALE
+	legacy_head.scale = Vector2.ONE * (RAIN_RUN_CALIBRATION.head_scale if _is_new_rain_run() else LEGACY_HEAD_SCALE.x)
 	var skin = Color(CharacterController.cor_pele) if CharacterController.cor_pele != "" else Color.white
 	_refresh_legacy_body_skin(skin)
 	# The headless walk sprites leave a gap at the neck. This panel sits above
@@ -101,7 +103,7 @@ func _refresh_legacy_head() -> void:
 func _get_level_head_texture() -> Texture:
 	# Snow sprites use the original character head. Rain keeps the dedicated
 	# level head assets because its body set has the rainy proportions.
-	if _is_snow_character():
+	if _is_snow_character() or _is_new_rain_run():
 		return CharacterController.get_legacy_head_texture()
 	var gender = "boy" if CharacterController.boyorgirl == "Boy" else "girl"
 	var hair = CharacterController.cabelo if CharacterController.cabelo == "a" or CharacterController.cabelo == "b" else "a"
@@ -115,14 +117,23 @@ func _get_level_head_texture() -> Texture:
 func _is_snow_character() -> bool:
 	return Resources.weather == "Snowy" or Resources.acessory == "Coat"
 
+func _is_new_rain_run() -> bool:
+	return CharacterController.boyorgirl == "Boy" and (Resources.weather == "Rainy" or Resources.acessory == "Umbrella")
+
 func _refresh_legacy_body_skin(skin: Color) -> void:
 	var body_skin_material = ShaderMaterial.new()
 	body_skin_material.shader = LEGACY_BODY_SKIN_SHADER
 	body_skin_material.set_shader_param("target_skin", skin)
+	var rain_skin_material = ShaderMaterial.new()
+	rain_skin_material.shader = RAIN_RUN_SKIN_SHADER
+	rain_skin_material.set_shader_param("target_skin", skin)
 	for sprite_name in ["r1", "r2", "r3", "r4", "r5", "r6", "r7", "j1", "j2", "squat"]:
 		var body_sprite = get_node_or_null("AllSprites/" + sprite_name) as Sprite
 		if body_sprite != null:
-			body_sprite.material = body_skin_material
+			var is_rain_run = _is_new_rain_run() and sprite_name.begins_with("r")
+			body_sprite.material = rain_skin_material if is_rain_run else body_skin_material
+			if sprite_name.begins_with("r"):
+				body_sprite.scale = Vector2.ONE * (RAIN_RUN_CALIBRATION.body_scale if is_rain_run else 1.0)
 
 func _apply_legacy_draw_order() -> void:
 	if skin_color_rect == null:
@@ -178,6 +189,12 @@ func _sync_legacy_head() -> void:
 	var running_visible = $AllSprites/r1.visible or $AllSprites/r2.visible or $AllSprites/r3.visible or $AllSprites/r4.visible or $AllSprites/r5.visible or $AllSprites/r6.visible or $AllSprites/r7.visible
 	if body_visible and running_visible:
 		next_position += legacy_run_head_offset
+		if _is_new_rain_run():
+			for frame in range(1, 8):
+				if get_node("AllSprites/r%d" % frame).visible:
+					next_position += RAIN_RUN_CALIBRATION.head_offsets[frame - 1]
+					break
+			neck_offset = RAIN_RUN_CALIBRATION.neck_offset
 	if _is_snow_character():
 		next_position += Vector2(35, 20)
 		if squat_visible:
@@ -190,6 +207,8 @@ func _sync_legacy_head() -> void:
 	legacy_head.visible = body_visible and legacy_head.texture != null and $AllSprites.visible
 	if skin_color_rect != null:
 		skin_color_rect.rect_position = next_position + neck_offset
+		if running_visible and _is_new_rain_run():
+			skin_color_rect.rect_size = RAIN_RUN_CALIBRATION.neck_size
 		skin_color_rect.visible = body_visible and legacy_head.texture != null and $AllSprites.visible and not squat_visible
 	
 func _physics_process(delta):

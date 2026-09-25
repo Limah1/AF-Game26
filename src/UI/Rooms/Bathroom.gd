@@ -120,6 +120,7 @@ func _on_sink_pressed() -> void:
 	var minigame_path = "res://src/UI/Minigame_escovar/MiniGame_EscovarDentes.tscn"
 	if WashingHands:
 		minigame_path = "res://src/UI/Minigame_lavar_maos/MiniGame_LavarMaos.tscn"
+		_set_persistent_player_visible(false)
 
 	var minigame = load(minigame_path).instance()
 	add_child(minigame)
@@ -135,6 +136,9 @@ func finish_escovar():
 func finish_washing_hands():
 	WashingHands = false
 	$sink.set_meta("WashingHands", false)
+	_set_persistent_player_visible(true)
 	_set_navigation_menu_visible(true)
+	# Deixe o toque que concluiu o minigame terminar antes de liberar a pia.
+	yield(get_tree().create_timer(0.2), "timeout")
 	is_doing_action = false
 	print("[Bathroom] WashingHands=false: hand-washing minigame finalized.")
