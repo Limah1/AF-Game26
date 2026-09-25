@@ -20,6 +20,7 @@ const WEATHER_OUTFIT_SPRITE_POSITIONS = {
 }
 const HEADLESS_OUTFIT_RUN_SPRITES = {
 	"Rainy": [
+		preload("res://assets/SpritesV4/RoupasEspeciais/Chuva/Andando/an_capa_0.png"),
 		preload("res://assets/SpritesV4/RoupasEspeciais/Chuva/Andando/an_capa_1.png"),
 		preload("res://assets/SpritesV4/RoupasEspeciais/Chuva/Andando/an_capa_2.png"),
 		preload("res://assets/SpritesV4/RoupasEspeciais/Chuva/Andando/an_capa_3.png"),
@@ -31,11 +32,16 @@ const HEADLESS_OUTFIT_RUN_SPRITES = {
 		preload("res://assets/SpritesV4/RoupasEspeciais/Chuva/Andando/an_capa_9.png")
 	],
 	"Snowy": [
+		preload("res://assets/SpritesV4/RoupasEspeciais/Neve/Andando/an_neve_0.png"),
 		preload("res://assets/SpritesV4/RoupasEspeciais/Neve/Andando/an_neve_1.png"),
 		preload("res://assets/SpritesV4/RoupasEspeciais/Neve/Andando/an_neve_2.png"),
 		preload("res://assets/SpritesV4/RoupasEspeciais/Neve/Andando/an_neve_3.png"),
 		preload("res://assets/SpritesV4/RoupasEspeciais/Neve/Andando/an_neve_4.png"),
-		preload("res://assets/SpritesV4/RoupasEspeciais/Neve/Andando/an_neve_5.png")
+		preload("res://assets/SpritesV4/RoupasEspeciais/Neve/Andando/an_neve_5.png"),
+		preload("res://assets/SpritesV4/RoupasEspeciais/Neve/Andando/an_neve_6.png"),
+		preload("res://assets/SpritesV4/RoupasEspeciais/Neve/Andando/an_neve_7.png"),
+		preload("res://assets/SpritesV4/RoupasEspeciais/Neve/Andando/an_neve_8.png"),
+		preload("res://assets/SpritesV4/RoupasEspeciais/Neve/Andando/an_neve_9.png")
 	]
 }
 
@@ -113,19 +119,12 @@ func _apply_weather_outfit() -> bool:
 		sprite.use_parent_material = true
 		sprite.material = null
 
-	# These are the existing headless Hidratona bodies. The legacy customized
-	# head is kept as a separate sprite and follows the same walk animation.
+	# Frame 0 is for standing still; walking uses frames 1-9.
 	$player_sprites/idle.texture = run_sprites[0]
-	for frame_index in range(1, run_sprites.size() + 1):
+	for frame_index in range(1, run_sprites.size()):
 		var sprite_name = "w" + str(frame_index)
 		if has_node("player_sprites/" + sprite_name):
-			get_node("player_sprites/" + sprite_name).texture = run_sprites[frame_index - 1]
-	# The old rainy/snowy sets have fewer frames. Clear unused slots so they do
-	# not leak into another outfit or into the normal animation.
-	for frame_index in range(run_sprites.size() + 1, OUTFIT_SPRITE_NAMES.size()):
-		var extra_sprite = get_node("player_sprites/w" + str(frame_index))
-		extra_sprite.texture = null
-		extra_sprite.visible = false
+			get_node("player_sprites/" + sprite_name).texture = run_sprites[frame_index]
 	if Anim_Player.current_animation == "walk":
 		Anim_Player.play("walk_rain")
 	_refresh_legacy_head()
