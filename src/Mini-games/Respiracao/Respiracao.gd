@@ -135,9 +135,9 @@ func _update_interface() -> void:
 
 	match phase:
 		Phase.WAITING:
-			phase_label.text = "Permaneça o dedo no botão"
+			phase_label.text = "Mantenha o dedo no botão"
 			helper_label.text = "Toque e segure para começar a inspirar"
-			breath_button.text = "TOQUE\nE SEGURE"
+			breath_button.text = "SEGURE"
 		Phase.INHALE:
 			phase_label.text = "Inspire"
 			helper_label.text = "Continue segurando..."

@@ -1,22 +1,23 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://src/UI/Minigame_lavar_maos/MiniGame_LavarMaos.gd" type="Script" id=1]
 [ext_resource path="res://assets/MiniGame_Escovar/pia.png" type="Texture" id=2]
 [ext_resource path="res://assets/Plataforma/objects/banheiro-toalha.png" type="Texture" id=3]
-[ext_resource path="res://assets/fonts/Roboto-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/fonts/Raleway-Medium.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://assets/Minigame_LavarMaos/hand.svg" type="Texture" id=5]
 [ext_resource path="res://assets/Match-3/circle.png" type="Texture" id=6]
 [ext_resource path="res://assets/Plataforma/objects/espuma.png" type="Texture" id=7]
 [ext_resource path="res://src/UI/Minigame_lavar_maos/HandTint.shader" type="Shader" id=8]
 [ext_resource path="res://assets/Minigame_LavarMaos/faucet_button.png" type="Texture" id=9]
 [ext_resource path="res://assets/Plataforma/mudancas-v10/1x/Ativo 9.png" type="Texture" id=10]
+[ext_resource path="res://assets/Plataforma/rooms/BathroomV2.png" type="Texture" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 43
 font_data = ExtResource( 4 )
 
 [sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0.11, 0.37, 0.49, 1 )
+bg_color = Color( 0.1, 0.36, 0.82, 1 )
 corner_radius_top_left = 12
 corner_radius_top_right = 12
 corner_radius_bottom_right = 12
@@ -35,46 +36,77 @@ shader = ExtResource( 8 )
 shader_param/skin_color = Color( 0.92, 0.72, 0.58, 1 )
 
 [sub_resource type="StyleBoxFlat" id=6]
-bg_color = Color( 0.18, 0.67, 0.78, 1 )
+bg_color = Color( 0.93, 0.48, 0.05, 1 )
 corner_radius_top_left = 12
 corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
 [sub_resource type="StyleBoxFlat" id=7]
-bg_color = Color( 0.73, 0.85, 0.88, 1 )
+bg_color = Color( 0.8, 0.77, 0.71, 1 )
 corner_radius_top_left = 12
 corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
 [sub_resource type="StyleBoxFlat" id=8]
-bg_color = Color( 0.94, 0.98, 0.99, 1 )
+bg_color = Color( 0.96, 0.95, 0.92, 1 )
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
-border_color = Color( 0.18, 0.67, 0.78, 1 )
+border_color = Color( 0.72, 0.68, 0.61, 1 )
 corner_radius_top_left = 24
 corner_radius_top_right = 24
 corner_radius_bottom_right = 24
 corner_radius_bottom_left = 24
 
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.96, 0.95, 0.92, 0.94 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0.72, 0.68, 0.61, 1 )
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+shadow_color = Color( 0, 0, 0, 0.2 )
+shadow_size = 15
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.93, 0.48, 0.05, 1 )
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
 [node name="MiniGame_LavarMaos" type="CanvasLayer"]
 layer = 20
 script = ExtResource( 1 )
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-color = Color( 0.84, 0.94, 0.96, 1 )
+texture = ExtResource( 11 )
+expand = true
+stretch_mode = 6
 
 [node name="TopBand" type="ColorRect" parent="."]
 anchor_right = 1.0
 margin_bottom = 112.0
 mouse_filter = 2
-color = Color( 0.08, 0.36, 0.47, 1 )
+color = Color( 0.96, 0.95, 0.92, 1 )
+
+[node name="PlayPanel" type="Panel" parent="."]
+margin_left = 50.0
+margin_top = 120.0
+margin_right = 1870.0
+margin_bottom = 1040.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 9 )
 
 [node name="Title" type="Label" parent="."]
 anchor_left = 0.5
@@ -84,7 +116,7 @@ margin_top = 24.0
 margin_right = 600.0
 margin_bottom = 78.0
 custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0.98, 1, 1, 1 )
+custom_colors/font_color = Color( 0.95, 0.49, 0.04, 1 )
 text = "LAVAR AS MÃOS"
 align = 1
 valign = 1
@@ -108,7 +140,7 @@ margin_top = 130.0
 margin_right = 700.0
 margin_bottom = 175.0
 custom_fonts/font = SubResource( 4 )
-custom_colors/font_color = Color( 0.08, 0.36, 0.47, 1 )
+custom_colors/font_color = Color( 0.14, 0.13, 0.12, 1 )
 text = "1/4 MOLHAR AS MÃOS"
 align = 1
 valign = 1
@@ -154,7 +186,7 @@ margin_top = 174.484
 margin_right = 172.865
 margin_bottom = 214.484
 custom_fonts/font = SubResource( 3 )
-custom_colors/font_color = Color( 0.35, 0.4, 0.43, 1 )
+custom_colors/font_color = Color( 0.24, 0.21, 0.18, 1 )
 text = "ÁGUA FECHADA"
 align = 1
 valign = 1
@@ -198,7 +230,7 @@ margin_top = 590.0
 margin_right = 520.0
 margin_bottom = 628.0
 custom_fonts/font = SubResource( 3 )
-custom_colors/font_color = Color( 0.08, 0.36, 0.47, 1 )
+custom_colors/font_color = Color( 0.24, 0.21, 0.18, 1 )
 text = "2. Passe sabão"
 align = 1
 
@@ -217,7 +249,7 @@ margin_top = 650.0
 margin_right = 1730.0
 margin_bottom = 690.0
 custom_fonts/font = SubResource( 3 )
-custom_colors/font_color = Color( 0.08, 0.36, 0.47, 1 )
+custom_colors/font_color = Color( 0.24, 0.21, 0.18, 1 )
 text = "3. Seque as mãos"
 align = 1
 
@@ -343,7 +375,7 @@ margin_top = 972.0
 margin_right = 1460.0
 margin_bottom = 1012.0
 custom_fonts/font = SubResource( 3 )
-custom_colors/font_color = Color( 0.08, 0.36, 0.47, 1 )
+custom_colors/font_color = Color( 0.24, 0.21, 0.18, 1 )
 text = "Molhar: pendente  |  Sabão: pendente  |  Enxágue: pendente  |  Secar: pendente"
 align = 1
 valign = 1
@@ -358,7 +390,7 @@ margin_top = -887.027
 margin_right = 313.249
 margin_bottom = -793.027
 custom_fonts/font = SubResource( 3 )
-custom_colors/font_color = Color( 0.08, 0.36, 0.47, 1 )
+custom_colors/font_color = Color( 0.24, 0.21, 0.18, 1 )
 text = "Abra a torneira, pegue o sabão e lave as duas mãos."
 align = 1
 valign = 1
@@ -392,7 +424,7 @@ stretch_mode = 5
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.04, 0.16, 0.21, 0.72 )
+color = Color( 0, 0, 0, 0.5 )
 
 [node name="MessagePanel" type="Panel" parent="CompletionPanel"]
 anchor_left = 0.5
@@ -411,7 +443,7 @@ margin_top = 55.0
 margin_right = 1010.0
 margin_bottom = 115.0
 custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0.08, 0.36, 0.47, 1 )
+custom_colors/font_color = Color( 0.95, 0.49, 0.04, 1 )
 text = "MÃOS LIMPAS!"
 align = 1
 valign = 1
@@ -422,7 +454,7 @@ margin_top = 155.0
 margin_right = 995.0
 margin_bottom = 295.0
 custom_fonts/font = SubResource( 4 )
-custom_colors/font_color = Color( 0.08, 0.36, 0.47, 1 )
+custom_colors/font_color = Color( 0.14, 0.13, 0.12, 1 )
 text = "Lavar as mãos com água e sabão ajuda a prevenir doenças e protege você e outras pessoas."
 align = 1
 valign = 1
@@ -433,8 +465,8 @@ margin_left = 95.0
 margin_top = 355.0
 margin_right = 505.0
 margin_bottom = 435.0
-custom_styles/hover = SubResource( 2 )
-custom_styles/normal = SubResource( 2 )
+custom_styles/hover = SubResource( 10 )
+custom_styles/normal = SubResource( 10 )
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "FAZER NOVAMENTE"

@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://src/Mini-games/Respiracao/Respiracao.gd" type="Script" id=1]
-[ext_resource path="res://assets/fonts/Roboto-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/fonts/Raleway-Medium.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/Nova pasta/bedroom.png" type="Texture" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 42
@@ -16,24 +17,24 @@ size = 54
 font_data = ExtResource( 2 )
 
 [sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 0.47, 0.78, 0.81, 0.18 )
+bg_color = Color( 0.2, 0.45, 0.9, 0.16 )
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
-border_color = Color( 0.47, 0.78, 0.81, 0.38 )
+border_color = Color( 0.15, 0.35, 0.75, 0.4 )
 corner_radius_top_left = 140
 corner_radius_top_right = 140
 corner_radius_bottom_right = 140
 corner_radius_bottom_left = 140
 
 [sub_resource type="StyleBoxFlat" id=5]
-bg_color = Color( 0.35, 0.74, 0.77, 1 )
+bg_color = Color( 0.17, 0.42, 0.87, 1 )
 border_width_left = 6
 border_width_top = 6
 border_width_right = 6
 border_width_bottom = 6
-border_color = Color( 0.16, 0.48, 0.53, 1 )
+border_color = Color( 0.08, 0.2, 0.48, 1 )
 corner_radius_top_left = 130
 corner_radius_top_right = 130
 corner_radius_bottom_right = 130
@@ -42,24 +43,24 @@ shadow_color = Color( 0.1, 0.31, 0.33, 0.32 )
 shadow_size = 18
 
 [sub_resource type="StyleBoxFlat" id=6]
-bg_color = Color( 0.23, 0.59, 0.63, 1 )
+bg_color = Color( 0.1, 0.32, 0.74, 1 )
 border_width_left = 6
 border_width_top = 6
 border_width_right = 6
 border_width_bottom = 6
-border_color = Color( 0.12, 0.4, 0.44, 1 )
+border_color = Color( 0.07, 0.18, 0.43, 1 )
 corner_radius_top_left = 130
 corner_radius_top_right = 130
 corner_radius_bottom_right = 130
 corner_radius_bottom_left = 130
 
 [sub_resource type="StyleBoxFlat" id=7]
-bg_color = Color( 0.3, 0.68, 0.72, 1 )
+bg_color = Color( 0.11, 0.36, 0.82, 1 )
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
-border_color = Color( 0.16, 0.48, 0.53, 1 )
+border_color = Color( 0.08, 0.2, 0.48, 1 )
 corner_radius_top_left = 130
 corner_radius_top_right = 130
 corner_radius_bottom_right = 130
@@ -76,12 +77,12 @@ size = 25
 font_data = ExtResource( 2 )
 
 [sub_resource type="StyleBoxFlat" id=10]
-bg_color = Color( 0.98, 1, 1, 1 )
+bg_color = Color( 0.96, 0.95, 0.92, 1 )
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
-border_color = Color( 0.27, 0.66, 0.7, 1 )
+border_color = Color( 0.72, 0.68, 0.61, 1 )
 corner_radius_top_left = 24
 corner_radius_top_right = 24
 corner_radius_bottom_right = 24
@@ -94,28 +95,73 @@ size = 37
 font_data = ExtResource( 2 )
 
 [sub_resource type="StyleBoxFlat" id=12]
-bg_color = Color( 0.27, 0.66, 0.7, 1 )
+bg_color = Color( 0.93, 0.48, 0.05, 1 )
 corner_radius_top_left = 12
 corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id=13]
+bg_color = Color( 0.96, 0.95, 0.92, 0.96 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0.72, 0.68, 0.61, 1 )
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+shadow_color = Color( 0, 0, 0, 0.2 )
+shadow_size = 15
+
+[sub_resource type="StyleBoxFlat" id=14]
+bg_color = Color( 0.1, 0.36, 0.82, 1 )
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id=15]
+bg_color = Color( 0.93, 0.48, 0.05, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id=16]
+bg_color = Color( 0.8, 0.77, 0.71, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="Respiracao" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-color = Color( 0.91, 0.96, 0.96, 1 )
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+
+[node name="PlayPanel" type="Panel" parent="."]
+margin_left = 180.0
+margin_top = 120.0
+margin_right = 1740.0
+margin_bottom = 1010.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 13 )
 
 [node name="TopBand" type="ColorRect" parent="."]
 anchor_right = 1.0
 margin_bottom = 110.0
 mouse_filter = 2
-color = Color( 0.16, 0.43, 0.47, 1 )
+color = Color( 0.96, 0.95, 0.92, 1 )
 
 [node name="Title" type="Label" parent="."]
 anchor_left = 0.5
@@ -125,7 +171,7 @@ margin_top = 25.0
 margin_right = 500.0
 margin_bottom = 85.0
 custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0.98, 1, 1, 1 )
+custom_colors/font_color = Color( 0.95, 0.49, 0.04, 1 )
 text = "MINIGAME DE RESPIRAÇÃO"
 align = 1
 valign = 1
@@ -138,7 +184,7 @@ margin_top = 140.0
 margin_right = 250.0
 margin_bottom = 180.0
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0.16, 0.43, 0.47, 1 )
+custom_colors/font_color = Color( 0.42, 0.29, 0.18, 1 )
 text = "RESPIRAÇÃO 1 DE 3"
 align = 1
 valign = 1
@@ -151,8 +197,8 @@ margin_top = 184.0
 margin_right = 650.0
 margin_bottom = 255.0
 custom_fonts/font = SubResource( 3 )
-custom_colors/font_color = Color( 0.1, 0.31, 0.33, 1 )
-text = "Permaneça o dedo no botão"
+custom_colors/font_color = Color( 0.14, 0.13, 0.12, 1 )
+text = "Mantenha o dedo no botão"
 align = 1
 valign = 1
 
@@ -198,7 +244,7 @@ margin_top = -190.0
 margin_right = 500.0
 margin_bottom = -150.0
 custom_fonts/font = SubResource( 9 )
-custom_colors/font_color = Color( 0.27, 0.43, 0.44, 1 )
+custom_colors/font_color = Color( 0.24, 0.21, 0.18, 1 )
 text = "Toque e segure para começar a inspirar"
 align = 1
 valign = 1
@@ -213,12 +259,15 @@ margin_top = -125.0
 margin_right = 330.0
 margin_bottom = -105.0
 mouse_filter = 2
+custom_styles/fg = SubResource( 15 )
+custom_styles/bg = SubResource( 16 )
+percent_visible = false
 
 [node name="CompletionPanel" type="ColorRect" parent="."]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.07, 0.2, 0.21, 0.72 )
+color = Color( 0, 0, 0, 0.5 )
 
 [node name="CompletionBox" type="Panel" parent="CompletionPanel"]
 anchor_left = 0.5
@@ -239,7 +288,7 @@ margin_top = 55.0
 margin_right = 450.0
 margin_bottom = 190.0
 custom_fonts/font = SubResource( 11 )
-custom_colors/font_color = Color( 0.1, 0.31, 0.33, 1 )
+custom_colors/font_color = Color( 0.95, 0.49, 0.04, 1 )
 text = "PARABÉNS!
 VOCÊ COMPLETOU O EXERCÍCIO
 DE RESPIRAÇÃO!"
@@ -247,10 +296,10 @@ align = 1
 valign = 1
 
 [node name="RestartButton" type="Button" parent="CompletionPanel/CompletionBox"]
-margin_left = 215.0
+margin_left = 550.0
 margin_top = 290.0
-margin_right = 465.0
-margin_bottom = 350.0
+margin_right = 940.0
+margin_bottom = 370.0
 custom_styles/hover = SubResource( 12 )
 custom_styles/normal = SubResource( 12 )
 custom_fonts/font = SubResource( 8 )
@@ -258,12 +307,12 @@ custom_colors/font_color = Color( 0.98, 1, 1, 1 )
 text = "RECOMEÇAR"
 
 [node name="BackButton" type="Button" parent="CompletionPanel/CompletionBox"]
-margin_left = -465.0
+margin_left = 80.0
 margin_top = 290.0
-margin_right = -215.0
-margin_bottom = 350.0
-custom_styles/hover = SubResource( 12 )
-custom_styles/normal = SubResource( 12 )
+margin_right = 470.0
+margin_bottom = 370.0
+custom_styles/hover = SubResource( 14 )
+custom_styles/normal = SubResource( 14 )
 custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0.98, 1, 1, 1 )
-text = "VOLTAR"
+text = "VOLTAR AO QUARTO"

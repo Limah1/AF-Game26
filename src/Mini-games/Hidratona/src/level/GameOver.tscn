@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://src/Mini-games/Hidratona/src/level/GameOver.gd" type="Script" id=1]
 [ext_resource path="res://assets/Hidratona/LAYOUT/button-ir-de-novo.png" type="Texture" id=2]
@@ -15,11 +15,11 @@
 [ext_resource path="res://assets/Hidratona/LAYOUT/win-hidratona-obstaculos.png" type="Texture" id=13]
 [ext_resource path="res://src/UI/sound/sound_button.tscn" type="PackedScene" id=14]
 [ext_resource path="res://src/Assets/Audio/SFX/Common/applause.wav" type="AudioStream" id=15]
-[ext_resource path="res://src/Assets/Audio/SFX/Minigames/Hidratona/complete.ogg" type="AudioStream" id=20]
 [ext_resource path="res://assets/fonts/Raleway-Medium.ttf" type="DynamicFontData" id=16]
 [ext_resource path="res://assets/Hidratona/sprites/objects/agua.png" type="Texture" id=17]
 [ext_resource path="res://assets/Hidratona/sprites/objects/laranja.png" type="Texture" id=18]
 [ext_resource path="res://assets/Hidratona/sprites/objects/strawberry.png" type="Texture" id=19]
+[ext_resource path="res://src/Assets/Audio/SFX/Minigames/Hidratona/complete.ogg" type="AudioStream" id=20]
 
 [sub_resource type="Animation" id=1]
 resource_name = "run"
@@ -195,7 +195,7 @@ margin_right = 1068.0
 margin_bottom = 359.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Você correu bem rapido e chegou bem longe ! Mas ficou sem beber agua por muito tempo,  beber mais água e coma as frutas. "
+text = "Você correu bem rápido e chegou longe! Mas ficou sem beber água. Hidratar-se ajuda o corpo a funcionar bem, e as frutas fornecem água e nutrientes."
 align = 1
 valign = 1
 autowrap = true
@@ -230,12 +230,12 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="life_result"]
 margin_left = 16.0
-margin_top = 8.0
+margin_top = -32.0
 margin_right = 1068.0
-margin_bottom = 359.0
+margin_bottom = 319.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Você correu bem rapido e chegou bem longe ! Mas você se bateu de mais nos obstaculos. "
+text = "Você correu bem rápido e chegou bem longe! Mas bateu demais nos obstáculos."
 align = 1
 valign = 1
 autowrap = true

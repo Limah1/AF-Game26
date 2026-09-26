@@ -89,16 +89,16 @@ z_index = -100
 texture = ExtResource( 3 )
 
 [node name="New_Enfermeira" type="Sprite" parent="."]
-position = Vector2( 1582.93, 562.074 )
-scale = Vector2( 0.202, 0.202 )
+position = Vector2( 1522.86, 680.412 )
+scale = Vector2( 0.336075, 0.336782 )
 z_index = -99
 texture = ExtResource( 1 )
 
 [node name="Button" type="Button" parent="."]
-margin_left = 1338.48
-margin_top = 313.663
-margin_right = 1768.48
-margin_bottom = 948.663
+margin_left = 1311.0
+margin_top = 348.315
+margin_right = 1741.0
+margin_bottom = 983.315
 mouse_default_cursor_shape = 2
 flat = true
 __meta__ = {

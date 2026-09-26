@@ -204,9 +204,20 @@ func _on_BreathingTestButton_pressed() -> void:
 	if breathing_test_active:
 		return
 
-	var minigame = load("res://src/Mini-games/Respiracao/Respiracao.tscn").instance()
 	breathing_test_active = true
 	$BreathingTestButton.hide()
+	var intro = load("res://src/Mini-games/Respiracao/Intro.tscn").instance()
+	add_child(intro)
+	intro.get_node("Screen/Panel/BackButton").connect("pressed", self, "_on_breathing_intro_back", [intro])
+	intro.get_node("Screen/Panel/StartButton").connect("pressed", self, "_on_breathing_intro_start", [intro])
+
+func _on_breathing_intro_back(intro) -> void:
+	intro.queue_free()
+	finish_breathing_test()
+
+func _on_breathing_intro_start(intro) -> void:
+	intro.queue_free()
+	var minigame = load("res://src/Mini-games/Respiracao/Respiracao.tscn").instance()
 	add_child(minigame)
 	minigame.start(self)
 
