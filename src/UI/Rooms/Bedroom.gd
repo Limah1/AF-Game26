@@ -5,7 +5,6 @@ var breathing_test_active = false
 const SLEEP_TEST_RIG_SCALE = 2.0
 const SLEEPING_HEAD_SCALE_MULTIPLIER = 3.0
 const LEGACY_HEAD_SHADER = preload("res://src/UI/LegacyHead.shader")
-const SLEEPING_HEAD_PATH = "res://assets/Sprites-v3/heads/%s-%s-dormindo.png"
 
 export(Vector2) var manta_scale = Vector2(0.4, 0.4)
 
@@ -75,7 +74,7 @@ func _apply_sleeping_head() -> void:
 
 	var gender = "boy" if CharacterController.boyorgirl == "Boy" else "girl"
 	var hair = CharacterController.cabelo if CharacterController.cabelo == "a" or CharacterController.cabelo == "b" else "a"
-	var sleeping_head = load(SLEEPING_HEAD_PATH % [gender, hair]) as Texture
+	var sleeping_head = CharacterController.get_head_texture_for(gender, hair)
 	if sleeping_head == null:
 		return
 

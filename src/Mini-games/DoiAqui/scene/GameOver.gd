@@ -2,7 +2,7 @@ extends Control
 
 const LEGACY_HEAD_SHADER = preload("res://src/UI/LegacyHead.shader")
 const BODY_SKIN_SHADER = preload("res://src/Mini-games/DoiAqui/actor/DoiAquiBodySkin.shader")
-const BODY_PATH = "res://assets/DoiAqui/sprites/actor/boy/"
+const BODY_PATH = "res://assets/SpritesV4/DoiAqui/"
 const HEAD_POSITION = Vector2(5, -63)
 const HEAD_SCALE = Vector2(0.094, 0.094)
 const NECK_OFFSET = Vector2(-10, 35)

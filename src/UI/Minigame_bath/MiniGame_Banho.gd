@@ -1,5 +1,17 @@
 extends Node2D
 
+const BOY_BATH_BODY = preload("res://assets/SpritesV4/MiniGameBanho/boy-banho-m1.png")
+const GIRL_BATH_BODY = preload("res://assets/SpritesV4/MiniGameBanho/girl-banho-m1.png")
+const LEGACY_HEAD_SHADER = preload("res://src/UI/LegacyHead.shader")
+
+export(Vector2) var body_position = Vector2(-16.704, -1550.32)
+export(Vector2) var body_scale = Vector2(0.55, 0.55)
+export(Vector2) var water_particles_offset = Vector2(0, -600)
+export(Vector2) var head_position = Vector2(0, -565)
+export(Vector2) var head_scale = Vector2.ONE
+export(Vector2) var bath_cap_position = Vector2(0, -195)
+export(Vector2) var bath_cap_scale = Vector2.ONE
+
 var bathroom_reference = null
 
 var molhado = 0
@@ -22,11 +34,10 @@ var rinse_timer = 0
 var dry_timer = 0
 
 onready var chuveiro = $"Ativo 6/Chuveiro"
-onready var bath_character_rig = $BathCharacterRig
 onready var character_body_area = $"boy-banho-1/body_area"
 onready var character_body_shape = $"boy-banho-1/body_area/CollisionShape2D"
-onready var modular_player_soap_area = $SoapDetector
-onready var modular_player_soap_shape = $"SoapDetector/CollisionShape2D"
+onready var character_head = $"boy-banho-1/Head"
+onready var bath_cap = $"boy-banho-1/Head/BathCap"
 onready var sabonete = $Sabonete
 onready var sabonete_shape = $"Sabonete/CollisionShape2D"
 onready var bubbles = $"boy-banho-1/bubbles"
@@ -34,12 +45,7 @@ onready var bubbles = $"boy-banho-1/bubbles"
 onready var water_circles = $"boy-banho-1/Molhado"
 onready var foam = $"boy-banho-1/espuma"
 
-# variaveis p shaders,
 var personagem_sprite
-var cor_pele
-var roupa
-var cor_roupa_cima
-var cor_roupa_baixo
 
 func _ready() -> void:
 	# Allow direct scene testing as well as Bathroom.gd's explicit start(ref).
@@ -55,54 +61,29 @@ func start(ref):
 	$shower_sound.stop()
 	$"Ativo 6/TurnOn".visible = true
 	$"Ativo 6/TurnOff".visible = false
-	# The bath outfit is scoped to this minigame. Keep the legacy body node as
-	# the effects parent, but render the modular rig in its place.
-	if bath_character_rig != null:
-		bath_character_rig.position = personagem_sprite.position
-		# Keep the 3x scale authored on BathCharacterRig in MiniGame_Banho.tscn.
-		# The legacy sprite's 0.55 scale is only for its old full-body texture.
-		bath_character_rig.rotation = personagem_sprite.rotation
-		bath_character_rig.z_index = personagem_sprite.z_index
-		bath_character_rig.visible = true
-		bath_character_rig.set_state(0)
-		if bath_character_rig.has_method("set_appearance_variant"):
-			bath_character_rig.set_appearance_variant("bath")
-		elif ModularCharacterData.has_method("apply_to_rig"):
-			ModularCharacterData.apply_to_rig(bath_character_rig, "bath")
-		# The modular rig uses its own invisible soap hitbox. Keep the old area
-		# disabled to avoid mixing the two character coordinate systems.
-		if character_body_area != null:
-			character_body_area.collision_mask = 0
-		if modular_player_soap_area != null:
-			modular_player_soap_area.global_position = bath_character_rig.global_position + Vector2(0, 20)
-			modular_player_soap_area.global_rotation = bath_character_rig.global_rotation
-			modular_player_soap_area.monitoring = true
-		# Keep legacy effects alive, but remove its old body texture.
-		personagem_sprite.texture = null
-	else:
-		# Safe fallback for older scene instances that do not contain the rig.
-		personagem_sprite.texture = CharacterController.all_sprites.plataform.idle_bath
-		if character_body_area != null:
-			character_body_area.collision_mask = 4
-		if modular_player_soap_area != null:
-			modular_player_soap_area.monitoring = false
+	var gender = "boy" if CharacterController.boyorgirl == "Boy" else "girl"
+	var hair = CharacterController.cabelo if CharacterController.cabelo == "a" or CharacterController.cabelo == "b" else "a"
+	var skin_value = CharacterController.cor_pele if CharacterController.cor_pele != "" else NewCharData.cor_pele
+	var skin_color = Color(skin_value) if skin_value != "" else Color.white
+	personagem_sprite.texture = BOY_BATH_BODY if gender == "boy" else GIRL_BATH_BODY
+	personagem_sprite.position = body_position
+	personagem_sprite.scale = body_scale
+	chuveiro.global_position = personagem_sprite.global_position + water_particles_offset
+	character_head.texture = CharacterController.get_head_texture_for(gender, hair)
+	character_head.position = head_position
+	character_head.scale = head_scale
+	bath_cap.position = bath_cap_position
+	bath_cap.scale = bath_cap_scale
+	character_body_area.collision_mask = 4
 
-	# Legacy shader setup remains available for the fallback sprite.
-	if bath_character_rig == null:
-		cor_pele = NewCharData.cor_pele
-		roupa = NewCharData.roupa
-		cor_roupa_cima = NewCharData.cor_roupa_cima
-		cor_roupa_baixo = NewCharData.cor_roupa_baixo
-		#
-		print("cores pele, camisa, calça")
-		print(cor_pele, cor_roupa_cima, cor_roupa_baixo)
-		#
-		var new_color_pele = Color(cor_pele)
-		var new_color_cima = Color(cor_roupa_cima)
-		var new_color_baixo = Color(cor_roupa_baixo)
-		var shader_material = personagem_sprite.material as ShaderMaterial
-		if shader_material != null:
-			shader_material.set_shader_param("nova_cor_pele", new_color_pele)
+	var body_material = personagem_sprite.material.duplicate() as ShaderMaterial
+	body_material.set_shader_param("nova_cor_pele", skin_color)
+	personagem_sprite.material = body_material
+	var head_material = ShaderMaterial.new()
+	head_material.shader = LEGACY_HEAD_SHADER
+	head_material.set_shader_param("source_skin", CharacterController.get_legacy_head_source_skin_for(gender, hair))
+	head_material.set_shader_param("target_skin", skin_color)
+	character_head.material = head_material
 	
 
 func _on_body_area_body_entered(body):
@@ -221,15 +202,13 @@ func _process(delta):
 			water_circles.modulate.a = water_circles.modulate.a - 0.2
 
 func _update_soap_contact() -> void:
-	# The visible character is modular, while the old body_area is retained as
-	# a gameplay hitbox. Check the actual transformed shapes so soap contact is
-	# reliable even when Area2D body signals are delayed or unavailable.
+	# Check the transformed shapes so soap contact remains reliable even when
+	# Area2D body signals are delayed or unavailable.
 	if sabonete == null or not sabonete.follow:
 		_set_soap_contact(false)
 		return
 
-	var player_soap_area = modular_player_soap_shape if bath_character_rig != null else character_body_shape
-	_set_soap_contact(_get_shape_rect(player_soap_area).intersects(
+	_set_soap_contact(_get_shape_rect(character_body_shape).intersects(
 		_get_shape_rect(sabonete_shape)
 	))
 

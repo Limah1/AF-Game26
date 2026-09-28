@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/boy-erro-sem-cabeca.png-623fbb1dadb530190cccfbb772630f8d.stex"
+path="res://.import/boy-parado-sem-cabeca.png-70b02ce5a5d11fe70b56727a8b46ee11.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/DoiAqui/sprites/actor/boy/boy-erro-sem-cabeca.png"
-dest_files=[ "res://.import/boy-erro-sem-cabeca.png-623fbb1dadb530190cccfbb772630f8d.stex" ]
+source_file="res://assets/SpritesV4/DoiAqui/boy-parado-sem-cabeca.png"
+dest_files=[ "res://.import/boy-parado-sem-cabeca.png-70b02ce5a5d11fe70b56727a8b46ee11.stex" ]
 
 [params]
 
@@ -28,7 +28,6 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
-process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

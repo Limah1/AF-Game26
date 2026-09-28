@@ -3,6 +3,9 @@ extends Control
 
 signal stop_moving
 
+export(PoolStringArray) var allowed_faces = PoolStringArray(["neutro", "feliz", "triste", "bravo", "dor", "dormindo"])
+export(String, "neutro", "feliz", "triste", "bravo", "dor", "dormindo") var default_face = "neutro"
+
 var room_id
 var roomslot
 var last_dir = ""
@@ -19,6 +22,9 @@ func start(_roomslot):
 	
 	roomslot = _roomslot
 	rect_global_position = roomslot.get_node("position").global_position
+
+func activate_face_context() -> void:
+	CharacterController.configure_faces(allowed_faces, default_face)
 
 func _process(delta: float) -> void:
 	# Room scenes can be opened directly for testing before room manager assigns slot.

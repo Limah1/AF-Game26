@@ -1,14 +1,36 @@
 extends Node
 
 signal expression_changed(expression)
-var expression = "default"
+
+const FACE_IDS = ["neutro", "feliz", "triste", "bravo", "dor", "dormindo"]
+const FACE_PATH = "res://assets/SpritesV4/Feicoes/%s.png"
+const BODY_SKIN_MATERIAL = preload("res://src/UI/ShaderPersonagem.tres")
+const GIRL_R2_BODY_SHADER = preload("res://src/UI/GirlR2Body.shader")
+
+var expression = "neutro"
+var allowed_faces = FACE_IDS.duplicate()
+
+func configure_faces(allowed, default_face: String = "neutro") -> void:
+	allowed_faces.clear()
+	for face in allowed:
+		if face in FACE_IDS and not face in allowed_faces:
+			allowed_faces.append(face)
+	if allowed_faces.empty():
+		allowed_faces.append("neutro")
+	set_expression(default_face if default_face in allowed_faces else "neutro")
 
 func set_expression(value: String) -> void:
-	var next_expression = "default" if value == "" else value
+	var next_expression = value if value in allowed_faces and get_face_texture(value) != null else "neutro"
 	if expression == next_expression:
+		emit_signal("expression_changed", expression)
 		return
 	expression = next_expression
 	emit_signal("expression_changed", expression)
+
+func get_face_texture(face_id: String = "") -> Texture:
+	var resolved_id = expression if face_id == "" else face_id
+	var path = FACE_PATH % resolved_id
+	return load(path) as Texture if ResourceLoader.exists(path) else null
 
 #Codigo antigo
 var boyorgirl = "Boy" # Boy or Girl
@@ -189,6 +211,11 @@ func get_head_texture_for(gender: String, hair: String, sleeping: bool = false) 
 	var head_name = ("boy" if gender == "boy" else "girl") + ("1" if hair == "a" else "2")
 	return load("res://assets/SpritesV4/Cabecas/%s/%s.png" % [gender_folder, head_name]) as Texture
 
+func get_noface_head_texture_for(gender: String, hair: String) -> Texture:
+	var gender_folder = "Menino" if gender == "boy" else "Menina"
+	var head_name = ("boy" if gender == "boy" else "girl") + ("1" if hair == "a" else "2")
+	return load("res://assets/SpritesV4/Cabecas/%s/%s_noface.png" % [gender_folder, head_name]) as Texture
+
 func get_legacy_head_source_skin_for(gender: String, hair: String) -> Color:
 	# Current boy1/boy2/girl1/girl2 heads share this placeholder skin color.
 	return Color(0.129412, 0.960784, 0.003922, 1.0)
@@ -236,13 +263,14 @@ func Load_Plataform():
 	var gender_folder = "Menino" if genero == "boy" else "Menina"
 	var variation_folder = "Variacao2" if roupa == "r2" else "Variacao1"
 	var normal_path = "res://assets/SpritesV4/RoupasNormais/%s/%s/" % [gender_folder, variation_folder]
-	plataform.idle = load(normal_path + "m0.png")
+	var new_girl_variation = genero == "girl" and roupa == "r2"
+	plataform.idle = load(normal_path + ("girlsc-1-1.png" if new_girl_variation else "m0.png"))
 	plataform.idle_dirty = load(normal_path + "m0-s.png")
 	plataform.seated = load(normal_path + "sentado.png")
 	plataform.seated_dirty = load(normal_path + "sentado-s.png")
 	for frame in range(1, 6):
 		var key = "w" + str(frame)
-		plataform.walk[key] = load(normal_path + "m%d.png" % frame)
+		plataform.walk[key] = load(normal_path + ("girlsc-1-%d.png" % (frame + 1) if new_girl_variation else "m%d.png" % frame))
 		plataform.walk_dirty[key] = load(normal_path + "m%d-s.png" % frame)
 
 	var hair = cabelo if cabelo == "a" or cabelo == "b" else "a"
@@ -497,6 +525,8 @@ func _update_character_visuals(target_node = null):
 	if personagem_sprite.material:
 		var shader_material = personagem_sprite.material as ShaderMaterial
 		if shader_material:
+			var girl_r2 = genero == "girl" and roupa == "r2"
+			shader_material.shader = GIRL_R2_BODY_SHADER if girl_r2 else BODY_SKIN_MATERIAL.shader
 			shader_material.set_shader_param("nova_cor_pele", new_color_pele)
 			shader_material.set_shader_param("nova_cor_camisa", new_color_cima)
 			shader_material.set_shader_param("nova_cor_calca", new_color_baixo)

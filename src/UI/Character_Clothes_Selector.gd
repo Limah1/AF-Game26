@@ -1,6 +1,8 @@
 extends Control 
 
 const LEGACY_HEAD_SHADER = preload("res://src/UI/LegacyHead.shader")
+const BODY_SKIN_MATERIAL = preload("res://src/UI/ShaderPersonagem.tres")
+const GIRL_R2_BODY_SHADER = preload("res://src/UI/GirlR2Body.shader")
 export(Vector2) var roupa_1_body_position = Vector2(1606.6, 513.576)
 export(float, 0.05, 2.0, 0.001) var roupa_1_body_scale = 0.4
 export(Vector2) var roupa_1_head_position = Vector2(1600, 190)
@@ -21,7 +23,7 @@ onready var legacy_head = $LegacyHead
 var sprite_boy_r1 = preload("res://assets/SpritesV4/RoupasNormais/Menino/Variacao1/m0.png")
 var sprite_boy_r2 = preload("res://assets/SpritesV4/RoupasNormais/Menino/Variacao2/m0.png")
 var sprite_girl_r1 = preload("res://assets/SpritesV4/RoupasNormais/Menina/Variacao1/m0.png")
-var sprite_girl_r2 = preload("res://assets/SpritesV4/RoupasNormais/Menina/Variacao2/m0.png")
+var sprite_girl_r2 = preload("res://assets/SpritesV4/RoupasNormais/Menina/Variacao2/girlsc-1-1.png")
 
 var sprite_btn_roupa_girl_1 = preload("res://assets/Character_Creator/btn_roupa_1_girl.png")
 var sprite_btn_roupa_girl_1_on = preload("res://assets/Character_Creator/btn_roupa_1_girl_on.png")
@@ -140,6 +142,7 @@ func _on_btn_roupa_2_pressed():
 		$Sprite.texture = sprite_girl_r2
 	else:
 		$Sprite.texture = sprite_boy_r2
+	_set_girl_r2_shader(genero == "girl")
 	_update_legacy_head()
 
 
@@ -150,7 +153,12 @@ func _on_btn_roupa_1_pressed():
 		$Sprite.texture = sprite_girl_r1
 	else:
 		$Sprite.texture = sprite_boy_r1
+	_set_girl_r2_shader(false)
 	_update_legacy_head()
+
+func _set_girl_r2_shader(enabled: bool) -> void:
+	var material = $Sprite.material as ShaderMaterial
+	material.shader = GIRL_R2_BODY_SHADER if enabled else BODY_SKIN_MATERIAL.shader
 
 
 func _on_btn_cima_cor_1_pressed():
@@ -303,4 +311,4 @@ func _on_ConfirmButton_pressed():
 	yield($button_sound,"finished")
 	NecessityBars.started = true
 	CharacterController.start()
-	get_tree().change_scene("res://src/MainScreen.tscn")
+	get_tree().change_scene("res://src/UI/Loading.tscn")

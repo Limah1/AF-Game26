@@ -1,9 +1,11 @@
 extends KinematicBody2D
 
 const LEGACY_HEAD_SHADER = preload("res://src/UI/LegacyHead.shader")
+const GIRL_R2_BODY_SHADER = preload("res://src/UI/GirlR2Body.shader")
 const BODY_SKIN_SHADER = preload("res://src/UI/ShaderPersonagem.tres")
 const DEFAULT_WEATHER_OUTFIT_TUNING = preload("res://assets/SpritesV4/RoupasEspeciais/ConfiguracaoRoupasEspeciais.tres")
 const LEGACY_R1_SCALE = 1.38
+const GIRL_R2_SPRITE_SCALE = 1.82
 const LEGACY_IDLE_WALK_HEAD_OFFSET = Vector2(0, 8)
 const OUTFIT_SPRITE_NAMES = ["idle", "w1", "w2", "w3", "w4", "w5", "w6", "w7", "w8", "w9"]
 const WEATHER_OUTFIT_SPRITE_POSITIONS = {
@@ -60,6 +62,7 @@ var weather_outfit_tuning = DEFAULT_WEATHER_OUTFIT_TUNING
 
 onready var Anim_Player = $AnimationPlayer
 onready var legacy_head = $player_sprites/Head
+onready var face_overlay = $player_sprites/Head/Face
 onready var skin_tone_rect = $player_sprites/SkinToneRect
 onready var legacy_toilet_body = $player_sprites/toilet
 
@@ -190,6 +193,8 @@ func apply_visual_consistency(skin_color = null, shirt_color = null, pants_color
 	# Atribui o material diretamente a cada Sprite. Isso funciona tanto para
 	# cenas que usam use_parent_material quanto para as que não o configuram.
 	var body_material = BODY_SKIN_SHADER.duplicate()
+	if CharacterController.genero == "girl" and CharacterController.roupa == "r2":
+		body_material.shader = GIRL_R2_BODY_SHADER
 	body_material.set_shader_param("nova_cor_pele", resolved_skin)
 	body_material.set_shader_param("nova_cor_camisa", resolved_shirt)
 	body_material.set_shader_param("nova_cor_calca", resolved_pants)
@@ -209,14 +214,18 @@ func _refresh_legacy_head() -> void:
 		return
 	var gender = "boy" if CharacterController.boyorgirl == "Boy" else "girl"
 	var hair = CharacterController.cabelo if CharacterController.cabelo == "a" or CharacterController.cabelo == "b" else "a"
-	var head_texture = CharacterController.get_expression_head_texture_for(gender, hair)
+	var face_texture = CharacterController.get_face_texture()
+	var head_texture = CharacterController.get_noface_head_texture_for(gender, hair) if face_texture != null else CharacterController.get_head_texture_for(gender, hair)
 	if head_texture == null:
 		legacy_head.visible = false
+		face_overlay.visible = false
 		if skin_tone_rect != null:
 			skin_tone_rect.visible = false
 		return
 	legacy_head.texture = head_texture
 	legacy_head.visible = true
+	face_overlay.texture = face_texture
+	face_overlay.visible = face_texture != null
 	if weather_outfit_active:
 		legacy_head_base_position = weather_outfit_tuning.get_head_position(gender, hair)
 	else:
@@ -399,6 +408,12 @@ func set_normal_clothes():
 	$player_sprites/w3.texture = sprites.walk.w3
 	$player_sprites/w4.texture = sprites.walk.w4
 	$player_sprites/w5.texture = sprites.walk.w5
+	_set_normal_body_scale(CharacterController.genero == "girl" and CharacterController.roupa == "r2")
+
+func _set_normal_body_scale(girl_r2: bool) -> void:
+	for sprite_name in ["idle", "w1", "w2", "w3", "w4", "w5"]:
+		var sprite = get_node("player_sprites/" + sprite_name)
+		sprite.scale = Vector2.ONE * GIRL_R2_SPRITE_SCALE if girl_r2 else normal_sprite_layout[sprite_name].scale
 
 func set_normal_dirty_clothes():
 	_set_legacy_player_scale()
@@ -415,6 +430,7 @@ func set_normal_dirty_clothes():
 	$player_sprites/w3.texture = sprites.walk_dirty.w3
 	$player_sprites/w4.texture = sprites.walk_dirty.w4
 	$player_sprites/w5.texture = sprites.walk_dirty.w5
+	_set_normal_body_scale(false)
 
 func set_bath_clothes():
 	_set_legacy_player_scale()

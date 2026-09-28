@@ -5,8 +5,6 @@ onready var ButtonsBox = $MarginContainer/HBoxContainer/Right/Buttons
 onready var Btn1 = $MarginContainer/HBoxContainer/Right/Buttons/op1
 onready var Btn2 = $MarginContainer/HBoxContainer/Right/Buttons/op2
 onready var Btn3 = $MarginContainer/HBoxContainer/Right/Buttons/op3
-onready var Portrait = $MarginContainer/HBoxContainer/mc/Left/Portrait
-onready var NpcName = $MarginContainer/HBoxContainer/mc/Left/NpcName
 onready var VoiceButton = $MarginContainer/HBoxContainer/Right/VoiceButton
 
 export(String, FILE, "*.json") var json_path
@@ -25,9 +23,6 @@ func _ready():
 	print("[DialogSystem] Node initialized: ", name)
 	print("[DialogSystem] NPC Name: ", npc_name)
 	print("[DialogSystem] JSON Path: ", json_path)
-
-	if NpcName:
-		NpcName.text = npc_name
 
 	if json_path != "":
 		var f = File.new()
@@ -182,7 +177,7 @@ func _setup_voice_button() -> void:
 	_voice_button_style.border_width_top = 2
 	_voice_button_style.border_width_right = 2
 	_voice_button_style.border_width_bottom = 2
-	_voice_button_style.border_color = Color(0, 0, 0)
+	_voice_button_style.border_color = Color("099eaf")
 	_voice_button_style.corner_radius_top_left = 8
 	_voice_button_style.corner_radius_top_right = 8
 	_voice_button_style.corner_radius_bottom_right = 8

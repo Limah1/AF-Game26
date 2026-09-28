@@ -8,7 +8,9 @@ var personagem_sprite
 var cor_pele = ""
 
 # Ajustes expostos para alinhar cabeça e pescoço no Inspector da cena.
-export(Vector2) var legacy_head_position = Vector2(203.351, 497)
+export(Vector2) var legacy_head_position = Vector2(203.351, 492)
+export(Vector2) var legacy_head_scale = Vector2(0.28, 0.28)
+export(Vector2) var chef_hat_position = Vector2(0, -400)
 export(Vector2) var legacy_neck_position = Vector2(184, 517)
 export(Vector2) var legacy_neck_size = Vector2(38, 60)
 
@@ -77,7 +79,8 @@ func _setup_legacy_head(skin: Color) -> void:
 	legacy_head.texture = head_texture
 	legacy_head.visible = true
 	legacy_head.position = legacy_head_position
-	legacy_head.scale = Vector2(0.252, 0.252)
+	legacy_head.scale = legacy_head_scale
+	$Head/ChefHat.position = chef_hat_position
 	skin_tone_rect.visible = true
 	skin_tone_rect.rect_position = legacy_neck_position
 	skin_tone_rect.rect_size = legacy_neck_size

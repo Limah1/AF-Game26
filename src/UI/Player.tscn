@@ -626,6 +626,10 @@ texture = ExtResource( 4 )
 position = Vector2( 10, -88 )
 scale = Vector2( 0.1512, 0.1512 )
 
+[node name="Face" type="Sprite" parent="player_sprites/Head"]
+show_behind_parent = false
+use_parent_material = false
+
 [node name="espuma" type="Sprite" parent="."]
 visible = false
 position = Vector2( -5.4755, 68.7746 )

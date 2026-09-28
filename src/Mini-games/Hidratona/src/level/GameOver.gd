@@ -97,3 +97,7 @@ func _on_GoHomeButton_pressed() -> void:
 	Resources.reset_resources()
 	get_tree().paused = false
 	get_tree().change_scene("res://src/MainScreen.tscn")
+
+func _on_MinigameRespiracao_pressed() -> void:
+	Resources.reset_resources()
+	get_tree().change_scene("res://src/Mini-games/Respiracao/Respiracao.tscn")

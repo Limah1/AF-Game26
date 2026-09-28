@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://src/Mini-games/Match-3/src/Tiles/Tile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Mini-games/Match-3/src/Levels/Tab_6x6.gd" type="Script" id=2]
@@ -15,9 +15,10 @@
 [ext_resource path="res://assets/Match-3/sprites/blue_info_information_12461 (1).png" type="Texture" id=17]
 [ext_resource path="res://assets/Match-3/sprites_novo/personagem/headless/boy-a-match3-serio-headless.png" type="Texture" id=18]
 [ext_resource path="res://src/UI/LegacyHead.shader" type="Shader" id=19]
-[ext_resource path="res://src/Audio/AudioSettingsPanel.tscn" type="PackedScene" id=99]
-[ext_resource path="res://src/audioIcon.png" type="Texture" id=98]
+[ext_resource path="res://assets/Match-3/sprites/chapeu-chef.png" type="Texture" id=20]
 [ext_resource path="res://src/UI/AudioButtonStyle.tres" type="StyleBox" id=97]
+[ext_resource path="res://src/audioIcon.png" type="Texture" id=98]
+[ext_resource path="res://src/Audio/AudioSettingsPanel.tscn" type="PackedScene" id=99]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.960784, 0.890196, 0.823529, 1 )
@@ -85,6 +86,9 @@ __meta__ = {
 "_edit_horizontal_guides_": [ -159.099, 1010.91, -231.369, 953.637, -155.536, -184.044, -171.572, 85.5376, 150.944 ],
 "_edit_vertical_guides_": [ 1410.1, 1462.62, 1831.27, 1357.15, 504.12, 568.337 ]
 }
+legacy_head_position = Vector2( 203.351, 505 )
+legacy_head_scale = Vector2( 0.31, 0.31 )
+chef_hat_position = Vector2( 0, -300 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 127
@@ -139,6 +143,36 @@ expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AudioButton" type="Button" parent="CanvasLayer/Pause"]
+pause_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = 230.0
+margin_right = 32.0
+margin_bottom = 294.0
+hint_tooltip = "Configurações de áudio"
+custom_styles/hover = ExtResource( 97 )
+custom_styles/pressed = ExtResource( 97 )
+custom_styles/normal = ExtResource( 97 )
+icon = ExtResource( 98 )
+
+[node name="PauseButton" type="TextureButton" parent="CanvasLayer"]
+margin_left = 1775.24
+margin_top = 33.4757
+margin_right = 1903.24
+margin_bottom = 161.476
+rect_scale = Vector2( 0.8, 0.8 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioSettingsPanel" parent="CanvasLayer" instance=ExtResource( 99 )]
 
 [node name="Fila1" type="Node2D" parent="."]
 position = Vector2( 436.018, 180.634 )
@@ -305,9 +339,15 @@ texture = ExtResource( 18 )
 
 [node name="Head" type="Sprite" parent="."]
 material = SubResource( 2 )
-position = Vector2( 203.351, 497 )
-scale = Vector2( 0.252, 0.252 )
+position = Vector2( 203.351, 492 )
+scale = Vector2( 0.28, 0.28 )
 z_index = 1
+
+[node name="ChefHat" type="Sprite" parent="Head"]
+position = Vector2( 0, -400 )
+scale = Vector2( 0.464, 0.464 )
+z_index = 1
+texture = ExtResource( 20 )
 
 [node name="InfoButton" type="TextureButton" parent="."]
 visible = false
@@ -394,40 +434,9 @@ __meta__ = {
 anims/fade_in = SubResource( 5 )
 anims/fade_out = SubResource( 6 )
 
-[node name="PauseButton" type="TextureButton" parent="CanvasLayer"]
-margin_left = 1775.24
-margin_top = 33.4757
-margin_right = 1903.24
-margin_bottom = 161.476
-rect_scale = Vector2( 0.8, 0.8 )
-texture_normal = ExtResource( 8 )
-texture_pressed = ExtResource( 8 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="AudioButton" type="Button" parent="CanvasLayer/Pause"]
-pause_mode = 2
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -32.0
-margin_top = 230.0
-margin_right = 32.0
-margin_bottom = 294.0
-icon = ExtResource( 98 )
-hint_tooltip = "Configurações de áudio"
-custom_styles/normal = ExtResource( 97 )
-custom_styles/hover = ExtResource( 97 )
-custom_styles/pressed = ExtResource( 97 )
-text = ""
-
-[node name="AudioSettingsPanel" parent="CanvasLayer" instance=ExtResource( 99 )]
-
 [connection signal="pressed" from="CanvasLayer/Pause/continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="CanvasLayer/Pause/leave" to="." method="_on_leave_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause/AudioButton" to="CanvasLayer/AudioSettingsPanel" method="open"]
+[connection signal="pressed" from="CanvasLayer/PauseButton" to="." method="_on_PauseButton_pressed"]
 [connection signal="pressed" from="InfoButton" to="." method="_on_InfoButton_pressed"]
 [connection signal="pressed" from="info-box/back" to="." method="_on_back_pressed"]
-[connection signal="pressed" from="CanvasLayer/PauseButton" to="." method="_on_PauseButton_pressed"]
-[connection signal="pressed" from="CanvasLayer/Pause/AudioButton" to="CanvasLayer/AudioSettingsPanel" method="open"]

@@ -8,6 +8,7 @@ func _init():
 func _run():
 	CharacterController.boyorgirl = "Boy"
 	CharacterController.cabelo = "a"
+	CharacterController.cor_pele = "#8d5524"
 	var game = GAME.instance()
 	var tree = get_tree()
 	tree.get_root().add_child(game)
@@ -21,12 +22,17 @@ func _run():
 			var name = "boy" if gender == "Boy" else "girl"
 			var number = "1" if hair == "a" else "2"
 			assert(game.get_node("Player/LegacyHead").texture.resource_path == "res://assets/SpritesV4/Cabecas/%s/%s%s.png" % [folder, name, number])
+			assert(game.get_node("Player/LegacyHead").material.get_shader_param("target_skin") == Color("#8d5524"))
+	for state_name in ["parado", "dores", "ferimento", "frio", "nervoso", "febre"]:
+		assert(game.get_node("Player")._body_texture_path(state_name, true) == "res://assets/SpritesV4/DoiAqui/boy-%s-sem-cabeca-branco.png" % state_name)
+	assert(game.get_node("Player/sprite").material.get_shader_param("target_skin") == Color("#8d5524"))
 	game.get_node("Player").typesPain = "headache"
 	game.nP = 1
 	game.buttonsBlock = false
 	game._on_Button_pressed("headache")
 	assert(game.life == 1 and game.feedback_phase == "result")
 	assert(game.get_node("ContinueLayer/ContinueButton").visible)
+	assert(game.get_node("Player/LegacyHead").visible)
 	game._on_Button_pressed("headache")
 	assert(game.life == 1)
 	game.get_node("ContinueLayer/ContinueButton").emit_signal("pressed")
@@ -52,6 +58,9 @@ func _run():
 		game.get_node("ContinueLayer/ContinueButton").emit_signal("pressed")
 		yield(tree, "idle_frame")
 		assert(tree.current_scene.filename == "res://src/Mini-games/DoiAqui/scene/GameOver.tscn")
+		assert(tree.current_scene.get_node("Character/Sprite").texture.resource_path == "res://assets/SpritesV4/DoiAqui/boy-acerto-sem-cabeca-branco.png")
+		assert(tree.current_scene.get_node("Character/Sprite").material.get_shader_param("target_skin") == Color("#8d5524"))
+		assert(tree.current_scene.get_node("Character/LegacyHead").texture.resource_path == "res://assets/SpritesV4/Cabecas/Menina/girl2.png")
 		tree.current_scene.free()
 		tree.current_scene = null
 	print("DoiAqui confirm flow OK")

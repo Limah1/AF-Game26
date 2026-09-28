@@ -74,19 +74,19 @@ func _set_navigation_menu_visible(is_visible: bool) -> void:
 
 func finish_bath():
 	print("[Bathroom] finish_bath() triggered")
-	NecessityBars.bathing = true
 	get_viewport().canvas_transform = Transform2D()
+	# Release gameplay locks before the return animation: if it is interrupted,
+	# navigation must not stay blocked forever.
+	NecessityBars.bathing = false
+	NecessityBars.onbath = false
+	_set_persistent_player_visible(true)
+	is_doing_action = false
 	_set_navigation_menu_visible(true)
 	if is_instance_valid(AnimationController.anim_player):
 		print("[Bathroom] Playing return_from_bath animation...")
 		yield(AnimationController.return_from_bath(), "completed")
 	else:
 		print("[Bathroom] No persistent player animation; skipping return_from_bath.")
-	print("[Bathroom] Resetting bath states...")
-	NecessityBars.bathing = false
-	NecessityBars.onbath = false	
-	_set_persistent_player_visible(true)
-	is_doing_action = false
 	print("[Bathroom] Bath action finalized.")
 	
 

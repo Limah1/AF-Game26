@@ -42,8 +42,8 @@ normal_r2_head_scales = {
 "girl-b": 0.26
 }
 normal_neck_offsets = {
-"r1-boy": Vector2( -23, 28 ),
-"r1-girl": Vector2( -23, 28 ),
+"r1-boy": Vector2( -23, 48 ),
+"r1-girl": Vector2( -23, 48 ),
 "r2-boy": Vector2( -23, 48 ),
 "r2-girl": Vector2( -23, 48 )
 }

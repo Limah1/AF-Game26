@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://src/Mini-games/Hidratona/src/level/GameOver.gd" type="Script" id=1]
 [ext_resource path="res://assets/Hidratona/LAYOUT/button-ir-de-novo.png" type="Texture" id=2]
@@ -109,9 +109,49 @@ tracks/6/keys = {
 "values": [ false, true, false ]
 }
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.0862745, 0.403922, 1, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0196078, 0.14902, 0.454902, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.0196078, 0.227451, 0.690196, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0117647, 0.0980392, 0.313726, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.0352941, 0.321569, 0.890196, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0196078, 0.14902, 0.454902, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="DynamicFont" id=5]
 size = 50
 outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 16 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 32
 font_data = ExtResource( 16 )
 
 [node name="GameOver" type="Control"]
@@ -164,6 +204,13 @@ texture = ExtResource( 12 )
 visible = false
 mouse_filter = 2
 
+[node name="ColorRect" type="ColorRect" parent="sprites/Neck"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Head" type="Sprite" parent="sprites"]
 visible = false
 z_index = 2
@@ -173,8 +220,27 @@ autoplay = "run"
 anims/run = SubResource( 1 )
 
 [node name="win-hidratona" type="Sprite" parent="."]
-position = Vector2( 1247.81, 535.817 )
+position = Vector2( 1330.87, 292.298 )
+scale = Vector2( 0.84614, 0.67477 )
 texture = ExtResource( 13 )
+
+[node name="win-hidratona2" type="Sprite" parent="."]
+position = Vector2( 394.548, 290.41 )
+scale = Vector2( 0.633102, 0.688911 )
+texture = ExtResource( 13 )
+
+[node name="MinigameRespiracao" type="Button" parent="."]
+margin_left = 143.676
+margin_top = 391.121
+margin_right = 543.676
+margin_bottom = 491.121
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+text = "Começar!"
 
 [node name="life_result2" type="ColorRect" parent="."]
 margin_left = 1657.0
@@ -187,21 +253,21 @@ __meta__ = {
 }
 
 [node name="Water_result" type="ColorRect" parent="."]
-margin_left = 622.0
-margin_top = 294.0
-margin_right = 1853.0
-margin_bottom = 645.0
+margin_left = 803.224
+margin_top = 124.103
+margin_right = 1849.22
+margin_bottom = 464.103
 color = Color( 0.941176, 0.941176, 0.941176, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="Water_result"]
-margin_left = 16.0
-margin_top = 8.0
-margin_right = 1068.0
-margin_bottom = 359.0
-custom_fonts/font = SubResource( 2 )
+margin_left = 12.2246
+margin_top = 4.22449
+margin_right = 1064.22
+margin_bottom = 355.224
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Você correu bem rápido e chegou longe! Mas ficou sem beber água. Hidratar-se ajuda o corpo a funcionar bem, e as frutas fornecem água e nutrientes."
 align = 1
@@ -227,21 +293,21 @@ scale = Vector2( 0.898871, 0.898871 )
 texture = ExtResource( 17 )
 
 [node name="life_result" type="ColorRect" parent="."]
-margin_left = 622.0
-margin_top = 294.0
-margin_right = 1681.0
-margin_bottom = 645.0
+margin_left = 784.346
+margin_top = 146.756
+margin_right = 1843.35
+margin_bottom = 497.756
 color = Color( 0.941176, 0.941176, 0.941176, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="life_result"]
-margin_left = 16.0
-margin_top = -32.0
-margin_right = 1068.0
-margin_bottom = 319.0
-custom_fonts/font = SubResource( 2 )
+margin_left = 27.3264
+margin_top = -103.734
+margin_right = 1079.33
+margin_bottom = 247.266
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Você correu bem rápido e chegou bem longe! Mas bateu demais nos obstáculos."
 align = 1
@@ -251,11 +317,41 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="EditableTextBox2" type="ColorRect" parent="."]
+margin_left = 9.0
+margin_top = 23.0
+margin_right = 777.0
+margin_bottom = 378.0
+mouse_filter = 2
+
+[node name="Title" type="Label" parent="EditableTextBox2"]
+margin_left = 30.0
+margin_top = 20.0
+margin_right = 730.0
+margin_bottom = 86.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 1, 0.439216, 0, 1 )
+text = "Respiração"
+align = 1
+valign = 1
+
+[node name="Text" type="Label" parent="EditableTextBox2"]
+margin_left = 40.0
+margin_top = 100.0
+margin_right = 716.0
+margin_bottom = 333.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Depois de atividades intensas seria bom treinar respiração. Que tal começar?"
+align = 1
+valign = 1
+autowrap = true
+
 [node name="GoHomeButton" type="TextureButton" parent="."]
-margin_left = 746.62
-margin_top = 699.799
-margin_right = 1185.62
-margin_bottom = 828.799
+margin_left = 814.579
+margin_top = 382.658
+margin_right = 1253.58
+margin_bottom = 511.658
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 6 )
 texture_hover = ExtResource( 6 )
@@ -266,10 +362,10 @@ __meta__ = {
 [node name="TryAgainButton" type="TextureButton" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 1213.8
-margin_top = 699.799
-margin_right = -144.204
-margin_bottom = -251.201
+margin_left = 1281.76
+margin_top = 382.658
+margin_right = -76.2411
+margin_bottom = -568.342
 texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
 texture_hover = ExtResource( 3 )
@@ -290,5 +386,6 @@ stream = ExtResource( 20 )
 volume_db = -5.32994
 bus = "SFX"
 
+[connection signal="pressed" from="MinigameRespiracao" to="." method="_on_MinigameRespiracao_pressed"]
 [connection signal="pressed" from="GoHomeButton" to="." method="_on_GoHomeButton_pressed"]
 [connection signal="pressed" from="TryAgainButton" to="." method="_on_TryAgainButton_pressed"]

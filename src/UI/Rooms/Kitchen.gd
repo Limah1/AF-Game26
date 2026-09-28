@@ -2,9 +2,26 @@ extends HouseRoom
 
 var playing = false
 
+onready var match3_popup_head: Sprite = $Match3PopUp/Head
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	room_id = 2
+	_setup_match3_popup_head()
+
+func _setup_match3_popup_head() -> void:
+	var head_texture = CharacterController.get_legacy_head_texture()
+	if head_texture == null:
+		match3_popup_head.visible = false
+		return
+	match3_popup_head.texture = head_texture
+	match3_popup_head.visible = true
+	var gender = "boy" if CharacterController.boyorgirl == "Boy" else "girl"
+	var hair = CharacterController.cabelo if CharacterController.cabelo == "a" or CharacterController.cabelo == "b" else "a"
+	var head_material = match3_popup_head.material as ShaderMaterial
+	if head_material != null:
+		head_material.set_shader_param("source_skin", CharacterController.get_legacy_head_source_skin_for(gender, hair))
+		head_material.set_shader_param("target_skin", Color(NewCharData.cor_pele) if NewCharData.cor_pele != "" else Color.white)
 
 func _process(delta: float) -> void:
 	if (NecessityBars.fome <= (NecessityBars.max_fome*0.2)) and playing == false:
@@ -32,6 +49,7 @@ func _process(delta: float) -> void:
 
 
 func _on_Eat_button_pressed() -> void:
+	_setup_match3_popup_head()
 	$audio_open_refri.play()
 	$cozinha_geladeira.visible = false
 	$geladeira_aberta.visible = true

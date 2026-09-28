@@ -67,6 +67,7 @@ func _connect_controls() -> void:
 		input.connect("value_changed", self, "_on_value_changed")
 
 func _prepare_character() -> void:
+	player.set_process(false)
 	# The calibration scene instantiates Player.tscn directly; match the
 	# normal-clothes overrides used by MainScreen before caching its layout.
 	for sprite_name in GAME_NORMAL_SPRITE_POSITIONS:

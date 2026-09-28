@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/boy-erro-sem-cabeca-branco.png-6e1b28a4ce846e7318fcb38cb7c7b493.stex"
+path="res://.import/boy-frio-sem-cabeca-branco.png-11fda117e920ebcbc01bcb2dae186401.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/DoiAqui/sprites/actor/boy/boy-erro-sem-cabeca-branco.png"
-dest_files=[ "res://.import/boy-erro-sem-cabeca-branco.png-6e1b28a4ce846e7318fcb38cb7c7b493.stex" ]
+source_file="res://assets/SpritesV4/DoiAqui/boy-frio-sem-cabeca-branco.png"
+dest_files=[ "res://.import/boy-frio-sem-cabeca-branco.png-11fda117e920ebcbc01bcb2dae186401.stex" ]
 
 [params]
 
@@ -28,7 +28,6 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
-process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

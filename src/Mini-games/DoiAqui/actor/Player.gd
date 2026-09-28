@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 const LEGACY_HEAD_SHADER = preload("res://src/UI/LegacyHead.shader")
 const BODY_SKIN_SHADER = preload("res://src/Mini-games/DoiAqui/actor/DoiAquiBodySkin.shader")
-const BODY_PATH = "res://assets/DoiAqui/sprites/actor/boy/"
+const BODY_PATH = "res://assets/SpritesV4/DoiAqui/"
 
 export var legacy_head_position = Vector2(5, -51)
 export var legacy_head_scale = Vector2(0.094, 0.094)

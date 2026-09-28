@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/boy-dores-sem-cabeca.png-1e7b2e11dcdf3bd40488a371cb037638.stex"
+path="res://.import/girlsc-1-3.png-be6d47267277840bbfdc0142f556f189.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/DoiAqui/sprites/actor/boy/boy-dores-sem-cabeca.png"
-dest_files=[ "res://.import/boy-dores-sem-cabeca.png-1e7b2e11dcdf3bd40488a371cb037638.stex" ]
+source_file="res://assets/SpritesV4/RoupasNormais/Menina/Variacao2/girlsc-1-3.png"
+dest_files=[ "res://.import/girlsc-1-3.png-be6d47267277840bbfdc0142f556f189.stex" ]
 
 [params]
 
@@ -28,7 +28,6 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
-process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

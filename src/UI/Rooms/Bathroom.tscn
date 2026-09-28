@@ -456,10 +456,10 @@ __meta__ = {
 }
 
 [node name="sink" type="Button" parent="."]
-margin_left = 250.0
-margin_top = 400.0
-margin_right = 450.0
-margin_bottom = 700.0
+margin_left = 272.0
+margin_top = 291.0
+margin_right = 536.0
+margin_bottom = 522.0
 custom_styles/hover = SubResource( 5 )
 custom_styles/pressed = SubResource( 6 )
 custom_styles/focus = SubResource( 7 )

@@ -1,13 +1,13 @@
 [gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://assets/DoiAqui/sprites/actor/boy/boy-parado-sem-cabeca-branco.png" type="Texture" id=1]
+[ext_resource path="res://assets/SpritesV4/DoiAqui/boy-parado-sem-cabeca-branco.png" type="Texture" id=1]
 [ext_resource path="res://assets/DoiAqui/sprites/Ativo 11.png" type="Texture" id=2]
 [ext_resource path="res://src/Mini-games/DoiAqui/actor/Player.gd" type="Script" id=3]
-[ext_resource path="res://assets/DoiAqui/sprites/actor/boy/boy-dores-sem-cabeca-branco.png" type="Texture" id=4]
-[ext_resource path="res://assets/DoiAqui/sprites/actor/boy/boy-febre-sem-cabeca-branco.png" type="Texture" id=5]
-[ext_resource path="res://assets/DoiAqui/sprites/actor/boy/boy-ferimento-sem-cabeca-branco.png" type="Texture" id=8]
-[ext_resource path="res://assets/DoiAqui/sprites/actor/boy/boy-nervoso-sem-cabeca-branco.png" type="Texture" id=10]
-[ext_resource path="res://assets/DoiAqui/sprites/actor/boy/boy-frio-sem-cabeca-branco.png" type="Texture" id=11]
+[ext_resource path="res://assets/SpritesV4/DoiAqui/boy-dores-sem-cabeca-branco.png" type="Texture" id=4]
+[ext_resource path="res://assets/SpritesV4/DoiAqui/boy-febre-sem-cabeca-branco.png" type="Texture" id=5]
+[ext_resource path="res://assets/SpritesV4/DoiAqui/boy-ferimento-sem-cabeca-branco.png" type="Texture" id=8]
+[ext_resource path="res://assets/SpritesV4/DoiAqui/boy-nervoso-sem-cabeca-branco.png" type="Texture" id=10]
+[ext_resource path="res://assets/SpritesV4/DoiAqui/boy-frio-sem-cabeca-branco.png" type="Texture" id=11]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 44.0

@@ -3,6 +3,11 @@ extends Control
 var personagem_sprite
 var cor_pele = ""
 
+export(Vector2) var victory_head_position = Vector2(271.351, 326)
+export(Vector2) var defeat_head_position = Vector2(271.351, 458)
+export(Vector2) var legacy_head_scale = Vector2(0.28, 0.28)
+export(Vector2) var chef_hat_position = Vector2(0, -400)
+
 var complete_total_match = S_Conntroller.score1 == S_Conntroller.goals[0] and S_Conntroller.score2 == S_Conntroller.goals[1] and S_Conntroller.score3 == S_Conntroller.goals[2]
 var complete_match1 = S_Conntroller.score1 == S_Conntroller.goals[0] and S_Conntroller.score2 == S_Conntroller.goals[1] and S_Conntroller.score3 != S_Conntroller.goals[2]
 var complete_match2 = S_Conntroller.score1 == S_Conntroller.goals[0] and S_Conntroller.score2 != S_Conntroller.goals[1] and S_Conntroller.score3 == S_Conntroller.goals[2]
@@ -22,9 +27,10 @@ func _ready():
 	# Shaders mudando a etnia
 	personagem_sprite = get_node("character")
 	cor_pele = NewCharData.cor_pele
-	var new_color_pele = Color(cor_pele)
+	var new_color_pele = Color(cor_pele) if cor_pele != "" else Color.white
 	var shader_material = personagem_sprite.material as ShaderMaterial
 	shader_material.set_shader_param("nova_cor_pele", new_color_pele)
+	_setup_legacy_head(new_color_pele)
 	
 	
 	$HealthDisplay/HealthBar.max_value = S_Conntroller.goalScore
@@ -60,20 +66,32 @@ func _ready():
 	if S_Conntroller.last_result_won:
 		# Vitoria: aplausos, pose de comemoracao e estrelas/checks por fruta
 		$applause.play()
-		$character.texture = CharacterController.all_sprites.match3.win
+		$character.texture = preload("res://assets/Match-3/sprites_novo/personagem/headless/boy-a-match3-mto-feliz-comemora-headless.png")
+		$Head.position = victory_head_position
 
 		$Fruit_UI.start_Win(get_fruit_reference(S_Conntroller.fruit1_reference), 0)
 		$Fruit_UI2.start_Win(get_fruit_reference(S_Conntroller.fruit2_reference), 1)
 		$Fruit_UI3.start_Win(get_fruit_reference(S_Conntroller.fruit3_reference), 2)
 	else:
 		# Derrota (ficou sem chances antes de bater a meta): sem aplausos/comemoracao
-		$character.texture = CharacterController.all_sprites.match3.very_sad
+		$character.texture = preload("res://assets/Match-3/sprites_novo/personagem/headless/boy-a-match3-mto-triste-headless.png")
+		$Head.position = defeat_head_position
 
 		for particles in [$p2d_red, $p2d_green, $p2d_blue, $p2d_violet, $p2d_white, $p2d_white2]:
 			particles.emitting = false
 
 		$Label.text = "Você ficou sem chances...\nTente novamente!"
 		$Label.visible = true
+
+func _setup_legacy_head(skin: Color) -> void:
+	$Head.texture = CharacterController.get_legacy_head_texture()
+	$Head.scale = legacy_head_scale
+	$Head/ChefHat.position = chef_hat_position
+	var gender = "boy" if CharacterController.boyorgirl == "Boy" else "girl"
+	var hair = CharacterController.cabelo if CharacterController.cabelo == "a" or CharacterController.cabelo == "b" else "a"
+	var head_material = $Head.material as ShaderMaterial
+	head_material.set_shader_param("source_skin", CharacterController.get_legacy_head_source_skin_for(gender, hair))
+	head_material.set_shader_param("target_skin", skin)
 
 func _input(event: InputEvent) -> void:
 	if (event is InputEventMouseButton and event.is_pressed() and timer<=0) or (event is InputEventScreenTouch and event.is_pressed() and timer <= 0):

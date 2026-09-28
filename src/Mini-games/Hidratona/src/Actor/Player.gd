@@ -118,7 +118,7 @@ func _get_pose_tuning():
 func _refresh_legacy_body_skin(skin: Color) -> void:
 	var body_skin_material = ShaderMaterial.new()
 	body_skin_material.shader = LEGACY_BODY_SKIN_SHADER
-	body_skin_material.set_shader_param("source_skin", Color("#dfcaab"))
+	body_skin_material.set_shader_param("source_skin", Color("#cebb9d"))
 	body_skin_material.set_shader_param("target_skin", skin)
 	var run_skin_material = ShaderMaterial.new()
 	run_skin_material.shader = RAIN_RUN_SKIN_SHADER

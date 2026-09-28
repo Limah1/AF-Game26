@@ -8,6 +8,7 @@ var kitchen = preload("res://src/UI/Rooms/Kitchen.tscn")
 var jardim = preload("res://src/UI/Rooms/Jardim.tscn")
 
 onready var slots = [ $Slot1, $Slot2, $Slot3]
+var active_face_room = null
 
 func start(id):
 	AnimationController.slots_reference = self
@@ -59,4 +60,8 @@ func reset_rooms(side):
 		slots[2].current_room.queue_free()
 
 func _process(delta):
-	AnimationController.current_room = slots[1].current_room
+	var current_room = slots[1].current_room
+	AnimationController.current_room = current_room
+	if current_room != active_face_room and is_instance_valid(current_room):
+		active_face_room = current_room
+		current_room.activate_face_context()

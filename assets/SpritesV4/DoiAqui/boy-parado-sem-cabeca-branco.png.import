@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/boy-cansado-sem-cabeca.png-dfef003cc603c7c8a20ae716e8fde1f0.stex"
+path="res://.import/boy-parado-sem-cabeca-branco.png-66ca0b09cfdef19f2470f4715d3c2d27.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/DoiAqui/sprites/actor/boy/boy-cansado-sem-cabeca.png"
-dest_files=[ "res://.import/boy-cansado-sem-cabeca.png-dfef003cc603c7c8a20ae716e8fde1f0.stex" ]
+source_file="res://assets/SpritesV4/DoiAqui/boy-parado-sem-cabeca-branco.png"
+dest_files=[ "res://.import/boy-parado-sem-cabeca-branco.png-66ca0b09cfdef19f2470f4715d3c2d27.stex" ]
 
 [params]
 
@@ -28,7 +28,6 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
-process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

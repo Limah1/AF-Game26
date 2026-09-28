@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/boy-febre-sem-cabeca-branco.png-6c67f646b19d8e2965c060f74b892f0d.stex"
+path="res://.import/girlsc-1-4.png-edb066e447e7e52f993dc5aee86faa1f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/DoiAqui/sprites/actor/boy/boy-febre-sem-cabeca-branco.png"
-dest_files=[ "res://.import/boy-febre-sem-cabeca-branco.png-6c67f646b19d8e2965c060f74b892f0d.stex" ]
+source_file="res://assets/SpritesV4/RoupasNormais/Menina/Variacao2/girlsc-1-4.png"
+dest_files=[ "res://.import/girlsc-1-4.png-edb066e447e7e52f993dc5aee86faa1f.stex" ]
 
 [params]
 
@@ -28,7 +28,6 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
-process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

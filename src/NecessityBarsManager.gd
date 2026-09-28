@@ -144,8 +144,6 @@ func check_if_can_press_button():
 		return true
 	if AnimationController.is_playing():
 		return true
-	if CharacterController.is_playing():
-		return true
 	if NecessityBars.peeing:
 		return true
 	

@@ -37,6 +37,7 @@ func _ready() -> void:
 	breath_button.connect("button_up", self, "_on_breath_button_up")
 	$CompletionPanel/CompletionBox/RestartButton.connect("pressed", self, "_on_restart_pressed")
 	$CompletionPanel/CompletionBox/BackButton.connect("pressed", self, "_on_back_pressed")
+	$ExitButton.connect("pressed", self, "_on_back_pressed")
 	_update_interface()
 
 func start(room) -> void:
@@ -135,7 +136,7 @@ func _update_interface() -> void:
 
 	match phase:
 		Phase.WAITING:
-			phase_label.text = "Mantenha o dedo no botão"
+			phase_label.text = "Mantenha o dedo pressionado no botão"
 			helper_label.text = "Toque e segure para começar a inspirar"
 			breath_button.text = "SEGURE"
 		Phase.INHALE:

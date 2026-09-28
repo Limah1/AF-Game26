@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/boy-parado-sem-cabeca-branco.png-e8d161ca592f70c42b47c5d92abad19e.stex"
+path="res://.import/girl-banho-m1.png-86a3b8eaf0b6efbc9c3f885c4f9e84f0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/DoiAqui/sprites/actor/boy/boy-parado-sem-cabeca-branco.png"
-dest_files=[ "res://.import/boy-parado-sem-cabeca-branco.png-e8d161ca592f70c42b47c5d92abad19e.stex" ]
+source_file="res://assets/SpritesV4/MiniGameBanho/girl-banho-m1.png"
+dest_files=[ "res://.import/girl-banho-m1.png-86a3b8eaf0b6efbc9c3f885c4f9e84f0.stex" ]
 
 [params]
 
@@ -28,7 +28,6 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
-process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true
