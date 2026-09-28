@@ -110,6 +110,9 @@ func _on_InfoButton_pressed():
 
 
 func _on_PauseButton_pressed():
+	if $CanvasLayer/Pause.visible:
+		_on_continue_pressed()
+		return
 	$CanvasLayer/Pause.visible = true
 	var necessitybar = load("res://src/UI/NecessityManager.tscn").instance()
 	$CanvasLayer/Pause.add_child(necessitybar)

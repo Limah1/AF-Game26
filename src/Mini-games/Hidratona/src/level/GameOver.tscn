@@ -160,6 +160,14 @@ visible = false
 scale = Vector2( 3, 3 )
 texture = ExtResource( 12 )
 
+[node name="Neck" type="ColorRect" parent="sprites"]
+visible = false
+mouse_filter = 2
+
+[node name="Head" type="Sprite" parent="sprites"]
+visible = false
+z_index = 2
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "run"
 anims/run = SubResource( 1 )

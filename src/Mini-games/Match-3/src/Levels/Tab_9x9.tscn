@@ -519,7 +519,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PauseButton" type="TextureButton" parent="."]
+[node name="PauseButton" type="TextureButton" parent="CanvasLayer"]
 margin_left = 1775.24
 margin_top = 33.4757
 margin_right = 1903.24
@@ -558,5 +558,5 @@ text = ""
 [connection signal="pressed" from="CanvasLayer/Pause/leave" to="." method="_on_leave_pressed"]
 [connection signal="pressed" from="TextureButton2" to="." method="_on_TextureButton2_pressed"]
 [connection signal="pressed" from="info-box/back" to="." method="_on_back_pressed"]
-[connection signal="pressed" from="PauseButton" to="." method="_on_PauseButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseButton" to="." method="_on_PauseButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/Pause/AudioButton" to="CanvasLayer/AudioSettingsPanel" method="open"]

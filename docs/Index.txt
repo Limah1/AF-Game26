@@ -2,14 +2,15 @@ Hidratona scene path: res://src/Mini-games/Hidratona/src/level/Level.tscn
 
 Hidratona folder path: res://src/Mini-games/Hidratona/src/
 
-Body hidratona rain:
-res://src/Mini-games/Hidratona/src/level/rain/
+Body hidratona rain (running):
+res://assets/SpritesV4/RoupasEspeciais/Chuva/Correndo/
 
-Body hidratona snow:
-res://src/Mini-games/Hidratona/src/level/snow/
+Body hidratona snow (running):
+res://assets/SpritesV4/RoupasEspeciais/Neve/Correndo/
 
-HeadsHidratona:
-res://src/Mini-games/Hidratona/src/level/heads/
+HeadsHidratona (com rosto):
+res://assets/SpritesV4/Cabecas/Menino/boy1.png, boy2.png
+res://assets/SpritesV4/Cabecas/Menina/girl1.png, girl2.png
 
 
 MATCH3 folder path:

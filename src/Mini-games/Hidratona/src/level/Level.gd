@@ -3,10 +3,6 @@ extends Node2D
 export(int, "Use global weather", "Sunny", "Rainy", "Snowy") var weather_override = 0
 export(String, "Use current", "Boy", "Girl") var test_gender = "Use current"
 export(String, "Use current", "A", "B") var test_hair = "Use current"
-export(bool) var use_rain_test_assets = true
-export(String) var rain_test_assets_root = "res://src/Mini-games/Hidratona/src/level/rain"
-export(bool) var use_snow_test_assets = true
-export(String) var snow_test_assets_root = "res://src/Mini-games/Hidratona/src/level/snow"
 
 var time_sun = 0
 var sun = false
@@ -32,14 +28,6 @@ func _ready():
 	# Player._ready() runs before Level._ready(), so refresh its textures after
 	# applying the scene override.
 	$Player.set_sprites()
-	if active_weather == "Rainy" and use_rain_test_assets:
-		if CharacterController.boyorgirl == "Boy":
-			for frame in range(1, 8):
-				$Player.get_node("AllSprites/r%d" % frame).texture = load(rain_test_assets_root.plus_file("boy_rc_%d.png" % frame))
-		else:
-			$Player.set_weather_test_sprites("Rainy", rain_test_assets_root)
-	elif active_weather == "Snowy" and use_snow_test_assets:
-		$Player.set_weather_test_sprites("Snowy", snow_test_assets_root)
 	$Player._refresh_legacy_head()
 	$Timer.start()
 	$Timer3.start()
@@ -145,6 +133,11 @@ func _process(delta):
 		get_tree().change_scene("res://src/Mini-games/Hidratona/src/level/GameOver.tscn")
 
 func _on_pause_button_up():
+	if $CanvasLayer/Pause.visible:
+		_on_playbutton_pressed()
+		return
+	if get_tree().paused:
+		return
 	$CanvasLayer/Pause.visible = true
 	var colorRect = get_tree().get_nodes_in_group("sun")
 	for i in colorRect:

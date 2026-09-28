@@ -388,43 +388,15 @@ func Load_Hidratona():
 		hidratona.run.r6 = load(str(path, "correr-6.png"))
 		hidratona.run.r7 = load(str(path, "correr-7.png"))
 		
-		hidratona.jump.j1 = load(str(path, "pular-1.png"))
-		hidratona.jump.j2 = load(str(path, "pular-2.png"))
-		
 		hidratona.fall = load(str(path, "caindo-buraco.png"))
-		hidratona.squat = load(str(path, "agachar.png"))
 		hidratona.win = load(str(path, "boy-win.png"))
 		
 		#rain
-		hidratona.rain.run.r1 = load(str(path, "rain/rc_1.png"))
-		hidratona.rain.run.r2 = load(str(path, "rain/rc_2.png"))
-		hidratona.rain.run.r3 = load(str(path, "rain/rc_3.png"))
-		hidratona.rain.run.r4 = load(str(path, "rain/rc_4.png"))
-		hidratona.rain.run.r5 = load(str(path, "rain/rc_5.png"))
-		hidratona.rain.run.r6 = load(str(path, "rain/rc_6.png"))
-		hidratona.rain.run.r7 = load(str(path, "rain/rc_7.png"))
-		
-		hidratona.rain.jump.j1 = load(str(path, "rain/rc_j.png"))
-		hidratona.rain.jump.j2 = load(str(path, "rain/rc_d.png"))
-		
 		hidratona.rain.fall = load(str(path, "rain/rc_fall.png"))
-		hidratona.rain.squat = load(str(path, "rain/rc_squat.png"))
 		hidratona.rain.win = load(str(path, "rain/rc_win.png"))
 		
 		#snow
-		hidratona.snow.run.r1 = load(str(path, "snow/rs_1.png"))
-		hidratona.snow.run.r2 = load(str(path, "snow/rs_2.png"))
-		hidratona.snow.run.r3 = load(str(path, "snow/rs_3.png"))
-		hidratona.snow.run.r4 = load(str(path, "snow/rs_4.png"))
-		hidratona.snow.run.r5 = load(str(path, "snow/rs_5.png"))
-		hidratona.snow.run.r6 = load(str(path, "snow/rs_6.png"))
-		hidratona.snow.run.r7 = load(str(path, "snow/rs_7.png"))
-		
-		hidratona.snow.jump.j1 = load(str(path, "snow/rs_j.png"))
-		hidratona.snow.jump.j2 = load(str(path, "snow/rs_d.png"))
-		
 		hidratona.snow.fall = load(str(path, "snow/rs_fall.png"))
-		hidratona.snow.squat = load(str(path, "snow/rs_squat.png"))
 		hidratona.snow.win = load(str(path, "snow/rs_win.png"))
 		
 	elif(boyorgirl == "Girl"):
@@ -438,45 +410,31 @@ func Load_Hidratona():
 		hidratona.run.r6 = load(str(path, "correr-6-girl.png"))
 		hidratona.run.r7 = load(str(path, "correr-7-girl.png"))
 		
-		hidratona.jump.j1 = load(str(path, "pular-1-girl.png"))
-		hidratona.jump.j2 = load(str(path, "pular-2-girl.png"))
-		
 		hidratona.fall = load(str(path, "cair-buraco-girl.png"))
-		hidratona.squat = load(str(path, "agachar-girl.png"))
 		hidratona.win = load(str(path, "girl-win.png"))
 		
 		#rain
-		hidratona.rain.run.r1 = load(str(path, "rain/rc_1.png"))
-		hidratona.rain.run.r2 = load(str(path, "rain/rc_2.png"))
-		hidratona.rain.run.r3 = load(str(path, "rain/rc_3.png"))
-		hidratona.rain.run.r4 = load(str(path, "rain/rc_4.png"))
-		hidratona.rain.run.r5 = load(str(path, "rain/rc_5.png"))
-		hidratona.rain.run.r6 = load(str(path, "rain/rc_6.png"))
-		hidratona.rain.run.r7 = load(str(path, "rain/rc_7.png"))
-		
-		hidratona.rain.jump.j1 = load(str(path, "rain/rc_j.png"))
-		hidratona.rain.jump.j2 = load(str(path, "rain/rc_d.png"))
-		
 		hidratona.rain.fall = load(str(path, "rain/rc_fall.png"))
-		hidratona.rain.squat = load(str(path, "rain/rc_squat.png"))
 		hidratona.rain.win = load(str(path, "rain/rc_win.png"))
 		
 		#snow
-		hidratona.snow.run.r1 = load(str(path, "snow/rs_1.png"))
-		hidratona.snow.run.r2 = load(str(path, "snow/rs_2.png"))
-		hidratona.snow.run.r3 = load(str(path, "snow/rs_3.png"))
-		hidratona.snow.run.r4 = load(str(path, "snow/rs_4.png"))
-		hidratona.snow.run.r5 = load(str(path, "snow/rs_5.png"))
-		hidratona.snow.run.r6 = load(str(path, "snow/rs_6.png"))
-		hidratona.snow.run.r7 = load(str(path, "snow/rs_7.png"))
-			
-		hidratona.snow.jump.j1 = load(str(path, "snow/rs_j.png"))
-		hidratona.snow.jump.j2 = load(str(path, "snow/rs_d.png"))
-		
 		hidratona.snow.fall = load(str(path, "snow/rs_fall.png"))
-		hidratona.snow.squat = load(str(path, "snow/rs_squat.png"))
 		hidratona.snow.win = load(str(path, "snow/rs_win.png"))
 		
+	# Weather running bodies are shared; only the head and the other poses vary.
+	for frame in range(1, 8):
+		hidratona.rain.run["r%d" % frame] = load("res://assets/SpritesV4/RoupasEspeciais/Chuva/Correndo/boy_rc_%d.png" % frame)
+		hidratona.snow.run["r%d" % frame] = load("res://assets/SpritesV4/RoupasEspeciais/Neve/Correndo/correrneve-%d.png" % frame)
+	# The same headless pose bodies serve every gender and skin tone.
+	hidratona.jump.j1 = load("res://assets/All_Character_Sprites/Boy/branco/hidratona-BOY/pular-1.png")
+	hidratona.jump.j2 = load("res://assets/All_Character_Sprites/Boy/branco/hidratona-BOY/pular-2.png")
+	hidratona.squat = load("res://assets/All_Character_Sprites/Boy/branco/hidratona-BOY/agachar.png")
+	hidratona.rain.jump.j1 = load("res://src/Mini-games/Hidratona/src/level/rain/rc_j_no_head.png")
+	hidratona.rain.jump.j2 = load("res://src/Mini-games/Hidratona/src/level/rain/rc_d_no_head.png")
+	hidratona.rain.squat = load("res://src/Mini-games/Hidratona/src/level/rain/rc_squat_no_head.png")
+	hidratona.snow.jump.j1 = load("res://src/Mini-games/Hidratona/src/level/snow/rs_j_no_head.png")
+	hidratona.snow.jump.j2 = load("res://src/Mini-games/Hidratona/src/level/snow/rs_d_no_head.png")
+	hidratona.snow.squat = load("res://src/Mini-games/Hidratona/src/level/snow/rs_squat_no_head.png")
 	return hidratona
 
 func is_playing():

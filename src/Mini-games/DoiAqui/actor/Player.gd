@@ -2,10 +2,6 @@ extends KinematicBody2D
 
 const LEGACY_HEAD_SHADER = preload("res://src/UI/LegacyHead.shader")
 const BODY_SKIN_SHADER = preload("res://src/Mini-games/DoiAqui/actor/DoiAquiBodySkin.shader")
-const SAD_BOY_A_HEAD = preload("res://assets/DoiAqui/sprites/actor/boy/boy-a-head-triste.png")
-const SAD_BOY_B_HEAD = preload("res://assets/DoiAqui/sprites/actor/boy/boy-b-head-triste.png")
-const SAD_GIRL_A_HEAD = preload("res://assets/DoiAqui/sprites/actor/boy/girl-a-head-triste.png")
-const SAD_GIRL_B_HEAD = preload("res://assets/DoiAqui/sprites/actor/boy/girl-b-head-triste.png")
 const BODY_PATH = "res://assets/DoiAqui/sprites/actor/boy/"
 
 export var legacy_head_position = Vector2(5, -51)
@@ -84,19 +80,6 @@ func _selected_head_key() -> String:
 	return "%s-%s" % [selected_gender, selected_hair]
 
 
-func _get_doiaqui_head_texture() -> Texture:
-	match _selected_head_key():
-		"boy-a":
-			return SAD_BOY_A_HEAD
-		"boy-b":
-			return SAD_BOY_B_HEAD
-		"girl-a":
-			return SAD_GIRL_A_HEAD
-		"girl-b":
-			return SAD_GIRL_B_HEAD
-	return CharacterController.get_legacy_head_texture()
-
-
 func _get_selected_head_offset() -> Vector2:
 	match _selected_head_key():
 		"boy-a":
@@ -111,7 +94,7 @@ func _get_selected_head_offset() -> Vector2:
 
 
 func _refresh_legacy_head() -> void:
-	var head_texture = _get_doiaqui_head_texture()
+	var head_texture = CharacterController.get_legacy_head_texture()
 	if head_texture == null:
 		legacy_head.visible = false
 		skin_color_rect.visible = false

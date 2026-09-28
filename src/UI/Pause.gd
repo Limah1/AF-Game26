@@ -17,6 +17,11 @@ func _ready():
 
 
 func _on_TextureButton_pressed():
+	if $Pause.visible:
+		_on_playbutton_pressed()
+		return
+	if get_tree().paused:
+		return
 	get_tree().paused = true
 	$Pause.visible = true
 

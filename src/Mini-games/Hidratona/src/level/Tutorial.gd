@@ -14,6 +14,11 @@ func _process(delta):
 	$Player.global_position.x = $Position2D.global_position.x
 
 func _on_pause_button_up():
+	if $CanvasLayer/play_button.visible:
+		_on_playbutton_button_up()
+		return
+	if get_tree().paused:
+		return
 	$CanvasLayer.layer = 128
 	$CanvasLayer/play_button.visible = true
 	$CanvasLayer/AudioButton.visible = true

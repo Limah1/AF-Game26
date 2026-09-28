@@ -1,6 +1,11 @@
 extends CanvasLayer
 
 func _on_TextureButton_pressed():
+	if $Pause2.visible:
+		_on_playbutton_pressed()
+		return
+	if get_tree().paused:
+		return
 	$Pause2.visible = true
 	get_tree().paused = true 
 	

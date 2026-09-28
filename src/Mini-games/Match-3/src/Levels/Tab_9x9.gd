@@ -67,6 +67,9 @@ func _on_back_pressed():
 
 
 func _on_PauseButton_pressed() -> void:
+	if $CanvasLayer/Pause.visible:
+		_on_continue_pressed()
+		return
 	$CanvasLayer/Pause.visible = true
 	
 	var necessitybar = load("res://src/UI/NecessityManager.tscn").instance()

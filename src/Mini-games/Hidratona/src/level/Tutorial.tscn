@@ -845,6 +845,7 @@ texture = ExtResource( 4 )
 position = Vector2( 162.346, 0 )
 
 [node name="pause" type="TextureButton" parent="."]
+pause_mode = 2
 margin_left = 1563.05
 margin_top = 75.5099
 margin_right = 1834.05
@@ -863,6 +864,7 @@ visible = false
 modulate = Color( 1, 1, 1, 0.662745 )
 margin_right = 1924.0
 margin_bottom = 1086.0
+mouse_filter = 2
 mouse_filter = 2
 color = Color( 0.0666667, 0.0627451, 0.0627451, 1 )
 __meta__ = {
