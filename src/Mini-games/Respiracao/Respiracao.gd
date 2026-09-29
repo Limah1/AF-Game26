@@ -38,7 +38,17 @@ func _ready() -> void:
 	$CompletionPanel/CompletionBox/RestartButton.connect("pressed", self, "_on_restart_pressed")
 	$CompletionPanel/CompletionBox/BackButton.connect("pressed", self, "_on_back_pressed")
 	$ExitButton.connect("pressed", self, "_on_back_pressed")
+	BackgroundMusic.stop_music()
+	var music := AudioStreamPlayer.new()
+	music.name = "bg_music"
+	music.stream = load("res://src/Assets/Audio/Music/meditacao.mp3")
+	music.bus = "Music"
+	add_child(music)
+	music.play()
 	_update_interface()
+
+func _exit_tree() -> void:
+	BackgroundMusic.play_music()
 
 func start(room) -> void:
 	room_reference = room
