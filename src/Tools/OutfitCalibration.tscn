@@ -88,7 +88,7 @@ margin_bottom = 487.0
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 485.0
-margin_bottom = 977.0
+margin_bottom = 967.0
 custom_constants/margin_right = 28
 custom_constants/margin_top = 28
 custom_constants/margin_left = 28
@@ -98,8 +98,8 @@ custom_constants/margin_bottom = 28
 margin_left = 28.0
 margin_top = 28.0
 margin_right = 450.0
-margin_bottom = 942.0
-custom_constants/separation = 16
+margin_bottom = 932.0
+custom_constants/separation = 5
 
 [node name="PanelTitle" type="Label" parent="Panel/Margin/Controls"]
 margin_right = 422.0
@@ -107,21 +107,21 @@ margin_bottom = 14.0
 text = "Ajustes"
 
 [node name="Description" type="Label" parent="Panel/Margin/Controls"]
-margin_top = 30.0
+margin_top = 19.0
 margin_right = 422.0
-margin_bottom = 61.0
+margin_bottom = 50.0
 text = "Cada clima e pose tem seu próprio ajuste.
 Gênero e cabelo mudam apenas a prévia da cabeça."
 
 [node name="Separator1" type="HSeparator" parent="Panel/Margin/Controls"]
-margin_top = 77.0
+margin_top = 55.0
 margin_right = 422.0
-margin_bottom = 81.0
+margin_bottom = 59.0
 
 [node name="OutfitRow" type="HBoxContainer" parent="Panel/Margin/Controls"]
-margin_top = 97.0
+margin_top = 64.0
 margin_right = 422.0
-margin_bottom = 129.0
+margin_bottom = 96.0
 custom_constants/separation = 12
 
 [node name="Label" type="Label" parent="Panel/Margin/Controls/OutfitRow"]
@@ -139,9 +139,9 @@ rect_min_size = Vector2( 220, 32 )
 size_flags_horizontal = 3
 
 [node name="VariationRow" type="HBoxContainer" parent="Panel/Margin/Controls"]
-margin_top = 145.0
+margin_top = 101.0
 margin_right = 422.0
-margin_bottom = 177.0
+margin_bottom = 133.0
 custom_constants/separation = 12
 
 [node name="Label" type="Label" parent="Panel/Margin/Controls/VariationRow"]
@@ -159,9 +159,9 @@ rect_min_size = Vector2( 220, 32 )
 size_flags_horizontal = 3
 
 [node name="GenderRow" type="HBoxContainer" parent="Panel/Margin/Controls"]
-margin_top = 193.0
+margin_top = 138.0
 margin_right = 422.0
-margin_bottom = 225.0
+margin_bottom = 170.0
 custom_constants/separation = 12
 
 [node name="Label" type="Label" parent="Panel/Margin/Controls/GenderRow"]
@@ -179,9 +179,9 @@ rect_min_size = Vector2( 220, 32 )
 size_flags_horizontal = 3
 
 [node name="HairRow" type="HBoxContainer" parent="Panel/Margin/Controls"]
-margin_top = 241.0
+margin_top = 175.0
 margin_right = 422.0
-margin_bottom = 273.0
+margin_bottom = 207.0
 custom_constants/separation = 12
 
 [node name="Label" type="Label" parent="Panel/Margin/Controls/HairRow"]
@@ -199,9 +199,9 @@ rect_min_size = Vector2( 220, 32 )
 size_flags_horizontal = 3
 
 [node name="StateRow" type="HBoxContainer" parent="Panel/Margin/Controls"]
-margin_top = 289.0
+margin_top = 212.0
 margin_right = 422.0
-margin_bottom = 321.0
+margin_bottom = 244.0
 custom_constants/separation = 12
 
 [node name="Label" type="Label" parent="Panel/Margin/Controls/StateRow"]
@@ -219,14 +219,14 @@ rect_min_size = Vector2( 220, 32 )
 size_flags_horizontal = 3
 
 [node name="Separator2" type="HSeparator" parent="Panel/Margin/Controls"]
-margin_top = 337.0
+margin_top = 249.0
 margin_right = 422.0
-margin_bottom = 341.0
+margin_bottom = 253.0
 
 [node name="OutfitScaleRow" type="HBoxContainer" parent="Panel/Margin/Controls"]
-margin_top = 357.0
+margin_top = 258.0
 margin_right = 422.0
-margin_bottom = 389.0
+margin_bottom = 290.0
 custom_constants/separation = 12
 
 [node name="Label" type="Label" parent="Panel/Margin/Controls/OutfitScaleRow"]
@@ -247,10 +247,110 @@ max_value = 3.0
 step = 0.01
 value = 0.1
 
-[node name="HeadXRow" type="HBoxContainer" parent="Panel/Margin/Controls"]
-margin_top = 405.0
+[node name="BodyPositionControls" type="VBoxContainer" parent="Panel/Margin/Controls"]
+margin_top = 295.0
 margin_right = 422.0
-margin_bottom = 437.0
+margin_bottom = 375.0
+custom_constants/separation = 16
+
+[node name="BodyXRow" type="HBoxContainer" parent="Panel/Margin/Controls/BodyPositionControls"]
+margin_right = 422.0
+margin_bottom = 32.0
+custom_constants/separation = 12
+
+[node name="Label" type="Label" parent="Panel/Margin/Controls/BodyPositionControls/BodyXRow"]
+margin_top = 9.0
+margin_right = 190.0
+margin_bottom = 23.0
+rect_min_size = Vector2( 190, 0 )
+text = "Corpo X"
+
+[node name="BodyX" type="SpinBox" parent="Panel/Margin/Controls/BodyPositionControls/BodyXRow"]
+margin_left = 202.0
+margin_right = 422.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 220, 32 )
+size_flags_horizontal = 3
+min_value = -500.0
+max_value = 500.0
+
+[node name="BodyYRow" type="HBoxContainer" parent="Panel/Margin/Controls/BodyPositionControls"]
+margin_top = 48.0
+margin_right = 422.0
+margin_bottom = 80.0
+custom_constants/separation = 12
+
+[node name="Label" type="Label" parent="Panel/Margin/Controls/BodyPositionControls/BodyYRow"]
+margin_top = 9.0
+margin_right = 190.0
+margin_bottom = 23.0
+rect_min_size = Vector2( 190, 0 )
+text = "Corpo Y"
+
+[node name="BodyY" type="SpinBox" parent="Panel/Margin/Controls/BodyPositionControls/BodyYRow"]
+margin_left = 202.0
+margin_right = 422.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 220, 32 )
+size_flags_horizontal = 3
+min_value = -500.0
+max_value = 500.0
+
+[node name="SelectorPositionControls" type="VBoxContainer" parent="Panel/Margin/Controls"]
+margin_top = 380.0
+margin_right = 422.0
+margin_bottom = 460.0
+custom_constants/separation = 16
+
+[node name="SelectorXRow" type="HBoxContainer" parent="Panel/Margin/Controls/SelectorPositionControls"]
+margin_right = 422.0
+margin_bottom = 32.0
+custom_constants/separation = 12
+
+[node name="Label" type="Label" parent="Panel/Margin/Controls/SelectorPositionControls/SelectorXRow"]
+margin_top = 9.0
+margin_right = 190.0
+margin_bottom = 23.0
+rect_min_size = Vector2( 190, 0 )
+text = "Seletor X"
+
+[node name="SelectorX" type="SpinBox" parent="Panel/Margin/Controls/SelectorPositionControls/SelectorXRow"]
+margin_left = 202.0
+margin_right = 422.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 220, 32 )
+size_flags_horizontal = 3
+min_value = -2000.0
+max_value = 2000.0
+step = 0.1
+
+[node name="SelectorYRow" type="HBoxContainer" parent="Panel/Margin/Controls/SelectorPositionControls"]
+margin_top = 48.0
+margin_right = 422.0
+margin_bottom = 80.0
+custom_constants/separation = 12
+
+[node name="Label" type="Label" parent="Panel/Margin/Controls/SelectorPositionControls/SelectorYRow"]
+margin_top = 9.0
+margin_right = 190.0
+margin_bottom = 23.0
+rect_min_size = Vector2( 190, 0 )
+text = "Seletor Y"
+
+[node name="SelectorY" type="SpinBox" parent="Panel/Margin/Controls/SelectorPositionControls/SelectorYRow"]
+margin_left = 202.0
+margin_right = 422.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 220, 32 )
+size_flags_horizontal = 3
+min_value = -2000.0
+max_value = 2000.0
+step = 0.1
+
+[node name="HeadXRow" type="HBoxContainer" parent="Panel/Margin/Controls"]
+margin_top = 465.0
+margin_right = 422.0
+margin_bottom = 497.0
 custom_constants/separation = 12
 
 [node name="Label" type="Label" parent="Panel/Margin/Controls/HeadXRow"]
@@ -270,9 +370,9 @@ min_value = -500.0
 max_value = 500.0
 
 [node name="HeadYRow" type="HBoxContainer" parent="Panel/Margin/Controls"]
-margin_top = 453.0
+margin_top = 502.0
 margin_right = 422.0
-margin_bottom = 485.0
+margin_bottom = 534.0
 custom_constants/separation = 12
 
 [node name="Label" type="Label" parent="Panel/Margin/Controls/HeadYRow"]
@@ -292,9 +392,9 @@ min_value = -500.0
 max_value = 500.0
 
 [node name="HeadScaleRow" type="HBoxContainer" parent="Panel/Margin/Controls"]
-margin_top = 501.0
+margin_top = 539.0
 margin_right = 422.0
-margin_bottom = 533.0
+margin_bottom = 571.0
 custom_constants/separation = 12
 
 [node name="Label" type="Label" parent="Panel/Margin/Controls/HeadScaleRow"]
@@ -316,9 +416,9 @@ step = 0.001
 value = 0.01
 
 [node name="NeckControls" type="VBoxContainer" parent="Panel/Margin/Controls"]
-margin_top = 549.0
+margin_top = 576.0
 margin_right = 422.0
-margin_bottom = 725.0
+margin_bottom = 752.0
 custom_constants/separation = 16
 
 [node name="NeckXRow" type="HBoxContainer" parent="Panel/Margin/Controls/NeckControls"]
@@ -411,14 +511,14 @@ max_value = 500.0
 value = 1.0
 
 [node name="Separator3" type="HSeparator" parent="Panel/Margin/Controls"]
-margin_top = 741.0
+margin_top = 757.0
 margin_right = 422.0
-margin_bottom = 745.0
+margin_bottom = 761.0
 
 [node name="Buttons" type="HBoxContainer" parent="Panel/Margin/Controls"]
-margin_top = 761.0
+margin_top = 766.0
 margin_right = 422.0
-margin_bottom = 803.0
+margin_bottom = 808.0
 custom_constants/separation = 12
 
 [node name="Save" type="Button" parent="Panel/Margin/Controls/Buttons"]
@@ -437,18 +537,18 @@ size_flags_horizontal = 3
 text = "Recarregar"
 
 [node name="Status" type="Label" parent="Panel/Margin/Controls"]
-margin_top = 819.0
+margin_top = 813.0
 margin_right = 422.0
-margin_bottom = 867.0
+margin_bottom = 861.0
 rect_min_size = Vector2( 0, 48 )
 text = "Preparando prévia..."
 autowrap = true
 
 [node name="FilePath" type="Label" parent="Panel/Margin/Controls"]
 modulate = Color( 0.62, 0.67, 0.73, 1 )
-margin_top = 883.0
+margin_top = 866.0
 margin_right = 422.0
-margin_bottom = 914.0
+margin_bottom = 897.0
 text = "assets/SpritesV4/RoupasEspeciais/
 ConfiguracaoRoupasEspeciais.tres"
 

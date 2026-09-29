@@ -414,6 +414,7 @@ func _set_normal_body_scale(girl_r2: bool) -> void:
 	for sprite_name in ["idle", "w1", "w2", "w3", "w4", "w5"]:
 		var sprite = get_node("player_sprites/" + sprite_name)
 		sprite.scale = Vector2.ONE * GIRL_R2_SPRITE_SCALE if girl_r2 else normal_sprite_layout[sprite_name].scale
+		sprite.position = normal_sprite_layout[sprite_name].position + weather_outfit_tuning.girl_r2_body_offset if girl_r2 else normal_sprite_layout[sprite_name].position
 
 func set_normal_dirty_clothes():
 	_set_legacy_player_scale()
@@ -430,7 +431,7 @@ func set_normal_dirty_clothes():
 	$player_sprites/w3.texture = sprites.walk_dirty.w3
 	$player_sprites/w4.texture = sprites.walk_dirty.w4
 	$player_sprites/w5.texture = sprites.walk_dirty.w5
-	_set_normal_body_scale(false)
+	_set_normal_body_scale(CharacterController.genero == "girl" and CharacterController.roupa == "r2")
 
 func set_bath_clothes():
 	_set_legacy_player_scale()

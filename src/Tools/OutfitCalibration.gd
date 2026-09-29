@@ -23,6 +23,12 @@ onready var gender_option = $Panel/Margin/Controls/GenderRow/Gender
 onready var hair_option = $Panel/Margin/Controls/HairRow/Hair
 onready var state_option = $Panel/Margin/Controls/StateRow/State
 onready var outfit_scale_input = $Panel/Margin/Controls/OutfitScaleRow/OutfitScale
+onready var body_position_controls = $Panel/Margin/Controls/BodyPositionControls
+onready var body_x_input = $Panel/Margin/Controls/BodyPositionControls/BodyXRow/BodyX
+onready var body_y_input = $Panel/Margin/Controls/BodyPositionControls/BodyYRow/BodyY
+onready var selector_position_controls = $Panel/Margin/Controls/SelectorPositionControls
+onready var selector_x_input = $Panel/Margin/Controls/SelectorPositionControls/SelectorXRow/SelectorX
+onready var selector_y_input = $Panel/Margin/Controls/SelectorPositionControls/SelectorYRow/SelectorY
 onready var head_x_input = $Panel/Margin/Controls/HeadXRow/HeadX
 onready var head_y_input = $Panel/Margin/Controls/HeadYRow/HeadY
 onready var head_scale_input = $Panel/Margin/Controls/HeadScaleRow/HeadScale
@@ -63,7 +69,7 @@ func _populate_options() -> void:
 func _connect_controls() -> void:
 	for option in [outfit_option, variation_option, gender_option, hair_option, state_option]:
 		option.connect("item_selected", self, "_on_selection_changed")
-	for input in [outfit_scale_input, head_x_input, head_y_input, head_scale_input, neck_x_input, neck_y_input, neck_width_input, neck_height_input]:
+	for input in [outfit_scale_input, body_x_input, body_y_input, selector_x_input, selector_y_input, head_x_input, head_y_input, head_scale_input, neck_x_input, neck_y_input, neck_width_input, neck_height_input]:
 		input.connect("value_changed", self, "_on_value_changed")
 
 func _prepare_character() -> void:
@@ -155,6 +161,9 @@ func _on_value_changed(_value: float) -> void:
 		_set_status("Alterações ainda não salvas.", Color("#ffd166"))
 		return
 	tuning.outfit_scale = outfit_scale_input.value
+	if body_position_controls.visible:
+		tuning.girl_r2_body_offset = Vector2(body_x_input.value, body_y_input.value)
+		tuning.girl_r2_selector_position = Vector2(selector_x_input.value, selector_y_input.value)
 	var positions = tuning.head_positions if _is_weather_outfit() else tuning.normal_r2_head_positions if _selected_variation() == "r2" else tuning.normal_head_positions
 	var scales = tuning.head_scales if _is_weather_outfit() else tuning.normal_r2_head_scales if _selected_variation() == "r2" else tuning.normal_head_scales
 	var head_key = "%s-%s" % [_selected_gender(), _selected_hair()]
@@ -223,6 +232,10 @@ func _load_head_controls() -> void:
 		return
 	var gender = _selected_gender()
 	var hair = _selected_hair()
+	body_x_input.value = tuning.girl_r2_body_offset.x
+	body_y_input.value = tuning.girl_r2_body_offset.y
+	selector_x_input.value = tuning.girl_r2_selector_position.x
+	selector_y_input.value = tuning.girl_r2_selector_position.y
 	var position = tuning.get_head_position(gender, hair) if _is_weather_outfit() else tuning.get_normal_head_position(gender, hair, _selected_variation())
 	outfit_scale_input.value = tuning.outfit_scale
 	head_x_input.value = position.x
@@ -249,7 +262,13 @@ func _load_tuning_from_disk() -> void:
 	_update_tuning_controls_enabled()
 
 func _on_Save_pressed() -> void:
-	var error = ResourceSaver.save(_run_tuning_path(), run_tuning) if _is_hidratona_run() else ResourceSaver.save(TUNING_PATH, tuning)
+	var error
+	if _is_hidratona_run():
+		error = ResourceSaver.save(_run_tuning_path(), run_tuning)
+	else:
+		tuning.girl_r2_body_offset = Vector2(body_x_input.value, body_y_input.value)
+		tuning.girl_r2_selector_position = Vector2(selector_x_input.value, selector_y_input.value)
+		error = ResourceSaver.save(TUNING_PATH, tuning)
 	if error == OK:
 		_set_status("Configuração salva no projeto.", Color("#8bd450"))
 	else:
@@ -264,6 +283,8 @@ func _on_Reload_pressed() -> void:
 func _update_tuning_controls_enabled() -> void:
 	variation_option.disabled = _is_weather_outfit() or _is_hidratona_run()
 	gender_option.disabled = false
+	body_position_controls.visible = not _is_weather_outfit() and not _is_hidratona_run() and _selected_variation() == "r2" and _selected_gender() == "girl"
+	selector_position_controls.visible = body_position_controls.visible
 	neck_controls.visible = _is_normal_neck()
 	outfit_scale_input.editable = _is_weather_outfit() or _is_hidratona_run()
 	for input in [head_x_input, head_y_input, head_scale_input]:

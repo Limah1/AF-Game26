@@ -17,4 +17,4 @@ func _process(_delta):
 
 func _on_Timer_timeout():
 	dots = dots % 3 + 1
-	$Label.text = "Carregando" + ["", ".", "..", "..."][dots]
+	$Label.text = "•".repeat(dots)

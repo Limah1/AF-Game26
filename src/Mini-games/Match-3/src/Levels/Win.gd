@@ -3,10 +3,7 @@ extends Control
 var personagem_sprite
 var cor_pele = ""
 
-export(Vector2) var victory_head_position = Vector2(271.351, 326)
 export(Vector2) var defeat_head_position = Vector2(271.351, 458)
-export(Vector2) var legacy_head_scale = Vector2(0.28, 0.28)
-export(Vector2) var chef_hat_position = Vector2(0, -400)
 
 var complete_total_match = S_Conntroller.score1 == S_Conntroller.goals[0] and S_Conntroller.score2 == S_Conntroller.goals[1] and S_Conntroller.score3 == S_Conntroller.goals[2]
 var complete_match1 = S_Conntroller.score1 == S_Conntroller.goals[0] and S_Conntroller.score2 == S_Conntroller.goals[1] and S_Conntroller.score3 != S_Conntroller.goals[2]
@@ -66,8 +63,6 @@ func _ready():
 	if S_Conntroller.last_result_won:
 		# Vitoria: aplausos, pose de comemoracao e estrelas/checks por fruta
 		$applause.play()
-		$character.texture = preload("res://assets/Match-3/sprites_novo/personagem/headless/boy-a-match3-mto-feliz-comemora-headless.png")
-		$Head.position = victory_head_position
 
 		$Fruit_UI.start_Win(get_fruit_reference(S_Conntroller.fruit1_reference), 0)
 		$Fruit_UI2.start_Win(get_fruit_reference(S_Conntroller.fruit2_reference), 1)
@@ -75,6 +70,7 @@ func _ready():
 	else:
 		# Derrota (ficou sem chances antes de bater a meta): sem aplausos/comemoracao
 		$character.texture = preload("res://assets/Match-3/sprites_novo/personagem/headless/boy-a-match3-mto-triste-headless.png")
+		$VictoryArm.hide()
 		$Head.position = defeat_head_position
 
 		for particles in [$p2d_red, $p2d_green, $p2d_blue, $p2d_violet, $p2d_white, $p2d_white2]:
@@ -85,8 +81,6 @@ func _ready():
 
 func _setup_legacy_head(skin: Color) -> void:
 	$Head.texture = CharacterController.get_legacy_head_texture()
-	$Head.scale = legacy_head_scale
-	$Head/ChefHat.position = chef_hat_position
 	var gender = "boy" if CharacterController.boyorgirl == "Boy" else "girl"
 	var hair = CharacterController.cabelo if CharacterController.cabelo == "a" or CharacterController.cabelo == "b" else "a"
 	var head_material = $Head.material as ShaderMaterial

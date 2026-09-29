@@ -3,12 +3,15 @@ extends Control
 const LEGACY_HEAD_SHADER = preload("res://src/UI/LegacyHead.shader")
 const BODY_SKIN_MATERIAL = preload("res://src/UI/ShaderPersonagem.tres")
 const GIRL_R2_BODY_SHADER = preload("res://src/UI/GirlR2Body.shader")
+const OUTFIT_TUNING = preload("res://assets/SpritesV4/RoupasEspeciais/ConfiguracaoRoupasEspeciais.tres")
 export(Vector2) var roupa_1_body_position = Vector2(1606.6, 513.576)
 export(float, 0.05, 2.0, 0.001) var roupa_1_body_scale = 0.4
 export(Vector2) var roupa_1_head_position = Vector2(1600, 190)
 export(float, 0.05, 2.0, 0.001) var roupa_1_head_scale = 0.4
-export(Vector2) var roupa_2_body_position = Vector2(1606.6, 513.576)
-export(float, 0.05, 2.0, 0.001) var roupa_2_body_scale = 0.4
+export(Vector2) var boy_r2_body_position = Vector2(1606.6, 445)
+export(float, 0.05, 2.0, 0.001) var boy_r2_body_scale = 0.455
+export(Vector2) var girl_r2_body_position = Vector2(1606.6, 361)
+export(float, 0.05, 4.0, 0.001) var girl_r2_body_scale = 3.05
 export(Vector2) var roupa_2_head_position = Vector2(1600, 190)
 export(float, 0.05, 2.0, 0.001) var roupa_2_head_scale = 0.4
 
@@ -36,6 +39,7 @@ var sprite_btn_roupa_boy_2_on = preload("res://assets/Character_Creator/btn_roup
 
 
 func _ready():
+	girl_r2_body_position = OUTFIT_TUNING.girl_r2_selector_position
 	personagem_sprite = get_node("Sprite") 
 	_show_legacy_preview()
 	if genero != "boy" and genero != "girl":
@@ -87,8 +91,13 @@ func _update_legacy_head() -> void:
 	var roupa_1 = $btn_roupa_1.pressed
 	legacy_head.texture = CharacterController.get_head_texture_for(genero, hair)
 	legacy_head.visible = true
-	personagem_sprite.position = roupa_1_body_position if roupa_1 else roupa_2_body_position
-	personagem_sprite.scale = Vector2.ONE * (roupa_1_body_scale if roupa_1 else roupa_2_body_scale)
+	var body_position = roupa_1_body_position
+	var body_scale = roupa_1_body_scale
+	if not roupa_1:
+		body_position = girl_r2_body_position if genero == "girl" else boy_r2_body_position
+		body_scale = girl_r2_body_scale if genero == "girl" else boy_r2_body_scale
+	personagem_sprite.position = body_position
+	personagem_sprite.scale = Vector2.ONE * body_scale
 	legacy_head.position = roupa_1_head_position if roupa_1 else roupa_2_head_position
 	legacy_head.scale = Vector2.ONE * (roupa_1_head_scale if roupa_1 else roupa_2_head_scale)
 	var head_material = legacy_head.material as ShaderMaterial

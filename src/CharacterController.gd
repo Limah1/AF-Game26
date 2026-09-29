@@ -265,13 +265,13 @@ func Load_Plataform():
 	var normal_path = "res://assets/SpritesV4/RoupasNormais/%s/%s/" % [gender_folder, variation_folder]
 	var new_girl_variation = genero == "girl" and roupa == "r2"
 	plataform.idle = load(normal_path + ("girlsc-1-1.png" if new_girl_variation else "m0.png"))
-	plataform.idle_dirty = load(normal_path + "m0-s.png")
+	plataform.idle_dirty = plataform.idle if new_girl_variation else load(normal_path + "m0-s.png")
 	plataform.seated = load(normal_path + "sentado.png")
 	plataform.seated_dirty = load(normal_path + "sentado-s.png")
 	for frame in range(1, 6):
 		var key = "w" + str(frame)
 		plataform.walk[key] = load(normal_path + ("girlsc-1-%d.png" % (frame + 1) if new_girl_variation else "m%d.png" % frame))
-		plataform.walk_dirty[key] = load(normal_path + "m%d-s.png" % frame)
+		plataform.walk_dirty[key] = plataform.walk[key] if new_girl_variation else load(normal_path + "m%d-s.png" % frame)
 
 	var hair = cabelo if cabelo == "a" or cabelo == "b" else "a"
 	plataform.sleeping = load("res://assets/SpritesV4/RoupasNormais/%s/dormindo-%s.png" % [gender_folder, hair])

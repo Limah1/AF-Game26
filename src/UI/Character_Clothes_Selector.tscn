@@ -222,7 +222,6 @@ script = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-roupa_2_body_position = Vector2( 1606.6, 420 )
 
 [node name="tela-escolha-personagem" type="Sprite" parent="."]
 position = Vector2( 964.52, 540 )

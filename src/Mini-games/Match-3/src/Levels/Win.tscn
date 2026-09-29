@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://assets/fonts/Teste.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/Mini-games/Match-3/src/GUI/Background.tscn" type="PackedScene" id=2]
@@ -12,7 +12,6 @@
 [ext_resource path="res://assets/Match-3/sprites/melancia.png" type="Texture" id=10]
 [ext_resource path="res://assets/Match-3/sprites/arroz-e-feijao.png" type="Texture" id=11]
 [ext_resource path="res://assets/Match-3/sprites/checked-task-icon.png" type="Texture" id=12]
-[ext_resource path="res://assets/Match-3/sprites_novo/personagem/headless/boy-a-match3-mto-feliz-comemora-headless.png" type="Texture" id=13]
 [ext_resource path="res://assets/Match-3/sprites/line.png" type="Texture" id=14]
 [ext_resource path="res://assets/Match-3/buttons/button-ir-de-novo-hover_1.png" type="Texture" id=15]
 [ext_resource path="res://assets/Match-3/LAYOUTS/moeda.png" type="Texture" id=16]
@@ -26,6 +25,9 @@
 [ext_resource path="res://src/UI/ShaderPersonagem.tres" type="Material" id=24]
 [ext_resource path="res://src/UI/LegacyHead.shader" type="Shader" id=26]
 [ext_resource path="res://assets/Match-3/sprites/chapeu-chef.png" type="Texture" id=27]
+[ext_resource path="res://assets/SpritesV4/Match3/Vitoria/cozinha_1.png" type="Texture" id=28]
+[ext_resource path="res://assets/SpritesV4/Match3/Vitoria/cozinha_braço.png" type="Texture" id=29]
+[ext_resource path="res://assets/SpritesV4/Cabecas/Menino/boy1.png" type="Texture" id=30]
 
 [sub_resource type="ParticlesMaterial" id=1]
 flag_rotate_y = true
@@ -369,13 +371,20 @@ __meta__ = {
 material = ExtResource( 24 )
 position = Vector2( 271.351, 566.77 )
 scale = Vector2( 0.75, 0.75 )
-texture = ExtResource( 13 )
+texture = ExtResource( 28 )
+
+[node name="VictoryArm" type="Sprite" parent="."]
+material = ExtResource( 24 )
+position = Vector2( 271.351, 566.77 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 29 )
 
 [node name="Head" type="Sprite" parent="."]
 material = SubResource( 9 )
-position = Vector2( 271.351, 326 )
+position = Vector2( 271.351, 495 )
 scale = Vector2( 0.28, 0.28 )
 z_index = 1
+texture = ExtResource( 30 )
 
 [node name="ChefHat" type="Sprite" parent="Head"]
 position = Vector2( 0, -400 )

@@ -1,7 +1,9 @@
 extends Resource
 class_name WeatherOutfitTuning
 
-export(float, 0.1, 3.0, 0.01) var outfit_scale = 0.75
+export(float, 0.1, 3.0, 0.01) var outfit_scale = 1.3
+export(Vector2) var girl_r2_body_offset = Vector2(4, -10)
+export(Vector2) var girl_r2_selector_position = Vector2(1606.6, 361)
 export(Dictionary) var head_positions = {
 	"boy-a": Vector2(-5, -22),
 	"boy-b": Vector2(-5, -18),
@@ -29,20 +31,20 @@ export(Dictionary) var normal_head_scales = {
 export(Dictionary) var normal_r2_head_positions = {
 	"boy-a": Vector2(20, -37),
 	"boy-b": Vector2(20, -37),
-	"girl-a": Vector2(20, -37),
+	"girl-a": Vector2(0, -25),
 	"girl-b": Vector2(20, -37)
 }
 export(Dictionary) var normal_r2_head_scales = {
 	"boy-a": 0.2268,
 	"boy-b": 0.2268,
-	"girl-a": 0.2268,
+	"girl-a": 0.26,
 	"girl-b": 0.2268
 }
 export(Dictionary) var normal_neck_offsets = {
 	"r1-boy": Vector2(-23, 28),
 	"r1-girl": Vector2(-23, 28),
 	"r2-boy": Vector2(-23, 28),
-	"r2-girl": Vector2(-23, 28)
+	"r2-girl": Vector2(-23, 48)
 }
 export(Dictionary) var normal_neck_sizes = {
 	"r1-boy": Vector2(46, 45),
