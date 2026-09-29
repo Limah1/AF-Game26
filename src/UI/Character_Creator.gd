@@ -225,7 +225,9 @@ func _on_ConfirmButton_pressed():
 	ModularCharacterData.set_gender(NewCharData.genero)
 
 	# Save the catalog ID and exact catalog color.
+	NewCharData.tom_pele_id = selected_skin_tone_id
 	NewCharData.cor_pele = ModularCharacterData.get_skin_tone_hex(selected_skin_tone_id)
+	NewCharData.roupa = ""
 		
 	get_tree().change_scene("res://src/UI/Character_Clothes_Selector.tscn")
 		

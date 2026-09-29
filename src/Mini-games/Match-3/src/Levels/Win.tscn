@@ -381,13 +381,13 @@ texture = ExtResource( 29 )
 
 [node name="Head" type="Sprite" parent="."]
 material = SubResource( 9 )
-position = Vector2( 271.351, 495 )
-scale = Vector2( 0.28, 0.28 )
+position = Vector2( 268.973, 479.54 )
+scale = Vector2( 0.325802, 0.318638 )
 z_index = 1
 texture = ExtResource( 30 )
 
 [node name="ChefHat" type="Sprite" parent="Head"]
-position = Vector2( 0, -400 )
+position = Vector2( -7.30017, -310.428 )
 scale = Vector2( 0.464, 0.464 )
 z_index = 1
 texture = ExtResource( 27 )

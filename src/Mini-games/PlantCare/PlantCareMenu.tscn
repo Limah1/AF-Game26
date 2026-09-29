@@ -14,6 +14,7 @@
 [ext_resource path="res://src/Assets/Audio/SFX/Minigames/PlantCare/harvest_coin.ogg" type="AudioStream" id=12]
 [ext_resource path="res://src/Assets/Audio/SFX/Minigames/PlantCare/slot_purchase.ogg" type="AudioStream" id=13]
 [ext_resource path="res://src/Assets/Audio/Music/plantcare_theme.ogg" type="AudioStream" id=14]
+[ext_resource path="res://src/Mini-games/PlantCare/sprites/GardenBackground.png" type="Texture" id=15]
 
 [sub_resource type="DynamicFont" id=1]
 size = 42
@@ -53,18 +54,6 @@ corner_radius_bottom_left = 18
 size = 24
 font_data = ExtResource( 3 )
 
-[sub_resource type="StyleBoxFlat" id=7]
-bg_color = Color( 0.12, 0.31, 0.08, 0.94 )
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color( 0.52, 0.82, 0.22, 1 )
-corner_radius_top_left = 18
-corner_radius_top_right = 18
-corner_radius_bottom_right = 18
-corner_radius_bottom_left = 18
-
 [node name="PlantCareMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -75,18 +64,13 @@ __meta__ = {
 }
 plant_catalog = [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ]
 
-[node name="Sky" type="ColorRect" parent="."]
+[node name="GardenBackground" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-color = Color( 0.45, 0.75, 0.95, 1 )
-
-[node name="Ground" type="ColorRect" parent="."]
-anchor_top = 0.34
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-color = Color( 0.28, 0.55, 0.12, 1 )
+texture = ExtResource( 15 )
+expand = true
+stretch_mode = 1
 
 [node name="TopBar" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -172,78 +156,45 @@ margin_bottom = 892.0
 rect_min_size = Vector2( 0, 125 )
 custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.9, 0.98, 0.82, 1 )
-text = "Arraste até um slot vazio e mantenha o dedo parado por 1,5 segundo."
+text = "Arraste até um buraco vazio e mantenha o dedo parado por 1,5 segundo."
 align = 1
 valign = 1
 autowrap = true
 
-[node name="GardenPanel" type="PanelContainer" parent="."]
+[node name="GardenPanel" type="Control" parent="."]
 margin_left = 378.0
 margin_top = 122.0
 margin_right = 1896.0
 margin_bottom = 1052.0
-custom_styles/panel = SubResource( 7 )
 
-[node name="Margin" type="MarginContainer" parent="GardenPanel"]
-margin_left = 4.0
-margin_top = 4.0
-margin_right = 1514.0
-margin_bottom = 1580.0
-custom_constants/margin_right = 28
-custom_constants/margin_top = 55
-custom_constants/margin_left = 28
-custom_constants/margin_bottom = 35
+[node name="Margin" type="Control" parent="GardenPanel"]
+margin_left = 49.0
+margin_top = 90.0
+margin_right = 1469.0
+margin_bottom = 840.0
 
 [node name="Grid" type="GridContainer" parent="GardenPanel/Margin"]
-margin_left = 28.0
-margin_top = 55.0
-margin_right = 1482.0
-margin_bottom = 1541.0
-custom_constants/vseparation = 28
-custom_constants/hseparation = 28
+margin_right = 1420.0
+margin_bottom = 750.0
+custom_constants/vseparation = 30
+custom_constants/hseparation = 20
 columns = 4
 
 [node name="Slot1" parent="GardenPanel/Margin/Grid" instance=ExtResource( 2 )]
-margin_right = 330.0
-margin_bottom = 403.0
 
 [node name="Slot2" parent="GardenPanel/Margin/Grid" instance=ExtResource( 2 )]
-margin_left = 358.0
-margin_right = 688.0
-margin_bottom = 403.0
 
 [node name="Slot3" parent="GardenPanel/Margin/Grid" instance=ExtResource( 2 )]
-margin_left = 716.0
-margin_right = 1046.0
-margin_bottom = 403.0
 
 [node name="Slot4" parent="GardenPanel/Margin/Grid" instance=ExtResource( 2 )]
-margin_left = 1074.0
-margin_right = 1404.0
-margin_bottom = 403.0
 
 [node name="Slot5" parent="GardenPanel/Margin/Grid" instance=ExtResource( 2 )]
-margin_top = 431.0
-margin_right = 330.0
-margin_bottom = 834.0
 
 [node name="Slot6" parent="GardenPanel/Margin/Grid" instance=ExtResource( 2 )]
-margin_left = 358.0
-margin_top = 431.0
-margin_right = 688.0
-margin_bottom = 834.0
 
 [node name="Slot7" parent="GardenPanel/Margin/Grid" instance=ExtResource( 2 )]
-margin_left = 716.0
-margin_top = 431.0
-margin_right = 1046.0
-margin_bottom = 834.0
 
 [node name="Slot8" parent="GardenPanel/Margin/Grid" instance=ExtResource( 2 )]
-margin_left = 1074.0
-margin_top = 431.0
-margin_right = 1404.0
-margin_bottom = 834.0
 
 [node name="MessageLabel" type="Label" parent="."]
 visible = false
@@ -267,8 +218,8 @@ expand = true
 stretch_mode = 6
 
 [node name="PurchaseDialog" type="ConfirmationDialog" parent="."]
-window_title = "Desbloquear slot"
-dialog_text = "Desbloquear este slot?"
+window_title = "Desbloquear buraco"
+dialog_text = "Desbloquear este buraco?"
 
 [node name="MessageTimer" type="Timer" parent="."]
 wait_time = 2.5

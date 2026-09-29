@@ -80,6 +80,8 @@ func _prepare_character() -> void:
 		var sprite = player.get_node("player_sprites/" + sprite_name)
 		sprite.position = GAME_NORMAL_SPRITE_POSITIONS[sprite_name]
 		sprite.scale = Vector2(0.25, 0.25)
+	player.get_node("player_sprites").position.y = -162
+	player.get_node("player_sprites/toilet").scale = Vector2(0.25, 0.25)
 	player._capture_normal_sprite_layout()
 	CharacterController.roupa = _selected_variation()
 	if CharacterController.cor_pele == "":
@@ -124,7 +126,7 @@ func _selected_accessory() -> String:
 func _on_selection_changed(_index: int) -> void:
 	if _is_hidratona_run():
 		run_tuning = run_tunings.get(outfit_option.selected)
-	var expected_count = 10 if _is_hidratona_run() else 2
+	var expected_count = 10 if _is_hidratona_run() else 2 if _is_weather_outfit() else 3
 	if state_option.get_item_count() != expected_count:
 		state_option.clear()
 		if _is_hidratona_run():
@@ -133,7 +135,7 @@ func _on_selection_changed(_index: int) -> void:
 			for label in ["Pulo 1", "Pulo 2", "Agachamento"]:
 				state_option.add_item(label)
 		else:
-			for label in ["Parado", "Andando"]:
+			for label in (["Parado", "Andando"] if _is_weather_outfit() else ["Parado", "Andando", "Sentado"]):
 				state_option.add_item(label)
 		state_option.selected = 0
 	_load_head_controls()
@@ -164,6 +166,13 @@ func _on_value_changed(_value: float) -> void:
 	if body_position_controls.visible:
 		tuning.girl_r2_body_offset = Vector2(body_x_input.value, body_y_input.value)
 		tuning.girl_r2_selector_position = Vector2(selector_x_input.value, selector_y_input.value)
+	if state_option.selected == 2:
+		var seated_key = "%s-%s-%s" % [_selected_gender(), _selected_hair(), _selected_variation()]
+		var base_position = tuning.get_normal_head_position(_selected_gender(), _selected_hair(), _selected_variation())
+		tuning.seated_head_offsets[seated_key] = Vector2(head_x_input.value, head_y_input.value) - base_position
+		_apply_preview()
+		_set_status("Alterações ainda não salvas.", Color("#ffd166"))
+		return
 	var positions = tuning.head_positions if _is_weather_outfit() else tuning.normal_r2_head_positions if _selected_variation() == "r2" else tuning.normal_head_positions
 	var scales = tuning.head_scales if _is_weather_outfit() else tuning.normal_r2_head_scales if _selected_variation() == "r2" else tuning.normal_head_scales
 	var head_key = "%s-%s" % [_selected_gender(), _selected_hair()]
@@ -194,7 +203,12 @@ func _apply_preview() -> void:
 	Resources.acessory = _selected_accessory()
 	player.set_weather_outfit_tuning(tuning)
 	player.apply_visual_consistency()
-	if state_option.selected == 0:
+	if state_option.selected == 2:
+		for sprite_name in ["idle", "w1", "w2", "w3", "w4", "w5", "w6", "w7", "w8", "w9"]:
+			player.get_node("player_sprites/" + sprite_name).visible = false
+		player.to_the_toilet()
+		player._sync_legacy_head_visibility()
+	elif state_option.selected == 0:
 		player.Idle()
 	else:
 		player.Walk_to_Right()
@@ -237,6 +251,8 @@ func _load_head_controls() -> void:
 	selector_x_input.value = tuning.girl_r2_selector_position.x
 	selector_y_input.value = tuning.girl_r2_selector_position.y
 	var position = tuning.get_head_position(gender, hair) if _is_weather_outfit() else tuning.get_normal_head_position(gender, hair, _selected_variation())
+	if state_option.selected == 2:
+		position += tuning.get_seated_head_offset(gender, hair, _selected_variation())
 	outfit_scale_input.value = tuning.outfit_scale
 	head_x_input.value = position.x
 	head_y_input.value = position.y
@@ -285,7 +301,7 @@ func _update_tuning_controls_enabled() -> void:
 	gender_option.disabled = false
 	body_position_controls.visible = not _is_weather_outfit() and not _is_hidratona_run() and _selected_variation() == "r2" and _selected_gender() == "girl"
 	selector_position_controls.visible = body_position_controls.visible
-	neck_controls.visible = _is_normal_neck()
+	neck_controls.visible = _is_normal_neck() and state_option.selected != 2
 	outfit_scale_input.editable = _is_weather_outfit() or _is_hidratona_run()
 	for input in [head_x_input, head_y_input, head_scale_input]:
 		input.editable = true

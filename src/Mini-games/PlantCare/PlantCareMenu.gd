@@ -147,7 +147,7 @@ func _begin_drag(data, position: Vector2) -> void:
 	drag_preview.material = data.create_stage_material(3)
 	drag_preview.visible = true
 	_last_drag_issue = ""
-	_show_message("Arraste para um slot vazio e segure por 1,5s")
+	_show_message("Arraste para um buraco vazio e segure por 1,5s")
 
 
 func _update_drag_target(delta: float) -> void:
@@ -170,7 +170,7 @@ func _update_drag_target(delta: float) -> void:
 	if candidate == null:
 		return
 	if not candidate.can_accept_plant():
-		_show_drag_issue("Esse slot não está disponível")
+		_show_drag_issue("Esse buraco não está disponível")
 		return
 	if coins < dragged_plant.plant_cost:
 		_show_drag_issue("Saldo insuficiente")
@@ -214,7 +214,7 @@ func _on_slot_purchase_requested(slot) -> void:
 	if pending_purchase != null or slot.unlocked:
 		return
 	pending_purchase = slot
-	purchase_dialog.dialog_text = "Desbloquear este slot por %d moedas?" % slot.unlock_price
+	purchase_dialog.dialog_text = "Desbloquear este buraco por %d moedas?" % slot.unlock_price
 	purchase_dialog.popup_centered(Vector2(560, 250))
 
 
@@ -222,14 +222,14 @@ func _on_PurchaseDialog_confirmed() -> void:
 	if pending_purchase == null:
 		return
 	if coins < pending_purchase.unlock_price:
-		_show_message("Saldo insuficiente para desbloquear o slot")
+		_show_message("Saldo insuficiente para desbloquear o buraco")
 		pending_purchase = null
 		return
 	coins -= pending_purchase.unlock_price
 	pending_purchase.configure(pending_purchase.slot_index, pending_purchase.unlock_price, true)
 	_update_coins()
 	slot_purchase_sound.play()
-	_show_message("Slot desbloqueado!")
+	_show_message("Buraco desbloqueado!")
 	pending_purchase = null
 	_save_game()
 

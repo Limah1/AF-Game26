@@ -1,81 +1,107 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/Mini-games/PlantCare/PlantSlot.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Raleway-Medium.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://src/Mini-games/PlantCare/sprites/PlantingHole.png" type="Texture" id=3]
+[ext_resource path="res://src/Mini-games/PlantCare/sprites/WateringCan.png" type="Texture" id=4]
+[ext_resource path="res://assets/Match-3/circle.png" type="Texture" id=5]
 
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.24, 0.45, 0.14, 0.94 )
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color( 0.72, 0.9, 0.4, 1 )
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
-[sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0.1, 0.17, 0.08, 0.9 )
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 1, 1, 1, 1 )
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[sub_resource type="DynamicFont" id=4]
-size = 24
+[sub_resource type="DynamicFont" id=1]
+size = 23
 font_data = ExtResource( 2 )
 
-[node name="PlantSlot" type="PanelContainer"]
-rect_min_size = Vector2( 330, 390 )
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.07, 0.25, 0.08, 0.78 )
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="PlantSlot" type="Control"]
+rect_min_size = Vector2( 340, 360 )
 mouse_filter = 0
-custom_styles/panel = SubResource( 1 )
 script = ExtResource( 1 )
 
-[node name="Content" type="VBoxContainer" parent="."]
+[node name="Hole" type="TextureRect" parent="."]
+margin_left = 20.0
+margin_top = 145.0
+margin_right = 320.0
+margin_bottom = 345.0
 mouse_filter = 2
-custom_constants/separation = 8
-alignment = 1
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
 
-[node name="ProgressBar" type="ProgressBar" parent="Content"]
-rect_min_size = Vector2( 0, 25 )
-mouse_filter = 2
-custom_styles/bg = SubResource( 2 )
-custom_styles/fg = SubResource( 3 )
-value = 0.0
-show_percentage = false
-
-[node name="PlantArea" type="Control" parent="Content"]
-rect_min_size = Vector2( 300, 235 )
+[node name="PlantArea" type="Control" parent="."]
+margin_left = 55.0
+margin_top = 45.0
+margin_right = 285.0
+margin_bottom = 275.0
 mouse_filter = 2
 
-[node name="PlantTexture" type="TextureRect" parent="Content/PlantArea"]
+[node name="PlantTexture" type="TextureRect" parent="PlantArea"]
 mouse_filter = 2
 expand = true
 stretch_mode = 6
 
-[node name="StatusLabel" type="Label" parent="Content"]
-rect_min_size = Vector2( 0, 55 )
+[node name="WateringCan" type="TextureRect" parent="."]
+visible = false
+margin_left = 16.0
+margin_top = 10.0
+margin_right = 154.0
+margin_bottom = 110.0
 mouse_filter = 2
-custom_fonts/font = SubResource( 4 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "Slot vazio"
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+
+[node name="WaterParticles" type="CPUParticles2D" parent="."]
+visible = false
+position = Vector2( 143, 87 )
+emitting = false
+amount = 36
+lifetime = 0.55
+texture = ExtResource( 5 )
+emission_shape = 2
+emission_rect_extents = Vector2( 12, 1 )
+direction = Vector2( 0.15, 1 )
+spread = 16.0
+gravity = Vector2( 0, 480 )
+initial_velocity = 90.0
+scale_amount = 0.11
+color = Color( 0.27, 0.63, 1, 0.9 )
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
+margin_left = 58.0
+margin_top = 296.0
+margin_right = 282.0
+margin_bottom = 315.0
+mouse_filter = 2
+show_percentage = false
+
+[node name="StatusLabel" type="Label" parent="."]
+margin_left = 5.0
+margin_top = 320.0
+margin_right = 335.0
+margin_bottom = 360.0
+mouse_filter = 2
+custom_styles/normal = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 0.86, 1 )
+text = "Buraco vazio"
 align = 1
 valign = 1
 autowrap = true
 
-[node name="SellButton" type="Button" parent="Content"]
-rect_min_size = Vector2( 0, 54 )
-mouse_filter = 0
-custom_fonts/font = SubResource( 4 )
+[node name="SellButton" type="Button" parent="."]
+visible = false
+margin_left = 65.0
+margin_top = 315.0
+margin_right = 275.0
+margin_bottom = 360.0
+custom_fonts/font = SubResource( 1 )
 text = "Vender"
 
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
-[connection signal="pressed" from="Content/SellButton" to="." method="_on_SellButton_pressed"]
+[connection signal="pressed" from="SellButton" to="." method="_on_SellButton_pressed"]

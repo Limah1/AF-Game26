@@ -117,10 +117,10 @@ func _apply_weather_outfit() -> bool:
 		var sprite = get_node("player_sprites/" + sprite_name)
 		sprite.scale = Vector2(outfit_scale, outfit_scale)
 		sprite.position = WEATHER_OUTFIT_SPRITE_POSITIONS[sprite_name]
-		# Weather sprites use the same parent shader as normal clothes so skin
-		# customization remains visible on every walking frame.
-		sprite.use_parent_material = true
-		sprite.material = null
+		# Assign directly: the parent is a Node2D, so material inheritance is
+		# unreliable for these headless rain/snow frames.
+		sprite.use_parent_material = false
+		sprite.material = $player_sprites.material
 
 	# Frame 0 is for standing still; walking uses frames 1-9.
 	$player_sprites/idle.texture = run_sprites[0]
@@ -202,8 +202,8 @@ func apply_visual_consistency(skin_color = null, shirt_color = null, pants_color
 	for child in $player_sprites.get_children():
 		if child is Sprite and child != legacy_head:
 			if weather_outfit_active and child.name in OUTFIT_SPRITE_NAMES:
-				child.use_parent_material = true
-				child.material = null
+				child.use_parent_material = false
+				child.material = body_material
 			else:
 				child.material = body_material
 
@@ -273,7 +273,9 @@ func _sync_legacy_head_visibility() -> void:
 		$player_sprites/w5.visible or $player_sprites/w6.visible or \
 		$player_sprites/w7.visible or $player_sprites/w8.visible or \
 		$player_sprites/w9.visible
-	var toilet_head_offset = Vector2(-8, 89) if toilet_visible else Vector2.ZERO
+	var gender = "boy" if CharacterController.boyorgirl == "Boy" else "girl"
+	var hair = CharacterController.cabelo if CharacterController.cabelo == "a" or CharacterController.cabelo == "b" else "a"
+	var toilet_head_offset = weather_outfit_tuning.get_seated_head_offset(gender, hair, CharacterController.roupa) if toilet_visible else Vector2.ZERO
 	var toilet_neck_offset = Vector2(-8, 89) if toilet_visible else Vector2.ZERO
 	var toilet_body_offset = Vector2(0, 60) if toilet_visible else Vector2.ZERO
 	var idle_walk_head_offset = LEGACY_IDLE_WALK_HEAD_OFFSET if idle_or_walking else Vector2.ZERO
@@ -287,7 +289,6 @@ func _sync_legacy_head_visibility() -> void:
 		$player_sprites/w9.visible or toilet_visible
 	legacy_head.visible = body_visible and legacy_head.texture != null
 	if skin_tone_rect != null:
-		var gender = "boy" if CharacterController.boyorgirl == "Boy" else "girl"
 		skin_tone_rect.visible = body_visible and legacy_head.texture != null and _should_show_normal_neck(gender)
 		skin_tone_rect.rect_position = legacy_head_base_position + weather_outfit_tuning.get_normal_neck_offset(CharacterController.roupa, gender) + idle_walk_head_offset + toilet_neck_offset
 
@@ -327,7 +328,10 @@ func wake_up():
 
 func to_the_toilet():
 	$player_sprites/idle.visible = false
-	$player_sprites/toilet.visible = true
+	var toilet_body = $player_sprites/toilet
+	toilet_body.material = $player_sprites.material
+	toilet_body.use_parent_material = false
+	toilet_body.visible = true
 
 func _process(delta: float) -> void:
 	_sync_legacy_head_visibility()

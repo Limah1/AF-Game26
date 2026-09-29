@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/UI/Minigame_escovar/MiniGame_EscovarDentes.gd" type="Script" id=1]
 [ext_resource path="res://assets/MiniGame_Escovar/boca.png" type="Texture" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://assets/MiniGame_Escovar/sujeira.png" type="Texture" id=4]
 [ext_resource path="res://assets/fonts/Raleway-Medium.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://assets/Match-3/LAYOUTS/feedback-box.png" type="Texture" id=6]
-[ext_resource path="res://src/UI/ShaderPersonagem.tres" type="Material" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 30.0
@@ -368,11 +367,6 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.470588 )
-
-[node name="character" type="Sprite" parent="TelaFinal/ColorRect"]
-material = ExtResource( 7 )
-position = Vector2( 350, 566 )
-scale = Vector2( 0.75, 0.75 )
 
 [node name="feedback-box" type="Sprite" parent="TelaFinal/ColorRect"]
 position = Vector2( 960, 540 )

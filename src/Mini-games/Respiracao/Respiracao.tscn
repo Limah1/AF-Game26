@@ -4,104 +4,7 @@
 [ext_resource path="res://assets/fonts/Raleway-Medium.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/Nova pasta/bedroom.png" type="Texture" id=3]
 
-[sub_resource type="DynamicFont" id=1]
-size = 42
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=2]
-size = 25
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=3]
-size = 54
-font_data = ExtResource( 2 )
-
-[sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 0.2, 0.45, 0.9, 0.16 )
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color( 0.15, 0.35, 0.75, 0.4 )
-corner_radius_top_left = 140
-corner_radius_top_right = 140
-corner_radius_bottom_right = 140
-corner_radius_bottom_left = 140
-
-[sub_resource type="StyleBoxFlat" id=5]
-bg_color = Color( 0.17, 0.42, 0.87, 1 )
-border_width_left = 6
-border_width_top = 6
-border_width_right = 6
-border_width_bottom = 6
-border_color = Color( 0.08, 0.2, 0.48, 1 )
-corner_radius_top_left = 130
-corner_radius_top_right = 130
-corner_radius_bottom_right = 130
-corner_radius_bottom_left = 130
-shadow_color = Color( 0.1, 0.31, 0.33, 0.32 )
-shadow_size = 18
-
-[sub_resource type="StyleBoxFlat" id=6]
-bg_color = Color( 0.1, 0.32, 0.74, 1 )
-border_width_left = 6
-border_width_top = 6
-border_width_right = 6
-border_width_bottom = 6
-border_color = Color( 0.07, 0.18, 0.43, 1 )
-corner_radius_top_left = 130
-corner_radius_top_right = 130
-corner_radius_bottom_right = 130
-corner_radius_bottom_left = 130
-
-[sub_resource type="StyleBoxFlat" id=7]
-bg_color = Color( 0.11, 0.36, 0.82, 1 )
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color( 0.08, 0.2, 0.48, 1 )
-corner_radius_top_left = 130
-corner_radius_top_right = 130
-corner_radius_bottom_right = 130
-corner_radius_bottom_left = 130
-shadow_color = Color( 0.1, 0.31, 0.33, 0.25 )
-shadow_size = 14
-
-[sub_resource type="DynamicFont" id=8]
-size = 27
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=9]
-size = 25
-font_data = ExtResource( 2 )
-
-[sub_resource type="StyleBoxFlat" id=10]
-bg_color = Color( 0.96, 0.95, 0.92, 1 )
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color( 0.72, 0.68, 0.61, 1 )
-corner_radius_top_left = 24
-corner_radius_top_right = 24
-corner_radius_bottom_right = 24
-corner_radius_bottom_left = 24
-shadow_color = Color( 0.1, 0.31, 0.33, 0.22 )
-shadow_size = 20
-
-[sub_resource type="DynamicFont" id=11]
-size = 37
-font_data = ExtResource( 2 )
-
-[sub_resource type="StyleBoxFlat" id=12]
-bg_color = Color( 0.93, 0.48, 0.05, 1 )
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
-[sub_resource type="StyleBoxFlat" id=13]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.96, 0.95, 0.92, 0.96 )
 border_width_left = 3
 border_width_top = 3
@@ -115,26 +18,123 @@ corner_radius_bottom_left = 24
 shadow_color = Color( 0, 0, 0, 0.2 )
 shadow_size = 15
 
-[sub_resource type="StyleBoxFlat" id=14]
+[sub_resource type="DynamicFont" id=2]
+size = 42
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.1, 0.36, 0.82, 1 )
 corner_radius_top_left = 12
 corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
-[sub_resource type="StyleBoxFlat" id=15]
+[sub_resource type="DynamicFont" id=4]
+size = 27
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 25
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 54
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.2, 0.45, 0.9, 0.16 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0.15, 0.35, 0.75, 0.4 )
+corner_radius_top_left = 140
+corner_radius_top_right = 140
+corner_radius_bottom_right = 140
+corner_radius_bottom_left = 140
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.17, 0.42, 0.87, 1 )
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color( 0.08, 0.2, 0.48, 1 )
+corner_radius_top_left = 130
+corner_radius_top_right = 130
+corner_radius_bottom_right = 130
+corner_radius_bottom_left = 130
+shadow_color = Color( 0.1, 0.31, 0.33, 0.32 )
+shadow_size = 18
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.1, 0.32, 0.74, 1 )
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color( 0.07, 0.18, 0.43, 1 )
+corner_radius_top_left = 130
+corner_radius_top_right = 130
+corner_radius_bottom_right = 130
+corner_radius_bottom_left = 130
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.11, 0.36, 0.82, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0.08, 0.2, 0.48, 1 )
+corner_radius_top_left = 130
+corner_radius_top_right = 130
+corner_radius_bottom_right = 130
+corner_radius_bottom_left = 130
+shadow_color = Color( 0.1, 0.31, 0.33, 0.25 )
+shadow_size = 14
+
+[sub_resource type="DynamicFont" id=11]
+size = 25
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=12]
 bg_color = Color( 0.93, 0.48, 0.05, 1 )
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id=16]
+[sub_resource type="StyleBoxFlat" id=13]
 bg_color = Color( 0.8, 0.77, 0.71, 1 )
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id=14]
+bg_color = Color( 0.96, 0.95, 0.92, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.72, 0.68, 0.61, 1 )
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+shadow_color = Color( 0.1, 0.31, 0.33, 0.22 )
+shadow_size = 20
+
+[sub_resource type="DynamicFont" id=15]
+size = 37
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=16]
+bg_color = Color( 0.93, 0.48, 0.05, 1 )
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
 
 [node name="Respiracao" type="Control"]
 anchor_right = 1.0
@@ -155,7 +155,7 @@ margin_top = 120.0
 margin_right = 1740.0
 margin_bottom = 1010.0
 mouse_filter = 2
-custom_styles/panel = SubResource( 13 )
+custom_styles/panel = SubResource( 1 )
 
 [node name="TopBand" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -170,7 +170,7 @@ margin_left = -500.0
 margin_top = 25.0
 margin_right = 500.0
 margin_bottom = 85.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.95, 0.49, 0.04, 1 )
 text = "MINIGAME DE RESPIRAÇÃO"
 align = 1
@@ -181,9 +181,9 @@ margin_left = 30.0
 margin_top = 20.0
 margin_right = 180.0
 margin_bottom = 90.0
-custom_styles/hover = SubResource( 14 )
-custom_styles/normal = SubResource( 14 )
-custom_fonts/font = SubResource( 8 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/normal = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.98, 1, 1, 1 )
 text = "SAIR"
 
@@ -194,7 +194,7 @@ margin_left = -250.0
 margin_top = 140.0
 margin_right = 250.0
 margin_bottom = 180.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.42, 0.29, 0.18, 1 )
 text = "RESPIRAÇÃO 1 DE 3"
 align = 1
@@ -207,7 +207,7 @@ margin_left = -650.0
 margin_top = 184.0
 margin_right = 650.0
 margin_bottom = 255.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.14, 0.13, 0.12, 1 )
 text = "Mantenha o dedo pressionado no botão"
 align = 1
@@ -224,7 +224,7 @@ margin_right = 140.0
 margin_bottom = 230.0
 rect_pivot_offset = Vector2( 140, 140 )
 mouse_filter = 2
-custom_styles/panel = SubResource( 4 )
+custom_styles/panel = SubResource( 7 )
 
 [node name="BreathButton" type="Button" parent="."]
 anchor_left = 0.5
@@ -237,10 +237,10 @@ margin_right = 130.0
 margin_bottom = 210.0
 rect_pivot_offset = Vector2( 130, 130 )
 mouse_default_cursor_shape = 2
-custom_styles/hover = SubResource( 5 )
-custom_styles/pressed = SubResource( 6 )
-custom_styles/normal = SubResource( 7 )
-custom_fonts/font = SubResource( 8 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/normal = SubResource( 10 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.98, 1, 1, 1 )
 text = "TOQUE
 E SEGURE"
@@ -254,7 +254,7 @@ margin_left = -500.0
 margin_top = -190.0
 margin_right = 500.0
 margin_bottom = -150.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 11 )
 custom_colors/font_color = Color( 0.24, 0.21, 0.18, 1 )
 text = "Toque e segure para começar a inspirar"
 align = 1
@@ -270,8 +270,8 @@ margin_top = -125.0
 margin_right = 330.0
 margin_bottom = -105.0
 mouse_filter = 2
-custom_styles/fg = SubResource( 15 )
-custom_styles/bg = SubResource( 16 )
+custom_styles/fg = SubResource( 12 )
+custom_styles/bg = SubResource( 13 )
 percent_visible = false
 
 [node name="CompletionPanel" type="ColorRect" parent="."]
@@ -289,7 +289,7 @@ margin_left = -510.0
 margin_top = -215.0
 margin_right = 510.0
 margin_bottom = 215.0
-custom_styles/panel = SubResource( 10 )
+custom_styles/panel = SubResource( 14 )
 
 [node name="CompletionLabel" type="Label" parent="CompletionPanel/CompletionBox"]
 anchor_left = 0.5
@@ -298,7 +298,7 @@ margin_left = -450.0
 margin_top = 55.0
 margin_right = 450.0
 margin_bottom = 190.0
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 15 )
 custom_colors/font_color = Color( 0.95, 0.49, 0.04, 1 )
 text = "PARABÉNS!
 VOCÊ COMPLETOU O EXERCÍCIO
@@ -311,9 +311,9 @@ margin_left = 550.0
 margin_top = 290.0
 margin_right = 940.0
 margin_bottom = 370.0
-custom_styles/hover = SubResource( 12 )
-custom_styles/normal = SubResource( 12 )
-custom_fonts/font = SubResource( 8 )
+custom_styles/hover = SubResource( 16 )
+custom_styles/normal = SubResource( 16 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.98, 1, 1, 1 )
 text = "RECOMEÇAR"
 
@@ -322,8 +322,8 @@ margin_left = 80.0
 margin_top = 290.0
 margin_right = 470.0
 margin_bottom = 370.0
-custom_styles/hover = SubResource( 14 )
-custom_styles/normal = SubResource( 14 )
-custom_fonts/font = SubResource( 8 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/normal = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.98, 1, 1, 1 )
 text = "VOLTAR AO QUARTO"

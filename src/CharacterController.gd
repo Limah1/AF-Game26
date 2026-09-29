@@ -168,6 +168,22 @@ func start(target_node = null):
 	roupa = NewCharData.roupa
 	cor_roupa_cima = NewCharData.cor_roupa_cima
 	cor_roupa_baixo = NewCharData.cor_roupa_baixo
+	ModularCharacterData.set_gender(genero)
+	ModularCharacterData.roupa_tipo = roupa
+	var tone_id = NewCharData.tom_pele_id
+	if tone_id == "":
+		for tone in ModularCharacterData.SKIN_TONES.entries:
+			if tone.hex_color.to_lower() == cor_pele.to_lower():
+				tone_id = tone.id
+				break
+	if ModularCharacterData.select_skin_tone(tone_id):
+		NewCharData.tom_pele_id = tone_id
+	elif cor_pele != "":
+		ModularCharacterData.cor_pele = Color(cor_pele)
+	if cor_roupa_cima != "":
+		ModularCharacterData.cor_roupa_cima = Color(cor_roupa_cima)
+	if cor_roupa_baixo != "":
+		ModularCharacterData.cor_roupa_baixo = Color(cor_roupa_baixo)
 
 	#Imprime para confirmar que os valores foram transferidos
 	print("Dados do personagem carregados no CharacterController:")

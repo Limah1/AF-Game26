@@ -1,0 +1,56 @@
+DIÁLOGOS DA ENFERMEIRA — TEXTO PARA REVISÃO
+
+Este arquivo mostra as falas e opções como estão hoje no jogo. Você pode substituir
+os textos aqui e enviar este arquivo para que as mudanças sejam aplicadas ao jogo.
+Editar este TXT sozinho não muda o jogo. As falas usadas pelo jogo estão em
+assets/hospital/enfermeira/dialogo.json.
+
+DIÁLOGO 1 — INÍCIO
+Enfermeira: Oi! Eu sou a enfermeira. Como você está se sentindo hoje?
+Opção 1: Estou bem → diálogo 2
+Opção 2: Não estou me sentindo bem → diálogo 9
+Opção 3: Até logo → encerra a conversa
+
+DIÁLOGO 2 — ESTOU BEM
+Enfermeira: Que bom! Se sentir dor ou mal-estar, avise um adulto e procure a equipe de saúde.
+Opção 1: Quero saber sobre vacinas → diálogo 3
+Opção 2: Até logo → encerra a conversa
+
+DIÁLOGO 3 — VACINAS
+Enfermeira: As vacinas são superpoderes que protegem você! Quem tem anemia falciforme precisa de algumas vacinas especiais. Sobre qual você quer saber?
+Opção 1: Pneumonia e meningite → diálogo 4
+Opção 2: Vacina da gripe → diálogo 7
+Opção 3: Vacinas do fígado → diálogo 8
+
+DIÁLOGO 4 — PNEUMONIA E MENINGITE
+Enfermeira: A vacina pneumocócica protege contra pneumonia, meningite e dor de ouvido. Você toma as doses no primeiro ano de vida e depois os reforços.
+Opção 1: E as vacinas da meningite? → diálogo 5
+Opção 2: Quero perguntar outra coisa → volta ao diálogo 1
+
+DIÁLOGO 5 — VACINAS DA MENINGITE
+Enfermeira: As vacinas meningocócicas ACWY e B protegem contra vários tipos de meningite, além da vacina que todo mundo já toma.
+Opção 1: E a vacina Hib? → diálogo 6
+Opção 2: Quero perguntar outra coisa → volta ao diálogo 1
+
+DIÁLOGO 6 — VACINA HIB
+Enfermeira: A vacina Hib protege contra meningite e pneumonia causadas por uma bactéria. O médico avalia se você precisa de doses extras.
+Opção 1: Quero perguntar outra coisa → volta ao diálogo 1
+
+DIÁLOGO 7 — VACINA DA GRIPE
+Enfermeira: A vacina da gripe é todo ano, a partir dos seis meses de idade. A gripe pode virar um problema sério nos pulmões de quem tem anemia falciforme.
+Opção 1: Quero perguntar outra coisa → volta ao diálogo 1
+
+DIÁLOGO 8 — VACINAS DO FÍGADO
+Enfermeira: As vacinas de hepatite A e B protegem o seu fígado. Quem tem anemia falciforme pode precisar de transfusão de sangue, e a vacina da hepatite B ajuda a proteger você.
+Opção 1: Quero perguntar outra coisa → volta ao diálogo 1
+
+DIÁLOGO 9 — NÃO ESTOU ME SENTINDO BEM
+Enfermeira: Obrigado por contar. Vamos chamar um profissional para ajudar você.
+Opção 1: Até logo → encerra a conversa
+
+IMPORTANTE PARA A SUBSTITUIÇÃO
+As opções “Até logo” e “Quero perguntar outra coisa” controlam, respectivamente,
+o fim da conversa e o retorno ao início. Se quiser trocar essas frases, avise
+também para que o funcionamento dos botões seja ajustado. Cada fala da enfermeira
+tem uma gravação de voz própria; ao trocar uma fala, a gravação correspondente
+também precisará ser atualizada para combinar com o novo texto.

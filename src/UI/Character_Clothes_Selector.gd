@@ -320,4 +320,5 @@ func _on_ConfirmButton_pressed():
 	yield($button_sound,"finished")
 	NecessityBars.started = true
 	CharacterController.start()
+	SaveController.save_game()
 	get_tree().change_scene("res://src/UI/Loading.tscn")

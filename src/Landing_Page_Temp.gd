@@ -12,10 +12,11 @@ func _ready() -> void:
 func _on_Continue_pressed() -> void:
 	$button_pressed.play()
 	yield($button_pressed,"finished")
-	NecessityBars.started = true
 	var loaded = SaveController.load_game()
 	if !loaded:
-		print("No save found, starting fresh")
+		print("Save inválido ou ausente")
+		return
+	NecessityBars.started = true
 	get_tree().change_scene("res://src/MainScreen.tscn")
 
 

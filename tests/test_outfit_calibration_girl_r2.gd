@@ -1,6 +1,11 @@
 extends Node
 
 func _ready() -> void:
+	var defaults = load("res://src/UI/WeatherOutfitTuning.gd").new()
+	for variation in ["r1", "r2"]:
+		for gender in ["boy", "girl"]:
+			for hair in ["a", "b"]:
+				assert(defaults.seated_head_offsets.has("%s-%s-%s" % [gender, hair, variation]))
 	var calibration = load("res://src/Tools/OutfitCalibration.tscn").instance()
 	add_child(calibration)
 	calibration.outfit_option.selected = 0
@@ -31,5 +36,14 @@ func _ready() -> void:
 	assert(idle.texture.resource_path.ends_with("/Menino/Variacao2/m0.png"))
 	assert(idle.material.shader == preload("res://src/UI/ShaderPersonagem.tres").shader)
 	assert(idle.scale == Vector2(0.25, 0.25))
-	print("Outfit calibration girl r2 skirt OK")
+	calibration.state_option.selected = 2
+	calibration._on_selection_changed(2)
+	var toilet = calibration.player.get_node("player_sprites/toilet")
+	var head = calibration.player.get_node("player_sprites/Head")
+	assert(toilet.scale == Vector2(0.25, 0.25) and toilet.visible)
+	var seated_position = calibration.tuning.get_normal_head_position("boy", "a", "r2") + calibration.tuning.get_seated_head_offset("boy", "a", "r2")
+	assert(head.position == seated_position)
+	calibration.head_x_input.value += 4
+	assert(head.position == seated_position + Vector2(4, 0))
+	print("Outfit calibration girl r2 skirt and seated pose OK")
 	get_tree().quit()

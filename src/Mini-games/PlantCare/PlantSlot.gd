@@ -1,4 +1,4 @@
-extends PanelContainer
+extends Control
 
 signal purchase_requested(slot)
 signal state_changed(slot)
@@ -22,12 +22,15 @@ var cooldown_until := 0
 
 var _watering := false
 var _water_changed := false
+var _watering_time := 0.0
 
-onready var progress_bar: ProgressBar = $Content/ProgressBar
-onready var plant_area: Control = $Content/PlantArea
-onready var plant_texture: TextureRect = $Content/PlantArea/PlantTexture
-onready var status_label: Label = $Content/StatusLabel
-onready var sell_button: Button = $Content/SellButton
+onready var progress_bar: ProgressBar = $ProgressBar
+onready var plant_area: Control = $PlantArea
+onready var plant_texture: TextureRect = $PlantArea/PlantTexture
+onready var status_label: Label = $StatusLabel
+onready var sell_button: Button = $SellButton
+onready var watering_can: TextureRect = $WateringCan
+onready var water_particles: CPUParticles2D = $WaterParticles
 
 
 func _ready() -> void:
@@ -56,6 +59,7 @@ func plant(data) -> void:
 	water_progress = 0.0
 	cooldown_until = 0
 	_watering = false
+	_set_watering_visual(false)
 	_refresh()
 
 
@@ -65,6 +69,7 @@ func clear_plant() -> void:
 	water_progress = 0.0
 	cooldown_until = 0
 	_watering = false
+	_set_watering_visual(false)
 	_refresh()
 
 
@@ -73,7 +78,7 @@ func set_planting_progress(value: float) -> void:
 		return
 	progress_bar.visible = value > 0.0
 	progress_bar.value = clamp(value, 0.0, 1.0) * 100.0
-	status_label.text = "Mantenha aqui..." if value > 0.0 else "Slot vazio"
+	status_label.text = "Mantenha aqui..." if value > 0.0 else "Buraco vazio"
 
 
 func serialize() -> Dictionary:
@@ -96,6 +101,7 @@ func restore(data: Dictionary, resource) -> void:
 	water_progress = clamp(float(data.get("water_progress", 0.0)), 0.0, 1.0)
 	cooldown_until = max(0, int(data.get("cooldown_until", 0)))
 	_watering = false
+	_set_watering_visual(false)
 	_refresh()
 
 
@@ -113,6 +119,8 @@ func _process(delta: float) -> void:
 	if not _watering:
 		return
 
+	_watering_time += delta
+	watering_can.rect_rotation = -9.0 + sin(_watering_time * 7.0) * 6.0
 	water_progress = min(1.0, water_progress + delta / max(0.1, plant_data.watering_seconds))
 	_water_changed = true
 	progress_bar.value = water_progress * 100.0
@@ -139,6 +147,7 @@ func _handle_press(pressed: bool) -> void:
 		elif _can_water():
 			_watering = true
 			_water_changed = false
+			_set_watering_visual(true)
 			emit_signal("watering_started")
 	else:
 		_stop_watering()
@@ -152,6 +161,7 @@ func _stop_watering() -> void:
 	if not _watering:
 		return
 	_watering = false
+	_set_watering_visual(false)
 	emit_signal("watering_stopped")
 	if _water_changed:
 		emit_signal("state_changed", self)
@@ -161,6 +171,7 @@ func _stop_watering() -> void:
 
 func _complete_watering() -> void:
 	_watering = false
+	_set_watering_visual(false)
 	emit_signal("watering_stopped")
 	water_progress = 0.0
 	stage = min(MATURE_STAGE, stage + 1)
@@ -175,6 +186,18 @@ func _complete_watering() -> void:
 	emit_signal("state_changed", self)
 
 
+func _set_watering_visual(active: bool) -> void:
+	if not is_inside_tree():
+		return
+	watering_can.visible = active
+	water_particles.visible = active
+	water_particles.emitting = active
+	if active:
+		_watering_time = 0.0
+		watering_can.rect_rotation = -9.0
+		water_particles.restart()
+
+
 func _refresh() -> void:
 	if not is_inside_tree():
 		return
@@ -182,16 +205,17 @@ func _refresh() -> void:
 	plant_texture.visible = plant_data != null
 	sell_button.visible = false
 	progress_bar.visible = false
+	status_label.visible = true
 
 	if not unlocked:
-		self_modulate = Color(0.62, 0.62, 0.62)
-		status_label.text = "Bloqueado\n%d moedas" % unlock_price
+		modulate = Color(0.62, 0.62, 0.62)
+		status_label.text = "Bloqueado: %d moedas" % unlock_price
 		plant_texture.texture = null
 		return
 
-	self_modulate = Color.white
+	modulate = Color.white
 	if plant_data == null:
-		status_label.text = "Slot vazio"
+		status_label.text = "Buraco vazio"
 		plant_texture.texture = null
 		plant_texture.material = null
 		return
@@ -200,7 +224,7 @@ func _refresh() -> void:
 	plant_texture.material = plant_data.create_stage_material(stage)
 	call_deferred("_resize_plant")
 	if stage >= MATURE_STAGE:
-		status_label.text = "%s madura" % plant_data.display_name
+		status_label.visible = false
 		sell_button.text = "Vender +%d" % plant_data.sell_value
 		sell_button.visible = true
 		return
@@ -218,7 +242,7 @@ func _resize_plant() -> void:
 		return
 	var size: Vector2 = Vector2(220.5, 199.5) * STAGE_SCALES[stage]
 	plant_texture.rect_size = size
-	plant_texture.rect_position = (plant_area.rect_size - size) * 0.5
+	plant_texture.rect_position = Vector2((plant_area.rect_size.x - size.x) * 0.5, plant_area.rect_size.y - size.y - 12.0)
 
 
 func _on_mouse_exited() -> void:

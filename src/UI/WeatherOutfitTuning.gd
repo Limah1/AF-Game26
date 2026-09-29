@@ -40,6 +40,12 @@ export(Dictionary) var normal_r2_head_scales = {
 	"girl-a": 0.26,
 	"girl-b": 0.2268
 }
+export(Dictionary) var seated_head_offsets = {
+	"boy-a-r1": Vector2(2, 108), "boy-b-r1": Vector2(2, 108),
+	"girl-a-r1": Vector2(2, 108), "girl-b-r1": Vector2(2, 108),
+	"boy-a-r2": Vector2(-5, 45), "boy-b-r2": Vector2(2, 45),
+	"girl-a-r2": Vector2(-5, 45), "girl-b-r2": Vector2(-5, 45)
+}
 export(Dictionary) var normal_neck_offsets = {
 	"r1-boy": Vector2(-23, 28),
 	"r1-girl": Vector2(-23, 28),
@@ -67,6 +73,9 @@ func get_normal_head_position(gender: String, hair: String, variation = "r1") ->
 func get_normal_head_scale(gender: String, hair: String, variation = "r1") -> float:
 	var scales = normal_r2_head_scales if variation == "r2" else normal_head_scales
 	return float(scales.get("%s-%s" % [gender, hair], 0.2268))
+
+func get_seated_head_offset(gender: String, hair: String, variation = "r1") -> Vector2:
+	return seated_head_offsets.get("%s-%s-%s" % [gender, hair, variation], Vector2(2, 55))
 
 func get_normal_neck_offset(variation: String, gender: String) -> Vector2:
 	return normal_neck_offsets.get("%s-%s" % [variation, gender], Vector2(-23, 28))
