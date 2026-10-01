@@ -154,7 +154,6 @@ __meta__ = {
 }
 
 [node name="AudioSettingsPanel" parent="." instance=ExtResource( 99 )]
-visible = false
 
 [connection signal="pressed" from="Continue" to="." method="_on_Continue_pressed"]
 [connection signal="pressed" from="Restart" to="." method="_on_Restart_pressed"]

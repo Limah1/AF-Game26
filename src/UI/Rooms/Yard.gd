@@ -89,3 +89,11 @@ func _on_LeaveButton_pressed() -> void:
 func _on_HospitalButton_pressed():
 	get_tree().change_scene("res://src/Hospital.tscn")
 	pass # Replace with function body.
+
+func _on_PlantCareButton_pressed() -> void:
+	if $PlantCareButton.disabled or AnimationController.isTravelling() or AnimationController.is_playing():
+		return
+	$PlantCareButton.disabled = true
+	AnimationController.is_travelling = false
+	AnimationController.status = "PlantCare"
+	get_tree().change_scene("res://src/Mini-games/PlantCare/PlantCareMenu.tscn")

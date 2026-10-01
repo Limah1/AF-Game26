@@ -76,12 +76,14 @@ func _on_continue_pressed():
 			return
 		$messageInterGame.layer = -100
 		$painLevel/Sprite.texture = load("res://assets/DoiAqui/sprites/tratamento/pain/" + str(nP) + ".png")
+		$painLevel/Character.set_preview_state("dores")
 		$painLevel.layer = 100
 		feedback_phase = "pain_level"
 	elif feedback_phase == "pain_level":
 		feedback_phase = ""
 		$ContinueLayer/ContinueButton.hide()
 		$painLevel.layer = -100
+		$Player.visible = show_legacy_player
 		$Player.typesPain = "normal"
 		$askMessage/Sprite.texture = load("res://assets/DoiAqui/objects/empty.png")
 		$askMessage/com.visible = false
@@ -185,6 +187,8 @@ func setUpNewGame():
 
 func _on_Button_pressed(name):
 	if(!buttonsBlock):
+		$Player.visible = false
+		$messageInterGame/Character.set_preview_state("parado" if name == $Player.typesPain else "erro")
 		$messageInterGame.layer = 100
 		$messageInterGame/Sprite.texture = load("res://assets/DoiAqui/sprites/tratamento/about/"+$Player.typesPain+".png")
 		print("nome do botão "+name)

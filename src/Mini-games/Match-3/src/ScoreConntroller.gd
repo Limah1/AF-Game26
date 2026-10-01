@@ -28,8 +28,6 @@ var totalScore = 0
 var goalScore = 60
 
 func score(fruit, points, tile):
-	print(fruit)
-	
 	if ((fruit == fruit1_reference 
 		or fruit == fruit2_reference 
 		or fruit == fruit3_reference) 

@@ -1,5 +1,9 @@
 extends Control 
 
+signal finished
+var editing_existing = false
+var confirming = false
+
 const LEGACY_HEAD_SHADER = preload("res://src/UI/LegacyHead.shader")
 const BODY_SKIN_MATERIAL = preload("res://src/UI/ShaderPersonagem.tres")
 const GIRL_R2_BODY_SHADER = preload("res://src/UI/GirlR2Body.shader")
@@ -74,6 +78,22 @@ func _ready():
 	_set_camisa_color(NewCharData.cor_roupa_cima if NewCharData.cor_roupa_cima != "" else "#8a9da5")
 	_set_calca_color(NewCharData.cor_roupa_baixo if NewCharData.cor_roupa_baixo != "" else "#515151")
 	_apply_modular_preview()
+	if editing_existing:
+		$CancelButton.show()
+		$ConfirmButton.anchor_left = 0.0
+		$ConfirmButton.anchor_top = 0.0
+		$ConfirmButton.anchor_right = 0.0
+		$ConfirmButton.anchor_bottom = 0.0
+		$ConfirmButton.rect_position = Vector2(1350, 770)
+		$ConfirmButton.rect_size = Vector2(498, 140)
+		_update_legacy_head()
+		if NewCharData.roupa == "r2":
+			_on_btn_roupa_2_pressed()
+		var shirt_colors = ["#ed1b24", "#f46523", "#d5cd34", "#21b24b", "#2e3094", "#8a9da5"]
+		var pants_colors = ["#b9181f", "#724530", "#a29f62", "#18581b", "#2d2d4b", "#515151"]
+		for index in range(6):
+			get_node("btn_cima_cor_%d" % (index + 1)).pressed = NewCharData.cor_roupa_cima.to_lower() == shirt_colors[index]
+			get_node("btn_baixo_cor_%d" % (index + 1)).pressed = NewCharData.cor_roupa_baixo.to_lower() == pants_colors[index]
 
 func _show_legacy_preview() -> void:
 	# Use the original character preview with the new head overlay.
@@ -100,6 +120,9 @@ func _update_legacy_head() -> void:
 	personagem_sprite.scale = Vector2.ONE * body_scale
 	legacy_head.position = roupa_1_head_position if roupa_1 else roupa_2_head_position
 	legacy_head.scale = Vector2.ONE * (roupa_1_head_scale if roupa_1 else roupa_2_head_scale)
+	if editing_existing:
+		personagem_sprite.position.y -= 70
+		legacy_head.position.y -= 70
 	var head_material = legacy_head.material as ShaderMaterial
 	if head_material == null or head_material.shader != LEGACY_HEAD_SHADER:
 		head_material = ShaderMaterial.new()
@@ -282,6 +305,9 @@ func _on_btn_baixo_cor_6_pressed():
 
 
 func _on_ConfirmButton_pressed():
+	if confirming:
+		return
+	confirming = true
 	# Definir roupa
 	if get_node("btn_roupa_1").pressed:
 		NewCharData.roupa = "r1"
@@ -316,9 +342,21 @@ func _on_ConfirmButton_pressed():
 	elif get_node("btn_baixo_cor_6").pressed:
 		NewCharData.cor_roupa_baixo = "#515151"
 		
+	if editing_existing:
+		NewCharData.cor_roupa_cima = "#" + ModularCharacterData.cor_roupa_cima.to_html(false)
+		NewCharData.cor_roupa_baixo = "#" + ModularCharacterData.cor_roupa_baixo.to_html(false)
 	$button_sound.play()
 	yield($button_sound,"finished")
 	NecessityBars.started = true
 	CharacterController.start()
 	SaveController.save_game()
+	if editing_existing:
+		emit_signal("finished")
+		return
 	get_tree().change_scene("res://src/UI/Loading.tscn")
+
+func _on_CancelButton_pressed() -> void:
+	if confirming:
+		return
+	CharacterController.start()
+	emit_signal("finished")

@@ -4,11 +4,7 @@ extends KinematicBody2D
 var fruit_name
 var speed = 350
 var tile
-
-# Small tolerance (in pixels) used to snap the fruit to its tile once it's
-# close enough, instead of relying on fragile/asymmetric magic numbers or an
-# exact float == 0 comparison.
-const SNAP_EPSILON = 4.2
+var scored = false
 
 onready var a_dir = get_node("AnimationDirection")
 
@@ -19,21 +15,25 @@ func start(new_tile):
 	
 	tile = new_tile
 	global_position = tile.global_position
+	set_physics_process(false)
 
 func reparenting(new_tile):
 	tile = new_tile
+	set_physics_process(true)
 
 func _physics_process(delta: float) -> void:
 	if tile != null:
-		var tile_distance = (tile.global_position - self.global_position)
-		if abs(tile_distance.y) <= SNAP_EPSILON && abs(tile_distance.x) <= SNAP_EPSILON:
-			self.global_position = tile.global_position
-			return
-		
-		var target_direction = (tile.global_position - self.global_position).normalized()
-		move_and_slide(target_direction * speed)
+		# Board movement has no obstacles; clamp the step so it cannot overshoot.
+		global_position = global_position.move_toward(tile.global_position, speed * delta)
+		if global_position == tile.global_position:
+			set_physics_process(false)
 
 func score(points):
+	if scored:
+		return
+	scored = true
+	set_physics_process(false)
+	remove_from_group("fruits")
 	S_Conntroller.score(fruit_name, points, self)
 
 	# Clear the owning tile immediately. Leaving a queued-for-deletion fruit in

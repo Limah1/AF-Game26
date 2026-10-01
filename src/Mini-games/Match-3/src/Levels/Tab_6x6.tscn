@@ -81,14 +81,15 @@ tracks/0/keys = {
 }
 
 [node name="Tab_6x6" type="Node2D"]
+position = Vector2( 0, -2.37842 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_horizontal_guides_": [ -159.099, 1010.91, -231.369, 953.637, -155.536, -184.044, -171.572, 85.5376, 150.944 ],
 "_edit_vertical_guides_": [ 1410.1, 1462.62, 1831.27, 1357.15, 504.12, 568.337 ]
 }
-legacy_head_position = Vector2( 203.351, 505 )
-legacy_head_scale = Vector2( 0.31, 0.31 )
-chef_hat_position = Vector2( 0, -300 )
+legacy_head_position = Vector2( 203.351, 500 )
+legacy_head_scale = Vector2( 0.35, 0.35 )
+chef_hat_position = Vector2( 0, -280 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 127
@@ -320,27 +321,27 @@ layer = -10
 position = Vector2( 950.474, 541.853 )
 texture = ExtResource( 4 )
 
-[node name="SkinToneRect" type="Panel" parent="."]
-margin_left = 184.0
-margin_top = 517.0
-margin_right = 222.0
-margin_bottom = 577.0
-mouse_filter = 2
-custom_styles/panel = SubResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="character" type="Sprite" parent="."]
 material = ExtResource( 12 )
 position = Vector2( 203.351, 600 )
 scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 18 )
 
+[node name="SkinToneRect" type="Panel" parent="."]
+margin_left = 188.0
+margin_top = 543.0
+margin_right = 218.0
+margin_bottom = 573.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Head" type="Sprite" parent="."]
 material = SubResource( 2 )
-position = Vector2( 203.351, 492 )
-scale = Vector2( 0.28, 0.28 )
+position = Vector2( 203.351, 490 )
+scale = Vector2( 0.252, 0.252 )
 z_index = 1
 
 [node name="ChefHat" type="Sprite" parent="Head"]

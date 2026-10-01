@@ -9,9 +9,10 @@ func _ready() -> void:
 	# Shaders mudando a etnia
 	personagem_sprite = get_node("character")
 	cor_pele = NewCharData.cor_pele
-	var new_color_pele = Color(cor_pele)
+	var new_color_pele = Color(cor_pele) if cor_pele != "" else Color.white
 	var shader_material = personagem_sprite.material as ShaderMaterial
 	shader_material.set_shader_param("nova_cor_pele", new_color_pele)
+	_setup_legacy_head(new_color_pele)
 	
 	
 	S_Conntroller.sound = $bite

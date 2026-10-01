@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://src/UI/sound/sound_button.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/UI/sound/selector_gender.tscn" type="PackedScene" id=2]
@@ -12,6 +12,14 @@
 [ext_resource path="res://assets/Character_Creator/btn_roupa_1_boy.png" type="Texture" id=10]
 [ext_resource path="res://src/UI/Character_Clothes_Selector.gd" type="Script" id=11]
 [ext_resource path="res://src/Mini-games/CharacterTest/CharacterRig.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/Plataforma/Char_Select/button-cancelar.svg" type="Texture" id=13]
+[ext_resource path="res://assets/DoiAqui/fonts/Raleway/static/Raleway-Black.ttf" type="DynamicFontData" id=14]
+
+[sub_resource type="DynamicFont" id=32]
+size = 64
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 14 )
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.94902, 0.94902, 0.94902, 1 )
@@ -505,6 +513,31 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="CancelButton" type="TextureButton" parent="."]
+visible = false
+margin_left = 1350.0
+margin_top = 930.0
+margin_right = 1848.0
+margin_bottom = 1070.0
+texture_normal = ExtResource( 13 )
+texture_pressed = ExtResource( 13 )
+texture_hover = ExtResource( 13 )
+expand = true
+
+[node name="Label" type="Label" parent="CancelButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_fonts/font = SubResource( 32 )
+custom_colors/font_color = Color( 0.95, 0.95, 0.95, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 3
+custom_constants/shadow_offset_y = 4
+text = "CANCELAR"
+align = 1
+valign = 1
+
+[connection signal="pressed" from="CancelButton" to="." method="_on_CancelButton_pressed"]
 [connection signal="pressed" from="ConfirmButton" to="." method="_on_ConfirmButton_pressed"]
 [connection signal="pressed" from="btn_roupa_1" to="." method="_on_btn_roupa_1_pressed"]
 [connection signal="pressed" from="btn_roupa_2" to="." method="_on_btn_roupa_2_pressed"]

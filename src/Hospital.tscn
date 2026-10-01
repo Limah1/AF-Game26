@@ -526,21 +526,27 @@ position = Vector2( 290, 900 )
 visible = false
 
 [node name="idle" parent="Player/Player/player_sprites" index="1"]
+position = Vector2( 0.580444, 90 )
 scale = Vector2( 0.25, 0.25 )
 
 [node name="w1" parent="Player/Player/player_sprites" index="2"]
+position = Vector2( 0, 90 )
 scale = Vector2( 0.25, 0.25 )
 
 [node name="w2" parent="Player/Player/player_sprites" index="3"]
+position = Vector2( 0, 90 )
 scale = Vector2( 0.25, 0.25 )
 
 [node name="w3" parent="Player/Player/player_sprites" index="4"]
+position = Vector2( 0, 90 )
 scale = Vector2( 0.25, 0.25 )
 
 [node name="w4" parent="Player/Player/player_sprites" index="5"]
+position = Vector2( 0, 90 )
 scale = Vector2( 0.25, 0.25 )
 
 [node name="w5" parent="Player/Player/player_sprites" index="6"]
+position = Vector2( 0, 90 )
 scale = Vector2( 0.25, 0.25 )
 
 [node name="sleeping" parent="Player/Player/player_sprites" index="11"]
@@ -579,7 +585,6 @@ layer = 128
 script = ExtResource( 10 )
 
 [node name="Pause" type="Control" parent="Pause"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -635,15 +640,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -32.0
-margin_top = 230.0
-margin_right = 32.0
-margin_bottom = 294.0
+margin_left = 343.0
+margin_top = -133.0
+margin_right = 659.0
+margin_bottom = 132.0
 hint_tooltip = "Configurações de áudio"
 custom_styles/hover = ExtResource( 97 )
 custom_styles/pressed = ExtResource( 97 )
 custom_styles/normal = ExtResource( 97 )
 icon = ExtResource( 98 )
+expand_icon = true
 
 [node name="TextureButton" type="TextureButton" parent="Pause"]
 margin_left = 1767.0

@@ -28,6 +28,12 @@ func play_path(path: String) -> bool:
 		push_warning("VoiceManager: áudio inválido: %s" % path)
 		return false
 
+	# Voice resources may be cached/shared with other players. Change our copy.
+	stream = stream.duplicate()
+	if stream is AudioStreamSample:
+		stream.loop_mode = AudioStreamSample.LOOP_DISABLED
+	elif stream is AudioStreamOGGVorbis or stream is AudioStreamMP3:
+		stream.loop = false
 	_player.stream = stream
 	_current_path = path
 	_player.play()

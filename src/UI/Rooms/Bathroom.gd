@@ -42,8 +42,8 @@ func _process(delta: float) -> void:
 		playing3 = false
 
 func _on_bath_pressed() -> void:
-	if is_doing_action:
-		print("[Bathroom] Cannot start bath: is_doing_action is already true")
+	if is_doing_action or AnimationController.isTravelling() or AnimationController.is_playing() or NecessityBars.peeing:
+		print("[Bathroom] Cannot start bath: another action or movement is active")
 		return
 	print("[Bathroom] Starting bath action...")
 	is_doing_action = true
@@ -59,7 +59,7 @@ func _on_bath_pressed() -> void:
 	NecessityBars.onbath = true	
 
 func _set_persistent_player_visible(is_visible: bool) -> void:
-	var current_scene = get_tree().current_scene
+	var current_scene = get_parent()
 	if current_scene == null:
 		return
 	var player_container = current_scene.get_node_or_null("Player")
@@ -67,7 +67,7 @@ func _set_persistent_player_visible(is_visible: bool) -> void:
 		player_container.visible = is_visible
 
 func _set_navigation_menu_visible(is_visible: bool) -> void:
-	var current_scene = get_tree().current_scene
+	var current_scene = get_parent()
 	if current_scene != null and current_scene.has_method("toggle_NM"):
 		current_scene.toggle_NM(is_visible)
 
@@ -79,9 +79,7 @@ func finish_bath():
 	# navigation must not stay blocked forever.
 	NecessityBars.bathing = false
 	NecessityBars.onbath = false
-	_set_persistent_player_visible(true)
-	is_doing_action = false
-	_set_navigation_menu_visible(true)
+	_finish_action()
 	if is_instance_valid(AnimationController.anim_player):
 		print("[Bathroom] Playing return_from_bath animation...")
 		yield(AnimationController.return_from_bath(), "completed")
@@ -91,7 +89,7 @@ func finish_bath():
 	
 
 func _on_toilet_pressed() -> void:
-	if(NecessityBars.soaked):
+	if is_doing_action or NecessityBars.soaked:
 		return
 	
 	NecessityBars.peeing = true
@@ -99,6 +97,8 @@ func _on_toilet_pressed() -> void:
 	
 
 func _on_higienic_paper_pressed():
+	if is_doing_action:
+		return
 	if(NecessityBars.use_toilet_paper):
 		NecessityBars.use_toilet_paper = false
 		yield(AnimationController.return_from_toilet(), "completed")
@@ -111,8 +111,8 @@ func _on_higienic_paper_pressed():
 func _on_sink_pressed() -> void:
 	if(NecessityBars.soaked):
 		return
-	if is_doing_action:
-		print("[Bathroom] Cannot start sink: is_doing_action is already true")
+	if is_doing_action or AnimationController.isTravelling() or AnimationController.is_playing() or NecessityBars.peeing:
+		print("[Bathroom] Cannot start sink: another action or movement is active")
 		return
 	print("[Bathroom] Starting sink action...")
 	is_doing_action = true
@@ -129,16 +129,22 @@ func _on_sink_pressed() -> void:
 
 func finish_escovar():
 	print("[Bathroom] finish_escovar() triggered")
-	_set_navigation_menu_visible(true)
-	is_doing_action = false
+	_finish_action()
 	print("[Bathroom] Sink action finalized.")
 
 func finish_washing_hands():
 	WashingHands = false
 	$sink.set_meta("WashingHands", false)
-	_set_persistent_player_visible(true)
-	_set_navigation_menu_visible(true)
-	# Deixe o toque que concluiu o minigame terminar antes de liberar a pia.
-	yield(get_tree().create_timer(0.2), "timeout")
-	is_doing_action = false
+	_finish_action()
 	print("[Bathroom] WashingHands=false: hand-washing minigame finalized.")
+
+func _finish_action() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	_set_persistent_player_visible(true)
+	# Let queue_free remove all nested CanvasLayers before restoring input.
+	call_deferred("_restore_navigation")
+
+func _restore_navigation() -> void:
+	yield(get_tree(), "idle_frame")
+	is_doing_action = false
+	_set_navigation_menu_visible(true)

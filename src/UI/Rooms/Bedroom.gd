@@ -2,6 +2,8 @@ extends HouseRoom
 
 var playing = false
 var breathing_test_active = false
+var clothes_selector_layer: CanvasLayer
+var wardrobe_navigation_was_visible = false
 const SLEEP_TEST_RIG_SCALE = 2.0
 const SLEEPING_HEAD_SCALE_MULTIPLIER = 3.0
 const LEGACY_HEAD_SHADER = preload("res://src/UI/LegacyHead.shader")
@@ -194,10 +196,35 @@ func wake_up():
 	yield(AnimationController.wake_up_from_bed(), "completed")
 
 func _on_PersonalizationButton_pressed() -> void:
-	if CharacterController.boyorgirl == "Boy":
-		$PersonalizationScreen/Boy_closet.visible = true
-	elif CharacterController.boyorgirl == "Girl":
-		$PersonalizationScreen/Girl_closet.visible = true
+	if is_instance_valid(clothes_selector_layer) or get_tree().paused or AnimationController.isTravelling() or AnimationController.is_playing() or NecessityBars.sleeping or breathing_test_active:
+		return
+	clothes_selector_layer = CanvasLayer.new()
+	clothes_selector_layer.layer = 129
+	clothes_selector_layer.pause_mode = Node.PAUSE_MODE_PROCESS
+	var selector = preload("res://src/UI/Character_Clothes_Selector.tscn").instance()
+	selector.editing_existing = true
+	selector.connect("finished", self, "_on_clothes_selector_finished")
+	add_child(clothes_selector_layer)
+	clothes_selector_layer.add_child(selector)
+	var house = get_tree().current_scene
+	if house != null and house.has_method("toggle_NM"):
+		wardrobe_navigation_was_visible = house.get_node("NecessityManager").layer > 0
+		house.toggle_NM(false)
+	get_tree().paused = true
+
+func _on_clothes_selector_finished() -> void:
+	get_tree().paused = false
+	clothes_selector_layer.queue_free()
+	clothes_selector_layer = null
+	var house = get_tree().current_scene
+	if wardrobe_navigation_was_visible and house != null and house.has_method("toggle_NM"):
+		house.toggle_NM(true)
+	wardrobe_navigation_was_visible = false
+	_refresh_player_outfit()
+
+func _exit_tree() -> void:
+	if is_instance_valid(clothes_selector_layer):
+		get_tree().paused = false
 
 func _on_BreathingTestButton_pressed() -> void:
 	if breathing_test_active:

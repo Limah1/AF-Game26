@@ -203,6 +203,17 @@ texture = ExtResource( 16 )
 autoplay = "pulse"
 anims/pulse = SubResource( 1 )
 
+[node name="PlantCareButton" type="Button" parent="."]
+margin_left = 980.0
+margin_top = 620.0
+margin_right = 1220.0
+margin_bottom = 900.0
+hint_tooltip = "Cuidar das plantas"
+custom_styles/normal = SubResource( 2 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 2 )
+
 [node name="Rain" type="CPUParticles2D" parent="."]
 position = Vector2( 710.619, 9.71687 )
 emitting = false
@@ -361,6 +372,7 @@ bus = "SFX"
 autoplay = false
 
 [connection signal="pressed" from="Button0" to="." method="_on_Button0_pressed"]
+[connection signal="pressed" from="PlantCareButton" to="." method="_on_PlantCareButton_pressed"]
 [connection signal="pressed" from="Hidratona_PopUp/TutorialButton" to="." method="_on_TutorialButton_pressed"]
 [connection signal="pressed" from="Hidratona_PopUp/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="Hidratona_PopUp/LeaveButton" to="." method="_on_LeaveButton_pressed"]

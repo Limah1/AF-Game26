@@ -156,11 +156,12 @@ func _restore_normal_sprite_layout() -> void:
 	apply_visual_consistency()
 
 func refresh_outfit() -> void:
-	# Public hook used by the bedroom accessory buttons.
+	# Reapply body colors and head anchors together after wardrobe/accessory changes.
 	if dirty:
 		set_normal_dirty_clothes()
 	else:
 		set_normal_clothes()
+	apply_visual_consistency()
 
 func set_weather_outfit_tuning(tuning: Resource) -> void:
 	if tuning == null:

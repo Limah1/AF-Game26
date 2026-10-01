@@ -249,4 +249,4 @@ func _on_HospButton5_pressed():
 		return
 	$HospitalMapContainer.visible = false
 	AnimationController.status = "MainGame"
-	get_tree().change_scene("res://src/Teste.tscn")
+	get_tree().change_scene("res://src/UI/Loading.tscn")

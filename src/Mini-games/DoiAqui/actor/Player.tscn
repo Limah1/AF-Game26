@@ -1,13 +1,13 @@
 [gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://assets/SpritesV4/DoiAqui/boy-parado-sem-cabeca-branco.png" type="Texture" id=1]
+[ext_resource path="res://assets/SpritesV4/DoiAqui/boy-parado.png" type="Texture" id=1]
 [ext_resource path="res://assets/DoiAqui/sprites/Ativo 11.png" type="Texture" id=2]
 [ext_resource path="res://src/Mini-games/DoiAqui/actor/Player.gd" type="Script" id=3]
-[ext_resource path="res://assets/SpritesV4/DoiAqui/boy-dores-sem-cabeca-branco.png" type="Texture" id=4]
-[ext_resource path="res://assets/SpritesV4/DoiAqui/boy-febre-sem-cabeca-branco.png" type="Texture" id=5]
-[ext_resource path="res://assets/SpritesV4/DoiAqui/boy-ferimento-sem-cabeca-branco.png" type="Texture" id=8]
-[ext_resource path="res://assets/SpritesV4/DoiAqui/boy-nervoso-sem-cabeca-branco.png" type="Texture" id=10]
-[ext_resource path="res://assets/SpritesV4/DoiAqui/boy-frio-sem-cabeca-branco.png" type="Texture" id=11]
+[ext_resource path="res://assets/SpritesV4/DoiAqui/boy-dores.png" type="Texture" id=4]
+[ext_resource path="res://assets/SpritesV4/DoiAqui/boy-febre.png" type="Texture" id=5]
+[ext_resource path="res://assets/SpritesV4/DoiAqui/boy-ferimento.png" type="Texture" id=8]
+[ext_resource path="res://assets/SpritesV4/DoiAqui/boy-nervoso.png" type="Texture" id=10]
+[ext_resource path="res://assets/SpritesV4/DoiAqui/boy-frio.png" type="Texture" id=11]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 44.0
@@ -639,6 +639,19 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+tracks/8/type = "value"
+tracks/8/path = NodePath("pain:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,

@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://assets/fonts/Teste.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/Mini-games/Match-3/src/GUI/Background.tscn" type="PackedScene" id=2]
@@ -101,6 +101,9 @@ shader = ExtResource( 26 )
 shader_param/source_skin = Color( 0, 1, 0, 1 )
 shader_param/target_skin = Color( 1, 1, 1, 1 )
 shader_param/tolerance = 0.6
+
+[sub_resource type="StyleBoxFlat" id=100]
+bg_color = Color( 1, 1, 1, 1 )
 
 [node name="Win" type="Control"]
 anchor_right = 1.0
@@ -367,6 +370,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="SkinToneRect" type="Panel" parent="."]
+margin_left = 253.0
+margin_top = 550.0
+margin_right = 285.0
+margin_bottom = 580.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 100 )
+
 [node name="character" type="Sprite" parent="."]
 material = ExtResource( 24 )
 position = Vector2( 271.351, 566.77 )
@@ -381,7 +392,7 @@ texture = ExtResource( 29 )
 
 [node name="Head" type="Sprite" parent="."]
 material = SubResource( 9 )
-position = Vector2( 268.973, 479.54 )
+position = Vector2( 268.973, 469 )
 scale = Vector2( 0.325802, 0.318638 )
 z_index = 1
 texture = ExtResource( 30 )

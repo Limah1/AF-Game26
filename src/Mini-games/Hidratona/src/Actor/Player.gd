@@ -120,6 +120,8 @@ func _refresh_legacy_body_skin(skin: Color) -> void:
 	body_skin_material.shader = LEGACY_BODY_SKIN_SHADER
 	body_skin_material.set_shader_param("source_skin", Color("#cebb9d"))
 	body_skin_material.set_shader_param("target_skin", skin)
+	var pose_skin_material = body_skin_material.duplicate()
+	pose_skin_material.set_shader_param("source_skin", Color("#dfcaab"))
 	var run_skin_material = ShaderMaterial.new()
 	run_skin_material.shader = RAIN_RUN_SKIN_SHADER
 	run_skin_material.set_shader_param("target_skin", skin)
@@ -130,7 +132,7 @@ func _refresh_legacy_body_skin(skin: Color) -> void:
 		if body_sprite != null:
 			var is_weather_run = (Resources.acessory == "Umbrella" or Resources.acessory == "Coat") and sprite_name.begins_with("r")
 			var pose_index = ["j1", "j2", "squat"].find(sprite_name)
-			body_sprite.material = run_skin_material if is_weather_run else body_skin_material
+			body_sprite.material = run_skin_material if is_weather_run else pose_skin_material if pose_index != -1 else body_skin_material
 			if sprite_name.begins_with("r"):
 				body_sprite.scale = Vector2.ONE * run_tuning.body_scale
 			elif pose_index != -1:

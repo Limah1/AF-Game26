@@ -1,0 +1,55 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Resource
+
+const STATES = [\"parado\", \"dores\", \"febre\", \"ferimento\", \"frio\", \"nervoso\", \"cansado\", \"erro\"]
+
+export(Dictionary) var head_positions = {}
+export(Dictionary) var head_scales = {}
+export(Dictionary) var body_scales = {}
+export(Dictionary) var neck_offsets = {}
+export(Dictionary) var neck_sizes = {}
+
+func head_key(state: String) -> String:
+	return \"%s-%s-%s\" % [state, CharacterController.boyorgirl, CharacterController.cabelo]
+
+func get_head_position(state: String) -> Vector2:
+	return head_positions.get(head_key(state), Vector2(0, -43))
+
+func get_head_scale(state: String) -> float:
+	return head_scales.get(head_key(state), 0.094)
+
+func get_body_scale(state: String) -> float:
+	return body_scales.get(state, 1.0)
+
+func get_neck_offset(state: String) -> Vector2:
+	return neck_offsets.get(state, Vector2(-6, 27))
+
+func get_neck_size(state: String) -> Vector2:
+	return neck_sizes.get(state, Vector2(12, 12))
+"
+
+[resource]
+script = SubResource( 1 )
+head_positions = {
+"parado-Boy-a": Vector2( 0, -50 ),
+"parado-Boy-b": Vector2( 0, -50 ),
+"parado-Girl-a": Vector2( 0, -50 ),
+"parado-Girl-b": Vector2( 0, -50 )
+}
+head_scales = {
+"parado-Boy-a": 0.12,
+"parado-Boy-b": 0.12,
+"parado-Girl-a": 0.12,
+"parado-Girl-b": 0.12
+}
+body_scales = {
+"parado": 1.0
+}
+neck_offsets = {
+"parado": Vector2( -6, 27 )
+}
+neck_sizes = {
+"parado": Vector2( 12, 12 )
+}

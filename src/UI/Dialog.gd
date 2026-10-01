@@ -55,6 +55,7 @@ func _ready():
 	start_conversation(conversation_root, false)
 
 func start_conversation(root: Dictionary, play_voice = true) -> void:
+	_stop_current_voice()
 	_current = root
 	_refresh(play_voice)
 
@@ -87,6 +88,7 @@ func _on_choice(idx: int) -> void:
 	var choice = _current.get(key, null)
 	if typeof(choice) != TYPE_DICTIONARY:
 		return
+	_stop_current_voice()
 
 	# Os dados de diálogo (assets/hospital/<profissional>/dialogo.json) só carregam o rótulo do
 	# botão, sem um id/flag de ação, então o fluxo é decidido comparando o
@@ -133,7 +135,14 @@ func _on_about_to_show() -> void:
 	_update_voice_button()
 
 func _on_popup_hide() -> void:
-	VoiceManager.stop()
+	_stop_current_voice()
+
+func _exit_tree() -> void:
+	_stop_current_voice()
+
+func _stop_current_voice() -> void:
+	if _current_voice_path != "" and VoiceManager.get_current_path() == _current_voice_path:
+		VoiceManager.stop()
 
 func _on_voice_button_pressed() -> void:
 	if !voice_enabled or _current_voice_path == "":

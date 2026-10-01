@@ -60,3 +60,4 @@ func is_moving() -> bool:
 func reset_all():
 	moving = []
 	pressing = false
+	tile = null

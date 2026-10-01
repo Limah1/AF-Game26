@@ -48,11 +48,13 @@ margin_left = -48.0
 margin_top = 6.0
 margin_right = 352.0
 margin_bottom = 111.0
+rect_scale = Vector2( 0.8, 1 )
 custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Chances:"
 align = 1
 valign = 1
+autowrap = true
 uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false

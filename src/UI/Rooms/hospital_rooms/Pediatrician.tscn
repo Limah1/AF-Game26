@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/HospitalBackgroundImage/New_SalaPediatra.png" type="Texture" id=1]
 [ext_resource path="res://src/UI/Rooms/hospital_rooms/Pediatrician.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/DoiAqui/objects/botao-tutorial-hover_1.png" type="Texture" id=8]
 [ext_resource path="res://assets/Plataforma/buttons/button-comecar-hover.png" type="Texture" id=9]
 [ext_resource path="res://src/pediatrician.png" type="Texture" id=10]
+[ext_resource path="res://src/UI/Rooms/hospital_rooms/Placa.png" type="Texture" id=11]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -95,6 +96,11 @@ texture = ExtResource( 1 )
 position = Vector2( 413.375, 63.9575 )
 scale = Vector2( 0.417234, 0.451165 )
 texture = ExtResource( 10 )
+
+[node name="Placa" type="Sprite" parent="sala/New_SalaPediatra"]
+position = Vector2( 13.5683, -196.244 )
+scale = Vector2( 4.26184, 3.81836 )
+texture = ExtResource( 11 )
 
 [node name="tv-off" type="Sprite" parent="."]
 visible = false
@@ -184,7 +190,6 @@ __meta__ = {
 }
 
 [node name="DialogSystem" parent="." instance=ExtResource( 3 )]
-visible = true
 json_path = "res://assets/hospital/pediatra/dialogo.json"
 npc_name = "Pediatra"
 

@@ -1,6 +1,17 @@
 class_name Board
 extends Node2D
 
+onready var legacy_head: Sprite = get_node_or_null("Head")
+onready var skin_tone_rect: Panel = get_node_or_null("SkinToneRect")
+
+# Ajustes expostos para alinhar cabeça e pescoço no Inspector da cena.
+export(Vector2) var legacy_head_position = Vector2(203.351, 490)
+export(Vector2) var legacy_head_scale = Vector2(0.252, 0.252)
+export(Vector2) var chef_hat_position = Vector2(0, -400)
+export(Vector2) var legacy_neck_position = Vector2(188, 543)
+export(Vector2) var legacy_neck_size = Vector2(30, 30)
+
+
 var SWF = preload("res://src/Mini-games/Match-3/src/GUI/Show_Which_Fruit.tscn")
 
 var instance_timer = 0.3
@@ -63,16 +74,17 @@ var AllFruits = [
 ]
 
 func _ready():
-	var sprites = CharacterController.all_sprites.match3
-	
 	reaction = {
-		"sad": sprites.sad,
-		"very-sad": sprites.very_sad,
-		"normal": sprites.serious,
-		"happy": sprites.happy,
-		"very-happy": sprites.very_happy
+		"sad": preload("res://assets/Match-3/sprites_novo/personagem/headless/boy-a-match3-triste-headless.png"),
+		"very-sad": preload("res://assets/Match-3/sprites_novo/personagem/headless/boy-a-match3-mto-triste-headless.png"),
+		"normal": preload("res://assets/Match-3/sprites_novo/personagem/headless/boy-a-match3-serio-headless.png"),
+		"happy": preload("res://assets/Match-3/sprites_novo/personagem/headless/boy-a-match3-feliz-headless.png"),
+		"very-happy": preload("res://assets/Match-3/sprites_novo/personagem/headless/boy-a-match3-mto-feliz-headless.png"),
 	}
-	
+	if legacy_head == null:
+		var sprites = CharacterController.all_sprites.match3
+		reaction = {"sad": sprites.sad, "very-sad": sprites.very_sad, "normal": sprites.serious, "happy": sprites.happy, "very-happy": sprites.very_happy}
+
 	$character.texture = reaction.normal
 	
 	preview_points = 0
@@ -249,6 +261,12 @@ func countdown():
 	yield(get_tree(), "idle_frame") # returns a GDScriptFunctionState object to _ready()
 	yield(get_tree().create_timer(1.5), "timeout")
 
+func _exit_tree() -> void:
+	M_Controller.reset_all()
+	S_Conntroller.ResetTiles()
+	C_Controller.reset_score()
+	C_Controller.started = false
+
 func set_reaction():
 	var max_points = get_node("Score/HealthDisplay/HealthBar").max_value
 	var value = get_node("Score").value
@@ -269,6 +287,34 @@ func set_reaction():
 		elif value > max_points * 0.2:
 			$character.texture = reaction["normal"]
 		preview_points = value
+
+func _setup_legacy_head(skin: Color) -> void:
+	if legacy_head == null or skin_tone_rect == null:
+		return
+	var head_texture = CharacterController.get_legacy_head_texture()
+	if head_texture == null:
+		legacy_head.visible = false
+		skin_tone_rect.visible = false
+		return
+	legacy_head.texture = head_texture
+	legacy_head.visible = true
+	legacy_head.position = legacy_head_position
+	legacy_head.scale = legacy_head_scale
+	$Head/ChefHat.position = chef_hat_position
+	skin_tone_rect.visible = true
+	skin_tone_rect.rect_position = legacy_neck_position
+	skin_tone_rect.rect_size = legacy_neck_size
+	var neck_style = skin_tone_rect.get_stylebox("panel") as StyleBoxFlat
+	if neck_style != null:
+		neck_style = neck_style.duplicate()
+		neck_style.bg_color = skin
+		skin_tone_rect.add_stylebox_override("panel", neck_style)
+	var gender = "boy" if CharacterController.boyorgirl == "Boy" else "girl"
+	var hair = CharacterController.cabelo if CharacterController.cabelo == "a" or CharacterController.cabelo == "b" else "a"
+	var head_material = legacy_head.material as ShaderMaterial
+	if head_material != null:
+		head_material.set_shader_param("source_skin", CharacterController.get_legacy_head_source_skin_for(gender, hair))
+		head_material.set_shader_param("target_skin", skin)
 
 func _on_TextureButton2_button_up():
 	return

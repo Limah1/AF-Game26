@@ -17,7 +17,7 @@ func _on_Continue_pressed() -> void:
 		print("Save inválido ou ausente")
 		return
 	NecessityBars.started = true
-	get_tree().change_scene("res://src/MainScreen.tscn")
+	get_tree().change_scene("res://src/UI/Loading.tscn")
 
 
 func _on_Restart_pressed() -> void:

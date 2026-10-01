@@ -140,6 +140,16 @@ tracks/0/keys = {
 "values": [ Vector2( 0.8, 0.8 ), Vector2( 0.9, 0.9 ), Vector2( 0.8, 0.8 ) ]
 }
 
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="StyleBoxEmpty" id=9]
+
+[sub_resource type="StyleBoxEmpty" id=10]
+
+[sub_resource type="StyleBoxEmpty" id=11]
+
+[sub_resource type="StyleBoxEmpty" id=12]
+
 [sub_resource type="StyleBoxEmpty" id=13]
 
 [sub_resource type="StyleBoxEmpty" id=14]
@@ -154,20 +164,10 @@ tracks/0/keys = {
 
 [sub_resource type="StyleBoxEmpty" id=19]
 
-[sub_resource type="StyleBoxEmpty" id=20]
-
-[sub_resource type="StyleBoxEmpty" id=21]
-
-[sub_resource type="StyleBoxEmpty" id=22]
-
-[sub_resource type="StyleBoxEmpty" id=23]
-
-[sub_resource type="StyleBoxEmpty" id=24]
-
-[sub_resource type="CanvasItemMaterial" id=25]
+[sub_resource type="CanvasItemMaterial" id=20]
 blend_mode = 1
 
-[sub_resource type="ParticlesMaterial" id=26]
+[sub_resource type="ParticlesMaterial" id=21]
 flag_disable_z = true
 gravity = Vector3( 0, 0, 0 )
 initial_velocity_random = 0.26
@@ -177,10 +177,10 @@ angle = 360.0
 angle_random = 1.0
 color = Color( 0.0392157, 0.521569, 0.0823529, 1 )
 
-[sub_resource type="CanvasItemMaterial" id=27]
+[sub_resource type="CanvasItemMaterial" id=22]
 blend_mode = 1
 
-[sub_resource type="ParticlesMaterial" id=28]
+[sub_resource type="ParticlesMaterial" id=23]
 flag_disable_z = true
 gravity = Vector3( 0, 0, 0 )
 orbit_velocity = 0.0
@@ -309,10 +309,10 @@ margin_left = 1699.0
 margin_top = 362.0
 margin_right = 1914.0
 margin_bottom = 895.0
-custom_styles/hover = SubResource( 13 )
-custom_styles/pressed = SubResource( 14 )
-custom_styles/focus = SubResource( 15 )
-custom_styles/normal = SubResource( 16 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -322,10 +322,10 @@ margin_left = 1003.63
 margin_top = 486.0
 margin_right = 1144.63
 margin_bottom = 657.0
-custom_styles/hover = SubResource( 17 )
-custom_styles/pressed = SubResource( 18 )
-custom_styles/focus = SubResource( 19 )
-custom_styles/normal = SubResource( 20 )
+custom_styles/hover = SubResource( 12 )
+custom_styles/pressed = SubResource( 13 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/normal = SubResource( 15 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -335,10 +335,10 @@ margin_left = 788.671
 margin_top = 565.0
 margin_right = 986.671
 margin_bottom = 882.0
-custom_styles/hover = SubResource( 21 )
-custom_styles/pressed = SubResource( 22 )
-custom_styles/focus = SubResource( 23 )
-custom_styles/normal = SubResource( 24 )
+custom_styles/hover = SubResource( 16 )
+custom_styles/pressed = SubResource( 17 )
+custom_styles/focus = SubResource( 18 )
+custom_styles/normal = SubResource( 19 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -349,10 +349,10 @@ margin_top = 579.0
 margin_right = 1436.0
 margin_bottom = 1112.0
 rect_scale = Vector2( 2.05297, 0.837101 )
-custom_styles/hover = SubResource( 13 )
-custom_styles/pressed = SubResource( 14 )
-custom_styles/focus = SubResource( 15 )
-custom_styles/normal = SubResource( 16 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -553,6 +553,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="PersonalizationButton" type="Button" parent="."]
+margin_left = 148.0
+margin_top = 152.0
+margin_right = 698.0
+margin_bottom = 956.0
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 8 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = SubResource( 8 )
+
 [node name="zip" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 volume_db = 6.02
@@ -567,19 +578,19 @@ stream = ExtResource( 36 )
 bus = "Music"
 
 [node name="bed_particle" type="Particles2D" parent="."]
-material = SubResource( 25 )
+material = SubResource( 20 )
 position = Vector2( 1412, 790 )
 z_index = -26
-process_material = SubResource( 26 )
+process_material = SubResource( 21 )
 texture = ExtResource( 37 )
 
 [node name="lamp_particle" type="Particles2D" parent="."]
-material = SubResource( 27 )
+material = SubResource( 22 )
 position = Vector2( 1803, 483 )
 scale = Vector2( 0.25, 0.25 )
 lifetime = 5.0
 speed_scale = 3.49
-process_material = SubResource( 28 )
+process_material = SubResource( 23 )
 texture = ExtResource( 38 )
 
 [node name="SmallPlants" parent="." instance=ExtResource( 39 )]
@@ -604,3 +615,4 @@ margin_bottom = -760.0
 [connection signal="pressed" from="PersonalizationScreen/Girl_closet/g2_w" to="PersonalizationScreen" method="_on_g2_w_pressed"]
 [connection signal="pressed" from="PersonalizationScreen/Girl_closet/UseButton" to="PersonalizationScreen" method="_on_UseButton_pressed"]
 [connection signal="pressed" from="PersonalizationScreen/Girl_closet/Close" to="PersonalizationScreen" method="_on_Close_pressed"]
+[connection signal="pressed" from="PersonalizationButton" to="." method="_on_PersonalizationButton_pressed"]

@@ -15,6 +15,10 @@ const GAME_NORMAL_SPRITE_POSITIONS = {
 	"w3": Vector2(0, 90), "w4": Vector2(0, 90), "w5": Vector2(0, 90)
 }
 
+const DOI_TUNING_PATH = "res://src/Mini-games/DoiAqui/actor/OutfitTuning.tres"
+var doi_tuning: Resource
+onready var doi_player = $Preview/DoiAqui
+
 onready var player = $Preview/Player
 onready var hidratona_run = $Preview/HidratonaRun
 onready var outfit_option = $Panel/Margin/Controls/OutfitRow/Outfit
@@ -50,11 +54,12 @@ func _ready() -> void:
 	_prepare_character()
 	_load_tuning_from_disk()
 	_load_run_tuning()
-	outfit_option.selected = 5
+	doi_tuning = ResourceLoader.load(DOI_TUNING_PATH, "", true).duplicate()
+	outfit_option.selected = 6
 	_on_selection_changed(0)
 
 func _populate_options() -> void:
-	for label in ["Normal", "Chuva", "Neve", "Hidratona: chuva", "Hidratona: neve", "Hidratona: normal"]:
+	for label in ["Normal", "Chuva", "Neve", "Hidratona: chuva", "Hidratona: neve", "Hidratona: normal", "Dói Aqui"]:
 		outfit_option.add_item(label)
 	for label in ["Variação 1", "Variação 2"]:
 		variation_option.add_item(label)
@@ -102,7 +107,13 @@ func _is_weather_outfit() -> bool:
 	return outfit_option.selected == 1 or outfit_option.selected == 2
 
 func _is_hidratona_run() -> bool:
-	return outfit_option.selected >= 3
+	return outfit_option.selected >= 3 and outfit_option.selected <= 5
+
+func _is_doi_aqui() -> bool:
+	return outfit_option.selected == 6
+
+func _doi_state() -> String:
+	return doi_tuning.STATES[state_option.selected]
 
 func _is_hidratona_pose() -> bool:
 	return state_option.selected >= 7
@@ -126,10 +137,13 @@ func _selected_accessory() -> String:
 func _on_selection_changed(_index: int) -> void:
 	if _is_hidratona_run():
 		run_tuning = run_tunings.get(outfit_option.selected)
-	var expected_count = 10 if _is_hidratona_run() else 2 if _is_weather_outfit() else 3
+	var expected_count = 8 if _is_doi_aqui() else 10 if _is_hidratona_run() else 2 if _is_weather_outfit() else 3
 	if state_option.get_item_count() != expected_count:
 		state_option.clear()
-		if _is_hidratona_run():
+		if _is_doi_aqui():
+			for label in ["Parado", "Dores", "Febre", "Ferimento", "Frio", "Nervoso", "Cansado", "Erro"]:
+				state_option.add_item(label)
+		elif _is_hidratona_run():
 			for frame in range(1, 8):
 				state_option.add_item("Corrida %d" % frame)
 			for label in ["Pulo 1", "Pulo 2", "Agachamento"]:
@@ -144,6 +158,16 @@ func _on_selection_changed(_index: int) -> void:
 
 func _on_value_changed(_value: float) -> void:
 	if updating_controls or tuning == null:
+		return
+	if _is_doi_aqui():
+		var state = _doi_state()
+		doi_tuning.head_positions[doi_tuning.head_key(state)] = Vector2(head_x_input.value, head_y_input.value)
+		doi_tuning.head_scales[doi_tuning.head_key(state)] = head_scale_input.value
+		doi_tuning.body_scales[state] = outfit_scale_input.value
+		doi_tuning.neck_offsets[state] = Vector2(neck_x_input.value, neck_y_input.value)
+		doi_tuning.neck_sizes[state] = Vector2(neck_width_input.value, neck_height_input.value)
+		_apply_preview()
+		_set_status("Alterações ainda não salvas.", Color("#ffd166"))
 		return
 	if _is_hidratona_run():
 		if _is_hidratona_pose():
@@ -189,8 +213,16 @@ func _on_value_changed(_value: float) -> void:
 func _apply_preview() -> void:
 	if tuning == null:
 		return
-	player.visible = not _is_hidratona_run()
+	player.visible = not _is_hidratona_run() and not _is_doi_aqui()
+	doi_player.visible = _is_doi_aqui()
 	hidratona_run.visible = _is_hidratona_run()
+	if _is_doi_aqui():
+		CharacterController.genero = _selected_gender()
+		CharacterController.boyorgirl = "Boy" if _selected_gender() == "boy" else "Girl"
+		CharacterController.cabelo = _selected_hair()
+		doi_player.outfit_tuning = doi_tuning
+		doi_player.set_preview_state(_doi_state())
+		return
 	if _is_hidratona_run():
 		_apply_hidratona_run_preview()
 		return
@@ -217,6 +249,21 @@ func _load_head_controls() -> void:
 	if tuning == null:
 		return
 	updating_controls = true
+	if _is_doi_aqui():
+		CharacterController.boyorgirl = "Boy" if _selected_gender() == "boy" else "Girl"
+		CharacterController.cabelo = _selected_hair()
+		var state = _doi_state()
+		var position = doi_tuning.get_head_position(state)
+		head_x_input.value = position.x
+		head_y_input.value = position.y
+		head_scale_input.value = doi_tuning.get_head_scale(state)
+		outfit_scale_input.value = doi_tuning.get_body_scale(state)
+		neck_x_input.value = doi_tuning.get_neck_offset(state).x
+		neck_y_input.value = doi_tuning.get_neck_offset(state).y
+		neck_width_input.value = doi_tuning.get_neck_size(state).x
+		neck_height_input.value = doi_tuning.get_neck_size(state).y
+		updating_controls = false
+		return
 	if _is_hidratona_run():
 		if run_tuning == null:
 			updating_controls = false
@@ -279,7 +326,9 @@ func _load_tuning_from_disk() -> void:
 
 func _on_Save_pressed() -> void:
 	var error
-	if _is_hidratona_run():
+	if _is_doi_aqui():
+		error = ResourceSaver.save(DOI_TUNING_PATH, doi_tuning)
+	elif _is_hidratona_run():
 		error = ResourceSaver.save(_run_tuning_path(), run_tuning)
 	else:
 		tuning.girl_r2_body_offset = Vector2(body_x_input.value, body_y_input.value)
@@ -291,23 +340,26 @@ func _on_Save_pressed() -> void:
 		_set_status("Erro ao salvar: código %d." % error, Color("#ef476f"))
 
 func _on_Reload_pressed() -> void:
+	doi_tuning = ResourceLoader.load(DOI_TUNING_PATH, "", true).duplicate()
 	_load_tuning_from_disk()
 	_load_run_tuning()
 	_load_head_controls()
 	_apply_preview()
 
 func _update_tuning_controls_enabled() -> void:
-	variation_option.disabled = _is_weather_outfit() or _is_hidratona_run()
+	variation_option.disabled = _is_weather_outfit() or _is_hidratona_run() or _is_doi_aqui()
 	gender_option.disabled = false
-	body_position_controls.visible = not _is_weather_outfit() and not _is_hidratona_run() and _selected_variation() == "r2" and _selected_gender() == "girl"
+	body_position_controls.visible = not _is_doi_aqui() and not _is_weather_outfit() and not _is_hidratona_run() and _selected_variation() == "r2" and _selected_gender() == "girl"
 	selector_position_controls.visible = body_position_controls.visible
-	neck_controls.visible = _is_normal_neck() and state_option.selected != 2
-	outfit_scale_input.editable = _is_weather_outfit() or _is_hidratona_run()
+	neck_controls.visible = _is_doi_aqui() or (_is_normal_neck() and state_option.selected != 2)
+	outfit_scale_input.editable = _is_weather_outfit() or _is_hidratona_run() or _is_doi_aqui()
 	for input in [head_x_input, head_y_input, head_scale_input]:
 		input.editable = true
 	$Panel/Margin/Controls/Buttons/Save.disabled = false
-	$Panel/Margin/Controls/FilePath.text = _run_tuning_path().get_file() if _is_hidratona_run() else "RoupasEspeciais/ConfiguracaoRoupasEspeciais.tres"
-	if _is_hidratona_run():
+	$Panel/Margin/Controls/FilePath.text = DOI_TUNING_PATH.get_file() if _is_doi_aqui() else _run_tuning_path().get_file() if _is_hidratona_run() else "RoupasEspeciais/ConfiguracaoRoupasEspeciais.tres"
+	if _is_doi_aqui():
+		_set_status("Dói Aqui: ajuste cada pose e cabeça selecionada.", Color("#aeb8c5"))
+	elif _is_hidratona_run():
 		_set_status("Hidratona: ajuste a cabeça e o pescoço em cada pose.", Color("#aeb8c5"))
 	elif not _is_weather_outfit():
 		_set_status("Ajustando %s, cabelo %s, roupa normal (%s)." % [_selected_gender(), _selected_hair(), _selected_variation()], Color("#aeb8c5"))

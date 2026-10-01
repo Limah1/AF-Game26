@@ -62,8 +62,8 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	current_room = $Slots/Slot1.current_room
-	AnimationController.current_room = $Slots/Slot1.current_room
+	current_room = $Slots/Slot2.current_room
+	AnimationController.current_room = current_room
 	_sync_modular_player()
 
 func _setup_modular_player() -> void:
@@ -122,7 +122,17 @@ func _sync_modular_player() -> void:
 		modular_player.set_facing(-1 if legacy_player_sprites.scale.x < 0.0 else 1)
 
 func toggle_NM(visible = null):
-	if visible != null:
-		$NecessityManager.layer = abs($NecessityManager.layer) if visible else -abs($NecessityManager.layer)
-	else:
-		$NecessityManager.layer = -$NecessityManager.layer
+	var menu = $NecessityManager
+	var show_menu = visible if visible != null else not menu.is_processing()
+	# Keep the CanvasLayer fixed; hide its controls to disable GUI input.
+	menu.set_process(show_menu)
+	for child in menu.get_children():
+		if child is CanvasItem:
+			if show_menu:
+				if child.has_meta("navigation_visible"):
+					child.visible = child.get_meta("navigation_visible")
+					child.remove_meta("navigation_visible")
+			else:
+				if not child.has_meta("navigation_visible"):
+					child.set_meta("navigation_visible", child.visible)
+				child.hide()

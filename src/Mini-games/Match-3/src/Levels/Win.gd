@@ -3,6 +3,9 @@ extends Control
 var cor_pele = ""
 
 export(Vector2) var defeat_head_position = Vector2(271.351, 458)
+export(Vector2) var victory_head_position = Vector2(268.973, 469)
+export(Vector2) var victory_neck_position = Vector2(253, 550)
+export(Vector2) var defeat_neck_position = Vector2(256, 539)
 
 var complete_total_match = S_Conntroller.score1 == S_Conntroller.goals[0] and S_Conntroller.score2 == S_Conntroller.goals[1] and S_Conntroller.score3 == S_Conntroller.goals[2]
 var complete_match1 = S_Conntroller.score1 == S_Conntroller.goals[0] and S_Conntroller.score2 == S_Conntroller.goals[1] and S_Conntroller.score3 != S_Conntroller.goals[2]
@@ -71,6 +74,7 @@ func _ready():
 		$character.texture = preload("res://assets/Match-3/sprites_novo/personagem/headless/boy-a-match3-mto-triste-headless.png")
 		$VictoryArm.hide()
 		$Head.position = defeat_head_position
+		$SkinToneRect.rect_position = defeat_neck_position
 
 		for particles in [$p2d_red, $p2d_green, $p2d_blue, $p2d_violet, $p2d_white, $p2d_white2]:
 			particles.emitting = false
@@ -79,7 +83,14 @@ func _ready():
 		$Label.visible = true
 
 func _setup_legacy_head(skin: Color) -> void:
+	$SkinToneRect.rect_position = victory_neck_position
+	$SkinToneRect.rect_size = Vector2(32, 30)
+	var style = $SkinToneRect.get_stylebox("panel").duplicate()
+	style.bg_color = skin
+	$SkinToneRect.add_stylebox_override("panel", style)
 	$Head.texture = CharacterController.get_legacy_head_texture()
+	$Head.position = victory_head_position
+	$SkinToneRect.visible = $Head.texture != null
 	var gender = "boy" if CharacterController.boyorgirl == "Boy" else "girl"
 	var hair = CharacterController.cabelo if CharacterController.cabelo == "a" or CharacterController.cabelo == "b" else "a"
 	var head_material = $Head.material as ShaderMaterial

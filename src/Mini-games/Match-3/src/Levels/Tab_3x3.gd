@@ -28,9 +28,9 @@ onready var legacy_head: Sprite = $Head
 onready var skin_tone_rect: Panel = $SkinToneRect
 
 # Ajustes expostos para alinhar o conjunto no Inspector da cena.
-export(Vector2) var legacy_head_position = Vector2(203.351, 457)
-export(Vector2) var legacy_neck_position = Vector2(184, 517)
-export(Vector2) var legacy_neck_size = Vector2(38, 60)
+export(Vector2) var legacy_head_position = Vector2(203.351, 490)
+export(Vector2) var legacy_neck_position = Vector2(188, 543)
+export(Vector2) var legacy_neck_size = Vector2(30, 30)
 
 var AllTiles = []
 var alltiles = []
@@ -118,7 +118,7 @@ func _setup_legacy_head(skin: Color) -> void:
 	legacy_head.visible = true
 	legacy_head.position = legacy_head_position
 	legacy_head.scale = Vector2(0.252, 0.252)
-	# O pescoço fica atrás do corpo, preenchendo a abertura sem cobrir o uniforme.
+	# O pescoço fica entre o corpo e a cabeça, preenchendo a abertura da gola.
 	skin_tone_rect.visible = true
 	skin_tone_rect.rect_position = legacy_neck_position
 	skin_tone_rect.rect_size = legacy_neck_size
@@ -161,14 +161,16 @@ func _physics_process(delta: float) -> void:
 	
 	instance_timer -= delta
 	if(instance_timer <= 0):
-		var index = 0
-		for tile in AllTiles[0]:
-			if tile.fruit == null:
+		var row = Ordem[0] if not Ordem.empty() else AllFruits
+		var added = false
+		for index in range(AllTiles[0].size()):
+			var tile = AllTiles[0][index]
+			if not is_instance_valid(tile.fruit):
 				instance_timer = 0.5
-				rng.randomize()
-				add_fruit(tile, get_fruit_by_name(Ordem[0][index]))
-				index += 1
-				Ordem.remove(0)
+				add_fruit(tile, get_fruit_by_name(row[index]))
+				added = true
+		if added and not Ordem.empty():
+			Ordem.remove(0)
 
 	if (S_Conntroller.chances == 0):
 		S_Conntroller.last_result_won = false
@@ -266,6 +268,12 @@ func check_map_combinations():
 func countdown():
 	yield(get_tree(), "idle_frame") # returns a GDScriptFunctionState object to _ready()
 	yield(get_tree().create_timer(1.5), "timeout")
+
+func _exit_tree() -> void:
+	M_Controller.reset_all()
+	S_Conntroller.ResetTiles()
+	C_Controller.reset_score()
+	C_Controller.started = false
 
 func set_reaction():
 	var max_points = get_node("Score/HealthDisplay/HealthBar").max_value

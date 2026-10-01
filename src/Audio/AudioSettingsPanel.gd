@@ -21,7 +21,7 @@ const BARS = {
 const TITLES = {
 	"Master": "Geral",
 	"Music": "Trilha sonora",
-	"SFX": "SFX",
+	"SFX": "Efeitos sonoros",
 	"Voice": "Dublagem"
 }
 

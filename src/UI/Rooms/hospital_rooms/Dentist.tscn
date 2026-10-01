@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://src/UI/Rooms/hospital_rooms/NewAssets/New_SalaDentista.png" type="Texture" id=1]
 [ext_resource path="res://src/UI/Rooms/hospital_rooms/Dentist.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/DoiAqui/objects/botao-tutorial-hover_1.png" type="Texture" id=8]
 [ext_resource path="res://assets/Plataforma/buttons/button-comecar-hover.png" type="Texture" id=9]
 [ext_resource path="res://src/UI/Rooms/hospital_rooms/NewAssets/New_dentista.png" type="Texture" id=10]
+[ext_resource path="res://src/UI/Rooms/hospital_rooms/Placa.png" type="Texture" id=11]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -85,12 +86,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Placa" type="Sprite" parent="."]
+position = Vector2( 713.162, 157.004 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 11 )
+
 [node name="sala" type="Sprite" parent="."]
 position = Vector2( 960, 540 )
 z_index = -100
 
 [node name="New_SalaDentista" type="Sprite" parent="sala"]
-position = Vector2( 1.09131, -0.523987 )
+position = Vector2( 1.09131, -3.69879 )
 scale = Vector2( 1.14811, 1.15182 )
 texture = ExtResource( 1 )
 
@@ -158,12 +164,15 @@ anims/fade_in = SubResource( 5 )
 anims/fade_out = SubResource( 6 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 32.0
-margin_top = 444.0
-margin_right = 414.0
-margin_bottom = 484.0
+margin_left = 584.545
+margin_top = 126.553
+margin_right = 645.545
+margin_bottom = 146.553
 rect_scale = Vector2( 5, 5 )
 text = "Dentista"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="DialogSystem" parent="." instance=ExtResource( 3 )]
 json_path = "res://assets/hospital/dentista/dialogo.json"

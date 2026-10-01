@@ -209,7 +209,6 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 222.263, 987.782 ]
 }
-legacy_head_position = Vector2( 203.351, 497 )
 
 [node name="TutorialController" type="CanvasLayer" parent="."]
 pause_mode = 2
@@ -784,26 +783,26 @@ position = Vector2( 946.81, 556.884 )
 scale = Vector2( 1.91708, 1.97527 )
 texture = ExtResource( 10 )
 
-[node name="SkinToneRect" type="Panel" parent="."]
-margin_left = 184.0
-margin_top = 517.0
-margin_right = 222.0
-margin_bottom = 577.0
-mouse_filter = 2
-custom_styles/panel = SubResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="character" type="Sprite" parent="."]
 material = ExtResource( 12 )
 position = Vector2( 203.351, 600 )
 scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 18 )
 
+[node name="SkinToneRect" type="Panel" parent="."]
+margin_left = 188.0
+margin_top = 543.0
+margin_right = 218.0
+margin_bottom = 573.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Head" type="Sprite" parent="."]
 material = SubResource( 8 )
-position = Vector2( 203.351, 457 )
+position = Vector2( 203.351, 490 )
 scale = Vector2( 0.252, 0.252 )
 z_index = 1
 
