@@ -116,11 +116,12 @@ fit_content_height = true
 custom_colors/default_color = Color( 0.0823529, 0.176471, 0.203922, 1 )
 
 [node name="VoiceButton" type="Button" parent="MarginContainer/HBoxContainer/Right"]
+margin_left = 765.0
 margin_top = 166.0
-margin_right = 40.0
-margin_bottom = 206.0
-rect_min_size = Vector2( 40, 40 )
-size_flags_horizontal = 0
+margin_right = 829.0
+margin_bottom = 230.0
+rect_min_size = Vector2( 64, 64 )
+size_flags_horizontal = 8
 icon = ExtResource( 6 )
 expand_icon = true
 text = ""
