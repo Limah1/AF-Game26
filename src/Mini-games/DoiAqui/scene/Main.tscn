@@ -428,9 +428,11 @@ text = ""
 [connection signal="pressed" from="InitialMessage/Pause2/AudioButton" to="InitialMessage/AudioSettingsPanel" method="open"]
 
 [node name="Character" parent="messageInterGame" instance=ExtResource( 1 )]
+visible = false
 position = Vector2( 495.863, 625.571 )
 preview_only = true
 
 [node name="Character" parent="painLevel" instance=ExtResource( 1 )]
+visible = false
 position = Vector2( 495.863, 625.571 )
 preview_only = true

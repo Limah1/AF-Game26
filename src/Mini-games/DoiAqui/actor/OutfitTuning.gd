@@ -11,11 +11,11 @@ export(Dictionary) var neck_sizes = {}
 func head_key(state: String) -> String:
 	return "%s-%s-%s" % [state, CharacterController.boyorgirl, CharacterController.cabelo]
 
-func get_head_position(state: String) -> Vector2:
-	return head_positions.get(head_key(state), Vector2(0, -43))
+func get_head_position(_state: String) -> Vector2:
+	return head_positions.get(head_key("parado"), Vector2(0, -43))
 
-func get_head_scale(state: String) -> float:
-	return head_scales.get(head_key(state), 0.094)
+func get_head_scale(_state: String) -> float:
+	return head_scales.get(head_key("parado"), 0.094)
 
 func get_body_scale(state: String) -> float:
 	return body_scales.get(state, 1.0)

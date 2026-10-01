@@ -1,0 +1,146 @@
+RELATÓRIO SINTÉTICO DE ALTERAÇÕES DO PROJETO AF-Game26
+Período: 1º de agosto a 30 de setembro de 2026
+Data de elaboração: 1º de outubro de 2026
+
+1. INTRODUÇÃO E PROCEDIMENTO
+
+Este relatório apresenta uma síntese das alterações realizadas no projeto AF-Game26 durante agosto e setembro de 2026. O projeto utiliza o motor Godot e reúne atividades de cuidado de um personagem, navegação entre ambientes e minijogos relacionados a hábitos de saúde e bem-estar.
+
+O levantamento foi realizado a partir do histórico Git das ramificações locais e das referências remotas disponíveis no repositório, considerando as datas de registro das alterações e o fuso de Brasília. Foram identificados 45 commits: 14 em agosto e 31 em setembro. Desse total, um corresponde à integração de versões. O levantamento também inclui o teste de personagem registrado em uma ramificação em 13 de agosto, sem pressupor sua incorporação à versão principal.
+
+As mensagens dos commits foram complementadas pela consulta às diferenças de código, às cenas, aos recursos adicionados e à documentação versionada. Alterações de outubro e modificações locais ainda não registradas foram excluídas. Os registros encontrados no intervalo vão de 13 de agosto a 29 de setembro; não foram encontrados commits nas demais datas do período nas referências consultadas. O relatório resume o trabalho registrado, sem constituir uma nova avaliação de funcionamento ou de eficácia educativa.
+
+2. ALTERAÇÕES REALIZADAS EM AGOSTO
+
+2.1. Correção de funcionamento e navegação
+
+Em agosto, uma parte do trabalho concentrou-se na correção de problemas que afetavam o fluxo do jogo. Foram ajustados estados de retorno dos minijogos, conexões de eventos, botões sem tratamento e caminhos de acesso às cenas. Essas intervenções abrangeram a casa, o hospital, o banho, o alongamento, o Match-3, o Dói Aqui e a Hidratona.
+
+No hospital, foram completados os mecanismos de abertura do Dói Aqui nas quatro salas: sala de espera, pediatria, odontologia e psicologia. Também foram corrigidos elementos ausentes na janela de diálogo, como retrato e identificação do profissional, e a navegação entre os ambientes.
+
+Foram corrigidos problemas de sobreposição entre personagem e cenário. Uma solução inicial, baseada na alteração da ordem das salas, foi revista por interferir na televisão e nas janelas de interação. A correção posterior foi aplicada diretamente à imagem do vaso, preservando a organização dos demais elementos. Também foi corrigida uma falha de navegação associada ao retorno do PlantCare e ao uso de uma referência de cena já removida.
+
+O gerenciamento das necessidades do personagem recebeu ajustes, assim como a pontuação e os resultados do Match-3. Scripts, funções e cenas identificados como duplicados ou sem uso foram removidos.
+
+2.2. Personagem e personalização
+
+Foram desenvolvidos e atualizados testes de um personagem modular, formado por partes visuais separadas. O trabalho incluiu estrutura de animação, movimento, catálogos de partes, conjuntos de membros, tons de pele e perfis visuais. Também foram adicionados recursos gráficos e orientações para a utilização dessa estrutura.
+
+O personagem modular foi integrado à Hidratona e experimentado em outros contextos. Ao longo do mês, foram ajustadas as representações do personagem na casa, no hospital e no banho, incluindo cabeça, cabelo, roupas e aplicação de cores. Foram corrigidas as prévias nas telas de criação e seleção de roupas. As alterações envolveram tanto a estrutura modular quanto a representação anterior, sem indicar uma substituição completa de todos os personagens pelo novo sistema.
+
+2.3. Minijogos, clima e recursos do projeto
+
+O banho recebeu ajustes de entrada, incluindo o início da atividade sem executar previamente a animação do personagem no banheiro. A Hidratona recebeu alterações nas representações de chuva e neve, nos acessórios relacionados ao clima e em parâmetros que permitem testar diferentes condições visuais. Também houve revisão de trechos ligados aos obstáculos.
+
+O Dói Aqui, os tabuleiros do Match-3 e as interações com plantas receberam atualizações de lógica e apresentação. Nas plantas, o efeito de pulsação foi direcionado à barra de progresso durante seu preenchimento.
+
+Foram adicionados ou atualizados cenários do hospital, elementos de interface, imagens do personagem e recursos de título. O período também incluiu arquivos de compilação Android, ajustes nas configurações do projeto e de exportação, a produção de um relatório anterior em PDF e uma integração de versões no Git.
+
+3. ALTERAÇÕES REALIZADAS EM SETEMBRO
+
+3.1. Diálogos e áudio
+
+Foi implementado um sistema de reprodução de voz para os diálogos do hospital. Foram incorporadas gravações do psicólogo Dr. Walter, da dentista Dra. Amelia, da enfermeira e do pediatra Dr. João. Os registros de setembro indicam 34 falas iniciais distribuídas entre os quatro profissionais.
+
+O diálogo da enfermeira recebeu uma nova sequência sobre vacinação. Foram corrigidos os caminhos dos arquivos dessa sequência e adicionadas vozes provisórias geradas por clonagem de voz, conforme registrado no histórico, para posterior substituição por gravações da intérprete original. Também foram atualizados a imagem e o nome exibidos na sala de espera.
+
+O botão de locução passou a utilizar um ícone, e a repetição automática das falas foi desativada. Foram acrescentados controles separados para volume geral, música, efeitos sonoros e voz, com armazenamento das preferências. Também foi introduzido um controlador para a música de fundo da casa.
+
+Na Hidratona, foram adicionados efeitos distintos para coleta de água e melancia, além de ajustes nos sons de salto, impactos, queda e resultado. Parte dos efeitos foi substituída por versões de caráter mais cartunesco. No banho, foram acrescentados sons de abertura e fechamento da torneira. O PlantCare recebeu música e efeitos associados a plantio, rega, maturação, venda e compra de espaços. O exercício de respiração recebeu música de meditação.
+
+3.2. Novas atividades de higiene e respiração
+
+Foram adicionadas duas atividades: lavagem das mãos e respiração guiada. A lavagem das mãos foi integrada ao banheiro e, posteriormente, passou a organizar a interação em etapas de molhar, aplicar sabão, enxaguar e secar. Foram atualizados imagens, indicação de progresso, aplicação de cor às mãos e uso de arraste do sabão e da toalha.
+
+A respiração guiada foi integrada ao quarto. A atividade apresenta três rodadas com indicação visual de inspiração, retenção do ar e expiração. Recebeu uma cena de introdução, ajustes de apresentação, controles de reinício e saída e uma trilha sonora própria.
+
+O banho foi revisado quanto à sequência de interação, às imagens e à representação do personagem escolhido. A tela final da escovação dos dentes também foi simplificada, com remoção de código de personalização da imagem anteriormente exibida.
+
+3.3. Atualização dos minijogos existentes
+
+No Match-3, foram corrigidos controles de movimentação e destruição de frutas. As alterações passaram a descartar referências a objetos removidos, evitar registros duplicados e separar o conjunto de frutas a destruir antes de iniciar as animações. Houve ajustes nos tabuleiros, na pontuação, na personalização do personagem e nas telas de resultado, incluindo novos elementos gráficos de cozinha e vestuário.
+
+No Dói Aqui, a progressão entre o resultado da resposta, a apresentação do nível de dor e a rodada seguinte passou a depender de um botão de continuação. A mudança substituiu o avanço baseado em temporização nesses momentos. Foram revistos a apresentação do personagem, as imagens das condições e resultados e o comportamento da pausa.
+
+Na Hidratona, foram atualizadas poses e animações de corrida, roupas para chuva e neve, aplicação de tom de pele, alinhamento de cabeça e pescoço e apresentação dos resultados. Foram incluídos recursos de calibração para ajustar esses elementos. O tutorial, as telas de encerramento e a interação de pausa também receberam alterações.
+
+O PlantCare passou por uma ampliação significativa. A atividade passou a organizar o jardim em oito espaços e a oferecer um catálogo de cinco plantas, com moedas, desbloqueio de espaços, plantio por arraste e permanência, rega, estágios de crescimento e venda de plantas maduras. Foi implementado armazenamento próprio para preservar moedas e estado do jardim. Posteriormente, foram adicionados fundo de jardim, imagens de buracos de plantio e regador, partículas de água, variações visuais de flores e ajustes nas mensagens e no posicionamento das plantas.
+
+3.4. Personagens, interface e salvamento
+
+Foram atualizados recursos de cabeça, corpo, roupas comuns e roupas especiais. Houve ajustes para as variações de menino e menina, inclusive a segunda variação de roupa da menina, e inclusão de imagens de repouso e corrida para chuva e neve.
+
+Foi criada e ampliada uma ferramenta de calibração de roupas e alinhamento visual. Também foram revistos os controles de criação e seleção do personagem, a aplicação de cores e a consistência da aparência entre ambientes e minijogos.
+
+A interface recebeu novos ícones de salas, revisões de diálogos, telas de carregamento e alterações no quarto, banheiro, cozinha e quintal. Foram atualizadas imagens de profissionais do hospital e reorganizados recursos gráficos de minijogos. A pausa passou a tratar o uso repetido do botão para abrir ou fechar seu painel.
+
+O salvamento passou a identificar os registros pelo nome de cada componente, em vez de depender da ordem das linhas do arquivo. Foram acrescentadas verificações de abertura do arquivo e de presença dos dados necessários antes de aplicar o carregamento. A gravação passou a evitar o armazenamento de um personagem com campos essenciais vazios. Também foi incluída a preservação do identificador do tom de pele e ajustado o fluxo de entrada relacionado ao carregamento.
+
+3.5. Documentação, configuração e verificações
+
+A documentação foi organizada em áreas de planejamento, descrição técnica, guias, relatórios e minijogos. Foram revisados o índice, as tarefas de programação, o tutorial do personagem modular e a documentação do Match-3. Também foram registrados textos de diálogo para revisão.
+
+Houve atualizações de metadados de importação, recursos de áudio, configurações do Godot, exportação e configuração do executável local. A atualização de metadados de 8 de setembro foi descrita no histórico como uma manutenção sem mudanças funcionais ou de conteúdo.
+
+No final do mês, foram adicionados testes voltados à confirmação no Dói Aqui, corrida da Hidratona, pausa, aparência no banho, sistema de rosto, calibração e seleção de roupas, salvamento do personagem e jardim. A presença desses testes demonstra a inclusão de mecanismos de verificação; este levantamento não executou novamente os testes nem atribui ao período os resultados das verificações posteriores de outubro.
+
+4. SÍNTESE DO PERÍODO
+
+As alterações de agosto se concentraram na correção do fluxo de jogo e no desenvolvimento da representação visual do personagem. Em setembro, o trabalho se ampliou para áudio, diálogos, novas atividades, funcionamento do jardim, apresentação dos minijogos e consistência do salvamento.
+
+Em conjunto, os registros apontam para a integração mais ampla entre personalização, ambientes e atividades de cuidado. Também houve esforço de organização técnica por meio da remoção de elementos sem uso, revisão da documentação e inclusão de testes. Esses resultados descrevem a evolução registrada no repositório, sem permitir concluir, apenas pelo histórico, que todas as funcionalidades foram validadas em todos os dispositivos.
+
+5. CRONOLOGIA DOS REGISTROS CONSULTADOS
+
+As referências abaixo permitem localizar os 45 commits que fundamentam o relatório. As descrições foram resumidas em português.
+
+AGOSTO
+13/08 — f9dd2e6: teste de personagem modular sobreposto ao personagem existente, em ramificação de teste.
+15/08 — c246ba9: correções de jogabilidade, navegação, hospital e remoção de código sem uso.
+16/08 — 1246dc0: correções de sobreposição, falha de navegação e elementos do diálogo hospitalar.
+16/08 — edeacf9: revisão da correção de profundidade das plantas, preservando televisão e janelas de interação.
+16/08 — f38c62a: inclusão de relatório de alterações em PDF e ajuste de configuração local de ferramenta.
+17/08 — 5b21790: arquivos Android, configurações, recursos de título e cenas de teste do personagem.
+17/08 — 18ef1c5: integração de versões da ramificação principal.
+17/08 — 3536b0c: ampliação dos testes e recursos do personagem modular e inclusão de tutorial.
+18/08 — fa63e13: atualização da estrutura modular, movimento, catálogos e recursos gráficos.
+19/08 — 1822cc4: integração do personagem modular à Hidratona e ajustes relacionados nas telas e salas.
+28/08 — 31c7e84: atualização visual do personagem e navegação hospitalar.
+28/08 — f50b6c2: correção das prévias de personalização do personagem.
+29/08 — c4c88b5: início do banho sem animação prévia do personagem.
+29/08 — ce8e55d: atualizações de personagem, clima, plantas e minijogos.
+
+SETEMBRO
+08/09 — 871002f: melhorias em minijogos, roupas, banho e documentação.
+08/09 — 503f747: inclusão de arquivos-fonte de efeitos da Hidratona e torneira do banho.
+08/09 — 217e1bb: atualização de metadados de importação e configurações do projeto.
+11/09 — 4575866: implementação do sistema de voz nos diálogos hospitalares.
+12/09 — 723dbdd: inclusão de 11 falas do psicólogo Dr. Walter.
+12/09 — cdb68e8: inclusão de nove falas da dentista Dra. Amelia.
+12/09 — 2d659c2: inclusão de três falas da enfermeira.
+12/09 — 7d04dce: inclusão de 11 falas do pediatra Dr. João.
+12/09 — b26cc6a: integração de novos efeitos na Hidratona e no banho.
+13/09 — 6490a05: inclusão de respiração guiada e lavagem das mãos.
+14/09 — 7c63e16: substituição de efeitos da Hidratona por versões mais cartunescas.
+22/09 — 3a7d54d: atualização do botão de locução com ícone.
+22/09 — 1d1ca4f: atualização de sistemas, controles de áudio, jardim e documentação.
+22/09 — e675355: desativação da repetição automática das locuções.
+22/09 — 78e0d83: atualização dos ícones das salas.
+23/09 — 8518aa3: configuração do executável local do Godot e ajuste de arquivos ignorados.
+23/09 — 5c0b4e0: atualização da imagem e identificação da enfermeira na sala de espera.
+24/09 — a0452eb: atualização de cabeças, personalização e ferramenta de calibração de roupas.
+24/09 — 1accd19: inclusão de efeitos e música do PlantCare.
+24/09 — 49269a5: inclusão de sequência de diálogo sobre vacinação.
+24/09 — b795874: correção dos caminhos das vozes da sequência de vacinação.
+24/09 — 303f390: integração de música e efeitos às ações do jardim organizado por espaços.
+24/09 — 1c463bb: inclusão de vozes provisórias clonadas para a sequência de vacinação.
+25/09 — d347cc7: inclusão de imagens de repouso das roupas de chuva e neve.
+25/09 — a11df88: atualizações de corrida, jardim, calibração e lavagem das mãos.
+26/09 — a5372b8: padronização visual de atividades e atualização de recursos e ambientes.
+28/09 — c9d1507: revisão de interações, continuação no Dói Aqui, pausa, corrida e testes.
+28/09 — 564cfa6: atualização de personagens, banho, diálogos, carregamento e resultados dos minijogos.
+29/09 — 846aad3: inclusão de música de meditação na respiração guiada.
+29/09 — 49a1658: atualização de roupas, calibração, Match-3 e telas.
+29/09 — 9ec7d75: atualização visual do jardim, revisão de minijogos e correções de salvamento.
+
+Fonte: histórico Git e arquivos versionados do repositório AF-Game26 disponíveis em 1º de outubro de 2026.

@@ -27,10 +27,20 @@ func _run():
 				assert(preview.get_node("LegacyHead").texture == CharacterController.get_legacy_head_texture())
 				assert(preview.get_node("sprite").material.get_shader_param("target_shirt") == Color("#21b24b"))
 				assert(preview.get_node("sprite").material.get_shader_param("target_pants") == Color("#3155cc"))
-				assert(preview.get_node("LegacyHead").position == calibration.doi_tuning.head_positions.get(calibration._doi_state() + "-Boy-a", Vector2(0, -43)))
-				assert(preview.get_node("LegacyHead").scale == Vector2.ONE * calibration.doi_tuning.head_scales.get(calibration._doi_state() + "-Boy-a", 0.094))
+				assert(preview.get_node("LegacyHead").position == calibration.doi_tuning.head_positions.get("parado-Boy-a", Vector2(0, -43)))
+				assert(preview.get_node("LegacyHead").scale == Vector2.ONE * calibration.doi_tuning.head_scales.get("parado-Boy-a", 0.094))
+	calibration.head_scale_input.value += 0.01
+	var calibrated_scale = calibration.head_scale_input.value
+	assert(calibration.doi_tuning.head_scales["parado-Girl-b"] == calibrated_scale)
+	for state in calibration.doi_tuning.STATES:
+		calibration.doi_player.set_preview_state(state)
+		assert(calibration.doi_player.get_node("LegacyHead").scale == Vector2.ONE * calibrated_scale)
 	calibration.head_x_input.value += 3
 	assert(calibration.doi_player.get_node("LegacyHead").position.x == calibration.head_x_input.value)
+	var calibrated_position = calibration.doi_player.legacy_head.position
+	for state in calibration.doi_tuning.STATES:
+		calibration.doi_player.set_preview_state(state)
+		assert(calibration.doi_player.legacy_head.position == calibrated_position)
 	calibration.neck_width_input.value += 2
 	assert(calibration.doi_player.get_node("SkinColorRect").rect_size.x == calibration.neck_width_input.value)
 	assert(ResourceSaver.save("user://doi_test_tuning.tres", calibration.doi_tuning) == OK)
@@ -49,6 +59,8 @@ func _run():
 	var tree = get_tree()
 	tree.get_root().add_child(game)
 	tree.current_scene = game
+	assert(not game.get_node("messageInterGame/Character").is_visible_in_tree())
+	assert(not game.get_node("painLevel/Character").is_visible_in_tree())
 	for gender in ["Boy", "Girl"]:
 		for hair in ["a", "b"]:
 			CharacterController.boyorgirl = gender
@@ -68,19 +80,26 @@ func _run():
 			animated_player.animation.play(previous)
 			animated_player.animation.advance(1.1)
 			animated_player.animation.play(next)
-			for time in [0.0, 0.5, 0.6]:
+			for time in [0.0, 0.5, 0.6, 0.9, 0.5, 0.6, 0.9]:
 				animated_player.animation.advance(time)
 				var visible_bodies = 0
 				for path in body_paths:
 					if animated_player.get_node(path).visible:
 						visible_bodies += 1
 				assert(visible_bodies == 1)
+				animated_player._sync_legacy_composite()
+				assert(animated_player.legacy_head.position == animated_player.outfit_tuning.get_head_position("parado"))
+				assert(animated_player.legacy_head.scale == Vector2.ONE * animated_player.outfit_tuning.get_head_scale("parado"))
 	assert(game.get_node("Player/sprite").material.get_shader_param("target_skin") == Color("#8d5524"))
 	game.get_node("Player").typesPain = "headache"
 	game.nP = 1
 	game.buttonsBlock = false
 	game._on_Button_pressed("headache")
 	assert(game.life == 1 and game.feedback_phase == "result")
+	assert(not game.get_node("Player").is_visible_in_tree())
+	assert(game.get_node("messageInterGame/Character").is_visible_in_tree())
+	assert(not game.get_node("painLevel/Character").is_visible_in_tree())
+	assert(game.get_node("messageInterGame/Character/LegacyHead").position == animated_player.legacy_head.position)
 	assert(game.get_node("messageInterGame/Character/sprite").texture.resource_path.ends_with("boy-parado.png"))
 	assert(game.get_node("messageInterGame/Character/LegacyHead").texture == CharacterController.get_legacy_head_texture())
 	assert(game.get_node("ContinueLayer/ContinueButton").visible)
@@ -89,9 +108,15 @@ func _run():
 	assert(game.life == 1)
 	game.get_node("ContinueLayer/ContinueButton").emit_signal("pressed")
 	assert(game.feedback_phase == "pain_level" and game.get_node("painLevel").layer == 100)
+	assert(not game.get_node("messageInterGame/Character").is_visible_in_tree())
+	assert(game.get_node("painLevel/Character").is_visible_in_tree())
+	assert(game.get_node("painLevel/Character/LegacyHead").position == animated_player.legacy_head.position)
 	assert(game.get_node("painLevel/Character/sprite").texture.resource_path.ends_with("boy-dores.png"))
 	game.get_node("ContinueLayer/ContinueButton").emit_signal("pressed")
 	assert(game.feedback_phase == "" and game.settingUp)
+	assert(game.get_node("Player").is_visible_in_tree())
+	assert(not game.get_node("messageInterGame/Character").is_visible_in_tree())
+	assert(not game.get_node("painLevel/Character").is_visible_in_tree())
 	game.get_node("ContinueLayer/ContinueButton").emit_signal("pressed")
 	assert(game.life == 1 and game.feedback_phase == "")
 	tree.current_scene = null

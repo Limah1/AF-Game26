@@ -161,8 +161,8 @@ func _on_value_changed(_value: float) -> void:
 		return
 	if _is_doi_aqui():
 		var state = _doi_state()
-		doi_tuning.head_positions[doi_tuning.head_key(state)] = Vector2(head_x_input.value, head_y_input.value)
-		doi_tuning.head_scales[doi_tuning.head_key(state)] = head_scale_input.value
+		doi_tuning.head_positions[doi_tuning.head_key("parado")] = Vector2(head_x_input.value, head_y_input.value)
+		doi_tuning.head_scales[doi_tuning.head_key("parado")] = head_scale_input.value
 		doi_tuning.body_scales[state] = outfit_scale_input.value
 		doi_tuning.neck_offsets[state] = Vector2(neck_x_input.value, neck_y_input.value)
 		doi_tuning.neck_sizes[state] = Vector2(neck_width_input.value, neck_height_input.value)

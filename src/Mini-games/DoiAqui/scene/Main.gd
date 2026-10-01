@@ -74,14 +74,17 @@ func _on_continue_pressed():
 			feedback_phase = ""
 			get_tree().change_scene("res://src/Mini-games/DoiAqui/scene/GameOver.tscn")
 			return
+		$messageInterGame/Character.hide()
 		$messageInterGame.layer = -100
 		$painLevel/Sprite.texture = load("res://assets/DoiAqui/sprites/tratamento/pain/" + str(nP) + ".png")
 		$painLevel/Character.set_preview_state("dores")
+		$painLevel/Character.show()
 		$painLevel.layer = 100
 		feedback_phase = "pain_level"
 	elif feedback_phase == "pain_level":
 		feedback_phase = ""
 		$ContinueLayer/ContinueButton.hide()
+		$painLevel/Character.hide()
 		$painLevel.layer = -100
 		$Player.visible = show_legacy_player
 		$Player.typesPain = "normal"
@@ -189,6 +192,7 @@ func _on_Button_pressed(name):
 	if(!buttonsBlock):
 		$Player.visible = false
 		$messageInterGame/Character.set_preview_state("parado" if name == $Player.typesPain else "erro")
+		$messageInterGame/Character.show()
 		$messageInterGame.layer = 100
 		$messageInterGame/Sprite.texture = load("res://assets/DoiAqui/sprites/tratamento/about/"+$Player.typesPain+".png")
 		print("nome do botão "+name)
