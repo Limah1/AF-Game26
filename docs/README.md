@@ -9,6 +9,8 @@
 - `tecnico/DOCUMENTACAO_TECNICA.md` — visão técnica do projeto.
 - `tecnico/README_Project.md` — visão geral e estrutura do projeto.
 - `tecnico/Dependencias_de_Audio_AF-Game26.docx` — dependências de áudio.
+- [Mapa de assets e save](tecnico/MAPA_ASSETS_E_SAVE.md) — dependências, candidatos à limpeza e persistência.
+- [Inventário de assets](tecnico/inventario_assets.csv) — caminhos, tamanhos, classificação e origens das referências.
 
 ## Guias
 

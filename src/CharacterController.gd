@@ -433,7 +433,7 @@ func Load_Hidratona():
 		hidratona.run.r7 = load(str(path, "correr-7.png"))
 		
 		hidratona.fall = load(str(path, "caindo-buraco.png"))
-		hidratona.win = load(str(path, "boy-win.png"))
+		hidratona.win = load("res://assets/All_Character_Sprites/Boy/hidratona-BOY/boy-win.png")
 		
 		#rain
 		hidratona.rain.fall = load(str(path, "rain/rc_fall.png"))
